@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'currents#index'
+
   resources :locations
   resources :buzzs
   resources :reports
