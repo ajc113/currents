@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Reports</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Target species</th>
+      <th>General location</th>
+      <th>Catch keepers</th>
+      <th>Catch total</th>
+      <th>Trip summary</th>
+      <th>Primary method</th>
+      <th>Tide</th>
+      <th>Weather</th>
+      <th>Wind</th>
+      <th>Spot</th>
+      <th>Picture</th>
+      <th>Best bait</th>
+      <th>Trip description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reports.each do |report| %>
+      <tr>
+        <td><%= report.date %></td>
+        <td><%= report.target_species %></td>
+        <td><%= report.general_location %></td>
+        <td><%= report.catch_keepers %></td>
+        <td><%= report.catch_total %></td>
+        <td><%= report.trip_summary %></td>
+        <td><%= report.primary_method %></td>
+        <td><%= report.tide %></td>
+        <td><%= report.weather %></td>
+        <td><%= report.wind %></td>
+        <td><%= report.spot %></td>
+        <td><%= report.picture %></td>
+        <td><%= report.best_bait %></td>
+        <td><%= report.trip_description %></td>
+        <td><%= link_to 'Show', report %></td>
+        <td><%= link_to 'Edit', edit_report_path(report) %></td>
+        <td><%= link_to 'Destroy', report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Report', new_report_path %>

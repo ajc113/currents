@@ -1,0 +1,74 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @report.date %>
+</p>
+
+<p>
+  <strong>Target species:</strong>
+  <%= @report.target_species %>
+</p>
+
+<p>
+  <strong>General location:</strong>
+  <%= @report.general_location %>
+</p>
+
+<p>
+  <strong>Catch keepers:</strong>
+  <%= @report.catch_keepers %>
+</p>
+
+<p>
+  <strong>Catch total:</strong>
+  <%= @report.catch_total %>
+</p>
+
+<p>
+  <strong>Trip summary:</strong>
+  <%= @report.trip_summary %>
+</p>
+
+<p>
+  <strong>Primary method:</strong>
+  <%= @report.primary_method %>
+</p>
+
+<p>
+  <strong>Tide:</strong>
+  <%= @report.tide %>
+</p>
+
+<p>
+  <strong>Weather:</strong>
+  <%= @report.weather %>
+</p>
+
+<p>
+  <strong>Wind:</strong>
+  <%= @report.wind %>
+</p>
+
+<p>
+  <strong>Spot:</strong>
+  <%= @report.spot %>
+</p>
+
+<p>
+  <strong>Picture:</strong>
+  <%= @report.picture %>
+</p>
+
+<p>
+  <strong>Best bait:</strong>
+  <%= @report.best_bait %>
+</p>
+
+<p>
+  <strong>Trip description:</strong>
+  <%= @report.trip_description %>
+</p>
+
+<%= link_to 'Edit', edit_report_path(@report) %> |
+<%= link_to 'Back', reports_path %>

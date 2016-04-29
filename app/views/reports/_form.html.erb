@@ -1,0 +1,73 @@
+<%= form_for(@report) do |f| %>
+  <% if @report.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@report.errors.count, "error") %> prohibited this report from being saved:</h2>
+
+      <ul>
+      <% @report.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.datetime_select :date %>
+  </div>
+  <div class="field">
+    <%= f.label :target_species %><br>
+    <%= f.text_field :target_species %>
+  </div>
+  <div class="field">
+    <%= f.label :general_location %><br>
+    <%= f.text_field :general_location %>
+  </div>
+  <div class="field">
+    <%= f.label :catch_keepers %><br>
+    <%= f.number_field :catch_keepers %>
+  </div>
+  <div class="field">
+    <%= f.label :catch_total %><br>
+    <%= f.number_field :catch_total %>
+  </div>
+  <div class="field">
+    <%= f.label :trip_summary %><br>
+    <%= f.text_area :trip_summary %>
+  </div>
+  <div class="field">
+    <%= f.label :primary_method %><br>
+    <%= f.text_field :primary_method %>
+  </div>
+  <div class="field">
+    <%= f.label :tide %><br>
+    <%= f.text_area :tide %>
+  </div>
+  <div class="field">
+    <%= f.label :weather %><br>
+    <%= f.text_area :weather %>
+  </div>
+  <div class="field">
+    <%= f.label :wind %><br>
+    <%= f.text_area :wind %>
+  </div>
+  <div class="field">
+    <%= f.label :spot %><br>
+    <%= f.text_area :spot %>
+  </div>
+  <div class="field">
+    <%= f.label :picture %><br>
+    <%= f.text_field :picture %>
+  </div>
+  <div class="field">
+    <%= f.label :best_bait %><br>
+    <%= f.text_area :best_bait %>
+  </div>
+  <div class="field">
+    <%= f.label :trip_description %><br>
+    <%= f.text_area :trip_description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
