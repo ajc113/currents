@@ -1,0 +1,2 @@
+class CurrentsController < ApplicationController
+end
