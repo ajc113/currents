@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  email: MyString
+  home_port: MyText
+  boat_name: MyString
+
+two:
+  email: MyString
+  home_port: MyText
+  boat_name: MyString
