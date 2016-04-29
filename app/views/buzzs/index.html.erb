@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Buzzs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Post</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @buzzs.each do |buzz| %>
+      <tr>
+        <td><%= buzz.post %></td>
+        <td><%= link_to 'Show', buzz %></td>
+        <td><%= link_to 'Edit', edit_buzz_path(buzz) %></td>
+        <td><%= link_to 'Destroy', buzz, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Buzz', new_buzz_path %>

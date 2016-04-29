@@ -1,0 +1,21 @@
+<%= form_for(@buzz) do |f| %>
+  <% if @buzz.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@buzz.errors.count, "error") %> prohibited this buzz from being saved:</h2>
+
+      <ul>
+      <% @buzz.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :post %><br>
+    <%= f.text_area :post %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
