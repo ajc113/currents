@@ -5,6 +5,13 @@ class ReportsController < ApplicationController
   # GET /reports.json
   def index
     @reports = Report.all
+    @hash = Gmaps4rails.build_markers(@reports) do |report, marker|
+    marker.lat report.latitude
+    marker.lng report.longitude
+    marker.infowindow report.general_location
+   
+    end
+
   end
 
   # GET /reports/1

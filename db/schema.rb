@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160429155038) do
+ActiveRecord::Schema.define(version: 20160429233526) do
 
   create_table "buzzs", force: :cascade do |t|
     t.text     "post"
@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(version: 20160429155038) do
     t.text     "trip_description"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   create_table "users", force: :cascade do |t|
