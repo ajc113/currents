@@ -8,8 +8,7 @@ class ReportsController < ApplicationController
     @hash = Gmaps4rails.build_markers(@reports) do |report, marker|
     marker.lat report.latitude
     marker.lng report.longitude
-    marker.infowindow report.general_location
-   
+    marker.infowindow report.trip_summary
     end
 
   end
