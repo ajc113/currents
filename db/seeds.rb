@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+Location.where(short_name: "Spot A", coordinates: [{lng: 42342, lat: 42342}, {lng: 43223, lat: 52423}]).first_or_create
+Location.where(short_name: "Spot B", coordinates: [{lng: 42342, lat: 42342}, {lng: 43223, lat: 52423}]).first_or_create
+Location.where(short_name: "Spot C", coordinates: [{lng: 42342, lat: 42342}, {lng: 43223, lat: 52423}]).first_or_create

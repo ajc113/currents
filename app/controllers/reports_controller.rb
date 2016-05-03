@@ -11,6 +11,8 @@ class ReportsController < ApplicationController
     marker.infowindow report.trip_summary
     end
 
+    
+
   end
 
   # GET /reports/1
