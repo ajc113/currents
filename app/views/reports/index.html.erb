@@ -1,6 +1,3 @@
-
-
-
 <script src="//maps.google.com/maps/api/js?v=3.18&sensor=false&client=&key=&libraries=geometry&language=&hl=&region=">
 </script> 
 <script src="//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js">
@@ -86,43 +83,55 @@
           [
           ]
         ],
-      { strokeColor: '#FF0000'}
-    );
+        { strokeColor: '#FF0000'}
+      );
+
+
+
+// var spot_a = <%#= Location::SPOT_A.html_safe %>;
+//                 //method 1
+//         var polygons = handler.addPolygons(
+//          [
+//            spot_a,
+//             [
+//              {lat:  42.083668, lng: -70.634360}, 
+//              {lat: 42.083668, lng: -70.462698},
+//              {lat:  41.926516, lng:  -70.359015}, 
+//              {lat: 41.881544, lng:  -70.522497},
+//              {lat:  42.033668, lng: -70.674360}, 
+//              {lat: 42.053668, lng: -70.482698},
+//              {lat:  41.726516, lng:  -70.859015}, 
+//              {lat: 41.781544, lng:  -70.822497},
+//             ]
+ 
+//           ],
+//               { strokeColor: '#FF0000'}
+//         );
 
 
                 //method 1
-        // var polygons = handler.addPolygons(
-        //     [
-
-        //       <%# @locations.each do |location| %>
-        //         <%#= location.as_json.html_safe %>,
-        //       <%# end %>
-
-
-        //     ]
-        //   )
+        var polygons = handler.addPolygons(
+          [
+            <% @location.each do |location| %>
+              <%= location.coordinates.to_json.gsub!(/\"/, '').html_safe %>,
+            <% end %>
+          ],
+              { strokeColor: '#FF0000'}
+        );
 
 
 
 
 
         //method 2
-        var spot_a = <%= Location::SPOT_A.html_safe %>;
+      //var spot_a = <%= Location::SPOT_A.html_safe %>;
 
-      var polygons = handler.addPolygons(
-        [
-          spot_a,
-          [
-            {lat:  42.033668, lng: -70.674360}, 
-            {lat: 42.053668, lng: -70.482698},
-            {lat:  41.726516, lng:  -70.859015}, 
-            {lat: 41.781544, lng:  -70.822497},
-          ]
-
-        ],
-
-        { strokeColor: '#FF0000'}
-      );
+      // var polygons = handler.addPolygons(
+      //     [
+      //       //spot_a,
+      //   ],
+      //   { strokeColor: '#FF0000'}
+      // );
 
       handler.bounds.extendWith(polylines);
       handler.bounds.extendWith(polygons);
