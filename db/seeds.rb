@@ -12,4 +12,4 @@ Location.where(short_name: "ccb_se", coordinates: [{lng: 41.984198, lat: -70.319
 Location.where(short_name: "ccb_sw", coordinates: [{lng: 41.887260, lat: -70.529131}, {lng: 41.920867, lat: -70.335363},{lng: 41.783006, lat: -70.498755},{lng: 41.794781, lat: -70.283835}]).first_or_create
 Location.where(short_name: "ccb_ne", coordinates: [{lng: 42.092312, lat: -70.4385}, {lng: 42.092312, lat: -70.278577},{lng: 41.940799, lat: -70.342435},{lng: 41.950502, lat: -70.172147}]).first_or_create
 Location.where(short_name: "bills", coordinates: [{lng: 41.769980, lat: -70.369901}, {lng: 41.793021, lat: -70.204420},{lng: 41.737196, lat: -70.354108},{lng: 41.754102, lat: -70.178327}]).first_or_create
-	
+	# AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
