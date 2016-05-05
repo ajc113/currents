@@ -26,7 +26,6 @@
       <th>Weather</th>
       <th>Wind</th>
       <th>Spot</th>
-      <th>Picture</th>
       <th>Best bait</th>
       <th>Trip description</th>
       <th colspan="3"></th>
@@ -49,7 +48,6 @@
         <td><%= report.weather %></td>
         <td><%= report.wind %></td>
         <td><%= report.spot %></td>
-        <td><%= report.picture %></td>
         <td><%= report.best_bait %></td>
         <td><%= report.trip_description %></td>
         <td><%= link_to 'Show', report %></td>
@@ -109,7 +107,7 @@
 //         );
 
 
-                //method 1
+                // method 1
         var polygons = handler.addPolygons(
           [
             <% @location.each do |location| %>
@@ -121,7 +119,53 @@
 
 
 
-
+        // var polygons = handler.addPolygons(
+        //   [
+        //       [
+        //         {lat: 42.092312, lng: -70.4385},
+        //         {lat: 42.092312, lng: -70.278577},
+        //         {lat: 41.940799, lng: -70.342435},
+        //         {lat: 41.950502, lng: -70.172147}
+        //       ],
+        //       [
+        //         {lat: 41.76998, lng: -70.369901},
+        //         {lat: 41.793021, lng: -70.20442},
+        //         {lat: 41.737196, lng: -70.354108},
+        //         {lat: 41.754102, lng: -70.178327}
+        //       ],
+        //       [
+        //         {lat: 41.83, lng: -70.44},
+        //         {lat: 41.87, lng: -70.28},
+        //         {lat: 41.75, lng: -70.19},
+        //         {lat: 41.77, lng: -70.49}
+        //       ],
+        //       [
+        //         {lat: 41.984198, lng: -70.319776},
+        //         {lat: 41.970926, lng: -70.110349},
+        //         {lat: 41.803259, lng: -70.222959},
+        //         {lat: 41.825776, lng: -70.164594}
+        //         ],
+        //       [
+        //         {lat: 41.88726, lng: -70.529131},
+        //         {lat: 41.920867, lng: -70.335363},
+        //         {lat: 41.783006, lng: -70.498755},
+        //         {lat: 41.794781, lng: -70.283835}
+        //       ],
+        //       [
+        //         {lat: 42.092312, lng: -70.4385},
+        //         {lat: 42.092312, lng: -70.278577},
+        //         {lat: 41.940799, lng: -70.342435},
+        //         {lat: 41.950502, lng: -70.172147}
+        //       ],
+        //       [
+        //         {lat: 41.76998, lng: -70.369901},
+        //         {lat: 41.793021, lng: -70.20442},
+        //         {lat: 41.737196, lng: -70.354108},
+        //         {lat: 41.754102, lng: -70.178327}
+        //       ]
+        //   ],
+        //       { strokeColor: '#FF0000'}
+        // );
 
         //method 2
       //var spot_a = <%= Location::SPOT_A.html_safe %>;
