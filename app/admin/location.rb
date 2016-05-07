@@ -1,11 +1,9 @@
-ActiveAdmin.register Report do
+ActiveAdmin.register Location do
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-
-end
-
+permit_params :short_name, :long_name, :coordinates
 #
 # or
 #
@@ -15,3 +13,5 @@ end
 #   permitted
 # end
 
+
+end
