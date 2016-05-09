@@ -1,5 +1,7 @@
 class Location < ActiveRecord::Base
 	
+   
+
 
 	serialize :coordinates
 
@@ -24,4 +26,9 @@ class Location < ActiveRecord::Base
 
           def find_or_create
           end
+
+          def raw(stringish)
+            stringish.to_s.html_safe
+          end
+
 end

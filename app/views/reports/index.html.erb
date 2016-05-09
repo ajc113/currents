@@ -111,7 +111,7 @@
         var polygons = handler.addPolygons(
           [
             <% @location.each do |location| %>
-              <%= location.coordinates.to_json.gsub!(/\"/, '').html_safe %>,
+              <%= location.coordinates.to_json.gsub!(/\"/,'').html_safe %>,
             <% end %>
           ],
               { strokeColor: '#FF0000'}

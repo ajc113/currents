@@ -1,47 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="authenticity_token" name="csrf-param" />
-    <title>Navionics Web API v2</title>
-
-    <link rel="stylesheet" href="http://webapiv2.navionics.com/dist/webapi/webapi.min.css" >
-    <script type="text/javascript" src="http://webapiv2.navionics.com/dist/webapi/webapi.min.no-dep.js"></script>
-
-    <script type="text/javascript" src="http://webapiv2.navionics.com/dist/webapi/webapi/webapi.min.no-dep.js"></script>
-    <link rel="stylesheet" href="http://webapiv2.navionics.com/dist/webapi/webapi.min.css" >
+<script src="//maps.google.com/maps/api/js?v=3.18&sensor=false&client=&key=&libraries=geometry&language=&hl=&region=">
+</script> 
+<script src="//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js">
+</script>
+<script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/infobox/1.1.9/src/infobox_packed.js' type='text/javascript'>
+</script> 
 
 
-    <style type="text/css">
-        html, body, .test_map_div {
-            margin: 0;
-            width: 100%;
-            height: 100%;
-        }
-    </style>
-</head>
-<body data-root="http://webapiv2.navionics.com/dist/webapi/images" >
-   <div class="test_map_div" ></div>
-    <script>
-        var gibilterra = new google.maps.LatLng(36.140751,-5.353585);
-        var gMapNauticalOptions = {
-            zoom: 14,
-            center: gibilterra,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
+<p id="notice"><%= notice %></p>
+
+<h1>HI.......</h1>
+
+<%= link_to 'New Report', new_report_path %>
+
+<div style='width: 800px;'>
+  <div id="multi_overlays" style='width: 1000px; height: 600px;'></div>
+</div>
+
+<script type="text/javascript">
+    handler = Gmaps.build('Google');
+
+    handler.buildMap({ internal: {id: 'multi_overlays'}}, function(){
+      
+      var circles = handler.addCircles(
+        [{ lat: 41.991873, lng: -70.652213, radius: 2000 }],
+        { strokeColor: '#FF0001'}
+      );
+
+        var polylines = handler.addPolylines(
+          [
+          [
+          ]
+        ],
+        { strokeColor: '#FF0000'}
+      );
+
+        var polygons = handler.addPolygons(
+          [
+            <% @location.each do |location| %>
+              <%= location.coordinates.to_json.gsub!(/\"/,'').html_safe %>,
+            <% end %>
+          ],
+              { strokeColor: '#FF0000'}
+        );
 
 
-        var gMapNautical = new google.maps.Map(document.getElementById("nautical-map-container"), gMapNauticalOptions);
 
-        var navionics_nauticalchart_layer = new JNC.Views.gNavionicsOverlay({
-            navKey: "Navionics_webapi_02427",
-            chartType: JNC.Views.gNavionicsOverlay.CHARTS.NAUTICAL
-        });
-        gMapNautical.overlayMapTypes.insertAt(0, navionics_nauticalchart_layer);
-                
-        webapi.showSonarControl(false);
-    </script>
-</body>
-</html>
+    handler.bounds.extendWith(polylines);
+      handler.bounds.extendWith(polygons);
+      handler.bounds.extendWith(circles);
+      handler.fitMapToBounds();  
 
+      markers = handler.addMarkers(<%=raw @hash.to_json %>);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+
+
+    });
+
+</script>     
