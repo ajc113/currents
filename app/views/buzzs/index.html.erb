@@ -1,3 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Polygon Arrays</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+
+
+
+
 <p id="notice"><%= notice %></p>
 
 <h1>Buzz</h1>
@@ -25,3 +48,68 @@
 <br>
 
 <%= link_to 'New Buzz', new_buzz_path %>
+
+<div id="map"></div>
+    <script>
+
+      // This example creates a simple polygon representing the Bermuda Triangle.
+      // When the user clicks on the polygon an info window opens, showing
+      // information about the polygon's coordinates.
+
+      var map;
+      var infoWindow;
+
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 10,
+          center: {lat: 41.7, lng: -70.25},
+          mapTypeId: google.maps.MapTypeId.SATELLITE
+        });
+
+        // Define the LatLng coordinates for the polygon.
+        var billsCoords = [
+            {lat: 41.769980, lng: -70.369901},
+            {lat: 41.793021, lng: -70.204420},
+            {lat: 41.754102, lng: -70.178327},
+            {lat: 41.737196, lng: -70.354108}
+        ];
+
+        // Construct the polygon.
+        var billsPollygon = new google.maps.Polygon({
+          paths: billsCoords,
+          strokeColor: '#FF0000',
+          strokeOpacity: 0.8,
+          strokeWeight: 3,
+          fillColor: '#FF0000',
+          fillOpacity: 0.35
+        });
+        billsPollygon.setMap(map);
+
+        // Add a listener for the click event.
+        billsPollygon.addListener('click', showArrays);
+
+        infoWindow = new google.maps.InfoWindow;
+      }
+
+      /** @this {google.maps.Polygon} */
+      function showArrays(event) {
+      
+        var vertices = this.getPath();
+
+        var contentString = '<b>BillingsGate Shoals</b><br>' +
+            'Clicked location: <br>' + event.latLng.lat() + ',' + event.latLng.lng() +
+            '<br>';
+
+        // Replace the info window's content and position.
+        infoWindow.setContent(contentString);
+        infoWindow.setPosition(event.latLng);
+
+        infoWindow.open(map);
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRhKrHEYhZA2Qg5fagbEKaUItVsB-cQ3g&callback=initMap">
+    </script>
+
+  </body>
+</html>

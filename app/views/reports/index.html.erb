@@ -68,125 +68,31 @@
 
 <script type="text/javascript">
     handler = Gmaps.build('Google');
-
     handler.buildMap({ internal: {id: 'multi_overlays'}}, function(){
-      
-      var circles = handler.addCircles(
-        [{ lat: 41.991873, lng: -70.652213, radius: 2000 }],
-        { strokeColor: '#FF0001'}
-      );
-
-        var polylines = handler.addPolylines(
-          [
-          [
-          ]
-        ],
-        { strokeColor: '#FF0000'}
-      );
-
-
-
-// var spot_a = <%#= Location::SPOT_A.html_safe %>;
-//                 //method 1
-//         var polygons = handler.addPolygons(
-//          [
-//            spot_a,
-//             [
-//              {lat:  42.083668, lng: -70.634360}, 
-//              {lat: 42.083668, lng: -70.462698},
-//              {lat:  41.926516, lng:  -70.359015}, 
-//              {lat: 41.881544, lng:  -70.522497},
-//              {lat:  42.033668, lng: -70.674360}, 
-//              {lat: 42.053668, lng: -70.482698},
-//              {lat:  41.726516, lng:  -70.859015}, 
-//              {lat: 41.781544, lng:  -70.822497},
-//             ]
- 
-//           ],
-//               { strokeColor: '#FF0000'}
-//         );
-
-
-                // method 1
-        var polygons = handler.addPolygons(
-          [
-            <% @location.each do |location| %>
-              <%= location.coordinates.to_json.gsub!(/\"/,'').html_safe %>,
-            <% end %>
-          ],
-              { strokeColor: '#FF0000'}
-        );
-
-
-
-        // var polygons = handler.addPolygons(
-        //   [
-        //       [
-        //         {lat: 42.092312, lng: -70.4385},
-        //         {lat: 42.092312, lng: -70.278577},
-        //         {lat: 41.940799, lng: -70.342435},
-        //         {lat: 41.950502, lng: -70.172147}
-        //       ],
-        //       [
-        //         {lat: 41.76998, lng: -70.369901},
-        //         {lat: 41.793021, lng: -70.20442},
-        //         {lat: 41.737196, lng: -70.354108},
-        //         {lat: 41.754102, lng: -70.178327}
-        //       ],
-        //       [
-        //         {lat: 41.83, lng: -70.44},
-        //         {lat: 41.87, lng: -70.28},
-        //         {lat: 41.75, lng: -70.19},
-        //         {lat: 41.77, lng: -70.49}
-        //       ],
-        //       [
-        //         {lat: 41.984198, lng: -70.319776},
-        //         {lat: 41.970926, lng: -70.110349},
-        //         {lat: 41.803259, lng: -70.222959},
-        //         {lat: 41.825776, lng: -70.164594}
-        //         ],
-        //       [
-        //         {lat: 41.88726, lng: -70.529131},
-        //         {lat: 41.920867, lng: -70.335363},
-        //         {lat: 41.783006, lng: -70.498755},
-        //         {lat: 41.794781, lng: -70.283835}
-        //       ],
-        //       [
-        //         {lat: 42.092312, lng: -70.4385},
-        //         {lat: 42.092312, lng: -70.278577},
-        //         {lat: 41.940799, lng: -70.342435},
-        //         {lat: 41.950502, lng: -70.172147}
-        //       ],
-        //       [
-        //         {lat: 41.76998, lng: -70.369901},
-        //         {lat: 41.793021, lng: -70.20442},
-        //         {lat: 41.737196, lng: -70.354108},
-        //         {lat: 41.754102, lng: -70.178327}
-        //       ]
-        //   ],
-        //       { strokeColor: '#FF0000'}
-        // );
-
-        //method 2
-      //var spot_a = <%= Location::SPOT_A.html_safe %>;
-
-      // var polygons = handler.addPolygons(
-      //     [
-      //       //spot_a,
-      //   ],
-      //   { strokeColor: '#FF0000'}
-      // );
-
-      handler.bounds.extendWith(polylines);
-      handler.bounds.extendWith(polygons);
-      handler.bounds.extendWith(circles);
-      handler.fitMapToBounds();  
-
-      markers = handler.addMarkers(<%=raw @hash.to_json %>);
-      handler.bounds.extendWith(markers);
-      handler.fitMapToBounds();
-
-
+    handler.bounds.extendWith(polygons);
+    handler.fitMapToBounds();  
+    markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds(); 
     });
+        
+      var polygons = handler.addPolygons(
+        [
+          <% @location.each do |location| %>
+          //<%= location.short_name %>
+            <%= location.coordinates.to_json.gsub!(/\"/,'').html_safe %>,
+          <% end %>
+        ],
+          { strokeColor: '#FF0000'}
+      );
+      
 
 </script>
+
+<script>
+
+</script>
+
+
+
+

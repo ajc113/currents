@@ -35,49 +35,30 @@
         z-index: 5;
       }
     </style>
+  </head>
+
+  <body>
+    <div id="floating-panel">
+      <button onclick="toggleHeatmap()">Toggle Heatmap</button>
+      <button onclick="changeGradient()">Change gradient</button>
+      <button onclick="changeRadius()">Change radius</button>
+      <button onclick="changeOpacity()">Change opacity</button>
+    </div>
+    <div id="map"></div>
+    <script>
 
 
 
-
-
-<script src="//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js">
-</script>
-<script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/infobox/1.1.9/src/infobox_packed.js' type='text/javascript'>
-</script> 
-<script type="text/javascript"
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRhKrHEYhZA2Qg5fagbEKaUItVsB-cQ3g&libraries=visualization">
-</script>
-
-</head>
-
-<p id="notice"><%= notice %></p>
-
-<h1>HI.......</h1>
-
-<%= link_to 'New Report', new_report_path %>
-
-
-
-<div id="floating-panel">
-  <button onclick="toggleHeatmap()">Toggle Heatmap</button>
-  <button onclick="changeGradient()">Change gradient</button>
-  <button onclick="changeRadius()">Change radius</button>
-  <button onclick="changeOpacity()">Change opacity</button>
-</div>
-<div id="map"></div>
-<!-- Replace the value of the key parameter with your own API key. -->
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRhKrHEYhZA2Qg5fagbEKaUItVsB-cQ3g&libraries=visualization&callback=initMap">
-    </script>
-
-<script>
+// This example requires the Visualization library. Include the libraries=visualization
+// parameter when you first load the API. For example:
+// <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=visualization">
 
 var map, heatmap;
 
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 13,
-    center: {lat: 37.775, lng: -122.434},
+    zoom: 10,
+    center: {lat: 42.05, lng: -70.25},
     mapTypeId: google.maps.MapTypeId.SATELLITE
   });
 
@@ -119,15 +100,26 @@ function changeOpacity() {
   heatmap.set('opacity', heatmap.get('opacity') ? null : 0.2);
 }
 
-// Heatmap data: 500 Points
 function getPoints() {
   return [
-    new google.maps.LatLng(37.782551, -122.445368),
-    new google.maps.LatLng(37.782745, -122.444586),
-    new google.maps.LatLng(37.782842, -122.443688),
-    new google.maps.LatLng(37.782919, -122.442815),
-     new google.maps.LatLng(37.751266, -122.403355)
+    
+    new google.maps.LatLng(41.83, -70.44),
+    new google.maps.LatLng(41.87, -70.28),
+    new google.maps.LatLng(41.75, -70.19),
+    new google.maps.LatLng(41.77, -70.49),
+    new google.maps.LatLng(42.068359, -70.286130),
+    new google.maps.LatLng(42.088745, -70.239439),
+    new google.maps.LatLng(41.991854, -70.228452),
+    new google.maps.LatLng(42.016345, -70.155668)
   ];
 }
-
 </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRhKrHEYhZA2Qg5fagbEKaUItVsB-cQ3g  
+&libraries=visualization&callback=initMap">
+    </script>
+  </body>
+</html> 
+
+<%= link_to 'New Report', new_report_path %>    
+
