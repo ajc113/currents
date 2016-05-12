@@ -69,6 +69,28 @@
 <script type="text/javascript">
     handler = Gmaps.build('Google');
     handler.buildMap({ internal: {id: 'multi_overlays'}}, function(){
+    
+    var circles = handler.addCircles(
+         [{ lat: 41.991873, lng: -70.652213, radius: 2000 }],
+       { strokeColor: '#FF0001'}
+       );
+
+    var polylines = handler.addPolylines(
+         [[
+         ]],
+       { strokeColor: '#FF0000'}
+     );
+
+   var polygons = handler.addPolygons(
+        [
+          <% @location.each do |location| %>
+          <%= location.short_name %>
+            <%= location.coordinates.to_json.gsub!(/\"/,'').html_safe %>,
+          <% end %>
+        ],
+          { strokeColor: '#FF0000'}
+      );  
+
     handler.bounds.extendWith(polygons);
     handler.fitMapToBounds();  
     markers = handler.addMarkers(<%=raw @hash.to_json %>);
@@ -76,22 +98,10 @@
     handler.fitMapToBounds(); 
     });
         
-      var polygons = handler.addPolygons(
-        [
-          <% @location.each do |location| %>
-          //<%= location.short_name %>
-            <%= location.coordinates.to_json.gsub!(/\"/,'').html_safe %>,
-          <% end %>
-        ],
-          { strokeColor: '#FF0000'}
-      );
       
-
 </script>
 
-<script>
 
-</script>
 
 
 

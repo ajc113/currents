@@ -5,6 +5,8 @@ class BuzzsController < ApplicationController
   # GET /buzzs.json
   def index
     @buzzs = Buzz.all
+    @locations = Location.all
+
   end
 
   # GET /buzzs/1
@@ -71,4 +73,7 @@ class BuzzsController < ApplicationController
     def buzz_params
       params.require(:buzz).permit(:post)
     end
+    def location_parms
+    @location = Location.where(params[:short_name])
+  end
 end
