@@ -69,21 +69,21 @@
         // Define the LatLng coordinates for the polygon.
 
         <% @locations.each do |location| %>
-          var <%= location.short_name %> = <%= location.coordinates.to_json.gsub!(/\"/,'').html_safe %>;
+          var <%= location.short_name.parameterize.underscore %> = <%= location.coordinates.to_json.gsub!(/\"/,'').html_safe %>;
 
           // Construct the polygon.
-          var <%= location.short_name %>_billsPollygon = new google.maps.Polygon({
-            paths: <%= location.short_name %>,
+          var <%= location.short_name.parameterize.underscore %>_billsPollygon = new google.maps.Polygon({
+            paths: <%= location.short_name.parameterize.underscore %>,
             strokeColor: '#FF0000',
             strokeOpacity: 0.8,
             strokeWeight: 3,
             fillColor: '#FF0000',
             fillOpacity: 0.35
           });
-          <%= location.short_name %>_billsPollygon.setMap(map);
+          <%= location.short_name.parameterize.underscore %>_billsPollygon.setMap(map);
 
           // Add a listener for the click event.
-          <%= location.short_name %>_billsPollygon.addListener('click', 
+          <%= location.short_name.parameterize.underscore %>_billsPollygon.addListener('click', 
 
             function (event) {
               console.log('yolo');
