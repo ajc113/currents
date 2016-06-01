@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160505224212) do
+ActiveRecord::Schema.define(version: 20160601215226) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -63,7 +63,6 @@ ActiveRecord::Schema.define(version: 20160505224212) do
   create_table "reports", force: :cascade do |t|
     t.datetime "date"
     t.string   "target_species"
-    t.string   "general_location"
     t.integer  "catch_keepers"
     t.integer  "catch_total"
     t.text     "trip_summary"
@@ -78,7 +77,12 @@ ActiveRecord::Schema.define(version: 20160505224212) do
     t.datetime "updated_at",       null: false
     t.float    "latitude"
     t.float    "longitude"
+    t.integer  "location_id"
+    t.integer  "user_id"
   end
+
+  add_index "reports", ["location_id"], name: "index_reports_on_location_id"
+  add_index "reports", ["user_id"], name: "index_reports_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

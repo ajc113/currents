@@ -25,6 +25,7 @@ class ReportsController < ApplicationController
   # GET /reports/new
   def new
     @report = Report.new
+   
   end
 
   # GET /reports/1/edit
@@ -80,7 +81,7 @@ class ReportsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def report_params
-      params.require(:report).permit(:date, :target_species, :general_location, :catch_keepers, :catch_total, :trip_summary, :primary_method, :tide, :weather, :wind, :spot, :picture, :best_bait, :trip_description)
+      params.require(:report).permit(:date, :target_species, :general_location, :catch_keepers, :catch_total, :trip_summary, :primary_method, :tide, :weather, :wind, :spot, :picture, :best_bait, :trip_description, :location_id)
     end
     def location_params
       @location = Location.where(params[:short_name])

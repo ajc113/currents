@@ -20,8 +20,8 @@
     <%= f.text_field :target_species %>
   </div>
   <div class="field">
-    <%= f.label :general_location %><br>
-    <%= f.text_field :general_location %>
+    <%= f.select :location_id, Location.all.pluck(:short_name, :id) %>
+
   </div>
   <div class="field">
     <%= f.label :catch_keepers %><br>
