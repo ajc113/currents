@@ -1,6 +1,6 @@
 class BuzzsController < ApplicationController
   before_action :set_buzz, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /buzzs
   # GET /buzzs.json
   def index

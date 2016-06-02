@@ -19,8 +19,8 @@
 </p>
 
 <p>
-  <strong>General location:</strong>
-  <%= @report.general_location %>
+  <strong>Location:</strong>
+  <%= @report.location.try(:short_name) %>
 </p>
 
 <p>
@@ -62,12 +62,6 @@
   <strong>Spot:</strong>
   <%= @report.spot %>
 </p>
-
-<p>
-  <strong>Picture:</strong>
-  <%= @report.picture %>
-</p>
-
 <p>
   <strong>Best bait:</strong>
   <%= @report.best_bait %>
