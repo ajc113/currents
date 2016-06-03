@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users
-  root 'currents#index'
+  root to: 'currents#index'
 
   resources :locations
   resources :buzzs
