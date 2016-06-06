@@ -3,7 +3,7 @@
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <title>Heatmaps</title>
+    <title>Heat Charts</title>
     <style>
       html, body {
         height: 100%;
@@ -13,164 +13,98 @@
       #map {
         height: 100%;
       }
-      #floating-panel {
-        position: absolute;
-        top: 10px;
-        left: 25%;
-        z-index: 5;
-        background-color: #fff;
-        padding: 5px;
-        border: 1px solid #999;
-        text-align: center;
-        font-family: 'Roboto','sans-serif';
-        line-height: 30px;
-        padding-left: 10px;
-      }
-      #floating-panel {
-        background-color: #fff;
-        border: 1px solid #999;
-        left: 25%;
-        padding: 5px;
-        position: absolute;
-        top: 10px;
-        z-index: 5;
-      }
     </style>
   </head>
-
   <body>
-    <div id="floating-panel">
-      <button onclick="toggleHeatmap()">Toggle Heatmap</button>
-      <button onclick="changeGradient()">Change gradient</button>
-      <button onclick="changeRadius()">Change radius</button>
-      <button onclick="changeOpacity()">Change opacity</button>
-    </div>
     <div id="map"></div>
-    <script>
+
+<p id="notice"><%= notice %></p>
+
+<div id="map"></div>
+<script>
+
+    // This example creates a simple polygon representing the Bermuda Triangle.
+    // When the user clicks on the polygon an info window opens, showing
+    // information about the polygon's coordinates.
+
+    var map;
+    var infoWindow;
+
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 10,
+        center: {lat: 42.05, lng: -70.25},
+        mapTypeId: google.maps.MapTypeId.SATELLITE
+      });
+
+      // Define the LatLng coordinates for the polygon.
 
 
 
-// This example requires the Visualization library. Include the libraries=visualization
-// parameter when you first load the API. For example:
-// <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=visualization">
+      <% @locations.each do |location| %>
+        var <%= location.short_name.parameterize.underscore %> = <%= location.coordinates.to_json.gsub!(/\"/,'').html_safe %>;
 
-var map, heatmap;
-var infoWindow;
-
-function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 10,
-    center: {lat: 42.05, lng: -70.25},
-    mapTypeId: google.maps.MapTypeId.SATELLITE
-  });
-
-  heatmap = new google.maps.visualization.HeatmapLayer({
-    data: getPoints(),
-    map: map
-  });
-
-
-function toggleHeatmap() {
-  heatmap.setMap(heatmap.getMap() ? null : map);
-}
-
-function changeGradient() {
-  var gradient = [
-    'rgba(0, 255, 255, 0)',
-    'rgba(0, 255, 255, 1)',
-    'rgba(0, 191, 255, 1)',
-    'rgba(0, 127, 255, 1)',
-    'rgba(0, 63, 255, 1)',
-    'rgba(0, 0, 255, 1)',
-    'rgba(0, 0, 223, 1)',
-    'rgba(0, 0, 191, 1)',
-    'rgba(0, 0, 159, 1)',
-    'rgba(0, 0, 127, 1)',
-    'rgba(63, 0, 91, 1)',
-    'rgba(127, 0, 63, 1)',
-    'rgba(191, 0, 31, 1)',
-    'rgba(255, 0, 0, 1)'
-  ]
-  heatmap.set('gradient', heatmap.get('gradient') ? null : gradient);
-}
-
-function changeRadius() {
-  heatmap.set('radius', heatmap.get('radius') ? null : 20);
-}
-
-function changeOpacity() {
-  heatmap.set('opacity', heatmap.get('opacity') ? null : 0.2);
-}
-
-function getPoints() {
-  return [
-    
-    new google.maps.LatLng(41.83, -70.44),
-    new google.maps.LatLng(41.87, -70.28),
-    new google.maps.LatLng(41.75, -70.19),
-    new google.maps.LatLng(41.77, -70.49),
-    new google.maps.LatLng(42.068359, -70.286130),
-    new google.maps.LatLng(42.088745, -70.239439),
-    new google.maps.LatLng(41.991854, -70.228452),
-    new google.maps.LatLng(42.016345, -70.155668)
-  ];
-  var billsCoords = [
-        {lat: 41.769980, lng: -70.369901},
-        {lat: 41.793021, lng: -70.204420},
-        {lat: 41.754102, lng: -70.178327},
-        {lat: 41.737196, lng: -70.354108}
-    ];
-
-  var billsPollygon = new google.maps.Polygon({
-          paths: billsCoords,
+        // Construct the polygon.
+        var <%= location.short_name.parameterize.underscore %>_billsPollygon = new google.maps.Polygon({
+          paths: <%= location.short_name.parameterize.underscore %>,
           strokeColor: '#FF0000',
           strokeOpacity: 0.8,
           strokeWeight: 3,
           fillColor: '#FF0000',
           fillOpacity: 0.35
         });
-        billsPollygon.setMap(map);
+        <%= location.short_name.parameterize.underscore %>_billsPollygon.setMap(map);
 
-  billsPollygon.addListener('click', showArrays);
+        // Add a listener for the click event.
+        <%= location.short_name.parameterize.underscore %>_billsPollygon.addListener('click', 
 
-  infoWindow = new google.maps.InfoWindow;
-}
+          function (event) {
+            console.log('yolo');
+            console.log(event);
+            var vertices = this.getPath();
+
+            var contentString = '<b><%= location.short_name %></b><br>' +
+                'Clicked location: <br>' + event.latLng.lat() + ',' + event.latLng.lng() +
+                '<br>';
+
+            // Replace the info window's content and position.
+            infoWindow.setContent(contentString);
+            infoWindow.setPosition(event.latLng);
+
+            infoWindow.open(map);
+          }
+          
+          // showArrays
+          );
+      <% end %>
+
+      infoWindow = new google.maps.InfoWindow;
+    }
+
+    /** @this {google.maps.Polygon} */
+    // function showArrays(event) {
+    //   console.log('yolo');
+    //   console.log(event);
+    //   var vertices = this.getPath();
+
+    //   var contentString = '<b>BillingsGate Shoals</b><br>' +
+    //       'Clicked location: <br>' + event.latLng.lat() + ',' + event.latLng.lng() +
+    //       '<br>';
+
+    //   // Replace the info window's content and position.
+    //   infoWindow.setContent(contentString);
+    //   infoWindow.setPosition(event.latLng);
+
+    //   infoWindow.open(map);
+    // }
   
-  function showArrays(event) {
-
-  var vertices = this.getPath();
-
-  var contentString = '<b>BillingsGate Shoals</b><br>' +
-        'Clicked location: <br>' + event.latLng.lat() + ',' + event.latLng.lng() +
-        '<br>';
-
-        // Replace the info window's content and position.
-        infoWindow.setContent(contentString);
-        infoWindow.setPosition(event.latLng);
-
-        infoWindow.open(map);
-}
-
-}
-
-
-
-</script>
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRhKrHEYhZA2Qg5fagbEKaUItVsB-cQ3g  
-&libraries=visualization&callback=initMap">
-</script>
-
-<script>
-</script>
-
-
-
-
+  </script>
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRhKrHEYhZA2Qg5fagbEKaUItVsB-cQ3g&callback=initMap">
+  </script>
   </body>
-</html> 
+</html>
 
-<%= link_to 'New Report', new_report_path %>    
 
-<%= render 'heatmap' %>
+
 
