@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20160602222703) do
   end
 
   create_table "reports", force: :cascade do |t|
-    t.datetime "date"
+    t.date "date"
     t.string   "target_species"
     t.integer  "catch_keepers"
     t.integer  "catch_total"
