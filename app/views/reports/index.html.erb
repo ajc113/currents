@@ -7,11 +7,11 @@
 <table>
   <thead>
     <tr>
-      <th>Latitude</th>
-      <th>Longitude</th>
       <th>Date</th>
+      <th>User</th>
+      <th>Port</th>
       <th>Target species</th>
-      <th>General location</th>
+      <th>Location</th>
       <th>Catch keepers</th>
       <th>Catch total</th>
       <th>Trip summary</th>
@@ -29,9 +29,9 @@
   <tbody>
     <% @reports.each do |report| %>
       <tr>
-        <td><%= report.latitude %></td>
-        <td><%= report.longitude %></td>
         <td><%= report.date %></td>
+        <td><%= report.user.try(:vessel_name) %></td>
+        <td><%= report.user.try(:home_port) %></td>
         <td><%= report.target_species %></td>
         <td><%= report.location.try(:short_name) %></td>
         <td><%= report.catch_keepers %></td>
