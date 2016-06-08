@@ -17,11 +17,11 @@
   </div>
   <div class="field">
     <%= f.label :target_species %><br>
-    <%= f.text_field :target_species %>
+    <%= f.select :target_species, ['Bluefish', 'Cod & Haddock', 'Flounder', 'Striped Bass', 'Sharks', 'Tuna', 'Mackeral, Pogies, Herring'] %>
   </div>
   <div class="field">
+    <%= f.label :location_id %><br>
     <%= f.select :location_id, Location.all.pluck(:short_name, :id) %>
-
   </div>
   <div class="field">
     <%= f.label :catch_keepers %><br>
@@ -37,19 +37,19 @@
   </div>
   <div class="field">
     <%= f.label :primary_method %><br>
-    <%= f.text_field :primary_method %>
+    <%= f.select :primary_method, ['Live Bait', 'Dead Bait', 'Kite', 'Jigging', 'Popping', 'Trolling'] %>
   </div>
   <div class="field">
     <%= f.label :tide %><br>
-    <%= f.text_area :tide %>
+    <%= f.select :tide, ['Incoming', 'Outgoing', 'Slack'] %>
   </div>
   <div class="field">
     <%= f.label :weather %><br>
-    <%= f.text_area :weather %>
+    <%= f.select :weather, ['Overcast', 'Rain', 'Sun'] %>
   </div>
   <div class="field">
     <%= f.label :wind %><br>
-    <%= f.text_area :wind %>
+    <%= f.select :wind, ['W < 10 mph', 'W 10-20 mph', 'W > 20 mph', 'NW < 10 mph', 'NW 10-20 mph', 'NW > 20 mph','N < 10 mph', 'N 10-20 mph', 'N > 20 mph','NE < 10 mph', 'NE 10-20 mph', 'NE > 20 mph','E < 10 mph', 'E 10-20 mph', 'E > 20 mph', 'SE < 10 mph', 'SE 10-20 mph', 'SE > 20 mph','S < 10 mph', 'S 10-20 mph', 'S > 20 mph','SW < 10 mph', 'SW 10-20 mph', 'SW > 20 mph'] %>
   </div>
   <div class="field">
     <%= f.label :spot %><br>

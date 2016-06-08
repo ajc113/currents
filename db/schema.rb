@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160602222703) do
+ActiveRecord::Schema.define(version: 20160608173938) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -46,11 +46,8 @@ ActiveRecord::Schema.define(version: 20160602222703) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
 
-  create_table "buzzs", force: :cascade do |t|
-    t.text     "post"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+# Could not dump table "buzzs" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "locations", force: :cascade do |t|
     t.string   "short_name"
@@ -61,7 +58,6 @@ ActiveRecord::Schema.define(version: 20160602222703) do
   end
 
   create_table "reports", force: :cascade do |t|
-    t.date "date"
     t.string   "target_species"
     t.integer  "catch_keepers"
     t.integer  "catch_total"
@@ -79,6 +75,7 @@ ActiveRecord::Schema.define(version: 20160602222703) do
     t.float    "longitude"
     t.integer  "location_id"
     t.integer  "user_id"
+    t.date     "date"
   end
 
   add_index "reports", ["location_id"], name: "index_reports_on_location_id"

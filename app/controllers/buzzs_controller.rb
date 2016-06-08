@@ -71,7 +71,7 @@ class BuzzsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def buzz_params
-      params.require(:buzz).permit(:post)
+      params.require(:buzz).permit(:post, :user_id)
     end
     def location_parms
     @location = Location.where(params[:short_name])
