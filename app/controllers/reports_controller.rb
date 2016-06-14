@@ -4,14 +4,22 @@ class ReportsController < ApplicationController
   # GET /reports
   # GET /reports.json
   def index
-    @reports = Report.all
-    @hash = Gmaps4rails.build_markers(@reports) do |report, marker|
-    marker.lat report.latitude
-    marker.lng report.longitude
-    marker.infowindow report.trip_summary
-    @locations = Location.where(location_params)
+    if current_user
+       @reports = Report.all
+    # @reports = Report.where("user_id IN (?)", current_user)
+   else
+     redirect_to new_user_session_path, notice: 'You are not logged in.'
+   end
 
-    end
+
+    # @reports = Report.all
+    # @hash = Gmaps4rails.build_markers(@reports) do |report, marker|
+    # marker.lat report.latitude
+    # marker.lng report.longitude
+    # marker.infowindow report.trip_summary
+    # @locations = Location.where(location_params)
+
+    # end
 
 
 
@@ -20,6 +28,7 @@ class ReportsController < ApplicationController
   # GET /reports/1
   # GET /reports/1.json
   def show
+    @reports = Report.all
   end
 
   # GET /reports/new

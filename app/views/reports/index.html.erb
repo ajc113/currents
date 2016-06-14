@@ -27,7 +27,8 @@
   </thead>
 
   <tbody>
-    <% @reports.each do |report| %>
+    <% if current_user %>
+    <% @reports.where current_user do |report| %>
       <tr>
         <td><%= report.date %></td>
         <td><%= report.user.try(:vessel_name) %></td>
@@ -56,6 +57,7 @@
 
 <%= link_to 'New Report', new_report_path %>
 
+<% end %>
 
 
 
