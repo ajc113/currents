@@ -28,7 +28,8 @@
 
   <tbody>
     <% if current_user %>
-    <% @reports.where current_user do |report| %>
+    
+    <% @reports.each do |report| %>
       <tr>
         <td><%= report.date %></td>
         <td><%= report.user.try(:vessel_name) %></td>
