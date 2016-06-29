@@ -3,13 +3,15 @@ class Report < ActiveRecord::Base
 belongs_to :location
 belongs_to :user
 
+	 scope :target_tuna, -> { Report.where(target_species: 'Tuna') }
+
 	def catch_keepers_plus_catch_total
 		self.catch_keepers + self.catch_total
 	end
 
-	def self.target_tuna
-		Report.where(target_species: 'Tuna')
-	end
+	# def self.target_tuna
+	# 	Report.where(target_species: 'Tuna')
+	# end
 
 # filterrific(
 # 	  default_filter_params: { sorted_by: 'created_at_desc' },
