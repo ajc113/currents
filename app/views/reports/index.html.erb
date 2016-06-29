@@ -9,14 +9,16 @@
 
 
 <form action="/filter" id="filter_form" >
+  <p>Species</p1>
   <select id="target_species" name="target_species">
-    <option value="Bluefish">Bluefish</option>
-    <option value="Flounder">Flounder</option>             
-    <option value="Cod &amp; Haddock">Cod & Haddock</option>
-    <option value="Striped Bass">Striped Bass</option>
-    <option value="Tuna">Tuna</option>
+    <option value="Bluefish" <%= selected_target_species('Bluefish') %>>Bluefish</option>
+    <option value="Flounder" <%= selected_target_species('Flounder') %>>Flounder</option>             
+    <option value="Cod &amp; Haddock" <%= selected_target_species('Cod & Haddock') %>>Cod & Haddock</option>
+    <option value="Striped Bass" <%= selected_target_species('Striped Bass') %>>Striped Bass</option>
+    <option value="Tuna" <%= selected_target_species('Tuna') %>>Tuna</option>
   </select>
 </form>
+
 
 
 <script>
@@ -24,6 +26,9 @@
     $('#filter_form').submit();
   });
 </script>
+
+
+
 
 
 </br>
