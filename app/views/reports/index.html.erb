@@ -7,6 +7,25 @@
 <h1> <%= current_user.vessel_name %> Catch Reports </h1>
 
 
+
+<form action="/filter" id="filter_form" >
+  <select id="target_species" name="target_species">
+    <option value="Bluefish">Bluefish</option>
+    <option value="Flounder">Flounder</option>             
+    <option value="Cod &amp; Haddock">Cod & Haddock</option>
+    <option value="Striped Bass">Striped Bass</option>
+    <option value="Tuna">Tuna</option>
+  </select>
+</form>
+
+
+<script>
+  $('#target_species').change(function(){
+    $('#filter_form').submit();
+  });
+</script>
+
+
 </br>
 <table>
   <thead>

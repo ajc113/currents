@@ -30,6 +30,14 @@ class ReportsController < ApplicationController
      
 end
 
+def filter
+  @target_species = params[:target_species]
+  puts "@target_species is #{@target_species}"
+  @reports = current_user.reports.where(target_species: @target_species)
+  puts "@reports are #{@reports.inspect}"
+  render 'index'
+end
+
     # @reports = Report.all
     # @hash = Gmaps4rails.build_markers(@reports) do |report, marker|
     # marker.lat report.latitude
