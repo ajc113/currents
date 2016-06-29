@@ -17,7 +17,6 @@
   </head>
   <body>
     <div id="map"></div>
-    <div id="map"></div>
     <script>
 
       // This example creates a simple polygon representing the Bermuda Triangle.
@@ -55,7 +54,7 @@
           // Add a listener for the click event.
           <%= location.short_name.parameterize.underscore %>_billsPollygon.addListener('click', 
 
-            function (event) {
+              function (event) {
               console.log('yolo');
               console.log(event);
               var vertices = this.getPath();

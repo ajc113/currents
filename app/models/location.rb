@@ -1,8 +1,8 @@
 class Location < ActiveRecord::Base
 	has_many :reports
 
-
-   serialize :coordinates
+  before_save :log_coordinates
+  serialize :coordinates
   
    attr_accessor :lat1, :lng1
    attr_accessor :lat2, :lng2
@@ -10,14 +10,15 @@ class Location < ActiveRecord::Base
    attr_accessor :lat4, :lng4
    attr_accessor :lat5, :lng5
 
+  
 
+  scope :short_name, lambda { |location|
+  where(short_name: [*location])
+  }
 
-	
-
-  before_save :log_coordinates
-
-
-
+  def self.options_for_select
+  order('LOWER(name)').map { |e| [e.name, e.id] }
+  end
 
   def log_coordinates
    a = []

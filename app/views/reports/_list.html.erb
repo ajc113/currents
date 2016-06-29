@@ -1,0 +1,28 @@
+<%# app/views/reports/_list.html.erb %>
+<div id="filterrific_results">
+
+  <div>
+    <%= page_entries_info reports # provided by will_paginate %>
+    <% end %>
+  </div>
+
+  <table>
+    <tr>
+      <th>Report</th>
+      <th>target_species</th>
+      <th>location_id</th>
+      <th>date</th>
+    </tr>
+    
+    <% reports.each do |reports| %>
+      <tr>
+        <td><%= link_to(report.full_name, report_path(report)) %></td>
+        <td><%= report.target_species %></td>
+        <td><%= report.location_id %></td>
+        <td><%= report.date %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<%= will_paginate reports # provided by will_paginate %>

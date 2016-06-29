@@ -28,6 +28,8 @@ gem 'gmaps4rails'
 gem 'devise'
 gem 'puma'
 gem 'activeadmin', github: 'activeadmin'
+gem 'filterrific'
+gem 'sprockets-rails', '2.3.3'	
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

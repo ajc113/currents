@@ -1,15 +1,34 @@
 class ReportsController < ApplicationController
   before_action :set_report, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+
   # GET /reports
   # GET /reports.json
   def index
-    if current_user
-    @reports = Report.where(user_id: [current_user.id])
-   else
-     redirect_to new_user_session_path, notice: 'You are not logged in.'
-   end
+  #   @filterrific = initialize_filterrific(
+  #     Report,
+  #     params[:filterrific],
+  #     @filterrific.select_options = {
+  #         with_target_species: Report.options_for_select,
+  #         },
+       
+  #   ) or return
+  #     @reports = @filterrific.find.page(params[:page])
 
+
+  #   respond_to do |format|
+  #     format.html
+  #     format.js
+
+
+
+      if current_user
+      @reports = Report.where(user_id: [current_user.id])
+     else
+       redirect_to new_user_session_path, notice: 'You are not logged in.'
+     end
+     
+end
 
     # @reports = Report.all
     # @hash = Gmaps4rails.build_markers(@reports) do |report, marker|
@@ -19,10 +38,6 @@ class ReportsController < ApplicationController
     # @locations = Location.where(location_params)
 
     # end
-
-
-
-  end
 
   # GET /reports/1
   # GET /reports/1.json
@@ -81,7 +96,6 @@ class ReportsController < ApplicationController
     end
   end
 
-  private
     # Use callbacks to share common setup or constraints between actions.
     def set_report
       @report = Report.find(params[:id])
@@ -94,5 +108,6 @@ class ReportsController < ApplicationController
     def location_params
       @location = Location.where(params[:short_name])
     end
-
 end
+
+

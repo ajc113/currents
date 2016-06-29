@@ -1,9 +1,13 @@
-
+<title>Reports</title>
 
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Reports</h1>
 
+
+<h1> <%= current_user.vessel_name %> Catch Reports </h1>
+
+
+</br>
 <table>
   <thead>
     <tr>
@@ -28,7 +32,7 @@
 
   <tbody>
     <% if current_user %>
-    
+
     <% @reports.each do |report| %>
       <tr>
         <td><%= report.date %></td>

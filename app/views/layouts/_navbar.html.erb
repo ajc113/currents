@@ -12,7 +12,7 @@
         <%= link_to "Reports", reports_path, class: 'navbar-brand' %>
         <%= link_to "HeatMaps", maps_path, class: 'navbar-brand' %>
         <%= link_to "Intel", buzzs_path, class: 'navbar-brand' %>
-        <%= link_to "About", reports_path, class: 'navbar-brand' %>
+        <%= link_to "About", 'layouts/about', class: 'navbar-brand' %>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -21,11 +21,20 @@
 
         <% if current_user %>
         
+          <p>Welcome Back!</p>
+          
+          <h4><%= current_user.vessel_name %></h4> 
+
+
           <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-          <%= current_user.vessel_name %>
+
+
         <% else %>
+          
           <%= link_to "Register", new_user_registration_path %>
+          
           <%= link_to "Sign In", new_user_session_path %>
+        
         <% end %>
 
            

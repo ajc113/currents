@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=yes">
     <meta charset="utf-8">
     <title>Heat Charts</title>
     <style>
@@ -59,25 +59,32 @@
         <%= location.short_name.parameterize.underscore %>_billsPollygon.addListener('click', 
 
           function (event) {
-            console.log('yolo');
-            console.log(event);
+            console.log(location_reports);
+            var location_reports = <%= location.short_name.parameterize.underscore %>;
             var vertices = this.getPath();
+            var contentString = 'Location: <b><%= location.short_name %></b><br>' +
+                ' <br>' 
+                 
 
-            var contentString = '<b><%= location.short_name %></b><br>' +
-                'Clicked location: <br>' + event.latLng.lat() + ',' + event.latLng.lng() +
                 '<br>';
+
+
+           // Add Lat Long display to info box       
+           // + event.latLng.lat() + ',' + event.latLng.lng() +
+
 
             // Replace the info window's content and position.
             infoWindow.setContent(contentString);
             infoWindow.setPosition(event.latLng);
-
             infoWindow.open(map);
           }
           
           // showArrays
           );
       <% end %>
+    
 
+    
       infoWindow = new google.maps.InfoWindow;
     }
 
