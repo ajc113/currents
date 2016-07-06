@@ -31,15 +31,25 @@ class ReportsController < ApplicationController
 end
 
 def filter
-  @target_species = params[:target_species]
-  @short_name = params[:short_name]
-
+  @target_species = params[:target_species] unless params[:target_species].blank?
+  @location = Location.find(params[:location]) unless params[:location].blank?
+  puts "@location is #{@location.inspect}\n"
   puts "@target_species is #{@target_species}"
 
-  @reports = current_user.reports.where(target_species: @target_species)
-  @locations = @reports.collect(&:location).select{|location| location.short_name == @short_name} #you might need to add .flatten just before .select
+
+  if @target_species && @location
+    @reports = current_user.reports.where(target_species: @target_species, location: @location)
+  elsif @target_species
+    @reports = current_user.reports.where(target_species: @target_species)
+  elsif @location
+    @reports = current_user.reports.where(location: @location)
+  else
+    @reports = current_user.reports 
+  end
+
+  # @locations = @reports.collect(&:location).select{|location| location.short_name == @short_name} #you might need to add .flatten just before .select
   
-  @reports = @reports.select{|report| @locations.include?(report.location)}
+  # @reports = @reports.select{|report| @locations.include?(report.location)}
 
   puts "@reports are #{@reports.inspect}"
   render 'index'

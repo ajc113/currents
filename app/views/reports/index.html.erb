@@ -11,6 +11,7 @@
 <form action="/filter" id="filter_form" >
   <p>Species</p1>
   <select id="target_species" name="target_species">
+    <option value=""></option>
     <option value="Bluefish" <%= selected_target_species('Bluefish') %>>Bluefish</option>
     <option value="Flounder" <%= selected_target_species('Flounder') %>>Flounder</option>             
     <option value="Cod &amp; Haddock" <%= selected_target_species('Cod & Haddock') %>>Cod & Haddock</option>
@@ -18,13 +19,11 @@
     <option value="Tuna" <%= selected_target_species('Tuna') %>>Tuna</option>
   </select>
 
-  <select id="location" name="selected_location">
-    <option value="SWN - Northwest Corner" <%= selected_locations('SWN - Northwest Corner') %>>Stellwagen NW Corner</option>
-    <option value=" SWM - Middlebank" <%= selected_locations('  SWM - Middlebank') %>>Stellwagen Middlebank</option>             
-    <option value="SWE - Southeast Corner" <%= selected_locations('SWE - Southeast Corner') %>>Stellwagen SE Corner</option>
-    <option value="SWW - Southwest Corner" <%= selected_locations('SWW - Southwest Corner') %>>Stellwagen SW Corner</option>
-    <option value="BCK - Backside" <%= selected_locations('BCK - Backside') %>>Backside CC</option>
-    <option value="PH - Peaked Hill" <%= selected_locations('PH - Peaked Hill') %>>Peaked Hill</option>
+  <select id="location" name="location">
+      <option value=""></option>
+    <% Location.all.each do |location| %>
+      <option value="<%= location.id %>" <%= selected_locations(location) %>><%= location.short_name %></option>
+    <% end %>
   </select>
 </form>
 
@@ -35,6 +34,10 @@
   $('#target_species').change(function(){
     $('#filter_form').submit();
   });
+  $('#location').change(function() {
+    $('#filter_form').submit();
+  });
+
 </script>
 
 

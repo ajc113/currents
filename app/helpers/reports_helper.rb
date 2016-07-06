@@ -3,7 +3,7 @@ module ReportsHelper
 		"selected" if @target_species == target_species
 	end
 
-	def selected_locations(locations)
-		"selected" if @locations == locations
+	def selected_locations(loc)
+		"selected" if @location == loc
 	end
 end
