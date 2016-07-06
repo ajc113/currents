@@ -17,7 +17,17 @@
     <option value="Striped Bass" <%= selected_target_species('Striped Bass') %>>Striped Bass</option>
     <option value="Tuna" <%= selected_target_species('Tuna') %>>Tuna</option>
   </select>
+
+  <select id="location" name="selected_location">
+    <option value="SWN - Northwest Corner" <%= selected_locations('SWN - Northwest Corner') %>>Stellwagen NW Corner</option>
+    <option value=" SWM - Middlebank" <%= selected_locations('  SWM - Middlebank') %>>Stellwagen Middlebank</option>             
+    <option value="SWE - Southeast Corner" <%= selected_locations('SWE - Southeast Corner') %>>Stellwagen SE Corner</option>
+    <option value="SWW - Southwest Corner" <%= selected_locations('SWW - Southwest Corner') %>>Stellwagen SW Corner</option>
+    <option value="BCK - Backside" <%= selected_locations('BCK - Backside') %>>Backside CC</option>
+    <option value="PH - Peaked Hill" <%= selected_locations('PH - Peaked Hill') %>>Peaked Hill</option>
+  </select>
 </form>
+
 
 
 
@@ -84,10 +94,11 @@
 
 <br>
 
-<%= link_to 'New Report', new_report_path %>
+<button>
+<%= link_to 'New Catch Report', new_report_path %>
 
 <% end %>
-
+</button>
 
 
 
