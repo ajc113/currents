@@ -1,0 +1,4 @@
+Location: <b><%= location.short_name %></b> <br><br>
+<% location.reports.each do |report| %>
+	<%= report.target_species %><br />
+<% end %>

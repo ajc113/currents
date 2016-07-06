@@ -62,11 +62,7 @@
             console.log(location_reports);
             var location_reports = <%= location.short_name.parameterize.underscore %>;
             var vertices = this.getPath();
-            var contentString = 'Location: <b><%= location.short_name %></b><br>' +
-                ' <br>' 
-                 
-
-                '<br>';
+            var contentString = '<%= j render 'layouts/map_click_popup', location: location %>';
 
 
            // Add Lat Long display to info box       
