@@ -37,15 +37,20 @@ def filter
   puts "@target_species is #{@target_species}"
 
 
-  if @target_species && @location
-    @reports = current_user.reports.where(target_species: @target_species, location: @location)
-  elsif @target_species
-    @reports = current_user.reports.where(target_species: @target_species)
-  elsif @location
-    @reports = current_user.reports.where(location: @location)
-  else
-    @reports = current_user.reports 
-  end
+  @reports = current_user.reports
+  @reports = @reports.selected_species(@target_species) if @target_species
+  @reports = @reports.selected_location(@location) if @location
+
+
+  # if @target_species && @location
+  #   @reports = current_user.reports.where(target_species: @target_species, location: @location)
+  # elsif @target_species
+  #   @reports = current_user.reports.where(target_species: @target_species)
+  # elsif @location
+  #   @reports = current_user.reports.where(location: @location)
+  # else
+  #   @reports = current_user.reports 
+  # end
 
   # @locations = @reports.collect(&:location).select{|location| location.short_name == @short_name} #you might need to add .flatten just before .select
   
