@@ -1,4 +1,26 @@
-Location: <b><%= location.short_name %></b> <br><br>
-<% location.reports.each do |report| %>
-	<%= report.target_species %><br />
-<% end %>
+<table>
+	<thead>
+		<tr>	
+			<th>Date</th>
+			<th>Target Species</th>
+			<th>Vessel Name</th>
+			<th>Primary Method</th>
+			<th>Catch Total</th>
+			<th>Trip Summary</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		Location: <b><%= location.short_name %></b> <br>
+		<% location.reports.each do |report| %>
+		<tr>
+			<td><%= report.date %></td>	
+			<td><%= report.target_species %></td>
+			<td><%= report.user.try(:vessel_name) %></td>
+			<td><%= report.primary_method %></td>
+			<td><%= report.catch_total %></td>
+			<td><%= report.trip_summary %></td>
+		</tr>
+	<% end %>
+	</tbody>
+</table>
