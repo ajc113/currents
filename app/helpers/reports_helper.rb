@@ -6,4 +6,10 @@ module ReportsHelper
 	def selected_locations(loc)
 		"selected" if @location == loc
 	end
+
+	def selected_tide(tide)
+		"selected" if @tide == tide
+	end
+	
+
 end

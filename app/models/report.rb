@@ -11,6 +11,9 @@ belongs_to :user
 
 	scope :selected_location, -> (the_location) { where(location: the_location )}
 
+	scope :selected_tide, -> (the_tide) {where(tide: the_tide)}
+
+
 
 # filterrific(
 # 	  default_filter_params: { sorted_by: 'created_at_desc' },

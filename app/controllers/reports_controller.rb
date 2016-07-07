@@ -33,14 +33,15 @@ end
 def filter
   @target_species = params[:target_species] unless params[:target_species].blank?
   @location = Location.find(params[:location]) unless params[:location].blank?
+  @tide = params[:tide] unless params[:tide].blank?
   puts "@location is #{@location.inspect}\n"
   puts "@target_species is #{@target_species}"
-
+  puts "@tide is #{@tide.inspect}"
 
   @reports = current_user.reports
   @reports = @reports.selected_species(@target_species) if @target_species
   @reports = @reports.selected_location(@location) if @location
-
+  @reports = @reports.selected_tide(@tide) if @tide
 
   # if @target_species && @location
   #   @reports = current_user.reports.where(target_species: @target_species, location: @location)
