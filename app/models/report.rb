@@ -13,6 +13,7 @@ belongs_to :user
 
 	scope :selected_tide, -> (the_tide) {where(tide: the_tide)}
 
+	scope :selected_month, -> (the_month) {where(month: the_month)}
 
 
 # filterrific(

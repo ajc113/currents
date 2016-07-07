@@ -17,6 +17,13 @@ GIT
       sass-rails
       sprockets (< 4)
 
+GIT
+  remote: git://github.com/radar/by_star
+  revision: 3fe3ef33e98aebcc226cbfea51d1e5101f948c78
+  specs:
+    by_star (2.2.1)
+      activesupport
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -219,6 +226,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin!
+  by_star!
   byebug
   coffee-rails (~> 4.1.0)
   devise

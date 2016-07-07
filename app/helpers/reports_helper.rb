@@ -10,6 +10,9 @@ module ReportsHelper
 	def selected_tide(tide)
 		"selected" if @tide == tide
 	end
-	
+
+	def selected_month(month)
+		"selected" if @month == month
+	end	
 
 end

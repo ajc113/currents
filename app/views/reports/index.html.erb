@@ -4,8 +4,6 @@
 
 
 
-<h1> <%= current_user.vessel_name %> Catch Reports </h1>
-
 <h3>Report Filters</h3>
 
 <table>
@@ -14,6 +12,7 @@
       <th>Species</th>
       <th>Location</th>
       <th>Tide</th>
+      <th>Month</th>
     </tr>
   </thead>  
 
@@ -24,11 +23,9 @@
     <form action="/filter" id="filter_form" >
       <select id="target_species" name="target_species">
         <option value=""></option>
-        <option value="Bluefish" <%= selected_target_species('Bluefish') %>>Bluefish</option>
-        <option value="Flounder" <%= selected_target_species('Flounder') %>>Flounder</option>             
-        <option value="Cod &amp; Haddock" <%= selected_target_species('Cod & Haddock') %>>Cod & Haddock</option>
-        <option value="Striped Bass" <%= selected_target_species('Striped Bass') %>>Striped Bass</option>
-        <option value="Tuna" <%= selected_target_species('Tuna') %>>Tuna</option>
+        <% @reports.all.each do |report| %>
+        <option value="<%= report.target_species %>" <%= selected_target_species(report) %>><%= report.target_species %></option>
+          <% end %>
       </select>
      </td>     
        
@@ -48,6 +45,14 @@
         <% end %>
       </select>
      </td> 
+    <td> 
+      <select id="month" name="month">
+       <option value="June">June</option>
+       <option value="July">July</option>
+       <option value="August">August</option> 
+      </select>
+     </td>  
+
 
 
     </form>
@@ -66,19 +71,23 @@
    $('#tide').change(function() {
     $('#filter_form').submit();
   });
+    $('#month').change(function() {
+    $('#filter_form').submit();
+  });
 
 
 </script>
 
-<button>
-<%= link_to 'Clear Filter', reports_path %>
+
+    <button>
+    <%= link_to 'Clear Filter', reports_path %>
+    </button>
 
 
-</button>
+    <h1> 
+      <%= current_user.vessel_name %> Catch Reports 
+    </h1>
 
-
-
-</br>
 <table>
   <thead>
     <tr>
@@ -121,9 +130,9 @@
         <td><%= report.spot %></td>
         <td><%= report.best_bait %></td>
         <td><%= report.trip_description %></td>
-        <td><%= link_to 'Show', report %></td>
+        <td><%= link_to 'View Details', report %></td>
         <td><%= link_to 'Edit', edit_report_path(report) %></td>
-        <td><%= link_to 'Destroy', report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

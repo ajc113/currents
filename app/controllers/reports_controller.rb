@@ -19,9 +19,6 @@ class ReportsController < ApplicationController
   #   respond_to do |format|
   #     format.html
   #     format.js
-
-
-
       if current_user
       @reports = Report.where(user_id: [current_user.id])
      else
@@ -34,14 +31,19 @@ def filter
   @target_species = params[:target_species] unless params[:target_species].blank?
   @location = Location.find(params[:location]) unless params[:location].blank?
   @tide = params[:tide] unless params[:tide].blank?
-  puts "@location is #{@location.inspect}\n"
+  @month = Report.by_month unless Report.by_month.blank?
+
   puts "@target_species is #{@target_species}"
-  puts "@tide is #{@tide.inspect}"
+  puts "@location is #{@location.inspect}\n"
+  puts "@tide is #{@tide}"
 
   @reports = current_user.reports
   @reports = @reports.selected_species(@target_species) if @target_species
   @reports = @reports.selected_location(@location) if @location
   @reports = @reports.selected_tide(@tide) if @tide
+  @reports = @reports.selected_month(@month) if @month
+
+  # @reports = @reports.where("created_at between (?) and (?)", start_date, end_date)
 
   # if @target_species && @location
   #   @reports = current_user.reports.where(target_species: @target_species, location: @location)
