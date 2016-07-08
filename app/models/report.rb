@@ -13,8 +13,10 @@ belongs_to :user
 
 	scope :selected_tide, -> (the_tide) {where(tide: the_tide)}
 
-	scope :selected_month, -> (the_month) {where(month: the_month)}
+	scope :selected_date, -> (the_date) {where(date: the_date)}
 
+
+by_star_field :date
 
 # filterrific(
 # 	  default_filter_params: { sorted_by: 'created_at_desc' },

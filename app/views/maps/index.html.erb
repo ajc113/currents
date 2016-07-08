@@ -12,6 +12,7 @@
       }
       #map {
         height: 100%;
+        width: 80%;
       }
     </style>
   </head>
@@ -49,12 +50,12 @@
           paths: <%= location.short_name.parameterize.underscore %>,
           strokeColor: '#FF0000',
           strokeOpacity: 0.8,
-          strokeWeight: 3,
+          strokeWeight: 1,
           fillColor: '#FF0000',
-          fillOpacity: 0.35
+          fillOpacity: 0.15
         });
         <%= location.short_name.parameterize.underscore %>_billsPollygon.setMap(map);
-
+       
         // Add a listener for the click event.
         <%= location.short_name.parameterize.underscore %>_billsPollygon.addListener('click', 
 
@@ -62,12 +63,10 @@
             console.log(location_reports);
             var location_reports = <%= location.short_name.parameterize.underscore %>;
             var vertices = this.getPath();
-            var contentString = '<%= j render 'layouts/map_click_popup', location: location %>';
-
-
-           // Add Lat Long display to info box       
-           // + event.latLng.lat() + ',' + event.latLng.lng() +
-
+            var contentString = '<%= j render 'layouts/map_click_popup', location: location %>';            
+            
+            // Add Lat Long display to info box       
+            // + event.latLng.lat() + ',' + event.latLng.lng() +
 
             // Replace the info window's content and position.
             infoWindow.setContent(contentString);
@@ -78,9 +77,6 @@
           // showArrays
           );
       <% end %>
-    
-
-    
       infoWindow = new google.maps.InfoWindow;
     }
 

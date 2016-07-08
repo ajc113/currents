@@ -11,8 +11,8 @@ module ReportsHelper
 		"selected" if @tide == tide
 	end
 
-	def selected_month(month)
-		"selected" if @month == month
+	def selected_date(date)
+		"selected" if @date == date
 	end	
 
 end

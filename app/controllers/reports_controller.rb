@@ -31,17 +31,18 @@ def filter
   @target_species = params[:target_species] unless params[:target_species].blank?
   @location = Location.find(params[:location]) unless params[:location].blank?
   @tide = params[:tide] unless params[:tide].blank?
-  @month = Report.by_month unless Report.by_month.blank?
+  @date = params[:date]
 
-  puts "@target_species is #{@target_species}"
+  puts "@target_species is #{@target_species}\n"
   puts "@location is #{@location.inspect}\n"
-  puts "@tide is #{@tide}"
+  puts "@tide is #{@tide}\n"
+  puts "@date is #{@date}\n"
 
   @reports = current_user.reports
   @reports = @reports.selected_species(@target_species) if @target_species
   @reports = @reports.selected_location(@location) if @location
   @reports = @reports.selected_tide(@tide) if @tide
-  @reports = @reports.selected_month(@month) if @month
+  @reports = @reports.selected_date(@date) if @date
 
   # @reports = @reports.where("created_at between (?) and (?)", start_date, end_date)
 

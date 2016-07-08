@@ -46,10 +46,20 @@
       </select>
      </td> 
     <td> 
-      <select id="month" name="month">
-       <option value="June">June</option>
-       <option value="July">July</option>
-       <option value="August">August</option> 
+      <select id="date" name="date">
+        <option value=""></option>
+        <option value="January">January</option>
+        <option value="February">February</option>
+        <option value="March">March</option>  
+        <option value="April">April</option>
+        <option value="May">May</option>
+        <option value="June">June</option>
+        <option value="July">July</option>
+        <option value="August">August</option> 
+        <option value="September">September</option>
+        <option value="October">October</option> 
+        <option value="November">November</option> 
+        <option value="December">December</option> 
       </select>
      </td>  
 
@@ -71,7 +81,7 @@
    $('#tide').change(function() {
     $('#filter_form').submit();
   });
-    $('#month').change(function() {
+    $('#date').change(function() {
     $('#filter_form').submit();
   });
 
@@ -141,7 +151,7 @@
 <br>
 
 <button>
-<%= link_to 'New Catch Report', new_report_path %>
+<%= link_to 'Log New Catch Report', new_report_path %>
 
 <% end %>
 </button>
