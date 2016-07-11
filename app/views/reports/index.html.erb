@@ -40,7 +40,7 @@
      <td> 
       <select id="tide" name="tide">
        <option value=""></option>
-          <% @reports.each do |report| %>
+          <% @reports.all.each do |report| %>
         <option value="<%= report.tide %>" <%= selected_tide(report) %>><%= report.tide %></option>
         <% end %>
       </select>
@@ -60,6 +60,7 @@
         <option value="October">October</option> 
         <option value="November">November</option> 
         <option value="December">December</option> 
+      
       </select>
      </td>  
 
@@ -75,13 +76,13 @@
   $('#target_species').change(function(){
     $('#filter_form').submit();
   });
-  $('#location').change(function() {
+  $('#location').change(function(){
     $('#filter_form').submit();
   });
-   $('#tide').change(function() {
+   $('#tide').change(function(){
     $('#filter_form').submit();
   });
-    $('#date').change(function() {
+    $('#date').change(function(){
     $('#filter_form').submit();
   });
 

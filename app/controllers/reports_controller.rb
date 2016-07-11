@@ -31,7 +31,8 @@ def filter
   @target_species = params[:target_species] unless params[:target_species].blank?
   @location = Location.find(params[:location]) unless params[:location].blank?
   @tide = params[:tide] unless params[:tide].blank?
-  @date = params[:date]
+  @date = Report.by_month params[:date] unless params[:date].blank?
+
 
   puts "@target_species is #{@target_species}\n"
   puts "@location is #{@location.inspect}\n"
