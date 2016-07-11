@@ -18,56 +18,53 @@
 
 
   <tbody>
-   <tr> 
-    <td>
     <form action="/filter" id="filter_form" >
-      <select id="target_species" name="target_species">
-        <option value=""></option>
-        <% @reports.all.each do |report| %>
-        <option value="<%= report.target_species %>" <%= selected_target_species(report) %>><%= report.target_species %></option>
-          <% end %>
-      </select>
-     </td>     
-       
-     <td> 
-      <select id="location" name="location">
-       <option value=""></option>
-          <% Location.all.each do |location| %>
-        <option value="<%= location.id %>" <%= selected_locations(location) %>><%= location.short_name %></option>
-        <% end %>
-      </select>
-     </td> 
-     <td> 
-      <select id="tide" name="tide">
-       <option value=""></option>
-          <% @reports.all.each do |report| %>
-        <option value="<%= report.tide %>" <%= selected_tide(report) %>><%= report.tide %></option>
-        <% end %>
-      </select>
-     </td> 
-    <td> 
-      <select id="date" name="date">
-        <option value=""></option>
-        <option value="January">January</option>
-        <option value="February">February</option>
-        <option value="March">March</option>  
-        <option value="April">April</option>
-        <option value="May">May</option>
-        <option value="June">June</option>
-        <option value="July">July</option>
-        <option value="August">August</option> 
-        <option value="September">September</option>
-        <option value="October">October</option> 
-        <option value="November">November</option> 
-        <option value="December">December</option> 
-      
-      </select>
-     </td>  
-
-
-
+      <tr> 
+        <td>
+          <select id="target_species" name="target_species">
+            <option value=""></option>
+            <% @reports.all.each do |report| %>
+            <option value="<%= report.target_species %>" <%= selected_target_species(report) %>><%= report.target_species %></option>
+              <% end %>
+          </select>
+        </td>     
+           
+        <td> 
+          <select id="location" name="location">
+           <option value=""></option>
+              <% Location.all.each do |location| %>
+            <option value="<%= location.id %>" <%= selected_locations(location) %>><%= location.short_name %></option>
+            <% end %>
+          </select>
+        </td> 
+        <td> 
+          <select id="tide" name="tide">
+           <option value=""></option>
+              <% @reports.all.each do |report| %>
+            <option value="<%= report.tide %>" <%= selected_tide(report) %>><%= report.tide %></option>
+            <% end %>
+          </select>
+        </td> 
+        <td> 
+          <select id="date" name="date">
+            <option value=""></option>
+            <option value="January">January</option>
+            <option value="February">February</option>
+            <option value="March">March</option>  
+            <option value="April">April</option>
+            <option value="May">May</option>
+            <option value="June">June</option>
+            <option value="July">July</option>
+            <option value="August">August</option> 
+            <option value="September">September</option>
+            <option value="October">October</option> 
+            <option value="November">November</option> 
+            <option value="December">December</option> 
+          
+          </select>
+        </td>  
+      </tr>
     </form>
-    </tr>
   </tbody>
 </table>
 
