@@ -7,6 +7,9 @@ def Index
 end
 
 
+def about
+end
+
 def show
 end
 
