@@ -14,7 +14,8 @@ Rails.application.routes.draw do
   resources :currents
 
   get 'filter', to: 'reports#filter'
- 
+
+ get 'about', to: 'currents#show'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
