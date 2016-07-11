@@ -12,7 +12,7 @@
 
 	<tbody>
 		Location: <b><%= location.short_name %></b> <br>
-		Description: <%= location.long_name %> <br> <br>
+		<%= location.long_name %> <br> <br>
 		<% location.reports.each do |report| %>
 		<tr>
 			<td><%= report.date %></td>	

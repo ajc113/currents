@@ -33,7 +33,7 @@
 
     function initMap() {
       map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 10,
+        zoom: 9,
         center: {lat: 42.05, lng: -70.25},
         mapTypeId: google.maps.MapTypeId.SATELLITE
       });
@@ -55,7 +55,7 @@
           fillOpacity: 0.15
         });
         <%= location.short_name.parameterize.underscore %>_billsPollygon.setMap(map);
-       
+
         // Add a listener for the click event.
         <%= location.short_name.parameterize.underscore %>_billsPollygon.addListener('click', 
 
