@@ -23,8 +23,8 @@
         <td>
           <select id="target_species" name="target_species">
             <option value=""></option>
-            <% @reports.all.each do |report| %>
-            <option value="<%= report.target_species %>" <%= selected_target_species(report) %>><%= report.target_species %></option>
+            <% current_user.reports.each do |report| %>
+            <option value="<%= report.target_species %>" <%= selected_target_species(report.target_species) %>><%= report.target_species %></option>
               <% end %>
           </select>
         </td>     

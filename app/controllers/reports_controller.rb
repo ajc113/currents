@@ -20,7 +20,7 @@ class ReportsController < ApplicationController
   #     format.html
   #     format.js
       if current_user
-      @reports = Report.where(user_id: [current_user.id])
+      @reports = current_user.reports
      else
        redirect_to new_user_session_path, notice: 'You are not logged in.'
      end
@@ -31,7 +31,7 @@ def filter
   @target_species = params[:target_species] unless params[:target_species].blank?
   @location = Location.find(params[:location]) unless params[:location].blank?
   @tide = params[:tide] unless params[:tide].blank?
-  @date = Report.by_month params[:date] unless params[:date].blank?
+  @month = params[:date].to_date.month unless params[:date].blank?
 
 
   puts "@target_species is #{@target_species}\n"
@@ -43,7 +43,7 @@ def filter
   @reports = @reports.selected_species(@target_species) if @target_species
   @reports = @reports.selected_location(@location) if @location
   @reports = @reports.selected_tide(@tide) if @tide
-  @reports = @reports.selected_date(@date) if @date
+  @reports = @reports.selected_date(@month) if @date
 
   # @reports = @reports.where("created_at between (?) and (?)", start_date, end_date)
 
