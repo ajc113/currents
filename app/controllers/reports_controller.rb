@@ -33,6 +33,7 @@ def filter
   @tide = params[:tide] unless params[:tide].blank?
   @month = params[:date].to_date.month unless params[:date].blank?
 
+  puts "@month is #{@month}".green
 
   puts "@target_species is #{@target_species}\n"
   puts "@location is #{@location.inspect}\n"
@@ -43,7 +44,10 @@ def filter
   @reports = @reports.selected_species(@target_species) if @target_species
   @reports = @reports.selected_location(@location) if @location
   @reports = @reports.selected_tide(@tide) if @tide
-  @reports = @reports.selected_date(@month) if @date
+  puts "@reports before date filter is #{@reports.inspect}\n".blue
+  @reports = @reports.selected_date(@month) if @month
+  # @filtered_by_date_reports = @reports.where("cast(strftime('%m', date) as int) = ?", @month)
+  # puts "@filtered_by_date_reports after date filter is #{@filtered_by_date_reports.inspect}".green
 
   # @reports = @reports.where("created_at between (?) and (?)", start_date, end_date)
 
