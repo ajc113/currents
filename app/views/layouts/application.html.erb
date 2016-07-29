@@ -9,11 +9,15 @@
 	  <%= csrf_meta_tags %>
 	  
 </head>
-<body>
-<%= render 'layouts/navbar' %>
+<body class="layout-h">
+	<div class="wrapper">
+		<%= render 'layouts/navbar' %>
+		<%= yield %>
+	</div>
 
 
-<%= yield %>
+
+
 
  <p class="notice"><%= notice %></p>
  <p class="alert"><%= alert %></p>
