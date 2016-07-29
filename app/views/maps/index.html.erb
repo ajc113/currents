@@ -3,7 +3,7 @@
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=yes">
     <meta charset="utf-8">
-    <title>Heat Charts</title>
+      <title>Heat Charts</title>
     <style>
       html, body {
         height: 100%;
@@ -11,96 +11,106 @@
         padding: 0;
       }
       #map {
-        height: 100%;
-        width: 80%;
+        height: 80%;
+        width: 100%;
       }
     </style>
   </head>
   <body>
-    <div id="map"></div>
-
-<p id="notice"><%= notice %></p>
-
-<div id="map"></div>
-<script>
-
-    // This example creates a simple polygon representing the Bermuda Triangle.
-    // When the user clicks on the polygon an info window opens, showing
-    // information about the polygon's coordinates.
-
-    var map;
-    var infoWindow;
-
-    function initMap() {
-      map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 9,
-        center: {lat: 42.05, lng: -70.25},
-        mapTypeId: google.maps.MapTypeId.SATELLITE
-      });
-
-      // Define the LatLng coordinates for the polygon.
-
-
-
-      <% @locations.each do |location| %>
-        var <%= location.short_name.parameterize.underscore %> = <%= location.coordinates.to_json.gsub!(/\"/,'').html_safe %>;
-
-        // Construct the polygon.
-        var <%= location.short_name.parameterize.underscore %>_billsPollygon = new google.maps.Polygon({
-          paths: <%= location.short_name.parameterize.underscore %>,
-          strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
-          strokeWeight: 1,
-          fillColor: '#FF0000',
-          fillOpacity: 0.15
-        });
-        <%= location.short_name.parameterize.underscore %>_billsPollygon.setMap(map);
-
-        // Add a listener for the click event.
-        <%= location.short_name.parameterize.underscore %>_billsPollygon.addListener('click', 
-
-          function (event) {
-            console.log(location_reports);
-            var location_reports = <%= location.short_name.parameterize.underscore %>;
-            var vertices = this.getPath();
-            var contentString = '<%= j render 'layouts/map_click_popup', location: location %>';            
-            
-            // Add Lat Long display to info box       
-            // + event.latLng.lat() + ',' + event.latLng.lng() +
-
-            // Replace the info window's content and position.
-            infoWindow.setContent(contentString);
-            infoWindow.setPosition(event.latLng);
-            infoWindow.open(map);
-          }
+    <div id="map">
+      <p id="notice"><%= notice %></p>
+   </div>
+    <script>
+        var map;
+        var infoWindow;
           
-          // showArrays
-          );
-      <% end %>
-      infoWindow = new google.maps.InfoWindow;
-    }
+      
+          
+        // Map Display options
+        function initMap() {
+          map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 9,
+            center: {lat: 42.05, lng: -70.25},
+            mapTypeId: google.maps.MapTypeId.SATELLITE
+          });
 
-    /** @this {google.maps.Polygon} */
-    // function showArrays(event) {
-    //   console.log('yolo');
-    //   console.log(event);
-    //   var vertices = this.getPath();
 
-    //   var contentString = '<b>BillingsGate Shoals</b><br>' +
-    //       'Clicked location: <br>' + event.latLng.lat() + ',' + event.latLng.lng() +
-    //       '<br>';
 
-    //   // Replace the info window's content and position.
-    //   infoWindow.setContent(contentString);
-    //   infoWindow.setPosition(event.latLng);
 
-    //   infoWindow.open(map);
-    // }
-  
-  </script>
-  <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRhKrHEYhZA2Qg5fagbEKaUItVsB-cQ3g&callback=initMap">
-  </script>
+
+          // Define the LatLng coordinates for the polygon.
+          <% @locations.each do |location| %>
+            var <%= location.short_name.parameterize.underscore %> = <%= location.coordinates.to_json.gsub!(/\"/,'').html_safe %>;
+
+
+
+
+            // Construct the polygon.
+            var <%= location.short_name.parameterize.underscore %>_billsPollygon = new google.maps.Polygon({
+              paths: <%= location.short_name.parameterize.underscore %>,
+              strokeColor: '#FF0000',
+              strokeOpacity: 0.8,
+              strokeWeight: 1,
+              fillColor: '<%= location.color %>',
+              fillOpacity: 0.15
+            });
+
+            
+            // Get geo location of user to pass to map initialization
+            function initialise (geo){
+                console.log(geo);
+            }   
+            
+            $(document).ready(function(){
+              navigator.geolocation.getCurrentPosition(initialise); 
+            });
+
+            // Replace center with below for geo location centering
+            // center: {geo.coords.latitude, geo.coords.longitude},
+
+
+            // Polygons
+            polygons = <%= location.short_name.parameterize.underscore %>_billsPollygon.setMap(map);
+
+
+            
+
+            // Add a listener for the click event.
+            <%= location.short_name.parameterize.underscore %>_billsPollygon.addListener('click', 
+
+              // 
+              function (event) {
+                console.log(location_reports);
+                var location_reports = <%= location.short_name.parameterize.underscore %>;
+               
+                // Not sure if this is needed
+                // var vertices = this.getPath();  
+                
+
+                var contentString = '<%= j render 'layouts/map_click_popup', location: location %>';            
+                  
+                // Add Lat Long display to info box , add to contentString      
+                // + event.latLng.lat() + ',' + event.latLng.lng() +
+
+                // Replace the info window's content and position.
+                infoWindow.setContent(contentString);
+                infoWindow.setPosition(event.latLng);
+                infoWindow.open(map);
+                }
+              
+              // showArrays
+              );
+          <% end %>
+          infoWindow = new google.maps.InfoWindow;
+        }
+
+
+
+
+    </script>
+      <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRhKrHEYhZA2Qg5fagbEKaUItVsB-cQ3g&callback=initMap">
+      </script>
   </body>
 </html>
 

@@ -35,4 +35,24 @@ class Location < ActiveRecord::Base
     stringish.to_s.html_safe
   end
 
+
+  def catch_total
+    @reports = self.reports
+    @catches = @reports.collect{|report| report.catch_total}
+    @catches.sum
+  end
+
+  def color
+    case 
+      when catch_total >= 0 && catch_total < 10
+        '#FF0000'
+      when catch_total >= 10 && catch_total < 20
+        '#0000ff'
+      when catch_total >= 20
+        '#000'
+    end
+    # case 
+  end
+
+
 end
