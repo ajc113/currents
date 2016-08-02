@@ -45,11 +45,11 @@ class Location < ActiveRecord::Base
   def color
     case 
       when catch_total >= 0 && catch_total < 10
-        '#FF0000'
+        '#4562A8'
       when catch_total >= 10 && catch_total < 20
-        '#0000ff'
+        '#E8C85A'
       when catch_total >= 20
-        '#000'
+        '#FF3E38'
     end
     # case 
   end
