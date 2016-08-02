@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=yes">
-    <meta charset="utf-8">
-      <title>Heat Charts</title>
+
+  <title>Heat Charts</title>
     <style>
       html, body {
         height: 100%;
@@ -15,8 +11,7 @@
         width: 100%;
       }
     </style>
-  </head>
-  <body>
+
     <div id="map">
       <p id="notice"><%= notice %></p>
    </div>
@@ -48,11 +43,11 @@
             // Construct the polygon.
             var <%= location.short_name.parameterize.underscore %>_billsPollygon = new google.maps.Polygon({
               paths: <%= location.short_name.parameterize.underscore %>,
-              strokeColor: '#FF0000',
+              strokeColor: '#F7F8FF',
               strokeOpacity: 0.8,
               strokeWeight: 1,
               fillColor: '<%= location.color %>',
-              fillOpacity: 0.15
+              fillOpacity: 0.45
             });
 
             
@@ -111,8 +106,6 @@
       <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRhKrHEYhZA2Qg5fagbEKaUItVsB-cQ3g&callback=initMap">
       </script>
-  </body>
-</html>
 
 
 

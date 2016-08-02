@@ -5,11 +5,7 @@
 	    <meta name="viewport" content="initial-scale=1.0">
 	    <meta charset="utf-8">
 		    <style>
-		      html, body {
-		        height: 100%;
-		        margin: 0;
-		        padding: 0;
-		      }
+		    
 		      #map {
 		        height: 100%;
 		      }
@@ -27,21 +23,6 @@
 				    center: {lat: 42.05, lng: -70.25},
 			  	});
 
-			  	// load catch variable to polygons
-			  	<% location.reports.each do |report| %>
-			  	var  location_catch = <% location.report.catch_total %>
-			  	<% end %>
-			  	
-			  	function load_location_catch(variable) {
-			  		console.log(location_catch);
-			  	};
-
-
-
-
-
-
-
 
 
 			  	// heatmap style
@@ -51,16 +32,16 @@
   					var high = [151, 83, 34];   // color of largest datum
 
 	  				 // delta represents where the value sits between the min and max
-	  				var delta = (feature.getProperty('census_variable') - censusMin) / (censusMax - censusMin);
+	  				var delta = feature.getProperty('catch_total');
 
 			  		var color = [];
 	  					for (var i = 0; i < 3; i++) {
 	    			// calculate an integer color based on the delta
-	    				color[i] = (high[i] - low[i]) * delta + low[i];
+	    				color[i] = (high[i] - low[i]) + low[i];
 	  				}
 
 	  				var outlineWeight = 0.5, zIndex = 1;
-	  					if (feature.getProperty('state') === 'hover') {
+	  					if (feature.getProperty('location') === 'hover') {
 	    				outlineWeight = zIndex = 2;
 	  				}
 
@@ -99,12 +80,12 @@
 				// });
 
 				// // When the user hovers, tempt them to click by outlining the letters.
-				// // Call revertStyle() to remove all overrides. This will use the style rules
-				// // defined in the function passed to setStyle()
-				// map.data.addListener('mouseover', function(event) {
-				//   map.data.revertStyle();
-				//   map.data.overrideStyle(event.feature, {strokeWeight: 8});
-				// });
+				// Call revertStyle() to remove all overrides. This will use the style rules
+				// defined in the function passed to setStyle()
+				map.data.addListener('mouseover', function(event) {
+				  map.data.revertStyle();
+				  map.data.overrideStyle(event.feature, {strokeWeight: 8});
+				});
 
 				// map.data.addListener('mouseout', function(event) {
 				//   map.data.revertStyle();
