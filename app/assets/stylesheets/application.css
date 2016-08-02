@@ -11,6 +11,12 @@
  * file per style scope.
  *
  *= stub active_admin
- *= require_tree .
+ *= require map_theme/vendor/font-awesome.min
+ *= require map_theme/vendor/simple-line-icons
+ *= require map_theme/vendor/animate.min
+ *= require map_theme/vendor/whirl
+ *= require map_theme/vendor/weather-icons.min
+ *= require map_theme/vendor/bootstrap
+ *= require map_theme/app
  *= require_self
  */
