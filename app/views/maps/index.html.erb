@@ -1,4 +1,3 @@
-
   <title>Heat Charts</title>
     <style>
       html, body {
@@ -11,11 +10,28 @@
         width: 100%;
       }
     </style>
-    <div style="height:500px; width: 500px;">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">Current Heat Map</div>
+              <div class="panel-body">
+                <div style="height:700px; width: 1000px;">
+                  <div id="map">
+                    <p id="notice"><%= notice %></p>
+                  </div>
+                </div> 
+            </div>
+          </div>
+        </div>
+     </div>
+    </div> 
+
+
+    <div style="height:700px; width: 1000px;">
       <div id="map">
         <p id="notice"><%= notice %></p>
-     </div>
-   </div>
+      </div>
+    </div>
     <script>
         var map;
         var infoWindow;
