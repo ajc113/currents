@@ -1,4 +1,4 @@
-<header class="topnavbar-wrapper">
+   <header class="topnavbar-wrapper">
    <!-- START Top Navbar-->
    <nav role="navigation" class="navbar topnavbar">
       <!-- START navbar header-->
@@ -23,19 +23,11 @@
       <div class="navbar-collapse collapse">
          <!-- START Left navbar-->
          <ul class="nav navbar-nav">
-            <li></li>
-            <li><a href="#dashboard" data-toggle="dropdown">Dashboard</a>
-               <ul class="dropdown-menu animated fadeIn">
-                  <li><a href="dashboard.html">Dashboard v1</a>
-                  </li>
-                  <li><a href="dashboard_v2.html">Dashboard v2</a>
-                  </li>
-                  <li><a href="dashboard_v3.html">Dashboard v3</a>
-                  </li>
-               </ul>
-            </li>
-            <li><a href="widgets.html">Widgets</a>
-            </li>
+            <li><%= link_to "Home", root_path, class: 'navbar-brand' %></li>
+            <li><%= link_to "Reports", reports_path, class: 'navbar-brand' %></li>
+             <li><%= link_to "HeatMap", maps_path, class: 'navbar-brand' %></li>
+            <li><%= link_to "Intel", buzzs_path, class: 'navbar-brand' %></li>
+            <li><%= link_to "About", 'about', class: 'navbar-brand' %></li>
          </ul>
          <!-- END Left navbar-->
          <!-- START Right Navbar-->
@@ -129,7 +121,24 @@
                <a href="#" data-toggle-state="offsidebar-open" data-no-persist="true">
                   <em class="icon-notebook"></em>
                </a>
-            </li>
+      
+               </li>
+                  <li>
+                  <% if current_user %>
+                     <li>Welcome Back!</li>
+                     <h4><%= current_user.vessel_name %></h4> 
+                     
+                     <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+                     
+                     <% else %>
+             
+                     <%= link_to "Register", new_user_registration_path %>
+             
+                     <%= link_to "Sign In", new_user_session_path %>
+           
+                     <% end %>
+               </li>
+         
             <!-- END Contacts menu-->
          </ul>
          <!-- END Right Navbar-->
