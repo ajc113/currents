@@ -18,5 +18,6 @@
  *= require map_theme/vendor/weather-icons.min
  *= require map_theme/vendor/bootstrap
  *= require map_theme/app
+ *= require map_theme/theme-e
  *= require_self
  */

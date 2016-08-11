@@ -1,21 +1,84 @@
 <title>Currents</title>
 
 
-<h1>Currents</h1>
-<h2>Fishing Network</h2>
-
-<p>
-No nonsense, central location for upto the minute fishing intel.
-<br>
-Have another set of eyes on the water.
-</p>
-
-<% if user_signed_in? %>
-  <li><%= link_to "Sign out", destroy_user_session_path,
-   method: :delete %></li>
-<% else %>
-  <li><%= link_to "Register", new_user_registration_path %></li>
-<% end %>
 
 
+	<div class="content-wrapper">
 
+
+           <h1>Currents</h1>
+           <h2>Fishing Network</h2>
+               <large>No nonsense, central location for upto the minute fishing intel.
+               <br>	
+               Have another set of eyes on the water.
+             </medium>
+            </h3>
+            <div class="container-fluid">
+               <button id="start-tour" class="btn btn-primary mb-lg">Start Tour!</button>
+               <div class="row">
+                  <div class="col-lg-4">
+                     <div id="tour-step-1" data-title="Step 1" data-content="This is the fisrt step" data-placement="right" class="panel tour-step">
+                        <div class="panel-heading">Real Time Heatmaps</div>
+                        <div class="panel-body">
+                        	<img src="/assets/map_theme/chart.jpg" alt="App Logo" class="img-responsive" style="display:block; opacity: .65">
+                           	<p>
+	                           	Time and fuel costs are always important considerations when fishing. Currents will show you where the fish are located before you leave the dock and while fishing by sending you the most comprehensive interpretive oceanographic analysis for fishing. We will put you on the fish!
+							</p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-lg-4">
+                     <div id="tour-step-2" data-title="Step 2" data-content="This is the second step" data-placement="left" class="panel tour-step">
+                        <div class="panel-heading">Personal Catch Reports</div>
+                        <br>
+                        <img src="/assets/map_theme/simrad.jpg" alt="App Logo" class="img-responsive" style="display:block; width: 450px; height: 300px; opacity: .55">
+                       	
+                        <div class="panel-body">
+                        <br>	
+                           <p>Currents loves to talk to clients before, during and after their trips.  Currents tries to update their “catch reports” on a weekly basis and will only report first hand information.  No hear-say or dock rumors here!  Please click below to view the most recent catch reports on our website now!</p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-lg-4">
+                     <div id="tour-step-2" data-title="Step 2" data-content="This is the second step" data-placement="left" class="panel tour-step">
+                        <div class="panel-heading">Real Time Intel</div>
+                        <br>
+                        <img src="/assets/map_theme/compass2.jpg" alt="App Logo" class="img-responsive" style="display:block; opacity: .65">
+
+                   		<div class="panel-body">
+                           <p>Currents loves to talk to clients before, during and after their trips.  Currents tries to update their “catch reports” on a weekly basis and will only report first hand information.  No hear-say or dock rumors here!  Please click below to view the most recent catch reports on our website now!</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-lg-12">
+                     <div id="tour-step-3" data-title="Last Step" data-content="This is the last step" data-placement="top" class="panel tour-step">
+                        <div class="panel-heading">Setup your tour:</div>
+                        <div class="panel-body"><pre>// Instance the tour
+var tour = new Tour({
+  steps: [
+  {
+    element: "#my-element",
+    title: "Title of my step",
+    content: "Content of my step"
+  },
+  {
+    element: "#my-other-element",
+    title: "Title of my step",
+    content: "Content of my step"
+  }
+]});
+// Initialize the tour
+tour.init();
+// Start the tour
+tour.start();</pre>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      
+   </div>
