@@ -1,58 +1,41 @@
 <title>Reports</title>
-
-<p id="notice"><%= notice %></p>
-
-
-
-<div class="content-wrapper">
-  <div class="content-heading"> <%= current_user.vessel_name %> Catch Reports  
-   <aside style="float:right">
- 
-          
+  <p id="notice"><%= notice %></p>
+    <div class="content-wrapper">
+      <div class="content-heading"> 
+        <strong><%= current_user.vessel_name %> Catch Reports</strong>  
+        <aside style="float:right">
+          <!-- new report button -->
           <%= link_to 'Log New Catch Report', new_report_path, class: 'btn btn-info'%>
-
-      </aside> 
-  </div>
-  
- 
-
-<form action="/filter" id="filter_form" >
-  <table><h5>Report Filters</h5>
-    <thead> 
-      <tr>
-        <th><label for="target_species">Species</label></th>
-        <th><label for="location">Location</label></th>
-        <th><label for="tide">Tide</label></th>
-        <th><label for="date">Month</label></th>
-      </tr>
-    </thead>  
-
-  <aside style="float: left">
-  <button class="mb-sm btn btn-info">
-   Clear Filter 
-  <%reports_path %>
-  </button>
-  <br>
-</aside>
-
-    <tbody>
-      
-        <tr> 
+        </aside> 
+      </div>
+    <form action="/filter" id="filter_form" >
+      <table><h5>Report Filters</h5>
+        <thead> 
+          <tr>
+          <th><label for="target_species">Species</label></th>
+          <th><label for="location">Location</label></th>
+          <th><label for="tide">Tide</label></th>
+          <th><label for="date">Month</label></th>
+          </tr>
+        </thead>  
+          <!-- button -->
+          <%= link_to 'Clear Filter', reports_path, class: 'mb-sm btn btn-info' %>
+        <tbody>
+          <tr> 
           <td>
             <select id="target_species" name="target_species">
               <option value=""></option>
-              <% current_user.reports.each do |report| %>
+                <% current_user.reports.each do |report| %>
               <option value="<%= report.target_species %>" <%= selected_target_species(report.target_species) %>><%= report.target_species %></option>
                 <% end %>
-            </select>
+              </select>
           </td>     
-             
           <td> 
             <select id="location" name="location">
-             <option value=""></option>
+              <option value=""></option>
                 <% Location.all.each do |location| %>
               <option value="<%= location.id %>" <%= selected_locations(location) %>><%= location.short_name %></option>
-              <% end %>
+                <% end %>
             </select>
           </td> 
           <td> 
@@ -162,8 +145,7 @@
 
 <br>
 
-<button type="button" class="mb-sm btn btn-info">
-<%= link_to 'Log New Catch Report', new_report_path %>
+<%= link_to 'Log New Catch Report', new_report_path, class: 'btn btn-info'%>
 
 <% end %>
 </button>

@@ -123,9 +123,9 @@
                </a>
       
                </li>
-                  <li>
+                  <li class="navbar-collapse collapse">
                   <% if current_user %>
-                     <li>Welcome Back!</li>
+                     <li class="nav navbar-nav">Welcome Back!</li>
                      <h4><%= current_user.vessel_name %></h4> 
                      
                      <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
