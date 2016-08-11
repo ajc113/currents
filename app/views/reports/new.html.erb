@@ -1,5 +1,15 @@
-<h1>New Report</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', reports_path %>
+<div class="content-wrapper">
+  <div class="row">
+     <div class="col-md-4">
+        <div class="panel panel-default">
+           	<div class="panel-body text-center">
+              	<div class="pv-lg">
+					<h1><%= current_user.vessel_name %></h1>
+					<h2>New Catch Report</h2>
+					<%= render 'form' %>
+					
+				</div><%= link_to 'Back', reports_path %>
+			</div>
+		</div>
+	</div>
+</div>

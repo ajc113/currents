@@ -8,6 +8,7 @@
   <div class="content-heading"> <%= current_user.vessel_name %> Catch Reports  
    <aside style="float:right">
         <button type="button" class="mb-sm btn btn-info">
+          
           <%= link_to 'Log New Catch Report', new_report_path %>
         </button>
       </aside> 
@@ -26,9 +27,10 @@
       </tr>
     </thead>  
 
-      <aside style="float: right">
-  <button class="btn btn-primary mb-lg">
-  <%= link_to 'Clear Filter', reports_path %>
+  <aside style="float: left">
+  <button class="mb-sm btn btn-info">
+   Clear Filter 
+  <%reports_path %>
   </button>
   <br>
 </aside>
@@ -160,7 +162,7 @@
 
 <br>
 
-<button>
+<button type="button" class="mb-sm btn btn-info">
 <%= link_to 'Log New Catch Report', new_report_path %>
 
 <% end %>
