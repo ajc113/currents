@@ -1,15 +1,15 @@
-  <title>Heat Charts</title>
-    <style>
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      #map {
-        height: 80%;
-        width: 100%;
-      }
-    </style>
+<title>Heat Charts</title>
+  <style>
+    html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    }
+    #map {
+    height: 80%;
+    width: 100%;
+    }
+  </style>
    
      <div class="content-wrapper">
       <h2>HeatMaps - Real Time Intel</h2>      
@@ -45,8 +45,6 @@
             center: {lat: 42.05, lng: -70.25},
             mapTypeId: google.maps.MapTypeId.SATELLITE
           });
-
-
 
 
 
@@ -98,6 +96,8 @@
                 // Not sure if this is needed
                 // var vertices = this.getPath();  
                 
+
+
 
                 var contentString = '<%= j render 'layouts/map_click_popup', location: location %>';            
                   

@@ -1,110 +1,66 @@
-<!DOCTYPE html>
-<html>
-	<head>
-	    <title>Data Layer: Polygon</title>
-	    <meta name="viewport" content="initial-scale=1.0">
-	    <meta charset="utf-8">
-		    <style>
-		    
-		      #map {
-		        height: 100%;
-		      }
-		    </style>
-	</head>
- 	<body>
-    	<div id="map"></div>
-	    	
-	    	<script>
-				
-				// initialize map
-				function initMap() {
-			  	var map = new google.maps.Map(document.getElementById('map'), {
-				    zoom: 9,
-				    center: {lat: 42.05, lng: -70.25},
-			  	});
 
+  <head>
+    <title>Data Layer: Dynamic Styling</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
 
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: {lat: -28, lng: 137}
+        });
 
-			  	// heatmap style
-			  	map.data.setStyle(styleFeature);
-				function styleFeature(feature) {
-					var low = [5, 69, 54];  // color of smallest datum
-  					var high = [151, 83, 34];   // color of largest datum
+        // Load GeoJSON.
+       
 
-	  				 // delta represents where the value sits between the min and max
-	  				var delta = feature.getProperty('catch_total');
+        // Color each letter gray. Change the color when the isColorful property
+        // is set to true.
+        map.data.setStyle(function(feature) {
+          var color = 'gray';
+          if (feature.getProperty('isColorful')) {
+            color = feature.getProperty('color');
+          }
+          return /** @type {google.maps.Data.StyleOptions} */({
+            fillColor: color,
+            strokeColor: color,
+            strokeWeight: 2
+          });
+        });
 
-			  		var color = [];
-	  					for (var i = 0; i < 3; i++) {
-	    			// calculate an integer color based on the delta
-	    				color[i] = (high[i] - low[i]) + low[i];
-	  				}
+        // When the user clicks, set 'isColorful', changing the color of the letters.
+        map.data.addListener('click', function(event) {
+          event.feature.setProperty('isColorful', true);
+        });
 
-	  				var outlineWeight = 0.5, zIndex = 1;
-	  					if (feature.getProperty('location') === 'hover') {
-	    				outlineWeight = zIndex = 2;
-	  				}
+        // When the user hovers, tempt them to click by outlining the letters.
+        // Call revertStyle() to remove all overrides. This will use the style rules
+        // defined in the function passed to setStyle()
+        map.data.addListener('mouseover', function(event) {
+          map.data.revertStyle();
+          map.data.overrideStyle(event.feature, {strokeWeight: 8});
+        });
 
-	  				var showRow = true;
-
-	  				return {
-					    strokeWeight: outlineWeight,
-					    strokeColor: '#fff',
-					    zIndex: zIndex,
-					    fillColor: 'hsl(' + color[0] + ',' + color[1] + '%,' + color[2] + '%)',
-					    fillOpacity: 0.75,
-					    visible: showRow
-					};
-				}
-
-
-
-
-
-		  		// style map gray click on event
-			  	// Color each letter gray. Change the color when the isColorful property
-				// is set to true.
-			 //  	map.data.setStyle(function(feature) {
-				//   var color = 'gray';
-				//   if (feature.getProperty('isColorful')) {
-				//     color = feature.getProperty('color');
-				//   }
-				//   return /** @type {google.maps.Data.StyleOptions} */({
-				//     fillColor: color,
-				//     strokeColor: color,
-				//     strokeWeight: 2
-				//   });
-				// });
-			 //  	// When the user clicks, set 'isColorful', changing the color of the letters.
-				// map.data.addListener('click', function(event) {
-				//   event.feature.setProperty('isColorful', true);
-				// });
-
-				// // When the user hovers, tempt them to click by outlining the letters.
-				// Call revertStyle() to remove all overrides. This will use the style rules
-				// defined in the function passed to setStyle()
-				map.data.addListener('mouseover', function(event) {
-				  map.data.revertStyle();
-				  map.data.overrideStyle(event.feature, {strokeWeight: 8});
-				});
-
-				// map.data.addListener('mouseout', function(event) {
-				//   map.data.revertStyle();
-				// });
-
-
-				// define polygons
-			 	<% @locations.each do |location| %>
-
-			   	var <%= location.short_name.parameterize.underscore %> = <%= location.coordinates.to_json.gsub!(/\"/,'').html_safe %>;;
-
-			   	// contruct polygons on data layer
-				map.data.add({geometry: new google.maps.Data.Polygon([<%= location.short_name.parameterize.underscore %>])})
-      			<% end %>
-      		}
-		 	</script>
-		 	<script async defer
-		      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRhKrHEYhZA2Qg5fagbEKaUItVsB-cQ3g&callback=initMap">
-		    </script>
- 	</body>
-</html>
+        map.data.addListener('mouseout', function(event) {
+          map.data.revertStyle();
+        });
+      }
+    </script>
+  	<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRhKrHEYhZA2Qg5fagbEKaUItVsB-cQ3g&callback=initMap">
+    </script>
+  </body>
