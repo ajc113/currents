@@ -3,7 +3,7 @@ ActiveAdmin.register Location do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-permit_params :short_name, :long_name, :coordinates, :lat1, :lng1, :lat2, :lng2, :lat3, :lng3, :lat4, :lng4
+permit_params :short_name, :long_name, :coordinates, :lat1, :lng1, :lat2, :lng2, :lat3, :lng3, :lat4, :lng4, :coordinate_file
 
  form do |f|
     f.inputs do
@@ -19,6 +19,7 @@ permit_params :short_name, :long_name, :coordinates, :lat1, :lng1, :lat2, :lng2,
         f.input :lat4
         f.input :lng4
         f.input :coordinates, as: :text
+        f.input :coordinate_file
       elsif action_name == 'edit'
         f.input :lat1, input_html: {value: f.object.coordinates.first[:lat]}
         f.input :lng1, input_html: {value: f.object.coordinates.first[:lng]}
@@ -29,6 +30,7 @@ permit_params :short_name, :long_name, :coordinates, :lat1, :lng1, :lat2, :lng2,
         f.input :lat4, input_html: {value: f.object.coordinates.fourth[:lat]}
         f.input :lng4, input_html: {value: f.object.coordinates.fourth[:lng]}
         f.input :coordinates, as: :text
+        f.input :coordinate_file
       end
     end
     f.actions

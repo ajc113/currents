@@ -1,4 +1,8 @@
 class Location < ActiveRecord::Base
+
+
+  mount_uploader :coordinate_file, LocationJsonUploader
+
 	has_many :reports
 
   before_save :log_coordinates

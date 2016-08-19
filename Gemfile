@@ -36,7 +36,7 @@ gem 'by_star', git: "git://github.com/radar/by_star"
 gem 'colorize'
 # Use Unicorn as the app server
 # gem 'unicorn'
-
+gem 'carrierwave'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 group :production do

@@ -49,24 +49,24 @@
 
 
           // Define the LatLng coordinates for the polygon.
-          <% @locations.each do |location| %>
-            var <%= location.short_name.parameterize.underscore %> = <%= location.coordinates.to_json.gsub!(/\"/,'').html_safe %>;
+         
+            var <%= Location.last.short_name.parameterize.underscore %> = <%= one_locations_json(Location.last).html_safe %>;
 
 
 
 
             // Construct the polygon.
-            var <%= location.short_name.parameterize.underscore %>_billsPollygon = new google.maps.Polygon({
-              paths: <%= location.short_name.parameterize.underscore %>,
+            var <%= Location.last.short_name.parameterize.underscore %>_billsPollygon = new google.maps.Polygon({
+              paths: <%= Location.last.short_name.parameterize.underscore %>,
               strokeColor: '#F7F8FF',
               strokeOpacity: 0.8,
               strokeWeight: 1,
-              fillColor: '<%= location.color %>',
+              fillColor: '<%= Location.last.color %>',
               fillOpacity: 0.45
             });
 
             
-            // Get geo location of user to pass to map initialization
+            // Get geo Location.last of user to pass to map initialization
             function initialise (geo){
                 console.log(geo);
             }   
@@ -80,18 +80,18 @@
 
 
             // Polygons
-            polygons = <%= location.short_name.parameterize.underscore %>_billsPollygon.setMap(map);
+            polygons = <%= Location.last.short_name.parameterize.underscore %>_billsPollygon.setMap(map);
 
 
             
 
             // Add a listener for the click event.
-            <%= location.short_name.parameterize.underscore %>_billsPollygon.addListener('click', 
+            <%= Location.last.short_name.parameterize.underscore %>_billsPollygon.addListener('click', 
 
               // 
               function (event) {
                 console.log(location_reports);
-                var location_reports = <%= location.short_name.parameterize.underscore %>;
+                var location_reports = <%= Location.last.short_name.parameterize.underscore %>;
                
                 // Not sure if this is needed
                 // var vertices = this.getPath();  
@@ -99,7 +99,7 @@
 
 
 
-                var contentString = '<%= j render 'layouts/map_click_popup', location: location %>';            
+                var contentString = '<%= j render 'layouts/map_click_popup', location: Location.last %>';            
                   
                 // Add Lat Long display to info box , add to contentString      
                 // + event.latLng.lat() + ',' + event.latLng.lng() +
@@ -112,7 +112,7 @@
               
               // showArrays
               );
-          <% end %>
+     
           infoWindow = new google.maps.InfoWindow;
         }
 

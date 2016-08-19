@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160608175856) do
+ActiveRecord::Schema.define(version: 20160819223737) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -52,9 +52,10 @@ ActiveRecord::Schema.define(version: 20160608175856) do
   create_table "locations", force: :cascade do |t|
     t.string   "short_name"
     t.text     "long_name"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "coordinates"
+    t.string   "coordinate_file"
   end
 
   create_table "reports", force: :cascade do |t|
