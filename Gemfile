@@ -37,6 +37,8 @@ gem 'colorize'
 # Use Unicorn as the app server
 # gem 'unicorn'
 gem 'carrierwave'
+gem 'mandrill-api'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 group :production do
