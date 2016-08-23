@@ -36,7 +36,9 @@
         var map;
         var infoWindow;
           
-      
+      google.maps.event.addListener(map, 'click', function(event) {
+                  placeMarker(event.latLng);
+                });
           
         // Map Display options
         function initMap() {
@@ -46,6 +48,7 @@
             mapTypeId: google.maps.MapTypeId.SATELLITE
           });
 
+           
 
           <% Location.all.each do |location| %>
           // Define the LatLng coordinates for the polygon.
@@ -96,7 +99,7 @@
                 // Not sure if this is needed
                 // var vertices = this.getPath();  
                 
-
+               
 
 
                 var contentString = '<%= j render 'layouts/map_click_popup', location: location %>';            
