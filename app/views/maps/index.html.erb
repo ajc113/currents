@@ -1,5 +1,6 @@
 <title>Heat Charts</title>
-  <style>
+<head>
+<style>
     html, body {
     height: 100%;
     margin: 0;
@@ -10,6 +11,7 @@
     width: 100%;
     }
   </style>
+</head>
    
      <div class="content-wrapper">
       <h2>HeatMaps - Real Time Intel</h2>      
@@ -32,100 +34,105 @@
 </div> 
 </div>
 
-    <script>
-        var map;
-        var infoWindow;
+<script>
+  var map;
+  var infoWindow;
+
+        
+      
+    // Map Display options
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 9,
+        center: {lat: 42.05, lng: -70.25},
+        mapTypeId: google.maps.MapTypeId.SATELLITE
+      });
+
+
+
+      // Define the LatLng coordinates for the polygon.
+      <% Location.all.each do |location| %> 
+     
+      var <%= location.short_name.parameterize.underscore %> = <%= one_locations_json(location).html_safe %>;
+
+      // Construct the polygon.
+      var <%= location.short_name.parameterize.underscore %>_billsPollygon = new google.maps.Polygon({
+        paths: <%= location.short_name.parameterize.underscore %>,
+        strokeColor: '#F7F8FF',
+        strokeOpacity: 0.8,
+        strokeWeight: 1,
+        fillColor: '<%= location.color %>',
+        fillOpacity: 0.45,
+        editable: false,  
+        map: map
+      });
+
+      // Add a listener for the click event.
+      <%= location.short_name.parameterize.underscore %>_billsPollygon.addListener('click',
+
+      // Set info window content to location report
+      function (event) {
+      console.log(location_reports);
+      var location_reports = <%= location.short_name.parameterize.underscore %>;
+             
+
+      var contentString = '<%= j render 'layouts/map_click_popup', location: location %>';            
+
+      // Replace the info window's content and position.
+      infoWindow.setContent(contentString);
+      infoWindow.setPosition(event.latLng);
+      infoWindow.open(map);
+      }
           
-      google.maps.event.addListener(map, 'click', function(event) {
-                  placeMarker(event.latLng);
-                });
-          
-        // Map Display options
-        function initMap() {
-          map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 9,
-            center: {lat: 42.05, lng: -70.25},
-            mapTypeId: google.maps.MapTypeId.SATELLITE
-          });
+        // showArrays
+      );
+      <% end %>
 
-           
-
-          <% Location.all.each do |location| %>
-          // Define the LatLng coordinates for the polygon.
-         
-            var <%= location.short_name.parameterize.underscore %> = <%= one_locations_json(location).html_safe %>;
+      infoWindow = new google.maps.InfoWindow;
+     
 
 
+      // Get geo location of user to pass to map initialization
+      // function initialise (geo){
+      //     console.log(geo);
+      // }   
 
+      // $(document).ready(function(){
+      //   navigator.geolocation.getCurrentPosition(initialise); 
+      // });
 
-            // Construct the polygon.
-            var <%= location.short_name.parameterize.underscore %>_billsPollygon = new google.maps.Polygon({
-              paths: <%= location.short_name.parameterize.underscore %>,
-              strokeColor: '#F7F8FF',
-              strokeOpacity: 0.8,
-              strokeWeight: 1,
-              fillColor: '<%= location.color %>',
-              fillOpacity: 0.45
+      <% Location.all.each do |location| %> 
+
+      <%= location.short_name.parameterize.underscore %>_billsPollygon.addListener('mouseover', function (event) {
+        // Within the event listener, "this" refers to the polygon which
+        // received the event.
+        map.data.revertStyle();
+        this.setOptions({
+          strokeColor: '#F7F8FF',
+          strokeWeight: 3 ,
+          fillOpacity: 0.75
             });
+        });
 
-            
-            // Get geo location of user to pass to map initialization
-            function initialise (geo){
-                console.log(geo);
-            }   
-            
-            $(document).ready(function(){
-              navigator.geolocation.getCurrentPosition(initialise); 
+      
+      <%= location.short_name.parameterize.underscore %>_billsPollygon.addListener('mouseout', function (event) {
+      map.data.revertStyle();
+      this.setOptions({
+          strokeColor: '#F7F8FF',
+        strokeOpacity: 0.8,
+        strokeWeight: 1,
+        fillOpacity: 0.45,
             });
-
-            // Replace center with below for geo location centering
-            // center: {geo.coords.latitude, geo.coords.longitude},
+      });
 
 
-            // Polygons
-            polygons = <%= location.short_name.parameterize.underscore %>_billsPollygon.setMap(map);
-
-
-            
-
-            // Add a listener for the click event.
-            <%= location.short_name.parameterize.underscore %>_billsPollygon.addListener('click', 
-
-              // 
-              function (event) {
-                console.log(location_reports);
-                var location_reports = <%= location.short_name.parameterize.underscore %>;
-               
-                // Not sure if this is needed
-                // var vertices = this.getPath();  
-                
-               
-
-
-                var contentString = '<%= j render 'layouts/map_click_popup', location: location %>';            
-                  
-                // Add Lat Long display to info box , add to contentString      
-                // + event.latLng.lat() + ',' + event.latLng.lng() +
-
-                // Replace the info window's content and position.
-                infoWindow.setContent(contentString);
-                infoWindow.setPosition(event.latLng);
-                infoWindow.open(map);
-                }
-              
-              // showArrays
-              );
-          <% end %>
-          infoWindow = new google.maps.InfoWindow;
-        }
-
-
-
-
-    </script>
-      <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRhKrHEYhZA2Qg5fagbEKaUItVsB-cQ3g&callback=initMap">
-      </script>
+  <% end %>
+ }
+</script>
+      
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRhKrHEYhZA2Qg5fagbEKaUItVsB-cQ3g&callback=initMap">
+</script>
 
 
 
