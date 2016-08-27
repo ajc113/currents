@@ -86,7 +86,9 @@
           
         // showArrays
       );
+
       <% end %>
+
 
       infoWindow = new google.maps.InfoWindow;
      
@@ -106,6 +108,7 @@
       <%= location.short_name.parameterize.underscore %>_billsPollygon.addListener('mouseover', function (event) {
         // Within the event listener, "this" refers to the polygon which
         // received the event.
+        
         map.data.revertStyle();
         this.setOptions({
           strokeColor: '#F7F8FF',
@@ -114,17 +117,30 @@
             });
         });
 
-      
+      <%= location.short_name.parameterize.underscore %>_billsPollygon.addListener('mouseover', function (event) {
+          // Within the event listener, "this" refers to the polygon which
+          // received the event.
+          console.log(location_reports);
+            var location_reports = <%= location.short_name.parameterize.underscore %>;
+            var contentString = '<%= j render 'layouts/map_click_popup', location: location %>';
+            infoWindow.setContent(contentString);
+            infoWindow.setPosition(event.latLng);
+            infoWindow.open(map);   
+        });
+
+
       <%= location.short_name.parameterize.underscore %>_billsPollygon.addListener('mouseout', function (event) {
-      map.data.revertStyle();
-      this.setOptions({
-          strokeColor: '#F7F8FF',
-        strokeOpacity: 0.8,
-        strokeWeight: 1,
-        fillOpacity: 0.45,
-            });
+          infoWindow.close(map);
+          map.data.revertStyle();
+          this.setOptions({
+              strokeColor: '#F7F8FF',
+            strokeOpacity: 0.8,
+            strokeWeight: 1,
+            fillOpacity: 0.45,
+                });
       });
 
+ 
 
   <% end %>
  }
