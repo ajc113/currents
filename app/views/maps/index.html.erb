@@ -34,19 +34,49 @@
 </div> 
 </div>
 
-<script>
-  var map;
-  var infoWindow;
 
-        
+    <script>
+        var map;
+        var infoWindow;
+          
       
-    // Map Display options
-    function initMap() {
-      map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 9,
-        center: {lat: 42.05, lng: -70.25},
-        mapTypeId: google.maps.MapTypeId.SATELLITE
-      });
+          
+        // Map Display options
+        function initMap() {
+          map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 9,
+            center: {lat: 42.05, lng: -70.25},
+            mapTypeId: google.maps.MapTypeId.SATELLITE
+          });
+
+
+          <% Location.all.each do |location| %>
+          // Define the LatLng coordinates for the polygon.
+         
+            var <%= location.short_name.parameterize.underscore %> = <%= one_locations_json(location).html_safe %>;
+
+
+
+
+            // Construct the polygon.
+            var <%= location.short_name.parameterize.underscore %>_billsPollygon = new google.maps.Polygon({
+              paths: <%= location.short_name.parameterize.underscore %>,
+              strokeColor: '#F7F8FF',
+              strokeOpacity: 0.8,
+              strokeWeight: 1,
+              fillColor: '<%= location.color %>',
+              fillOpacity: 0.45
+            });
+
+            
+            // Get geo location of user to pass to map initialization
+            function initialise (geo){
+                console.log(geo);
+            }   
+            
+            $(document).ready(function(){
+              navigator.geolocation.getCurrentPosition(initialise); 
+            });
 
 
 
@@ -87,17 +117,36 @@
         // showArrays
       );
 
+<<<<<<< HEAD
       <% end %>
+=======
+            // Polygons
+            polygons = <%= location.short_name.parameterize.underscore %>_billsPollygon.setMap(map);
+>>>>>>> f3ff7903a2f447977595b43eea99e35868247f5b
 
 
       infoWindow = new google.maps.InfoWindow;
      
 
+<<<<<<< HEAD
 
       // Get geo location of user to pass to map initialization
       // function initialise (geo){
       //     console.log(geo);
       // }   
+=======
+            // Add a listener for the click event.
+            <%= location.short_name.parameterize.underscore %>_billsPollygon.addListener('click', 
+
+              // 
+              function (event) {
+                console.log(location_reports);
+                var location_reports = <%= location.short_name.parameterize.underscore %>;
+               
+                // Not sure if this is needed
+                // var vertices = this.getPath();  
+                
+>>>>>>> f3ff7903a2f447977595b43eea99e35868247f5b
 
       // $(document).ready(function(){
       //   navigator.geolocation.getCurrentPosition(initialise); 
@@ -105,6 +154,7 @@
 
       <% Location.all.each do |location| %> 
 
+<<<<<<< HEAD
       <%= location.short_name.parameterize.underscore %>_billsPollygon.addListener('mouseover', function (event) {
         // Within the event listener, "this" refers to the polygon which
         // received the event.
@@ -131,6 +181,24 @@
           });
 
         });
+=======
+                var contentString = '<%= j render 'layouts/map_click_popup', location: location %>';            
+                  
+                // Add Lat Long display to info box , add to contentString      
+                // + event.latLng.lat() + ',' + event.latLng.lng() +
+
+                // Replace the info window's content and position.
+                infoWindow.setContent(contentString);
+                infoWindow.setPosition(event.latLng);
+                infoWindow.open(map);
+                }
+              
+              // showArrays
+              );
+          <% end %>
+          infoWindow = new google.maps.InfoWindow;
+        }
+>>>>>>> f3ff7903a2f447977595b43eea99e35868247f5b
 
 
       <%= location.short_name.parameterize.underscore %>_billsPollygon.addListener('mouseout', function (event) {
