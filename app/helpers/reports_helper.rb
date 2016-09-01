@@ -15,4 +15,8 @@ module ReportsHelper
 		"selected" if @date == date
 	end	
 
+
+	def all_species
+		Report.all.collect(&:target_species).compact.uniq.reject(&:empty?)
+	end
 end

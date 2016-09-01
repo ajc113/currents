@@ -14,7 +14,15 @@
 </head>
    
      <div class="content-wrapper">
-      <h2>HeatMaps - Real Time Intel</h2>      
+      <h2>HeatMaps - Real Time Intel</h2>   <br />
+      <%= form_tag species_filter_path do %>
+          <select name="species" class="form-control m-b">
+            <% all_species.each do |species| %>
+             <option value="<%= species.html_safe %>"><%= species %></option>
+            <% end %>
+          </select>
+
+      <% end %>   
     <div class="row">
     <div class="col-md-">
 

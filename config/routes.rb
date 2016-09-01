@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
    get 'heatmap', to: 'maps#heatmap'
 
+   get 'species_filter', to: 'maps#filter_by_species', as: :species_filter
+
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
