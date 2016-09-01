@@ -36,7 +36,7 @@ class MapsController < ApplicationController
     puts "@reports before date filter is #{@reports.inspect}\n".blue
     @reports = @reports.selected_date(@month) if @month
 
-    render json: User.first.to_json
+    render json: @reports
   end
 
 
