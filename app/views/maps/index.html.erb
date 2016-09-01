@@ -122,10 +122,14 @@
           // received the event.
           console.log(location_reports);
             var location_reports = <%= location.short_name.parameterize.underscore %>;
-            var contentString = '<%= j render 'layouts/map_click_popup', location: location %>';
+            var contentString = '<%= location.short_name %>';
             infoWindow.setContent(contentString);
             infoWindow.setPosition(event.latLng);
             infoWindow.open(map);   
+            google.maps.event.addListener(map, 'mousemove', function(){
+            infoWindow.close();
+          });
+
         });
 
 
@@ -137,7 +141,7 @@
             strokeOpacity: 0.8,
             strokeWeight: 1,
             fillOpacity: 0.45,
-                });
+          });
       });
 
  
