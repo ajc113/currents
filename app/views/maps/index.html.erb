@@ -15,8 +15,8 @@
    
      <div class="content-wrapper">
       <h2>HeatMaps - Real Time Intel</h2>   <br />
-      <%= form_tag species_filter_path do %>
-          <select name="species" class="form-control m-b">
+      <%= form_tag species_filter_path, id: 'species_form' do %>
+          <select name="species" class="form-control m-b" id="species_select">
             <% all_species.each do |species| %>
              <option value="<%= species.html_safe %>"><%= species %></option>
             <% end %>
@@ -43,6 +43,20 @@
 </div>
 
 <script>
+
+
+
+$('#species_select').change(function(){
+  $.get('<%= species_filter_path %>', $('#species_select').val(), function(data){
+
+    console.log(data);
+  });
+
+});
+  
+
+
+
   var map;
   var infoWindow;
 
