@@ -1,76 +1,88 @@
-<p id="notice"><%= notice %></p>
-<p>
-  <strong>Latitude:</strong>
-  <%= @report.latitude %>
-</p>
+<div class="content-wrapper">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-body text-center">
+          <div class="pv-lg">
+            <p id="notice"><%= notice %></p>
+            <p>
+              <strong>Latitude:</strong>
+              <%= @report.latitude %>
+            </p>
 
-<p>
-  <strong>Longitude:</strong>
-  <%= @report.longitude %>
-</p>
-<p>
-  <strong>Date:</strong>
-  <%= @report.date %>
-</p>
+            <p>
+              <strong>Longitude:</strong>
+              <%= @report.longitude %>
+            </p>
+            <p>
+              <strong>Date:</strong>
+              <%= @report.date %>
+            </p>
 
-<p>
-  <strong>Target species:</strong>
-  <%= @report.target_species %>
-</p>
+            <p>
+              <strong>Target species:</strong>
+              <%= @report.target_species %>
+            </p>
 
-<p>
-  <strong>Location:</strong>
-  <%= @report.location.try(:short_name) %>
-</p>
+            <p>
+              <strong>Location:</strong>
+              <%= @report.location.try(:short_name) %>
+            </p>
 
-<p>
-  <strong>Catch keepers:</strong>
-  <%= @report.catch_keepers %>
-</p>
+            <p>
+              <strong>Catch keepers:</strong>
+              <%= @report.catch_keepers %>
+            </p>
 
-<p>
-  <strong>Catch total:</strong>
-  <%= @report.catch_total %>
-</p>
+            <p>
+              <strong>Catch total:</strong>
+              <%= @report.catch_total %>
+            </p>
 
-<p>
-  <strong>Trip summary:</strong>
-  <%= @report.trip_summary %>
-</p>
+            <p>
+              <strong>Trip summary:</strong>
+              <%= @report.trip_summary %>
+            </p>
 
-<p>
-  <strong>Primary method:</strong>
-  <%= @report.primary_method %>
-</p>
+            <p>
+              <strong>Primary method:</strong>
+              <%= @report.primary_method %>
+            </p>
 
-<p>
-  <strong>Tide:</strong>
-  <%= @report.tide %>
-</p>
+            <p>
+              <strong>Tide:</strong>
+              <%= @report.tide %>
+            </p>
 
-<p>
-  <strong>Weather:</strong>
-  <%= @report.weather %>
-</p>
+            <p>
+              <strong>Weather:</strong>
+              <%= @report.weather %>
+            </p>
 
-<p>
-  <strong>Wind:</strong>
-  <%= @report.wind %>
-</p>
+            <p>
+              <strong>Wind:</strong>
+              <%= @report.wind %>
+            </p>
 
-<p>
-  <strong>Spot:</strong>
-  <%= @report.spot %>
-</p>
-<p>
-  <strong>Best bait:</strong>
-  <%= @report.best_bait %>
-</p>
+            <p>
+              <strong>Spot:</strong>
+              <%= @report.spot %>
+            </p>
+            <p>
+              <strong>Best bait:</strong>
+              <%= @report.best_bait %>
+            </p>
 
-<p>
-  <strong>Trip description:</strong>
-  <%= @report.trip_description %>
-</p>
+            <p>
+              <strong>Trip description:</strong>
+              <%= @report.trip_description %>
+            </p>
 
-<%= link_to 'Edit', edit_report_path(@report) %> |
-<%= link_to 'Back', reports_path %>
+            <%= link_to 'Edit', edit_report_path(@report) %> |
+            <%= link_to 'Back', reports_path %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

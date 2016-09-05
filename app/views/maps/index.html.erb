@@ -12,20 +12,22 @@
     }
   </style>
 </head>
-   
-     <div class="content-wrapper">
-      <h2>HeatMaps - Real Time Intel</h2>   <br />
-      <%= form_tag species_filter_path, id: 'species_form' do %>
+ <div class="content-wrapper">
+   <div class="content-heading">
+    <h2>HeatMaps - Real Time Intel</h2>   <br />
+        <b> View Species</b> 
+          <%= form_tag species_filter_path, id: 'species_form' do %>
+      
           <select name="species" class="form-control m-b" id="species_select">
             <% all_species.each do |species| %>
-             <option value="<%= species.html_safe %>"><%= species %></option>
-            <% end %>
+          <option value="<%= species.html_safe %>"><%= species %></option>
+          <% end %>
           </select>
-
-      <% end %>   
-    <div class="row">
+        <% end %> 
+    </div>   
+      <div class="row">
     <div class="col-md-">
-
+        
     <div class="panel panel-default">
       <div class="panel-heading">
         </div>
@@ -125,6 +127,8 @@ $('#species_select').change(function(){
       //   navigator.geolocation.getCurrentPosition(initialise); 
       // });
 
+    
+
       <% Location.all.each do |location| %> 
 
       <%= location.short_name.parameterize.underscore %>_billsPollygon.addListener('mouseover', function (event) {
@@ -139,24 +143,23 @@ $('#species_select').change(function(){
             });
         });
 
-      <%= location.short_name.parameterize.underscore %>_billsPollygon.addListener('mouseover', function (event) {
-          // Within the event listener, "this" refers to the polygon which
-          // received the event.
-          console.log(location_reports);
-            var location_reports = <%= location.short_name.parameterize.underscore %>;
-            var contentString = '<%= location.short_name %>';
-            infoWindow.setContent(contentString);
-            infoWindow.setPosition(event.latLng);
-            infoWindow.open(map);   
-            google.maps.event.addListener(map, 'mousemove', function(){
-            infoWindow.close();
-          });
+      // <%= location.short_name.parameterize.underscore %>_billsPollygon.addListener('mouseover', function (event) {
+      //     // Within the event listener, "this" refers to the polygon which
+      //     // received the event.
+      //     console.log(location_reports);
+      //       var location_reports = <%= location.short_name.parameterize.underscore %>;
+      //       var contentString = '<%= location.short_name %>';
+      //       infoWindow.setContent(contentString);
+      //       infoWindow.setPosition(event.latLng);
+      //       infoWindow.open(map);   
+      //       google.maps.event.addListener(map, 'mouseout', function(){
+      //       infoWindow.close();
+      //     });
 
-        });
+      //   });
 
 
       <%= location.short_name.parameterize.underscore %>_billsPollygon.addListener('mouseout', function (event) {
-          infoWindow.close(map);
           map.data.revertStyle();
           this.setOptions({
               strokeColor: '#F7F8FF',
