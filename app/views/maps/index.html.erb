@@ -48,13 +48,7 @@
 
 
 
-$('#species_select').change(function(){
-  $.get('<%= species_filter_path %>', $('#species_select').val(), function(data){
 
-    console.log(data);
-  });
-
-});
   
 
 
@@ -96,19 +90,17 @@ $('#species_select').change(function(){
 
       // Set info window content to location report
       function (event) {
-      console.log(location_reports);
-      var location_reports = <%= location.short_name.parameterize.underscore %>;
-             
+        console.log(location_reports);
+        var location_reports = <%= location.short_name.parameterize.underscore %>;
+               
 
-      var contentString = '<%= j render 'layouts/map_click_popup', location: location %>';            
+        var contentString = '<%= j render 'layouts/map_click_popup', location: location %>';            
 
-      // Replace the info window's content and position.
-      infoWindow.setContent(contentString);
-      infoWindow.setPosition(event.latLng);
-      infoWindow.open(map);
+        // Replace the info window's content and position.
+        infoWindow.setContent(contentString);
+        infoWindow.setPosition(event.latLng);
+        infoWindow.open(map);
       }
-          
-        // showArrays
       );
 
       <% end %>
@@ -173,6 +165,13 @@ $('#species_select').change(function(){
 
   <% end %>
  }
+
+
+
+ $('#species_select').change(function(){
+  $.get('<%= species_filter_path %>', $('#species_select').val());
+
+});
 </script>
       
 <script async defer

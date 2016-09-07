@@ -38,7 +38,7 @@ gem 'colorize'
 # gem 'unicorn'
 gem 'carrierwave'
 gem 'mandrill-api'
-
+gem 'active_model_serializers', '~> 0.10.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 group :production do
