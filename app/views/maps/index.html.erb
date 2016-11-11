@@ -1,36 +1,34 @@
-<title>Heat Charts</title>
-<head>
+
+
 <style>
-    html, body {
+  html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    }
-    #map {
+  }
+  #map {
     height: 80%;
     width: 100%;
-    }
-  </style>
-</head>
- <div class="content-wrapper">
-   <div class="content-heading">
+  }
+</style>
+
+<div class="content-wrapper">
+  <div class="content-heading">
     <h2>HeatMaps - Real Time Intel</h2>   <br />
-        <b> View Species</b> 
-          <%= form_tag species_filter_path, id: 'species_form' do %>
-      
-          <select name="species" class="form-control m-b" id="species_select">
-            <% all_species.each do |species| %>
+    <b> View Species</b> 
+    <%= form_tag species_filter_path, id: 'species_form' do %>
+      <select name="species" class="form-control m-b" id="species_select">
+        <% all_species.each do |species| %>
           <option value="<%= species.html_safe %>"><%= species %></option>
-          <% end %>
-          </select>
-        <% end %> 
-    </div>   
-      <div class="row">
+        <% end %>
+      </select>
+    <% end %> 
+  </div>   
+  <div class="row">
     <div class="col-md-">
         
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        </div>
+      <div class="panel panel-default">
+        <div class="panel-heading"></div>
         <div class="panel-body">
           <div style="height:700px; width: 1350px;">
             <div id="map" class="gmap">
@@ -40,9 +38,9 @@
         </div>
       </div> 
     </div>     
- </div> 
+  </div> 
 </div> 
-</div>
+
 
 <script>
 
@@ -169,7 +167,15 @@
 
 
  $('#species_select').change(function(){
-  $.get('<%= species_filter_path %>', $('#species_select').val());
+  $.get(
+    '<%= species_filter_path %>',
+    $('#species_select').val(),
+    function(data){
+      console.log(data);
+      infoWindow.close();
+      // map.fitBounds(bounds);
+    }
+  );
 
 });
 </script>

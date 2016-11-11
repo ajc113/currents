@@ -30,7 +30,7 @@ class MapsController < ApplicationController
     @reports = @reports.selected_location(@location) if @location
     puts "the reports are #{@reports.to_json}".blue
     
-    # render json: @reports
+    render json: @reports
   end
 
 
