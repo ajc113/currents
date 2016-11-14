@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem "figaro"
 gem 'geocoder'
+gem 'seed_dump'
 gem 'gmaps4rails'
 gem 'devise'
 gem 'puma'
