@@ -1,20 +1,3 @@
-<head>
-   <meta charset="utf-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-   <meta name="description" content="Bootstrap Admin App + jQuery">
-   <meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin">
-   <title>Sign In</title>
-   <!-- =============== VENDOR STYLES ===============-->
-   <!-- FONT AWESOME-->
-   <link rel="stylesheet" href="../vendor/fontawesome/css/font-awesome.min.css">
-   <!-- SIMPLE LINE ICONS-->
-   <link rel="stylesheet" href="../vendor/simple-line-icons/css/simple-line-icons.css">
-   <!-- =============== BOOTSTRAP STYLES ===============-->
-   <link rel="stylesheet" href="css/bootstrap.css" id="bscss">
-   <!-- =============== APP STYLES ===============-->
-   <link rel="stylesheet" href="css/app.css" id="maincss">
-</head>
-
 <body>
 
    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -22,11 +5,10 @@
    <div class="wrapper">
       <div class="block-center mt-xl wd-xl">
          <!-- START panel-->
-         <div class="panel panel-info panel-flat">
+         <div class="panel panel-inverse panel-flat">
             <div class="panel-heading text-center">
                <a href="#">
                   <img src="/assets/map_theme/tuna.png" alt="App Logo" class="block-center img-rounded" style="height: 55px">
-                  <!-- img src="/assets/map_theme/tuna.png" alt="App Logo" class="img-responsive" style="height: 55px" -->
                </a>
             </div>
             <div class="panel-body">
@@ -35,14 +17,22 @@
                 
                
                   <div class="form-group has-feedback">
-                  <input id="exampleInputEmail1" type="email" placeholder= "Enter email" autocomplete="off" required class="form-control">
+                 <!--  <input id="exampleInputEmail1" type="email" placeholder= "Enter email" autocomplete="off" required class="form-control"> -->
+                    <p class="text-center">
+
                     <%= f.label :email %><br />
                     <%= f.email_field :email, autofocus: true %>
-                   <span class="fa fa-envelope form-control-feedback text-muted"></span>
+                   
+                 
                   </div>
+
+                    </p>
+
+                  
 
 
                   <div class="field">
+                    <p class="text-center">
                     <%= f.label :password %><br />
                     <%= f.password_field :password, autocomplete: "off" %>
                   </div>
@@ -52,15 +42,14 @@
                       <%= f.check_box :remember_me %>
                       <%= f.label :remember_me %>
                     </div>
+                  
+                  </p>
                   <button type="submit" class="btn btn-block btn-inverse mt-lg">
-                    <%= f.submit "Log in" %>
+                    <%= "Log in" %>
                   </button>
 
 
-
                   <% end -%>
-
-
 <!-- 
                   <div class="form-group has-feedback">
  
@@ -75,18 +64,11 @@
                      <input id="exampleInputPassword1" type="password" placeholder="Password" required class="form-control">
                      <span class="fa fa-lock form-control-feedback text-muted"></span> -->
                   </div>
-                  <div class="clearfix">
-                     <div class="checkbox c-checkbox pull-left mt0">
-                        <label>
-                           <input type="checkbox" value="" name="remember">
-                           <span class="fa fa-check"></span>Remember Me</label>
-                     </div>
-                     <div class="pull-right"><a href="recover.html" class="text-muted">Forgot your password?</a>
-                     </div>
-                  </div>
                   
                </form>
-               <p class="pt-lg text-center">Need to Signup?</p><a href="register.html" class="btn btn-block btn-default">Register Now</a>
+               <p class="pt-lg text-center">
+                <%= render "devise/shared/links" %>
+               </p>
             </div>
          </div>
          <!-- END panel-->
@@ -106,10 +88,10 @@
 
 
 
-
+<!-- 
 <h2>Log in</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+ <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
@@ -132,4 +114,4 @@
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<%= render "devise/shared/links" %> -->
