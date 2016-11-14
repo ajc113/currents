@@ -1,14 +1,75 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-
-
-Location.where(short_name: "ccb_nw", coordinates: [{lat: 41.83, lng: -70.44}, {lat: 41.87, lng: -70.28},{lat: 41.77, lng: -70.49},{lat: 41.75, lng: -70.19},]).first_or_create
-Location.where(short_name: "ccb_se", coordinates: [{lat: 41.984198, lng: -70.319776}, {lat: 41.970926, lng: -70.110349},{lat: 41.825776, lng: -70.164594},{lat: 41.803259, lng: -70.222959}]).first_or_create
-Location.where(short_name: "ccb_sw", coordinates: [{lat: 41.887260, lng: -70.529131}, {lat: 41.920867, lng: -70.335363},{lat: 41.794781, lng: -70.283835},{lat: 41.783006, lng: -70.498755}]).first_or_create
-Location.where(short_name: "bills", coordinates: [{lat: 41.769980, lng: -70.369901}, {lat: 41.793021, lng: -70.204420},{lat: 41.754102, lng: -70.178327},{lat: 41.737196, lng: -70.354108}]).first_or_create
-	# AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+# AdminUser.create!([
+#   {email: "admin@example.com", encrypted_password: "$2a$11$Er6oZwQyTlbcefedjU5kJOzYH9N20VYAduioWXQfa92PKDUK4YYG6", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 13, current_sign_in_at: "2016-11-14 12:17:57", last_sign_in_at: "2016-08-19 21:01:59", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "::1"}
+# ])
+# Location.create!([
+#   {short_name: "CC - Peaked Hill", long_name: "Peaked Hill Bar down to golfball", coordinates: [], coordinate_file: "53_ph.json"},
+#   {short_name: "CC - Cape Backside", long_name: "Golfball , backside beaches down to nauset inlet", coordinates: [], coordinate_file: "54_backside.json"},
+#   {short_name: "SW - Stellwagen Southwest Corner", long_name: "Stellwagen Bank - Southwest corner", coordinates: [], coordinate_file: "56_sw_swc.json"},
+#   {short_name: "SW - Stellwagen Southeast Corner", long_name: "Stellwagen Bank - Southeast corner", coordinates: [], coordinate_file: "58_sw_sec.json"},
+#   {short_name: "SW - Stellwagen Middlebank", long_name: "Stellwagen Bank - Middlebank ", coordinates: [], coordinate_file: "59_sw_middle.json"},
+#   {short_name: "SW - Stellwagen NW Corner", long_name: "Stellwagen Bank - Northwest Corner", coordinates: [], coordinate_file: "60_sw_nwc.json"},
+#   {short_name: "CC - Race Point", long_name: "Race Point, Bathhouse to Wood End", coordinates: [], coordinate_file: "62_race.json"},
+#   {short_name: "CC- Provincetown", long_name: "Provincetown Harbor to Pamet River", coordinates: [], coordinate_file: "63_ptown.json"},
+#   {short_name: "CC - Billingsgate Shoal", long_name: "Billingsgate shoals, The path south to Brewster flats", coordinates: [], coordinate_file: "64_shoals.json"},
+#   {short_name: "CC - Wellfleet Harbor", long_name: "Wellfleet Harbor to Brewster Flats", coordinates: [], coordinate_file: "66_welfleet.json"},
+#   {short_name: "SS - Plymouth Bay", long_name: "Plymouth, Duxbury, and Kingston Bays", coordinates: [], coordinate_file: "67_plymouth.json"},
+#   {short_name: "CC - Cape Cod Canal", long_name: "The Ditch", coordinates: [], coordinate_file: "68_canal.json"},
+#   {short_name: "CCB - Cape Cod Bay SouthWest", long_name: "PowerPlant , Manomet and White Cliffs down to canal", coordinates: [], coordinate_file: "69_ccb_sw.json"},
+#   {short_name: "CCB - Cape Cod Bay South", long_name: "Canal, Scorton Creek to Barnstable, including the Fingers", coordinates: [], coordinate_file: "70_ccb_south.json"},
+#   {short_name: "CCB - Cape Cod Bay NorthWest", long_name: "Green Harbor south to the PowerPlant.  Included Farnham, High Pines Ledge and the Gurnet.", coordinates: [], coordinate_file: "71_ccb_northwest.json"},
+#   {short_name: "SS - Scituate", long_name: "BrantRock, North River, Scituate, to Minots including offshore ledges", coordinates: [], coordinate_file: "72_scituate.json"},
+#   {short_name: "BOS - Inner Boston Harbor", long_name: "Boston Harbor out to Dear Island, Pt Allerton", coordinates: [], coordinate_file: "73_boston_inner.json"},
+#   {short_name: "BOS - Outer Boston Harbor", long_name: "Boston Outer Harbor Nahant, offshore ledges down to the glades.", coordinates: [], coordinate_file: "75_boston_outer.json"},
+#   {short_name: "SW - Eastside", long_name: "Waters east of stellwagen bank out to WildCat Knoll", coordinates: [], coordinate_file: "sw_eastside.json"}
+# ])
+Report.create!([
+  {target_species: "Tuna", catch_keepers: 1, catch_total: 1, trip_summary: "Insane", primary_method: "live bait", tide: "", weather: "", wind: "", spot: "", best_bait: "", trip_description: "", latitude: nil, longitude: nil, location_id: 53, user_id: 1, date: "2016-05-29"},
+  {target_species: "Haddock", catch_keepers: 15, catch_total: 15, trip_summary: "Insane Haddock bite got limit in 2 hours", primary_method: "Bait", tide: "Incoming", weather: "Foggy", wind: "SW 5-15", spot: "Middlebank to eastside", best_bait: "Jigs", trip_description: "", latitude: nil, longitude: nil, location_id: 59, user_id: 6, date: "2016-03-06"},
+  {target_species: "Tuna", catch_keepers: 1, catch_total: 1, trip_summary: "Kite bite live mack", primary_method: "Live Bait", tide: "slack", weather: "", wind: "", spot: "", best_bait: "", trip_description: "", latitude: nil, longitude: nil, location_id: 53, user_id: 2, date: "2016-06-01"},
+  {target_species: "Tuna", catch_keepers: 0, catch_total: 0, trip_summary: "No Tuna to be seen", primary_method: "Live Bait", tide: "Slack", weather: "Cloudy", wind: "SW", spot: "2343.2343", best_bait: "None", trip_description: "", latitude: nil, longitude: nil, location_id: 56, user_id: 1, date: "2015-07-24"},
+  {target_species: "Bass", catch_keepers: 20, catch_total: 45, trip_summary: "Fish consistent through entire incoming", primary_method: "Live Bait", tide: "Incoming", weather: "Cloudy", wind: "SW5", spot: "23423.", best_bait: "Mackeral", trip_description: "Insane", latitude: nil, longitude: nil, location_id: 54, user_id: 3, date: "2015-04-10"},
+  {target_species: "Flounder", catch_keepers: 4, catch_total: 9, trip_summary: "Slow flounder bite", primary_method: "Live Bait", tide: "Outgoing", weather: "Overcast", wind: "W < 10 mph", spot: "Provincetown Harbor", best_bait: "", trip_description: "", latitude: nil, longitude: nil, location_id: 54, user_id: 3, date: "2016-05-06"},
+  {target_species: "Bluefish", catch_keepers: 1, catch_total: 1, trip_summary: "awesome", primary_method: "Live Bait", tide: "Incoming", weather: "Overcast", wind: "W < 10 mph", spot: "", best_bait: "", trip_description: "", latitude: nil, longitude: nil, location_id: 53, user_id: 3, date: "2016-06-07"},
+  {target_species: "Striped Bass", catch_keepers: 5, catch_total: 20, trip_summary: "New report for user", primary_method: "Live Bait", tide: "Outgoing", weather: "Overcast", wind: "SE < 10 mph", spot: "backside beaches were on fired", best_bait: "Mackeral", trip_description: "", latitude: nil, longitude: nil, location_id: 54, user_id: 3, date: "2016-06-11"},
+  {target_species: "Flounder", catch_keepers: 0, catch_total: 0, trip_summary: "skunk", primary_method: "Live Bait", tide: "Slack", weather: "Overcast", wind: "W > 20 mph", spot: "sw corner", best_bait: "herring", trip_description: "", latitude: nil, longitude: nil, location_id: 56, user_id: nil, date: "2016-06-13"},
+  {target_species: "Cod & Haddock", catch_keepers: 1, catch_total: 2, trip_summary: "Huge Tataug", primary_method: "Jigging", tide: "Outgoing", weather: "Sun", wind: "NE 10-20 mph", spot: "Saquish rips", best_bait: "Shimano Coltsniper", trip_description: "", latitude: nil, longitude: nil, location_id: 60, user_id: 3, date: "2016-06-20"},
+  {target_species: "Flounder", catch_keepers: 25, catch_total: 25, trip_summary: "awesome", primary_method: "Live Bait", tide: "Incoming", weather: "Overcast", wind: "W < 10 mph", spot: "ptown harbor", best_bait: "seaworms", trip_description: "insane bite", latitude: nil, longitude: nil, location_id: 63, user_id: 3, date: "2016-07-08"},
+  {target_species: nil, catch_keepers: nil, catch_total: nil, trip_summary: nil, primary_method: nil, tide: nil, weather: nil, wind: nil, spot: nil, best_bait: nil, trip_description: nil, latitude: nil, longitude: nil, location_id: nil, user_id: nil, date: "2015-07-11"},
+  {target_species: "Cod & Haddock", catch_keepers: 15, catch_total: 25, trip_summary: "", primary_method: "Dead Bait", tide: "Incoming", weather: "Overcast", wind: "E < 10 mph", spot: "East side of bank", best_bait: "", trip_description: "", latitude: nil, longitude: nil, location_id: 83, user_id: 3, date: "2016-08-01"},
+  {target_species: "Tuna", catch_keepers: 1, catch_total: 1, trip_summary: "Top water bite", primary_method: "Popping", tide: "Incoming", weather: "Overcast", wind: "E < 10 mph", spot: "east side off the edge of the bank", best_bait: "Ronz Z", trip_description: "", latitude: nil, longitude: nil, location_id: 58, user_id: 3, date: "2016-08-07"},
+  {target_species: "Bluefish", catch_keepers: 5, catch_total: 5, trip_summary: "good", primary_method: "Trolling", tide: "Incoming", weather: "Overcast", wind: "W < 10 mph", spot: "backside", best_bait: "jigs", trip_description: "", latitude: nil, longitude: nil, location_id: 53, user_id: 1, date: "2016-07-21"},
+  {target_species: "Cod & Haddock", catch_keepers: 45, catch_total: 60, trip_summary: "insance haddock bite", primary_method: "Jigging", tide: "Outgoing", weather: "Overcast", wind: "W < 10 mph", spot: "", best_bait: "", trip_description: "", latitude: nil, longitude: nil, location_id: 83, user_id: 1, date: "2016-11-14"},
+  {target_species: "Cod & Haddock", catch_keepers: 30, catch_total: 32, trip_summary: "slowing down", primary_method: "Jigging", tide: "Incoming", weather: "Overcast", wind: "W < 10 mph", spot: "", best_bait: "", trip_description: "", latitude: nil, longitude: nil, location_id: 83, user_id: 1, date: "2016-11-14"},
+  {target_species: "Striped Bass", catch_keepers: 15, catch_total: 20, trip_summary: "macks", primary_method: "Live Bait", tide: "Incoming", weather: "Overcast", wind: "W < 10 mph", spot: "", best_bait: "", trip_description: "", latitude: nil, longitude: nil, location_id: 62, user_id: 1, date: "2016-07-08"},
+  {target_species: "Striped Bass", catch_keepers: 25, catch_total: 30, trip_summary: "good", primary_method: "Live Bait", tide: "Incoming", weather: "Overcast", wind: "W < 10 mph", spot: "", best_bait: "", trip_description: "", latitude: nil, longitude: nil, location_id: 53, user_id: 1, date: "2016-07-16"},
+  {target_species: "Bluefish", catch_keepers: 3, catch_total: 5, trip_summary: "slowing down", primary_method: "Live Bait", tide: "Incoming", weather: "Overcast", wind: "W < 10 mph", spot: "", best_bait: "", trip_description: "", latitude: nil, longitude: nil, location_id: 53, user_id: 1, date: "2016-08-04"},
+  {target_species: "Tuna", catch_keepers: 1, catch_total: 1, trip_summary: "80\"", primary_method: "Live Bait", tide: "Incoming", weather: "Overcast", wind: "W < 10 mph", spot: "", best_bait: "", trip_description: "", latitude: nil, longitude: nil, location_id: 53, user_id: 1, date: "2016-09-14"},
+  {target_species: "Tuna", catch_keepers: 3, catch_total: 3, trip_summary: "picking up", primary_method: "Live Bait", tide: "Incoming", weather: "Overcast", wind: "W < 10 mph", spot: "", best_bait: "", trip_description: "", latitude: nil, longitude: nil, location_id: 58, user_id: 1, date: "2016-11-14"}
+])
+# User.create!([
+#   {email: "admin@example.com", encrypted_password: "$2a$11$VIzSb6HawTCd.Hof4szAUucTv5x2.SLBojT/xt/63bP0pazQFcsdO", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 6, current_sign_in_at: "2016-11-14 12:19:02", last_sign_in_at: "2016-11-14 12:17:39", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", first_name: "", last_name: "", home_port: "", state: "", vessel_name: "Doesnt Matter", confirmation_token: nil, confirmed_at: "2016-11-11 00:00:00", confirmation_sent_at: nil},
+#   {email: "costa.aj@gmail.com", encrypted_password: "$2a$11$aX217KUzxZw9BDt.paXKWO1lOsgNMyQAVxNcLu.LqiOEWrmelsgNa", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 8, current_sign_in_at: "2016-09-11 01:31:35", last_sign_in_at: "2016-08-03 02:47:22", current_sign_in_ip: "::1", last_sign_in_ip: "::1", first_name: "AJ ", last_name: "Costa", home_port: "Green Harbor", state: "MA", vessel_name: "Tradition", confirmation_token: nil, confirmed_at: "2016-11-11 00:00:00", confirmation_sent_at: nil},
+#   {email: "ajcosta1@gmail.com", encrypted_password: "$2a$11$sjo3290dzYvMVwG25vXopeqVctu5/3SrJ6qwp7OvOkc23PN8gvQlG", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 27, current_sign_in_at: "2016-11-12 01:14:21", last_sign_in_at: "2016-11-11 21:16:43", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", first_name: "Allen", last_name: "Costa", home_port: "Plymouth", state: "MA", vessel_name: "Obsession", confirmation_token: nil, confirmed_at: "2016-11-11 00:00:00", confirmation_sent_at: nil},
+#   {email: "costa.brooke@gmail.com", encrypted_password: "$2a$11$5fT8SwDN/B7/u23h/J.jhewfvCFOMl/3GEEI1GGPm8m7Q5Z48i/zy", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2016-06-03 00:26:25", last_sign_in_at: "2016-06-03 00:26:25", current_sign_in_ip: "::1", last_sign_in_ip: "::1", first_name: "Brooke", last_name: "Costa", home_port: "Scituate", state: "MA", vessel_name: "Cinnamon", confirmation_token: nil, confirmed_at: "2016-11-11 00:00:00", confirmation_sent_at: nil},
+#   {email: "costa.jake@gmail.com", encrypted_password: "$2a$11$CH2ANlGssaQHIRKdK/Oxdu4BICXHrfvlf8i9758hz/LDW6scOSMCO", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2016-06-03 00:34:30", last_sign_in_at: "2016-06-03 00:34:30", current_sign_in_ip: "::1", last_sign_in_ip: "::1", first_name: "Jake", last_name: "Costa", home_port: "Barnstable", state: "MA", vessel_name: "Pirate Ship", confirmation_token: nil, confirmed_at: "2016-11-11 00:00:00", confirmation_sent_at: nil},
+#   {email: "987654321@gmail.com", encrypted_password: "$2a$11$gGP1YBqp49B9ITKLT1hdYeat1lbR.Ho7SzAlFVLrxAD7ftu0ehnje", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2016-06-05 22:44:14", last_sign_in_at: "2016-06-05 22:44:14", current_sign_in_ip: "::1", last_sign_in_ip: "::1", first_name: "Dave ", last_name: "Greenwood", home_port: "Scituate", state: "MA", vessel_name: "Royal Sword", confirmation_token: nil, confirmed_at: "2016-11-11 00:00:00", confirmation_sent_at: nil},
+#   {email: "abcde@gmail.com", encrypted_password: "$2a$11$4FMa5lYy3aKQe8Mjo3853u23aTAhIMXA8bx8U76UyxnlcmkOpblTK", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2016-06-06 21:37:28", last_sign_in_at: "2016-06-06 21:37:28", current_sign_in_ip: "::1", last_sign_in_ip: "::1", first_name: "Bob", last_name: "Bob", home_port: "Plymouth", state: "MA", vessel_name: "Today", confirmation_token: nil, confirmed_at: "2016-11-11 00:00:00", confirmation_sent_at: nil},
+#   {email: "currentsfishingnetwork@gmail.com", encrypted_password: "$2a$11$bFf6RKWd8DtNUgH7ep9OOe9GfSGj6qHWaIalLh3Z6FZRuxRznpKgu", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2016-09-11 01:07:47", last_sign_in_at: "2016-09-11 01:07:47", current_sign_in_ip: "::1", last_sign_in_ip: "::1", first_name: "A", last_name: "Costa", home_port: "Green Harbor", state: "MA", vessel_name: "Get Bent", confirmation_token: nil, confirmed_at: "2016-11-11 00:00:00", confirmation_sent_at: nil},
+#   {email: "pghrpg@gmail.com", encrypted_password: "$2a$11$MgjMLyRzfBNLpUgYcmswM.DCXnw6dGJlaT6XZ/AwzGsT9SJtT/7Ee", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, first_name: "philip", last_name: "greenwald", home_port: "", state: "", vessel_name: "", confirmation_token: "4auxEtBw56FZxsMJSGgd", confirmed_at: nil, confirmation_sent_at: "2016-11-11 22:50:24"}
+# ])
+# ActiveAdmin::Comment.create!([
+#   {namespace: "admin", body: "heres a comment", resource_id: "4", resource_type: "Report", author_id: 1, author_type: "AdminUser"}
+# ])
+# Buzz.create!([
+#   {post: "This is awesome", user_id: nil},
+#   {post: "Stellwagen bite is going off", user_id: nil},
+#   {post: "Scoolies are in Plymouth", user_id: nil},
+#   {post: "Tuna bite off backside is going off right now", user_id: nil},
+#   {post: "asdfasdfasdfasdf", user_id: nil},
+#   {post: "asdfasdfasdf", user_id: nil},
+#   {post: "asvsvasdvsd", user_id: nil},
+#   {post: "stellwagen is going nuts", user_id: nil},
+#   {post: "asdfasdfafdasdfas", user_id: nil},
+#   {post: "Testing 1 2 3", user_id: nil},
+#   {post: "as;kdfhka;dh;asd", user_id: nil}
+# ])
