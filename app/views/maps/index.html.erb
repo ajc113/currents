@@ -49,7 +49,12 @@
       map = new google.maps.Map(document.getElementById('map'), {
         zoom: 9,
         center: {lat: 42.05, lng: -70.25},
+          zoomControl: true,
+          scaleControl: false,
+          scrollwheel: false,
+          disableDoubleClickZoom: true,
         mapTypeId: google.maps.MapTypeId.SATELLITE
+
       });
 
 
@@ -69,6 +74,7 @@
         fillOpacity: 0.45,
         editable: false,  
         map: map
+
       });
 
       // Add a listener for the click event.
