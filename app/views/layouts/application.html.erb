@@ -14,6 +14,15 @@
 <body>
 	<div class="wrapper">
 		<%= render 'layouts/navbar' %>
+		<% if flash.any? %>
+			<div class="container">
+				<% flash.each do |key, value| %>
+					<div class="alert">
+						<%= value %>
+					</div>
+				<% end %>
+			</div>
+		<% end %>
 		<%= yield %>
 	</div>
 

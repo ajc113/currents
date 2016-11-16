@@ -1,7 +1,7 @@
 <body>
 
    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-   
+
    <div class="wrapper">
       <div class="block-center mt-xl wd-xl">
          <!-- START panel-->
@@ -12,7 +12,14 @@
                </a>
             </div>
             <div class="panel-body">
-               <p class="text-center">SIGN IN TO CONTINUE.</p>
+               <p class="text-center">
+                <% puts "the resource is #{resource.inspect}\n and the errors are #{resource.errors.inspect} ".red %>
+                   <% resource.errors.each do |message| %>
+                   <% puts "the resource is #{resource.inspect}\n and the message is #{message}".red %>
+    <%= message %>
+   <% end %>
+
+               </p>
                <form role="form" data-parsley-validate="" novalidate="" class="mb-lg">
                 
                
