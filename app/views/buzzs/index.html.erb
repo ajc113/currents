@@ -1,52 +1,180 @@
 <title>Buzz</title>
+<%= image_tag 'harbor.jpg',  class: 'img-responsive', style: 'display:block; opacity: .55' %><p id="notice"><%= notice %></p>
 
-<p id="notice"><%= notice %></p>
 
- <div class="content-wrapper">
-  <div class="row">
-     <div class="col-md-4">
-        <div class="panel panel-default">
-           <div class="panel-body text-center">
-              <div class="pv-lg">
-                <h1>Buzz</h1>
-                <h2>Real Time Intel</h2>
-                
-                <div class="media">
-                  <div class="media-left">
-                    <div class="media-body">
 
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Post</th>
-                      <th>User</th>
-                      <th>Vessel</th>
-                      <th>Port</th>
-                      <th colspan="3"></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <% @buzzs.each do |buzz| %>
-                    <tr>
-                    <td><%= buzz.post %></td>
-                    <td><%= buzz.user %></td>
-                    <td><%= buzz.user.try(:vessel_name) %></td>
-                    <td><%= buzz.user.try(:home_port) %></td>
-                    <td><%= link_to 'Show', buzz %></td>
-                    <td><%= link_to 'Edit', edit_buzz_path(buzz) %></td>
-                    <td><%= link_to 'Destroy', buzz, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                    </tr>
-                    <% end %>
-                  </tbody>
-                </table>
-                  <br>
-                  <%= link_to 'New Buzz', new_buzz_path %>
+  
+<div class="col-lg-6">
+  <div class="panel panel-default">
+    <div class="panel-body text-center">
+      <div class="panel-body bg-info-dark">
+        <ul><h1>Radio Talk</h1></ul>
+        <ul><h2>Real Time Intel</h2></ul>
+      </div>        
+        <div <div class="table-responsive">              
+          <span class="pull-left">    
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Post</th>
+                  <th>User</th>
+                  <th>Vessel</th>
+                  <th>Port</th>
+                  <th colspan="3"></th>
+                </tr>
+              </thead>
+              <tbody>  
+                <% @buzzs.each do |buzz| %>
+                <tr>
+                <td><%= buzz.post %></td>
+                <td><%= buzz.user %></td>
+                <td><%= buzz.user.try(:vessel_name) %></td>
+                <td><%= buzz.user.try(:home_port) %></td>
+                <td><%= link_to 'Show', buzz %></td>
+                <td><%= link_to 'Edit', edit_buzz_path(buzz) %></td>
+                <td><%= link_to 'Destroy', buzz, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </span>  
+              <br>  
+        </div>
+      </div>
+    </div>
+      <div class="p-lg text-center">
+      <%= link_to 'New Post', new_buzz_path, class: 'btn btn-inverse' %>
+      </div>
+  </div>
 </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+
+
+            <div class="row-masonry row-masonry-lg-2">
+               <div class="col-masonry">
+                  <div class="panel b m0">
+                     <div class="panel-heading">
+                        <div class="pull-right">
+                           <div class="btn-group dropdown">
+                              <button data-toggle="dropdown" class="btn btn-link">
+
+
+
+
+
+
+<p class="lead">List of Comments</p>
+    <div class="panel">
+       <div class="table-responsive">
+          <table class="table table-hover">
+             <thead>
+                <tr>
+                   <th>
+                      <strong>Comment ID</strong>
+                   </th>
+                   <th>
+                      <strong>Date</strong>
+                   </th>
+                   <th>
+                      <strong>Username</strong>
+                   </th>
+                   <th>
+                      <strong>Comment excerpt</strong>
+                   </th>
+                   <th class="text-center">
+                      <strong>Current status</strong>
+                   </th>
+                   <th style="width:130px" class="text-right">
+                      <strong>Actions</strong>
+                   </th>
+                </tr>
+             </thead>
+             <tbody>
+                <tr>
+                   <td>123</td>
+                   <td>10/05/2015</td>
+                   <td><a href="">Jack Jordan</a>
+                   </td>
+                   <td>Sed quis eros libero, a euismod nisl....</td>
+                   <td class="text-center">
+                      <span class="label label-success">Approved</span>
+                   </td>
+                   <td class="text-right">
+                      <button type="button" class="btn btn-sm btn-default">
+                         <em class="fa fa-pencil"></em>
+                      </button>
+                      <button type="button" class="btn btn-sm btn-danger">
+                         <em class="fa fa-trash"></em>
+                      </button>
+                      <button type="button" class="btn btn-sm btn-success">
+                         <em class="fa fa-check"></em>
+                      </button>
+                   </td>
+                </tr>
+                <tr>
+                   <td>456</td>
+                   <td>10/07/2015</td>
+                   <td><a href="">Hailey Mckinney</a>
+                   </td>
+                   <td>Nulla facilisi.</td>
+                   <td class="text-center">
+                      <span class="label label-success">Approved</span>
+                   </td>
+                   <td class="text-right">
+                      <button type="button" class="btn btn-sm btn-default">
+                         <em class="fa fa-pencil"></em>
+                      </button>
+                      <button type="button" class="btn btn-sm btn-danger">
+                         <em class="fa fa-trash"></em>
+                      </button>
+                      <button type="button" class="btn btn-sm btn-success">
+                         <em class="fa fa-check"></em>
+                      </button>
+                   </td>
+                </tr>
+                <tr>
+                   <td>789</td>
+                   <td>11/05/2015</td>
+                   <td><a href="">Peyton Reyes</a>
+                   </td>
+                   <td>Quisque enim nisi, semper non pulvinar et, aliquam id lorem...</td>
+                   <td class="text-center">
+                      <span class="label label-warning">Pending</span>
+                   </td>
+                   <td class="text-right">
+                      <button type="button" class="btn btn-sm btn-default">
+                         <em class="fa fa-pencil"></em>
+                      </button>
+                      <button type="button" class="btn btn-sm btn-danger">
+                         <em class="fa fa-trash"></em>
+                      </button>
+                      <button type="button" class="btn btn-sm btn-success">
+                         <em class="fa fa-check"></em>
+                      </button>
+                   </td>
+                </tr>
+                <tr>
+                   <td>999</td>
+                   <td>10/06/2015</td>
+                   <td><a href="">Darryl Harper</a>
+                   </td>
+                   <td>Nulla facilisi.</td>
+                   <td class="text-center">
+                      <span class="label label-danger">Rejected</span>
+                   </td>
+                   <td class="text-right">
+                      <button type="button" class="btn btn-sm btn-default">
+                         <em class="fa fa-pencil"></em>
+                      </button>
+                      <button type="button" disabled="" class="btn btn-sm btn-danger">
+                         <em class="fa fa-trash"></em>
+                      </button>
+                      <button type="button" class="btn btn-sm btn-success">
+                         <em class="fa fa-check"></em>
+                      </button>
+                   </td>
+                </tr>
+             </tbody>
+          </table>
+       </div>
+    </div>
+ </div>
