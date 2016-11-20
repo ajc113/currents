@@ -149,14 +149,14 @@
 
           <thead>
             <tr>
-              <th>Date</th>
+              <th class="wd-td2">Date</th>
               <th class="wd-md">User</th>
               <th class="wd-md">Port</th>
               <th class="wd-md">Target species</th>
-              <th class="wd-md">Location</th>
+              <th class="wd-td3">Location</th>
               <th class="wd-md">Catch keepers</th>
               <th class="wd-md">Catch total</th>
-              <th class="wd-md">Trip summary</th>
+              <th class="wd-td1"> Trip summary</th>
               <th class="wd-md">Primary method</th>
               <th class="wd-md">Tide</th>
               <th class="wd-md">Weather</th>
@@ -164,28 +164,29 @@
               <th class="wd-md">Spot</th>
               <th class="wd-md">Best bait</th>
               <th class="wd-md">Trip description</th>  
+              <th class="wd-md">Edit</th> 
+              <th class="wd-md">Delete</th> 
             </tr>
           </thead>
           <tbody>
             <% if current_user %>
             <% @reports.each do |report| %>
               <tr>
-                <td><%= report.date %></td>
+                <td class="wd-td2"><%= report.date %></td>
                 <td><%= report.user.try(:vessel_name) %></td>
                 <td><%= report.user.try(:home_port) %></td>
                 <td><%= report.target_species %></td>
-                <td><%= report.location.try(:short_name) %></td>
+                <td class-"wd-td3"><%= report.location.try(:short_name) %></td>
                 <td><%= report.catch_keepers %></td>
                 <td><%= report.catch_total %></td>
-                <td><%= word_wrap (report.trip_summary) %></td>
+                <td class="wd-td1"><%= report.trip_summary %></td>
                 <td><%= report.primary_method %></td>
                 <td><%= report.tide %></td>
                 <td><%= report.weather %></td>
                 <td><%= report.wind %></td>
                 <td><%= report.spot %></td>
                 <td><%= report.best_bait %></td>
-                <td><%= report.trip_description %></td>
-                <td><%= link_to 'View Details', report %></td>
+                <td class="wd-td1"><%= report.trip_description %></td>
                 <td><%= link_to 'Edit', edit_report_path(report) %></td>
                 <td><%= link_to 'Delete', report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
               </tr>

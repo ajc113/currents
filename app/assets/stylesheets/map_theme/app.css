@@ -259,10 +259,23 @@ fieldset .form-group {
     -webkit-appearance: none;
   }
 }
+
+/*changed the background table color had nothing*/
+
 .table > thead > tr > th {
   border-bottom-width: 1px;
   background-color: #E0E0E0;
 }
+
+
+/*css to fix table width*/
+.thcolumn1 { width: 25px;
+  word-wrap:break-word;}
+.tdcolumn1 { width: 25px;
+  word-wrap:break-word;}
+
+
+
 .table > tbody + tbody {
   border-bottom-width: 1px;
 }
@@ -7447,6 +7460,21 @@ body .jvectormap-zoomout {
   -o-transform: scale(3, 3);
   transform: scale(3, 3);
 }
+/*AJ Custom table format*/
+.wd-td1 {
+  max-width: 200px;
+  word-wrap:break-word;
+  }
+.wd-td2 {
+  max-width: 75px;
+  white-space: nowrap;
+  }
+
+.wd-td3 {
+  width: 200px;
+  white-space: nowrap;
+  }
+
 .wd-xxs {
   width: 60px;
 }
@@ -7461,6 +7489,7 @@ body .jvectormap-zoomout {
 }
 .wd-md {
   width: 240px;
+
 }
 .wd-lg {
   width: 280px;
