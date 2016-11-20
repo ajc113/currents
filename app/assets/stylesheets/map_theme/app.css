@@ -90,6 +90,12 @@
 /* ========================================================================
    Component: bootstrap-reset.less
  ========================================================================== */
+.table-container {
+
+
+}
+
+
 .glyphicon {
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
@@ -255,6 +261,7 @@ fieldset .form-group {
 }
 .table > thead > tr > th {
   border-bottom-width: 1px;
+  background-color: #E0E0E0;
 }
 .table > tbody + tbody {
   border-bottom-width: 1px;
