@@ -1,76 +1,111 @@
 <title>Reports</title>
-<%= image_tag 'lighthouse2.jpg',  class: 'img-responsive', style: 'display:block; opacity: .85' %><p id="notice"><%= notice %></p>
-  <p id="notice"><%= notice %></p>
-    <div class="content-wrapper">
-      <div class="content-heading"> 
-        <strong><%= current_user.vessel_name %> Catch Reports</strong>  
-        <aside style="float:right">
-          <!-- new report button -->
-          <%= link_to 'Log New Catch Report', new_report_path, class: 'btn btn-info'%>
-        </aside> 
-      </div>
-    <form action="/filter" id="filter_form" >
-      <table><h5>Report Filters</h5>
-        <thead> 
-          <tr>
-          <th><label for="target_species">Species</label></th>
-          <th><label for="location">Location</label></th>
-          <th><label for="tide">Tide</label></th>
-          <th><label for="date">Month</label></th>
-          </tr>
-        </thead>  
-          <!-- button -->
-          <%= link_to 'Clear Filter', reports_path, class: 'mb-sm btn btn-info' %>
-        <tbody>
-          <tr> 
-          <td>
-            <select id="target_species" name="target_species">
-              <option value=""></option>
-                <% current_user.reports.each do |report| %>
-              <option value="<%= report.target_species %>" <%= selected_target_species(report.target_species) %>><%= report.target_species %></option>
-                <% end %>
-              </select>
-          </td>     
-          <td> 
-            <select id="location" name="location">
-              <option value=""></option>
-                <% Location.all.each do |location| %>
-              <option value="<%= location.id %>" <%= selected_locations(location) %>><%= location.short_name %></option>
-                <% end %>
-            </select>
-          </td> 
-          <td> 
-            <select id="tide" name="tide">
-             <option value=""></option>
-                <% @current_user.reports.each do |report| %>
-              <option value="<%= report.tide %>" <%= selected_tide(report.tide) %>><%= report.tide %></option>
-              <% end %>
-            </select>
-          </td> 
-          <td> 
-            <select id="date" name="date">
-              <option value=""></option>
-              <option value="January">January</option>
-              <option value="February">February</option>
-              <option value="March">March</option>  
-              <option value="April">April</option>
-              <option value="May">May</option>
-              <option value="June">June</option>
-              <option value="July">July</option>
-              <option value="August">August</option> 
-              <option value="September">September</option>
-              <option value="October">October</option> 
-              <option value="November">November</option> 
-              <option value="A" </option>
-              
-            </select>
-          </td>  
-        </tr>
-      
-    </tbody>
-  </table>
-</form>
+<%= image_tag 'lighthouse2.jpg',  class: 'img-responsive', style: 'display:block; opacity: .85' %>
+<p id="notice"><%= notice %></p>
 
+<!-- START loader widget-->
+<div class="row">
+<!-- <aside class="col-lg-3">
+  <div class="panel panel-default">
+       <div class="panel-body">
+         
+          <div class="text-info">Season Reports</div>
+          <canvas data-classyloader="" data-percentage="70" data-speed="20" data-font-size="40px" data-diameter="70" data-line-color="#23b7e5" data-remaining-line-color="rgba(200,200,200,0.4)" data-line-width="10"
+          data-rounded-line="true" class="center-block"></canvas>
+          <div data-sparkline="" data-bar-color="#23b7e5" data-height="25" data-bar-width="5" data-bar-spacing="2" data-values="5,4,8,7,8,5,4,6,5,5,9,4,6,3,4,7,5,4,7" class="text-center"></div>
+       </div>
+  </div>
+</aside>  -->  
+  <!-- end of widget -->
+
+  <!-- start of Filters -->
+<form action="/filter" id="filter_form" >
+  <div class="col-sm-6">
+    <div class="container-fluid">
+      <div class="panel-heading"><h4 class="M0">Report Filter </h4>
+        <div class="panel b bg-inverse">
+          <div class= "plan">
+            <table class= "table">
+                <thead> 
+                  <tr>
+                  <th><label for="target_species">Species</label></th>
+                  <th><label for="location">Location</label></th>
+                  <th><label for="tide">Tide</label></th>
+                  <th><label for="date">Month</label></th>
+                  </tr>
+                </thead> 
+                <tbody>
+                  <tr> 
+                    <td>
+                      <select id="target_species" name="target_species">
+                        <option value=""></option>
+                          <% current_user.reports.each do |report| %>
+                        <option value="<%= report.target_species %>" <%= selected_target_species(report.target_species) %>><%= report.target_species %></option>
+                          <% end %>
+                        </select>
+                    </td>     
+                    <td> 
+                      <select id="location" name="location">
+                        <option value=""></option>
+                          <% Location.all.each do |location| %>
+                        <option value="<%= location.id %>" <%= selected_locations(location) %>><%= location.short_name %></option>
+                          <% end %>
+                      </select>
+                    </td> 
+                    <td> 
+                      <select id="tide" name="tide">
+                       <option value=""></option>
+                          <% @current_user.reports.each do |report| %>
+                        <option value="<%= report.tide %>" <%= selected_tide(report.tide) %>><%= report.tide %></option>
+                        <% end %>
+                      </select>
+                    </td> 
+                    <td> 
+                      <select id="date" name="date">
+                        <option value=""></option>
+                        <option value="January">January</option>
+                        <option value="February">February</option>
+                        <option value="March">March</option>  
+                        <option value="April">April</option>
+                        <option value="May">May</option>
+                        <option value="June">June</option>
+                        <option value="July">July</option>
+                        <option value="August">August</option> 
+                        <option value="September">September</option>
+                        <option value="October">October</option> 
+                        <option value="November">November</option> 
+                        <option value="A"> </option>
+                      </select>
+                    </td>  
+                  </tr>
+                </tbody>
+            </table>
+                <!-- button -->  
+          </div>
+        </div>
+      </div> 
+    </div>
+  </div>
+</form>
+<!-- end of filters -->
+
+
+  <!-- Filter clear button -->
+<div>
+  <br>
+  <br>  
+  <%= link_to 'Clear Filter', reports_path, class: 'btn btn-info btn-lg' %>
+  <br>
+  <br>
+  <br> 
+  <!-- Log new button -->
+  <%= link_to 'Log New Catch Report', new_report_path, class: "btn btn-inverse btn-lg" %>
+</div>
+
+<!-- div row close -->
+</div>
+
+
+<!-- filter script -->
 <script>
   $('#target_species').change(function(){
     $('#filter_form').submit();
@@ -85,72 +120,72 @@
     $('#filter_form').submit();
   });
 </script>
+<!-- end of filter -->
 
 
 
+<!-- start of REPORTS -->
+<div class="row">
+  <!-- header   -->
+  <div class="panel bg-info">
+    <div class="panel-heading">
+      <h2>
+        <%= current_user.vessel_name %> Catch Reports
+      </h2>
+    </div> 
+  </div>
+  <!-- end of header -->
 
-<div class="panel panel-default">
+  <!-- start of report table -->
+  <div class="panel panel-default">
     <div class="table-responsive b0">
-    <table id="datatable1" class="table table-striped table-hover">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th class="wd-md">User</th>
-          <th class="wd-md">Port</th>
-          <th class="wd-md">Target species</th>
-          <th class="wd-md">Location</th>
-          <th class="wd-md">Catch keepers</th>
-          <th class="wd-md">Catch total</th>
-          <th class="wd-md">Trip summary</th>
-          <th class="wd-md">Primary method</th>
-          <th class="wd-md">Tide</th>
-          <th class="wd-md">Weather</th>
-          <th class="wd-md">Wind</th>
-          <th class="wd-md">Spot</th>
-          <th class="wd-md">Best bait</th>
-          <th class="wd-md">Trip description</th>
-          
-        </tr>
-      </thead>
-
-      <tbody>
-        <% if current_user %>
-        <% @reports.each do |report| %>
+      <table id="datatable1" class="table table-striped table-hover">
+        <thead>
           <tr>
-            <td><%= report.date %></td>
-            <td><%= report.user.try(:vessel_name) %></td>
-            <td><%= report.user.try(:home_port) %></td>
-            <td><%= report.target_species %></td>
-            <td><%= report.location.try(:short_name) %></td>
-            <td><%= report.catch_keepers %></td>
-            <td><%= report.catch_total %></td>
-            <td><%= report.trip_summary %></td>
-            <td><%= report.primary_method %></td>
-            <td><%= report.tide %></td>
-            <td><%= report.weather %></td>
-            <td><%= report.wind %></td>
-            <td><%= report.spot %></td>
-            <td><%= report.best_bait %></td>
-            <td><%= report.trip_description %></td>
-            <td><%= link_to 'View Details', report %></td>
-            <td><%= link_to 'Edit', edit_report_path(report) %></td>
-            <td><%= link_to 'Delete', report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <th>Date</th>
+            <th class="wd-md">User</th>
+            <th class="wd-md">Port</th>
+            <th class="wd-md">Target species</th>
+            <th class="wd-md">Location</th>
+            <th class="wd-md">Catch keepers</th>
+            <th class="wd-md">Catch total</th>
+            <th class="wd-md">Trip summary</th>
+            <th class="wd-md">Primary method</th>
+            <th class="wd-md">Tide</th>
+            <th class="wd-md">Weather</th>
+            <th class="wd-md">Wind</th>
+            <th class="wd-md">Spot</th>
+            <th class="wd-md">Best bait</th>
+            <th class="wd-md">Trip description</th>  
           </tr>
-        <% end %>
-      </tbody>
-</table>
+        </thead>
+        <tbody>
+          <% if current_user %>
+          <% @reports.each do |report| %>
+            <tr>
+              <td><%= report.date %></td>
+              <td><%= report.user.try(:vessel_name) %></td>
+              <td><%= report.user.try(:home_port) %></td>
+              <td><%= report.target_species %></td>
+              <td><%= report.location.try(:short_name) %></td>
+              <td><%= report.catch_keepers %></td>
+              <td><%= report.catch_total %></td>
+              <td><%= word_wrap (report.trip_summary  )  %></td>
+              <td><%= report.primary_method %></td>
+              <td><%= report.tide %></td>
+              <td><%= report.weather %></td>
+              <td><%= report.wind %></td>
+              <td><%= report.spot %></td>
+              <td><%= report.best_bait %></td>
+              <td><%= report.trip_description %></td>
+              <td><%= link_to 'View Details', report %></td>
+              <td><%= link_to 'Edit', edit_report_path(report) %></td>
+              <td><%= link_to 'Delete', report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
-</div>
-</div>
-
-
-<br>
-
-<%= link_to 'Log New Catch Report', new_report_path, class: 'btn btn-info'%>
-
 <% end %>
-</button>
-
-
-
-
