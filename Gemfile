@@ -40,6 +40,7 @@ gem 'colorize'
 gem 'carrierwave'
 gem 'mandrill-api'
 gem 'active_model_serializers', '~> 0.10.0'
+gem 'moving_average'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 group :production do
