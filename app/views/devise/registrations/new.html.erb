@@ -1,56 +1,74 @@
-<h2>Join The Fishing Network</h2>
+<div class = "container">
+  <div class="row">
+    <div class="content-wrapper">
+      <div class="col-sm-4">
+        <div class="panel panel-default">     
+          <div class="panel bg-inverse">
+            <h2> Join The Fishing Network</h2>
+          </div>    
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+          <div class="panel-body">    
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= devise_error_messages! %>
+            <form>  
+            <div class="field">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true %>
+            </div>
+            
+            <div class="field">
+              <%= f.label :first_name %><br />
+              <%= f.text_field :first_name, autofocus: true %>
+            </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+            <div class="field">
+              <%= f.label :last_name %><br />
+              <%= f.text_field :last_name, autofocus: true %>
+            </div>
+
+            <div class="field">
+              <%= f.label :home_port %><br />
+              <%= f.text_field :home_port, autofocus: true %>
+            </div>
+
+            <div class="field">
+              <%= f.label :state %><br />
+              <%= f.text_field :state, autofocus: true %>
+            </div>
+
+             <div class="field">
+              <%= f.label :vessel_name %><br />
+              <%= f.text_field :vessel_name, autofocus: true %>
+            </div>
+
+            
+
+            <div class="field">
+              <%= f.label :password %>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %><br />
+              <%= f.password_field :password, autocomplete: "off" %>
+            </div>
+
+            <div class="field">
+              <%= f.label :password_confirmation %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "off" %>
+            </div>
+
+            <button type="submit" class="btn btn-block btn-inverse mt-lg">
+              <%= "Sign up" %>
+            </button>
+              <% end %>
+            </form>
+          </div>
+
+          <div class="panel-footer">
+            <%= render "devise/shared/links" %>
+          </div>
+      
+        </div>
+      </div>
+    </div>
   </div>
-  
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :home_port %><br />
-    <%= f.text_field :home_port, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :state %><br />
-    <%= f.text_field :state, autofocus: true %>
-  </div>
-
-   <div class="field">
-    <%= f.label :vessel_name %><br />
-    <%= f.text_field :vessel_name, autofocus: true %>
-  </div>
-
-  
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

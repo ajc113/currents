@@ -65,7 +65,9 @@
       map = new google.maps.Map(document.getElementById('map'), {
         zoom: 9,
         center: {lat: 42.05, lng: -70.25},
-        mapTypeId: google.maps.MapTypeId.SATELLITE
+        mapTypeId: google.maps.MapTypeId.SATELLITE,
+        scrollwheel:  false,
+        scaleControl: false,
       });
       var polygons = [];
       $.ajax({
