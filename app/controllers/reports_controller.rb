@@ -2,29 +2,13 @@ class ReportsController < ApplicationController
   before_action :set_report, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
-  # GET /reports
-  # GET /reports.json
-  def index
-  #   @filterrific = initialize_filterrific(
-  #     Report,
-  #     params[:filterrific],
-  #     @filterrific.select_options = {
-  #         with_target_species: Report.options_for_select,
-  #         },
-       
-  #   ) or return
-  #     @reports = @filterrific.find.page(params[:page])
 
-
-  #   respond_to do |format|
-  #     format.html
-  #     format.js
-      if current_user
+def index
+    if current_user
       @reports = current_user.reports
-     else
-       redirect_to new_user_session_path, notice: 'You are not logged in.'
-     end
-     
+    else
+      redirect_to new_user_session_path, notice: 'You are not logged in.'
+    end 
 end
 
 def filter

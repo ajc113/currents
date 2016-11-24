@@ -6,7 +6,7 @@ class BuzzsController < ApplicationController
   def index
     @buzzs = Buzz.all
     @locations = Location.all
-
+    @users = User.all
   end
 
   # GET /buzzs/1
@@ -17,6 +17,7 @@ class BuzzsController < ApplicationController
   # GET /buzzs/new
   def new
     @buzz = Buzz.new
+   
   end
 
   # GET /buzzs/1/edit
@@ -27,6 +28,7 @@ class BuzzsController < ApplicationController
   # POST /buzzs.json
   def create
     @buzz = Buzz.new(buzz_params)
+    @buzz.user=current_user
 
     respond_to do |format|
       if @buzz.save
@@ -71,9 +73,13 @@ class BuzzsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def buzz_params
-      params.require(:buzz).permit(:post, :user_id)
+      params.require(:buzz).permit(:post)
     end
-    def location_parms
+    def location_params
     @location = Location.where(params[:short_name])
   end
+    def user_params
+    
+    end
+
 end
