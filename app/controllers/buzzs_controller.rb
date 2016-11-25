@@ -32,9 +32,8 @@ class BuzzsController < ApplicationController
 
     respond_to do |format|
       if @buzz.save
-        format.html { redirect_to @buzz, notice: 'Buzz was successfully created.' }
-        format.json { render :index, status: :created, location: @buzz }
-       
+        format.html { redirect_to buzzs_url, notice: 'Buzz was successfully created.' }
+        format.json { render :show, status: :created, location: @buzz }
       else
         format.html { render :new }
         format.json { render json: @buzz.errors, status: :unprocessable_entity }
