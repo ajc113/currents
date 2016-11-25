@@ -1,5 +1,5 @@
 class CurrentsController < ApplicationController
-before_action :authenticate_user!
+# before_action :authenticate_user!
 
 
 def Index	

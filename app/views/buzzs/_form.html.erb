@@ -17,19 +17,21 @@
   <% end %>
 
 
+<form id="example-form">
+  <div class="content clearfix">
+    <div role="application" class="wizard clearfix" id="steps-uid-0">
+      
+      <%#= f.label :post %>Post the most recent buzz here.  Share eyewitness accounts and real time intel from on the water.  Blitzs, hot and dead action.
 
-
-
-
-
-
-
-
-  <div class="field">
-    <%= f.label :post %><br>
-    <%= f.text_area :post %>
+      <%= f.text_area :post, class:"form-control wysiwyg mt-lg" %>
+  
+    </div>
+  <br>
+  <div class="actions" novalidate="novalidate">
+    <%= f.submit class: "btn btn-inverse btn-md" %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+    <% end %>
+</div>
+
+
+
