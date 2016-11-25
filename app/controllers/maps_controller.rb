@@ -31,25 +31,20 @@ class MapsController < ApplicationController
       reports = location.reports.where(target_species: params[:target_species])
 
       avgrep = reports.where('date >= ?', 1.week.ago)
-      avggroup = avgrep.group('date').average('catch_total')
-      avarray = avggroup.map{|a,b| b.to_f}
-      movingavg = avarray.inject{ |sum, el| sum + el }.to_f / avarray.size
-      n = avarray.size 
-      sum_sqr = avarray.map {|x| x * x}.reduce(&:+)
-      sum_sqr = 0 if sum_sqr.to_f.nan? || sum_sqr.nil?
-      movingavg = 0 if movingavg.to_f.nan?
-      std_dev = Math.sqrt((sum_sqr - n * movingavg * movingavg)/(n-1))
-      if std_dev > 1 
-        color = "#FF3E38"
-      elsif std_dev > 0
-        color = "#C1AF6A"
-      else
-        color = "#4562A8"
-      end
-     @lreports.push(location:location,reports: userreport(reports),cfile: one_locations_json(location),movingavg: movingavg, color: color) unless reports.blank?
+      movavg = movingavg(avgrep)
+      puts "---movingavg", movavg
+     @lreports.push(location:location,reports: userreport(reports),cfile: one_locations_json(location),movingavg: movavg[:movingavg], color: movavg[:color]) 
     else
       avgrep = location.reports.where('date >= ?', 1.week.ago)
-      avggroup = avgrep.group('date').average('catch_total')
+      movavg = movingavg(avgrep)
+      puts "---movingavg", movavg
+      @lreports.push(location:location,reports: userreport(location.reports),cfile: one_locations_json(location),movingavg: movavg[:movingavg], color: movavg[:color])
+    end
+    end    
+    render json: @lreports
+  end
+  def movingavg(avgrep)
+    avggroup = avgrep.group('date').average('catch_keepers')
       avarray = avggroup.map{|a,b| b.to_f}
       movingavg = avarray.inject{ |sum, el| sum + el }.to_f / avarray.size
       puts "----moving average",  movingavg 
@@ -65,19 +60,8 @@ class MapsController < ApplicationController
       else
         color = "#4562A8"
       end
-      @lreports.push(location:location,reports: userreport(location.reports),cfile: one_locations_json(location),color: color,movingavg: movingavg)
-    end
-    end
-    # puts "@target_species is #{@target_species}\n"
-    # puts "@location is #{@location.inspect}\n"
-
-
-    # @reports = current_user.reports
-    # @reports = @reports.selected_species(@target_species) if @target_species
-    # @reports = @reports.selected_location(@location) if @location
-    # puts "the reports are #{@reports.to_json}".blue
-    
-    render json: @lreports
+      @movingavg = {movingavg: movingavg,color: color }
+      @movingavg
   end
   def userreport(reports)
     @rep = []

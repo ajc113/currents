@@ -21,6 +21,9 @@
     border: rgb(229, 229, 229) 1px solid;
     margin-top: 50px;
   }
+  .gm-style-iw {
+  width: 600px !important; 
+}
 </style>
 
 <div class="content-wrapper">
@@ -109,7 +112,7 @@
 
               google.maps.event.addListener(p, 'mouseover',function (event){
                 $("#locdetails").css("display", "block");
-                $( "#locdetails" ).append( "<p>"+ this.loc.short_name +"</p>" +"<p>" + this.mavg +  "</p>" );
+                $( "#locdetails" ).append( "<p>"+ this.loc.short_name +"</p>" +"<p>" + this.mavg +  "</p>"+"<p>" + this.rep.length +  "</p>" );
                 map.data.revertStyle();
         this.setOptions({
           strokeColor: '#F7F8FF',
@@ -141,8 +144,8 @@
 
 
  $('#species_select').change(function(){
-  infoWindow.close();
 initMap();
+infoWindow.close();
 
   // $.get(
   //   '<%= species_filter_path %>',
