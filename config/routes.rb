@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'filter', to: 'reports#filter'
 
   get 'about', to: 'currents#about'
+  get 'blog', to: 'currents#blog'
 
    get 'heatmap', to: 'maps#heatmap'
 

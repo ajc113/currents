@@ -1,3 +1,4 @@
+<title>Heat Maps</title>
 <style>
   html, body {
     height: 100%;
@@ -26,39 +27,51 @@
 }
 </style>
 
+<div class="text-center">
+  <h2>HeatMaps</h2>
+  <h3>Real Time Intel</h3>
+</div>
+
+<!-- filter container -->
 <div class="content-wrapper">
-  <div class="content-heading">
-    <h2>HeatMaps - Real Time Intel</h2>   <br />
-    <b> View Species</b> 
-    <%= form_tag species_filter_path, id: 'species_form' do %>
-      <select name="species" class="form-control m-b" id="species_select">
-        <option value="Any">Any</option>
-        <% all_species.each do |species| %>
-          <option value="<%= species.html_safe %>"><%= species %></option>
-        <% end %>
-      </select>
-    <% end %> 
+  <div class="row">
+    <div class="content-heading">
+      <h4> Filter by target species</h4> 
+      <%= form_tag species_filter_path, id: 'species_form' do %>
+        <select name="species" class="form-control m-b" id="species_select">
+          <option value="Any">Any</option>
+          <% all_species.each do |species| %>
+            <option value="<%= species.html_safe %>"><%= species %></option>
+          <% end %>
+        </select>
+      <% end %> 
+    </div>
   </div>
-  <div id="locdetails" style="display:none;">
-    <p>Test</p>
-  </div> 
-<div class="row">
-  <div class="col-md-">        
-    <div class="panel panel-default">
-      <div class="panel-heading"></div>
+    <br>
+
+
+  <!-- map container  -->
+  <div class="col-md-12">  
+    <div class="row">       
+      <div class="panel panel-default">
         <div class="panel-body">
-          <div style="height:700px; width: 1350px;">
-            <div id="map" class="gmap">
-              <p id="notice"><%= notice %></p>
+          <div style="height:650px; width: 1325px;">
+            <div id="map" data-styled class="gmap">
             </div> 
           </div>
         </div>
       </div> 
-    </div>     
-  </div> 
+    </div>      
 </div> 
 
+   
 
+
+
+
+
+
+<p id="notice"><%= notice %></p>
 <script>
   var map;
   var infoWindow;       

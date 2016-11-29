@@ -2,8 +2,13 @@ class CurrentsController < ApplicationController
 # before_action :authenticate_user!
 
 
-def Index	
-@buzzs = Buzz.order("created_at desc").limit(4).offset(1)
+def index
+@buzzs = Buzz.all.order("created_at DESC").limit(5)
+@buzz = "Yolo"
+
+# @locations = Location.all
+# @users = User.all
+# @menus = Menu.all.order("created_at DESC").limit(5)
 end
 
 
@@ -15,5 +20,5 @@ end
 
 end
 
-
+private
 

@@ -4,7 +4,7 @@ class BuzzsController < ApplicationController
   # GET /buzzs
   # GET /buzzs.json
   def index
-    @buzzs = Buzz.all
+    @buzzs = Buzz.all.order("created_at DESC")
     @locations = Location.all
     @users = User.all
   end
