@@ -4,11 +4,6 @@ class CurrentsController < ApplicationController
 
 def index
 @buzzs = Buzz.all.order("created_at DESC").limit(5)
-@buzz = "Yolo"
-
-# @locations = Location.all
-# @users = User.all
-# @menus = Menu.all.order("created_at DESC").limit(5)
 end
 
 
