@@ -25,7 +25,7 @@
 
 <!-- join network button -->
 <div class="p-lg text-center">
-<%= link_to "Join Network", new_user_registration_path, class: 'btn btn-info' %>
+<%= link_to "Join Network", new_user_registration_path, class: 'btn btn-info btn-lg' %>
 </div>
 
 
@@ -115,62 +115,62 @@
 <br>
 </div>     
 
-<!-- heatmap snapshot -->
+<!-- how it works section -->
 <div class="row bg-gray-lighter">
-   
     <div class="container">
-      <a href="maps">
-        <br>
+      <!-- <a href="maps"> -->
         <%= image_tag 'how_It_works_trns.png',  class: 'img-responsive', style: 'display:block; opacity: .80' %>
-      <br>
     </div>
-  </a>
+      <!-- </a> -->
+    <div class="p-lg text-center">
+        <%= link_to "View Network Rules", rules_path, class: 'btn btn-inverse btn-lg ' %>
+    </div>
 </div>
 
 
 <!-- Buzz snapsot -->
 
-      <div class="row bg-gray-lighter">
-        <div class="col-lg-3">
-        </div>
-        
-        <div class="col-lg-6">
-          <!-- <a href="buzzs" class="list-group-item">  -->
-          <div class="panel b m0">
-            <div class="panel-body">
-              <div class="panel-body bg-info text-center">
-                <h1>Recent Buzz</h1>
-              </div>        
-              <div <div class="table-responsive">               
-                  <table class="table table-hover">
-                    <thead>
-                      <tr>
-                        <th>Post</th>
-                        <th>Vessel</th>
-                        <th>Port</th>
-                      </tr>
-                    </thead>
-                      <tbody>  
-                        <% @buzzs.each do |buzz| %>
+        <div class="row bg-gray-lighter">
+          <div class="col-lg-3">
+          </div>
+          
+          <div class="col-lg-6">
+            <!-- <a href="buzzs" class="list-group-item">  -->
+            <div class="panel b m0">
+              <div class="panel-body">
+                <div class="panel-body bg-info text-center">
+                  <h1>Recent Buzz</h1>
+                </div>        
+                <div <div class="table-responsive">               
+                    <table class="table table-hover">
+                      <thead>
                         <tr>
-
-                          <td class="wd-td1"><%= buzz.post %></td>
-                          <td><%= buzz.user.try(:vessel_name) %></td>
-                          <td><%= buzz.user.try(:home_port) %></td>
+                          <th>Post</th>
+                          <th>Vessel</th>
+                          <th>Port</th>
                         </tr>
-                          <% end %>
-                    </tbody>
-                  </table>
-              </div>
-            </div>  
+                      </thead>
+                        <tbody>  
+                          <% @buzzs.each do |buzz| %>
+                          <tr>
 
+                            <td class="wd-td1"><%= buzz.post %></td>
+                            <td><%= buzz.user.try(:vessel_name) %></td>
+                            <td><%= buzz.user.try(:home_port) %></td>
+                          </tr>
+                            <% end %>
+                      </tbody>
+                    </table>
+                </div>
+              </div>  
+
+            </div> 
+          <!-- </a> -->
           </div> 
-        <!-- </a> -->
-        </div> 
 
-        <div class="col-lg-3"></div>
+          <div class="col-lg-3"></div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- end buzz snapshot  -->
+    <!-- end buzz snapshot  -->
