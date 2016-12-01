@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   get 'about', to: 'currents#about'
   get 'blog', to: 'currents#blog'
+  get 'rules', to: 'currents#rules'
 
    get 'heatmap', to: 'maps#heatmap'
 
