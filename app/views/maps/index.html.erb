@@ -29,14 +29,14 @@
 
 
 <div class="container-fluid">
-<div class="row">
-  <div class="p-lg text-center">
-
-        <h2>HeatMaps</h2>
-        <h3>Real Time Intel</h3>
+  <div class="row">
+    <div class="p-lg text-center">
+      <h2>HeatMaps</h2>
+      <h3>Real Time Intel</h3>
+    </div>
   </div>
 </div>
-</div>
+
 <!-- filter container -->
 <div class="content-wrapper">
   <div class="row">
@@ -114,72 +114,66 @@ var infoWindow;
               rep: response[i].reports,
               mavg: response[i].movingavg
             }));
-              polygons[polygons.length-1].setMap(map);
+              
+            polygons[polygons.length-1].setMap(map);
               var p = polygons[i];
-               google.maps.event.addListener(p, 'click', function (event) {
-                console.log(this);
+              google.maps.event.addListener(p, 'click', function (event) {
+              console.log(this);
+
         // console.log(location_reports);               
-         var contentString = '<table><thead><tr><th>Date</th><th>Target Species</th><th>Vessel Name</th><th>Primary Method</th><th>Catch Total</th><th>Trip Summary</th></tr></thead><tbody><b>' + this.loc.short_name +'</b> <br>' + this.loc.long_name +'<br> <br>';
+      var contentString = '<table><thead><tr><th>Date</th><th>Target Species</th><th>Vessel Name</th><th>Primary Method</th><th>Catch Total</th><th>Trip Summary</th></tr></thead><tbody><b>' + this.loc.short_name +'</b> <br>' + this.loc.long_name +'<br> <br>';
          for(var j=0;j<this.rep.length; j++){
           contentString += '<tr><td>' +this.rep[j].rep.date + '</td> <td>' +this.rep[j].rep.target_species + '</td><td>' +this.rep[j].vessel_name + '</td><td>' +this.rep[j].rep.primary_method + '</td><td>' +this.rep[j].rep.catch_total + '</td><td>' +this.rep[j].rep.trip_summary + '</td></tr>';
-         };
-         contentString +='</tbody></table>';
-        // Replace the info window's content and position.
-        infoWindow = new google.maps.InfoWindow;
-        infoWindow.setContent(contentString);
-        infoWindow.setPosition(event.latLng);
-        infoWindow.open(map);
-              }); 
-              google.maps.event.addListener(p, 'mouseover',function (event){
-                $("#locdetails").css("display", "block");
-                $( "#locdetails" ).append( "<p>"+ this.loc.short_name +"</p>" +"<p>" + this.mavg +  "</p>"+"<p>" + this.rep.length +  "</p>" );
-                map.data.revertStyle();
-        this.setOptions({
-          strokeColor: '#F7F8FF',
-          strokeWeight: 3 ,
-          fillOpacity: 0.75
-            });
-              });
-              google.maps.event.addListener(p, 'mouseout',function (event){
-                $("#locdetails").css("display", "none");
-                $( "#locdetails" ).empty();
-              map.data.revertStyle();
+          };
+
+            contentString +='</tbody></table>';
+            // Replace the info window's content and position.
+            infoWindow = new google.maps.InfoWindow;
+            infoWindow.setContent(contentString);
+            infoWindow.setPosition(event.latLng);
+            infoWindow.open(map);
+          }); 
+          
+          google.maps.event.addListener(p, 'mouseover',function (event){
+            $("#locdetails").css("display", "block");
+            $( "#locdetails" ).append( "<p>"+ this.loc.short_name +"</p>" +"<p>" + this.mavg +  "</p>"+"<p>" + this.rep.length +  "</p>" );
+        
+          map.data.revertStyle();
           this.setOptions({
-              strokeColor: '#F7F8FF',
+            strokeColor: '#F7F8FF',
+            strokeWeight: 3 ,
+            fillOpacity: 0.75
+            });
+          });
+              
+          google.maps.event.addListener(p, 'mouseout',function (event){
+              $("#locdetails").css("display", "none");
+              $( "#locdetails" ).empty();
+          
+          map.data.revertStyle();
+            this.setOptions({
+            strokeColor: '#F7F8FF',
             strokeOpacity: 0.8,
             strokeWeight: .35,
             fillOpacity: 0.5,
           });
-              });
-            };
-          },
-          error: function(xhr) {
-            //Do Something to handle error
-          }
         });
-    
- }
- $('#species_select').change(function(){
-initMap();
-infoWindow.close();
-  // $.get(
-  //   '<%= species_filter_path %>',
-  //   $('#species_select').val(),
-  //   function(data){
-  //     console.log(map);
-  //     console.log($('#species_select').val());
-  //     infoWindow.close();
-  //     // map.fitBounds(bounds);
-  //   }
-  // );
+      };
+    },
+          
+    error: function(xhr) {
+    //Do Something to handle error
+    }
+  });
+}
+ 
+$('#species_select').change(function(){
+  initMap();
+  infoWindow.close();
 });
+
 </script>
       
 <script async defer
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRhKrHEYhZA2Qg5fagbEKaUItVsB-cQ3g&callback=initMap">
 </script>
-
-
-
-
-
