@@ -4,11 +4,11 @@ class ReportsController < ApplicationController
 
 
 def index
-    if current_user
+  puts "YOLO".on_blue
+   
       @reports = current_user.reports
-    else
-      redirect_to new_user_session_path, notice: 'You are not logged in.'
-    end 
+      @reports_for_filter = @reports.select("DISTINCT(target_species)")
+
 end
 
 def filter
@@ -25,6 +25,9 @@ def filter
   puts "@date is #{@date}\n"
 
   @reports = current_user.reports
+
+  @reports_for_filter = @reports.select("DISTINCT(target_species)") #sets up target_species for filter box
+
   @reports = @reports.selected_species(@target_species) if @target_species
   @reports = @reports.selected_location(@location) if @location
   @reports = @reports.selected_tide(@tide) if @tide

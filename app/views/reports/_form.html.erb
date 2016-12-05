@@ -1,16 +1,19 @@
 
-<%= form_for(@report) do |f| %>
-  <% if @report.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@report.errors.count, "error") %> prohibited this report from being saved:</h2>
 
+<%= form_for(@report) do |f| %>
+<% if @report.errors.any? %>
+    
+  <div id="error_explanation">
+    <h2><%= pluralize(@report.errors.count, "error") %> prohibited this report from being saved:</h2>
       <ul>
       <% @report.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
-    </div>
-  <% end %>
+  </div>
+
+<% end %>
+
 
   <div class="field">
     <%= f.label :date %><br>
@@ -70,8 +73,3 @@
   </div>
 <% end %>
 
-</table>
-</div>
-</div>
-</div>
-</div>
