@@ -1,0 +1,54 @@
+    
+<script>
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 9,
+        center: {lat: 42.05, lng: -70.25},
+        mapTypeId: google.maps.MapTypeId.SATELLITE,
+        scrollwheel:  false,
+        scaleControl: false,
+      });
+
+
+
+
+
+            for (var i = 0; i < response.length ; i++) {
+              polygons.push(new google.maps.Polygon({
+              paths: response[i].cfile,
+              strokeColor: '#F7F8FF',
+              strokeOpacity: 0.8,
+              strokeWeight: 0.35,
+              fillColor: response[i].color,
+              fillOpacity: 0.45,
+              editable: false,
+
+
+infoWindow.open(map);
+              }); 
+              google.maps.event.addListener(p, 'mouseover',function (event){
+                $("#locdetails").css("display", "block");
+                $( "#locdetails" ).append( "<p>"+ this.loc.short_name +"</p>" +"<p>" + this.mavg +  "</p>"+"<p>" + this.rep.length +  "</p>" );
+                map.data.revertStyle();
+        this.setOptions({
+          strokeColor: '#F7F8FF',
+          strokeWeight: 3 ,
+          fillOpacity: 0.75
+            });
+              });
+              google.maps.event.addListener(p, 'mouseout',function (event){
+                $("#locdetails").css("display", "none");
+                $( "#locdetails" ).empty();
+              map.data.revertStyle();
+          this.setOptions({
+              strokeColor: '#F7F8FF',
+            strokeOpacity: 0.8,
+            strokeWeight: .35,
+            fillOpacity: 0.5,
+          });
+
+
+</script> 
+
+
+

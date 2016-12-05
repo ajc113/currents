@@ -1,37 +1,42 @@
 <title>Heat Map</title>
 <style>
   html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    #map {
+      height: 80%;
+      width: 100%;
+    }
+    #locdetails {
+      position: absolute;
+      right: 300px;
+      text-align: center;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 13px;
+      z-index: 5;
+      box-shadow: rgb(51, 51, 51) 0px 4px 6px -4px;
+      padding: 5px 10px;
+      background: linear-gradient(rgb(255, 255, 255) 0%, rgb(245, 245, 245) 100%);
+      border: rgb(229, 229, 229) 1px solid;
+      margin-top: 50px;
+    }
+    .gm-style-iw {
+    width: 600px !important; 
   }
-  #map {
-    height: 80%;
-    width: 100%;
-  }
-  #locdetails {
-    position: absolute;
-    right: 300px;
-    text-align: center;
-    font-family: Roboto, Arial, sans-serif;
-    font-size: 13px;
-    z-index: 5;
-    box-shadow: rgb(51, 51, 51) 0px 4px 6px -4px;
-    padding: 5px 10px;
-    background: linear-gradient(rgb(255, 255, 255) 0%, rgb(245, 245, 245) 100%);
-    border: rgb(229, 229, 229) 1px solid;
-    margin-top: 50px;
-  }
-  .gm-style-iw {
-  width: 600px !important; 
-}
 </style>
 
-<div class="text-center">
-  <h2>HeatMaps</h2>
-  <h3>Real Time Intel</h3>
-</div>
 
+<div class="container-fluid">
+<div class="row">
+  <div class="p-lg text-center">
+
+        <h2>HeatMaps</h2>
+        <h3>Real Time Intel</h3>
+  </div>
+</div>
+</div>
 <!-- filter container -->
 <div class="content-wrapper">
   <div class="row">
@@ -49,32 +54,33 @@
   </div>
     <br>
 
+  <div id="locdetails" style="display:none;">
+    <p>Test</p>
+  </div> 
 
   <!-- map container  -->
-  <div class="col-md-12">  
-    <div class="row">       
-      <div class="panel panel-default">
+<div class="row">
+  <div class="col-md-">        
+    <div class="panel panel-default">
+      <div class="panel-heading"></div>
         <div class="panel-body">
-          <div style="height:1650px; width: 1325px;">
-            <div id="map" data-styled class="gmap">
+          <div style="height:700px; width: 1350px;">
+            <div id="map" class="gmap">
+              <p id="notice"><%= notice %></p>
             </div> 
           </div>
         </div>
       </div> 
-    </div>      
+    </div>     
+  </div> 
 </div> 
-
-   
-
-
-
-
 
 
 <p id="notice"><%= notice %></p>
+
 <script>
-  var map;
-  var infoWindow;       
+var map;
+var infoWindow;       
       
     // Map Display options
     function initMap() {
@@ -85,6 +91,7 @@
         scrollwheel:  false,
         scaleControl: false,
       });
+      
       var polygons = [];
       $.ajax({
           url: '<%= species_filter_path %>',
@@ -98,7 +105,7 @@
               paths: response[i].cfile,
               strokeColor: '#F7F8FF',
               strokeOpacity: 0.8,
-              strokeWeight: 0.35,
+              strokeWeight: .35,
               fillColor: response[i].color,
               fillOpacity: 0.45,
               editable: false,  
@@ -112,9 +119,9 @@
                google.maps.event.addListener(p, 'click', function (event) {
                 console.log(this);
         // console.log(location_reports);               
-         var contentString = '<table><thead><tr><th>Date</th><th>Target Species</th><th>Vessel Name</th><th>Primary Method</th><th>Keepers</th><th>Trip Summary</th></tr></thead><tbody><b>' + this.loc.short_name +'</b> <br>' + this.loc.long_name +'<br> <br>';
+         var contentString = '<table><thead><tr><th>Date</th><th>Target Species</th><th>Vessel Name</th><th>Primary Method</th><th>Catch Total</th><th>Trip Summary</th></tr></thead><tbody><b>' + this.loc.short_name +'</b> <br>' + this.loc.long_name +'<br> <br>';
          for(var j=0;j<this.rep.length; j++){
-          contentString += '<tr><td>' +this.rep[j].rep.date + '</td> <td>' +this.rep[j].rep.target_species + '</td><td>' +this.rep[j].vessel_name + '</td><td>' +this.rep[j].rep.primary_method + '</td><td>' +this.rep[j].rep.catch_keepers + '</td><td>' +this.rep[j].rep.trip_summary + '</td></tr>';
+          contentString += '<tr><td>' +this.rep[j].rep.date + '</td> <td>' +this.rep[j].rep.target_species + '</td><td>' +this.rep[j].vessel_name + '</td><td>' +this.rep[j].rep.primary_method + '</td><td>' +this.rep[j].rep.catch_total + '</td><td>' +this.rep[j].rep.trip_summary + '</td></tr>';
          };
          contentString +='</tbody></table>';
         // Replace the info window's content and position.
@@ -148,18 +155,8 @@
           },
           error: function(xhr) {
             //Do Something to handle error
-          } 
+          }
         });
-
-      
-
-
-
-
-
-
-
-
     
  }
  $('#species_select').change(function(){
