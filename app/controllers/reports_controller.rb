@@ -1,13 +1,11 @@
 class ReportsController < ApplicationController
   before_action :set_report, only: [:show, :edit, :update, :destroy]
+  before_action :set_current_user_reports
   before_action :authenticate_user!
 
 
 def index
   puts "YOLO".on_blue
-   
-      @reports = current_user.reports
-      @reports_for_filter = @reports.select("DISTINCT(target_species)")
 
 end
 
@@ -24,9 +22,7 @@ def filter
   puts "@tide is #{@tide}\n"
   puts "@date is #{@date}\n"
 
-  @reports = current_user.reports
 
-  @reports_for_filter = @reports.select("DISTINCT(target_species)") #sets up target_species for filter box
 
   @reports = @reports.selected_species(@target_species) if @target_species
   @reports = @reports.selected_location(@location) if @location
@@ -120,6 +116,13 @@ end
       format.html { redirect_to reports_url, notice: 'Report was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def set_current_user_reports
+    @reports = current_user.reports
+    @reports_for_filter = @reports.select("DISTINCT(target_species)") #sets up target_species for filter box
   end
 
     # Use callbacks to share common setup or constraints between actions.

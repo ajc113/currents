@@ -17,20 +17,16 @@
 		<% if flash.any? %>
 			<div class="container">
 				<% flash.each do |key, value| %>
-					<div class="alert">
+					<div class="alert alert-<%=key%>">
 						<%= value %>
 					</div>
 				<% end %>
 			</div>
-		<% end %>
+		<% end unless devise_controller? %>
 		<%= yield %>
 	</div>
 
 
 
-
-
- <p class="notice"><%= notice %></p>
- <p class="alert"><%= alert %></p>
 </body>
 </html>

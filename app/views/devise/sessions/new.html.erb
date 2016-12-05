@@ -1,8 +1,7 @@
-<body>
 
    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-<div class="wrapper">
+<div class="wrapper"> 
   <div class="block-center mt-xl wd-xl">
     <!-- START panel-->
     <div class="panel panel-inverse panel-flat">
@@ -12,6 +11,16 @@
         </a>
       </div>
       <div class="panel-body">
+
+          <% if flash.any? %>
+
+              <% flash.each do |key, value| %>
+                <div class="alert alert-<%=key%>">
+                  <%= value %>
+                </div>
+              <% end %>
+
+          <% end %>
               <!-- Email input  -->
           <div class="form-group has-feedback">            
             <p class="text-center">
@@ -64,6 +73,37 @@
       <!-- </div> -->
    </div>
 <% end %>
+
+<style>
+/*flash*/
+.alert-error {
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+    text-align: left;
+ }
+
+.alert-alert {
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+    text-align: left;
+ }
+
+.alert-success {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+    text-align: left;
+ }
+
+.alert-notice {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+    text-align: left;
+ }
+</style>
 
 
 
