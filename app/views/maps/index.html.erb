@@ -55,7 +55,7 @@
     <div class="row">       
       <div class="panel panel-default">
         <div class="panel-body">
-          <div style="height:650px; width: 1325px;">
+          <div style="height:1650px; width: 1325px;">
             <div id="map" data-styled class="gmap">
             </div> 
           </div>
@@ -98,7 +98,7 @@
               paths: response[i].cfile,
               strokeColor: '#F7F8FF',
               strokeOpacity: 0.8,
-              strokeWeight: 1,
+              strokeWeight: 0.35,
               fillColor: response[i].color,
               fillOpacity: 0.45,
               editable: false,  
@@ -140,16 +140,26 @@
           this.setOptions({
               strokeColor: '#F7F8FF',
             strokeOpacity: 0.8,
-            strokeWeight: 1,
-            fillOpacity: 0.45,
+            strokeWeight: .35,
+            fillOpacity: 0.5,
           });
               });
             };
           },
           error: function(xhr) {
             //Do Something to handle error
-          }
+          } 
         });
+
+      
+
+
+
+
+
+
+
+
     
  }
  $('#species_select').change(function(){
