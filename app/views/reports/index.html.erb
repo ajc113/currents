@@ -35,6 +35,7 @@
                       <td>
                         <select id="target_species" name="target_species">
                           <option value=""></option>
+                          <!-- should be @reports_for_filter.each do -->
                             <% @reports_for_filter.each do |report| %>
                               <% puts "target species is #{report.target_species}".green %>
                               <option value="<%= report.target_species %>"><%= report.target_species %>
@@ -53,7 +54,7 @@
                       <td> 
                         <select id="tide" name="tide">
                          <option value=""></option>
-                            <% @current_user.reports.each do |report| %>
+                            <% @reports_for_filter_tide.each do |report| %>
                           <option value="<%= report.tide %>" <%= selected_tide(report.tide) %>><%= report.tide %></option>
                           <% end %>
                         </select>

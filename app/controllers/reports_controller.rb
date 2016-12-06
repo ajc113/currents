@@ -1,12 +1,14 @@
 class ReportsController < ApplicationController
   before_action :set_report, only: [:show, :edit, :update, :destroy]
-  before_action :set_current_user_reports
+  # before_action :set_current_user_reports
   before_action :authenticate_user!
 
 
 def index
-  puts "YOLO".on_blue
-
+  # should be in private method
+      @reports = current_user.reports
+      @reports_for_filter = @reports.select("DISTINCT(target_species)")
+      @reports_for_filter_tide = @reports.select("DISTINCT(tide)")
 end
 
 def filter
@@ -15,17 +17,19 @@ def filter
   @tide = params[:tide] unless params[:tide].blank?
   @month = params[:date].to_date.month unless params[:date].blank?
 
-  puts "@month is #{@month}".green
+  # puts "@month is #{@month}".green
+  # puts "@target_species is #{@target_species}\n"
+  # puts "@location is #{@location.inspect}\n"
+  # puts "@tide is #{@tide}\n"
+  # puts "@date is #{@date}\n"
 
-  puts "@target_species is #{@target_species}\n"
-  puts "@location is #{@location.inspect}\n"
-  puts "@tide is #{@tide}\n"
-  puts "@date is #{@date}\n"
-
-
+# NEXT TWO LINES ADDED TO GET UNIQUE TO WORK
+  @reports = current_user.reports
+  @reports_for_filter = @reports.select("DISTINCT(target_species)") #sets up target_species for filter box
+  @reports_for_filter_tide = @reports.select("DISTINCT(tide)")
 
   @reports = @reports.selected_species(@target_species) if @target_species
-  @reports = @reports.selected_location(@location) if @location
+  @reports = @reports.selected_location(@location).order("short_name DESC") if @location
   @reports = @reports.selected_tide(@tide) if @tide
   puts "@reports before date filter is #{@reports.inspect}\n".blue
   @reports = @reports.selected_date(@month) if @month
@@ -118,16 +122,15 @@ end
     end
   end
 
-  def fake_error
-    raise "yo you have an error"
-  end
 
-  private
+private
 
-  def set_current_user_reports
-    @reports = current_user.reports
-    @reports_for_filter = @reports.select("DISTINCT(target_species)") #sets up target_species for filter box
-  end
+# current user should be setup in private
+    # def set_current_user_reports
+    # @reports = current_user.reports
+    # @reports_for_filter = @reports.select("DISTINCT(target_species)") #sets up target_species for filter box
+    # end
+
 
     # Use callbacks to share common setup or constraints between actions.
     def set_report
