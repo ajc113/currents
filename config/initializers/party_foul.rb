@@ -15,7 +15,7 @@ PartyFoul.configure do |config|
   config.web_url                = 'https://github.com'
 
   # The organization or user that owns the target repository
-  config.owner                  = 'costa.aj@gmail.com'
+  config.owner                  = 'ajc113'
 
   # The repository for this application
   config.repo                   = 'currents'
