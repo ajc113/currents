@@ -30,22 +30,29 @@ class MapsController < ApplicationController
       #The following line has been changed to fix the error. Please confirm the output
       reports = location.reports.where(target_species: params[:target_species])
 
-      avgrep = reports.where('date >= ?', 1.week.ago)
+      avgrep = reports.where('date >= ?', 1.week.ago.to_date).where('date < ?', Date.today)
       movavg = movingavg(avgrep)
       puts "---movingavg", movavg
      @lreports.push(location:location,reports: userreport(reports),cfile: one_locations_json(location),movingavg: movavg[:movingavg], color: movavg[:color]) 
     else
-      avgrep = location.reports.where('date >= ?', 1.week.ago)
+      avgrep = location.reports.where('date >= ?', 1.week.ago.to_date).where('date < ?', Date.today)
       movavg = movingavg(avgrep)
       puts "---movingavg", movavg
-      @lreports.push(location:location,reports: userreport(location.reports),cfile: one_locations_json(location),movingavg: movavg[:movingavg], color: movavg[:color])
+      @lreports.push(location:location,reports: userreport(avgrep),cfile: one_locations_json(location),movingavg: movavg[:movingavg], color: movavg[:color])
     end
     end    
     render json: @lreports
   end
   def movingavg(avgrep)
-    avggroup = avgrep.group('date').average('catch_keepers')
-      avarray = avggroup.map{|a,b| b.to_f}
+      avggroup = avgrep.group('date').average('catch_keepers')
+      avarray = (1.week.ago.to_date..Date.today-1).map {|date|
+      if avggroup[date]
+        avggroup[date].to_f
+      else
+        0.to_f
+      end
+      }
+      # avarray = avggroup.map{|a,b| b.to_f}
       movingavg = avarray.inject{ |sum, el| sum + el }.to_f / avarray.size
       puts "----moving average",  movingavg 
        n = avarray.size 
