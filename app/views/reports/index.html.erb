@@ -46,7 +46,7 @@
                       <td> 
                         <select id="location" name="location">
                           <option value=""></option>
-                            <% Location.all.each do |location| %>
+                            <% @reports_for_filter_location.each do |location| %>
                           <option value="<%= location.id %>" <%= selected_locations(location) %>><%= location.short_name %></option>
                             <% end %>
                         </select> 
@@ -73,7 +73,7 @@
                           <option value="September">September</option>
                           <option value="October">October</option> 
                           <option value="November">November</option> 
-                          <option value="December"> </option>
+                          <option value="December">December</option>
                         </select>
                       </td>  
                     </tr>
