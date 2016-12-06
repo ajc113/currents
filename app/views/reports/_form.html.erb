@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <%= f.label :location_id %><br>
-    <%= f.select :location_id, Location.all.pluck(:short_name, :id) %>
+    <%= f.select :location_id, Location.all.order("short_name ASC").pluck(:short_name, :id) %>
   </div>
   <div class="field">
     <%= f.label :catch_keepers %><br>
