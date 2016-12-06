@@ -118,6 +118,10 @@ end
     end
   end
 
+  def fake_error
+    raise "yo you have an error"
+  end
+
   private
 
   def set_current_user_reports

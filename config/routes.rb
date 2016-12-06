@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
    get 'reports_path', to: 'reports#index'
   
+  get 'fake_error', to: 'reports#fake_error'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
