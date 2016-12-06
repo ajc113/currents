@@ -6,7 +6,7 @@ class ReportsController < ApplicationController
 
 def index
   # should be in private method
-      @reports = current_user.reports
+      @reports = current_user.reports.order("date ASC")
       @reports_for_filter = @reports.select("DISTINCT(target_species)")
       @reports_for_filter_tide = @reports.select("DISTINCT(tide)")
 end
