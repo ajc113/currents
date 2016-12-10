@@ -1,21 +1,24 @@
 <div class="content-wrapper">
  	<div class="row">
-  		<div class="col-md-5">
+  		<div class="col-lg-5">	
 			<%= image_tag 'location_legend.png',  class: 'img-responsive', style: 'display:block; opacity: .95' %>
 		</div>
-		<div class="col-md-4">
-      	<div class="panel panel-default">
-				<div class="panel-body text-left">
-	        		<div class="pv-lg">	
-	        			<h1><%= current_user.vessel_name %></h1>
+		<div class="col-lg-5">
+			<div class="panel panel-default bg-gray-lighter">
+	      	<div class="panel panel-heading">
+	      		<div class"panel-title">
+					 <h1><%= current_user.vessel_name %></h1>
 						<h2>New Catch Report</h2>
-						<%= render 'form' %>
 					</div>
-						<%= link_to 'Back', reports_path %>
 				</div>	
-			</div>		
-		</div>
-		<div class="col-md-4">
+				<div class="panel-body">
+					<%= render 'form' %>
+				</div>		
+				</div>
+							<%= link_to 'Back', reports_path %>
+				</div>	
+			</div>			
+		<div class="col-lg-2">
 		</div>	
 	</div>
 </div>

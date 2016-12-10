@@ -1,4 +1,4 @@
-
+<div class="panel-body">
 
 <%= form_for(@report) do |f| %>
 <% if @report.errors.any? %>
@@ -15,11 +15,14 @@
 <% end %>
 
 
-  <div class="field">
-    <%= f.label :date %><br>
-    <%= f.date_select :date %>
+
+  <div class="form-group">
+    <label class"form-class">
+      <%= f.label :date %><br>
+      <%= f.date_select :date %>
+    </label>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :target_species %><br>
     <%= f.select :target_species, ['Bluefish', 'Cod & Haddock', 'Flounder', 'Striped Bass', 'Sharks', 'Tuna', 'Mackeral, Pogies, Herring'] %>
   </div>
@@ -27,10 +30,11 @@
     <%= f.label :location_id %><br>
     <%= f.select :location_id, Location.all.order("short_name ASC").pluck(:short_name, :id) %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :catch_keepers %><br>
     <%= f.number_field :catch_keepers %>
   </div>
+  
   <div class="field">
     <%= f.label :catch_total %><br>
     <%= f.number_field :catch_total %>
@@ -73,3 +77,4 @@
   </div>
 <% end %>
 
+</div>
