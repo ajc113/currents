@@ -31,35 +31,31 @@ class MapsController < ApplicationController
       reports = location.reports.where(target_species: params[:target_species])
 
       avgrep = reports.where('date >= ?', 1.week.ago.to_date).where('date < ?', Date.today)
-      movavg = movingavg(avgrep)
+      prevavgrep = reports.where('date >= ?', 1.week.ago.to_date - 1).where('date < ?', Date.today - 1)
+      movavg = movingavg(avgrep,prevavgrep)
       puts "---movingavg", movavg
      @lreports.push(location:location,reports: userreport(reports),cfile: one_locations_json(location),movingavg: movavg[:movingavg], color: movavg[:color]) 
     else
       avgrep = location.reports.where('date >= ?', 1.week.ago.to_date).where('date < ?', Date.today)
-      movavg = movingavg(avgrep)
+      prevavgrep = location.reports.where('date >= ?', 1.week.ago.to_date - 1).where('date < ?', Date.today - 1)
+      movavg = movingavg(avgrep,prevavgrep)
       puts "---movingavg", movavg
       @lreports.push(location:location,reports: userreport(avgrep),cfile: one_locations_json(location),movingavg: movavg[:movingavg], color: movavg[:color])
     end
     end    
     render json: @lreports
   end
-  def movingavg(avgrep)
-      avggroup = avgrep.group('date').average('catch_keepers')
-      avarray = (1.week.ago.to_date..Date.today-1).map {|date|
-      if avggroup[date]
-        avggroup[date].to_f
-      else
-        0.to_f
-      end
-      }
-      # avarray = avggroup.map{|a,b| b.to_f}
-      movingavg = avarray.inject{ |sum, el| sum + el }.to_f / avarray.size
+  def movingavg(avgrep,prevavgrep)
+      movingavg = avg(avgrep,1.week.ago.to_date,Date.today-1)
+      prevmovingavg = avg(prevavgrep,1.week.ago.to_date-1,Date.today-2)
       puts "----moving average",  movingavg 
-       n = avarray.size 
-      sum_sqr = avarray.map {|x| x * x}.reduce(&:+)
-      sum_sqr = 0 if sum_sqr.to_f.nan? || sum_sqr.nil?
-      movingavg = 0 if movingavg.to_f.nan?
-      std_dev = Math.sqrt((sum_sqr - n * movingavg * movingavg)/(n-1))
+      puts "----previous moving average",  prevmovingavg 
+      #  n = avarray.size 
+      # sum_sqr = avarray.map {|x| x * x}.reduce(&:+)
+      # sum_sqr = 0 if sum_sqr.to_f.nan? || sum_sqr.nil?
+      # movingavg = 0 if movingavg.to_f.nan?
+      # std_dev = Math.sqrt((sum_sqr - n * movingavg * movingavg)/(n-1))
+      std_dev = movingavg - prevmovingavg
       if std_dev > 1 
         color = "#FF3E38"
       elsif std_dev > 0
@@ -69,6 +65,17 @@ class MapsController < ApplicationController
       end
       @movingavg = {movingavg: movingavg,color: color }
       @movingavg
+  end
+  def avg(avgrep,startdate,enddate)
+    avggroup = avgrep.group('date').average('catch_keepers')
+      avarray = (startdate..enddate).map {|date|
+      if avggroup[date]
+        avggroup[date].to_f
+      else
+        0.to_f
+      end
+      }
+      movingavg = avarray.inject{ |sum, el| sum + el }.to_f / avarray.size
   end
   def userreport(reports)
     @rep = []

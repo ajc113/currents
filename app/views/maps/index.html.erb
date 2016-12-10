@@ -10,7 +10,7 @@
   }
   #locdetails {
     position: absolute;
-    right: 300px;
+    right: 600px;
     text-align: center;
     font-family: Roboto, Arial, sans-serif;
     font-size: 13px;
@@ -21,9 +21,46 @@
     border: rgb(229, 229, 229) 1px solid;
     margin-top: 50px;
   }
+  .hoverclass{
+    display: inline-block;
+    margin: 5px;
+  }
   .gm-style-iw {
-  width: 600px !important; 
+   width: 534px !important;
+   top: 15px !important;
+   left: 0 !important;
+   background-color: #fff;
+   box-shadow: 0 1px 6px rgba(178, 178, 178, 0.6);
+   border: 1px solid rgba(72, 181, 233, 0.6);
+   border-radius: 2px 2px 10px 10px;
 }
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+  .iw-title {
+   font-family: 'Open Sans Condensed', sans-serif;
+   font-size: 22px;
+   font-weight: 400;
+   padding: 10px;
+   background-color: #48b5e9;
+   color: white;
+   margin: 1px;
+   border-radius: 2px 2px 0 0; /* In accordance with the rounding of the default infowindow corners. */
+}
+
 </style>
 
 <div class="content-wrapper">
@@ -107,12 +144,53 @@
         infoWindow = new google.maps.InfoWindow;
         infoWindow.setContent(contentString);
         infoWindow.setPosition(event.latLng);
-        infoWindow.open(map);
-              }); 
+        google.maps.event.addListener(infoWindow, 'domready', function() {
 
+         // Reference to the DIV which receives the contents of the infowindow using jQuery
+         var iwOuter = $('.gm-style-iw');
+
+         /* The DIV we want to change is above the .gm-style-iw DIV.
+          * So, we use jQuery and create a iwBackground variable,
+          * and took advantage of the existing reference to .gm-style-iw for the previous DIV with .prev().
+          */
+         var iwBackground = iwOuter.prev();
+
+         // Remove the background shadow DIV
+         iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+
+         // Remove the white background DIV
+         iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+         iwOuter.parent().parent().css({left: '115px'});
+         iwBackground.children(':nth-child(1)').attr('style', function(i,s){ return s + 'left: 76px !important;'});
+         iwBackground.children(':nth-child(3)').attr('style', function(i,s){ return s + 'left: 155px !important;' + 'top: 114px !important'});
+         iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow': 'rgba(72, 181, 233, 0.6) 0px 1px 6px', 'z-index' : '1'});
+
+
+         var iwCloseBtn = iwOuter.next();
+
+          // Apply the desired effect to the close button
+          iwCloseBtn.css({
+            opacity: '1', // by default the close button has an opacity of 0.7
+            right: '44px', top: '8px', // button repositioning
+            // border: '7px solid #48b5e9', // increasing button border and new color
+            'border-radius': '13px', // circular effect
+            'box-shadow': '0 0 5px #3990B9' // 3D effect to highlight the button
+            });
+
+          // The API automatically applies 0.7 opacity to the button after the mouseout event.
+          // This function reverses this event to the desired value.
+          iwCloseBtn.mouseout(function(){
+            $(this).css({opacity: '1'});
+          });
+
+          });
+        infoWindow.open(map);
+
+              }); 
+        
               google.maps.event.addListener(p, 'mouseover',function (event){
                 $("#locdetails").css("display", "block");
-                $( "#locdetails" ).append( "<p>"+ this.loc.short_name +"</p>" +"<p>" + this.mavg +  "</p>"+"<p>" + this.rep.length +  "</p>" );
+                $( "#locdetails" ).append( "<div class='hoverclass'>"+ this.loc.short_name +"</div>" +"<div class='hoverclass'>" + this.mavg +  "</div>"+"<div class='hoverclass'>" + this.rep.length +  "</div>" );
                 map.data.revertStyle();
         this.setOptions({
           strokeColor: '#F7F8FF',
