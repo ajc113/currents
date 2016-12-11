@@ -5,10 +5,9 @@
 <div class"content-wrapper">
 
 <div class="panel panel-default col-sm-12 bg-gray-lighter">
-  <h4>Report Filter</h4>
+  <h3>Report Filter</h3>
     <div class="panel-body">
       <form id="filter_form" action="/filter" class="form-horizontal">
-        <fieldset class="last-child">
           <div class="form-group">
             <!-- Species filter   -->
             <div class="col-sm-3">
@@ -81,11 +80,9 @@
                   </select>
                 </div>
             </div>        
-
           </div>
-        </fieldset>
       </form>
-        <div class="p-lg text-center">
+        <div class="text-center">
           <%= link_to 'Clear Filter', reports_path, class: 'btn btn-info btn-lg' %> 
         </div>
     </div>
