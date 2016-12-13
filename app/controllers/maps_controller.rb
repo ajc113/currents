@@ -30,13 +30,13 @@ class MapsController < ApplicationController
       #The following line has been changed to fix the error. Please confirm the output
       reports = location.reports.where(target_species: params[:target_species])
 
-      avgrep = reports.where('date >= ?', 1.week.ago.to_date).where('date < ?', Date.today)
+      avgrep = reports.where('date >= ?', 1.week.ago.to_date).where('date < ?', Date.today).order(date: :desc)
       prevavgrep = reports.where('date >= ?', 1.week.ago.to_date - 1).where('date < ?', Date.today - 1)
       movavg = movingavg(avgrep,prevavgrep)
       puts "---movingavg", movavg
      @lreports.push(location:location,reports: userreport(reports),cfile: one_locations_json(location),movingavg: movavg[:movingavg], color: movavg[:color]) 
     else
-      avgrep = location.reports.where('date >= ?', 1.week.ago.to_date).where('date < ?', Date.today)
+      avgrep = location.reports.where('date >= ?', 1.week.ago.to_date).where('date < ?', Date.today).order(date: :desc)
       prevavgrep = location.reports.where('date >= ?', 1.week.ago.to_date - 1).where('date < ?', Date.today - 1)
       movavg = movingavg(avgrep,prevavgrep)
       puts "---movingavg", movavg
