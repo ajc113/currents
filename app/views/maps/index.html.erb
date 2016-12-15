@@ -11,11 +11,12 @@
   }
   #locdetails {
     position: absolute;
-    right: 600px;
+    right: 25%;
     text-align: center;
     font-family: Roboto, Arial, sans-serif;
     font-size: 13px;
     z-index: 5;
+    width: 50%;
     box-shadow: rgb(51, 51, 51) 0px 4px 6px -4px;
     padding: 5px 10px;
     background: linear-gradient(rgb(255, 255, 255) 0%, rgb(245, 245, 245) 100%);
@@ -24,8 +25,13 @@
   }
   .hoverclass{
     display: inline-block;
-    margin: 5px;
+    margin: 5px 2%;
+    width: 28%;
   }
+  .hoverrow{
+    display: block;
+    width: 100%;
+    }
   .gm-style-iw {
    width: 534px !important;
    top: 15px !important;
@@ -88,7 +94,6 @@ th {
     <br>
 
   <div id="locdetails" style="display:none;">
-    <p>Test</p>
   </div> 
 
   <!-- map container  -->
@@ -194,20 +199,20 @@ var infoWindow;
       infoWindow.open(map);
             }); 
       
-            google.maps.event.addListener(p, 'mouseover',function (event){
-              $("#locdetails").css("display", "block");
-              $( "#locdetails" ).append( "<div class='hoverclass'>"+ this.loc.short_name +"</div>" +"<div class='hoverclass'>" + this.mavg +  "</div>"+"<div class='hoverclass'>" + this.rep.length +  "</div>" );
-              map.data.revertStyle();
+    google.maps.event.addListener(p, 'mouseover',function (event){
+      $("#locdetails").css("display", "block");
+      $( "#locdetails" ).append( "<div class='hoverrow'> <div class='hoverclass'>Location</div> <div class='hoverclass'>Average Catch Per Trip</div> <div class='hoverclass'>Reports posted past 7 days</div> </div> <div class='hoverrow'><div class='hoverclass'>"+ this.loc.short_name +"</div>" +"<div class='hoverclass'>" + this.mavg +  "</div>"+"<div class='hoverclass'>" + this.rep.length +  "</div></div>" );
+      map.data.revertStyle();
       this.setOptions({
         strokeColor: '#F7F8FF',
         strokeWeight: 3 ,
         fillOpacity: 0.75
           });
             });
-            google.maps.event.addListener(p, 'mouseout',function (event){
-              $("#locdetails").css("display", "none");
-              $( "#locdetails" ).empty();
-            map.data.revertStyle();
+        google.maps.event.addListener(p, 'mouseout',function (event){
+          $("#locdetails").css("display", "none");
+          $( "#locdetails" ).empty();
+        map.data.revertStyle();
         this.setOptions({
             strokeColor: '#F7F8FF',
           strokeOpacity: 0.8,

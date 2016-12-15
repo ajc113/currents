@@ -31,17 +31,19 @@ def filter_by_species
       #The following line has been changed to fix the error. Please confirm the output
       reports = location.reports.where(target_species: params[:target_species])
 
-      avgrep = reports.where('date >= ?', 1.week.ago.to_date).where('date < ?', Date.today)
+      avgrep = reports.where('date >= ?', 1.week.ago.to_date).where('date < ?', Date.today).order(date: :desc)
       prevavgrep = reports.where('date >= ?', 1.week.ago.to_date - 1).where('date < ?', Date.today - 1)
       movavg = movingavg(avgrep,prevavgrep)
       puts "---movingavg", movavg
      @lreports.push(location:location,reports: userreport(reports),cfile: one_locations_json(location),movingavg: movavg[:movingavg], color: movavg[:color]) 
     else
-      avgrep = location.reports.where('date >= ?', 1.week.ago.to_date).where('date < ?', Date.today)
+      avgrep = location.reports.where('date >= ?', 1.week.ago.to_date).where('date < ?', Date.today).order(date: :desc)
       prevavgrep = location.reports.where('date >= ?', 1.week.ago.to_date - 1).where('date < ?', Date.today - 1)
       movavg = movingavg(avgrep,prevavgrep)
       puts "---movingavg", movavg
       @lreports.push(location:location,reports: userreport(avgrep),cfile: one_locations_json(location),movingavg: movavg[:movingavg], color: movavg[:color])
+      # @lreports.push(location:location,reports: userreport(reports),cfile: one_locations_json(location),movingavg: movavg[:movingavg], color: movavg[:color])
+
     end
     end    
     render json: @lreports
@@ -61,10 +63,10 @@ def filter_by_species
         color = "#FF3E38"
       elsif std_dev > 0
         color = "#C1AF6A"
-      elsif std_dev = 0
+      else 
         color = "#4562A8"
-      else std_dev < 0
-        color = "#940CE8"      
+      # else std_dev < 0
+      #   color = "#940CE8"      
 
       end
       @movingavg = {movingavg: movingavg,color: color }
