@@ -104,6 +104,10 @@
 					    <%= f.label :catch_keepers %> (Required)<br>
 					    <%= f.number_field :catch_keepers %>
 					  </div>
+						<div class="field"> 
+						   <%= f.label :trip_summary %> brief summary (Required)<br>
+						   <%= f.text_area :trip_summary %>
+						 </div>
 						  <br>
 					</div>	
 						
@@ -117,10 +121,7 @@
 						    <%= f.label :catch_total %><br>
 						    <%= f.number_field :catch_total %>
 						  </div>
-						  <div class="field">
-						    <%= f.label :trip_summary %><br>
-						    <%= f.text_area :trip_summary %>
-						  </div>
+
 						  <div class="field">
 						    <%= f.label :primary_method %><br>
 						    <%= f.select :primary_method, ['Live Bait', 'Dead Bait', 'Kite', 'Jigging', 'Popping', 'Trolling'] %>

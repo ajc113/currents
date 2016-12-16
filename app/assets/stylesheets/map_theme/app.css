@@ -7462,11 +7462,12 @@ body .jvectormap-zoomout {
 }
 /*AJ Custom table format*/
 .wd-td1 {
-  max-width: 200px;
+  max-width: 100px;
   word-wrap:break-word;
   }
 .wd-td2 {
   max-width: 75px;
+  word-wrap:none;
   white-space: nowrap;
   }
 

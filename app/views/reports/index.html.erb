@@ -33,7 +33,7 @@
               </label>  
               <br>
                 <div class="">
-                  <select id="location" name="location" class="form-control m-b">   
+                  <select id="location" name="location" class="form-control m-b"> 
                       <option value="">Select Location</option>
                       <% @reports_for_filter_location.each do |location| %>
                       <option value="<%= location.id %>" <%= selected_locations(location) %>><%= location.short_name %></option>
@@ -50,7 +50,7 @@
                 <div class="">
                   <select id="tide" name="tide" class="form-control m-b">   
                       <option value="">Select Tide</option>
-                          <% @reports_for_filter_tide.each do |report| %>
+                      <% @reports_for_filter_tide.each do |report| %>
                       <option value="<%= report.tide %>" <%= selected_tide(report.tide) %>><%= report.tide %></option>
                           <% end %>
                   </select>
@@ -138,10 +138,10 @@
 
           <thead>
             <tr>
-              <th class="wd-td2">Date</th>
-              <th class="wd-md">User</th>
-              <th class="wd-md">Port</th>
-              <th class="wd-md">Target species</th>
+              <th class="wd-td3">Date</th>
+<!--               <th class="wd-md">User</th>
+              <th class="wd-md">Port</th> -->
+              <th class="wd-sm">Target species</th>
               <th class="wd-td3">Location</th>
               <th class="wd-md">Catch keepers</th>
               <th class="wd-md">Catch total</th>
@@ -149,7 +149,7 @@
               <th class="wd-md">Primary method</th>
               <th class="wd-md">Tide</th>
               <th class="wd-md">Weather</th>
-              <th class="wd-md">Wind</th>
+              <th class="wd-td3">Wind</th>
               <th class="wd-md">Spot</th>
               <th class="wd-md">Best bait</th>
               <th class="wd-md">Trip description</th>  
@@ -161,18 +161,18 @@
             <% if current_user %>
             <% @reports.each do |report| %>
               <tr>
-                <td class="wd-td2"><%= report.date %></td>
-                <td><%= report.user.try(:vessel_name) %></td>
-                <td><%= report.user.try(:home_port) %></td>
-                <td><%= report.target_species %></td>
-                <td class-"wd-td3"><%= report.location.try(:short_name) %></td>
+                <td><%= report.date %></td>
+               <!--  <td><%#= report.user.try(:vessel_name) %></td>
+                <td><%#= report.user.try(:home_port) %></td> -->
+                <td class="wd-sm"><%= report.target_species %></td>
+                <td class="wd-td3"><%= report.location.try(:short_name) %></td>
                 <td><%= report.catch_keepers %></td>
                 <td><%= report.catch_total %></td>
                 <td class="wd-td1"><%= report.trip_summary %></td>
                 <td><%= report.primary_method %></td>
                 <td><%= report.tide %></td>
                 <td><%= report.weather %></td>
-                <td><%= report.wind %></td>
+                <td class="wd-td3"><%= report.wind %></td>
                 <td><%= report.spot %></td>
                 <td><%= report.best_bait %></td>
                 <td class="wd-td1"><%= report.trip_description %></td>
