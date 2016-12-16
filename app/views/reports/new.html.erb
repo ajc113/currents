@@ -53,6 +53,34 @@
 			font-family: "Source Sans Pro", sans-serif;
 			color: #112A8A; 
 	}
+	/*flash*/
+	.alert-error {
+	    background-color: #f2dede;
+	    border-color: #eed3d7;
+	    color: #b94a48;
+	    text-align: left;
+	 }
+
+	.alert-alert {
+	    background-color: #f2dede;
+	    border-color: #eed3d7;
+	    color: #b94a48;
+	    text-align: left;
+	 }
+
+	.alert-success {
+	    background-color: #dff0d8;
+	    border-color: #d6e9c6;
+	    color: #468847;
+	    text-align: left;
+	 }
+
+	.alert-notice {
+	    background-color: #dff0d8;
+	    border-color: #d6e9c6;
+	    color: #468847;
+	    text-align: left;
+	 }
 </style>
 
 <title>Log Catch Report</title>
@@ -65,6 +93,7 @@
 		<!-- form panel -->
 		<div class="col-lg-5">
 			<div class="panel panel-default">
+				<%= form_for(@report) do |f| %>
 	      <legend class="text-left" style="margin-bottom: 0px">	
 					<div class="title-css">
 						<h1><%= current_user.vessel_name %></h1>
@@ -76,7 +105,7 @@
 					  	<b><u><h4>Public</h4></u></b>
 					  	<p class="small">Report fields are visible by the network and used for heatmaps</p>
 						</div>
-							  	<%= form_for(@report) do |f| %>
+							  	
 							  	<% if @report.errors.any? %>
 							  <div id="error_explanation">
 								  <h2><%= pluralize(@report.errors.count, "error") %> prohibited this report from being saved:</h2>
@@ -110,7 +139,6 @@
 						 </div>
 						  <br>
 					</div>	
-						
 					<!-- private form panel -->
 					<div class="title-css-bodyb">
 							<div class="h4-color">
@@ -151,24 +179,20 @@
 						    <%= f.text_area :trip_description %>
 						  </div>
 						  	<br>
-					</div>	
+					</div>
+					<%= f.submit class: "btn btn-inverse btn-md" %>
+						<br>
+					<%= link_to 'Back', reports_path, class: "btn btn-default btn-md" %>	
 				</legend>	
 			</div>
-				<%= f.submit class: "btn btn-inverse btn-md" %>
-					<br>
-				<%= link_to 'Back', reports_path, class: "btn btn-default btn-md"%>	
-				<% end %>
+			<% end %>	
   	</div>
-
-
   	<div class="col-lg-5">	
 			<div class="legend-css">
 				<%= image_tag 'location_legend.png',  class: 'img-responsive', style: 'display:block; opacity: .95' %>
 			</div>
 		</div>
-			
 		<div class="col-lg-1">
 		</div>	
-
 	</div>
 </div>
