@@ -193,7 +193,7 @@
             <% if current_user %>
             <% @reports.each do |report| %>
               <tr>
-                <td><%= report.date %></td>
+                <td><%= report.date.try(:strftime, '%m/%d/%y') %></td>
                <!--  <td><%#= report.user.try(:vessel_name) %></td>
                 <td><%#= report.user.try(:home_port) %></td> -->
                 <td class="wd-sm"><%= report.target_species %></td>
