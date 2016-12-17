@@ -35,35 +35,46 @@
 
   <% end %>
 
+<div class="title-css-bodyt"> 
+  <div class="h4-color">
+    <b><u><h4>Public</h4></u></b>
+    <p class="small">Report fields are visible by the network and used for heatmaps</p>
+  </div>
+    <div class="form-group">
+    <%= f.label :date %><br>
+    <%= f.date_field :date %>
+    </div>
+    <div class="form-group">
+      <%= f.label :target_species %><br>
+      <%= f.select :target_species, ['Bluefish', 'Cod & Haddock', 'Flounder', 'Striped Bass', 'Sharks', 'Tuna', 'Mackeral, Pogies, Herring'] %>
+    </div>
+    <div class="field">
+      <%= f.label :location_id %><br>
+      <%= f.select :location_id, Location.all.order("short_name ASC").pluck(:short_name, :id) %>
+    </div>
+    <br>
+    <div class="field">
+      <%= f.label :catch_keepers %> (Required)<br>
+      <%= f.number_field :catch_keepers %>
+    </div>
 
-
-
-  <div class="form-group">
-  <%= f.label :date %><br>
-  <%= f.date_field :date %>
+    <div class="field">
+      <%= f.label :catch_total %><br>
+      <%= f.number_field :catch_total %>
+    </div>
+    <div class="field">
+      <%= f.label :trip_summary %><br>
+      <%= f.text_area :trip_summary %>
+    </div>
 </div>
-  <div class="form-group">
-    <%= f.label :target_species %><br>
-    <%= f.select :target_species, ['Bluefish', 'Cod & Haddock', 'Flounder', 'Striped Bass', 'Sharks', 'Tuna', 'Mackeral, Pogies, Herring'] %>
-  </div>
-  <div class="field">
-    <%= f.label :location_id %><br>
-    <%= f.select :location_id, Location.all.order("short_name ASC").pluck(:short_name, :id) %>
-  </div>
-  <br>
-  <div class="field">
-    <%= f.label :catch_keepers %> (Required)<br>
-    <%= f.number_field :catch_keepers %>
+
+<div class="title-css-bodyb">
+  <div class="h4-color">
+    <b><u><h4>Private</h4></u></b>
+    <p class="small">Report fields are for your use only.  Use to detail catch information like bait, tide, or location numbers</p>
   </div>
 
-  <div class="field">
-    <%= f.label :catch_total %><br>
-    <%= f.number_field :catch_total %>
-  </div>
-  <div class="field">
-    <%= f.label :trip_summary %><br>
-    <%= f.text_area :trip_summary %>
-  </div>
+
   <div class="field">
     <%= f.label :primary_method %><br>
     <%= f.select :primary_method, ['Live Bait', 'Dead Bait', 'Kite', 'Jigging', 'Popping', 'Trolling'] %>
@@ -93,9 +104,13 @@
     <%= f.label :trip_description %><br>
     <%= f.text_area :trip_description %>
   </div>
-  <div>
-    <%= f.submit %>
+  <div class"center">
+    <%= f.submit class: "btn btn-inverse btn-md"%>
   </div>
+  <%= link_to 'Back', reports_path, class: "btn btn-default bg-gray" %>
+</div>
+
 <% end %>
+
 
 

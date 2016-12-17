@@ -1,6 +1,88 @@
-<h1>Editing Report</h1>
+<style>
+	.legend-css {
+	    padding: 5px;
+	    line-height: 2;
+	    background-color: #e1e2e3;
+	    border: 3px solid #191919;
+	    border-radius: 5px;
+	    display: inline-block;
+	    max-width: 100%;
+	    height: auto;
+	    border-radius: 2px 2px 0 0;
+	}
+	.legend-div {
+		padding-top: 10px !important;
+	}
+	.title-css {
+	    padding: 10px;
+	    line-height: 1;
+	    background-color: #e1e2e3;
+	    border: 3px solid #191919;
+	    border-radius: 5px;
+	    display: block;
+	    max-width: 100%;
+	    height: auto;
+	    border-radius: 2px 2px 0 0;
+	}
+	.title-css-bodyt {
+	    padding: 10px;
+	    line-height: 1.5;
+	    background-color: #FEFFFF;
+	    border: 3px solid #191919;
+	    border-radius: 5px;
+	    display: block;
+	    max-width: 100%;
+	    height: auto;
+	    border-radius: 2px 2px 0 0;
+	    border-top: none;
+	    border-bottom: none;
+	}
+	.title-css-bodyb {
+	    padding: 10px;
+	    line-height: 1.5;
+	    background-color: #FEFFFF;
+	    border: 3px solid #191919;
+	    border-radius: 5px;
+	    display: block;
+	    max-width: 100%;
+	    height: auto;
+	    border-radius: 2px 2px 0 0;
+	    padding-bottom: 10px;
+	}
+		.footer-css {
+	    padding: 10px;
+	    line-height: 1;
+	    border: 3px solid #191919;
+	    border-radius: 5px;
+	    display: block;
+	    max-width: 100%;
+	    height: auto;
+	    border-radius: 2px 2px 0 0;
+	    border-top: none;
+	    text-align: center;
+	}
+	.h4-color {
+			font-family: "Source Sans Pro", sans-serif;
+			color: #112A8A; 
+	 }
+</style>
 
-<%= render 'form' %>
+<div class="content-wrapper">
+	<div class="row">
+		<div class="col-lg-1"></div>	
+		<div class="col-lg-6">
+			<div class="panel panel-default">
+				<legend class="text-left" style="margin-bottom: 0px">	
+					<div class="title-css">
+						<h1>Edit Report</h1>
+					</div>
+							<%= render 'form' %>
+				</legend>
+			</div>	
+		</div>
+		<div class="col-lg-3"></div>
+	</div>	
+</div>
 
-<%= link_to 'Show', @report %> |
-<%= link_to 'Back', reports_path %>
+
+	
