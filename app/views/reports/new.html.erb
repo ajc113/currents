@@ -49,37 +49,21 @@
 	    border-radius: 2px 2px 0 0;
 	    padding-bottom: 10px;
 	}
+		.footer-css {
+	    padding: 10px;
+	    line-height: 1;
+	    border: 3px solid #191919;
+	    border-radius: 5px;
+	    display: block;
+	    max-width: 100%;
+	    height: auto;
+	    border-radius: 2px 2px 0 0;
+	    border-top: none;
+	    text-align: center;
+	}
 	.h4-color {
 			font-family: "Source Sans Pro", sans-serif;
 			color: #112A8A; 
-	}
-	/*flash*/
-	.alert-error {
-	    background-color: #f2dede;
-	    border-color: #eed3d7;
-	    color: #b94a48;
-	    text-align: left;
-	 }
-
-	.alert-alert {
-	    background-color: #f2dede;
-	    border-color: #eed3d7;
-	    color: #b94a48;
-	    text-align: left;
-	 }
-
-	.alert-success {
-	    background-color: #dff0d8;
-	    border-color: #d6e9c6;
-	    color: #468847;
-	    text-align: left;
-	 }
-
-	.alert-notice {
-	    background-color: #dff0d8;
-	    border-color: #d6e9c6;
-	    color: #468847;
-	    text-align: left;
 	 }
 </style>
 
@@ -180,9 +164,13 @@
 						  </div>
 						  	<br>
 					</div>
+
+					<div class="footer-css">
 					<%= f.submit class: "btn btn-inverse btn-md" %>
 						<br>
-					<%= link_to 'Back', reports_path, class: "btn btn-default btn-md" %>	
+						<br>
+					<%= link_to 'Back', reports_path, class: "btn btn-default bg-gray" %>
+					</div>
 				</legend>	
 			</div>
 			<% end %>	
