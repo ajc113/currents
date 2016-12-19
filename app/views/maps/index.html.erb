@@ -20,9 +20,9 @@
     box-shadow: rgb(51, 51, 51) 0px 4px 6px -4px;
     padding: 5px 10px;
     background: linear-gradient(rgb(255, 255, 255) 0%, rgb(245, 245, 245) 100%);
-    border: rgb(229, 229, 229) 1px solid;
+    border: rgb(229, 229, 229) 2px solid;
     margin-top: 50px;
-  }
+    }
   .hoverclass{
     display: inline-block;
     margin: 5px 2%;
@@ -40,78 +40,76 @@
    box-shadow: 0 1px 6px rgba(178, 178, 178, 0.6);
    border: 1px solid rgba(72, 181, 233, 0.6);
    border-radius: 2px 2px 10px 10px;
-}
-table {
+  }
+  table {
     border-collapse: collapse;
     width: 100%;
-}
-th, td {
+  }
+  th, td {
     text-align: left;
     padding: 8px;
-}
-tr:nth-child(even){background-color: #f2f2f2}
-th {
-    background-color: #0C1D8A;
-    color: white;
-}
-  .iw-title {
-   font-family: 'Open Sans Condensed', sans-serif;
-   font-size: 22px;
-   font-weight: 400;
-   padding: 10px;
-   background-color: #48b5e9;
-   color: white;
-   margin: 1px;
-   border-radius: 2px 2px 0 0; /* In accordance with the rounding of the default infowindow corners. */
-}
+  }
+  tr:nth-child(even){background-color: #f2f2f2}
+  th {
+      background-color: #0C1D8A;
+      color: white;
+  }
+    .iw-title {
+     font-family: 'Open Sans Condensed', sans-serif;
+     font-size: 22px;
+     font-weight: 400;
+     padding: 10px;
+     background-color: #48b5e9;
+     color: white;
+     margin: 1px;
+     border-radius: 2px 2px 0 0; /* In accordance with the rounding of the default infowindow corners. */
+  }
+  .p-lg {
+    padding: 0px !important;
+  }
+  .content-wrapper {
+  border-top: 0px !important;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  } 
 </style>
 
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="p-lg text-center">
-      <h2>HeatMaps</h2>
-      <h3>Real Time Intel</h3>
-    </div>
-  </div>
+<div class="p-lg text-center">
+  <h1 >HeatMap<small> - Real Time Intel</small></h1>
 </div>
 
 <!-- filter container -->
 <div class="content-wrapper">
-  <div class="row">
-    <div class="content-heading">
-      <h4> Filter by Species</h4> 
+  <!-- <div class="content-heading"> -->
+    <h4> Filter by Species<small> - filter by species to display catch reports by location</small></h4> 
       <%= form_tag species_filter_path, id: 'species_form' do %>
-        <select name="species" class="form-control m-b" id="species_select">
-          <option value="Any">Any</option>
-          <% all_species.each do |species| %>
-            <option value="<%= species.html_safe %>"><%= species %></option>
-          <% end %>
-        </select>
-      <% end %> 
-    </div>
-  </div>
-    <br>
+      <select name="species" class="form-control m-b" id="species_select">
+        <option value="Any">Any</option>
+        <% all_species.each do |species| %>
+        <option value="<%= species.html_safe %>"><%= species %></option>
+        <% end %>
+      </select>
+    <% end %> 
+  <!-- </div> -->
+</div>
+<br>
 
   <div id="locdetails" style="display:none;">
   </div> 
 
   <!-- map container  -->
-<div class="row">
-  <div class="col-md-">        
-    <div class="panel panel-default">
-      <div class="panel-heading"></div>
-        <div class="panel-body">
-          <div style="height:700px; width: 1350px;">
+<!-- <div class="row"> -->
+  <!-- <div class="col-md-8">         -->
+    <!-- <div class="panel panel-default"> -->
+        <!-- <div class="panel-body"> -->
+          <div style="height: 900px; width: 100%;">
             <div id="map" class="gmap">
-              <p id="notice"><%= notice %></p>
             </div> 
           </div>
-        </div>
-      </div> 
-    </div>     
-  </div> 
-</div> 
+      <!-- </div>  -->
+    <!-- </div>      -->
+  <!-- </div>  -->
+<!-- </div>  -->
 
 
 <p id="notice"><%= notice %></p>
