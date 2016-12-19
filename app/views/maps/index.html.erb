@@ -72,6 +72,13 @@
   padding-top: 0px !important;
   padding-bottom: 0px !important;
   } 
+  .form-control {
+    width: 40% !important;
+  }
+  h1, h4 {
+    color: #3D3D40;
+
+  }
 </style>
 
 <div class="p-lg text-center">
@@ -81,7 +88,7 @@
 <!-- filter container -->
 <div class="content-wrapper">
   <!-- <div class="content-heading"> -->
-    <h4> Filter by Species<small> - filter by species to display catch reports by location</small></h4> 
+    <h4> Filter by Species<small> - View only your target species by location</small></h4> 
       <%= form_tag species_filter_path, id: 'species_form' do %>
       <select name="species" class="form-control m-b" id="species_select">
         <option value="Any">Any</option>
@@ -153,6 +160,7 @@ var infoWindow;
             var p = polygons[i];
              google.maps.event.addListener(p, 'click', function (event) {
               console.log(this);
+
       // console.log(location_reports);               
        var contentString = '<table><thead><tr><th>Date</th><th>Target Species</th><th>Vessel Name</th><th>Primary Method</th><th>Catch Total</th><th>Trip Summary</th></tr></thead><tbody><b>' + this.loc.short_name +'</b> <br>' + this.loc.long_name +'<br> <br>';
        for(var j=0;j<this.rep.length; j++){
