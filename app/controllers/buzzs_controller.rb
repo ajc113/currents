@@ -12,6 +12,8 @@ class BuzzsController < ApplicationController
   # GET /buzzs/1
   # GET /buzzs/1.json
   def show
+     @buzz.user=current_user
+     @buzzs = Buzz.all
   end
 
   # GET /buzzs/new
