@@ -17,71 +17,76 @@
 
   }
   /*flash*/
-.alert-error {
-    background-color: #f2dede;
-    border-color: #eed3d7;
-    color: #b94a48;
-    text-align: left;
- }
+  .alert-error {
+      background-color: #f2dede;
+      border-color: #eed3d7;
+      color: #b94a48;
+      text-align: left;
+   }
 
-.alert-alert {
-    background-color: #f2dede;
-    border-color: #eed3d7;
-    color: #b94a48;
-    text-align: left;
- }
+  .alert-alert {
+      background-color: #f2dede;
+      border-color: #eed3d7;
+      color: #b94a48;
+      text-align: left;
+   }
 
-.alert-success {
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-    color: #468847;
-    text-align: left;
- }
+  .alert-success {
+      background-color: #dff0d8;
+      border-color: #d6e9c6;
+      color: #468847;
+      text-align: left;
+   }
 
-.alert-notice {
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-    color: #468847;
-    text-align: left;
- }
+  .alert-notice {
+      background-color: #dff0d8;
+      border-color: #d6e9c6;
+      color: #468847;
+      text-align: left;
+   }
 </style>
-<div class="wrapper"> 
-  <div class="block-center mt-xl wd-xl">
-    <!-- START panel-->
-    <div class="panel panel-inverse panel-flat">
-      <div class="panel-heading">
-        <div class="row">
-          <div class="col-lg-4">
-            <a href="#">
-               <%= image_tag 'map_theme/tuna.png',  class: 'img-responsive', style: 'height: 46px;' %>
-            </a>
-          </div>
-          <div class="col-lg-6">
-						<h3>Forgot your password?</h3>
-					</div>		
+<div class = "container">
+  <div class="row">
+    <div class="content-wrapper">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4">
+        <div class="panel panel-inverse panel-flat">
+          
+          <div class="panel-heading">
+            <div class="row">
+              <div class="col-lg-4">
+                <a href="#">
+                  <%= image_tag 'map_theme/tuna.png',  class: 'img-responsive', style: 'height: 46px;' %>
+                </a>
+              </div>
+              <div class="col-lg-8">
+                <h3>Forgot your password?</h3>
+              </div>		
+            </div>
+          </div> 
 
 					<div class="panel-body">  
-						<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+						  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
 						  <%= devise_error_messages! %>
-						  <form>
 						  <div class="field">
-						    <%= f.label :email %><br />
-						    <%= f.email_field :email, autofocus: true %>
+						    <%= f.label :email, "Enter Email" %><br />
+						    <%= f.email_field :email, class: "form-control", autofocus: true %>
 						  </div>
-
 						  <button type="submit" class="btn btn-block btn-inverse mt-lg">
-						    <%= "Send me reset password instructions" %>
+						    <%= "Send me reset password" %>
 						  </button>
 						<% end %>
-							</form>
 					</div>
 
 					<div class="panel-footer">
-						<%= render "devise/shared/links" %>
-					</div>		
+            <div class="text-center">
+						  <%= render "devise/shared/links" %>
+					  </div>
+          </div>		
 
        </div>
       </div>
+      <div class="col-sm-4"></div>
     </div>
   </div>
 </div>

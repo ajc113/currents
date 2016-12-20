@@ -1,16 +1,94 @@
-<h2>Resend confirmation instructions</h2>
+<title>Confirmation</title>
+<style>
+  .panel-heading {
+    background-color: #88888F !important;
+    padding-left: 40px !important;
+  }
+  .btn-block {
+    background-color: #88888F !important;
+    color: white;
+  }
+  .panel-inverse {
+    border: 1px solid;
 
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+  }
+  .form-control {
+    background-color: white !important;
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+  }
+  /*flash*/
+	.alert-error {
+	    background-color: #f2dede;
+	    border-color: #eed3d7;
+	    color: #b94a48;
+	    text-align: left;
+	 }
+
+	.alert-alert {
+	    background-color: #f2dede;
+	    border-color: #eed3d7;
+	    color: #b94a48;
+	    text-align: left;
+	 }
+
+	.alert-success {
+	    background-color: #dff0d8;
+	    border-color: #d6e9c6;
+	    color: #468847;
+	    text-align: left;
+	 }
+
+	.alert-notice {
+	    background-color: #dff0d8;
+	    border-color: #d6e9c6;
+	    color: #468847;
+	    text-align: left;
+	 }
+</style>
+
+<div class = "container">
+  <div class="row">
+    <div class="content-wrapper">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4">
+        <div class="panel panel-inverse panel-flat">
+          
+          <div class="panel-heading">
+            <div class="row">
+              <div class="col-lg-4">
+                <a href="#">
+                  <%= image_tag 'map_theme/tuna.png',  class: 'img-responsive', style: 'height: 46px;' %>
+                </a>
+              </div>
+              <div class="col-lg-8">
+								<h2>Send me confirmation instructions</h2>
+			  			</div>		
+            </div>
+          </div> 
+
+          <div class="panel-body"> 
+						<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+  					<%= devise_error_messages! %>
+
+					  <div class="field">
+					    <%= f.label :email %><br />
+					    <%= f.email_field :email, class: "form-control", autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+					  </div>
+
+					  <div class="actions">
+					    <%= f.submit "Resend confirmation instructions", class: "btn btn-block btn-inverse mt-lg" %>
+					  </div>
+					</div>
+
+					<% end %>
+
+					<div class="panel-footer">
+            <div class="text-center">
+							<%= render "devise/shared/links" %>
+					  </div>
+          </div>	
+
+      <div class="col-sm-4"></div>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
