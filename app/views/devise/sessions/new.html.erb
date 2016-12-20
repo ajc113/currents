@@ -1,81 +1,22 @@
-
-   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
-<div class="wrapper"> 
-  <div class="block-center mt-xl wd-xl">
-    <!-- START panel-->
-    <div class="panel panel-inverse panel-flat">
-      <div class="panel-heading text-center">
-        <a href="#">
-          <%= image_tag 'map_theme/tuna.png',  class: 'img-responsive', style: 'height: 46px;' %>
-        </a>
-      </div>
-      <div class="panel-body">
-
-          <% if flash.any? %>
-
-              <% flash.each do |key, value| %>
-                <div class="alert alert-<%=key%>">
-                  <%= value %>
-                </div>
-              <% end %>
-
-          <% end %>
-              <!-- Email input  -->
-          <div class="form-group has-feedback">            
-            <p class="text-center">
-              <%= f.label :email %><br />
-              <%= f.email_field :email, autofocus: true %>
-            </p>
-          </div>  
-            <!-- password input -->
-          <div class="field">
-            <p class="text-center">
-              <%= f.label :password %><br />
-              <%= f.password_field :password, autocomplete: "off" %>
-            </p>
-          </div>
-            <!-- remember me box -->
-          <div class="field">         
-            <% if devise_mapping.rememberable? -%>
-                <%= f.check_box :remember_me %>
-                <%= f.label :remember_me %>
-          </div>
-            <!-- Submit button -->
-            <p>
-              <button type="submit" class="btn btn-block btn-inverse mt-lg">
-                <%= "Log in" %>
-              </button>
-                  <% end -%>
-            </p>  
-      </div>
-      
-       <!-- footer links -->
-      <div class="panel-footer">
-      
-        <p class="MO">
-          <ul><%= render "devise/shared/links" %></ul>
-        </p>
-      </div>
-      
-
-      <!-- </div> -->
-         <!-- </div> -->
-         <!-- END panel-->
-         <!-- <div class="p-lg text-center"> -->
-            <!-- <span>&copy;</span> -->
-            <!-- <span>2016</span> -->
-            <!-- <span>-</span> -->
-            <!-- <span>Currents</span> -->
-            <!-- <br> -->
-            <!-- <span>Network</span> -->
-         <!-- </div> -->
-      <!-- </div> -->
-   </div>
-<% end %>
-
+<title>Log In</title>
 <style>
-/*flash*/
+  .panel-heading {
+    background-color: #88888F !important;
+    padding-left: 40px !important;
+  }
+  .btn-block {
+    background-color: #88888F !important;
+    color: white;
+  }
+  .panel-inverse {
+    border: 1px solid;
+
+  }
+  .form-control {
+    background-color: white !important;
+
+  }
+  /*flash*/
 .alert-error {
     background-color: #f2dede;
     border-color: #eed3d7;
@@ -104,6 +45,93 @@
     text-align: left;
  }
 </style>
+
+   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+<div class="wrapper"> 
+  <div class="block-center mt-xl wd-xl">
+    <!-- START panel-->
+    <div class="panel panel-inverse panel-flat">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-lg-4">
+            <a href="#">
+               <%= image_tag 'map_theme/tuna.png',  class: 'img-responsive', style: 'height: 46px;' %>
+            </a>
+          </div>
+          <div class="col-lg-6">
+              <h4>
+               Log In
+              </h4>
+          </div>
+        </div> 
+      </div> 
+      <div class="panel-body">
+
+          <% if flash.any? %>
+
+              <% flash.each do |key, value| %>
+                <div class="alert alert-<%=key%>">
+                  <%= value %>
+                </div>
+              <% end %>
+
+          <% end %>
+              <!-- Email input  -->
+          <div class="form-group has-feedback">            
+            <p class="text-center">
+             
+              <%= f.label :email %><br />
+               <input class="form-control" placeholder="Email" input=<%= f.email_field :email, autofocus: false %>
+              </input>
+            </p>
+          </div>  
+            <!-- password input -->
+          <div class="field">
+            <p class="text-center">
+              <%= f.label :password %><br />
+              <input class="form-control" placeholder="Password" input=<%= f.password_field :password, autocomplete: "on" %>
+              </input>
+            </p>
+          </div>
+            <!-- remember me box -->
+          <div class="field">         
+            <% if devise_mapping.rememberable? -%>
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+          </div>
+            <!-- Submit button -->
+            <p>
+              <button type="submit" class="btn btn-block mt-lg">
+                <%= "Submit" %>
+              </button>
+                  <% end -%>
+            </p>  
+      </div>
+      
+       <!-- footer links -->
+      <div class="panel-footer">
+      
+        <p class="MO">
+          <ul><%= render "devise/shared/links" %></ul>
+        </p>
+      </div>
+      
+
+      <!-- </div> -->
+         <!-- </div> -->
+         <!-- END panel-->
+         <!-- <div class="p-lg text-center"> -->
+            <!-- <span>&copy;</span> -->
+            <!-- <span>2016</span> -->
+            <!-- <span>-</span> -->
+            <!-- <span>Currents</span> -->
+            <!-- <br> -->
+            <!-- <span>Network</span> -->
+         <!-- </div> -->
+      <!-- </div> -->
+   </div>
+<% end %>
 
 
 
