@@ -1,3 +1,19 @@
+<style>
+.panel-default {
+	border-color: #333333; 
+
+}
+.panel-heading {
+	background-color: #454647 !important;
+	color: white !important;
+}
+.panel-body {
+font-size: 18px !important;
+
+
+}
+</style>
+
 </br>
 <div class="row">
 	<div class="container">
@@ -7,20 +23,23 @@
     </div>
 		<div class="col-lg-8">
 			<div class="panel panel-default">
-				<div class="panel-heading bg-default"><h2>Network Rules</h2></div>	
+				<div class="panel-heading text-center"><h2>Network Rules</h2></div>	
 				<div class="panel-body">
 					
 						<ol>
-							<li>Network participation required </li>
-							<li>Recreational users required to post 10 reports per year</li>
-							<li>Commercial users required to post 15 reports per year</li>
-							<li>Commercial Users (requires validation)- Required to submit picture of commercial license for eligibility.  Commercial users will be able to view both Commercial and Recreational user reports in the Heatmaps.  Recreational users will be limited to view rec user reports. </li>
-							<li>Real Time report submission  - catch reports to be submitted by 12pm day after trip date to count toward annual requirement</li>
-							<li>Private vs Public information - A limited portion of a catch report is viewable by the network including a General area where the catch occurs.  This is not your private numbers or hotspot, and represents general areas.  The remaining portion of your catch report is private information only accessible by you.  Please see how it works for more details</li>
-							<li>Report validation - reports will be reviewed to ensure accuracy.  Any report submission deviating from standard catch results will be questioned and removed if found to be in error.</li>
-							<li>Termination - Any report that are determined to be malicious or of false intend will lead to termination from the network.</li>
-							<li>Zero Catch Reports - Zero catch trip reports are encouraged to help network and count towards annual requirement.</li>
-							<li>First Hand Reports - All report submissions to be first hand information of your personal catch that will be associated with your name or vessel.  Second hand information or dock talk is not permitted.</li>
+							<li>Network <strong>participation required</strong> </li>
+							<li><strong>Recreational Users</strong> required to post 20 reports per year</li>
+							<li><strong>Commercial Users</strong> required to post 40 reports per year</li>
+							<li>Validation required for commercial user access- Required to submit picture of <strong>commercial license for eligibility</strong>.  Commercial users will be able to view both Commercial and Recreational user reports in the Heatmaps.  Recreational users will be limited to view rec user reports. </li>
+							<li><strong>Zero catch trip reports</strong> are encouraged to help network and count towards annual requirement.</li>
+							<li><strong>Multi Species Trips</strong> on same day require multiple report submissions and will count towards annual requirement.</li>
+							<li><strong>First Hand Reports Only </strong> all report submissions to be first hand information of your personal catch that will be associated with your name or vessel.  Second hand information or dock talk is not permitted.</li>
+							
+							<li><strong>Same day reporting </strong> catch reports to be submitted by within same calendar day of trip to count toward annual requirement</li>
+							<li><strong>Private vs Public information</strong> a limited portion of a catch report is viewable by the network including a General area where the catch occurs.  This is not your private numbers or hotspot, and represents general areas.  The remaining portion of your catch report is private information only accessible by you.  Please see how it works for more details</li>
+							<li><strong>Report validation</strong> reports will be reviewed to ensure accuracy.  Any report submission deviating from standard catch results will be questioned and removed if found to be in error.</li>
+							<li><strong>Termination</strong> any report that are determined to be malicious or of false intend will lead to termination from the network.</li>
+							
 						</ol>
 				</div>
 			</div>
@@ -30,7 +49,7 @@
 	</div>
 <div class="container-fluid">
 	<div class="p-lg text-center">
-		<%= link_to "Join Now", new_user_registration_path, class: 'btn btn-inverse btn-lg' %>
+		<%= link_to "Join Network", new_user_registration_path, class: 'btn btn-danger btn-lg' %>
 	</div>
 </div	>
 
