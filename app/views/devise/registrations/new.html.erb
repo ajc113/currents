@@ -1,123 +1,117 @@
 <title>Register</title>
 <style>
-body {
-    background-image: url(/assets/moon.png);
-    background-repeat: repeat-x;
-  } 
-    .panel-heading {
-    background-color: #88888F !important;
-    padding-left: 40px !important;
-  }
-  .btn-block {
-    background-color: #88888F !important;
-    color: white;
-  }
-  .panel-inverse {
-    border: 1px solid;
+  body {
+      /*background-image: url(/assets/moon.png);*/
+      /*background-repeat: repeat-x;*/
+    } 
+      .panel-heading {
+      background-color: #88888F !important;
+      padding-left: 40px !important;
+    }
+    .btn-block {
+      background-color: #88888F !important;
+      color: white;
+    }
+    .panel-inverse {
+      border: 1px solid;
 
-  }
-  /*flash*/
-.alert-error {
-    background-color: #f2dede;
-    border-color: #eed3d7;
-    color: #b94a48;
-    text-align: left;
- }
+    }
+    /*flash*/
+  .alert-error {
+      background-color: #f2dede;
+      border-color: #eed3d7;
+      color: #b94a48;
+      text-align: left;
+   }
 
-.alert-alert {
-    background-color: #f2dede;
-    border-color: #eed3d7;
-    color: #b94a48;
-    text-align: left;
- }
+  .alert-alert {
+      background-color: #f2dede;
+      border-color: #eed3d7;
+      color: #b94a48;
+      text-align: left;
+   }
 
-.alert-success {
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-    color: #468847;
-    text-align: left;
- }
+  .alert-success {
+      background-color: #dff0d8;
+      border-color: #d6e9c6;
+      color: #468847;
+      text-align: left;
+   }
 
-.alert-notice {
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-    color: #468847;
-    text-align: left;
- }
+  .alert-notice {
+      background-color: #dff0d8;
+      border-color: #d6e9c6;
+      color: #468847;
+      text-align: left;
+   }
 </style>
-
-
-<%# = image_tag 'moon.png',  class: 'img-responsive', style: 'display:block; opacity: .85; width: 110%' %>
-
 <div class = "container">
   <div class="row">
     <div class="content-wrapper">
       <div class="col-sm-3"></div>
       <div class="col-sm-6">
-        <div class="panel panel-default">     
-          <div class="panel bg-inverse">
-            <h2> Join The Fishing Network</h2>
-          </div>    
-
+        <div class="panel panel-inverse panel-flat">
+          
+          <div class="panel-heading">
+            <div class="row">
+              <div class="col-lg-4">
+                <a href="#">
+                  <%= image_tag 'map_theme/tuna.png',  class: 'img-responsive', style: 'height: 46px;' %>
+                </a>
+              </div>
+              <div class="col-lg-6">
+                <h2> Join The Fishing Network</h2>
+              </div>    
+            </div>
+          </div>
+          
           <div class="panel-body">    
             <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-              <%= devise_error_messages! %>
+            <%= devise_error_messages! %>
 
-            <div class="field">
-              <%= f.label :email %><br />
-              <%= f.email_field :email, autofocus: true %>
+            <div class="form-group has-feedback"> 
+                <%= f.label :email %><br />
+             <%= f.email_field :email, class: "form-control", autofocus: true %>
             </div>
-            
             <div class="field">
               <%= f.label :first_name %><br />
-              <%= f.text_field :first_name, autofocus: true %>
+              <%= f.text_field :first_name, class: "form-control", autofocus: true %>
             </div>
-
             <div class="field">
               <%= f.label :last_name %><br />
-              <%= f.text_field :last_name, autofocus: true %>
+              <%= f.text_field :last_name, class: "form-control", autofocus: true %>
             </div>
-
             <div class="field">
               <%= f.label :home_port %><br />
-              <%= f.text_field :home_port, autofocus: true %>
+              <%= f.text_field :home_port, class: "form-control" %>
             </div>
-
             <div class="field">
               <%= f.label :state %><br />
-              <%= f.text_field :state, autofocus: true %>
+              <%= f.text_field :state, class: "form-control", autofocus: true %>
             </div>
-
              <div class="field">
               <%= f.label :vessel_name %><br />
-              <%= f.text_field :vessel_name, autofocus: true %>
+              <%= f.text_field :vessel_name, class: "form-control", autofocus: true %>
             </div>
-
-            
-
             <div class="field">
               <%= f.label :password %>
               <% if @minimum_password_length %>
               <em>(<%= @minimum_password_length %> characters minimum)</em>
               <% end %><br />
-              <%= f.password_field :password, autocomplete: "off" %>
+              <%= f.password_field :password, class: "form-control", autocomplete: "off" %>
             </div>
-
             <div class="field">
               <%= f.label :password_confirmation %><br />
-              <%= f.password_field :password_confirmation, autocomplete: "off" %>
+              <%= f.password_field :password_confirmation,  class: "form-control", autocomplete: "off" %>
             </div>
-
+            <div class="panel-footer">
             <button type="submit" class="btn btn-block btn-inverse mt-lg">
               <%= "Sign up" %>
             </button>
-              <% end %>
-            
+            <% end %>
           </div>
-
-      
-      
-        </div>
+    
+          </div></div>
       </div>
       <div class="col-sm-3"></div>
     </div>

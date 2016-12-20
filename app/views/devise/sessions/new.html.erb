@@ -13,7 +13,7 @@
 
   }
   .form-control {
-    background-color: white !important;
+
 
   }
   /*flash*/
@@ -68,31 +68,15 @@
       </div> 
       <div class="panel-body">
 
-          <% if flash.any? %>
-
-              <% flash.each do |key, value| %>
-                <div class="alert alert-<%=key%>">
-                  <%= value %>
-                </div>
-              <% end %>
-
-          <% end %>
               <!-- Email input  -->
           <div class="form-group has-feedback">            
-            <p class="text-center">
-             
               <%= f.label :email %><br />
-               <input class="form-control" placeholder="Email" input=<%= f.email_field :email, autofocus: false %>
-              </input>
-            </p>
+              <%= f.email_field :email, class: "form-control", autofocus: true %>
           </div>  
             <!-- password input -->
           <div class="field">
-            <p class="text-center">
               <%= f.label :password %><br />
-              <input class="form-control" placeholder="Password" input=<%= f.password_field :password, autocomplete: "on" %>
-              </input>
-            </p>
+              <%= f.password_field :password, class: "form-control", autocomplete: "on" %>
           </div>
             <!-- remember me box -->
           <div class="field">         
@@ -100,6 +84,7 @@
                 <%= f.check_box :remember_me %>
                 <%= f.label :remember_me %>
           </div>
+
             <!-- Submit button -->
             <p>
               <button type="submit" class="btn btn-block mt-lg">
