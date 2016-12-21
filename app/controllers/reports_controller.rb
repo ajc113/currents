@@ -5,9 +5,8 @@ class ReportsController < ApplicationController
 
 
 def index
-  # should be in private method
       @reports = current_user.reports.order("date DESC")
-      @reports_for_filter = @reports.select("(target_species)")
+      @reports_for_filter = @reports.select("DISTINCT(target_species)")
       @reports_for_filter_tide = @reports.select("DISTINCT(tide)")
       @reports_for_filter_location = Location.all.order("short_name ASC")
 end
@@ -18,11 +17,6 @@ def filter
   @tide = params[:tide] unless params[:tide].blank?
   @month = params[:date].to_date.month unless params[:date].blank?
 
-  # puts "@month is #{@month}".green
-  # puts "@target_species is #{@target_species}\n"
-  # puts "@location is #{@location.inspect}\n"
-  # puts "@tide is #{@tide}\n"
-  # puts "@date is #{@date}\n"
 
 # NEXT TWO LINES ADDED TO GET UNIQUE TO WORK
   @reports = current_user.reports.order("date DESC")
@@ -33,7 +27,6 @@ def filter
   @reports = @reports.selected_species(@target_species) if @target_species
   @reports = @reports.selected_location(@location) if @location
   @reports = @reports.selected_tide(@tide) if @tide
-  puts "@reports before date filter is #{@reports.inspect}\n".blue
   @reports = @reports.selected_date(@month) if @month
   # @filtered_by_date_reports = @reports.where("cast(strftime('%m', date) as int) = ?", @month)
   # puts "@filtered_by_date_reports after date filter is #{@filtered_by_date_reports.inspect}".green

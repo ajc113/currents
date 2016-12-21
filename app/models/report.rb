@@ -3,17 +3,13 @@ class Report < ActiveRecord::Base
 belongs_to :location
 belongs_to :user
 
+scope :selected_species, -> (the_species) { where(target_species: the_species)}
 
+scope :selected_location, -> (the_location) { where(location: the_location )}
 
-	scope :target_tuna, -> { Report.where(target_species: 'Tuna') }
+scope :selected_tide, -> (the_tide) {where(tide: the_tide)}
 
-	scope :selected_species, -> (the_species) { where(target_species: the_species)}
-
-	scope :selected_location, -> (the_location) { where(location: the_location )}
-
-	scope :selected_tide, -> (the_tide) {where(tide: the_tide)}
-
-	scope :selected_date, -> (month) {where("cast(strftime('%m', date) as int) = ?", month)}
+scope :selected_date, -> (month) {where("cast(strftime('%m', date) as int) = ?", month)}
 
 
 

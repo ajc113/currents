@@ -59,100 +59,79 @@
 
 <title>Reports</title>
   <%= image_tag 'lighthouse2.jpg',  class: 'img-responsive', style: 'display:block; opacity: .85' %>
-  <div>
-  <p id="notice"><%#= notice %></p>
-  </div>
-<div class"content-wrapper">
 
-<div class="panel panel-default col-sm-12 bg-gray-lighter">
-  <h3 class="h3">Report Filter</h3>
-    <div class="panel-body">
-      <form id="filter_form" action="/filter" class="form-horizontal">
+  <p id="notice"><%#= notice %></p>
+  
+  <div class="panel panel-default col-sm-12 bg-gray-lighter">
+    <h3 class="h3">Report Filter</h3>
+      <div class="panel-body">
+        <form id="filter_form" action="/filter" class="form-horizontal">
           <div class="form-group">
             <!-- Species filter   -->
             <div class="col-sm-3">
-              <label>
-                Species
-              </label> 
-              <br>
-                <div class="">
-                  <select id="target_species" name="target_species" class="form-control m-b">   
-                      <option value="">Select Species</option>
-                        <% @reports_for_filter.each do |report| %>
-                        <% puts "target species is #{report.target_species}".green %>
-                      <option value="<%= report.target_species %>"><%= report.target_species %>
-                      </option>
-                      <% end %>
-                  </select>
-                </div>
+              <label>Species</label><br>
+              <select id="target_species" name="target_species" class="form-control m-b">   
+                  <option value="">Select Species</option>
+                    <% @reports_for_filter.each do |report| %>
+                    <% puts "target species is #{report.target_species}".green %>
+                  <option value="<%= report.target_species %>"><%= report.target_species %>
+                  </option>
+                    <% end %>
+              </select>
             </div>
-              <!-- locations filter -->
+            <!-- locations filter -->
             <div class="col-sm-3">
-              <label>
-                Location
-              </label>  
-              <br>
-                <div class="">
-                  <select id="location" name="location" class="form-control m-b"> 
-                      <option value="">Select Location</option>
-                      <% @reports_for_filter_location.each do |location| %>
-                      <option value="<%= location.id %>" <%= selected_locations(location) %>><%= location.short_name %></option>
-                      <% end %>
-                  </select> 
-                </div>
+              <label>Location</label><br>
+              <select id="location" name="location" class="form-control m-b"> 
+                <option value="">Select Location</option>
+                  <% @reports_for_filter_location.each do |location| %>
+                <option value="<%= location.id %>" <%= selected_locations(location) %>><%= location.short_name %>
+                </option>
+                  <% end %>
+              </select> 
             </div>
               <!-- tide filter -->
             <div class="col-sm-3">
-              <label>
-                Tide
-              </label>  
-              <br>
-                <div class="">
-                  <select id="tide" name="tide" class="form-control m-b">   
-                      <option value="">Select Tide</option>
-                      <% @reports_for_filter_tide.each do |report| %>
-                      <option value="<%= report.tide %>" <%= selected_tide(report.tide) %>><%= report.tide %></option>
-                          <% end %>
-                  </select>
-                </div>
+              <label>Tide</label><br>
+                <select id="tide" name="tide" class="form-control m-b">   
+                  <option value="">Select Tide</option>
+                    <% @reports_for_filter_tide.each do |report| %>
+                  <option value="<%= report.tide %>" <%= selected_tide(report.tide) %>><%= report.tide %>
+                  </option>
+                    <% end %>
+                </select>
             </div>
               <!-- date filter -->
             <div class="col-sm-3">
-              <label>
-                Month
-              </label>
-              <br>  
-                <div class="">
-                  <select id="date" name="date" class="form-control m-b">   
-                    <option value="">Select Date</option>
-                    <option value="January">January</option>
-                    <option value="February">February</option>
-                    <option value="March">March</option>  
-                    <option value="April">April</option>
-                    <option value="May">May</option>
-                    <option value="June">June</option>
-                    <option value="July">July</option>
-                    <option value="August">August</option> 
-                    <option value="September">September</option>
-                    <option value="October">October</option> 
-                    <option value="November">November</option> 
-                    <option value="December">December</option>
-                  </select>
-                </div>
+              <label>Month</label><br>  
+              <select id="date" name="date" class="form-control m-b">   
+                <option value="">Select Date</option>
+                <option value="January">January</option>
+                <option value="February">February</option>
+                <option value="March">March</option>  
+                <option value="April">April</option>
+                <option value="May">May</option>
+                <option value="June">June</option>
+                <option value="July">July</option>
+                <option value="August">August</option> 
+                <option value="September">September</option>
+                <option value="October">October</option> 
+                <option value="November">November</option> 
+                <option value="December">December</option>
+              </select>
             </div>        
           </div>
-      </form>
+        </form>
         <div class="text-center">
           <%= link_to 'Clear Filter', reports_path, class: 'btn btn-info btn-lg' %> 
         </div>
-    </div>
+      </div>
+  </div>
+  
+  <div class="p-lg text-center">
+    <%= link_to 'Log New Report', new_report_path, class: "btn btn-inverse btn-lg" %>
   </div>
 
-<div class="row">
-  <div class="p-lg text-center">
-  <%= link_to 'Log New Report', new_report_path, class: "btn btn-inverse btn-lg" %>
-  </div>
-</div>
 
 <!-- filter script -->
 <script>
