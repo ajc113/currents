@@ -1,8 +1,5 @@
 <title>Currents</title>
 <style>
-  body {
-  background-color: #f7f7f7;
-  }
   .alert-error {
       background-color: #f2dede;
       border-color: #eed3d7;
@@ -46,10 +43,10 @@
       margin-bottom: 0px !important;
       border-radius: 2px 2px 0 0;
    }
-   .container {
+/*   .container {
       width: auto;
       padding: 0px;
-   }
+   }*/
    .panel-body {
     border-top: 5px solid !important;
     height: 205px;
@@ -59,62 +56,159 @@
    }
    .list-group-item {
     border: 5px solid #e4eaec;
+
    }
-
-  .h1 {
-  color: rgba(49, 63, 78, 0.90);
-  font-size: 80px;
-  line-height: 100px;
-  font-weight: 700;
-  text-align: center;
-  /*text-transform: uppercase;*/
-  text-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
-  }
-
-  .h2 {
-  color: rgba(49, 63, 78, 0.75);  
+   /* ============================================================
+  PRIMARY STRUCTURE
+============================================================ */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+/* ============================================================
+  SECTIONS
+============================================================ */
+section.module:last-child {
+  margin-bottom: 0;
+}
+section.module h2 {
   margin-bottom: 40px;
   font-family: "Roboto Slab", serif;
   font-size: 30px;
-  line-height: 40px;
-  }
-  .h22 {
-  color: #454647;  
-  font-size: 50px;
-  line-height: 40px;
-  opacity: .90;
-  }
-  .how_it_works {
-    background-color: rgba(81, 82, 83, 0.1);
-    padding: 0px;
-   }
-  .panel-heading-how-it-works {
-    height: auto;
-    font-family: "Roboto Slab", serif;
-    font-size: 30px;
-    line-height: 25px;
-    padding-left: 30px;
-   }
-  .panel-body-how-it-works {
-    height: 100px;
-    text-align: left;
-    padding-left: 20px;
-    line-height: 22px;
-    padding-top: 20px;
-   }
+}
+section.module p {
+  margin-bottom: 40px;
+  font-size: 16px;
+  font-weight: 300;
+}
+section.module p:last-child {
+  margin-bottom: 0;
+}
+section.module.content {
+  padding: 40px 0;
+}
+section.module.parallax {
+  height: 600px;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  margin-left: 0px !important;
+}
+section.module.parallax h1 {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 25px;
+  line-height: 600px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+section.module.parallax-1 {
+  background-image: url('assets/div1.jpg');
+}
+section.module.parallax-2 {
+  background-image: url('assets/div2.jpg');
+}
+section.module.parallax-3 {
+  background-image: url('assets/div3.jpg');
+}
 
+@media all and (min-width: 600px) {
+  section.module h2 {
+    font-size: 42px;
+  }
+  section.module p {
+    font-size: 20px;
+  }
+  section.module.parallax h1 {
+    font-size: 96px;
+  }
+}
+@media all and (min-width: 960px) {
+  section.module.parallax h1 {
+    font-size: 160px;
+  }
+}
 </style>
 
-<%= image_tag 'Homepage3.png',  class: 'img-responsive', style: 'display:block; opacity: .85' %>
+<%#= image_tag 'Homepage3.png',  class: 'img-responsive', style: 'display:block; opacity: .85', id: "bg" %>
   
+<section class="module parallax parallax-1">
+  <div class="container">
+    <h1>Currents Fishing Network</h1>
+  </div>
+</section>
+
+<section class="module content">
+  <div class="container">
+    <h2>Lorem Ipsum Dolor</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+  </div>
+</section>
+
+<section class="module parallax parallax-2">
+  <div class="container">
+    <h1>Rise</h1>
+  </div>
+</section>
+
+<section class="module content">
+  <div class="container">
+    <h2>Lorem Ipsum Dolor</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+  </div>
+</section>
+
+<section class="module parallax parallax-3">
+  <div class="container">
+    <h1>Calm</h1>
+  </div>
+</section>
+
+<section class="module content">
+  <div class="container">
+    <h2>Lorem Ipsum Dolor</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+  </div>
+</section>
+
   <!-- title container -->
+<!-- <div class="scroll">
   <div class="p-lg text-center">
-    <h1 class="h1">Currents Sportfishing Network</h1>
-    <h2 class="h2">The source for real time intel from on the water. Save time and fuel cost by targeting where the fish are.</h2>
+    <div class="container container-md">
+      <div class="plan">
+        <h1 class="plan-header">Currents Fishing Network</h1>
+          <div class="panel-body">
+            <p class="lead">
+              <h3>Benefit from the worlds premier fishing network to find <em>where the fish are</em>.  Make informed decisions before leaving the dock.</h3>
+            </p>
+            <div class="text-lg">
+              <em>Fish Smarter</em>
+            </div>
+          </div>            
+      </div>
+    </div>
   </div>            
+</div> -->
+
+<!-- join network button -->
+<div class="p-lg text-center">
+<%= link_to "Join Network", new_user_registration_path, class: 'btn btn-info btn-lg' %>
+</div>
 
 
 
+<div class="scrollme">
+  <div
+        class="animateme"
+        data-when="enter"
+        data-from="0.5"
+        data-to="0"
+        data-opacity="0"
+        data-translatex="0"
+        data-scale="1.5"
+    >
 
 <!-- Features -->
     <div class="row">
@@ -208,75 +302,58 @@
       </div>  
     </div>      
 
-<br>
 
-
-<!-- join network button -->
-<div class="p-lg text-center">
-  <%= link_to "Join Network", new_user_registration_path, class: 'btn btn-info btn-lg' %>
+  </div>
 </div>
-<br>
-
 <!-- how it works section -->
-<div class="how_it_works">
-<div class="p-lg">
-  <h2 class="h22" style="text-align:center">How it works</h2>
-    <%= image_tag 'how_it_works.png',  class: 'img-responsive', style: 'display:block; opacity: .80; padding:50px' %>
-    <div class="row">
-      <div class="col-lg-3">
-        <div class="panel-heading-how-it-works ">
-          Join the network
-        </div> 
-        <div class="panel-body-how-it-works">
-          <ul>
-            <li>Benefit from real time reports</li>
-          </ul>  
-        </div> 
-      </div>
-      <div class="col-lg-3">
-        <div class="panel-heading-how-it-works ">
-          Contribute to network
-        </div> 
-        <div class="panel-body-how-it-works">
-          <ul>
-          <li>Fish Hard</li>
-          <li>Post Catch Reports</li>
-          </ul>
-        </div> 
-      </div>
-      <div class="col-lg-3">
-        <div class="panel-heading-how-it-works ">
-          Build your network
-        </div> 
-        <div class="panel-body-how-it-works">
-          <ul>
-          <li>Expand your connections</li>
-          <li>Collaborate to cover more ground</li>
-          <li>Coordinate buddy boats for offshore trips</li>
-          </ul>
-        </div> 
-      </div>
-      <div class="col-lg-3">
-        <div class="panel-heading-how-it-works ">
-          Benefit from network
-        </div> 
-        <div class="panel-body-how-it-works">
-          <ul>
-          <li>Review real time reports</li>
-          <li>Use Heatmaps to idenfity hotspots</li>
-          <li>Get real time intel before you leave the dock</li>
-          </ul>
-        </div> 
-      </div>
-    </div>  
-</div>  
-
-    <div class="row bg-gray-lighter">
-  <div class="container">
-     </div>
+<div class="row bg-gray-lighter">
+    <div class="container">
+      <!-- <a href="maps"> -->
+        <%= image_tag 'how_It_works_trns.png',  class: 'img-responsive', style: 'display:block; opacity: .80' %>
+    </div>
       <!-- </a> -->
     <div class="p-lg text-center">
         <%= link_to "View Network Rules", rules_path, class: 'btn btn-inverse btn-lg ' %>
     </div>
 </div>
 
+
+<!-- Buzz snapsot not utilizing now -->
+
+<!--   <div class="row bg-gray-lighter">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+      <div class="panel b m0">
+        <div class="panel-body">
+          <div class="panel-body bg-info text-center">
+            <h1>Recent Buzz</h1>
+          </div>        
+          <div <div class="table-responsive">               
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Post</th>
+                  <th>Vessel</th>
+                  <th>Port</th>
+                </tr>
+              </thead>
+              <tbody>  
+                <% @buzzs.each do |buzz| %>
+                <tr>
+
+                  <td class="wd-td1"><%= buzz.post %></td>
+                  <td><%= buzz.user.try(:vessel_name) %></td>
+                  <td><%= buzz.user.try(:home_port) %></td>
+                </tr>
+                  <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>  
+      </div> 
+    </div> 
+    <div class="col-lg-3"></div>
+  </div> -->
+
+
+<!-- end buzz snapshot  -->
