@@ -4,8 +4,10 @@ class ReportsController < ApplicationController
   before_action :authenticate_user!
 
 
+  # @reports = current_user.reports.order("date DESC")
+
 def index
-      @reports = current_user.reports.order("date DESC")
+      @reports = current_user.reports
       @reports_for_filter = @reports.select("DISTINCT(target_species)")
       @reports_for_filter_tide = @reports.select("DISTINCT(tide)")
       @reports_for_filter_location = Location.all.order("short_name ASC")
@@ -19,10 +21,10 @@ def filter
 
 
 # NEXT TWO LINES ADDED TO GET UNIQUE TO WORK
-  @reports = current_user.reports.order("date DESC")
+  @reports = current_user.reports
   @reports_for_filter = @reports.select("DISTINCT(target_species)") #sets up target_species for filter box
   @reports_for_filter_tide = @reports.select("DISTINCT(tide)")
-   @reports_for_filter_location = Location.all.order("short_name ASC")
+  @reports_for_filter_location = Location.all.order("short_name ASC")
 
   @reports = @reports.selected_species(@target_species) if @target_species
   @reports = @reports.selected_location(@location) if @location
