@@ -24,7 +24,4 @@ scope :selected_date, -> (month) {where("cast(strftime('%m', date) as int) = ?",
     f
   end
 
-
-# # geocoded_by :general_location
-# # after_validation :geocode
 end

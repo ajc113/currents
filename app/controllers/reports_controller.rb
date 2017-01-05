@@ -30,6 +30,7 @@ def filter
   @reports = @reports.selected_location(@location) if @location
   @reports = @reports.selected_tide(@tide) if @tide
   @reports = @reports.selected_date(@month) if @month
+    @reports = current_user.reports.order("date DESC")
   # @filtered_by_date_reports = @reports.where("cast(strftime('%m', date) as int) = ?", @month)
   # puts "@filtered_by_date_reports after date filter is #{@filtered_by_date_reports.inspect}".green
 
