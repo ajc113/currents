@@ -89,4 +89,6 @@ config.action_mailer.default_url_options = { :host => 'currents.herokuapp.com'}
 
 config.middleware.use('PartyFoul::Middleware')
 
+config.secret_key_base = ENV["SECRET_KEY_BASE"]
+
 end
