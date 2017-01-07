@@ -1,5 +1,3 @@
-AdminUser.create!([
-  ])
 Location.create!([
   {short_name: "07. Cape Cod - Peaked Hill Bar", long_name: "Peaked Hill Bar down to golfball", coordinates: [], coordinate_file: "53_ph.json"},
   {short_name: "06. Cape Cod Backside", long_name: "Golfball , backside beaches down to nauset inlet", coordinates: [], coordinate_file: "54_backside.json"},
@@ -32,16 +30,4 @@ Location.create!([
   {short_name: "29. Vineyard Sound", long_name: "Vineyard Sound  and Elizabeth islands including Quick's, Robinson's, and Wood's hole.  Cuttyhunk to Falmouth.", coordinates: [], coordinate_file: "93_vineyard_sound.json"},
   {short_name: "31. Buzzards Bay - East", long_name: "Mass Maritime west to Mattapoisett.  Includes Onset, Wareham, Marion, Pocasset, and North Falmouth.", coordinates: [], coordinate_file: "94_buzzbay_east.json"},
   {short_name: "30. Buzzards Bay - West", long_name: "Westport east to New Bedford.  Includes Dartmouth, Cuttyhunk, and Gosnold, Naushon Island.", coordinates: [], coordinate_file: "95_buzzbay_west.json"}
-])
-Report.create!([
-])
-User.create!([
-  ])
-ActiveAdmin::Comment.create!([
-  {namespace: "admin", body: "heres a comment", resource_id: "4", resource_type: "Report", author_id: 1, author_type: "AdminUser"}
-])
-Buzz.create!([
-  {user_id: 2, post: "adfsdasfsa"},
-  {user_id: 2, post: "adfasdflk;aj;lsdkjfal;djkfl;kadjsfl;kajsdfl;kajsdflk;asjdfl;kajsfl;kjasd;lfkjdasl;kfjadkls;"},
-
 ])
