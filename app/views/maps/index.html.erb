@@ -88,19 +88,19 @@
 </div>
 
 <!-- filter container -->
-<div class="content-wrapper">
+<!-- <div class="content-wrapper"> -->
   <!-- <div class="content-heading"> -->
-    <h4> Filter by Species<small> - View only your target species by location</small></h4> 
-      <%= form_tag species_filter_path, id: 'species_form' do %>
-      <select name="species" class="form-control m-b" id="species_select">
+    <!-- <h4> Filter by Species<small> - View only your target species by location</small></h4>  -->
+      <%#= form_tag species_filter_path, id: 'species_form' do %>
+      <!-- <select name="species" class="form-control m-b" id="species_select"> -->
         <!-- <option value="Any">Any</option> -->
-        <% all_species.each do |species| %>
-        <option value="<%= species.html_safe %>"><%= species %></option>
-        <% end %>
-      </select>
-    <% end %> 
+        <%# all_species.each do |species| %>
+        <!-- <option value="<%#= species.html_safe %>"><%#= species %></option> -->
+        <%# end %>
+      <!-- </select> -->
+    <%# end %> 
   <!-- </div> -->
-</div>
+<!-- </div> -->
 <br>
 
   <div id="locdetails" style="display:none;">
@@ -234,7 +234,6 @@ var infoWindow;
           //Do Something to handle error
         }
       });
-    
   }
  
 $('#species_select').change(function(){
