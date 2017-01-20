@@ -40,7 +40,7 @@ def filter_by_species
       avgrep = location.reports.where('date >= ?', 1.week.ago.to_date).where('date < ?', Date.today).order(date: :desc)
       prevavgrep = location.reports.where('date >= ?', 1.week.ago.to_date - 1).where('date < ?', Date.today - 1)
       movavg = movingavg(avgrep,prevavgrep)
-      puts "---movingavg", movavg
+      puts "---movingavg", movavg 
       @lreports.push(location:location,reports: userreport(avgrep),cfile: one_locations_json(location),movingavg: movavg[:movingavg], color: movavg[:color])
       # @lreports.push(location:location,reports: userreport(reports),cfile: one_locations_json(location),movingavg: movavg[:movingavg], color: movavg[:color])
 
