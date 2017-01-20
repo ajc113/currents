@@ -21,7 +21,6 @@
 //= require map_theme/vendor/animo
 //= require map_theme/vendor/jquery.slimscroll.min
 //= require map_theme/vendor/screenfull
-
 //= require map_theme/demo/demo-rtl
 //= require map_theme/vendor/index
 //= require map_theme/vendor/jquery.classyloader.min
