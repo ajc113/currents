@@ -1,5 +1,6 @@
 module LocationsHelper
 	def one_locations_json(location)
+		puts "Entered Locations JSON helper" 
 		f = File.read location.coordinate_file.path
 		# puts "f is #{f.inspect}".green
 		# # f = f[0]
