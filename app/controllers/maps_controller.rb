@@ -88,7 +88,7 @@ def filter_by_species
     i = 0
     reports.each do |rep|
       puts "@rep user", rep.user.inspect
-      puts "@rep user", rep.user..try(:vessel_name)
+      puts "@rep user", rep.user.try(:vessel_name)
       puts "@rep user3"
       @rep.push({rep: rep, vessel_name: rep.user.try(:vessel_name)})
     end
