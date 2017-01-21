@@ -97,7 +97,7 @@ def filter_by_species
   def one_locations_json(location)
     puts "Entered Locations JSON"
     f = File.read location.coordinate_file.path
-
+    puts "Entered Locations JSON 2"
     # puts "f is #{f.inspect}".green
     # # f = f[0]
     # puts "f[0] is #{f}".blue
