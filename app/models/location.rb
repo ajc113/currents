@@ -20,6 +20,12 @@ class Location < ActiveRecord::Base
   where(short_name: [*location])
   }
 
+
+  def self.updatelocationid
+    Location.all.each do |location|
+      location.update_attributes(id: location.coordinate_file[0..1])
+    end
+  end
   def self.options_for_select
   order('LOWER(name)').map { |e| [e.name, e.id] }
   end
