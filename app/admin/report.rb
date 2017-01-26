@@ -1,8 +1,32 @@
 ActiveAdmin.register Report do
 
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
+permit_params :user_id
+
+index do
+  selectable_column
+  column :user_id
+  column :date
+  column :location_id
+  column :target_species
+  column :catch_keepers
+  column :catch_total
+  column :trip_summary
+  column :primary_method
+  column :tide
+  column :wind
+  column :spot
+  column :best_bait
+  column :trip_description
+  column :created_at
+  column :updated_at
+  column :latitude
+  column :longitude
+  column :location_id
+
+end
+
+
+
 
 end
 
