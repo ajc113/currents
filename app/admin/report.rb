@@ -1,12 +1,16 @@
 ActiveAdmin.register Report do
 
-permit_params :user_id
+permit_params :user_id, :short_name
+
 
 index do
   selectable_column
   column :user_id
   column :date
-  column :location_id
+  column "Location Name", :sortable => false do |loc|
+  	loc.location.short_name
+  end
+
   column :target_species
   column :catch_keepers
   column :catch_total
