@@ -1,6 +1,6 @@
 module ReportsHelper
 	def selected_target_species(target_species)
-		"selected" if @target_species == target_species.any?
+		"selected" if @target_species == target_species
 	end
 
 	def selected_locations(loc)
@@ -16,8 +16,7 @@ module ReportsHelper
 	end	
 
 
-	# do not belive this is referenced in code
-	# def all_species
-	# 	Report.all.collect(&:target_species).compact.uniq.reject(&:empty?)
-	# end
+	def all_species
+		Report.all.collect(&:target_species).compact.uniq.reject(&:empty?)
+	end
 end
