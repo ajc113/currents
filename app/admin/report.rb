@@ -9,7 +9,7 @@ index do
   column :date
   column "Location Name", :sortable => false do |loc|
   	loc.location.short_name
-  end
+  	end
 
   column :target_species
   column :catch_keepers
