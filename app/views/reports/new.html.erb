@@ -100,10 +100,13 @@
 							    </ul>	
 								</div>
 							  	<% end %>
+						
 						<div class="field">  	
 							<%= f.label :date %> (Required)<br>
-							<%= f.date_field :date %>
+							<%= f.date_select :date %>
 						</div>
+						<br>
+
 						<div class="field">
   						<%= f.label :target_species %> (Required)<br>
   						<%= f.select :target_species, ['Bluefish', 'Cod & Haddock', 'Flounder', 'Striped Bass', 'Sharks', 'Tuna', 'Mackeral, Pogies, Herring'] %>
