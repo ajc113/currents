@@ -103,9 +103,15 @@
 						
 						<div class="field">  	
 							<%= f.label :date %> (Required)<br>
-							<%= f.date_select :date %>
+							<%= f.date_field :date, class: "datepicker", type: 'text' %>
 						</div>
 						<br>
+
+						<script type="text/javascript">
+					  $(document).ready(function(){
+					    $('.datepicker').datepicker();
+					  });
+						</script>
 
 						<div class="field">
   						<%= f.label :target_species %> (Required)<br>
@@ -121,8 +127,8 @@
 					    <%= f.number_field :catch_keepers %>
 					  </div>
 						<div class="field"> 
-						   <%= f.label :trip_summary %> brief summary (Required)<br>
-						   <%= f.text_area :trip_summary %>
+						   <%= f.label :trip_summary %><br>
+						   <%= f.text_area :trip_summary, placeholder: "Enter brief summary of todays trip" %>
 						 </div>
 						  <br>
 					</div>	

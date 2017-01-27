@@ -43,6 +43,7 @@ gem 'active_model_serializers', '~> 0.10.0'
 gem 'moving_average'
 gem 'party_foul'
 gem 'rails_serve_static_assets'
+gem 'bootstrap-datepicker-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
