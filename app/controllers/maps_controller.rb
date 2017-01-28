@@ -30,7 +30,7 @@ def filter_by_species
 
       #The following line has been changed to fix the error. Please confirm the output
       reports = location.reports.where(target_species: params[:target_species])
-
+      puts "Report count = " + reports.count.to_s
       avgrep = reports.where('date >= ?', 1.week.ago.to_date).where('date < ?', Date.today).order(date: :desc)
       prevavgrep = reports.where('date >= ?', 1.week.ago.to_date - 1).where('date < ?', Date.today - 1)
       movavg = movingavg(avgrep,prevavgrep)
@@ -49,8 +49,10 @@ def filter_by_species
     render json: @lreports
   end
   def movingavg(avgrep,prevavgrep)
-      movingavg = avg(avgrep,1.week.ago.to_date,Date.today-1)
-      prevmovingavg = avg(prevavgrep,1.week.ago.to_date-1,Date.today-2)
+      movingavg = 0
+      prevmovingavg = 0
+      movingavg = avg(avgrep,1.week.ago.to_date,Date.today-1) unless avgrep.blank?
+      prevmovingavg = avg(prevavgrep,1.week.ago.to_date-1,Date.today-2) unless prevavgrep.blank?
       puts "----moving average",  movingavg 
       puts "----previous moving average",  prevmovingavg 
       #  n = avarray.size 
@@ -74,6 +76,7 @@ def filter_by_species
   end
   def avg(avgrep,startdate,enddate)
     avggroup = avgrep.group('date').average('catch_keepers')
+    puts "Average function: "
       avarray = (startdate..enddate).map {|date|
       if avggroup[date]
         avggroup[date].to_f
