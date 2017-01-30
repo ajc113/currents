@@ -5,7 +5,8 @@ permit_params :user_id, :short_name
 
 index do
   selectable_column
-  column :user_id
+    actions
+    column :user_id
   column :date
   column "Location Name", :sortable => false do |loc|
   	loc.location.short_name

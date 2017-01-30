@@ -168,9 +168,9 @@ var infoWindow;
               console.log(this);
 
       // console.log(location_reports);               
-       var contentString = '<table><thead><tr><th>Date</th><th>Target Species</th><th>Vessel Name</th><th>Primary Method</th><th>Catch Total</th><th>Trip Summary</th></tr></thead><tbody><b>' + this.loc.short_name +'</b> <br>' + this.loc.long_name +'<br> <br>';
+       var contentString = '<table><thead><tr><th>Date</th><th>Target Species</th><th>Vessel Name</th><th>Primary Method</th><th>Catch Keepers</th><th>Trip Summary</th></tr></thead><tbody><b>' + this.loc.short_name +'</b> <br>' + this.loc.long_name +'<br> <br>';
        for(var j=0;j<this.rep.length; j++){
-        contentString += '<tr><td>' +this.rep[j].rep.date + '</td> <td>' +this.rep[j].rep.target_species + '</td><td>' +this.rep[j].vessel_name + '</td><td>' +this.rep[j].rep.primary_method + '</td><td>' +this.rep[j].rep.catch_total + '</td><td>' +this.rep[j].rep.trip_summary + '</td></tr>';
+        contentString += '<tr><td>' +this.rep[j].rep.date + '</td> <td>' +this.rep[j].rep.target_species + '</td><td>' +this.rep[j].vessel_name + '</td><td>' +this.rep[j].rep.primary_method + '</td><td>' +this.rep[j].rep.catch_keepers + '</td><td>' +this.rep[j].rep.trip_summary + '</td></tr>';
        };
        contentString +='</tbody></table>';
       // Replace the info window's content and position.
