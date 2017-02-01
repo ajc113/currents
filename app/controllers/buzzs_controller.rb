@@ -1,25 +1,25 @@
 class BuzzsController < ApplicationController
   before_action :set_buzz, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+ 
+
   # GET /buzzs
   # GET /buzzs.json
   def index
     @buzzs = Buzz.all.order("created_at DESC")
     @locations = Location.all
-    @users = User.all
+
   end
 
   # GET /buzzs/1
   # GET /buzzs/1.json
   def show
-     @buzz.user=current_user
      @buzzs = Buzz.all
   end
 
   # GET /buzzs/new
   def new
     @buzz = Buzz.new
-   
   end
 
   # GET /buzzs/1/edit
