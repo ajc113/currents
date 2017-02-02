@@ -10,13 +10,13 @@
     width: 100%;
   }
   #locdetails {
-    position: absolute;
-    right: 25%;
+    position: fixed;
     text-align: center;
+    left: 0px;
     font-family: Roboto, Arial, sans-serif;
     font-size: 13px;
     z-index: 5;
-    width: 60%;
+    width: 30%;
     box-shadow: rgb(51, 51, 51) 0px 4px 6px -4px;
     padding: 5px 10px;
     background: linear-gradient(rgb(255, 255, 255) 0%, rgb(245, 245, 245) 100%);
@@ -214,7 +214,7 @@ var infoWindow;
       
     google.maps.event.addListener(p, 'mouseover',function (event){
       $("#locdetails").css("display", "block");
-      $( "#locdetails" ).append( "<div class='hoverrow'> <div class='hoverclass'>Location</div> <div class='hoverclass'>Average Catch Per Trip</div> <div class='hoverclass'>Reports posted past 7 days</div> </div> <div class='hoverrow'><div class='hoverclass'>"+ this.loc.short_name +"</div>" +"<div class='hoverclass'>" + this.mavg +  "</div>"+"<div class='hoverclass'>" + this.rep.length +  "</div></div>" );
+      $( "#locdetails" ).append( "<div class='hoverrow'> <div class='hoverclass'>Location</div> <div class='hoverclass'>Average Catch Per Trip</div> <div class='hoverclass'>Reports posted past 7 days</div> </div> <br> <div class='hoverrow'><div class='hoverclass'>"+ this.loc.short_name +"</div>" +"<div class='hoverclass'>" + this.mavg +  "</div>"+"<div class='hoverclass'>" + this.rep.length +  "</div></div>" );
       map.data.revertStyle();
       this.setOptions({
         strokeColor: '#F7F8FF',
