@@ -25,20 +25,6 @@ body {
     margin-top: 50px;
 }
 
-@media only screen and (min-device-width: 768px) {
-    #locdetails {
-        left: 0px;
-        width: 30%;
-    }
-}
-
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-    #locdetails {
-        bottom: 0px;
-        width: 100%;
-    }
-}
-
 .hoverclass {
     display: inline-block;
     margin: 5px 2%;
@@ -48,48 +34,6 @@ body {
 .hoverrow {
     display: block;
     width: 100%;
-}
-
-@media only screen and (min-device-width: 768px) {
-    .gm-style-iw {
-        width: 534px !important;
-        top: 15px !important;
-        left: 0 !important;
-        background-color: #fff;
-        box-shadow: 0 1px 6px rgba(178, 178, 178, 0.6);
-        border: 1px solid rgba(72, 181, 233, 0.6);
-        border-radius: 2px 2px 10px 10px;
-    }
-    /*.close-button {
-        opacity: '1';
-        right: '44px';
-        top: '8px';
-        border: '7px solid #48b5e9';
-        border-radius: '13px';
-        box-shadow: '0 0 5px #3990B9';
-    }*/
-}
-
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-    .gm-style-iw {
-        width: 100% !important;
-        top: 15px !important;
-        background-color: #fff;
-        border: 1px solid rgba(72, 181, 233, 0.6);
-        border-radius: 2px 2px 10px 10px;
-    }
-    .gm-style-table {
-        width: 100%;
-        display: table-row;
-    }
-    /*.close-button {
-        opacity: '1';
-        right: '-15px';
-        top: '8px';
-        border: '7px solid #48b5e9';
-        border-radius: '13px';
-        box-shadow: '0 0 5px #3990B9';
-    }*/
 }
 
 table {
@@ -141,6 +85,40 @@ th {
 h1,
 h4 {
     color: #3D3D40;
+}
+
+@media only screen and (min-device-width: 768px) {
+    .gm-style-iw {
+        width: 534px !important;
+        top: 15px !important;
+        left: 0 !important;
+        background-color: #fff;
+        box-shadow: 0 1px 6px rgba(178, 178, 178, 0.6);
+        border: 1px solid rgba(72, 181, 233, 0.6);
+        border-radius: 2px 2px 10px 10px;
+    }
+    #locdetails {
+        left: 0px;
+        width: 30%;
+    }
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .gm-style-iw {
+        width: 100% !important;
+        top: 15px !important;
+        background-color: #fff;
+        border: 1px solid rgba(72, 181, 233, 0.6);
+        border-radius: 2px 2px 10px 10px;
+    }
+    .gm-style-table {
+        width: 100%;
+        display: table-row;
+    }
+    #locdetails {
+        bottom: 0px;
+        width: 100%;
+    }
 }
 </style>
 <div class="p-lg text-center">
@@ -283,13 +261,12 @@ h4 {
                                 var iwCloseBtn = iwOuter.next();
                                 // Apply the desired effect to the close button
                                 iwCloseBtn.addClass('close-button');
-                                console.log($(window).width())
                                 if ($(window).width() >= 768) {
                                     iwCloseBtnCss = "44px";
                                 } else {
                                     iwCloseBtnCss = "-15px";
                                     $('.close-button').next().css({
-                                    	right: "-15px",
+                                        right: "-15px",
                                     });
                                 };
                                 iwCloseBtn.css({
