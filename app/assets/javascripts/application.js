@@ -11,8 +11,8 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks 
 //= require jquery_ujs
-//= require turbolinks
 //= require map_theme/vendor/modernizr.custom
 //= require map_theme/vendor/matchMedia
 //= require map_theme/vendor/bootstrap
@@ -28,4 +28,5 @@
 //= require map_theme/vendor/moment-with-locales.min
 //= require map_theme/app
 //= require underscore
+//= require turbolinks
 
