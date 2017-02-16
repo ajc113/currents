@@ -1,7 +1,9 @@
 require 'test_helper'
 
 class LocationsControllerTest < ActionController::TestCase
+  
   setup do
+    sign_in users(:one)
     @location = locations(:one)
   end
 

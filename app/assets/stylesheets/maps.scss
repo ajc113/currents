@@ -1,3 +1,120 @@
-// Place all the styles related to the Maps controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#map {
+    height: 80%;
+    width: 100%;
+}
+
+#locdetails {
+    position: fixed;
+    text-align: center;
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 13px;
+    z-index: 5;
+    box-shadow: rgb(51, 51, 51) 0px 4px 6px -4px;
+    padding: 5px 10px;
+    background: linear-gradient(rgb(255, 255, 255) 0%, rgb(245, 245, 245) 100%);
+    border: rgb(229, 229, 229) 2px solid;
+    margin-top: 50px;
+}
+
+.hoverclass {
+    display: inline-block;
+    margin: 5px 2%;
+    width: 28%;
+}
+
+.hoverrow {
+    display: block;
+    width: 100%;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2
+}
+
+th {
+    background-color: #0C1D8A;
+    color: white;
+}
+
+.iw-title {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+    padding: 10px;
+    background-color: #48b5e9;
+    color: white;
+    margin: 1px;
+    border-radius: 2px 2px 0 0;
+    /* In accordance with the rounding of the default infowindow corners. */
+}
+
+.p-lg {
+    padding: 0px !important;
+}
+
+.content-wrapper {
+    border-top: 0px !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+.form-control {
+    width: 40% !important;
+}
+
+h1,
+h4 {
+    color: #3D3D40;
+}
+
+@media only screen and (min-device-width: 768px) {
+    .gm-style-iw {
+        width: 534px !important;
+        top: 15px !important;
+        left: 0 !important;
+        background-color: #fff;
+        box-shadow: 0 1px 6px rgba(178, 178, 178, 0.6);
+        border: 1px solid rgba(72, 181, 233, 0.6);
+        border-radius: 2px 2px 10px 10px;
+    }
+    #locdetails {
+        left: 0px;
+        width: 30%;
+    }
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .gm-style-iw {
+        width: 100% !important;
+        top: 15px !important;
+        background-color: #fff;
+        border: 1px solid rgba(72, 181, 233, 0.6);
+        border-radius: 2px 2px 10px 10px;
+    }
+    .gm-style-table {
+        width: 100%;
+        display: table-row;
+    }
+    #locdetails {
+        bottom: 0px;
+        width: 100%;
+    }
+}
