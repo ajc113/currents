@@ -5,40 +5,30 @@ RSpec.describe "StaticPages" do
 
   let (:base_title) {" | Currents Network"}
 
+  subject {page}
+
   describe "Home page" do
-
-    it "should have the content 'Currents Fishing Network'" do
-      visit '/'
-      expect(page).to have_content('Currents Fishing Network')
-    end
-
-    it "should have the title" do
-      visit '/'
-      expect(page).to have_title('Home' + base_title)
-    end
+    before { visit root_path }
+    it { should have_content('Currents Fishing Network') }
+    it { should have_title('Home' + base_title) }
   end
 
   describe "Blog page" do
-    it "should have the content 'Weekly Fishing Reports'" do
-      visit '/blog'
-      expect(page).to have_content('Weekly Fishing Reports')
-    end
-
-    it "should have the title" do
-      visit '/blog'
-      expect(page).to have_title('Weekly Forecast' + base_title)
-    end
+    before { visit blog_path }
+    it { should have_content('Weekly Fishing Reports') }
+    it { should have_title('Weekly Forecast' + base_title) }
   end
 
   describe "About page" do
-    it "should have the content 'About Us'" do
-      visit '/about'
-      expect(page).to have_content('About Us')
-    end
-
-    it "should have the title 'About Us'" do
-      visit '/about'
-      expect(page). to have_title('About Us' + base_title)
-    end
+    before { visit about_path }
+    it { should have_content('About Us') }
+    it { should have_title('About Us' + base_title) }
   end
+
+  describe "Rules page" do
+    before { visit rules_path }
+    it { should have_content('Network Rules') }
+    it { should have_title('Network Rules') }
+  end
+
 end
