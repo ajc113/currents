@@ -1,14 +1,21 @@
 require 'test_helper'
 
 class BuzzsControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
   setup do
+    sign_in admin_users(:one)
     @buzz = buzzs(:one)
   end
 
-  test "should get index" do
+  test "logged in should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:buzzs)
+    # assert_not_nil assigns(:buzzs)
+  end
+
+  test "not authenticated should get redirect" do
+    get :index
+    assert_response :redirect
   end
 
   test "should get new" do

@@ -6,6 +6,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rails'
+require 'devise'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -59,8 +60,18 @@ RSpec.configure do |config|
   #Including Capybara DSL
   config.include Capybara::DSL
 
-  # Include Devise test helpers
-  # config.include Devise::Test::ControllerHelpers, type: :controller
-  # config.include Devise::Test::ControllerHelpers, type: :view
-  # config.include Devise::Test::IntegrationHelpers, type: :feature
+  #Devise
+  config.include Devise::TestHelpers, type: :controller
+  config.include Devise::TestHelpers, type: :view
+  config.extend ControllerMacros, :type => :controller
+  #Warden
+  config.include Warden::Test::Helpers
+  # Factory settings
+  config.before(:all) do
+    FactoryGirl.reload
+  end
+
+  config.after :each do
+    Warden.test_reset!
+  end
 end

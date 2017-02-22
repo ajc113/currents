@@ -5,7 +5,7 @@
 # below each fixture, per the syntax in the comments below
 #
 one:
-  email: user_email@som.com
-  encrypted_password: abc
-  sign_in_count: 2
-  
+  email: admin@example.com
+  encrypted_password: password
+  sign_in_count: 3
+  current_sign_in_at: Time.now

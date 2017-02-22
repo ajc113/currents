@@ -4,8 +4,8 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-first_admin_user:
-  email: random@email.comm
-  encrypted_password: alsfjlsfjlasf
-  reset_password_token: asljfalsfas
-  sign_in_count: 3
+one:
+  email: costa.aj@gmail.com
+  encrypted_password: password
+  sign_in_count: 2
+    
