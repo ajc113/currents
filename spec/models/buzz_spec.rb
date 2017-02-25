@@ -1,4 +1,3 @@
-require "rails_helper"
 RSpec.describe Buzz do
 
   describe "validations" do
