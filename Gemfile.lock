@@ -164,11 +164,15 @@ GEM
       activesupport (>= 3.0.0)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
+    m (1.5.0)
+      method_source (>= 0.6.7)
+      rake (>= 0.9.2.2)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
     mandrill-api (1.0.53)
       excon (>= 0.16.0, < 1.0)
       json (>= 1.7.7, < 2.0)
+    method_source (0.8.2)
     mime-types (3.0)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0221)
@@ -329,6 +333,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks
+  m (~> 1.5.0)
   mandrill-api
   moving_average
   party_foul

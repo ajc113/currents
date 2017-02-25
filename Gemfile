@@ -64,6 +64,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers'
   gem 'coderay'
+  gem 'm', '~>1.5.0'
 end
 
 group :development do
