@@ -17,4 +17,8 @@ FactoryGirl.define do
     sign_in_count "3"
     confirmed_at = Time.now
   end
+
+  factory :report do
+    catch_total 2323
+  end
 end
