@@ -5,7 +5,7 @@
 # below each fixture, per the syntax in the comments below
 #
 one:
-  email: user_email@som.com
-  encrypted_password: abc
+  email: costa.aj@gmail.com
+  encrypted_password: password
   sign_in_count: 2
-  
+    
