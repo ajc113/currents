@@ -1,8 +1,4 @@
-require 'rails_helper'
-
-
 RSpec.describe "StaticPages" do
-
   let (:base_title) {" | Currents Network"}
 
   subject {page}
