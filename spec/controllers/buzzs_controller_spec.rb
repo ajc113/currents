@@ -7,7 +7,6 @@ RSpec.describe BuzzsController, :type => :controller do
   describe "GET #index" do
     it "responds successfully with an HTTP 200 status code" do
       get :index
-      puts response.body
       expect(response).to be_success
       expect(response).to render_template(:index)
     end

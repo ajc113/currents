@@ -65,6 +65,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'coderay'
   gem 'm', '~>1.5.0'
+  gem 'rspec-json_expectations'
 end
 
 group :development do
