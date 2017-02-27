@@ -213,10 +213,12 @@
 
 
 <!-- join network button -->
+<% unless current_user.present? %>
 <div class="p-lg text-center">
   <%= link_to "Join Network", new_user_registration_path, class: 'btn btn-info btn-lg' %>
 </div>
 <br>
+<% end %>
 
 <!-- how it works section -->
 <div class="how_it_works">
