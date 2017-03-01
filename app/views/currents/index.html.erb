@@ -55,7 +55,7 @@
     
     .panel-body {
         border-top: 5px solid !important;
-        height: 205px;
+        height: 210px;
         font-size: 13px !important;
     }
     
@@ -112,6 +112,15 @@
         line-height: 22px;
         padding-top: 20px;
     }
+
+    .vertical-align {
+      display: flex;
+      align-items: center;
+    }
+
+    h2.usp-heading {
+      margin-top: 0px;
+    }
     </style>
     <%= image_tag 'Homepage3.png',  class: 'img-responsive', style: 'display:block; opacity: .85' %>
         <!-- title container -->
@@ -126,13 +135,13 @@
                 <div class="col-lg-4">
                     <a href="maps" class="list-group-item">
                         <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <%= image_tag 'mapcopy.png', class: 'img-responsive', style: 'display:block' %>
+                            <div class="row vertical-align">
+                                <div class="col-lg-4 col-xs-4">
+                                    <%= image_tag 'mapcopy.png', class: 'img-responsive usp-icon', style: 'display:block' %>
                                         <!-- <div class="panel-body text-center bg-yellow-light"> -->
                                 </div>
-                                <div class="col-lg-8">
-                                    <h2>Heatmaps</h2>
+                                <div class="col-lg-8 col-xs-8">
+                                    <h2 class="usp-heading">Heatmaps</h2>
                                 </div>
                             </div>
                         </div>
@@ -155,12 +164,12 @@
                 <div class="col-lg-4">
                     <a href="reports" class="list-group-item">
                         <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <%= image_tag 'hook.png', class: 'img-responsive', style: 'display:block' %>
+                            <div class="row vertical-align">
+                                <div class="col-lg-4 col-xs-4">
+                                    <%= image_tag 'hook.png', class: 'img-responsive usp-icon', style: 'display:block' %>
                                 </div>
-                                <div class="col-lg-8">
-                                    <h2>Catch Reports</h2>
+                                <div class="col-lg-8 col-xs-8">
+                                    <h2 class="usp-heading">Catch Reports</h2>
                                 </div>
                             </div>
                         </div>
@@ -183,13 +192,13 @@
                 <!-- Intel container -->
                 <div class="col-lg-4">
                     <a href="buzzs" class="list-group-item">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <%= image_tag 'binocs.png', class: 'img-responsive', style: 'display:block' %>
+                        <div class="panel-heading vertical-align">
+                            <div class="row vertical-align">
+                                <div class="col-lg-4 col-xs-4">
+                                    <%= image_tag 'binocs.png', class: 'img-responsive usp-icon', style: 'display:block' %>
                                 </div>
-                                <div class="col-lg-8">
-                                    <h2>Real Time Intel</h2>
+                                <div class="col-lg-8 col-xs-8">
+                                    <h2 class="usp-heading">Real Time Intel</h2>
                                 </div>
                             </div>
                         </div>
@@ -202,6 +211,7 @@
                                 <li>Build a network of local fisherman</li>
                                 <li>Expand outside of your local harbor or marina</li>
                                 <li>Like having second set of eyes on water</li>
+                            </ul>
                         </div>
                     </a>
                 </div>
