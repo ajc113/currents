@@ -1,69 +1,85 @@
-   <header class="topnavbar-wrapper">
-   <!-- START Top Navbar-->
-   
-   <nav role="navigation" class="navbar topnavbar">
-      <!-- START navbar header-->
-      <div class="navbar-header">
-         <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-         </button>
-       
+<style>
+.nav > li {
+    display: flex;
+}
+</style>
+<header class="topnavbar-wrapper">
+    <!-- START Top Navbar-->
+    <nav role="navigation" class="navbar topnavbar">
+        <!-- START navbar header-->
+        <div class="navbar-header">
+            <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
             <div class="brand-logo">
-               
-               <%= image_tag 'map_theme/tuna.png',  class: 'img-responsive', style: 'height: 46px;' %>
-               <!-- <img src="/assets/map_theme/tuna.png" alt="App Logo" class="img-responsive" style="height: 55px"> -->
+                <%= image_tag 'map_theme/tuna.png',  class: 'img-responsive', style: 'height: 46px;' %>
+                    <!-- <img src="/assets/map_theme/tuna.png" alt="App Logo" class="img-responsive" style="height: 55px"> -->
             </div>
             <div class="brand-logo-collapsed">
-               <!-- <img src="/assets/map_theme/tuna.png" alt="App Logo" class="img-responsive"> -->
-               <%= image_tag 'map_theme/tuna.png',  class: 'img-responsive', style: 'height: 46px;' %>
+                <!-- <img src="/assets/map_theme/tuna.png" alt="App Logo" class="img-responsive"> -->
+                <%= image_tag 'map_theme/tuna.png',  class: 'img-responsive', style: 'height: 46px;' %>
             </div>
-      </div>
-      <!-- END navbar header-->
-      <!-- START Nav wrapper-->
-      <div class="navbar-collapse collapse">
-         <!-- START Left navbar-->
-         <ul class="nav navbar-nav">
-            <li><%= link_to "Home", root_path, class: 'navbar-brand' %></li>
-            <li><%= link_to "Reports", reports_path, class: 'navbar-brand' %></li>
-             <li><%= link_to "HeatMap", maps_path, class: 'navbar-brand', 'data-no-turbolink' => true %></li>
-            <li><%= link_to "Channel 68", buzzs_path, class: 'navbar-brand' %></li>
-            <li><%= link_to "Weekly Forecast", blog_path, class: 'navbar-brand' %></li>
-            <li><%= link_to "About", about_path, class: 'navbar-brand' %></li>
-
-         </ul>
-         <!-- END Left navbar-->
-         <!-- START Right Navbar-->
-         <ul class="nav navbar-nav navbar-right">
-            <!-- <li class="navbar-collapse collapse"> -->
-            <% if current_user %>
-               <!-- <li class="nav navbar-nav">Welcome Back!</li> -->
-               <li>
-                  <%= link_to current_user.vessel_name, edit_user_registration_path %>
-               </li> 
-               <li>
-                  <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-               </li>
-                  <% else %>
-                  <li><%= link_to "Register", new_user_registration_path %></li>
-                  <li><%= link_to "Sign In", new_user_session_path %></li>
-                  <% end %>
-               </li>
-         </ul>
-         <!-- END Right Navbar-->
-      </div>
-      <!-- END Nav wrapper-->
-      <!-- START Search form-->
-      <form role="search" action="search.html" class="navbar-form">
-         <div class="form-group has-feedback">
-            <input type="text" placeholder="Type and hit enter ..." class="form-control">
-            <div data-search-dismiss="" class="fa fa-times form-control-feedback"></div>
-         </div>
-         <button type="submit" class="hidden btn btn-default">Submit</button>
-      </form>
-      <!-- END Search form-->
-   </nav>
-   <!-- END Top Navbar-->
+        </div>
+        <!-- END navbar header-->
+        <!-- START Nav wrapper-->
+        <div class="navbar-collapse collapse">
+            <!-- START Left navbar-->
+            <ul class="nav navbar-nav">
+                <li>
+                    <%= link_to "Home", root_path, class: 'navbar-brand' %>
+                </li>
+                <li>
+                    <%= link_to "Reports", reports_path, class: 'navbar-brand' %>
+                </li>
+                <li>
+                    <%= link_to "HeatMap", maps_path, class: 'navbar-brand', 'data-no-turbolink' => true %>
+                </li>
+                <li>
+                    <%= link_to "Channel 68", buzzs_path, class: 'navbar-brand' %>
+                </li>
+                <li>
+                    <%= link_to "Weekly Forecast", blog_path, class: 'navbar-brand' %>
+                </li>
+                <li>
+                    <%= link_to "About", about_path, class: 'navbar-brand' %>
+                </li>
+            </ul>
+            <!-- END Left navbar-->
+            <!-- START Right Navbar-->
+            <ul class="nav navbar-nav navbar-right">
+                <!-- <li class="navbar-collapse collapse"> -->
+                <% if current_user %>
+                    <!-- <li class="nav navbar-nav">Welcome Back!</li> -->
+                    <li>
+                        <%= link_to current_user.vessel_name, edit_user_registration_path %>
+                    </li>
+                    <li>
+                        <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+                    </li>
+                    <% else %>
+                        <li>
+                            <%= link_to "Register", new_user_registration_path %>
+                        </li>
+                        <li>
+                            <%= link_to "Sign In", new_user_session_path %>
+                        </li>
+                        <% end %>
+            </ul>
+            <!-- END Right Navbar-->
+        </div>
+        <!-- END Nav wrapper-->
+        <!-- START Search form-->
+        <form role="search" action="search.html" class="navbar-form">
+            <div class="form-group has-feedback">
+                <input type="text" placeholder="Type and hit enter ..." class="form-control">
+                <div data-search-dismiss="" class="fa fa-times form-control-feedback"></div>
+            </div>
+            <button type="submit" class="hidden btn btn-default">Submit</button>
+        </form>
+        <!-- END Search form-->
+    </nav>
+    <!-- END Top Navbar-->
 </header>

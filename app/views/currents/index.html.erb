@@ -1,280 +1,284 @@
 <% provide(:title, "Home") %>
-<style>
-  body {
-  background-color: #f7f7f7;
-  }
-  .alert-error {
-      background-color: #f2dede;
-      border-color: #eed3d7;
-      color: #b94a48;
-      text-align: center;
-      font-size: 25px !important;
-      padding: 0px !important;
-      margin-bottom: 0px !important;
-      border-radius: 2px 2px 0 0;
-   }
-
-  .alert-alert {
-      background-color: #f2dede;
-      border-color: #eed3d7;
-      color: #b94a48;
-      text-align: center;
-      font-size: 25px !important;
-      padding: 0px !important;
-      margin-bottom: 0px !important;
-      border-radius: 2px 2px 0 0;
-   }
-
-  .alert-success {
-      background-color: #88888F;
-      border-color: #5F5E63;
-      color: #FFFFFF;
-      text-align: center;
-      font-size: 25px !important;
-      padding: 0px !important;
-      margin-bottom: 0px !important;
-      border-radius: 2px 2px 0 0;
-   }
-
-  .alert-notice {
-      background-color: #88888F;
-      border-color: #5F5E63;
-      color: #FFFFFF;
-      text-align: center;
-      font-size: 25px !important;
-      padding: 0px !important;
-      margin-bottom: 0px !important;
-      border-radius: 2px 2px 0 0;
-   }
-   .container {
-      width: auto;
-      padding: 0px;
-   }
-   .panel-body {
-    border-top: 5px solid !important;
-    height: 205px;
-    font-size: 13px !important;
-   }
+    <style>
+    body {
+        background-color: #f7f7f7;
+    }
+    
+    .alert-error {
+        background-color: #f2dede;
+        border-color: #eed3d7;
+        color: #b94a48;
+        text-align: center;
+        font-size: 25px !important;
+        padding: 0px !important;
+        margin-bottom: 0px !important;
+        border-radius: 2px 2px 0 0;
+    }
+    
+    .alert-alert {
+        background-color: #f2dede;
+        border-color: #eed3d7;
+        color: #b94a48;
+        text-align: center;
+        font-size: 25px !important;
+        padding: 0px !important;
+        margin-bottom: 0px !important;
+        border-radius: 2px 2px 0 0;
+    }
+    
+    .alert-success {
+        background-color: #88888F;
+        border-color: #5F5E63;
+        color: #FFFFFF;
+        text-align: center;
+        font-size: 25px !important;
+        padding: 0px !important;
+        margin-bottom: 0px !important;
+        border-radius: 2px 2px 0 0;
+    }
+    
+    .alert-notice {
+        background-color: #88888F;
+        border-color: #5F5E63;
+        color: #FFFFFF;
+        text-align: center;
+        font-size: 25px !important;
+        padding: 0px !important;
+        margin-bottom: 0px !important;
+        border-radius: 2px 2px 0 0;
+    }
+    
+    .container {
+        width: auto;
+        padding: 0px;
+    }
+    
+    .panel-body {
+        border-top: 5px solid !important;
+        height: 210px;
+        font-size: 13px !important;
+    }
+    
     .panel-heading {
-    height: 100px;
-   }
-   .list-group-item {
-    border: 5px solid #e4eaec;
-   }
+        height: 100px;
+    }
+    
+    .list-group-item {
+        border: 5px solid #e4eaec;
+    }
+    
+    .h1 {
+        color: rgba(49, 63, 78, 0.90);
+        font-size: 75px;
+        line-height: 100px;
+        font-weight: 700;
+        text-align: center;
+        /*text-transform: uppercase;*/
+        text-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+    }
+    
+    .h2 {
+        color: rgba(49, 63, 78, 0.75);
+        margin-bottom: 40px;
+        font-family: "Roboto Slab", serif;
+        font-size: 25px;
+        line-height: 40px;
+    }
+    
+    .h22 {
+        color: #454647;
+        font-size: 50px;
+        line-height: 40px;
+        opacity: .90;
+    }
+    
+    .how_it_works {
+        background-color: rgba(81, 82, 83, 0.1);
+        padding: 0px;
+    }
+    
+    .panel-heading-how-it-works {
+        height: auto;
+        font-family: "Roboto Slab", serif;
+        font-size: 30px;
+        line-height: 25px;
+        padding-left: 20px;
+    }
+    
+    .panel-body-how-it-works {
+        height: 100px;
+        text-align: left;
+        padding-left: 20px;
+        line-height: 22px;
+        padding-top: 20px;
+    }
 
-  .h1 {
-  color: rgba(49, 63, 78, 0.90);
-  font-size: 75px;
-  line-height: 100px;
-  font-weight: 700;
-  text-align: center;
-  /*text-transform: uppercase;*/
-  text-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
-  }
+    .vertical-align {
+      display: flex;
+      align-items: center;
+    }
 
-  .h2 {
-  color: rgba(49, 63, 78, 0.75);  
-  margin-bottom: 40px;
-  font-family: "Roboto Slab", serif;
-  font-size: 25px;
-  line-height: 40px;
-  }
-  .h22 {
-  color: #454647;  
-  font-size: 50px;
-  line-height: 40px;
-  opacity: .90;
-  }
-  .how_it_works {
-    background-color: rgba(81, 82, 83, 0.1);
-    padding: 0px;
-   }
-  .panel-heading-how-it-works {
-    height: auto;
-    font-family: "Roboto Slab", serif;
-    font-size: 30px;
-    line-height: 25px;
-    padding-left: 20px;
-   }
-  .panel-body-how-it-works {
-    height: 100px;
-    text-align: left;
-    padding-left: 20px;
-    line-height: 22px;
-    padding-top: 20px;
-   }
-
-</style>
-
-<%= image_tag 'Homepage3.png',  class: 'img-responsive', style: 'display:block; opacity: .85' %>
-  
-  <!-- title container -->
-  <div class="p-lg text-center">
-    <h1 class="h1">Currents Fishing Network</h1>
-    <h2 class="h2">The source for real time intel from on the water. Save time and fuel cost by targeting where the fish are.</h2>
-  </div>            
-
-
-
-
-<!-- Features -->
-    <div class="row">
-      <div class="container-fluid">
-        
-        <!-- heatmaps container -->
-        <div class="col-lg-4">
-          <a href="maps" class="list-group-item">
-            <div class="panel-heading">      
-              <div class="row">
-                <div class="col-lg-4">  
-                  <%= image_tag 'mapcopy.png', class: 'img-responsive', style: 'display:block' %> 
-                        <!-- <div class="panel-body text-center bg-yellow-light"> -->
+    h2.usp-heading {
+      margin-top: 0px;
+    }
+    </style>
+    <%= image_tag 'Homepage3.png',  class: 'img-responsive hidden-xs', style: 'display:block; opacity: .85' %>
+        <!-- title container -->
+        <div class="p-lg text-center">
+            <h1 class="h1">Currents Fishing Network</h1>
+            <h2 class="h2">The source for real time intel from on the water. Save time and fuel cost by targeting where the fish are.</h2>
+        </div>
+        <!-- Features -->
+        <div class="row">
+            <div class="container-fluid">
+                <!-- heatmaps container -->
+                <div class="col-lg-4">
+                    <a href="maps" class="list-group-item">
+                        <div class="panel-heading">
+                            <div class="row vertical-align">
+                                <div class="col-lg-4 col-xs-4">
+                                    <%= image_tag 'mapcopy.png', class: 'img-responsive usp-icon', style: 'display:block' %>
+                                        <!-- <div class="panel-body text-center bg-yellow-light"> -->
+                                </div>
+                                <div class="col-lg-8 col-xs-8">
+                                    <h2 class="usp-heading">Heatmaps</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <p>
+                                <strong>View newtork catch reports to target where the fish are.</strong>
+                            </p>
+                            <ul>
+                                <li>Review catch data over past 7 days</li>
+                                <li>View catches by lcoation</li>
+                                <li>Target specific species by location</li>
+                                <li>Heatmap highlights where the bite is</li>
+                                <li>Analyze catch patterns to make informaed decisions</li>
+                                <li>Reduce fuel expenses by targeting where the action is</li>
+                            </ul>
+                        </div>
+                    </a>
                 </div>
-                <div class="col-lg-8">
-                  <h2>Heatmaps</h2>
+                <!-- reports container  -->
+                <div class="col-lg-4">
+                    <a href="reports" class="list-group-item">
+                        <div class="panel-heading">
+                            <div class="row vertical-align">
+                                <div class="col-lg-4 col-xs-4">
+                                    <%= image_tag 'hook.png', class: 'img-responsive usp-icon', style: 'display:block' %>
+                                </div>
+                                <div class="col-lg-8 col-xs-8">
+                                    <h2 class="usp-heading">Catch Reports</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <p>
+                                <strong>Log private catch reports to analyze historical trends.</strong>
+                            </p>
+                            <ul>
+                                <li>View past reports to see what works when</li>
+                                <li>Custom reporting options </li>
+                                <li>Moon / Tide phases </li>
+                                <li>Weather conditions</li>
+                                <li>Monthly trends</li>
+                                <li>What bait was working</li>
+                                <li>Hot Spots</li>
+                            </ul>
+                        </div>
+                    </a>
                 </div>
-              </div>
-            </div>
-            <div class="panel-body">  
-                <p>
-                  <strong>View newtork catch reports to target where the fish are.</strong>
-                </p>
-                <ul>
-                <li>Review catch data over past 7 days</li>
-                <li>View catches by lcoation</li>
-                <li>Target specific species by location</li>
-                <li>Heatmap highlights where the bite is</li>
-                <li>Analyze catch patterns to make informaed decisions</li>
-                <li>Reduce fuel expenses by targeting where the action is</li>
-                </ul>
-            </div>
-          </a>
-        </div>
-
-        <!-- reports container  -->
-        <div class="col-lg-4">
-          <a href="reports" class="list-group-item">
-            <div class="panel-heading">      
-              <div class="row">
-                <div class="col-lg-4">  
-                  <%= image_tag 'hook.png', class: 'img-responsive', style: 'display:block' %> 
-                  </div>
-                <div class="col-lg-8">
-                    <h2>Catch Reports</h2>
-                </div>
-              </div>
-            </div>
-            <div class="panel-body">  
-              <p>
-                <strong>Log private catch reports to analyze historical trends.</strong>
-              </p>
-              <ul>
-                 <li>View past reports to see what works when</li>
-                 <li>Custom reporting options </li>
-                 <li>Moon / Tide phases </li>
-                 <li>Weather conditions</li>
-                 <li>Monthly trends</li>
-                 <li>What bait was working</li> 
-                 <li>Hot Spots</li>
-              </ul>
-            </div>
-          </a>
-        </div>
-
-        <!-- Intel container -->
-        <div class="col-lg-4">
-          <a href="buzzs" class="list-group-item">
-            <div class="panel-heading">      
-              <div class="row">
-                <div class="col-lg-4">  
-                  <%= image_tag 'binocs.png', class: 'img-responsive', style: 'display:block' %>          
-                  </div>
-                  <div class="col-lg-8">
-                    <h2>Real Time Intel</h2>
-                  </div>
+                <!-- Intel container -->
+                <div class="col-lg-4">
+                    <a href="buzzs" class="list-group-item">
+                        <div class="panel-heading vertical-align">
+                            <div class="row vertical-align">
+                                <div class="col-lg-4 col-xs-4">
+                                    <%= image_tag 'binocs.png', class: 'img-responsive usp-icon', style: 'display:block' %>
+                                </div>
+                                <div class="col-lg-8 col-xs-8">
+                                    <h2 class="usp-heading">Real Time Intel</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <p>
+                                <strong>No hear say or dock rumors, get real time intel from on the water!</strong>
+                            </p>
+                            <ul>
+                                <li>Real time observations from newtork users</li>
+                                <li>Build a network of local fisherman</li>
+                                <li>Expand outside of your local harbor or marina</li>
+                                <li>Like having second set of eyes on water</li>
+                            </ul>
+                        </div>
+                    </a>
                 </div>
             </div>
-            <div class="panel-body">  
-              <p>
-                <strong>No hear say or dock rumors, get real time intel from on the water!</strong>
-              </p>
-              <ul>
-                <li>Real time observations from newtork users</li>
-                <li>Build a network of local fisherman</li>
-                <li>Expand outside of your local harbor or marina</li>
-                <li>Like having second set of eyes on water</li>
+        </div>
+        <br>
+        <!-- join network button -->
+        <% unless current_user.present? %>
+            <div class="p-lg text-center">
+                <%= link_to "Join Network", new_user_registration_path, class: 'btn btn-info btn-lg' %>
             </div>
-          </a>
-        </div>
-      </div>  
-    </div>      
-
-<br>
-
-
-<!-- join network button -->
-<% unless current_user.present? %>
-<div class="p-lg text-center">
-  <%= link_to "Join Network", new_user_registration_path, class: 'btn btn-info btn-lg' %>
-</div>
-<br>
-<% end %>
-
-<!-- how it works section -->
-<div class="how_it_works">
-  <div class="p-lg">
-    <h2 class="h22" style="text-align:center">How it works</h2>
-      <%= image_tag 'how_it_works2.png',  class: 'img-responsive', style: 'display:block; opacity: .80; padding:50px' %>
-      <div class="row">
-        <div class="col-lg-3">
-          <div class="panel-heading-how-it-works ">
-            Join the network
-          </div> 
-          <div class="panel-body-how-it-works">
-            <ul>
-              <li>Benefit from real time reports</li>
-            </ul>  
-          </div> 
-        </div>
-        <div class="col-lg-3">
-          <div class="panel-heading-how-it-works ">
-            Contribute to network
-          </div> 
-          <div class="panel-body-how-it-works">
-            <ul>
-            <li>Fish Hard</li>
-            <li>Post Catch Reports</li>
-            </ul>
-          </div> 
-        </div>
-        <div class="col-lg-3">
-          <div class="panel-heading-how-it-works ">
-            Build your network
-          </div> 
-          <div class="panel-body-how-it-works">
-            <ul>
-            <li>Expand your connections</li>
-            <li>Collaborate to cover more ground</li>
-            <li>Coordinate buddy boats for offshore trips</li>
-            </ul>
-          </div> 
-        </div>
-        <div class="col-lg-3">
-          <div class="panel-heading-how-it-works ">
-            Benefit from network
-          </div> 
-          <div class="panel-body-how-it-works">
-            <ul>
-            <li>Review real time reports</li>
-            <li>Use Heatmaps to idenfity hotspots</li>
-            <li>Get real time intel before you leave the dock</li>
-            </ul>
-          </div> 
-        </div>
-      </div>  
-  </div>  
-  <div class="p-lg text-center">
-    <%= link_to "View Network Rules", rules_path, class: 'btn btn-inverse btn-lg ' %>
-  </div>
-</div>
-
+            <br>
+            <% end %>
+                <!-- how it works section -->
+                <div class="how_it_works">
+                    <div class="p-lg">
+                        <h2 class="h22" style="text-align:center">How it works</h2>
+                        <%= image_tag 'how_it_works2.png',  class: 'img-responsive', style: 'display:block; opacity: .80; padding:50px' %>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <div class="panel-heading-how-it-works ">
+                                        Join the network
+                                    </div>
+                                    <div class="panel-body-how-it-works">
+                                        <ul>
+                                            <li>Benefit from real time reports</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="panel-heading-how-it-works ">
+                                        Contribute to network
+                                    </div>
+                                    <div class="panel-body-how-it-works">
+                                        <ul>
+                                            <li>Fish Hard</li>
+                                            <li>Post Catch Reports</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="panel-heading-how-it-works ">
+                                        Build your network
+                                    </div>
+                                    <div class="panel-body-how-it-works">
+                                        <ul>
+                                            <li>Expand your connections</li>
+                                            <li>Collaborate to cover more ground</li>
+                                            <li>Coordinate buddy boats for offshore trips</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="panel-heading-how-it-works ">
+                                        Benefit from network
+                                    </div>
+                                    <div class="panel-body-how-it-works">
+                                        <ul>
+                                            <li>Review real time reports</li>
+                                            <li>Use Heatmaps to idenfity hotspots</li>
+                                            <li>Get real time intel before you leave the dock</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="p-lg text-center">
+                        <%= link_to "View Network Rules", rules_path, class: 'btn btn-inverse btn-lg ' %>
+                    </div>
+                </div>
