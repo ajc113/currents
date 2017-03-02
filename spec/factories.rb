@@ -20,6 +20,7 @@ FactoryGirl.define do
 
   factory :report do
     catch_total 2323
+    date 2014-03-03
   end
 
   factory :location do

@@ -103,7 +103,7 @@
 						
 						<div class="field">  	
 							<%= f.label :date %> (Required)<br>
-							<%= f.date_select :date %>
+							<%= f.date_select :date, end_year: Date.today.year %>
 						</div>
 						<br>	
 

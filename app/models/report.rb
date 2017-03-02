@@ -1,17 +1,19 @@
 class Report < ActiveRecord::Base
 
-belongs_to :location
-belongs_to :user
+  validate :validate_date
 
-# default_scope {order('date DESC')}
+  belongs_to :location
+  belongs_to :user
 
-scope :selected_species, -> (the_species) { where(target_species: the_species)}
+  # default_scope {order('date DESC')}
 
-scope :selected_location, -> (the_location) { where(location: the_location )}
+  scope :selected_species, -> (the_species) { where(target_species: the_species)}
 
-scope :selected_tide, -> (the_tide) {where(tide: the_tide)}
+  scope :selected_location, -> (the_location) { where(location: the_location )}
 
-scope :selected_date, -> (month) {where("cast(strftime('%m', date) as int) = ?", month)}
+  scope :selected_tide, -> (the_tide) {where(tide: the_tide)}
+
+  scope :selected_date, -> (month) {where("cast(strftime('%m', date) as int) = ?", month)}
 
 
 
@@ -24,6 +26,14 @@ scope :selected_date, -> (month) {where("cast(strftime('%m', date) as int) = ?",
     # puts "location_json is #{location_json}".green
     # return location_json
     f
+  end
+
+  private
+
+  def validate_date
+    unless  self[:date] <  Date.today
+      errors.add(:date, 'must not be set in the future')
+    end
   end
 
 end
