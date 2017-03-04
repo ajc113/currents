@@ -21,4 +21,5 @@
  *= require map_theme/theme-e
  *= require_self
  *= require bootstrap-datepicker
+ *= require custom
  */
