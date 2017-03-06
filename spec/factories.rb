@@ -1,4 +1,9 @@
 FactoryGirl.define do
+  factory :species do
+    species "MyString"
+    state_waters "MyString"
+    located "MyString"
+  end
   factory :user do
     id "34"
     email "abc@gmail.com"
