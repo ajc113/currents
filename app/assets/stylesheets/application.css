@@ -19,6 +19,8 @@
  *= require map_theme/vendor/bootstrap
  *= require map_theme/app
  *= require map_theme/theme-e
+ *= require reports
  *= require_self
  *= require bootstrap-datepicker
+ *= require custom
  */

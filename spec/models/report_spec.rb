@@ -1,6 +1,6 @@
 RSpec.describe Report, "Scopes" do
   it ".selected_species should return records with specified species" do
-    report = Report.create! :target_species => "Tuna"
+    report = Report.create! :target_species => "Tuna", :date => "03-03-2016"
     selected_species = Report.where(:target_species => "Tuna")
     expect(Report.selected_species("Tuna")).to eq selected_species
   end
@@ -22,8 +22,12 @@ RSpec.describe Report, "Scopes" do
     expect(Report.selected_location(@location_id)).not_to eq selected_location
   end
 
+  it "can not be created in the future" do
+    expect { Report.create!(date: 2.years.from_now) }.to raise_error(ActiveRecord::RecordInvalid, "Validation failed: Date must not be set in the future")
+  end
+
   it ".selected_tide should return records with specified tide" do
-  	Report.create! :tide => "Incoming"
+  	Report.create! :tide => "Incoming", :date => "03-03-2016"
   	selected_tide = Report.where(:tide => "Incoming")
   	expect(Report.selected_tide("Incoming")).to eq selected_tide
   end
