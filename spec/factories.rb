@@ -1,8 +1,8 @@
 FactoryGirl.define do
-<<<<<<< HEAD
+
   factory :species, class: 'Specie' do
     primary_species "MyString"
-=======
+
 
     state_waters "MyString"
     located "MyString"

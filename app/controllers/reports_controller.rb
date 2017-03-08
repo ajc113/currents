@@ -60,6 +60,7 @@ end
   # GET /reports/new
   def new
     @report = Report.new
+    @species = Specie.all
    
   end
 
