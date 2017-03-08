@@ -4,6 +4,7 @@ class Location < ActiveRecord::Base
   mount_uploader :coordinate_file, LocationJsonUploader
 
   has_many :reports
+  has_many :species
 
   before_save :log_coordinates
   serialize :coordinates
