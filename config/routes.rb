@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get 'blog', to: 'currents#blog'
   get 'rules', to: 'currents#rules'
 
+
   #Extra
   get 'test', to: 'currents#test'
 
