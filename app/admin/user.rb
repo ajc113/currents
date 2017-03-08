@@ -1,7 +1,7 @@
 ActiveAdmin.register User do
 
 
-permit_params :email, :first_name, :last_name, :home_port, :state, :vessel_name
+permit_params :email, :first_name, :last_name, :home_port, :state, :vessel_name, :subscription_tier
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
