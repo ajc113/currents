@@ -66,6 +66,7 @@ end
 
   # GET /reports/1/edit
   def edit
+     @species = Specie.all
   end
 
   # POST /reports
