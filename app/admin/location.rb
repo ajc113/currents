@@ -12,19 +12,23 @@ permit_params :short_name, :long_name, :state_waters, :demographic, :coordinates
       f.input :state_waters
       f.input :demographic
       if action_name == 'new'
-        f.input :lat1
-        f.input :lng1
-        f.input :lat2
-        f.input :lng2
-        f.input :lat3
-        f.input :lng3
-        f.input :lat4
-        f.input :lng4
-        f.input :coordinates, as: :text
+        # f.input :lat1
+        # f.input :lng1
+        # f.input :lat2
+        # f.input :lng2
+        # f.input :lat3
+        # f.input :lng3
+        # f.input :lat4
+        # f.input :lng4
+        # f.input :coordinates, as: :text
         f.input :coordinate_file
+        f.input :state_waters
+        f.input :demographic
       elsif action_name == 'edit'
-        f.input :coordinates, as: :text
+        # f.input :coordinates, as: :text
         f.input :coordinate_file
+        f.input :state_waters
+        f.input :demographic
       end
     end
     f.actions
