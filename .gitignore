@@ -21,3 +21,5 @@
 
 db/backup
 spec/example.txt
+
+.fuse_hidden*
