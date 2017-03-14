@@ -7,7 +7,7 @@ permit_params :short_name, :long_name, :state_waters, :demographic, :coordinates
 
 
 index do
-
+actions
 
 
   column :short_name
