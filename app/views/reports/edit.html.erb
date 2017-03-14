@@ -114,7 +114,7 @@
 						<div class="field">
   						<%= f.label :target_species %> (Required)<br>
   						
-  						<%= f.select :target_species, Species.all.order("primary_species ASC").pluck(:primary_species) %>
+  						<%= f.select :target_species, Specie.all.order("primary_species ASC").pluck(:primary_species) %>
 						</div>
 						<div class="field">
   						<%= f.label :location_id %> (Required)<br>

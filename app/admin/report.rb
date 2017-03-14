@@ -7,8 +7,8 @@ index do
   selectable_column
     actions
     column :user_id
-  column :date
-  column "Location Name", :sortable => false do |loc|
+    column :date
+    column "Location Name", :sortable => false do |loc|
   	loc.location.short_name
   	end
 

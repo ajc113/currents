@@ -4,7 +4,7 @@ class Report < ActiveRecord::Base
 
   belongs_to :location
   belongs_to :user
-  has_many :specie
+  has_many :species
 
   # default_scope {order('date DESC')}
 
