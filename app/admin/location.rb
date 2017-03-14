@@ -22,13 +22,9 @@ permit_params :short_name, :long_name, :state_waters, :demographic, :coordinates
         # f.input :lng4
         # f.input :coordinates, as: :text
         f.input :coordinate_file
-        f.input :state_waters
-        f.input :demographic
       elsif action_name == 'edit'
         # f.input :coordinates, as: :text
         f.input :coordinate_file
-        f.input :state_waters
-        f.input :demographic
       end
     end
     f.actions
