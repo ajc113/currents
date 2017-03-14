@@ -1,6 +1,6 @@
 class Specie < ActiveRecord::Base
 
-belongs_to :reports
+belongs_to :report
 
 
 end
