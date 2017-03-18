@@ -1,163 +1,173 @@
-Location.create!([
-                   {
+location_list = [
+  {
+    number: 7,
+    short_name: "Cape Cod - Peaked Hill Bar",
+    long_name: "Peaked Hill Bar down to golfball",
+  },
+  {
+    number: 6,
+    short_name: "Cape Cod Backside",
+    long_name: "Golfball, backside beaches down to nauset inlet",
 
-                     short_name: "07. Cape Cod - Peaked Hill Bar",
-                     long_name: "Peaked Hill Bar down to golfball",
-                     coordinate_file:
+  },
+  {
+    number: 3,
+    short_name: "Stellwagen Bank - (SWC) South West Corner",
+    long_name: "The notch south to the sw corner",
+  },
+  {
+    number: 4,
+    short_name: "Stellwagen Bank - (SEC) South East Corner",
+    long_name: "Middle bank east to the edge",
+  },
+  {
+    number: 2,
+    short_name: "Stellwagen Bank - Middlebank",
+    long_name: "Middlebank south to the notch",
+  },
+  {
+    number: 1,
+    short_name: "Stellwagen Bank - (NWC) Northwest Corner",
+    long_name: "Northwest Corner of Stellwagen Bank south to middlebank covering, the western edge to middlebank.",
+  },
+  {
+    number: 8,
+    short_name: "Cape Cod - Race Point",
+    long_name: "Race Point, Bathhouse to Wood End",
+  },
+  {
+    number: 9,
+    short_name: "Cape Cod - Provincetown",
+    long_name: "Provincetown Harbor to Pamet River",
+  },
+  {
+    number: 10,
+    short_name: "Cape Cod - Billingsgate Shoals",
+    long_name: "Billingsgate shoals, The path south to Brewster flats",
+  },
+  {
+    number: 11,
+    short_name: "Cape Cod - Wellfleet Harbor",
+    long_name: "Wellfleet Harbor to Brewster Flats",
+  },
+  {
+    number: 16,
+    short_name: "South Shore - Plymouth Bay",
+    long_name: "Plymouth, Duxbury, and Kingston Bays",
+  },
+  {
+    number: 15,
+    short_name: "Cape Cod Canal",
+    long_name: "The Ditch",
+  },
+  {
+    number: 13,
+    short_name: "Cape Cod Bay - (SW )Southwest",
+    long_name: "PowerPlant, Manomet and White Cliffs down to canal",
+  },
+  {
+    number: 12,
+    short_name: "Cape Cod Bay - South",
+    long_name: "Canal, Scorton Creek to Barnstable, including the Fingers",
+  },
+  {
+    number: 14,
+    short_name: "Cape Cod Bay - (NW ) Northwest",
+    long_name: "Green Harbor south to the PowerPlant.  Included Farnham, High Pines Ledge and the Gurnet.",
+  },
+  {
+    number: 17,
+    short_name: "South Shore - Scituate",
+    long_name: "BrantRock, North River, Scituate, to Minots including offshore ledges",
+  },
+  {
+    number: 18,
+    short_name: "Boston - Inner Harbor",
+    long_name: "Boston Harbor out to Dear Island, Pt Allerton",
+  },
+  {
+    number: 19,
+    short_name: "Boston - Outer Harbor",
+    long_name: "Boston Outer Harbor to  Nahant Bay, offshore ledges down to the glades.",
+  },
+  {
+    number: 5,
+    short_name: "Stellwagen Bank - Eastside",
+    long_name: "Waters east of middlebank out to WildCat Knoll",
+  },
+  {
+    number: 25,
+    short_name: "Cape Cod - Chatham",
+    long_name: "Nauset Inlet to Chatham Harbor out to the 3 mile line",
+  },
+  {
+    number: 22,
+    short_name: "Cape Cod - Whiting Grounds",
+    long_name: "Whiting Grounds to to the gulley",
+  },
+  {
+    number: 20,
+    short_name: "North Shore",
+    long_name: "Marblehead, Salem Sound, Gloucester to Thatcher Island",
+  },
+  {
+    number: 21,
+    short_name: "North Shore - Merrimack",
+    long_name: "Halibut Point, Plum island north to the Merrimack.",
+  },
+  {
+    number: 23,
+    short_name: "Jeffreys Ledge - West",
+    long_name: "West portion of Jeffreys Ledge",
+  },
+  {
+    number: 24,
+    short_name: "Jeffreys Ledge - East",
+    long_name: "Eastern portions of Jeffreys Ledge",
+  },
+  {
+    number: 26,
+    short_name: "Cape Cod - Monomoy",
+    long_name: "Monomoy Shoals",
+  },
+  {
+    number: 27,
+    short_name: "Cape Cod - Nantucket Sound East",
+    long_name: "Eastern Nantucket sound out to Monomoy.  Hyanis south to Muskeget Island",
+  },
+  {
+    number: 28,
+    short_name: "Cape Cod - Nantucket Sound West",
+    long_name: "Western Nantucket sound from Falmouth to Hyannis south to Cape Poge.  Includes hedge fence, and horseshoe shoals.",
+  },
+  {
+    number: 29,
+    short_name: "Vineyard Sound",
+    long_name: "Vineyard Sound  and Elizabeth islands including Quick's, Robinson's, and Wood's hole.  Cuttyhunk to Falmouth.",
+  },
+  {
+    number: 31,
+    short_name: "Buzzards Bay - East",
+    long_name: "Mass Maritime west to Mattapoisett.  Includes Onset, Wareham , Marion, Pocasset, and North Falmouth.",
+  },
+  {
+    number: 30,
+    short_name: "Buzzards Bay - West",
+    long_name: "Westport east to New Bedford.  Includes Dartmouth, Cuttyhunk and Gosnold, Naushon Island.",
+  }
+]
 
-                   },
-                   {
+def coordinate_file_path location_name
+  location_name = location_name.underscore.parameterize("_")
+  Rails.root.join("db/seed_data/location_coordinate_files/#{location_name}.json")
+end
 
-                     short_name: "06. Cape Cod Backside",
-                     long_name: "Golfball, backside beaches down to nauset inlet",
-                     coordinate_file: "54_backside.json"
-
-                   },
-                   {
-                     short_name: "03. Stellwagen Bank - (SWC) South West Corner",
-                     long_name: "The notch south to the sw corner",
-                     coordinate_file: "56_sw_swc.json "
-                   },
-                   {
-                     short_name: "04. Stellwagen Bank - (SEC) South East Corner",
-                     long_name: "Middle bank east to the edge",
-                     coordinate_file: "58_sw_sec.json"
-                   },
-                   {
-                     short_name: "02. Stellwagen Bank - Middlebank",
-                     long_name: "Middlebank south to the notch",
-                     coordinate_file: "59_sw_middle.json"
-                   },
-                   {
-                     short_name: "01. Stellwagen Bank - (NWC) Northwest Corner",
-                     long_name: "Northwest Corner of Stellwagen Bank south to middlebank covering, the western edge to middlebank.",
-                     coordinate_file: "60_sw_nwc.json"
-                   },
-                   {
-                     short_name: "08. Cape Cod - Race Point",
-                     long_name: "Race Point, Bathhouse to Wood End",
-                     coordinate_file: "62_race.json"
-                   },
-                   {
-                     short_name: "09. Cape Cod - Provincetown",
-                     long_name: "Provincetown Harbor to Pamet River",
-                     coordinate_file: "63_ptown.json"
-                   },
-                   {
-                     short_name: "10. Cape Cod - Billingsgate Shoals",
-                     long_name: "Billingsgate shoals, The path south to Brewster flats",
-                     coordinate_file: "64_shoals.json"
-                   },
-                   {
-                     short_name: "11. Cape Cod - Wellfleet Harbor",
-                     long_name: "Wellfleet Harbor to Brewster Flats",
-                     coordinate_file: "66_welfleet.json"
-                   },
-                   {
-                     short_name: "16. South Shore - Plymouth Bay",
-                     long_name: "Plymouth, Duxbury, and Kingston Bays",
-                     coordinate_file: "67_plymouth.json"
-                   },
-                   {
-                     short_name: "15. Cape Cod Canal",
-                     long_name: "The Ditch",
-                     coordinate_file: "68_canal.json"
-                   },
-                   {
-                     short_name: "13. Cape Cod Bay - (SW )Southwest",
-                     long_name: "PowerPlant, Manomet and White Cliffs down to canal",
-                     coordinate_file: "69_ccb_sw.json"
-                   },
-                   {
-                     short_name: "12. Cape Cod Bay - South",
-                     long_name: "Canal, Scorton Creek to Barnstable, including the Fingers",
-                     coordinate_file: "70_ccb_south.json"
-                   },
-                   {
-                     short_name: "14. Cape Cod Bay - (NW ) Northwest",
-                     long_name: "Green Harbor south to the PowerPlant.  Included Farnham, High Pines Ledge and the Gurnet.",
-                     coordinate_file: "71_ccb_northwest.json"
-                   },
-                   {
-                     short_name: "17. South Shore - Scituate",
-                     long_name: "BrantRock, North River, Scituate, to Minots including offshore ledges",
-                     coordinate_file: "72_scituate.json"
-                   },
-                   {
-                     short_name: "18. Boston - Inner Harbor",
-                     long_name: "Boston Harbor out to Dear Island, Pt Allerton",
-                     coordinate_file: "73_boston_inner.json"
-                   },
-                   {
-                     short_name: "19. Boston - Outer Harbor",
-                     long_name: "Boston Outer Harbor to  Nahant Bay, offshore ledges down to the glades.",
-                     coordinate_file: "75_boston_outer.json"
-                   },
-                   {
-                     short_name: "05. Stellwagen Bank - Eastside",
-                     long_name: "Waters east of middlebank out to WildCat Knoll",
-                     coordinate_file: "sw_eastside.json"
-                   },
-                   {
-                     short_name: "25. Cape Cod - Chatham",
-                     long_name: "Nauset Inlet to Chatham Harbor out to the 3 mile line",
-                     coordinate_file: "84_Chatham.json"
-                   },
-                   {
-                     short_name: "22. Cape Cod - Whiting Grounds",
-                     long_name: "Whiting Grounds to to the gulley",
-                     coordinate_file: "85_whiting_grounds.json"
-                   },
-                   {
-                     short_name: "20. North Shore",
-                     long_name: "Marblehead, Salem Sound, Gloucester to Thatcher Island",
-                     coordinate_file: "86_north_shore.json"
-                   },
-                   {
-                     short_name: "21. North Shore - Merrimack",
-                     long_name: "Halibut Point, Plum island north to the Merrimack.",
-                     coordinate_file: "87_north_shore_north.json"
-                   },
-                   {
-                     short_name: "23. Jeffreys Ledge - West",
-                     long_name: "West portion of Jeffreys Ledge",
-                     coordinate_file: "88_jefferies_west.json"
-                   },
-                   {
-                     short_name: "24. Jeffreys Ledge - East",
-                     long_name: "Eastern portions of Jeffreys Ledge",
-                     coordinate_file: "89_jefferies_east.json"
-                   },
-                   {
-                     short_name: "26. Cape Cod - Monomoy",
-                     long_name: "Monomoy Shoals",
-                     coordinate_file: "90_monomoy.json"
-                   },
-                   {
-                     short_name: "27. Cape Cod - Nantucket Sound East",
-                     long_name: "Eastern Nantucket sound out to Monomoy.  Hyanis south to Muskeget Island",
-                     coordinate_file: "91_Nantucket_S_East.json"
-                   },
-                   {
-                     short_name: "28. Cape Cod - Nantucket Sound West",
-                     long_name: "Western Nantucket sound from Falmouth to Hyannis south to Cape Poge.  Includes hedge fence, and horseshoe shoals.",
-                     coordinate_file: "92_nantucket_sound_west.json"
-                   },
-                   {
-                     short_name: "29. Vineyard Sound",
-                     long_name: "Vineyard Sound  and Elizabeth islands including Quick's, Robinson's, and Wood's hole.  Cuttyhunk to Falmouth.",
-                     coordinate_file: "93_vineyard_sound.json"
-                   },
-                   {
-                     short_name: "31. Buzzards Bay - East",
-                     long_name: "Mass Maritime west to Mattapoisett.  Includes Onset, Wareham , Marion, Pocasset, and North Falmouth.",
-                     coordinate_file: "94_buzzbay_east.json"
-                   },
-                   {
-                     short_name: "30. Buzzards Bay - West",
-                     long_name: "Westport east to New Bedford.  Includes Dartmouth, Cuttyhunk and Gosnold, Naushon Island.",
-                   coordinate_file: "95_buzzbay_west.json"}
-])
+location_list.each do |location|
+  new_location = Location.create!(location)
+  new_location.coordinate_file = Rails.root.join("db/seed_data/location_coordinate_files/" + location[:short_name].underscore.parameterize("_") + ".json").open
+  new_location.save!
+end
+print "#{Location.count} created"
 
 2.times do |i|
   begin
