@@ -115,7 +115,6 @@
 						
 						<div class="field">
   						<%= f.label :target_species %> (Required)<br>
-  							
   						<%= f.select :target_species, Specie.all.order("primary_species ASC").pluck(:primary_species) %>
 					
 						</div>
@@ -123,7 +122,7 @@
 
 						<div class="field">
   						<%= f.label :location_id %> (Required)<br>
-  						<%= f.select :location_id, Location.all.order("short_name ASC").pluck(:short_name, :id) %>
+  						<%= f.select :location_id, location_number = Location.all.order(number: :asc).map {|location| [location[:number].to_s.rjust(2, '0') + " - " + location[:short_name]] + [location.id]} %>
 						</div>
 						<br>
 						<div class="field">
