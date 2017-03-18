@@ -1,38 +1,53 @@
 species_list = [
   {
     primary_species: "Bluefish",
-    state_waters: 
-    located:
-  },
-  {
-    primary_species: "Cod & Haddock",
-    state_waters:
-    located:
-  },
-  {
-    primary_species: "Flounder",
-    state_waters:
-    located:
+    state_waters: "MA",
+    located: "Inshore",
   },
   {
     primary_species: "Striped Bass",
-    state_waters:
-    located:
+    state_waters: "MA",
+    located: "Inshore",
   },
   {
-    primary_species: "Sharks",
-    state_waters:
-    located:
+    primary_species: "Flounder",
+    state_waters: "MA",
+    located: "Inshore",
   },
   {
-    primary_species: "Tuna",
-    state_waters:
-    located:
+    primary_species: "Tataug",
+    state_waters: "MA",
+    located: "Inshore",
   },
   {
-    primary_species: "Mackeral, Pogies, Herring",
-    state_waters:
-    located:
+    primary_species: "Mako Shark",
+    state_waters: "MA",
+    located: "Offshore",
+  },
+  {
+    primary_species: "Bluefin Tuna",
+    state_waters: "MA",
+    located: "Offshore",
+  },
+  {
+    primary_species: "Fluke",
+    state_waters: "MA",
+    located: "Inshore",
+  }
+  {
+  primary_species: "Wahoo",
+  state_waters: "MA",
+  located: "Offshore",
+  }
+  {
+  primary_species: "Tuna Yellowfin",
+  state_waters: "MA",
+  located: "Offshore",
+  }
+  {
+  primary_species: "Shark Thresher",
+  state_waters: "MA",
+  located: "Offshore",
   }
 ]
 
