@@ -167,8 +167,10 @@ location_list.each do |location|
   new_location.coordinate_file = Rails.root.join("db/seed_data/location_coordinate_files/" + location[:short_name].underscore.parameterize("_") + ".json").open
   new_location.save!
 end
-print "#{Location.count} created"
+puts "#{Location.count} created"
 
+
+puts "Creating users" 
 2.times do |i|
   begin
     User.create!(
@@ -181,3 +183,19 @@ print "#{Location.count} created"
     print 'F'
   end
 end
+
+puts "Creating login user and admin user"
+
+User.create!(
+  email: "user@example.com",
+  password: "password",
+  confirmed_at: DateTime.now
+)
+
+AdminUser.create!(
+  email: "admin@example.com"
+  password: "password",
+  confirmed_at: DateTime.now
+)
+
+puts "Now you can login with user@example.com and admin@example.com with the password `password`"
