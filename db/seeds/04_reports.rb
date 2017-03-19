@@ -3,7 +3,7 @@ reports_list = [
     specie_id: 2,
     user_id: 1,
     date: 23.days.ago,
-    catch_keepers: "10" 
+    catch_keepers: "10"
     catch_total: "20"
     trip_summary: "Good bite on the incoming, large keepers over 45 inches"
     primary_method: "Live Bait"
@@ -15,8 +15,8 @@ reports_list = [
     trip_description: "Early morning trip to the race, moved down along the backside and found fish at peaked hill"
     lattitude:
     longitude:
-  }
-    {
+  },
+  {
     specie_id: 3,
     user_id: 1,
     date: 23.days.ago,
@@ -32,12 +32,12 @@ reports_list = [
     trip_description: "steady bite with chum in the saquish rip through the entire outgoing tide"
     lattitude:
     longitude:
-  }
-    {
+  },
+  {
     specie_id: 5,
     user_id: 1,
     date: 23.days.ago,
-    catch_keepers: "1" 
+    catch_keepers: "1"
     catch_total: "1"
     trip_summary: "Large make caught on a kite floating bluefish"
     primary_method: "Live Bait"
@@ -49,8 +49,8 @@ reports_list = [
     trip_description: "SW Corner of the bank very active with bait and whales, without any signs large mako took the kite bait at slack tide"
     lattitude:
     longitude:
-  }
-    {
+  },
+  {
     specie_id: 3,
     user_id: 1,
     date: 23.days.ago,
@@ -66,12 +66,12 @@ reports_list = [
     trip_description: "Alot of action of the BB rockpiles had to pick through shorts to get a dozen keepers"
     lattitude:
     longitude:
-  }
-    {
+  },
+  {
     specie_id: 6,
     user_id: 1,
     date: 23.days.ago,
-    catch_keepers: "2" 
+    catch_keepers: "2"
     catch_total: "3"
     trip_summary: "Great tuna bite on prince edward island all large fish"
     primary_method: "Live Bait"
@@ -83,8 +83,8 @@ reports_list = [
     trip_description: "All large fish on fishermans bank had two to boat and broke another off"
     lattitude:
     longitude:
-  }
-    {
+  },
+  {
     specie_id: 7,
     user_id: 1,
     date: 23.days.ago,
