@@ -6,7 +6,7 @@ class Report < ActiveRecord::Base
   belongs_to :user
   has_many :species
 
-  # default_scope {order('date DESC')}
+  default_scope {order('date ASC')}
 
   scope :selected_species, -> (the_species) { where(target_species: the_species)}
 
