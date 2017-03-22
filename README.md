@@ -11,7 +11,8 @@ Figaro will load it into the environment
 `rspec test`  
 
 ## Rake tasks
-`rake check_location:files` to check if coordinate file exists for every location.  
+`rake check_location:files` to check if coordinate file exists for every location. 
+`rake db:seed:single['<model_name>']` to seed populate single table. Seed file must be present in `db/seeds/`. 
 
 ## Staging  
 [currents-dev.herokuapp.com](currents-dev.herokuapp.com)

@@ -11,7 +11,7 @@ RSpec.describe Report, "Scopes" do
   end
 
   it ".selected_location should return records with specified locations" do
-    location = Location.create! :short_name => "NY"
+    location = Location.create!(:short_name => "NY", :coordinate_file => Rails.root.join("db/seed_data/location_coordinate_files/test.json").open)
     @location_id = location.id
     selected_location = Report.where(:location_id => @location_id)
     expect(Report.selected_location(@location_id)).to eq selected_location

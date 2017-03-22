@@ -33,21 +33,21 @@ species_list = [
     primary_species: "Fluke",
     state_waters: "MA",
     located: "Inshore",
-  }
+  },
   {
-  primary_species: "Wahoo",
-  state_waters: "MA",
-  located: "Offshore",
-  }
+    primary_species: "Wahoo",
+    state_waters: "MA",
+    located: "Offshore",
+  },
   {
-  primary_species: "Tuna Yellowfin",
-  state_waters: "MA",
-  located: "Offshore",
-  }
+    primary_species: "Tuna Yellowfin",
+    state_waters: "MA",
+    located: "Offshore",
+  },
   {
-  primary_species: "Shark Thresher",
-  state_waters: "MA",
-  located: "Offshore",
+    primary_species: "Shark Thresher",
+    state_waters: "MA",
+    located: "Offshore",
   }
 ]
 
