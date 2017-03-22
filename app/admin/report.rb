@@ -8,8 +8,8 @@ ActiveAdmin.register Report do
     actions
     column :user_id
     column :date
-    column "Location Name", :sortable => false do |loc|
-      loc.location.short_name
+    column "Location Name", :sortable => false do |location_id|
+      Location.find(location_id).short_name
     end
 
     column :target_species
