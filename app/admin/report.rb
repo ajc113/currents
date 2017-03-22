@@ -1,34 +1,34 @@
 ActiveAdmin.register Report do
 
-permit_params :user_id, :short_name
+  permit_params :user_id, :short_name
 
 
-index do
-  selectable_column
+  index do
+    selectable_column
     actions
     column :user_id
     column :date
     column "Location Name", :sortable => false do |loc|
-  	loc.location.short_name
-  	end
+      loc.location.short_name
+    end
 
-  column :target_species
-  column :catch_keepers
-  column :catch_total
-  column :trip_summary
-  column :primary_method
-  column :tide
-  column :wind
-  column :spot
-  column :best_bait
-  column :trip_description
-  column :created_at
-  column :updated_at
-  column :latitude
-  column :longitude
-  column :location_id
+    column :target_species
+    column :catch_keepers
+    column :catch_total
+    column :trip_summary
+    column :primary_method
+    column :tide
+    column :wind
+    column :spot
+    column :best_bait
+    column :trip_description
+    column :created_at
+    column :updated_at
+    column :latitude
+    column :longitude
+    column :location_id
 
-end
+  end
 
 
 
@@ -43,4 +43,3 @@ end
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-
