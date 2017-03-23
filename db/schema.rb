@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170316130416) do
+ActiveRecord::Schema.define(version: 20170323093316) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,7 +71,6 @@ ActiveRecord::Schema.define(version: 20170316130416) do
   end
 
   create_table "reports", force: :cascade do |t|
-    t.string   "target_species"
     t.integer  "catch_keepers"
     t.integer  "catch_total"
     t.text     "trip_summary"
