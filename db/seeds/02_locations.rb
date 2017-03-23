@@ -151,30 +151,21 @@ location_list = [
     long_name: "Hampton beach to Portsmouth"
   },
   {
-    number:30,
+    number:31,
     short_name: "Buzzards Bay - West",
     long_name: "Westport east to New Bedford.  Includes Dartmouth, Cuttyhunk and Gosnold, Naushon Island."
   },
   {
-    number:30,
-    short_name: "Maine East",
-    long_name: "Downeast maine waters"
-  },
-  {
-    number:30,
-    short_name: "Maine Portland",
-    long_name: "Casco Bay and Portland"
-  },
-  {
-    number:30,
-    short_name: "Maine South",
-    long_name: "Wells to Saco"
-  },
-  {
-    number:31,
+    number:32,
     short_name: "Buzzards Bay - East",
     long_name: "Mass Maritime west to Mattapoisett.  Includes Onset, Wareham , Marion, Pocasset, and North Falmouth."
-}]
+  },
+  {
+    number:33,
+    short_name: "New Hampshire Coast",
+    long_name: "Hampton Beach to Portsmouth"
+  },
+]
 
 def coordinate_file_path location_name
   location_name = location_name.underscore.parameterize("_")
