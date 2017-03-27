@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170323093316) do
+ActiveRecord::Schema.define(version: 20170327164323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20170323093316) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "coordinates"
-    t.string   "coordinate_file"
+    t.string   "coordinate_file", null: false
     t.text     "state_waters"
     t.text     "demographic"
     t.integer  "number"
@@ -95,11 +95,11 @@ ActiveRecord::Schema.define(version: 20170323093316) do
   add_index "reports", ["user_id"], name: "index_reports_on_user_id", using: :btree
 
   create_table "species", force: :cascade do |t|
-    t.string   "primary_species"
+    t.string   "name"
     t.string   "state_waters"
     t.string   "located"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -130,7 +130,4 @@ ActiveRecord::Schema.define(version: 20170323093316) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "buzzs", "users"
-  add_foreign_key "reports", "locations"
-  add_foreign_key "reports", "users"
 end

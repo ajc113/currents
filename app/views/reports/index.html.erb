@@ -77,7 +77,7 @@
                   <option value="">Select Species</option>
                     <% @reports_for_filter.each do |report| %>
                     <% puts "target species is #{report.specie_id}".green %>
-                  <option value="<%= report.specie_id %>" <%= selected_species(report.specie_id) %>><%= Specie.find(report.specie_id).primary_species %>
+                  <option value="<%= report.specie_id %>" <%= selected_species(report.specie_id) %>><%= Specie.find(report.specie_id).name %>
                   </option>
                     <% end %>
               </select>

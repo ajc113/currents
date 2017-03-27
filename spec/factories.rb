@@ -1,7 +1,7 @@
 FactoryGirl.define do
 
   factory :species, class: 'Specie' do
-    primary_species "MyString"
+    name "MyString"
 
 
     state_waters "MyString"

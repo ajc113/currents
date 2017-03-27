@@ -13,7 +13,7 @@ ActiveAdmin.register Report do
     end
 
     column "Species" do |specie_id|
-    	Specie.find(specie_id).primary_species
+    	Specie.find(specie_id).name
     end
     column :catch_keepers
     column :catch_total
