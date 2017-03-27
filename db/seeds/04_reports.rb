@@ -2,6 +2,7 @@ reports_list = [
   {
     specie_id: 2,
     user_id: 1,
+    location_id: 7,
     date: rand(364).days.ago,
     catch_keepers: 10,
     catch_total: 20,
@@ -17,6 +18,7 @@ reports_list = [
   {
     specie_id: 3,
     user_id: 1,
+    location_id: 4,
     date: rand(364).days.ago,
     catch_keepers: 12,
     catch_total: 15,
@@ -32,6 +34,7 @@ reports_list = [
   {
     specie_id: 5,
     user_id: 1,
+    location_id: 3,
     date: rand(364).days.ago,
     catch_keepers: 1,
     catch_total: 1,
@@ -47,6 +50,7 @@ reports_list = [
   {
     specie_id: 3,
     user_id: 1,
+    location_id: 12,
     date: rand(364).days.ago,
     catch_keepers: 8,
     catch_total: 20,
@@ -62,6 +66,7 @@ reports_list = [
   {
     specie_id: 6,
     user_id: 1,
+    location_id: 3,
     date: rand(364).days.ago,
     catch_keepers: 2,
     catch_total: 3,
@@ -77,6 +82,7 @@ reports_list = [
   {
     specie_id: 7,
     user_id: 1,
+    location_id: 5,
     date: rand(364).days.ago,
     catch_keepers: 3,
     catch_total: 3,
