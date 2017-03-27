@@ -8,7 +8,7 @@ class Report < ActiveRecord::Base
 
   # default_scope {order('date DESC')}
 
-  scope :selected_species, -> (the_species) { where(target_species: the_species)}
+  scope :species, -> (the_species) { where(specie_id: the_species)}
 
   scope :selected_location, -> (the_location) { where(location: the_location )}
 

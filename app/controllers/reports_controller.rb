@@ -8,9 +8,10 @@ class ReportsController < ApplicationController
 
 def index
       @reports = current_user.reports
-      @reports_for_filter = @reports.select("DISTINCT(target_species)")
+      @reports_for_filter = @reports.select("DISTINCT(specie_id)")
       @reports_for_filter_tide = @reports.select("DISTINCT(tide)")
       @reports_for_filter_location = Location.all.order("short_name ASC")
+      @reports = @reports.species(params[:species]) if params[:species].present?
 end
 
 def filter
@@ -26,7 +27,7 @@ def filter
   @reports_for_filter_tide = @reports.select("DISTINCT(tide)")
   @reports_for_filter_location = Location.all.order("short_name ASC")
 
-  @reports = @reports.selected_species(@target_species) if @target_species
+  @reports = @reports.selected_species(@specie_id) if @specie_id
   @reports = @reports.selected_location(@location) if @location
   @reports = @reports.selected_tide(@tide) if @tide
   @reports = @reports.selected_date(@month) if @month
