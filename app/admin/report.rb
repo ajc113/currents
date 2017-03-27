@@ -1,6 +1,6 @@
 ActiveAdmin.register Report do
 
-permit_params :user_id, :short_name
+permit_params :user_id, :short_name, :primary_species, :target_species,
 
 
 index do
@@ -8,10 +8,10 @@ index do
     actions
     column :user_id
     column :date
-    column "Location Name", :sortable => false do |loc|
-  	loc.location.short_name
-  	end
 
+   #  column "Location Name", :sortable => false do |loc|
+  	# # loc.location.short_name
+  	# end
   column :target_species
   column :catch_keepers
   column :catch_total

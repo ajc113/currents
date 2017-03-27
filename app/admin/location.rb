@@ -1,4 +1,4 @@
-ActiveAdmin.register Location do
+	ActiveAdmin.register Location do
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -7,6 +7,7 @@ permit_params :number, :short_name, :long_name, :state_waters, :demographic, :co
 
 
 index do
+	selectable_column
 actions
   column :number
   column :short_name
