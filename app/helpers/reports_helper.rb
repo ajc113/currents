@@ -12,6 +12,6 @@ module ReportsHelper
 	end
 
 	def all_species
-		Report.all.collect(&:target_species).compact.uniq.reject(&:empty?)
+		Report.all.collect(&:species_id).compact.uniq
 	end
 end
