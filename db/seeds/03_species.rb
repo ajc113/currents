@@ -55,7 +55,7 @@ puts "creating Species"
 
 species_list.each do |spcie|
   begin
-    Specie.create!(spcie)
+    Species.create!(spcie)
     print '.'
   rescue
     ActiveRecord::RecordInvalid
@@ -63,4 +63,4 @@ species_list.each do |spcie|
   end
 end
 
-puts "#{Specie.count} species created"
+puts "#{Species.count} species created"

@@ -1,6 +1,6 @@
 reports_list = [
   {
-    specie_id: 2,
+    species_id: 2,
     user_id: 1,
     location_id: 7,
     date: rand(364).days.ago,
@@ -16,7 +16,7 @@ reports_list = [
     trip_description: "Early morning trip to the race, moved down along the backside and found fish at peaked hill"
   },
   {
-    specie_id: 3,
+    species_id: 3,
     user_id: 1,
     location_id: 4,
     date: rand(364).days.ago,
@@ -32,7 +32,7 @@ reports_list = [
     trip_description: "steady bite with chum in the saquish rip through the entire outgoing tide"
   },
   {
-    specie_id: 5,
+    species_id: 5,
     user_id: 1,
     location_id: 3,
     date: rand(364).days.ago,
@@ -48,7 +48,7 @@ reports_list = [
     trip_description: "SW Corner of the bank very active with bait and whales, without any signs large mako took the kite bait at slack tide"
   },
   {
-    specie_id: 3,
+    species_id: 3,
     user_id: 1,
     location_id: 12,
     date: rand(364).days.ago,
@@ -64,7 +64,7 @@ reports_list = [
     trip_description: "Alot of action of the BB rockpiles had to pick through shorts to get a dozen keepers"
   },
   {
-    specie_id: 6,
+    species_id: 6,
     user_id: 1,
     location_id: 3,
     date: rand(364).days.ago,
@@ -80,7 +80,7 @@ reports_list = [
     trip_description: "All large fish on fishermans bank had two to boat and broke another off"
   },
   {
-    specie_id: 7,
+    species_id: 7,
     user_id: 1,
     location_id: 5,
     date: rand(364).days.ago,

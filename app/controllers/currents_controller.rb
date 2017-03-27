@@ -14,7 +14,7 @@ def rules
 end
 
 def test
-@species = Specie.all
+@species = Species.all
 end
 
 def show

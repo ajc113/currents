@@ -1,6 +1,6 @@
 FactoryGirl.define do
 
-  factory :species, class: 'Specie' do
+  factory :species, class: 'Species' do
     name "MyString"
 
 

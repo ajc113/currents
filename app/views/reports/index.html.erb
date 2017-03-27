@@ -76,8 +76,8 @@
               <select id="species" name="species" class="form-control m-b">   
                   <option value="">Select Species</option>
                     <% @reports_for_filter.each do |report| %>
-                    <% puts "target species is #{report.specie_id}".green %>
-                  <option value="<%= report.specie_id %>" <%= selected_species(report.specie_id) %>><%= Specie.find(report.specie_id).name %>
+                    <% puts "target species is #{report.species_id}".green %>
+                  <option value="<%= report.species_id %>" <%= selected_species(report.species_id) %>><%= Species.find(report.species_id).name %>
                   </option>
                     <% end %>
               </select>
@@ -196,7 +196,7 @@
             <% @reports.each do |report| %>
               <tr>
                 <td><%= report.date.try(:strftime, '%m/%d/%y') %></td>
-                <td class="wd-sm"><%= Specie.find(report.specie_id).name %></td>
+                <td class="wd-sm"><%= Species.find(report.species_id).name %></td>
                 <td class="wd-td3"><%= report.location.try(:short_name) %></td>
                 <td><%= report.catch_keepers %></td>
                 <td><%= report.catch_total %></td>

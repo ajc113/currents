@@ -1,4 +1,4 @@
-ActiveAdmin.register Specie do
+ActiveAdmin.register Species do
 
 permit_params :name, :state_waters, :located
 

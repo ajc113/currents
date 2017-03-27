@@ -12,8 +12,8 @@ ActiveAdmin.register Report do
       Location.find(location_id).short_name
     end
 
-    column "Species" do |specie_id|
-    	Specie.find(specie_id).name
+    column "Species" do |species_id|
+    	Species.find(species_id).name
     end
     column :catch_keepers
     column :catch_total

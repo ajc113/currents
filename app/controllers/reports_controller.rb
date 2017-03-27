@@ -8,7 +8,7 @@ class ReportsController < ApplicationController
 
 def index
       @reports = current_user.reports.filter(params.slice(:species, :location, :tide, :date))
-      @reports_for_filter = @reports.select("DISTINCT(specie_id)").unscope(:order)
+      @reports_for_filter = @reports.select("DISTINCT(species_id)").unscope(:order)
       @reports_for_filter_tide = @reports.select("DISTINCT(tide)").unscope(:order)
       @reports_for_filter_location = Location.all.order("short_name ASC").unscope(:order)
 end
@@ -20,13 +20,13 @@ end
   # GET /reports/new
   def new
     @report = Report.new
-    @species = Specie.all
+    @species = Species.all
    
   end
 
   # GET /reports/1/edit
   def edit
-     @species = Specie.all
+     @species = Species.all
   end
 
   # POST /reports
@@ -87,7 +87,7 @@ private
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def report_params
-      params.require(:report).permit(:date, :specie_id, :general_location, :catch_keepers, :catch_total, :trip_summary, :primary_method, :tide, :weather, :wind, :spot, :picture, :best_bait, :trip_description, :location_id)
+      params.require(:report).permit(:date, :species_id, :general_location, :catch_keepers, :catch_total, :trip_summary, :primary_method, :tide, :weather, :wind, :spot, :picture, :best_bait, :trip_description, :location_id)
     end
     def location_params
       @location = Location.where(params[:short_name])
