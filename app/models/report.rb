@@ -2,6 +2,7 @@ class Report < ActiveRecord::Base
 
   include Filterable
 
+  validates :date, :species_id, :location_id, :catch_keepers, presence: true
   validate :validate_date
 
   belongs_to :location
