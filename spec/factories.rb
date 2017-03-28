@@ -27,6 +27,9 @@ FactoryGirl.define do
   end
 
   factory :report do
+    species_id 3
+    location_id 4
+    catch_keepers 20
     catch_total 2323
     date {2.years.ago}
   end
