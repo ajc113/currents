@@ -23,7 +23,7 @@ RSpec.describe(ReportsController) do
                          :date => @report.date,
                          :primary_method => @report.primary_method,
                          :spot => @report.spot,
-                         :target_species => @report.target_species,
+                         :species_id => @report.species_id,
                          :tide => @report.tide,
                          :trip_description => @report.trip_description,
                          :trip_summary => @report.trip_summary,

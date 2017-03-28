@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170327170039) do
+ActiveRecord::Schema.define(version: 20170328070956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 20170327170039) do
   end
 
   create_table "reports", force: :cascade do |t|
-    t.integer  "catch_keepers"
+    t.integer  "catch_keepers",    null: false
     t.integer  "catch_total"
     t.text     "trip_summary"
     t.string   "primary_method"
@@ -85,10 +85,10 @@ ActiveRecord::Schema.define(version: 20170327170039) do
     t.datetime "updated_at",       null: false
     t.float    "latitude"
     t.float    "longitude"
-    t.integer  "location_id"
+    t.integer  "location_id",      null: false
     t.integer  "user_id"
-    t.date     "date"
-    t.integer  "species_id"
+    t.date     "date",             null: false
+    t.integer  "species_id",       null: false
   end
 
   add_index "reports", ["location_id"], name: "index_reports_on_location_id", using: :btree
