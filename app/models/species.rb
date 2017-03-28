@@ -1,6 +1,6 @@
 class Species < ActiveRecord::Base
 
-has_many :report
+has_many :reports
 
 
 end
