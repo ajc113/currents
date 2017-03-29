@@ -68,16 +68,16 @@
   <div class="panel panel-default col-sm-12 bg-gray">
     <h3 class="h3">Report Filter</h3>
       <div class="panel-body">
-        <form id="filter_form" action="/filter" class="form-horizontal">
+        <form id="filter_form" action="/reports" class="form-horizontal">
           <div class="form-group">
             <!-- Species filter   -->
             <div class="col-sm-3">
               <label>Species</label><br>
-              <select id="target_species" name="target_species" class="form-control m-b">   
+              <select id="species" name="species" class="form-control m-b">   
                   <option value="">Select Species</option>
                     <% @reports_for_filter.each do |report| %>
-                    <% puts "target species is #{report.target_species}".green %>
-                  <option value="<%= report.target_species %>"><%= report.target_species %>
+                    <% puts "target species is #{report.species_id}".green %>
+                  <option value="<%= report.species_id %>" <%= selected_species(report.species_id) %>><%= Species.find(report.species_id).name %>
                   </option>
                     <% end %>
               </select>
@@ -88,7 +88,7 @@
               <select id="location" name="location" class="form-control m-b"> 
                 <option value="">Select Location</option>
                   <% @reports_for_filter_location.each do |location| %>
-                <option value="<%= location.id %>" <%= selected_locations(location) %>><%= location.short_name %>
+                <option value="<%= location.id %>" <%= selected_locations(location.id) %>><%= (location.number.to_s.rjust(2, '0') + " - " + location.short_name) %>
                 </option>
                   <% end %>
               </select> 
@@ -107,7 +107,7 @@
               <!-- date filter -->
             <div class="col-sm-3">
               <label>Month</label><br>  
-              <select id="date" name="date" class="form-control m-b">   
+              <!-- <select id="date" name="date" class="form-control m-b">   
                 <option value="">Select Date</option>
                 <option value="January">January</option>
                 <option value="February">February</option>
@@ -121,7 +121,8 @@
                 <option value="October">October</option> 
                 <option value="November">November</option> 
                 <option value="December">December</option>
-              </select>
+              </select> -->
+              <%= select_month(params[:date].to_i, { :prompt => "Select Date", :user_month_name => true }, name: "date", :class => "form-control m-b", id: "date") %>
             </div>
           </div>
         </form>
@@ -136,7 +137,7 @@
 
 <!-- filter script -->
 <script>
-  $('#target_species').change(function(){
+  $('#species').change(function(){
     $('#filter_form').submit();
   });
   $('#location').change(function(){
@@ -195,7 +196,7 @@
             <% @reports.each do |report| %>
               <tr>
                 <td><%= report.date.try(:strftime, '%m/%d/%y') %></td>
-                <td class="wd-sm"><%= report.target_species %></td>
+                <td class="wd-sm"><%= Species.find(report.species_id).name %></td>
                 <td class="wd-td3"><%= report.location.try(:short_name) %></td>
                 <td><%= report.catch_keepers %></td>
                 <td><%= report.catch_total %></td>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170316130416) do
+ActiveRecord::Schema.define(version: 20170328070956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,15 +64,14 @@ ActiveRecord::Schema.define(version: 20170316130416) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "coordinates"
-    t.string   "coordinate_file"
+    t.string   "coordinate_file", null: false
     t.text     "state_waters"
     t.text     "demographic"
     t.integer  "number"
   end
 
   create_table "reports", force: :cascade do |t|
-    t.string   "target_species"
-    t.integer  "catch_keepers"
+    t.integer  "catch_keepers",    null: false
     t.integer  "catch_total"
     t.text     "trip_summary"
     t.string   "primary_method"
@@ -86,21 +85,21 @@ ActiveRecord::Schema.define(version: 20170316130416) do
     t.datetime "updated_at",       null: false
     t.float    "latitude"
     t.float    "longitude"
-    t.integer  "location_id"
+    t.integer  "location_id",      null: false
     t.integer  "user_id"
-    t.date     "date"
-    t.integer  "specie_id"
+    t.date     "date",             null: false
+    t.integer  "species_id",       null: false
   end
 
   add_index "reports", ["location_id"], name: "index_reports_on_location_id", using: :btree
   add_index "reports", ["user_id"], name: "index_reports_on_user_id", using: :btree
 
   create_table "species", force: :cascade do |t|
-    t.string   "primary_species"
+    t.string   "name"
     t.string   "state_waters"
     t.string   "located"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -131,7 +130,4 @@ ActiveRecord::Schema.define(version: 20170316130416) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "buzzs", "users"
-  add_foreign_key "reports", "locations"
-  add_foreign_key "reports", "users"
 end

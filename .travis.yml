@@ -1,0 +1,11 @@
+# specify language
+language: ruby
+
+before_script:
+  - psql -c 'create database travis_ci_test' -U postgres
+
+services:
+  - postgresql
+
+env:
+  - CURRENTS_DB_NAME=travis_ci_test CURRENTS_PSQL_USERNAME=postgres CURRENTS_PSQL_PASSWORD=''

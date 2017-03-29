@@ -18,18 +18,18 @@ class MapsController < ApplicationController
 
   def filter_by_species
 
-    @target_species = params[:target_species] unless params[:target_species].blank?
+    @species = params[:species] unless params[:species].blank?
     @location = Location.find(params[:location]) unless params[:location].blank?
     @lreports = []
     Location.all.each do |location|
-      if  params[:target_species] != "Any"
+      if  params[:species] != "Any"
         #The following line used 'select' which converted reports to Array
         # .where can not be appliec on arrays so the code was throwing errors when not selected Any
 
         # reports =  location.reports.select{|l| l.target_species === params[:target_species]}
 
         #The following line has been changed to fix the error. Please confirm the output
-        reports = location.reports.where(target_species: params[:target_species])
+        reports = location.reports.where(species_id: params[:species])
         puts "Report count = " + reports.count.to_s
         avgrep = reports.where('date >= ?', 1.week.ago.to_date).where('date < ?', Date.today).order(date: :desc)
         prevavgrep = reports.where('date >= ?', 1.week.ago.to_date - 1).where('date < ?', Date.today - 1)
@@ -117,7 +117,7 @@ end
 
 private
 def report_params
-  params.require(:report).permit(:date, :target_species, :general_location, :catch_keepers, :catch_total, :trip_summary, :primary_method, :tide, :weather, :wind, :spot, :picture, :best_bait, :trip_description, :location_id)
+  params.require(:report).permit(:date, :species_id, :general_location, :catch_keepers, :catch_total, :trip_summary, :primary_method, :tide, :weather, :wind, :spot, :picture, :best_bait, :trip_description, :location_id)
 end
 def location_params
   @location = Location.where(params[:short_name])

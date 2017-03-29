@@ -7,50 +7,10 @@ class ReportsController < ApplicationController
   # @reports = current_user.reports.order("date DESC")
 
 def index
-      @reports = current_user.reports
-      @reports_for_filter = @reports.select("DISTINCT(target_species)")
-      @reports_for_filter_tide = @reports.select("DISTINCT(tide)")
-      @reports_for_filter_location = Location.all.order("short_name ASC")
-end
-
-def filter
-  @target_species = params[:target_species] unless params[:target_species].blank?
-  @location = Location.find(params[:location]) unless params[:location].blank?
-  @tide = params[:tide] unless params[:tide].blank?
-  @month = params[:date].to_date.month unless params[:date].blank?
-
-
-# NEXT TWO LINES ADDED TO GET UNIQUE TO WORK
-  @reports = current_user.reports
-  @reports_for_filter = @reports.select("DISTINCT(target_species)") #sets up target_species for filter box
-  @reports_for_filter_tide = @reports.select("DISTINCT(tide)")
-  @reports_for_filter_location = Location.all.order("short_name ASC")
-
-  @reports = @reports.selected_species(@target_species) if @target_species
-  @reports = @reports.selected_location(@location) if @location
-  @reports = @reports.selected_tide(@tide) if @tide
-  @reports = @reports.selected_date(@month) if @month
-  # @filtered_by_date_reports = @reports.where("cast(strftime('%m', date) as int) = ?", @month)
-  # puts "@filtered_by_date_reports after date filter is #{@filtered_by_date_reports.inspect}".green
-
-  # @reports = @reports.where("created_at between (?) and (?)", start_date, end_date)
-
-  # if @target_species && @location
-  #   @reports = current_user.reports.where(target_species: @target_species, location: @location)
-  # elsif @target_species
-  #   @reports = current_user.reports.where(target_species: @target_species)
-  # elsif @location
-  #   @reports = current_user.reports.where(location: @location)
-  # else
-  #   @reports = current_user.reports 
-  # end
-
-  # @locations = @reports.collect(&:location).select{|location| location.short_name == @short_name} #you might need to add .flatten just before .select
-  
-  # @reports = @reports.select{|report| @locations.include?(report.location)}
-
-  puts "@reports are #{@reports.inspect}"
-  render 'index'
+      @reports = current_user.reports.filter(params.slice(:species, :location, :tide, :date))
+      @reports_for_filter = @reports.select("DISTINCT(species_id)").unscope(:order)
+      @reports_for_filter_tide = @reports.select("DISTINCT(tide)").unscope(:order)
+      @reports_for_filter_location = Location.all.order("short_name ASC").unscope(:order)
 end
 
   def show
@@ -60,13 +20,13 @@ end
   # GET /reports/new
   def new
     @report = Report.new
-    @species = Specie.all
+    @species = Species.all
    
   end
 
   # GET /reports/1/edit
   def edit
-     @species = Specie.all
+     @species = Species.all
   end
 
   # POST /reports
@@ -127,10 +87,13 @@ private
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def report_params
-      params.require(:report).permit(:date, :target_species, :general_location, :catch_keepers, :catch_total, :trip_summary, :primary_method, :tide, :weather, :wind, :spot, :picture, :best_bait, :trip_description, :location_id)
+      params.require(:report).permit(:date, :species_id, :general_location, :catch_keepers, :catch_total, :trip_summary, :primary_method, :tide, :weather, :wind, :spot, :picture, :best_bait, :trip_description, :location_id)
     end
     def location_params
       @location = Location.where(params[:short_name])
+    end
+    def filtering_params params
+      params.slice(:species, :location, :tide, :date)
     end
 end
 
