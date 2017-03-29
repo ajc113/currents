@@ -1,4 +1,5 @@
 ActiveAdmin.register Report do
+    belongs_to :user, optional: true
 
 
   permit_params :user_id, :short_name
