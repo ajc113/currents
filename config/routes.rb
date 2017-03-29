@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+    namespace :admin do
+      resources :users do
+        resources :reports
+      end
+    end
   devise_for :users
   root to: 'currents#index'
 

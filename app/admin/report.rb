@@ -1,9 +1,8 @@
 ActiveAdmin.register Report do
+  belongs_to :user, optional: true
+  belongs_to :species, optional: true
 
-
-  permit_params :user_id, :short_name
-
-
+  permit_params :catch_keepers, :catch_totals, :trip_summary, :primary_method, :tide, :weather, :wind, :spot, :best_bait, :trip_description, :lattitude, :longitude, :location_id, :user_id, :date, :species_id
 
   index do
     selectable_column
@@ -11,9 +10,12 @@ ActiveAdmin.register Report do
     column :user_id
     column :date
 
+    column "Location" do |location_id|
+      Location.find(location_id).short_name
+    end
 
     column "Species" do |species_id|
-    	Species.find(species_id).name
+      Species.find(species_id).name
     end
     column :catch_keepers
     column :catch_total
@@ -28,14 +30,13 @@ ActiveAdmin.register Report do
     column :updated_at
     column :latitude
     column :longitude
-    column :location_id
-
   end
 
 
 
 
 end
+
 
 #
 # or
