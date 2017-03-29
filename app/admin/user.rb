@@ -3,6 +3,12 @@ ActiveAdmin.register User do
 
 permit_params :email, :first_name, :last_name, :home_port, :state, :vessel_name, :subscription_tier
 
+    sidebar "Reports", only: [:show, :edit] do
+        ul do
+            li link_to "Reports", admin_user_reports_path(resource)
+        end
+    end
+
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
