@@ -18,11 +18,11 @@ real_users = [
 
   # {
   #   email: "costa.aj@gmail.com",
-  #   password: "Woodstock99",
+  #   password: "password",
   # },
   #  {
   #   email: "ajcosta1@gmail.com",
-  #   password: "Woodstock99",
+  #   password: "password",
   # },
 
 ]
@@ -44,8 +44,8 @@ end
 puts "\nCreating Admin user"
 
 AdminUser.create!(
-  email: "costa.aj@gmail.com",
-  password: "Woodstock99",
+  email: "",
+  password: "",
 )
 
 puts "Now you can login with email with the password `password`"
