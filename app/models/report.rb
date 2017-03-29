@@ -1,20 +1,24 @@
 class Report < ActiveRecord::Base
 
+  include Filterable
+
+  validates :date, :species_id, :location_id, :catch_keepers, presence: true
   validate :validate_date
 
   belongs_to :location
   belongs_to :user
-  has_many :specie
+  # has_one :species
 
-  # default_scope {order('date DESC')}
 
-  scope :selected_species, -> (the_species) { where(target_species: the_species)}
+  default_scope {order('date DESC')}
 
-  scope :selected_location, -> (the_location) { where(location: the_location )}
+  scope :species, -> (species) { where(species_id: species)}
 
-  scope :selected_tide, -> (the_tide) {where(tide: the_tide)}
+  scope :location, -> (location) { where(location: location )}
 
-  scope :selected_date, -> (month) {where("cast(strftime('%m', date) as int) = ?", month)}
+  scope :tide, -> (tide) {where(tide: tide)}
+
+  scope :date, -> (month) {where("extract(month from date) = ?", month)}
 
 
 

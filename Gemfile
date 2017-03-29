@@ -46,6 +46,7 @@ gem 'party_foul'
 gem 'rails_serve_static_assets'
 gem 'bootstrap-datepicker-rails'
 gem 'pg'
+gem 'ffaker'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -75,7 +76,6 @@ group :development do
   gem 'web-console', '~> 2.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem 'ffaker'
 end
 
 gem 'tzinfo-data'
