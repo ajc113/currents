@@ -75,7 +75,7 @@
               <label>Species</label><br>
               <select id="species" name="species" class="form-control m-b">   
                   <option value="">Select Species</option>
-                    <% @reports_for_filter.each do |report| %>
+                    <% @species_for_filter.each do |report| %>
                     <% puts "target species is #{report.species_id}".green %>
                   <option value="<%= report.species_id %>" <%= selected_species(report.species_id) %>><%= Species.find(report.species_id).name %>
                   </option>
@@ -87,7 +87,7 @@
               <label>Location</label><br>
               <select id="location" name="location" class="form-control m-b"> 
                 <option value="">Select Location</option>
-                  <% @reports_for_filter_location.each do |location| %>
+                  <% @locations_for_filter.each do |location| %>
                 <option value="<%= location.id %>" <%= selected_locations(location.id) %>><%= (location.number.to_s.rjust(2, '0') + " - " + location.short_name) %>
                 </option>
                   <% end %>
@@ -98,7 +98,7 @@
               <label>Tide</label><br>
                 <select id="tide" name="tide" class="form-control m-b">   
                   <option value="">Select Tide</option>
-                    <% @reports_for_filter_tide.each do |report| %>
+                    <% @tides_for_filter.each do |report| %>
                   <option value="<%= report.tide %>" <%= selected_tide(report.tide) %>><%= report.tide %>
                   </option>
                     <% end %>
