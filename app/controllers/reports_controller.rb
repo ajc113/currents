@@ -20,13 +20,13 @@ end
   # GET /reports/new
   def new
     @report = Report.new
-    @species = Species.all
+    species
    
   end
 
   # GET /reports/1/edit
   def edit
-     @species = Species.all
+     species
   end
 
   # POST /reports
@@ -95,6 +95,8 @@ private
     def filtering_params params
       params.slice(:species, :location, :tide, :date)
     end
+
+    def species
+      @species ||= Species.all
+    end
 end
-
-
