@@ -19,7 +19,6 @@ Rails.application.routes.draw do
   resources :currents
 
   get 'filter', to: 'reports#filter'
-  get 'heatmap', to: 'maps#heatmap'
   get 'reports_path', to: 'reports#index'
 
   #Data API

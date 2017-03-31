@@ -5,11 +5,6 @@ class MapsController < ApplicationController
     @locations = Location.all
   end
 
-  def heatmap
-    @reports = Report.all
-    @locations = Location.all
-  end
-
   def create
   end
 
