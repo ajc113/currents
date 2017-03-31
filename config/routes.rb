@@ -18,8 +18,6 @@ Rails.application.routes.draw do
   resources :maps
   resources :currents
 
-  get 'filter', to: 'reports#filter'
-
   #Data API
   get 'species_filter', to: 'maps#filter_by_species', as: :species_filter
 
