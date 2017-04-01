@@ -22,10 +22,12 @@ class MapsController < ApplicationController
         # reports =  location.reports.select{|l| l.target_species === params[:target_species]}
 
         #The following line has been changed to fix the error. Please confirm the output
-        reports = location.reports.where(species_id: params[:species])
+        reports = location.reports.species(params[:species])
         puts "Report count = " + reports.count.to_s
-        avgrep = reports.where('date >= ?', 1.week.ago.to_date).where('date < ?', Date.today).order(date: :desc)
-        prevavgrep = reports.where('date >= ?', 1.week.ago.to_date - 1).where('date < ?', Date.today - 1)
+        avgrep = reports.where(:date => 1.week.ago..Date.today).order(date: :desc)
+
+        prevavgrep = reports.where(:date => 8.days.ago..1.day.ago)
+
         movavg = movingavg(avgrep,prevavgrep)
         puts "---movingavg", movavg
         @lreports.push(location:location,reports: userreport(avgrep),cfile: one_locations_json(location),movingavg: movavg[:movingavg], color: movavg[:color])
@@ -34,7 +36,12 @@ class MapsController < ApplicationController
         prevavgrep = location.reports.where('date >= ?', 1.week.ago.to_date - 1).where('date < ?', Date.today - 1)
         movavg = movingavg(avgrep,prevavgrep)
         puts "---movingavg", movavg
-        @lreports.push(location:location,reports: userreport(avgrep),cfile: one_locations_json(location),movingavg: movavg[:movingavg], color: movavg[:color])
+        @lreports.push( location:location,
+                        reports: userreport(avgrep),
+                        cfile: one_locations_json(location),
+                        movingavg: movavg[:movingavg], 
+                        color: movavg[:color]
+                      )
         # @lreports.push(location:location,reports: userreport(reports),cfile: one_locations_json(location),movingavg: movavg[:movingavg], color: movavg[:color])
 
       end
