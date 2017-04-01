@@ -11,20 +11,25 @@ class MapsController < ApplicationController
 
   def filter_by_species
 
-    @species = params[:species] unless params[:species].blank?
     @location = Location.find(params[:location]) unless params[:location].blank?
     @lreports = []
     Location.all.each do |location|
 
-        reports = location.reports.where(species)
+      reports = location.reports.where(species)
 
-        avgrep = reports.where(:date => 1.week.ago..Date.today).order(date: :desc)
+      avgrep = reports.where(:date => 1.week.ago..Date.today).order(date: :desc)
 
-        prevavgrep = reports.where(:date => 8.days.ago..1.day.ago)
+      prevavgrep = reports.where(:date => 8.days.ago..1.day.ago)
 
-        movavg = movingavg(avgrep,prevavgrep)
+      movavg = movingavg(avgrep,prevavgrep)
 
-        @lreports.push(location:location,reports: userreport(avgrep),cfile: one_locations_json(location),movingavg: movavg[:movingavg], color: movavg[:color])
+      @lreports.push(
+        location:location,
+        reports: userreport(avgrep),
+        cfile: one_locations_json(location),
+        movingavg: movavg[:movingavg],
+        color: movavg[:color]
+      )
     end
     render json: @lreports
   end
