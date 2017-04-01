@@ -15,38 +15,23 @@ class MapsController < ApplicationController
     @location = Location.find(params[:location]) unless params[:location].blank?
     @lreports = []
     Location.all.each do |location|
-      if  params[:species] != "Any"
-        #The following line used 'select' which converted reports to Array
-        # .where can not be appliec on arrays so the code was throwing errors when not selected Any
 
-        # reports =  location.reports.select{|l| l.target_species === params[:target_species]}
+        reports = location.reports.where(species)
 
-        #The following line has been changed to fix the error. Please confirm the output
-        reports = location.reports.species(params[:species])
-        puts "Report count = " + reports.count.to_s
         avgrep = reports.where(:date => 1.week.ago..Date.today).order(date: :desc)
 
         prevavgrep = reports.where(:date => 8.days.ago..1.day.ago)
 
         movavg = movingavg(avgrep,prevavgrep)
-        puts "---movingavg", movavg
-        @lreports.push(location:location,reports: userreport(avgrep),cfile: one_locations_json(location),movingavg: movavg[:movingavg], color: movavg[:color])
-      else
-        avgrep = location.reports.where('date >= ?', 1.week.ago.to_date).where('date < ?', Date.today).order(date: :desc)
-        prevavgrep = location.reports.where('date >= ?', 1.week.ago.to_date - 1).where('date < ?', Date.today - 1)
-        movavg = movingavg(avgrep,prevavgrep)
-        puts "---movingavg", movavg
-        @lreports.push( location:location,
-                        reports: userreport(avgrep),
-                        cfile: one_locations_json(location),
-                        movingavg: movavg[:movingavg], 
-                        color: movavg[:color]
-                      )
-        # @lreports.push(location:location,reports: userreport(reports),cfile: one_locations_json(location),movingavg: movavg[:movingavg], color: movavg[:color])
 
-      end
+        @lreports.push(location:location,reports: userreport(avgrep),cfile: one_locations_json(location),movingavg: movavg[:movingavg], color: movavg[:color])
     end
     render json: @lreports
+  end
+
+  def species
+    return nil if params[:species] = "Any"
+    return "species_id = #{params[:species]}"
   end
   def movingavg(avgrep,prevavgrep)
     movingavg = 0
