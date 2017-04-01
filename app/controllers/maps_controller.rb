@@ -34,6 +34,8 @@ class MapsController < ApplicationController
     render json: @lreports
   end
 
+  private
+
   def species
     return nil if params[:species] = "Any"
     return "species_id = #{params[:species]}"
@@ -101,14 +103,10 @@ class MapsController < ApplicationController
     eval(f).to_a
   end
 
-
-end
-
-
-private
-def report_params
-  params.require(:report).permit(:date, :species_id, :general_location, :catch_keepers, :catch_total, :trip_summary, :primary_method, :tide, :weather, :wind, :spot, :picture, :best_bait, :trip_description, :location_id)
-end
-def location_params
-  @location = Location.where(params[:short_name])
+  def report_params
+    params.require(:report).permit(:date, :species_id, :general_location, :catch_keepers, :catch_total, :trip_summary, :primary_method, :tide, :weather, :wind, :spot, :picture, :best_bait, :trip_description, :location_id)
+  end
+  def location_params
+    @location = Location.where(params[:short_name])
+  end
 end
