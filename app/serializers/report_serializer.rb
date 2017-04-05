@@ -1,3 +1,3 @@
 class ReportSerializer < ActiveModel::Serializer
-  attributes :location, :target_species, :location_json
+  attributes :location, :species_id, :location_json
 end
