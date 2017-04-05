@@ -87,7 +87,7 @@ Rails.application.configure do
 
   }
 
-config.action_mailer.default_url_options = { :host => 'currents.herokuapp.com'}
+config.action_mailer.default_url_options = { :host => ENV['HOST'] }
 
 config.middleware.use('PartyFoul::Middleware')
 
