@@ -17,4 +17,6 @@ development:
 test:
   CURRENTS_DB_NAME: "currents_test"
   CURRENTS_PSQL_USERNAME: "currents"
+ 
+production:
   CURRENTS_PSQL_PASSWORD: "currents"

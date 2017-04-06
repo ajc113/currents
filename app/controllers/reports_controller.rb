@@ -8,9 +8,9 @@ class ReportsController < ApplicationController
 
 def index
       @reports = current_user.reports.filter(params.slice(:species, :location, :tide, :date))
-      @reports_for_filter = @reports.select("DISTINCT(species_id)").unscope(:order)
-      @reports_for_filter_tide = @reports.select("DISTINCT(tide)").unscope(:order)
-      @reports_for_filter_location = Location.all.order("short_name ASC").unscope(:order)
+      @species_for_filter = @reports.select("DISTINCT(species_id)").unscope(:order)
+      @tides_for_filter = @reports.collect(&:tide).uniq
+      @locations_for_filter = Location.all.order("short_name ASC").unscope(:order)
 end
 
   def show
@@ -20,13 +20,13 @@ end
   # GET /reports/new
   def new
     @report = Report.new
-    @species = Species.all
+    species
    
   end
 
   # GET /reports/1/edit
   def edit
-     @species = Species.all
+     species
   end
 
   # POST /reports
@@ -95,6 +95,8 @@ private
     def filtering_params params
       params.slice(:species, :location, :tide, :date)
     end
+
+    def species
+      @species ||= Species.all
+    end
 end
-
-

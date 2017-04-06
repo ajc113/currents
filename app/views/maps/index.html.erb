@@ -90,10 +90,10 @@
                                     };
                                     contentString += '</tbody></table>';
                                     // Replace the info window's content and position.
-                                    if (infoWindow) infoWindow.close();
                                     infoWindow = new google.maps.InfoWindow({
                                         disableAutoPan: false
                                     });
+                                    if (infoWindow) infoWindow.close();
                                     infoWindow.setContent(contentString);
                                     infoWindow.setPosition(event.latLng);
                                     google.maps.event.addListener(infoWindow, 'domready', function() {
