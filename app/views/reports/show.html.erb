@@ -1,3 +1,4 @@
+<%= provide(:title, @report.location.try(:short_name)) %>
 <div class="content-wrapper">
   <div class="row">
     <div class="col-md-4">
@@ -18,12 +19,10 @@
               <strong>Date:</strong>
               <%= @report.date %>
             </p>
-
-            <p>
-              <strong>Target species:</strong>
-              <%= @report.target_species %>
+	    <p>
+              <strong>Species:</strong>
+              <%= @report.species.name %>
             </p>
-
             <p>
               <strong>Location:</strong>
               <%= @report.location.try(:short_name) %>
