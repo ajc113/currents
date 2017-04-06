@@ -90,10 +90,10 @@
                                     };
                                     contentString += '</tbody></table>';
                                     // Replace the info window's content and position.
+                                    if (infoWindow) infoWindow.close();
                                     infoWindow = new google.maps.InfoWindow({
                                         disableAutoPan: false
                                     });
-                                    if (infoWindow) infoWindow.close();
                                     infoWindow.setContent(contentString);
                                     infoWindow.setPosition(event.latLng);
                                     google.maps.event.addListener(infoWindow, 'domready', function() {
@@ -213,5 +213,5 @@
                     infoWindow.close();
                 });
                 </script>
-                <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRhKrHEYhZA2Qg5fagbEKaUItVsB-cQ3g&callback=initMap">
+                <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["google_map_api_key"]%>&callback=initMap">
                 </script>
