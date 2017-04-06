@@ -288,7 +288,7 @@ location_list = [
   },
     {
     number: 43,
-    short_name: "Sakonnett River",
+    short_name: "Sakonnet River",
     long_name: "Warrent point, Sakonnett River, Mt Hope Bay, and Taunton River in MA",
     state_waters: "RI",
     demographic: "Inshore"      
