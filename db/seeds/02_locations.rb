@@ -279,6 +279,34 @@ location_list = [
     state_waters: "ME",
     demographic: "Inshore"      
   },
+  {
+    number: 41,
+    short_name: "Downeast Jonesport to Lubec",
+    long_name: "Downeast Maine from Harbor Island, Machias Bay, Grand Manan Channel to Lubec",
+    state_waters: "ME",
+    demographic: "Inshore"      
+  },
+    {
+    number: 43,
+    short_name: "Sakonnett River",
+    long_name: "Warrent point, Sakonnett River, Mt Hope Bay, and Taunton River in MA",
+    state_waters: "RI",
+    demographic: "Inshore"      
+  },
+  {
+    number: 44,
+    short_name: "Newport",
+    long_name: "Galilee, Narragansett, to Newport",
+    state_waters: "RI",
+    demographic: "Inshore"      
+  },
+  {
+    number: 45,
+    short_name: "Watch Hill to Pt Judith",
+    long_name: "Watch Hill reef, Misquamicut, Salt Ponds, Breechway, Nebraska Shoal to Pt Judith",
+    state_waters: "RI",
+    demographic: "Inshore"      
+  },
 ]
 
 def coordinate_file_path location_name
