@@ -67,7 +67,7 @@
                             console.log(response);
                             for (var i = 0; i < response.length; i++) {
                                 polygons.push(new google.maps.Polygon({
-                                    paths: response[i].cfile,
+                                    paths: response[i].coordinate_file,
                                     strokeColor: '#F7F8FF',
                                     strokeOpacity: 0.8,
                                     strokeWeight: .35,
@@ -77,7 +77,7 @@
                                     map: map,
                                     loc: response[i].location,
                                     rep: response[i].reports,
-                                    mavg: response[i].movingavg
+                                    moving_average: response[i].moving_average
                                 }));
                                 polygons[polygons.length - 1].setMap(map);
                                 var p = polygons[i];
