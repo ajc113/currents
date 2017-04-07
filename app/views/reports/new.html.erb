@@ -104,11 +104,6 @@
                 <%= f.date_select :date, end_year: Date.today.year %>
               </div>
               <br>
-              <script type="text/javascript">
-                $(document).ready(function(){
-                					    $('.datepicker').datepicker();
-                					  });
-              </script>
               <div class="field">
                 <%= f.label :species_id %> (Required)<br>
                 <%= f.select :species_id, Species.all.order("name ASC").pluck(:name, :id) %>
