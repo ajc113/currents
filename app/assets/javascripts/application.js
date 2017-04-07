@@ -27,6 +27,7 @@
 //= require map_theme/vendor/jquery.classyloader.min
 //= require map_theme/vendor/moment-with-locales.min
 //= require map_theme/app
+//= require reports
 //= require underscore
 //= require turbolinks
 
