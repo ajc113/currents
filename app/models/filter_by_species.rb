@@ -7,11 +7,12 @@ class FilterBySpecies
 		Location.all.each do |location|
       reports = location.reports.where(species)
       avgrep = reports.where(:date => 1.week.ago..Date.today).order(date: :desc)
-      moving_average = GetMovingAverage.new(reports).moving_average
-      standart_deviation = GetMovingAverage.new(reports).standard_deviation
+      maps_data = GetMovingAverage.new(reports)
+      moving_average = maps_data.moving_average
+      standart_deviation = maps_data.standard_deviation
       @lreports.push(location:location,
                      reports: userreport(avgrep),
-                     coordinate_file: one_locations_json(location),
+                     coordinate_file: render_coordinate_file(location),
                      moving_average: moving_average,
                      color: color(standart_deviation))
 			end
@@ -41,8 +42,7 @@ class FilterBySpecies
 		end
 		@rep
 	end
-	def one_locations_json(location)
-		f = File.read location.coordinate_file.path
-		eval(f).to_a
+	def render_coordinate_file(location)
+    eval(location.coordinate_file.read).to_a
 	end
 end
