@@ -4,3 +4,11 @@
 
 $(document).ready ->
   $('.datecker').datepicker()
+
+  $('.state_selection').on "change", ->
+    $.ajax
+      url: "/locations_for_state"
+      type: "GET"
+      dataType: "script"
+      data: 
+        state_short_code: $('.state_selection option:selected').val()

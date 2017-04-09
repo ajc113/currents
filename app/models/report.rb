@@ -1,5 +1,5 @@
 class Report < ActiveRecord::Base
-
+  attr_accessor :state   
   include Filterable
 
   validates :date, :species_id, :location_id, :catch_keepers, presence: true

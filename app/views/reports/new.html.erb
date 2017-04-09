@@ -40,9 +40,15 @@
                 <%= f.label :species_id %> (Required)<br>
                 <%= f.select :species_id, Species.all.order("name ASC").pluck(:name, :id) %>
               </div>
+              <br>
+              <div class="field">
+                <%= f.label :state %> (Required)<br>
+		<%= f.select :state, User::STATES, {prompt: 'Select State' }, class: "state_selection" %>
+              </div>
+	      <br>
               <div class="field">
                 <%= f.label :location_id %> (Required)<br>
-                <%= f.select :location_id, location_number = Location.all.order(number: :asc).map {|location| [location[:number].to_s.rjust(2, '0') + " - " + location[:short_name]] + [location.id]} %>
+		<%= f.select  :state, @state_locations || {}, {prompt: 'Select Location'}, class: "location_id" %>
               </div>
               <br>
               <div class="field">
