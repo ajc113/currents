@@ -307,6 +307,34 @@ location_list = [
     state_waters: "RI",
     demographic: "Inshore"      
   },
+  {
+    number: 46,
+    short_name: "Narragansett Bay Western Passage",
+    long_name: "Greenwich Bay, West Jamestown, south to Beavertail point",
+    state_waters: "RI",
+    demographic: "Inshore"      
+  },
+    {
+    number: 47,
+    short_name: "Narragansett Bay Eastern Passage",
+    long_name: "Providence River, East Prudence Island, West Newport to Brenton Point",
+    state_waters: "RI",
+    demographic: "Inshore"      
+  },
+    {
+    number: 48,
+    short_name: "Block Island West",
+    long_name: "West side of the Block, Sandy Point, North Reef south to Black Rock Point.  Out 3 nautical miles including Southwest Ledge and Cable Area.",
+    state_waters: "RI",
+    demographic: "Inshore"      
+  },
+    {
+    number: 49,
+    short_name: "Block Island East",
+    long_name: "East side of the Block, Sandy Point out 3 nautical miles including Old Harbor to  Southeast Light.",
+    state_waters: "RI",
+    demographic: "Inshore"      
+  },  
 ]
 
 def coordinate_file_path location_name
