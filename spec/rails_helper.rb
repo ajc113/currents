@@ -8,6 +8,7 @@ require 'rspec/rails'
 require "rspec/json_expectations"
 require 'capybara/rails'
 require 'devise'
+include Warden::Test::Helpers
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -66,13 +67,14 @@ RSpec.configure do |config|
 
   #Including Capybara DSL
   config.include Capybara::DSL
-
+  Capybara.javascript_driver = :webkit
+  Capybara::Webkit.configure do |config|
+    config.allow_url("fonts.googleapis.com")
+  end
   #Devise
   config.include Devise::TestHelpers, type: :controller
   config.include Devise::TestHelpers, type: :view
   config.extend ControllerMacros, :type => :controller
-  #Warden
-  config.include Warden::Test::Helpers
   # Factory settings
   config.before(:all) do
     FactoryGirl.reload
