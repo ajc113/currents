@@ -314,27 +314,69 @@ location_list = [
     state_waters: "RI",
     demographic: "Inshore"      
   },
-    {
+  {
     number: 47,
     short_name: "Narragansett Bay Eastern Passage",
     long_name: "Providence River, East Prudence Island, West Newport to Brenton Point",
     state_waters: "RI",
     demographic: "Inshore"      
   },
-    {
+  {
     number: 48,
     short_name: "Block Island West",
     long_name: "West side of the Block, Sandy Point, North Reef south to Black Rock Point.  Out 3 nautical miles including Southwest Ledge and Cable Area.",
     state_waters: "RI",
     demographic: "Inshore"      
   },
-    {
+  {
     number: 49,
     short_name: "Block Island East",
     long_name: "East side of the Block, Sandy Point out 3 nautical miles including Old Harbor to  Southeast Light.",
     state_waters: "RI",
     demographic: "Inshore"      
   },  
+  {
+    number: 1,
+    short_name: "Eastern Connecticut",
+    long_name: "Wamphassuc Pt. Stonington west to Black Point Niantic.  Includes Ram Island Complex, Mystic River, Seaflower Reef, Mouth of Thames, New London Dumping Ground, Bartlett Reef,  Wheelbarrow, and the Bloody Grounds.",
+    state_waters: "CT",
+    demographic: "Inshore"      
+  }, 
+  {
+    number: 2,
+    short_name: "Connecticut River",
+    long_name: "Black Point Niantic to Clinton Harbor including;  Hatchett Reef, Outer Hatchetts, Long Sand Shoal, Southwest Reef, Six Mile Reef and mouth of the Connecticut River.",
+    state_waters: "CT",
+    demographic: "Inshore"      
+  },   
+  {
+    number: 3,
+    short_name: "Brandford",
+    long_name: "Clinton Harbor west to Brandford including Madison, Guilford, Madison Reef, Faulkner Island area, Indian Reef, Faulkner Bump, Thimble Islands and Branford Reef.",
+    state_waters: "CT",
+    demographic: "Inshore"      
+  },
+  {
+    number: 4,
+    short_name: "New Haven and Housatonic",
+    long_name: "New Haven Harbor to Stratford Point including; New Haven Breakwater, Pond Pt, Charles Island, The Gulf, Stratford Shoal and Lower and Upper Housatonic River.",
+    state_waters: "CT",
+    demographic: "Inshore"      
+  },    
+  {
+    number: 5,
+    short_name: "Fairfield",
+    long_name: "Bridgeport to Saugatuck River including Fairfield, Westport, Blackrock Harbor, Penfield Reef, Pine Creek, Southport Harbor.",
+    state_waters: "CT",
+    demographic: "Inshore"      
+  },  
+  {
+    number: 6,
+    short_name: "Western Connecticut",
+    long_name: "Norwalk west to Greenwich including Norwalk Islands, Cable & Anchor Reef, Budd Reef, Great Captain Island, Byram River and Bluefish Shoal.",
+    state_waters: "CT",
+    demographic: "Inshore"      
+  },          
 ]
 
 def coordinate_file_path location_name
