@@ -68,6 +68,7 @@ RSpec.configure do |config|
   #Including Capybara DSL
   config.include Capybara::DSL
   Capybara.javascript_driver = :webkit
+  Capybara.default_wait_time = 10
   Capybara::Webkit.configure do |config|
     config.allow_url("fonts.googleapis.com")
   end
