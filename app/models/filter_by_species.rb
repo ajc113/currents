@@ -1,6 +1,6 @@
 class FilterBySpecies
 	def initialize(species)
-		@species = species
+		@species = "Any" || species
 	end
 	def maps_data
 		@lreports = []
