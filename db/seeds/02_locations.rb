@@ -376,7 +376,35 @@ location_list = [
     long_name: "Norwalk west to Greenwich including Norwalk Islands, Cable & Anchor Reef, Budd Reef, Great Captain Island, Byram River and Bluefish Shoal.",
     state_waters: "CT",
     demographic: "Inshore"      
-  },          
+  },
+  {
+    number: 1,
+    short_name: "Fishers Island",
+    long_name: "Fishers Island long island sound including The Race",
+    state_waters: "NY",
+    demographic: "Inshore"      
+  },     
+  {
+    number: 2,
+    short_name: "Montauk Pt",
+    long_name: "Culloden Pt to Montauk Pt light including Shagwong reef, Washington Shoal, Endeavor Shoals and Montauk Pt.",
+    state_waters: "NY",
+    demographic: "Inshore"      
+  },    
+  {
+    number: 3,
+    short_name: "Montauk South",
+    long_name: "Montauk south of lighthouse including Montauk shoal, Frisbees.",
+    state_waters: "NY",
+    demographic: "Inshore"      
+  },
+  {
+    number: 4,
+    short_name: "Orient Pt",
+    long_name: "Napeague Bay west to Orient Pt including Gardiners Bay, Shelter Island, Plum Island, and Plum Gut.",
+    state_waters: "NY",
+    demographic: "Inshore"      
+  },                
 ]
 
 def coordinate_file_path location_name
