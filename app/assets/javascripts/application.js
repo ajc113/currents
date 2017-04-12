@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery.turbolinks 
 //= require jquery_ujs
+//= require map_script
 //= require map_theme/vendor/modernizr.custom
 //= require map_theme/vendor/matchMedia
 //= require map_theme/vendor/bootstrap
