@@ -2,7 +2,7 @@ require "rails_helper"
 RSpec.feature "User opens Log Catch Report page", :js => true do
 	before do
 		Species.create(name:"Bluefish")
-		new_user = User.create(email: FFaker::Internet.email, password: FFaker::Internet.password, confirmed_at: DateTime.now)
+    new_user = create(:user)
 		Location.create(number: 1,
 		  short_name: "Stellwagen Bank - (NWC) Northwest Corner",
 		  state_waters: "MA",
