@@ -1,5 +1,6 @@
 <% environment.context_class.instance_eval { include Rails.application.routes.url_helpers } %>
 var map;
+var infoWindow;
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
@@ -43,10 +44,10 @@ function initMap() {
                         contentString += '<tr><td>' + this.rep[j].rep.date + '</td> <td>' + this.rep[j].rep.species + '</td><td>' + this.rep[j].vessel_name + '</td><td>' + this.rep[j].rep.primary_method + '</td><td>' + this.rep[j].rep.catch_total + '</td><td>' + this.rep[j].rep.trip_summary + '</td></tr>';
                     };
                     contentString += '</tbody></table>';
+                    if (infoWindow) infoWindow.close();
                     infoWindow = new google.maps.InfoWindow({
                         disableAutoPan: false
                     });
-                    if (infoWindow) infoWindow.close();
                     infoWindow.setContent(contentString);
                     infoWindow.setPosition(event.latLng);
                     google.maps.event.addListener(infoWindow, 'domready', function() {
