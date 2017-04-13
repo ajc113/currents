@@ -87,8 +87,7 @@
               <select id="location" name="location" class="form-control m-b"> 
                 <option value="">Select Location</option>
                   <% @locations_for_filter.each do |location| %>
-                <option value="<%= location.id %>" <%= selected_locations(location.id) %>><%= (location.number.to_s.rjust(2, '0') + " - " + location.short_name) %>
-                </option>
+		    <%= render_location_option(location) %>
                   <% end %>
               </select> 
             </div>

@@ -1,6 +1,6 @@
 $('.location_id').empty();
 $('.location_id').append($('<option>Select Location</option>'));
 <% @state_locations.each do |location| %>
-	$('.location_id').append($('<option value="<%= location.id %>"><%= location.number.to_s.rjust(2, '0')+" - "+location.short_name %></option>'));
+	$('.location_id').append($('<%= render_location_option(location) %>'));
 <% end %>
 $('.location-legend-image').attr("src", "<%= asset_path(@state+".png") %>");
