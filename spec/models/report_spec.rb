@@ -1,4 +1,9 @@
 RSpec.describe Report, "Scopes" do
+
+  it { should belong_to :location }
+  it { should belong_to :species }
+  it { should belong_to :user }
+
   it ".selected_species should return records with specified species" do
     report = Report.create! :species_id => 2, :date => "03-03-2016", :location_id => 3, :catch_keepers => 23
     species = Report.where(:species_id => 2)
