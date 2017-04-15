@@ -3,6 +3,8 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
+require 'simplecov'
+SimpleCov.start
 require 'spec_helper'
 require 'rspec/rails'
 require "rspec/json_expectations"
@@ -87,7 +89,7 @@ RSpec.configure do |config|
 	Capybara.javascript_driver = :webkit
 	Capybara.default_max_wait_time = 10
 	Capybara::Webkit.configure do |config|
-		config.allow_url("fonts.googleapis.com")
+		config.allow_unknown_urls
 	end
 	#Devise
 	config.include Devise::TestHelpers, type: :controller
