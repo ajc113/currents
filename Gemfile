@@ -62,6 +62,7 @@ group :development, :test do
   # Following are required for testing
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'capybara-webkit'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'shoulda-matchers'
@@ -69,6 +70,11 @@ group :development, :test do
   gem 'm', '~>1.5.0'
   gem 'rspec-json_expectations'
 
+end
+
+group :test do
+  gem "simplecov"
+  gem "codeclimate-test-reporter", "~> 1.0.0"
 end
 
 group :development do

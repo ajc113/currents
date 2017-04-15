@@ -120,9 +120,10 @@
               </div>
 
               <div class="field">
-                <%= f.label :state %><br />
-                <%= f.text_field :state, class: "form-control", autofocus: true %>
+              <%= f.label :state %><br />
+	      <%= f.select :state, User::STATES, { prompt: 'Select State' }, class: "form-control", autofocus: true %>
               </div>
+
 
                <div class="field">
                 <%= f.label :vessel_name %><br />

@@ -1,72 +1,4 @@
 <% provide(:title, "Log Catch Report") %>
-<style>
-  .legend-css {
-  	    padding: 5px;
-  	    line-height: 2;
-  	    background-color: #e1e2e3;
-  	    border: 3px solid #191919;
-  	    border-radius: 5px;
-  	    display: inline-block;
-  	    max-width: 100%;
-  	    height: auto;
-  	    border-radius: 2px 2px 0 0;
-  	}
-  	.legend-div {
-  		padding-top: 10px !important;
-  	}
-  	.title-css {
-  	    padding: 10px;
-  	    line-height: 1;
-  	    background-color: #e1e2e3;
-  	    border: 3px solid #191919;
-  	    border-radius: 5px;
-  	    display: block;
-  	    max-width: 100%;
-  	    height: auto;
-  	    border-radius: 2px 2px 0 0;
-  	}
-  	.title-css-bodyt {
-  	    padding: 10px;
-  	    line-height: 1.5;
-  	    background-color: #FEFFFF;
-  	    border: 3px solid #191919;
-  	    border-radius: 5px;
-  	    display: block;
-  	    max-width: 100%;
-  	    height: auto;
-  	    border-radius: 2px 2px 0 0;
-  	    border-top: none;
-  	    border-bottom: none;
-  	}
-  	.title-css-bodyb {
-  	    padding: 10px;
-  	    line-height: 1.5;
-  	    background-color: #FEFFFF;
-  	    border: 3px solid #191919;
-  	    border-radius: 5px;
-  	    display: block;
-  	    max-width: 100%;
-  	    height: auto;
-  	    border-radius: 2px 2px 0 0;
-  	    padding-bottom: 10px;
-  	}
-  		.footer-css {
-  	    padding: 10px;
-  	    line-height: 1;
-  	    border: 3px solid #191919;
-  	    border-radius: 5px;
-  	    display: block;
-  	    max-width: 100%;
-  	    height: auto;
-  	    border-radius: 2px 2px 0 0;
-  	    border-top: none;
-  	    text-align: center;
-  	}
-  	.h4-color {
-  		font-family: "Source Sans Pro", sans-serif;
-  		color: #112A8A;
-  	 }
-</style>
 <div class="content-wrapper">
   <div class="row">
     <!-- margin panel -->
@@ -104,18 +36,19 @@
                 <%= f.date_select :date, end_year: Date.today.year %>
               </div>
               <br>
-              <script type="text/javascript">
-                $(document).ready(function(){
-                					    $('.datepicker').datepicker();
-                					  });
-              </script>
               <div class="field">
                 <%= f.label :species_id %> (Required)<br>
                 <%= f.select :species_id, Species.all.order("name ASC").pluck(:name, :id) %>
               </div>
+              <br>
+              <div class="field">
+                <%= f.label :state %> (Required)<br>
+		<%= f.select :state, User::STATES, {prompt: 'Select State', selected: current_user.state }, class: "state_selection" %>
+              </div>
+	      <br>
               <div class="field">
                 <%= f.label :location_id %> (Required)<br>
-                <%= f.select :location_id, location_number = Location.all.order(number: :asc).map {|location| [location[:number].to_s.rjust(2, '0') + " - " + location[:short_name]] + [location.id]} %>
+		<%= f.select  :location_id, @state_locations || Location.where(state_waters: current_user.state).order(number: :asc).map {|location| [location[:number].to_s.rjust(2, '0') + " - " + location[:short_name]] + [location.id]}, {prompt: 'Select Location'}, class: "location_id" %>
               </div>
               <br>
               <div class="field">
@@ -181,8 +114,8 @@
       <% end %>
     </div>
     <div class="col-lg-5">
-      <div class="legend-css">
-        <%= image_tag 'location_legend.png',  class: 'img-responsive', style: 'display:block; opacity: .95' %>
+      <div class="legend-css", style="display: inline-block">
+        <%= image_tag current_user.state+".png",  class: 'img-responsive location-legend-image', style: 'display:block; opacity: .95' %>
       </div>
     </div>
     <div class="col-lg-1">

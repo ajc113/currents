@@ -23,8 +23,8 @@
     <%= f.date_field :date %>
     </div>
     <div class="form-group">
-      <%= f.label :target_species %><br>
-      <%= f.select :target_species, ['Bluefish', 'Cod & Haddock', 'Flounder', 'Striped Bass', 'Sharks', 'Tuna', 'Mackeral, Pogies, Herring'] %>
+      <%= f.label :species_id %><br>
+      <%= f.select :species_id, Species.all.order("name ASC").pluck(:name, :id) %>
     </div>
     <div class="field">
       <%= f.label :location_id %><br>

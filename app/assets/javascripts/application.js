@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery.turbolinks 
 //= require jquery_ujs
+//= require map_script
 //= require map_theme/vendor/modernizr.custom
 //= require map_theme/vendor/matchMedia
 //= require map_theme/vendor/bootstrap
@@ -27,6 +28,7 @@
 //= require map_theme/vendor/jquery.classyloader.min
 //= require map_theme/vendor/moment-with-locales.min
 //= require map_theme/app
+//= require reports
 //= require underscore
 //= require turbolinks
 

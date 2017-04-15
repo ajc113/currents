@@ -24,6 +24,3 @@ spec/example.txt
 
 #files generate by linux as backup
 .fuse_hidden*
-
-#file uploads
-/public/uploads

@@ -15,7 +15,7 @@ PartyFoul.configure do |config|
   config.web_url                = 'https://github.com'
 
   # The organization or user that owns the target repository
-  config.owner                  = 'ajc113'
+  config.owner                  = ENV['PARTY_FOUL_OWNER']
 
   # The repository for this application
   config.repo                   = 'currents'
