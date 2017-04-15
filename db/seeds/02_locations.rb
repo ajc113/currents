@@ -404,7 +404,126 @@ location_list = [
     long_name: "Napeague Bay west to Orient Pt including Gardiners Bay, Shelter Island, Plum Island, and Plum Gut.",
     state_waters: "NY",
     demographic: "Inshore"      
-  },                
+  },
+  {
+    number: 5,
+    short_name: "Eastern Long Island Sound",
+    long_name: "Orient west to Mattituck Inlet including Twenty-Eight Foot Shoal, Orient Shoal, Horton Neck.",
+    state_waters: "NY",
+    demographic: "Inshore"      
+  },
+  {
+    number: 6,
+    short_name: "Wading River and Baiting Hollow",
+    long_name: "Mattituck west to Wading River including Roanoke Point Shoal, Herod Point Shoal.",
+    state_waters: "NY",
+    demographic: "Inshore"      
+  },    
+  {
+    number: 7,
+    short_name: "Point Jefferson",
+    long_name: "Shoreham west to Crane Neck Pt including Mt Sinai, Rocky Point, Mt Misery Shoal, Old Field Pt, Middleground Light, and Stratford Shoal.",
+    state_waters: "NY",
+    demographic: "Inshore"      
+  }, 
+  {
+    number: 8,
+    short_name: "Smithtown Bay",
+    long_name: "Crane Neck west to Eaton's Neck including Smithtown Reef, Nissequogue River, Eaton Neck Pt Shoal.",
+    state_waters: "NY",
+    demographic: "Inshore"      
+  },      
+  {
+    number: 9,
+    short_name: "Smithtown Bay",
+    long_name: "Crane Neck west to Eaton's Neck including Smithtown Reef, Nissequogue River, Eaton Neck Pt Shoal.",
+    state_waters: "NY",
+    demographic: "Inshore"      
+  },  
+  {
+    number: 10,
+    short_name: "Western Long Island Sound",
+    long_name: "Lloyd Neck west to the East River",
+    state_waters: "NY",
+    demographic: "Inshore"      
+  },
+  {
+    number: 11,
+    short_name: "East River",
+    long_name: "East River south to Upper Bay",
+    state_waters: "NY",
+    demographic: "Inshore"      
+  },
+  {
+    number: 12,
+    short_name: "Hudson River",
+    long_name: "Tappan Zee south to Upper Bay",
+    state_waters: "NY",
+    demographic: "Inshore"      
+  },
+  {
+    number: 13,
+    short_name: "Lower Bay",
+    long_name: "Including Raritan Bay, Jamaica Bay, Round Shoal, Great Kills Light, West and East Bank.",
+    state_waters: "NY",
+    demographic: "Inshore"      
+  },
+  {
+    number: 14,
+    short_name: "West End South",
+    long_name: "Rockaway Point to Jones Inlet including Rockaway Reef.",
+    state_waters: "NY",
+    demographic: "Inshore"      
+  },  
+  {
+    number: 15,
+    short_name: "Jones",
+    long_name: "Jones Inlet east to Fire Island Inlet.",
+    state_waters: "NY",
+    demographic: "Inshore"      
+  },
+  {
+    number: 16,
+    short_name: "Fire Island",
+    long_name: "Fire Island Inlet to Old Inlet",
+    state_waters: "NY",
+    demographic: "Inshore"      
+  },
+  {
+    number: 17,
+    short_name: "Great South Bay",
+    long_name: "Wantagh Prkwy to William Floyd Prkwy",
+    state_waters: "NY",
+    demographic: "Inshore"      
+  },
+  {
+    number: 18,
+    short_name: "Moriches Inlet",
+    long_name: "Wantagh Prkwy to William Floyd Prkwy",
+    state_waters: "NY",
+    demographic: "Inshore"      
+  },
+  {
+    number: 19,
+    short_name: "Moriches Bay",
+    long_name: "Inside Moriches Inlet from Narrow Bay east to Potunk Pt",
+    state_waters: "NY",
+    demographic: "Inshore"      
+  },
+  {
+    number: 20,
+    short_name: "Shinnecock",
+    long_name: "Shinnecock bay through inlet out 3 NM's",
+    state_waters: "NY",
+    demographic: "Inshore"      
+  },  
+  {
+    number: 21,
+    short_name: "Hamptons",
+    long_name: "South Hampton, East Hampton and Amagansett out 3 NM's",
+    state_waters: "NY",
+    demographic: "Inshore"      
+  },                                              
 ]
 
 def coordinate_file_path location_name
