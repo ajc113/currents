@@ -69,6 +69,11 @@ end
       format.json { head :no_content }
     end
   end
+  def locations_for_state
+    @state = params[:state_short_code]
+    @state_locations = Location.where(state_waters: @state).order(:number)
+  end
+
 
 
 private

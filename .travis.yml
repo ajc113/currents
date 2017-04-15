@@ -3,9 +3,13 @@ language: ruby
 
 before_script:
   - psql -c 'create database travis_ci_test' -U postgres
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - sleep 3 # give xvfb some time to start
 
 services:
   - postgresql
 
 env:
-  - CURRENTS_DB_NAME=travis_ci_test CURRENTS_PSQL_USERNAME=postgres CURRENTS_PSQL_PASSWORD=''
+  - CURRENTS_DB_NAME=travis_ci_test CURRENTS_PSQL_USERNAME=postgres CURRENTS_PSQL_PASSWORD='' CODECLIMATE_REPO_TOKEN=6baff733d54da0d4301ea7e9e9f4601e10ce557b6601523271df4ea9a08fc3c3
+

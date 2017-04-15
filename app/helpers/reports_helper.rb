@@ -14,4 +14,9 @@ module ReportsHelper
 	def all_species
 		Report.all.collect(&:species_id).compact.uniq
 	end
+
+  def render_location_option location
+    html = '<option value="' + location.id.to_s  + '">' + location.number.to_s.rjust(2, '0') + ' - ' + location.short_name + '</option>'
+    return html.html_safe
+  end
 end

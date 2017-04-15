@@ -16,7 +16,7 @@
 		<% location.reports.each do |report| %>
 		<tr>
 			<td><%= report.date %></td>	
-			<td><%= report.target_species %></td>
+			<td><%= report.sepcies.name %></td>
 			<td><%= report.user.try(:vessel_name) %></td>
 			<td><%= report.primary_method %></td>
 			<td><%= report.catch_total %></td>

@@ -12,6 +12,8 @@ FactoryGirl.define do
     email "abc@gmail.com"
     password "abcdef"
     sign_in_count "4"
+    state "MA"
+    confirmed_at DateTime.now
   end
 
   factory :buzz do
