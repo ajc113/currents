@@ -89,9 +89,6 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    capybara-webkit (1.14.0)
-      capybara (>= 2.3.0, < 2.14.0)
-      json
     carrierwave (0.11.2)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -330,7 +327,6 @@ DEPENDENCIES
   by_star!
   byebug
   capybara
-  capybara-webkit
   carrierwave
   codeclimate-test-reporter (~> 1.0.0)
   coderay
