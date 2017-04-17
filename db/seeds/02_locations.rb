@@ -523,7 +523,14 @@ location_list = [
     long_name: "South Hampton, East Hampton and Amagansett out 3 NM's",
     state_waters: "NY",
     demographic: "Inshore"      
-  },                                              
+  },
+  {
+    number: 22,
+    short_name: "Block Island Sound",
+    long_name: "Sound north of Montauk Pt including Cerberus Shoal",
+    state_waters: "NY",
+    demographic: "Inshore"      
+  },                                                  
 ]
 
 def coordinate_file_path location_name
