@@ -1,8 +1,7 @@
-.wrapper {
+.video-wrapper {
     position: relative;
-    padding-bottom: 56.25%; /* 16:9 */
     padding-top: 25px;
-    height: 0;
+    height: 500px;
   }
   .wrapper iframe {
     position: absolute;
@@ -11,7 +10,7 @@
     width: 100%;
     height: 100%;
   }
-  .panel-heading {
+  .video-panel-heading {
     background-color: #88888F !important;
     padding-left: 40px !important;
   }
@@ -21,6 +20,9 @@
   }
   .panel-inverse {
     border: 1px solid;
+  }
+  .video-panel-body {
+	  height: auto;
   }
   /*flash*/
   .alert-error {
