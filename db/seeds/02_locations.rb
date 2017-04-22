@@ -184,7 +184,14 @@ location_list = [
   {
     number: 27,
     short_name: "Muskeget Channel",
-    long_name: "Cape Pogue south through Muskeget Channel including Wasque Shoal, The Hooter and the south side of Martha's Vineyard.",
+    long_name: "Cape Pogue south through Muskeget Channel including Wasque Shoal, The Hooter and the south side of Martha's Vineyard",
+    state_waters: "MA",
+    demographic: "Inshore"   
+  },
+  {
+    number: 28,
+    short_name: "Gay Head and Nomans",
+    long_name: "Waters west of sow and pigs reef, south to Gay Head including Devils Bridge, Squibnocket Pt and Nomans Island out to Southwest Shoal",
     state_waters: "MA",
     demographic: "Inshore"   
   },
