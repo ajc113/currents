@@ -134,38 +134,59 @@ location_list = [
   },
   {
     number: 20,
-    short_name: "Cape Cod - Nantucket Sound East",
-    long_name: "Eastern Nantucket sound out to Monomoy.  Hyanis south to Muskeget Island",
+    short_name: "Cape Cod - Nantucket Sound North Channel",
+    long_name: "North channnel Nantucket sound including Denis, Harwich, Chatham south to Monomoy Point",
     state_waters: "MA",
     demographic: "Inshore"      
   },
   {
     number: 21,
+    short_name: "Cape Cod - Nantucket Sound Main Channel",
+    long_name: "Main channel to Nantucket harbor including Edwards shoal and Tuckerneck and Muskeget Island",
+    state_waters: "MA",
+    demographic: "Inshore"      
+  },
+  {
+    number: 22,
     short_name: "Cape Cod - Nantucket Sound West",
     long_name: "Western Nantucket sound from Falmouth to Hyannis south to Cape Poge.  Includes hedge fence, and horseshoe shoals.",
     state_waters: "MA",
     demographic: "Inshore"   
   },
   {
-    number: 22,
+    number: 23,
     short_name: "Vineyard Sound",
     long_name: "Vineyard Sound  and Elizabeth islands including Quick's, Robinson's, and Wood's hole.  Cuttyhunk to Falmouth.",
     state_waters: "MA",
     demographic: "Inshore"   
   },
   {
-    number: 23,
+    number: 24,
     short_name: "Buzzards Bay - West",
     long_name: "Westport east to New Bedford.  Includes Dartmouth, Cuttyhunk and Gosnold, Naushon Island.",
     state_waters: "MA",
     demographic: "Inshore"   
   },
   {
-    number: 24,
+    number: 25,
     short_name: "Buzzards Bay - East",
     long_name: "Mass Maritime west to Mattapoisett.  Includes Onset, Wareham , Marion, Pocasset, and North Falmouth.",
     state_waters: "MA",
     demographic: "Inshore"     
+  },
+  {
+    number: 26,
+    short_name: "Nantucket Shoals",
+    long_name: "Great Point and Southside of Nantucket including Nantucket shoals out 3 NMs",
+    state_waters: "MA",
+    demographic: "Inshore"   
+  },
+  {
+    number: 27,
+    short_name: "Muskeget Channel",
+    long_name: "Cape Pogue south through Muskeget Channel including Wasque Shoal, The Hooter and the south side of Martha's Vineyard.",
+    state_waters: "MA",
+    demographic: "Inshore"   
   },
   {
     number: 1,
@@ -512,18 +533,82 @@ location_list = [
   },
   {
     number: 6,
+    short_name: "Wildcat Knoll",
+    long_name: "Parker Ridge",
+    state_waters: "Offshore - Gulf of Maine",
+    demographic: "Offshore"     
+  },  
+  {
+    number: 7,
     short_name: "Jeffreys Ledge - West",
     long_name: "West portion of Jeffreys Ledge",
     state_waters: "Offshore - Gulf of Maine",
     demographic: "Offshore"    
   },
   {
-    number: 7,
+    number: 8,
     short_name: "Jeffreys Ledge - East",
     long_name: "Eastern portions of Jeffreys Ledge",
     state_waters: "Offshore - Gulf of Maine",
     demographic: "Offshore"     
   },  
+  {
+    number: 9,
+    short_name: "Tillies Bank",
+    long_name: "Tillies Bank",
+    state_waters: "Offshore - Gulf of Maine",
+    demographic: "Offshore"     
+  },    
+  {
+    number: 10,
+    short_name: "Lower Jeffreys Ledge",
+    long_name: "Lower Jeffreys Ledge",
+    state_waters: "Offshore - Gulf of Maine",
+    demographic: "Offshore"     
+  },
+  {
+    number: 11,
+    short_name: "Platts Bank",
+    long_name: "Platts Bank",
+    state_waters: "Offshore - Gulf of Maine",
+    demographic: "Offshore"     
+  },      
+  {
+    number: 12,
+    short_name: "Three Dory Ridge",
+    long_name: "Three Dory Ridge",
+    state_waters: "Offshore - Gulf of Maine",
+    demographic: "Offshore"     
+  },
+    {
+    number: 13,
+    short_name: "Sigsbee Ridge",
+    long_name: "Sigsbee Ridge",
+    state_waters: "Offshore - Gulf of Maine",
+    demographic: "Offshore"     
+  }, 
+  {
+    number: 14,
+    short_name: "Fippennies Ledge",
+    long_name: "Fippennies Ledge",
+    state_waters: "Offshore - Gulf of Maine",
+    demographic: "Offshore"     
+  },
+  {
+    number: 15,
+    short_name: "Cashes Ledge",
+    long_name: "Cashes Ledge",
+    state_waters: "Offshore - Gulf of Maine",
+    demographic: "Offshore"     
+  },
+  {
+    number: 16,
+    short_name: "Parker Ridge",
+    long_name: "Parker Ridge",
+    state_waters: "Offshore - Gulf of Maine",
+    demographic: "Offshore"     
+  },
+                   
 ]
 
 def coordinate_file_path location_name
