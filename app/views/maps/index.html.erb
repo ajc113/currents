@@ -7,6 +7,8 @@
         <div class="content-wrapper">
             <!-- <div class="content-heading"> -->
             <h4> Filter by Species<small> - View only your target species by location</small></h4>
+	    <div class="row">
+			    <div class="col-md-3">
             <%= form_tag species_filter_path, id: 'species_form' do %>
                 <select name="species" class="form-control m-b" id="species_select">
                     <option value="Any">Any</option>
@@ -17,6 +19,14 @@
                         <% end %>
                 </select>
                 <% end %>
+	    </div>
+		
+	    <div class="col-md-3">
+		<%= form_for(:states_filter, id: 'states_filter') do |f| %>
+			<%= f.select :state_filter, User::STATES, { selected: current_user.state }, class: "form-control m-b" %>
+		<% end %>	
+	    </div>
+	    </div>
                     <!-- </div> -->
         </div>
         <br>
