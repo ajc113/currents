@@ -10,7 +10,7 @@ class MapsController < ApplicationController
   end
 
   def filter_by_species
-    render json: FilterBySpecies.new(current_user, params[:species], params[:location]).maps_data
+    render json: FilterBySpecies.new(current_user, params[:species], params[:state]).maps_data
   end
 
     def report_params

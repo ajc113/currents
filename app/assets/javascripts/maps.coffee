@@ -14,6 +14,7 @@ $ ->
       type: 'get'
       data:
         species: $("#species_select").val()
+        state: $("#state_select").val()
       success: (response) ->
         for i in [0..response.length-1] by 1
           polygons.push new google.maps.Polygon
@@ -49,6 +50,5 @@ $ ->
             strokeWeight: .35
             fillOpacity: 0.5
                       )
-  $('#species_select').change ->
-    console.log("species changed with " + $('#species_select').val())
+  $('#species_select, #state_select').change ->
     window.initMap()

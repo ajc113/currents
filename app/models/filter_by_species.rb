@@ -1,11 +1,12 @@
 class FilterBySpecies
-	def initialize(scurrent_use, species, state)
+	def initialize(current_user, species, state)
 		@species = "Any" || species
-    @state = current_user.state || state
+    @state = state
+    @locations = Location.where(state_waters: @state)
 	end
 	def maps_data
 		@lreports = []
-		Location.all.each do |location|
+		@locations.all.each do |location|
       reports = location.reports.where(species)
       avgrep = reports.where(:date => 1.week.ago..Date.today).order(date: :desc)
       maps_data = GetMovingAverage.new(reports)
