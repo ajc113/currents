@@ -754,7 +754,42 @@ location_list = [
     long_name: "Haabs Ledge",
     state_waters: "Offshore - South of New England",
     demographic: "Offshore"     
-  },             
+  },
+  {
+    number: 21,
+    short_name: "Inner Butterfish Hole",
+    long_name: "Inner Butterfish Hole",
+    state_waters: "Offshore - South of New England",
+    demographic: "Offshore"     
+  },
+  {
+    number: 22,
+    short_name: "Jennies Horn",
+    long_name: "Jennies Horn",
+    state_waters: "Offshore - South of New England",
+    demographic: "Offshore"     
+  }, 
+  {
+    number: 23,
+    short_name: "Ryans Horn",
+    long_name: "Ryans Horn",
+    state_waters: "Offshore - South of New England",
+    demographic: "Offshore"     
+  },
+  {
+    number: 24,
+    short_name: "Outer Butterfish Hole",
+    long_name: "Outer Butterfish Hole",
+    state_waters: "Offshore - South of New England",
+    demographic: "Offshore"     
+  },
+  {
+    number: 25,
+    short_name: "40 FM Hole",
+    long_name: "40 FM Hole",
+    state_waters: "Offshore - South of New England",
+    demographic: "Offshore"     
+  },                               
 ]
 
 def coordinate_file_path location_name
