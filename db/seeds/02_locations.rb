@@ -615,7 +615,146 @@ location_list = [
     state_waters: "Offshore - Gulf of Maine",
     demographic: "Offshore"     
   },
-                   
+  {
+    number: 1,
+    short_name: "Coxes Ledge",
+    long_name: "Coxes Ledge",
+    state_waters: "Offshore - South of New England",
+    demographic: "Offshore"     
+  },
+  {
+    number: 2,
+    short_name: "The Claw",
+    long_name: "The Claw",
+    state_waters: "Offshore - South of New England",
+    demographic: "Offshore"     
+  },
+    {
+    number: 3,
+    short_name: "Inside Fingers",
+    long_name: "Inside Fingers on the 20 fathom curve",
+    state_waters: "Offshore - South of New England",
+    demographic: "Offshore"     
+  },
+  {
+    number: 4,
+    short_name: "Gordons Gulley",
+    long_name: "The Gulley on the 20 fathom curve ",
+    state_waters: "Offshore - South of New England",
+    demographic: "Offshore"     
+  },
+  {
+    number: 5,
+    short_name: "The Owl",
+    long_name: "The Owl on the 20 fathom curve ",
+    state_waters: "Offshore - South of New England",
+    demographic: "Offshore"     
+  },
+  {
+    number: 6,
+    short_name: "The Banana",
+    long_name: "The Owl on the 20 fathom curve ",
+    state_waters: "Offshore - South of New England",
+    demographic: "Offshore"     
+  },
+  {
+    number: 7,
+    short_name: "The Star",
+    long_name: "The Star",
+    state_waters: "Offshore - South of New England",
+    demographic: "Offshore"     
+  },
+  {
+    number: 8,
+    short_name: "Tyler's Gap",
+    long_name: "Tyler's Gap",
+    state_waters: "Offshore - South of New England",
+    demographic: "Offshore"     
+  },
+  {
+    number: 9,
+    short_name: "31 Fathom Hole",
+    long_name: "31 Fathom Hole",
+    state_waters: "Offshore - South of New England",
+    demographic: "Offshore"     
+  },
+  {
+    number: 10,
+    short_name: "The Dump - Northwest Corner",
+    long_name: "The Dump - Northwest Corner",
+    state_waters: "Offshore - South of New England",
+    demographic: "Offshore"     
+  },
+  {
+    number: 11,
+    short_name: "The Dump - Northeast Corner",
+    long_name: "The Dump - Northeast Corner",
+    state_waters: "Offshore - South of New England",
+    demographic: "Offshore"     
+  },
+  {
+    number: 12,
+    short_name: "The Dump - Southwest Corner",
+    long_name: "The Dump - Southwest Corner",
+    state_waters: "Offshore - South of New England",
+    demographic: "Offshore"     
+  },
+  {
+    number: 13,
+    short_name: "The Dump - Southeast Corner",
+    long_name: "The Dump - Southeast Corner",
+    state_waters: "Offshore - South of New England",
+    demographic: "Offshore"     
+  },   
+  {
+    number: 14,
+    short_name: "The Fingers",
+    long_name: "The Fingers on 30 fathom curve",
+    state_waters: "Offshore - South of New England",
+    demographic: "Offshore"     
+  },
+  {
+    number: 15,
+    short_name: "Mud Hole",
+    long_name: "The Mud Hole",
+    state_waters: "Offshore - South of New England",
+    demographic: "Offshore"     
+  },
+  {
+    number: 16,
+    short_name: "Gully",
+    long_name: "Gully",
+    state_waters: "Offshore - South of New England",
+    demographic: "Offshore"     
+  },       
+  {
+    number: 17,
+    short_name: "Shark Ledge",
+    long_name: "Shark Ledge",
+    state_waters: "Offshore - South of New England",
+    demographic: "Offshore"     
+  }, 
+  {
+    number: 18,
+    short_name: "Tuna Ridge",
+    long_name: "Tuna Ridge",
+    state_waters: "Offshore - South of New England",
+    demographic: "Offshore"     
+  },
+  {
+    number: 19,
+    short_name: "CIA Grounds",
+    long_name: "CIA Grounds",
+    state_waters: "Offshore - South of New England",
+    demographic: "Offshore"     
+  },
+  {
+    number: 20,
+    short_name: "Haabs Ledge",
+    long_name: "Haabs Ledge",
+    state_waters: "Offshore - South of New England",
+    demographic: "Offshore"     
+  },             
 ]
 
 def coordinate_file_path location_name
