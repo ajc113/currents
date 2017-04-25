@@ -19,8 +19,8 @@
       <% end %>
     </div>
     <div class="col-md-3">
-      <%= form_for(:states_filter, id: 'states_filter') do |f| %>
-        <%= f.select :state_filter, User::STATES, { selected: current_user.state }, class: "form-control m-b" %>
+      <%= form_for(:states_filter) do |f| %>
+        <%= f.select :state, User::STATES, { selected: current_user.state }, class: "form-control m-b", id: "state_select" %>
       <% end %>
     </div>
   </div>
