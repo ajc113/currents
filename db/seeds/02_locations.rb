@@ -887,7 +887,35 @@ location_list = [
     long_name: "Lydonia Canyon",
     state_waters: "Offshore - Northeast Canyons",
     demographic: "Offshore"     
-  },                                                                                    
+  },
+  {
+    number: 1,
+    short_name: "Crab Ledge",
+    long_name: "Crab Ledge east of Chatham",
+    state_waters: "Offshore - East of Chatham and Georges Bank",
+    demographic: "Offshore"     
+  },
+  {
+    number: 2,
+    short_name: "BC Buoy",
+    long_name: "BC Buoy eastd of Chatham including the shipping lanes",
+    state_waters: "Offshore - East of Chatham and Georges Bank",
+    demographic: "Offshore"     
+  },
+  {
+    number: 3,
+    short_name: "Regal Sword",
+    long_name: "The Regal Sword east of the shipping lanes",
+    state_waters: "Offshore - East of Chatham and Georges Bank",
+    demographic: "Offshore"     
+  },
+  {
+    number: 4,
+    short_name: "BB Buoy",
+    long_name: "The BB Buoy east of Nantucket Shoals",
+    state_waters: "Offshore - East of Chatham and Georges Bank",
+    demographic: "Offshore"     
+  },                                                                                                  
 ]
 
 def coordinate_file_path location_name
