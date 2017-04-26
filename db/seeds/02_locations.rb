@@ -820,8 +820,8 @@ location_list = [
   },
   {
     number: 5,
-    short_name: "Block Canyon - FishTails",
-    long_name: "",
+    short_name: "Block Canyon Fish Tails",
+    long_name: "Block Canyon Fish Tails",
     state_waters: "Offshore - Northeast Canyons",
     demographic: "Offshore"     
   },
