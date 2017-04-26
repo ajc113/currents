@@ -666,8 +666,8 @@ location_list = [
   },
   {
     number: 8,
-    short_name: "Tyler's Gap",
-    long_name: "Tyler's Gap",
+    short_name: "Tylers Gap",
+    long_name: "Tylers Gap",
     state_waters: "Offshore - South of New England",
     demographic: "Offshore"     
   },
@@ -789,7 +789,105 @@ location_list = [
     long_name: "40 FM Hole",
     state_waters: "Offshore - South of New England",
     demographic: "Offshore"     
-  },                               
+  },
+  {
+    number: 1,
+    short_name: "Hudson Canyon",
+    long_name: "Hudson Canyon",
+    state_waters: "Offshore - Northeast Canyons",
+    demographic: "Offshore"     
+  },
+  {
+    number: 2,
+    short_name: "Jones and Babylon",
+    long_name: "North of Hudson Canyon",
+    state_waters: "Offshore - Northeast Canyons",
+    demographic: "Offshore"     
+  },
+  {
+    number: 3,
+    short_name: "The Dip",
+    long_name: "Between Hudson and Block Canyons",
+    state_waters: "Offshore - Northeast Canyons",
+    demographic: "Offshore"     
+  },
+  {
+    number: 4,
+    short_name: "Middle Grounds",
+    long_name: "South west of Block Canyon",
+    state_waters: "Offshore - Northeast Canyons",
+    demographic: "Offshore"     
+  },
+  {
+    number: 5,
+    short_name: "Block Canyon - FishTails",
+    long_name: "",
+    state_waters: "Offshore - Northeast Canyons",
+    demographic: "Offshore"     
+  },
+  {
+    number: 6,
+    short_name: "West Atlantis",
+    long_name: "West Atlantis Canyon",
+    state_waters: "Offshore - Northeast Canyons",
+    demographic: "Offshore"     
+  },
+  {
+    number: 7,
+    short_name: "Atlantis",
+    long_name: "Atlantis Canyon",
+    state_waters: "Offshore - Northeast Canyons",
+    demographic: "Offshore"     
+  },
+  {
+    number: 8,
+    short_name: "East Atlantis",
+    long_name: "East Atlantis Canyon",
+    state_waters: "Offshore - Northeast Canyons",
+    demographic: "Offshore"     
+  },
+  {
+    number: 9,
+    short_name: "Veatch",
+    long_name: "Veatch Canyon",
+    state_waters: "Offshore - Northeast Canyons",
+    demographic: "Offshore"     
+  },
+  {
+    number: 10,
+    short_name: "Hydrographers",
+    long_name: "Hydrographers Canyon",
+    state_waters: "Offshore - Northeast Canyons",
+    demographic: "Offshore"     
+  },
+  {
+    number: 11,
+    short_name: "Welker",
+    long_name: "Welker Canyon",
+    state_waters: "Offshore - Northeast Canyons",
+    demographic: "Offshore"     
+  },
+  {
+    number: 12,
+    short_name: "Oceanographers",
+    long_name: "Oceanographers Canyon",
+    state_waters: "Offshore - Northeast Canyons",
+    demographic: "Offshore"     
+  },
+  {
+    number: 13,
+    short_name: "Gilbert",
+    long_name: "Gilbert Canyon",
+    state_waters: "Offshore - Northeast Canyons",
+    demographic: "Offshore"     
+  },
+  {
+    number: 14,
+    short_name: "Lydonia",
+    long_name: "Lydonia Canyon",
+    state_waters: "Offshore - Northeast Canyons",
+    demographic: "Offshore"     
+  },                                                                                    
 ]
 
 def coordinate_file_path location_name
