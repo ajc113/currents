@@ -404,100 +404,93 @@ location_list = [
     long_name: "Crane Neck west to Eaton's Neck including Smithtown Reef, Nissequogue River, Eaton Neck Pt Shoal.",
     state_waters: "NY",
     demographic: "Inshore"      
-  },      
+  },       
   {
     number: 9,
-    short_name: "Smithtown Bay",
-    long_name: "Crane Neck west to Eaton's Neck including Smithtown Reef, Nissequogue River, Eaton Neck Pt Shoal.",
-    state_waters: "NY",
-    demographic: "Inshore"      
-  },  
-  {
-    number: 10,
     short_name: "Western Long Island Sound",
     long_name: "Lloyd Neck west to the East River",
     state_waters: "NY",
     demographic: "Inshore"      
   },
   {
-    number: 11,
+    number: 10,
     short_name: "East River",
     long_name: "East River south to Upper Bay",
     state_waters: "NY",
     demographic: "Inshore"      
   },
   {
-    number: 12,
+    number: 11,
     short_name: "Hudson River",
     long_name: "Tappan Zee south to Upper Bay",
     state_waters: "NY",
     demographic: "Inshore"      
   },
   {
-    number: 13,
+    number: 12,
     short_name: "Lower Bay",
     long_name: "Including Raritan Bay, Jamaica Bay, Round Shoal, Great Kills Light, West and East Bank.",
     state_waters: "NY",
     demographic: "Inshore"      
   },
   {
-    number: 14,
+    number: 13,
     short_name: "West End South",
     long_name: "Rockaway Point to Jones Inlet including Rockaway Reef.",
     state_waters: "NY",
     demographic: "Inshore"      
   },  
   {
-    number: 15,
+    number: 14,
     short_name: "Jones",
     long_name: "Jones Inlet east to Fire Island Inlet.",
     state_waters: "NY",
     demographic: "Inshore"      
   },
   {
-    number: 16,
+    number: 15,
     short_name: "Fire Island",
     long_name: "Fire Island Inlet to Old Inlet",
     state_waters: "NY",
     demographic: "Inshore"      
   },
   {
-    number: 17,
+    number: 16,
     short_name: "Great South Bay",
     long_name: "Wantagh Prkwy to William Floyd Prkwy",
     state_waters: "NY",
     demographic: "Inshore"      
   },
   {
-    number: 18,
+    number: 17,
     short_name: "Moriches Inlet",
     long_name: "Wantagh Prkwy to William Floyd Prkwy",
     state_waters: "NY",
     demographic: "Inshore"      
   },
   {
-    number: 19,
+    number: 18,
     short_name: "Moriches Bay",
     long_name: "Inside Moriches Inlet from Narrow Bay east to Potunk Pt",
     state_waters: "NY",
     demographic: "Inshore"      
   },
   {
-    number: 20,
+    number: 19,
     short_name: "Shinnecock",
     long_name: "Shinnecock bay through inlet out 3 NM's",
     state_waters: "NY",
     demographic: "Inshore"      
   },  
   {
-    number: 21,
+    number: 20,
     short_name: "Hamptons",
     long_name: "South Hampton, East Hampton and Amagansett out 3 NM's",
     state_waters: "NY",
     demographic: "Inshore"      
   },
   {
-    number: 22,
+    number: 21,
     short_name: "Block Island Sound",
     long_name: "Sound north of Montauk Pt including Cerberus Shoal",
     state_waters: "NY",
@@ -657,17 +650,17 @@ location_list = [
     state_waters: "Offshore - South of New England",
     demographic: "Offshore"     
   },
-  {
+   {
     number: 7,
-    short_name: "The Star",
-    long_name: "The Star",
+    short_name: "Tylers Gap",
+    long_name: "Tylers Gap",
     state_waters: "Offshore - South of New England",
     demographic: "Offshore"     
   },
-  {
+   {
     number: 8,
-    short_name: "Tylers Gap",
-    long_name: "Tylers Gap",
+    short_name: "The Star",
+    long_name: "The Star",
     state_waters: "Offshore - South of New England",
     demographic: "Offshore"     
   },

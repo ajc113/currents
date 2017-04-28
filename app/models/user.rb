@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
 		# "NE",
 		# "NV",
 		"NH",
-		"NJ",
+		# "NJ",
 		# "NM",
 		"NY",
 		# "NC",
