@@ -13,7 +13,12 @@ class MapsController < ApplicationController
     render json: FilterBySpecies.new(current_user, params[:species], params[:state]).maps_data
   end
 
-    def report_params
+  def reports_of_location
+    @reports= Report.where("location_id = #{params[:location_id]}")
+    render json: @reports.as_json(only: [:id, :date, :target_species, :vessel_name, :primary_method, :catch_total, :trip_summary])
+  end
+
+  def report_params
     params.require(:report).permit(:date, :species_id, :general_location, :catch_keepers, :catch_total, :trip_summary, :primary_method, :tide, :weather, :wind, :spot, :picture, :best_bait, :trip_description, :location_id)
   end
   def location_params
