@@ -100,4 +100,3 @@ $ ->
         console.log(xhr)
   $('#species_select, #state_select').change ->
     window.initMap()
-    infoWindow.close()
