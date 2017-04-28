@@ -56,11 +56,7 @@
         height: 210px;
         font-size: 13px !important;
     }
-    
-    .panel-heading {
-        height: 100px;
-    }
-    
+   
     .list-group-item {
         border: 5px solid #e4eaec;
     }
@@ -120,4 +116,30 @@
     h2.usp-heading {
       margin-top: 0px;
     }
+
+    .panel-heading {
+        height: 100px;
+    }
+    
+// edit user
+
+    .panel-heading-edituser {
+    background-color: #88888F !important;
+    padding-left: 40px !important;
+    color: white;
+    }
+        
+    .panel-body-edituser {
+     line-height: 2.0 !important;
+     padding: 30px;
+    }
+    .panel-inverse-edituser {
+      border: 1px solid;
+    }
+
+    .btn-block-edituser {
+      background-color: #88888F !important;
+      color: white;
+    }
+
 

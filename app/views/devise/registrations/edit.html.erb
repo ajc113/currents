@@ -1,65 +1,16 @@
 <% provide(:title, "Account Settings") %>
-<style>
-  body {
-      /*background-image: url(/assets/moon.png);*/
-      /*background-repeat: repeat-x;*/
-    } 
-      .panel-heading {
-      background-color: #88888F !important;
-      padding-left: 40px !important;
-    }
-     .panel-body {
-     line-height: 2.0 !important;
-    }
-    .btn-block {
-      background-color: #88888F !important;
-      color: white;
-    }
-    .panel-inverse {
-      border: 1px solid;
 
-    }
-    /*flash*/
-  .alert-error {
-      background-color: #f2dede;
-      border-color: #eed3d7;
-      color: #b94a48;
-      text-align: left;
-   }
-
-  .alert-alert {
-      background-color: #f2dede;
-      border-color: #eed3d7;
-      color: #b94a48;
-      text-align: left;
-   }
-
-  .alert-success {
-      background-color: #dff0d8;
-      border-color: #d6e9c6;
-      color: #468847;
-      text-align: left;
-   }
-
-  .alert-notice {
-      background-color: #dff0d8;
-      border-color: #d6e9c6;
-      color: #468847;
-      text-align: left;
-   }
-</style>
-  
 <div class = "container">
   <div class="row">
     <div class="content-wrapper">
       <div class="col-sm-3"></div>
       <div class="col-sm-6">
         <div class="panel panel-default">     
-          <div class="panel panel-inverse panel-flat">
+          <div class="panel panel-inverse-edituser panel-flat">
 
-            <div class="panel-heading">
+            <div class="panel-heading-edituser">
               <div class="row">
-                <div class="col-lg-3">
+                <div class="col-lg-3" style="padding-top: 10px">
                   <a href="#">
                     <%= image_tag 'map_theme/tuna.png',  class: 'img-responsive', style: 'height: 50px;' %>
                   </a>
@@ -75,7 +26,7 @@
 
             </div>  
 
-          <div class="panel-body"> 
+          <div class="panel-body-edituser"> 
             <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
             <%= devise_error_messages! %>
             <form>    
@@ -130,7 +81,7 @@
                 <%= f.text_field :vessel_name, class: "form-control", autofocus: true %>
               </div>
 
-              <button type="submit" class="btn btn-block btn-inverse mt-lg">
+              <button type="submit" class="btn btn-block btn-block-edituser mt-lg">
                 <%= "Update" %>
               </button>
           
@@ -143,7 +94,7 @@
             <p> <%= link_to "Back", :back %> </p>
           </div> 
         </div>
-  <% end %>
+        <% end %>
         </div>
       </div>
       <div class="col-sm-3"></div>
