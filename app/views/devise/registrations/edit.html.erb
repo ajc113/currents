@@ -40,7 +40,7 @@
               <% end %>
 
               <div class="field">
-                <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+                <%= f.label :password %> <i>(Required only to update password)</i><br />
                 <%= f.password_field :password, class: "form-control",  autocomplete: "off" %>
               </div>
 
@@ -50,7 +50,7 @@
               </div>
 
               <div class="field">
-                <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+                <%= f.label :current_password %> <i>(Current password required to make any changes)</i><br />
                 <%= f.password_field :current_password, class: "form-control", autocomplete: "off" %>
               </div>
 

@@ -51,11 +51,7 @@
         padding: 0px;
     }
     
-    .panel-body {
-        border-top: 5px solid !important;
-        height: 210px;
-        font-size: 13px !important;
-    }
+  
    
     .list-group-item {
         border: 5px solid #e4eaec;
@@ -121,6 +117,15 @@
         height: 100px;
     }
     
+// reports index
+    .panel-default-reports {
+    border-top-width: 3px;
+    background-color: #88888F !important;
+    color: white;
+    }
+
+
+
 // edit user
 
     .panel-heading-edituser {
@@ -142,4 +147,8 @@
       color: white;
     }
 
+// blog
+   .panel-body-buzz {
+    padding: 1px;
+    }
 
