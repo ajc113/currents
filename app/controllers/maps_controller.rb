@@ -15,7 +15,7 @@ class MapsController < ApplicationController
 
   def reports_of_location
     @reports= Report.where("location_id = #{params[:location_id]}")
-    render json: @reports.as_json(only: [:id, :date, :target_species, :vessel_name, :primary_method, :catch_total, :trip_summary])
+    render json: @reports.as_json(only: [:id, :date, :target_species, :vessel_name, :primary_method, :catch_total, :trip_summary, :user_id])
   end
 
   def report_params
