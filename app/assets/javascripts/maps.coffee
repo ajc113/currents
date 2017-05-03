@@ -1,6 +1,5 @@
 $ ->
   openInfoWindow = (loc, map, event)->
-    #infoWindow.close() if infoWindow
     contentString = '<table><thead><tr><th>Date</th><th>Target Species</th><th>Vessel Name</th><th>Primary Method</th><th>Catch Total</th><th>Trip Summary</th></tr></thead><tbody><b>' + loc.short_name + '</b> <br>' + loc.long_name + '<br> <br>'
     $.ajax
       async: true
@@ -12,6 +11,7 @@ $ ->
         for i in [0..reports.length-1] by 1
           contentString += '<tr><td>' + reports[i].date + '</td> <td>' + reports[i].species + '</td><td>' + reports[i].vessel_name + '</td><td>' + reports[i].primary_method + '</td><td>' + reports[i].catch_total + '</td><td>' + reports[i].trip_summary + '</td></tr>'
         contentString += '</tbody></table>'
+        infoWindow.close() if infoWindow
         infoWindow = new google.maps.InfoWindow
           disableAutoPan: false
         infoWindow.setContent(contentString)
@@ -84,7 +84,7 @@ $ ->
           p = polygons[i]
           google.maps.event.addListener(p, 'mouseover',(event) ->
             $("#locdetails").css("display","block")
-            $("#locdetails").append("<div class='hoverrow'> <div class='hoverclass'>Location</div> <div class='hoverclass'>Average Catch Per Trip</div> <div class='hoverclass'>Reports posted past 7 days</div> </div> <br> <div class='hoverrow'><div class='hoverclass'>" + this.loc.short_name + "</div>" + "<div class='hoverclass'>" + this.mavg + "</div>" + "<div class='hoverclass'>" + this.rep.length + "</div></div>")
+            $("#locdetails").append("<div class='hoverrow'> <div class='hoverclass'>Location</div> <div class='hoverclass'>Average Catch Per Trip</div> <div class='hoverclass'>Reports posted past 7 days</div> </div> <br> <div class='hoverrow'><div class='hoverclass'>" + this.loc.short_name + "</div>" + "<div class='hoverclass'>" + this.mavg + "</div>" + "<div class='hoverclass'>" + this.rep + "</div></div>")
             map.data.revertStyle()
             this.setOptions
               strokeColor: "#F7F8FF"

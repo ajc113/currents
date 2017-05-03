@@ -13,7 +13,7 @@ class FilterBySpecies
       moving_average = maps_data.moving_average
       standart_deviation = maps_data.standard_deviation
       @lreports.push(location:location,
-                     reports: userreport(avgrep),
+                     reports: userreport(avgrep).length,
                      coordinate_file: render_coordinate_file(location),
                      moving_average: moving_average,
                      color: color(standart_deviation))
