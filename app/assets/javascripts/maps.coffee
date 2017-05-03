@@ -1,17 +1,20 @@
 $ ->
-  openInfoWindow = (loc_id, map)->
-    console.log("location id is = " + loc_id)
+  openInfoWindow = (loc, map, event)->
     infoWindow = new google.maps.InfoWindow
       content: ''
     infoWindow.close()
-    #contentString = '<table><thead><tr><th>Date</th><th>Target Species</th><th>Vessel Name</th><th>Primary Method</th><th>Catch Total</th><th>Trip Summary</th></tr></thead><tbody><b>' + this.loc.short_name + '</b> <br>' + this.loc.long_name + '<br> <br>'
+    contentString = '<table><thead><tr><th>Date</th><th>Target Species</th><th>Vessel Name</th><th>Primary Method</th><th>Catch Total</th><th>Trip Summary</th></tr></thead><tbody><b>' + loc.short_name + '</b> <br>' + loc.long_name + '<br> <br>'
     $.ajax
       async: true
       url:'/reports_of_location'
       type: 'get'
       data:
-        location_id: loc_id
-      success: (response) ->
+        location_id: loc.id
+      success: (reports) ->
+        for i in [0..reports.length-1] by 1
+          contentString += '<tr><td>' + reports[i].date + '</td> <td>' + reports[i].species + '</td><td>' + reports[i].vessel_name + '</td><td>' + reports[i].primary_method + '</td><td>' + reports[i].catch_total + '</td><td>' + reports[i].trip_summary + '</td></tr>'
+        infoWindow.setContent(contentString)
+        infoWindow.setPosition(event.latLng)
         infoWindow.open(map)
 
   window.initMap = ->
@@ -66,7 +69,7 @@ $ ->
               fillOpacity: 0.5
           )
           google.maps.event.addListener(p, 'click', (event) ->
-            openInfoWindow(this.loc.id, this.map)
+            openInfoWindow(this.loc, this.map, event)
           )
       error: (xhr) ->
         console.log(xhr)
