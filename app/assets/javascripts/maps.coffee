@@ -1,4 +1,19 @@
 $ ->
+  openInfoWindow = (loc_id, map)->
+    console.log("location id is = " + loc_id)
+    infoWindow = new google.maps.InfoWindow
+      content: ''
+    infoWindow.close()
+    #contentString = '<table><thead><tr><th>Date</th><th>Target Species</th><th>Vessel Name</th><th>Primary Method</th><th>Catch Total</th><th>Trip Summary</th></tr></thead><tbody><b>' + this.loc.short_name + '</b> <br>' + this.loc.long_name + '<br> <br>'
+    $.ajax
+      async: true
+      url:'/reports_of_location'
+      type: 'get'
+      data:
+        location_id: loc_id
+      success: (response) ->
+        infoWindow.open(map)
+
   window.initMap = ->
     myOptions =
       zoom: 9
@@ -36,65 +51,22 @@ $ ->
             $("#locdetails").append("<div class='hoverrow'> <div class='hoverclass'>Location</div> <div class='hoverclass'>Average Catch Per Trip</div> <div class='hoverclass'>Reports posted past 7 days</div> </div> <br> <div class='hoverrow'><div class='hoverclass'>" + this.loc.short_name + "</div>" + "<div class='hoverclass'>" + this.mavg + "</div>" + "<div class='hoverclass'>" + this.rep.length + "</div></div>")
             map.data.revertStyle()
             this.setOptions
-            strokeColor: "#F7F8FF"
-            strokeWeight: 3
-            fillOpacity: 0.75
+              strokeColor: "#F7F8FF"
+              strokeWeight: 3
+              fillOpacity: 0.75
             )
           google.maps.event.addListener(p, 'mouseout', (event) ->
             $("#locdetails").css("display","none")
             $("#locdetails").empty()
             map.data.revertStyle()
             this.setOptions
-            strokeColor: "F7F8FF"
-            strokeOpacity: 0.8
-            strokeWeight: .35
-            fillOpacity: 0.5
+              strokeColor: "F7F8FF"
+              strokeOpacity: 0.8
+              strokeWeight: .35
+              fillOpacity: 0.5
           )
-          infoWindow = new google.maps.InfoWindow
-            content: ''
           google.maps.event.addListener(p, 'click', (event) ->
-            infoWindow.close()
-            contentString = '<table><thead><tr><th>Date</th><th>Target Species</th><th>Vessel Name</th><th>Primary Method</th><th>Catch Total</th><th>Trip Summary</th></tr></thead><tbody><b>' + this.loc.short_name + '</b> <br>' + this.loc.long_name + '<br> <br>'
-            for j in [0..this.rep.length-1] by 1
-              contentString += '<tr><td>' + this.rep[j].rep.date + '</td> <td>' + this.rep[j].rep.species + '</td><td>' + this.rep[j].vessel_name + '</td><td>' + this.rep[j].rep.primary_method + '</td><td>' + this.rep[j].rep.catch_total + '</td><td>' + this.rep[j].rep.trip_summary + '</td></tr>'
-            contentString += '</tbody></table>'
-            infoWindow = new google.maps.InfoWindow
-              disableAutoPan: false
-            infoWindow.setContent(contentString)
-            infoWindow.setPosition(event.latLng)
-            google.maps.event.addListener(infoWindow, 'domready' , () ->
-              iwOuter = $('.gm-style-iw')
-              gmStyleTable = $('.gm-style-iw').children(':nth-child(1)').addClass('gm-style-table')
-              gmStyleTable.css
-                'display': 'table-row'
-                'width': '100%'
-              iwBackground = iwOuter.prev()
-              iwBackground.children(':nth-child(2)').css
-                'display': 'none'
-              iwBackground.children(':nth-child(4)').css
-                'display': 'none'
-              iwBackground.children(':nth-child(3)').find('div').children().css
-                'box-shadow': 'rgba(72, 181, 233, 0.6) 0px 1px 6px'
-                'z-index': '1'
-              iwCloseBtn = iwOuter.next()
-              iwCloseBtn.addClass('close-button')
-              if $(window).width() >= 768
-                iwCloseBtnCss = '44px'
-              else
-                iwCloseBtnCss = '-15px'
-                $('.close-button').next().css
-                  'right': '-15px'
-              iwCloseBtn.css
-                'opacity': '1'
-                'top': '8px'
-                'right': iwCloseBtnCss
-                'border-radius': '13px'
-                'box-shadow': '0 0 5px #3990B9'
-              iwCloseBtn.mouseout ->
-                $(this).css
-                  'opacity': '1'
-            )
-            infoWindow.open(map)
+            openInfoWindow(this.loc.id, this.map)
           )
       error: (xhr) ->
         console.log(xhr)
