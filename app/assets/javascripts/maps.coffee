@@ -1,8 +1,6 @@
 $ ->
   openInfoWindow = (loc, map, event)->
-    infoWindow = new google.maps.InfoWindow
-      content: ''
-    infoWindow.close()
+    #infoWindow.close() if infoWindow
     contentString = '<table><thead><tr><th>Date</th><th>Target Species</th><th>Vessel Name</th><th>Primary Method</th><th>Catch Total</th><th>Trip Summary</th></tr></thead><tbody><b>' + loc.short_name + '</b> <br>' + loc.long_name + '<br> <br>'
     $.ajax
       async: true
@@ -13,9 +11,44 @@ $ ->
       success: (reports) ->
         for i in [0..reports.length-1] by 1
           contentString += '<tr><td>' + reports[i].date + '</td> <td>' + reports[i].species + '</td><td>' + reports[i].vessel_name + '</td><td>' + reports[i].primary_method + '</td><td>' + reports[i].catch_total + '</td><td>' + reports[i].trip_summary + '</td></tr>'
+        contentString += '</tbody></table>'
+        infoWindow = new google.maps.InfoWindow
+          disableAutoPan: false
         infoWindow.setContent(contentString)
         infoWindow.setPosition(event.latLng)
         infoWindow.open(map)
+        google.maps.event.addListener(infoWindow, 'domready', () ->
+          iwOuter = $('.gm-style-iw')
+          gmStyleTable = $('.gm-style-iw').children(':nth-child(1)').addClass('gm-style-table')
+          gmStyleTable.css
+            'display': 'table-row',
+            'width': '100%'
+          iwBackground = iwOuter.prev()
+          iwBackground.children(':nth-child(2)').css
+            'display': 'none'
+          iwBackground.children(':nth-child(4)').css
+            'display': 'none'
+          iwBackground.children(':nth-child(3)').find('div').children().css
+            'box-shadow': 'rgba(72, 181, 233, 0.6) 0px 1px 6px',
+            'z-index': '1'
+          iwCloseBtn = iwOuter.next()
+          iwCloseBtn.addClass('close-button')
+          if ($(window).width() >= 768)
+            iwCloseBtnCss = "44px"
+          else
+            iwCloseBtnCss = "-15px"
+            $('.close-button').next().css
+              right: "-15px"
+          iwCloseBtn.css
+            opacity: '1'
+            top: '8px'
+            right: iwCloseBtnCss
+            'border-radius': '13px'
+            'box-shadow': '0 0 5px #3990B9'
+            iwCloseBtn.mouseout ->
+              $(this).css
+                opacity: '1'
+        )
 
   window.initMap = ->
     myOptions =
