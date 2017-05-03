@@ -13,6 +13,9 @@ end
 def rules
 end
 
+def about
+end
+
 def test
 @species = Species.all
 end

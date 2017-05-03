@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   get 'about', to: 'currents#about'
   get 'blog', to: 'currents#blog'
   get 'rules', to: 'currents#rules'
-
+   get 'pricing', to: 'currents#pricing'
 
   #Extra
   get 'test', to: 'currents#test'
