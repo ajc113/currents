@@ -12,11 +12,11 @@ class FilterBySpecies
       maps_data = GetMovingAverage.new(reports)
       moving_average = maps_data.moving_average
       standart_deviation = maps_data.standard_deviation
-      @lreports.push(location:location,
+      @lreports.push(location:location.as_json(only: [:id, :short_name, :long_name]),
                      reports: userreport(avgrep).length,
-                     coordinate_file: render_coordinate_file(location),
                      moving_average: moving_average,
-                     color: color(standart_deviation))
+                     color: color(standart_deviation),
+                     coordinate_file: render_coordinate_file(location))
 			end
     return @lreports
 	end

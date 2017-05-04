@@ -84,7 +84,7 @@ $ ->
           p = polygons[i]
           google.maps.event.addListener(p, 'mouseover',(event) ->
             $("#locdetails").css("display","block")
-            $("#locdetails").append("<div class='hoverrow'> <div class='hoverclass'>Location</div> <div class='hoverclass'>Average Catch Per Trip</div> <div class='hoverclass'>Reports posted past 7 days</div> </div> <br> <div class='hoverrow'><div class='hoverclass'>" + this.loc.short_name + "</div>" + "<div class='hoverclass'>" + this.mavg + "</div>" + "<div class='hoverclass'>" + this.rep + "</div></div>")
+            $("#locdetails").append("<div class='hoverrow'> <div class='hoverclass'>Location</div> <div class='hoverclass'>Average Catch Per Trip</div> <div class='hoverclass'>Reports posted past 7 days</div> </div> <br> <div class='hoverrow'><div class='hoverclass'>" + this.loc.short_name + "</div>" + "<div class='hoverclass'>" + this.moving_average + "</div>" + "<div class='hoverclass'>" + this.rep + "</div></div>")
             map.data.revertStyle()
             this.setOptions
               strokeColor: "#F7F8FF"
