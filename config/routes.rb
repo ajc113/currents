@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   #Data API
   get 'species_filter', to: 'maps#filter_by_species', as: :species_filter
-  get 'reports_of_location', to: 'maps#reports_of_location', as: :reports_of_location
+  get 'reports_of_location', to: 'maps#reports_of_location', as: :reports_of_location, format: 'json'
   get 'locations_for_state', to: 'reports#locations_for_state', as: :locations_for_state
 
   #Statick Pages
