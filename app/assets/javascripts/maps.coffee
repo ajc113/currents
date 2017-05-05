@@ -1,4 +1,6 @@
 $ ->
+  map = exports ? this
+  infoWindow = exports ? this
   openInfoWindow = (loc, map, event)->
     contentString = '<table><thead><tr><th>Date</th><th>Species</th><th>Vessel Name</th><th>Primary Method</th><th>Catch Total</th><th>Trip Summary</th></tr></thead><tbody><b>' + loc.short_name + '</b> <br>' + loc.long_name + '<br> <br>'
     $.ajax
