@@ -23,7 +23,6 @@ $ ->
           iwOuter = $('.gm-style-iw')
           gmStyleTable = $('.gm-style-iw').children(':nth-child(1)').addClass('gm-style-table')
           gmStyleTable.css
-            'display': 'table-row',
             'width': '100%'
           iwBackground = iwOuter.prev()
           iwBackground.children(':nth-child(2)').css
@@ -35,21 +34,21 @@ $ ->
             'z-index': '1'
           iwCloseBtn = iwOuter.next()
           iwCloseBtn.addClass('close-button')
-          if ($(window).width() >= 768)
+          if $(window).width() >= 768
             iwCloseBtnCss = "44px"
           else
             iwCloseBtnCss = "-15px"
             $('.close-button').next().css
-              right: "-15px"
+              'right': "-15px"
           iwCloseBtn.css
-            opacity: '1'
-            top: '8px'
-            right: iwCloseBtnCss
+            'opacity': '1'
+            'top': '8px'
+            'right': iwCloseBtnCss
             'border-radius': '13px'
             'box-shadow': '0 0 5px #3990B9'
             iwCloseBtn.mouseout ->
               $(this).css
-                opacity: '1'
+                'opacity': '1'
         )
 
   window.initMap = ->
