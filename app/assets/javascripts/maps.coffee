@@ -11,7 +11,7 @@ $ ->
         location_id: loc.id
       success: (reports) ->
         for i in [0..reports.length-1] by 1
-          contentString += '<tr><td>' + reports[i].date + '</td> <td>' + reports[i].species.name + '</td><td>' + reports[i].vessel_name + '</td><td>' + reports[i].primary_method + '</td><td>' + reports[i].catch_total + '</td><td>' + reports[i].trip_summary + '</td> <td>' + '<a href=/reports/'+ reports[i].id + ' target="_blank"> Go to Report </a>' + '</tr>'
+          contentString += '<tr><td>' + reports[i].date + '</td> <td>' + reports[i].species.name + '</td><td>' + reports[i].user.vessel_name + '</td><td>' + reports[i].primary_method + '</td><td>' + reports[i].catch_total + '</td><td>' + reports[i].trip_summary + '</td> <td>' + '<a href=/reports/'+ reports[i].id + ' target="_blank"> Go to Report </a>' + '</tr>'
         contentString += '</tbody></table>'
         infoWindow.close() if infoWindow
         infoWindow = new google.maps.InfoWindow
