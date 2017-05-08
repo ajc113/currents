@@ -1,4 +1,10 @@
 FactoryGirl.define do
+  factory :state do
+    name "MyString"
+    lat 1.5
+    long 1.5
+    visible true
+  end
 
   factory :species, class: 'Species' do
     name "MyString"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170328070956) do
+ActiveRecord::Schema.define(version: 20170509102823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,9 +65,10 @@ ActiveRecord::Schema.define(version: 20170328070956) do
     t.datetime "updated_at",      null: false
     t.string   "coordinates"
     t.string   "coordinate_file", null: false
-    t.text     "state_waters"
+    t.text     "state"
     t.text     "demographic"
     t.integer  "number"
+    t.integer  "state_id"
   end
 
   create_table "reports", force: :cascade do |t|
@@ -89,6 +90,7 @@ ActiveRecord::Schema.define(version: 20170328070956) do
     t.integer  "user_id"
     t.date     "date",             null: false
     t.integer  "species_id",       null: false
+    t.string   "state"
   end
 
   add_index "reports", ["location_id"], name: "index_reports_on_location_id", using: :btree
@@ -100,6 +102,15 @@ ActiveRecord::Schema.define(version: 20170328070956) do
     t.string   "located"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+  end
+
+  create_table "states", force: :cascade do |t|
+    t.string   "name"
+    t.float    "lat"
+    t.float    "long"
+    t.boolean  "visible",    default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -124,10 +135,13 @@ ActiveRecord::Schema.define(version: 20170328070956) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "subscription_tier"
+    t.integer  "state_id"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "locations", "states"
+  add_foreign_key "users", "states"
 end

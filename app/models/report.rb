@@ -8,7 +8,7 @@ class Report < ActiveRecord::Base
   belongs_to :location
   belongs_to :user
   belongs_to :species
-
+  belongs_to :state
 
   default_scope {order('date DESC')}
 
