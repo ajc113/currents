@@ -62,7 +62,7 @@ group :development, :test do
   # Following are required for testing
   gem 'rspec-rails'
   gem 'capybara'
-  # gem 'capybara-webkit'
+  gem 'capybara-webkit'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'shoulda-matchers'
