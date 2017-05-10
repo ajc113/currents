@@ -5,7 +5,8 @@
 </style>
 
 <header class="topnavbar-wrapper">
-<!-- START Top Navbar-->
+
+  <!-- START Top Navbar-->
   <nav role="navigation" class="navbar topnavbar">
   <!-- START navbar header-->
     <div class="navbar-header">
@@ -78,7 +79,7 @@
         <!-- User Link -->       
         <% if current_user %>
           <li>
-            <%= link_to current_user.vessel_name, edit_user_registration_path %>
+              <%= link_to current_user.first_name, edit_user_registration_path %>
           </li>
           <li>
             <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>

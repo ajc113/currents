@@ -1,45 +1,41 @@
 <% provide(:title, "Heat Map") %>
-    <%= stylesheet_link_tag params[:controller] %>
-        <div class="p-lg text-center">
-            <h1>HeatMap<small> - Real Time Intel</small></h1>
-        </div>
-        <!-- filter container -->
-        <div class="content-wrapper">
-            <!-- <div class="content-heading"> -->
-            <h4> Filter by Species<small> - View only your target species by location</small></h4>
-            <%= form_tag species_filter_path, id: 'species_form' do %>
-                <select name="species" class="form-control m-b" id="species_select">
-                    <option value="Any">Any</option>
-                    <% all_species.each do |species| %>
-                        <option value="<%= species %>">
-                            <%= Species.find(species).name %>
-                        </option>
-                        <% end %>
-                </select>
-                <% end %>
-                    <!-- </div> -->
-        </div>
-        <br>
-        <div id="locdetails" style="display:none;">
-        </div>
-        <!-- map container  -->
-        <!-- <div class="row"> -->
-        <!-- <div class="col-md-8">         -->
-        <!-- <div class="panel panel-default"> -->
-        <!-- <div class="panel-body"> -->
-        <div style="height: 900px; width: 100%;">
-            <div id="map" class="gmap">
-            </div>
-        </div>
-        <!-- </div>  -->
-        <!-- </div>      -->
-        <!-- </div>  -->
-        <!-- </div>  -->
-        <%= link_to "http://www.surveygizmo.com/s3/3316196/Currents-Fishing-Network", target: :_blank do %>
-            <h1 style="font-size: 35px; color: red; text-align: center">Click here to provide feedback on feature </h1>
-            <% end %>
-                <p id="notice">
-                    <%= notice %>
-                </p>
-                <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["google_map_api_key"]%>&callback=initMap">
-                </script>
+<%= stylesheet_link_tag params[:controller] %>
+<div class="p-lg text-center">
+  <h1>HeatMap<small> - Real Time Intel</small></h1>
+</div>
+<div class="content-wrapper">
+  <h4> Filter by Species<small> - View only your target species by location</small></h4>
+  <div class="row">
+    <div class="col-md-3">
+      <%= form_tag species_filter_path, id: 'species_form' do %>
+        <select name="species" class="form-control m-b" id="species_select">
+          <option value="Any">Any</option>
+          <% all_species.each do |species| %>
+            <option value="<%= species %>">
+              <%= Species.find(species).name %>
+            </option>
+          <% end %>
+        </select>
+      <% end %>
+    </div>
+    <div class="col-md-3">
+      <%= form_for(:states_filter) do |f| %>
+        <%= f.select :state, User::STATES, { selected: current_user.state }, class: "form-control m-b", id: "state_select" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<br>
+<div id="locdetails" style="display:none;">
+</div>
+<div style="height: 900px; width: 100%;">
+  <div id="map" class="gmap">
+  </div>
+</div>
+<%= link_to "http://www.surveygizmo.com/s3/3316196/Currents-Fishing-Network", target: :_blank do %>
+  <h1 style="font-size: 35px; color: red; text-align: center">Click here to provide feedback on feature </h1>
+<% end %>
+<p id="notice">
+  <%= notice %>
+</p>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["google_map_api_key"]%>&callback=initMap"></script>

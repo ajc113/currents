@@ -1,20 +1,22 @@
 class FilterBySpecies
-	def initialize(species)
+	def initialize(current_user, species, state)
 		@species = "Any" || species
+    @state = state
+    @locations = Location.where(state_waters: @state)
 	end
 	def maps_data
 		@lreports = []
-		Location.all.each do |location|
+		@locations.all.each do |location|
       reports = location.reports.where(species)
       avgrep = reports.where(:date => 1.week.ago..Date.today).order(date: :desc)
       maps_data = GetMovingAverage.new(reports)
       moving_average = maps_data.moving_average
       standart_deviation = maps_data.standard_deviation
-      @lreports.push(location:location,
-                     reports: userreport(avgrep),
-                     coordinate_file: render_coordinate_file(location),
+      @lreports.push(location:location.as_json(only: [:id, :short_name, :long_name]),
+                     reports: userreport(avgrep).length,
                      moving_average: moving_average,
-                     color: color(standart_deviation))
+                     color: color(standart_deviation),
+                     coordinate_file: render_coordinate_file(location))
 			end
     return @lreports
 	end
