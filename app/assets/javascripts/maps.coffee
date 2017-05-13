@@ -2,7 +2,7 @@ $ ->
   map = exports ? this
   infoWindow = exports ? this
   openInfoWindow = (loc, map, event)->
-    contentString = '<table><thead><tr><th>Date</th><th>Species</th><th>Vessel Name</th><th>Primary Method</th><th>Catch Total</th><th>Trip Summary</th><th>View Report</th></tr></thead><tbody><b>' + loc.short_name + '</b> <br>' + loc.long_name + '<br> <br>'
+    contentString = '<table><thead><tr><th>Date</th><th>Species</th><th>Vessel Name</th><th>Primary Method</th><th>Catch Total</th><th>Trip Summary</th></tr></thead><tbody><b>' + loc.short_name + '</b> <br>' + loc.long_name + '<br> <br>'
     $.ajax
       async: true
       url:'/reports_of_location'
@@ -11,7 +11,7 @@ $ ->
         location_id: loc.id
       success: (reports) ->
         for i in [0..reports.length-1] by 1
-          contentString += '<tr><td>' + reports[i].date + '</td> <td>' + reports[i].species.name + '</td><td>' + reports[i].user.vessel_name + '</td><td>' + reports[i].primary_method + '</td><td>' + reports[i].catch_total + '</td><td>' + reports[i].trip_summary + '</td> <td>' + '<a href=/reports/'+ reports[i].id + ' target="_blank"> Go to Report </a>' + '</tr>'
+          contentString += '<tr><td>' + reports[i].date + '</td> <td>' + reports[i].species.name + '</td><td>' + reports[i].user.vessel_name + '</td><td>' + reports[i].primary_method + '</td><td>' + reports[i].catch_total + '</td><td>' + reports[i].trip_summary + '</td> </tr>'
         contentString += '</tbody></table>'
         infoWindow.close() if infoWindow
         infoWindow = new google.maps.InfoWindow
@@ -104,6 +104,8 @@ $ ->
           )
           google.maps.event.addListener(p, 'click', (event) ->
             openInfoWindow(this.loc, this.map, event)
+            console.log( event.latLng.lat()+',')
+            console.log( event.latLng.lng())
           )
       error: (xhr) ->
         console.log(xhr)
