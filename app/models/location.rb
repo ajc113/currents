@@ -5,7 +5,7 @@ class Location < ActiveRecord::Base
 
   has_many :reports
   has_many :users, through: :reports
-  belongs_to :state, primary_key: :name, foreign_key: :state
+  belongs_to :state, primary_key: :name, foreign_key: :state_waters
   # has_many :specie
   def display_name
     self.short_name
