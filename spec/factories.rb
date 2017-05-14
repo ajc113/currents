@@ -1,4 +1,10 @@
 FactoryGirl.define do
+  factory :state do
+    name "MyString"
+    lat 1.5
+    long 1.5
+    visible true
+  end
 
   factory :species, class: 'Species' do
     name "MyString"
@@ -12,7 +18,7 @@ FactoryGirl.define do
     email "abc@gmail.com"
     password "abcdef"
     sign_in_count "4"
-    state "MA"
+    state_waters "MA"
     confirmed_at DateTime.now
   end
 
