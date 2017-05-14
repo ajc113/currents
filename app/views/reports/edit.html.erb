@@ -1,197 +1,124 @@
 <% provide(:title, "Edit Report") %>
-<style>
-	.legend-css {
-	    padding: 5px;
-	    line-height: 2;
-	    background-color: #e1e2e3;
-	    border: 3px solid #191919;
-	    border-radius: 5px;
-	    display: inline-block;
-	    max-width: 100%;
-	    height: auto;
-	    border-radius: 2px 2px 0 0;
-	}
-	.legend-div {
-		padding-top: 10px !important;
-	}
-	.title-css {
-	    padding: 10px;
-	    line-height: 1;
-	    background-color: #e1e2e3;
-	    border: 3px solid #191919;
-	    border-radius: 5px;
-	    display: block;
-	    max-width: 100%;
-	    height: auto;
-	    border-radius: 2px 2px 0 0;
-	}
-	.title-css-bodyt {
-	    padding: 10px;
-	    line-height: 1.5;
-	    background-color: #FEFFFF;
-	    border: 3px solid #191919;
-	    border-radius: 5px;
-	    display: block;
-	    max-width: 100%;
-	    height: auto;
-	    border-radius: 2px 2px 0 0;
-	    border-top: none;
-	    border-bottom: none;
-	}
-	.title-css-bodyb {
-	    padding: 10px;
-	    line-height: 1.5;
-	    background-color: #FEFFFF;
-	    border: 3px solid #191919;
-	    border-radius: 5px;
-	    display: block;
-	    max-width: 100%;
-	    height: auto;
-	    border-radius: 2px 2px 0 0;
-	    padding-bottom: 10px;
-	}
-		.footer-css {
-	    padding: 10px;
-	    line-height: 1;
-	    border: 3px solid #191919;
-	    border-radius: 5px;
-	    display: block;
-	    max-width: 100%;
-	    height: auto;
-	    border-radius: 2px 2px 0 0;
-	    border-top: none;
-	    text-align: center;
-	}
-	.h4-color {
-			font-family: "Source Sans Pro", sans-serif;
-			color: #112A8A; 
-	 }
-</style>
 <div class="content-wrapper">
-	<div class="row">
-  	<!-- margin panel -->
-		<div class="col-lg-1">
-		</div>	  	
-		<!-- form panel -->
-		<div class="col-lg-5">
-			<div class="panel panel-default">
-				<%= form_for(@report) do |f| %>
-	      <legend class="text-left" style="margin-bottom: 0px">	
-					<div class="title-css">
-						<h1><%= current_user.vessel_name %></h1>
-						<h2>Edit Your Catch Report</h2>
-					</div>
-					<!-- public form panel -->
-					<div class="title-css-bodyt">	
-					 	<div class="h4-color">
-					  	<b><u><h4>Public</h4></u></b>
-					  	<p class="small">Report fields are visible by the network and used for heatmaps</p>
-						</div>
-							  	
-							  	<% if @report.errors.any? %>
-							  <div id="error_explanation">
-								  <h2><%= pluralize(@report.errors.count, "error") %> prohibited this report from being saved:</h2>
-							    <ul>
-							        <% @report.errors.full_messages.each do |message| %>
-							        <li><%= message %></li>
-							        <% end %>
-							    </ul>	
-								</div>
-							  	<% end %>
-						
-						<div class="field">  	
-							<%= f.label :date %> (Required)<br>
-							<%= f.date_select :date, end_year: Date.today.year %>
-						</div>
-						<br>	
-
-						<script type="text/javascript">
-					  $(document).ready(function(){
-					    $('.datepicker').datepicker();
-					  });
-						</script>
-
-						<div class="field">
-  						<%= f.label :species_id %> (Required)<br>
-  						
-  						<%= f.select :species_id, Species.all.order("name ASC").pluck(:name, :id) %>
-						</div>
-						<div class="field">
-  						<%= f.label :location_id %> (Required)<br>
-  						<%= f.select :location_id, Location.all.order("short_name ASC").pluck(:short_name, :id) %>
-						</div>
-						<br>
-						<div class="field">
-					    <%= f.label :catch_keepers %> (Required)<br>
-					    <%= f.number_field :catch_keepers %>
-					  </div>
-						<div class="field"> 
-						   <%= f.label :trip_summary %><br>
-						   <%= f.text_area :trip_summary, placeholder: "Enter brief summary of todays trip" %>
-						 </div>
-						  <br>
-					</div>	
-					<!-- private form panel -->
-					<div class="title-css-bodyb">
-							<div class="h4-color">
-								<b><u><h4>Private</h4></u></b>
-							  <p class="small">Report fields are for your use only.  Use to detail catch information like bait, tide, or location numbers</p>
-						 	</div>
-				  	  <div class="field">
-						    <%= f.label :catch_total %><br>
-						    <%= f.number_field :catch_total %>
-						  </div>
-
-						  <div class="field">
-						    <%= f.label :primary_method %><br>
-						    <%= f.select :primary_method, ['Live Bait', 'Dead Bait', 'Kite', 'Jigging', 'Popping', 'Trolling'] %>
-						  </div>
-						  <div class="field">
-						    <%= f.label :tide %><br>
-						    <%= f.select :tide, ['Incoming', 'Outgoing', 'Slack'] %>
-						  </div>
-						  <div class="field">
-						    <%= f.label :weather %><br>
-						    <%= f.select :weather, ['Overcast', 'Rain', 'Sun', 'Fog'] %>
-						  </div>
-						  <div class="field">
-						    <%= f.label :wind %><br>
-						    <%= f.select :wind, ['W < 10 mph', 'W 10-20 mph', 'W > 20 mph', 'NW < 10 mph', 'NW 10-20 mph', 'NW > 20 mph','N < 10 mph', 'N 10-20 mph', 'N > 20 mph','NE < 10 mph', 'NE 10-20 mph', 'NE > 20 mph','E < 10 mph', 'E 10-20 mph', 'E > 20 mph', 'SE < 10 mph', 'SE 10-20 mph', 'SE > 20 mph','S < 10 mph', 'S 10-20 mph', 'S > 20 mph','SW < 10 mph', 'SW 10-20 mph', 'SW > 20 mph'] %>
-						  </div>
-						  <div class="field">
-						    <%= f.label :spot %><br>
-						    <%= f.text_area :spot %>
-						  </div>
-						  <div class="field">
-						    <%= f.label :best_bait %><br>
-						    <%= f.text_area :best_bait %>
-						  </div>
-						  <div class="field">
-						    <%= f.label :trip_description %><br>
-						    <%= f.text_area :trip_description %>
-						  </div>
-						  	<br>
-					</div>
-
-					<div class="footer-css">
-					<%= f.submit class: "btn btn-inverse btn-md" %>
-						<br>
-						<br>
-					<%= link_to 'Back', reports_path, class: "btn btn-default bg-gray" %>
-					</div>
-				</legend>	
-			</div>
-			<% end %>	
-  	</div>
-  	<div class="col-lg-5">	
+  <div class="row">
+    <!-- margin panel -->
+    <div class="col-lg-1">
+    </div>
+    <!-- form panel -->
+    <div class="col-lg-5">
+      <div class="panel panel-default">
+        <%= form_for(@report) do |f| %>
+          <legend class="text-left" style="margin-bottom: 0px">
+            <div class="title-css">
+              <h1><%= current_user.vessel_name %></h1>
+              <h2>Edit Your Catch Report</h2>
+            </div>
+            <!-- public form panel -->
+            <div class="title-css-bodyt">
+              <div class="h4-color">
+                <b><u>
+                    <h4>Public</h4>
+                  </u></b>
+                <p class="small">Report fields are visible by the network and used for heatmaps</p>
+              </div>
+              <% if @report.errors.any? %>
+                <div id="error_explanation">
+                  <h2><%= pluralize(@report.errors.count, "error") %> prohibited this report from being saved:</h2>
+                  <ul>
+                    <% @report.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                    <% end %>
+                  </ul>
+                </div>
+              <% end %>
+              <div class="field">
+                <%= f.label :date %> (Required)<br>
+                <%= f.date_select :date, end_year: Date.today.year %>
+              </div>
+              <br>
+              <div class="field">
+                <%= f.label :species_id %> (Required)<br>
+                <%= f.select :species_id, Species.all.order("name ASC").pluck(:name, :id) %>
+              </div>
+              <br>
+              <div class="field">
+                <%= f.label :state_waters %> (Required)<br>
+                <%= f.select :state_waters, State.all.pluck(:name), {prompt: 'Select State', selected: current_user.state.name }, class: "state_selection" %>
+              </div>
+              <br>
+              <div class="field">
+                <%= f.label :location_id %> (Required)<br>
+                <%= f.select  :location_id, @state_locations || Location.where(state_waters: current_user.state).order(number: :asc).map {|location| [location[:number].to_s.rjust(2, '0') + " - " + location[:short_name]] + [location.id]}, {prompt: 'Select Location'}, class: "location_id" %>
+              </div>
+              <br>
+              <div class="field">
+                <%= f.label :catch_keepers %> (Required)<br>
+                <%= f.number_field :catch_keepers %>
+              </div>
+              <div class="field">
+                <%= f.label :trip_summary %><br>
+                <%= f.text_area :trip_summary, placeholder: "Enter brief summary of todays trip" %>
+              </div>
+              <br>
+            </div>
+            <!-- private form panel -->
+            <div class="title-css-bodyb">
+              <div class="h4-color">
+                <b><u>
+                    <h4>Private</h4>
+                  </u></b>
+                <p class="small">Report fields are for your use only.  Use to detail catch information like bait, tide, or location numbers</p>
+              </div>
+              <div class="field">
+                <%= f.label :catch_total %><br>
+                <%= f.number_field :catch_total %>
+              </div>
+              <div class="field">
+                <%= f.label :primary_method %><br>
+                <%= f.select :primary_method, ['Live Bait', 'Dead Bait', 'Kite', 'Jigging', 'Popping', 'Trolling'] %>
+              </div>
+              <div class="field">
+                <%= f.label :tide %><br>
+                <%= f.select :tide, ['Incoming', 'Outgoing', 'Slack'] %>
+              </div>
+              <div class="field">
+                <%= f.label :weather %><br>
+                <%= f.select :weather, ['Overcast', 'Rain', 'Sun', 'Fog'] %>
+              </div>
+              <div class="field">
+                <%= f.label :wind %><br>
+                <%= f.select :wind, ['W < 10 mph', 'W 10-20 mph', 'W > 20 mph', 'NW < 10 mph', 'NW 10-20 mph', 'NW > 20 mph','N < 10 mph', 'N 10-20 mph', 'N > 20 mph','NE < 10 mph', 'NE 10-20 mph', 'NE > 20 mph','E < 10 mph', 'E 10-20 mph', 'E > 20 mph', 'SE < 10 mph', 'SE 10-20 mph', 'SE > 20 mph','S < 10 mph', 'S 10-20 mph', 'S > 20 mph','SW < 10 mph', 'SW 10-20 mph', 'SW > 20 mph'] %>
+              </div>
+              <div class="field">
+                <%= f.label :spot %><br>
+                <%= f.text_area :spot %>
+              </div>
+              <div class="field">
+                <%= f.label :best_bait %><br>
+                <%= f.text_area :best_bait %>
+              </div>
+              <div class="field">
+                <%= f.label :trip_description %><br>
+                <%= f.text_area :trip_description %>
+              </div>
+              <br>
+            </div>
+            <div class="footer-css">
+              <%= f.submit class: "btn btn-inverse btn-md" %>
+              <br>
+              <br>
+              <%= link_to 'Back', reports_path, class: "btn btn-default bg-gray" %>
+            </div>
+          </legend>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-lg-5">
       <div class="legend-css", style="display: inline-block">
-        <%= image_tag "location_legends/" + current_user.state + ".png",  class: 'img-responsive location-legend-image', style: 'display:block; opacity: .95' %>
+        <%= image_tag "location_legends/" + current_user.state.name + ".png",  class: 'img-responsive location-legend-image', style: 'display:block; opacity: .95' %>
       </div>
-		</div>
-		<div class="col-lg-1">
-		</div>	
-	</div>
+    </div>
+    <div class="col-lg-1">
+    </div>
+  </div>
 </div>
-
-
-	
