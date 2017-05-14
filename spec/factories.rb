@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :state do
-    name "MyString"
+    name "MA"
     lat 1.5
     long 1.5
     visible true
