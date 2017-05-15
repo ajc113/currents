@@ -2,7 +2,7 @@ FactoryGirl.define do
   factory :state do
     name "MA"
     lat 1.5
-    long 1.5
+    lng 1.51
     visible true
   end
 
@@ -34,17 +34,21 @@ FactoryGirl.define do
     confirmed_at = Time.now
   end
 
+  
+  factory :location do
+    id 2
+    state_waters "MA"
+    short_name "dummy_location"
+    long_name "dummy_location_for_test"
+    coordinate_file { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'support', 'dummy_location_data.json')) }
+  end
+ 
   factory :report do
     species_id 3
-    location_id 4
+    location_id 2
     catch_keepers 20
     catch_total 2323
     date {2.years.ago}
   end
 
-  factory :location do
-    short_name "dummy_location"
-    long_name "dummy_location_for_test"
-    coordinate_file { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'support', 'dummy_location_data.json')) }
-  end
 end

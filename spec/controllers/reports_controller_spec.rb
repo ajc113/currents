@@ -2,6 +2,7 @@ RSpec.describe(ReportsController) do
   login_user
   before do
     @report = create(:report)
+    @state = create(:state)
   end
 
   it("should get index") do
