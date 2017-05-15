@@ -3,7 +3,7 @@ class CreateStates < ActiveRecord::Migration
     create_table :states, id: false do |t|
       t.string :name, null: false
       t.float :lat
-      t.float :long
+      t.float :lng
       t.boolean :visible, default: true
 
       t.timestamps null: false

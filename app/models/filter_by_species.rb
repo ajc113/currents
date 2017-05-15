@@ -19,7 +19,7 @@ class FilterBySpecies
                      coordinate_file: render_coordinate_file(location)
                     )
 			end
-    @lreports.push(lat: State.find(@state).lat, lng: State.find(@state).long)
+    @lreports.push(lat: State.find(@state).lat, lng: State.find(@state).lng)
     return @lreports
 	end
 
