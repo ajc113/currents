@@ -103,13 +103,16 @@ ActiveRecord::Schema.define(version: 20170511105551) do
     t.datetime "updated_at",   null: false
   end
 
-  create_table "states", primary_key: "name", force: :cascade do |t|
+  create_table "states", id: false, force: :cascade do |t|
+    t.string   "name",                      null: false
     t.float    "lat"
     t.float    "long"
     t.boolean  "visible",    default: true
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
   end
+
+  add_index "states", ["name"], name: "index_states_on_name", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
