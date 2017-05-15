@@ -54,7 +54,6 @@ $ ->
   window.initMap = ->
     myOptions =
       zoom: 9
-      center: new google.maps.LatLng 42.05, -70.25
       mapTypeId: google.maps.MapTypeId.SATELLITE
       scrollwheel: false
       scaleControl: false
@@ -68,7 +67,12 @@ $ ->
         species: $("#species_select").val()
         state: $("#state_select").val()
       success: (response) ->
-        for i in [0..response.length-1] by 1
+        lat = response[response.length-1].lat
+        lng = response[response.length-1].lng
+        map.setCenter
+          lat: lat
+          lng: lng
+        for i in [0..response.length-2] by 1
           polygons.push new google.maps.Polygon
             paths: response[i].coordinate_file
             strokeColor: '#F7F8FF'
@@ -92,6 +96,9 @@ $ ->
               strokeWeight: 3
               fillOpacity: 0.75
             )
+          google.maps.event.addListener(p, 'click', (event) ->
+            openInfoWindow(this.loc, this.map, event)
+          )
           google.maps.event.addListener(p, 'mouseout', (event) ->
             $("#locdetails").css("display","none")
             $("#locdetails").empty()
@@ -101,11 +108,6 @@ $ ->
               strokeOpacity: 0.8
               strokeWeight: .35
               fillOpacity: 0.5
-          )
-          google.maps.event.addListener(p, 'click', (event) ->
-            openInfoWindow(this.loc, this.map, event)
-            console.log( event.latLng.lat()+',')
-            console.log( event.latLng.lng())
           )
       error: (xhr) ->
         console.log(xhr)
