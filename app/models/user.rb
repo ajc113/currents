@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 	# :confirmable, :lockable, :timeoutable and :omniauthable
 	devise :database_authenticatable, :registerable,
 	:recoverable, :rememberable, :trackable, :validatable, :confirmable
-
+  validates :state_waters, presence: true
 	has_many :reports
 	has_many :buzzs   
 	has_many :locations, through: :reports
