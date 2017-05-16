@@ -36,7 +36,6 @@ FactoryGirl.define do
 
   
   factory :location do
-    id 2
     state_waters "MA"
     short_name "dummy_location"
     long_name "dummy_location_for_test"
@@ -45,7 +44,6 @@ FactoryGirl.define do
  
   factory :report do
     species_id 3
-    location_id 2
     catch_keepers 20
     catch_total 2323
     date {2.years.ago}

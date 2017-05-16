@@ -1,7 +1,6 @@
 RSpec.describe(ReportsController) do
   login_user
   before do
-    @state = create(:state)
     @location = create(:location)
     @report = create(:report, location_id: @location.id)
   end
