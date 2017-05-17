@@ -53,7 +53,7 @@ $ ->
 
   window.initMap = ->
     myOptions =
-      zoom: 9
+      zoom: 8
       center: new google.maps.LatLng 42.05, -70.25
       mapTypeId: google.maps.MapTypeId.SATELLITE
       scrollwheel: false
