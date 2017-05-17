@@ -1,4 +1,5 @@
 <% provide(:title, "Register") %>
+<%= javascript_include_tag 'https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js' %>
 <style>
   body {
       /*background-image: url(/assets/moon.png);*/
@@ -71,7 +72,7 @@
 
             <div class="form-group has-feedback"> 
                 <%= f.label :email %><br />
-             <%= f.email_field :email, class: "form-control", autofocus: true %>
+             <%= f.email_field :email, class: "form-control", autofocus: true, type: "email", required: true %>
             </div>
             <div class="field">
               <%= f.label :first_name %><br />
@@ -87,7 +88,7 @@
             </div>
             <div class="field">
               <%= f.label :state_waters %><br />
-	      <%= f.select :state_waters, State.where(visible: 1).pluck(:name), { prompt: 'Select State' }, class: "form-control", autofocus: true %>
+	      <%= f.select :state_waters, State.where(visible: 1).pluck(:name), { prompt: 'Select State' }, class: "form-control", autofocus: true, required: true %>
             </div>
              <div class="field">
               <%= f.label :vessel_name %><br />
@@ -98,7 +99,7 @@
               <% if @minimum_password_length %>
               <em>(<%= @minimum_password_length %> characters minimum)</em>
               <% end %><br />
-              <%= f.password_field :password, class: "form-control", autocomplete: "off" %>
+              <%= f.password_field :password, class: "form-control", autocomplete: "off", required: true %>
             </div>
             <div class="field">
               <%= f.label :password_confirmation %><br />
