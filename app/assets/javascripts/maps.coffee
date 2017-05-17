@@ -2,7 +2,7 @@ $ ->
   map = exports ? this
   infoWindow = exports ? this
   openInfoWindow = (loc, map, event)->
-    contentString = '<table><thead><tr><th>Date</th><th>Species</th><th>Vessel Name</th><th>Primary Method</th><th>Catch Total</th><th>Trip Summary</th><th>View Report</th></tr></thead><tbody><b>' + loc.short_name + '</b> <br>' + loc.long_name + '<br> <br>'
+    contentString = '<table><thead><tr><th>Date</th><th>Species</th><th>Vessel Name</th><th>Primary Method</th><th>Catch Total</th><th>Trip Summary</th></tr></thead><tbody><b>' + loc.short_name + '</b> <br>' + loc.long_name + '<br> <br>'
     $.ajax
       async: true
       url:'/reports_of_location'
@@ -11,7 +11,7 @@ $ ->
         location_id: loc.id
       success: (reports) ->
         for i in [0..reports.length-1] by 1
-          contentString += '<tr><td>' + reports[i].date + '</td> <td>' + reports[i].species.name + '</td><td>' + reports[i].vessel_name + '</td><td>' + reports[i].primary_method + '</td><td>' + reports[i].catch_total + '</td><td>' + reports[i].trip_summary + '</td> <td>' + '<a href=/reports/'+ reports[i].id + ' target="_blank"> Go to Report </a>' + '</tr>'
+          contentString += '<tr><td>' + reports[i].date + '</td> <td>' + reports[i].species.name + '</td><td>' + reports[i].user.vessel_name + '</td><td>' + reports[i].primary_method + '</td><td>' + reports[i].catch_total + '</td><td>' + reports[i].trip_summary + '</td> </tr>'
         contentString += '</tbody></table>'
         infoWindow.close() if infoWindow
         infoWindow = new google.maps.InfoWindow
@@ -53,8 +53,8 @@ $ ->
 
   window.initMap = ->
     myOptions =
-      zoom: 8
-      center: new google.maps.LatLng 42.05, -70.25
+
+      zoom: 9
       mapTypeId: google.maps.MapTypeId.SATELLITE
       scrollwheel: false
       scaleControl: false
@@ -68,7 +68,12 @@ $ ->
         species: $("#species_select").val()
         state: $("#state_select").val()
       success: (response) ->
-        for i in [0..response.length-1] by 1
+        lat = response[response.length-1].lat
+        lng = response[response.length-1].lng
+        map.setCenter
+          lat: lat
+          lng: lng
+        for i in [0..response.length-2] by 1
           polygons.push new google.maps.Polygon
             paths: response[i].coordinate_file
             strokeColor: '#F7F8FF'
@@ -92,6 +97,9 @@ $ ->
               strokeWeight: 3
               fillOpacity: 0.75
             )
+          google.maps.event.addListener(p, 'click', (event) ->
+            openInfoWindow(this.loc, this.map, event)
+          )
           google.maps.event.addListener(p, 'mouseout', (event) ->
             $("#locdetails").css("display","none")
             $("#locdetails").empty()
@@ -101,9 +109,6 @@ $ ->
               strokeOpacity: 0.8
               strokeWeight: .35
               fillOpacity: 0.5
-          )
-          google.maps.event.addListener(p, 'click', (event) ->
-            openInfoWindow(this.loc, this.map, event)
           )
       error: (xhr) ->
         console.log(xhr)

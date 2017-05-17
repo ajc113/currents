@@ -29,6 +29,6 @@
 //= require map_theme/vendor/moment-with-locales.min
 //= require map_theme/app
 //= require reports
+//= require users
 //= require underscore
 //= require turbolinks
-

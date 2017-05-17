@@ -2,6 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+$('.new_report').validate()
 $(document).ready ->
   $('.datecker').datepicker()
 

@@ -1,7 +1,8 @@
 RSpec.describe(ReportsController) do
   login_user
   before do
-    @report = create(:report)
+    @location = create(:location)
+    @report = create(:report, location_id: @location.id)
   end
 
   it("should get index") do
@@ -18,7 +19,7 @@ RSpec.describe(ReportsController) do
       post(:create,
            :report => ({
                          :best_bait => @report.best_bait,
-                         :location_id => @report.location_id,
+                         :location_id => @location.id,
                          :catch_keepers => @report.catch_keepers,
                          :catch_total => @report.catch_total,
                          :date => @report.date,
@@ -45,6 +46,7 @@ RSpec.describe(ReportsController) do
   it("should update report") do
     patch(:update, :id => (@report),
           :report => ({
+                        :location_id => @location.id,
                         :best_bait => @report.best_bait,
                         :catch_keepers => @report.catch_keepers,
                         :catch_total => 4545,

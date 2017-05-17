@@ -27,4 +27,9 @@ RSpec.describe "StaticPages" do
     it { should have_title('Network Rules') }
   end
 
+  describe "Pricing page" do
+    before { visit pricing_path }
+    it { should have_content('Select Subscription Level') }
+    it { should have_title('Pricing') }
+  end
 end

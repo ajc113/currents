@@ -16,8 +16,10 @@ class FilterBySpecies
                      reports: userreport(avgrep).length,
                      moving_average: moving_average,
                      color: color(standart_deviation),
-                     coordinate_file: render_coordinate_file(location))
+                     coordinate_file: render_coordinate_file(location)
+                    )
 			end
+    @lreports.push(lat: State.find(@state).lat, lng: State.find(@state).lng)
     return @lreports
 	end
 

@@ -1,11 +1,15 @@
 RSpec.describe Report, "Scopes" do
+  before do
+    @state = create(:state)
+    @location = create(:location)
+  end
 
   it { should belong_to :location }
   it { should belong_to :species }
   it { should belong_to :user }
 
   it ".selected_species should return records with specified species" do
-    report = Report.create! :species_id => 2, :date => "03-03-2016", :location_id => 3, :catch_keepers => 23
+    report = Report.create! :species_id => 2, :date => "03-03-2016", :location_id => @location.id, :catch_keepers => 23
     species = Report.where(:species_id => 2)
     expect(Report.species(2)).to eq species
   end
@@ -32,7 +36,7 @@ RSpec.describe Report, "Scopes" do
   end
 
   it ".selected_tide should return records with specified tide" do
-  	Report.create! :tide => "Incoming", :date => "03-03-2016", :catch_keepers => 32, :location_id => 2, :species_id => 3
+    Report.create! :tide => "Incoming", :date => "03-03-2016", :catch_keepers => 32, :location_id => @location.id, :species_id => 3
   	tide = Report.where(:tide => "Incoming")
   	expect(Report.tide("Incoming")).to eq tide
   end

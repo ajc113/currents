@@ -6,7 +6,7 @@ location_list = [
     state_waters: "MA",
     demographic: "Inshore"
   },
-    {
+  {
     number: 2,
     short_name: "Cape Cod - Peaked Hill Bar",
     long_name: "Peaked Hill Bar down to golfball",
