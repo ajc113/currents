@@ -53,6 +53,7 @@ $ ->
 
   window.initMap = ->
     myOptions =
+
       zoom: 9
       mapTypeId: google.maps.MapTypeId.SATELLITE
       scrollwheel: false
