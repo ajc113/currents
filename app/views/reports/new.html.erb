@@ -1,4 +1,5 @@
 <% provide(:title, "Log Catch Report") %>
+<%= javascript_include_tag 'https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js' %>
 <div class="content-wrapper">
   <div class="row">
     <!-- margin panel -->
@@ -33,27 +34,27 @@
               <% end %>
               <div class="field">
                 <%= f.label :date %> (Required)<br>
-                <%= f.date_select :date, end_year: Date.today.year %>
+                <%= f.date_select :date, end_year: Date.today.year, required: true %>
               </div>
               <br>
               <div class="field">
                 <%= f.label :species_id %> (Required)<br>
-                <%= f.select :species_id, Species.all.order("name ASC").pluck(:name, :id) %>
+                <%= f.select :species_id, Species.all.order("name ASC").pluck(:name, :id), required: true %>
               </div>
               <br>
               <div class="field">
                 <%= f.label :state_waters %> (Required)<br>
-                <%= f.select :state_waters, State.all.pluck(:name), {prompt: 'Select State', selected: current_user.state.name }, class: "state_selection" %>
+                <%= f.select :state_waters, State.all.pluck(:name), {prompt: 'Select State', selected: current_user.state.name }, class: "state_selection", required: true %>
               </div>
               <br>
               <div class="field">
                 <%= f.label :location_id %> (Required)<br>
-                <%= f.select  :location_id, @state_locations || Location.where(state_waters: current_user.state).order(number: :asc).map {|location| [location[:number].to_s.rjust(2, '0') + " - " + location[:short_name]] + [location.id]}, {prompt: 'Select Location'}, class: "location_id" %>
+                <%= f.select  :location_id, @state_locations || Location.where(state_waters: current_user.state).order(number: :asc).map {|location| [location[:number].to_s.rjust(2, '0') + " - " + location[:short_name]] + [location.id]}, {prompt: 'Select Location'}, class: "location_id", required: true %>
               </div>
               <br>
               <div class="field">
                 <%= f.label :catch_keepers %> (Required)<br>
-                <%= f.number_field :catch_keepers %>
+                <%= f.number_field :catch_keepers, required: true %>
               </div>
               <div class="field">
                 <%= f.label :trip_summary %><br>
