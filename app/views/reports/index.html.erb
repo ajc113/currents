@@ -133,7 +133,7 @@
           </thead>
           <tbody>
             <% if current_user %>
-            <% @reports.each do |report| %>
+            <% @filtered_reports.each do |report| %>
               <tr>
                 <td><%= report.date.try(:strftime, '%m/%d/%y') %></td>
                 <td class="wd-sm"><%= report.species.name %></td>
