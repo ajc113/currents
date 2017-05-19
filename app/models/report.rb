@@ -1,8 +1,7 @@
 class Report < ActiveRecord::Base
-  attr_accessor :state   
   include Filterable
 
-  validates :date, :species_id, :location_id, :catch_keepers, presence: true
+  validates :date, :species_id, :state_waters, :location_id, :catch_keepers, presence: true
   validate :validate_date
 
   belongs_to :location
@@ -13,6 +12,8 @@ class Report < ActiveRecord::Base
   default_scope {order('date DESC')}
 
   scope :species, -> (species) { where(species_id: species)}
+
+  scope :state, -> (state) { where(state: state) }
 
   scope :location, -> (location) { where(location: location )}
 

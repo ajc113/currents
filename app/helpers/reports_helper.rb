@@ -3,6 +3,10 @@ module ReportsHelper
 		"selected" if params[:species].to_i == species
 	end
 
+  def selected_state(state)
+    "selected" if params[:state] == state
+  end
+
 	def selected_locations(location)
 		"selected" if params[:location].to_i == location
 	end
@@ -19,4 +23,10 @@ module ReportsHelper
     html = '<option value="' + location.id.to_s  + '">' + location.number.to_s.rjust(2, '0') + ' - ' + location.short_name + '</option>'
     return html.html_safe
   end
+
+  def render_location_option_with_state location
+    html = '<option value="' + location.id.to_s  + '">' + location.short_name + ' (' + location.state.name + ')' + '</option>'
+    return html.html_safe
+  end
+
 end
