@@ -68,12 +68,15 @@ $ ->
         species: $("#species_select").val()
         state: $("#state_select").val()
       success: (response) ->
-        lat = response[response.length-1].lat
-        lng = response[response.length-1].lng
+        lat = response[response.length-2].lat
+        lng = response[response.length-2].lng
+        zoom = response[response.length-1].zoom
+        console.log(lat, lng, zoom)
         map.setCenter
           lat: lat
           lng: lng
-        for i in [0..response.length-2] by 1
+        map.setZoom(zoom)
+        for i in [0..response.length-3] by 1
           polygons.push new google.maps.Polygon
             paths: response[i].coordinate_file
             strokeColor: '#F7F8FF'
