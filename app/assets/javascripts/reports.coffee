@@ -5,7 +5,6 @@
 $('.new_report').validate()
 $(document).ready ->
   $('.datecker').datepicker()
-
   $('.state_selection').on "change", ->
     $.ajax
       url: "/locations_for_state"

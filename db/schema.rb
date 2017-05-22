@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170511105551) do
+ActiveRecord::Schema.define(version: 20170519182330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(version: 20170511105551) do
     t.boolean  "visible",    default: true
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.integer  "zoom"
   end
 
   add_index "states", ["name"], name: "index_states_on_name", unique: true, using: :btree

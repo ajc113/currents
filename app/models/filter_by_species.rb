@@ -20,6 +20,7 @@ class FilterBySpecies
                     )
 			end
     @lreports.push(lat: State.find(@state).lat, lng: State.find(@state).lng)
+    @lreports.push(zoom: State.find(@state).zoom)
     return @lreports
 	end
 

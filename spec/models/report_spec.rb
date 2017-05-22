@@ -9,7 +9,7 @@ RSpec.describe Report, "Scopes" do
   it { should belong_to :user }
 
   it ".selected_species should return records with specified species" do
-    report = Report.create! :species_id => 2, :date => "03-03-2016", :location_id => @location.id, :catch_keepers => 23
+    report = Report.create! :species_id => 2, :date => "03-03-2016", :location_id => @location.id, :catch_keepers => 23, :state_waters => "MA"
     species = Report.where(:species_id => 2)
     expect(Report.species(2)).to eq species
   end
@@ -32,11 +32,11 @@ RSpec.describe Report, "Scopes" do
   end
 
   it "can not be created in the future" do
-    expect { Report.create!(:date => 2.years.from_now, :location_id => 3, :species_id => 2, :catch_keepers => 23) }.to raise_error(ActiveRecord::RecordInvalid, "Validation failed: Date must not be set in the future")
+    expect { Report.create!(:date => 2.years.from_now, :location_id => 3, :species_id => 2, :catch_keepers => 23, :state_waters => "MA") }.to raise_error(ActiveRecord::RecordInvalid, "Validation failed: Date must not be set in the future")
   end
 
   it ".selected_tide should return records with specified tide" do
-    Report.create! :tide => "Incoming", :date => "03-03-2016", :catch_keepers => 32, :location_id => @location.id, :species_id => 3
+    Report.create! :tide => "Incoming", :date => "03-03-2016", :catch_keepers => 32, :location_id => @location.id, :species_id => 3, :state_waters => "MA"
   	tide = Report.where(:tide => "Incoming")
   	expect(Report.tide("Incoming")).to eq tide
   end
