@@ -2,7 +2,7 @@ RSpec.describe(ReportsController) do
   login_user
   before do
     @location = create(:location)
-    @report = create(:report, location_id: @location.id)
+    @report = create(:report, location_id: @location.id, state_waters: "MA")
   end
 
   it("should get index") do
@@ -30,7 +30,8 @@ RSpec.describe(ReportsController) do
                          :trip_description => @report.trip_description,
                          :trip_summary => @report.trip_summary,
                          :weather => @report.weather,
-                         :wind => @report.wind
+                         :wind => @report.wind,
+                         :state_waters => @report.state
       }))
     end.to(change { Report.count })
     # assert_redirected_to(report_path(assigns(:report)))

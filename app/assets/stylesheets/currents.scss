@@ -184,6 +184,10 @@ h2.usp-heading {
     padding: 50px;
 }
 
+.homepage-header-image {
+    width: 100%;
+}
+
 @media (min-width: 1200px) {
     .list-group-item {
         height: 349px;
@@ -196,6 +200,6 @@ h2.usp-heading {
     }
     .helvetica {
         font-size: 1.2em !important;
-	padding-top: 20px;
+        padding-top: 20px;
     }
 }

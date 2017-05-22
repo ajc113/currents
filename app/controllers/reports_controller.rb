@@ -7,10 +7,12 @@ class ReportsController < ApplicationController
 	# @reports = current_user.reports.order("date DESC")
 
 	def index
-		@reports = current_user.reports.filter(params.slice(:species, :location, :tide, :date))
+    @reports = current_user.reports
+		@filtered_reports = @reports.filter(params.slice(:species, :location, :state, :tide, :date))
 		@species_for_filter = @reports.select("DISTINCT(species_id)").unscope(:order)
 		@tides_for_filter = @reports.collect(&:tide).uniq
-		@locations_for_filter = Location.all.order("short_name ASC").unscope(:order)
+    @state_for_filter = @reports.collect(&:state).uniq
+    @locations_for_filter = @reports.collect(&:location).uniq
 	end
 
 	def show
@@ -90,7 +92,7 @@ class ReportsController < ApplicationController
 
 	# Never trust parameters from the scary internet, only allow the white list through.
 	def report_params
-		params.require(:report).permit(:date, :species_id, :general_location, :catch_keepers, :catch_total, :trip_summary, :primary_method, :tide, :weather, :wind, :spot, :picture, :best_bait, :trip_description, :location_id)
+		params.require(:report).permit(:date, :species_id, :state_waters, :general_location, :catch_keepers, :catch_total, :trip_summary, :primary_method, :tide, :weather, :wind, :spot, :picture, :best_bait, :trip_description, :location_id)
 	end
 	def location_params
 		@location = Location.where(params[:short_name])

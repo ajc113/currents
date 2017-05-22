@@ -13,7 +13,7 @@
         <form id="filter_form" action="/reports" class="form-horizontal">
           <div class="form-group">
             <!-- Species filter   -->
-            <div class="col-sm-3">
+            <div class="col-sm-2">
               <label>Species</label><br>
               <select id="species" name="species" class="form-control m-b">   
                   <option value="">Select Species</option>
@@ -23,18 +23,29 @@
                     <% end %>
               </select>
             </div>
+	    <!-- state filter -->
+            <div class="col-sm-2">
+              <label>State</label><br>
+              <select id="state" name="state" class="form-control m-b"> 
+                <option value="">Select State</option>
+                  <% @state_for_filter.each do |state| %>
+			  <option value=<%= state.name %> <%= selected_state(state.name) %>><%= state.name %></option> 
+                  <% end %>
+              </select> 
+            </div>
+
             <!-- locations filter -->
-            <div class="col-sm-3">
+            <div class="col-sm-4">
               <label>Location</label><br>
               <select id="location" name="location" class="form-control m-b"> 
                 <option value="">Select Location</option>
                   <% @locations_for_filter.each do |location| %>
-		    <%= render_location_option(location) %>
+		    <%= render_location_option_with_state(location) %>
                   <% end %>
               </select> 
             </div>
               <!-- tide filter -->
-            <div class="col-sm-3">
+            <div class="col-sm-2">
               <label>Tide</label><br>
                 <select id="tide" name="tide" class="form-control m-b">   
                   <option value="">Select Tide</option>
@@ -45,7 +56,7 @@
                 </select>
             </div>
               <!-- date filter -->
-            <div class="col-sm-3">
+            <div class="col-sm-2">
               <label>Month</label><br>  
               <%= select_month(params[:date].to_i, { :prompt => "Select Date", :user_month_name => true }, name: "date", :class => "form-control m-b", id: "date") %>
             </div>
@@ -63,6 +74,9 @@
 <!-- filter script -->
 <script>
   $('#species').change(function(){
+    $('#filter_form').submit();
+  });
+  $('#state').change(function(){
     $('#filter_form').submit();
   });
   $('#location').change(function(){
@@ -102,6 +116,7 @@
               <th class="wd-td3">Date</th>
               <th class="wd-sm">Target species</th>
               <th class="wd-td3">Location</th>
+              <th class="wd-sm">State</th>
               <th class="wd-md">Catch keepers</th>
               <th class="wd-md">Catch total</th>
               <th class="wd-td1"> Trip summary</th>
@@ -118,11 +133,12 @@
           </thead>
           <tbody>
             <% if current_user %>
-            <% @reports.each do |report| %>
+            <% @filtered_reports.each do |report| %>
               <tr>
                 <td><%= report.date.try(:strftime, '%m/%d/%y') %></td>
-                <td class="wd-sm"><%= Species.find(report.species_id).name %></td>
+                <td class="wd-sm"><%= report.species.name %></td>
                 <td class="wd-td3"><%= report.location.try(:short_name) %></td>
+                <td class="wd-sm"><%= report.state.name %></td>
                 <td><%= report.catch_keepers %></td>
                 <td><%= report.catch_total %></td>
                 <td class="wd-td1"><%= report.trip_summary %></td>
