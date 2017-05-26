@@ -3,7 +3,7 @@ ActiveAdmin.register Report do
   belongs_to :species, optional: true
 
   permit_params :catch_keepers, :catch_totals, :trip_summary, :primary_method, :tide, :weather, :wind, :spot, :best_bait, :trip_description, :lattitude, :longitude, :location_id, :user_id, :date, :species_id
-
+  remove_filter :state
   index do
     selectable_column
     actions
