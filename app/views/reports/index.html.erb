@@ -29,7 +29,7 @@
               <select id="state" name="state" class="form-control m-b"> 
                 <option value="">Select State</option>
                   <% @state_for_filter.each do |state| %>
-			  <option value=<%= state.name %> <%= selected_state(state.name) %>><%= state.name %></option> 
+			  <option value=<%= state.name %> <%= selected_state(state.name) %>> <%= state.name %></option> 
                   <% end %>
               </select> 
             </div>
