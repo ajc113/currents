@@ -9,11 +9,11 @@ class GetMovingAverage
   end
 
   def one_weeks_reports
-    avgrep = @reports.where(:date => Date.today-7..Date.today-1) unless blank?
+    @reports.where(:date => Date.today-7..Date.today-1) unless blank?
   end
 
   def eight_days_reports
-    prevavgrep = @reports.where(:date => Date.today-8..Date.today-2) unless blank?
+    @reports.where(:date => Date.today-8..Date.today-2) unless blank?
   end
 
   def standard_deviation
@@ -30,6 +30,6 @@ class GetMovingAverage
 				0.to_f
 			end
 		}
-		movingavg = avarray.inject{ |sum, el| sum + el }.to_f / avarray.size
+		movingavg = avarray.reduce(:+).to_f / avarray.size
 	end
 end

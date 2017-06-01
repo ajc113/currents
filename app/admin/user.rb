@@ -1,7 +1,7 @@
 ActiveAdmin.register User do
 
-
-permit_params :email, :first_name, :last_name, :home_port, :state, :vessel_name, :subscription_tier
+remove_filter :state
+permit_params :email, :first_name, :last_name, :home_port, :state_waters, :vessel_name, :subscription_tier
 
     sidebar "Reports", only: [:show, :edit] do
         ul do

@@ -4,10 +4,12 @@ puts "Creating users"
     User.create!(
       email: FFaker::Internet.email,
       confirmed_at: DateTime.now,
-      password: 'password'
+      password: 'password',
+      state_waters: State.order("RANDOM()").first.name,
     )
     print '.'
-  rescue ActiveRecord::RecordInvalid
+  rescue => error
+    puts error.backtrace
     print 'F'
   end
 end
@@ -18,11 +20,9 @@ real_users = [
 
   {
     email: "costa.aj@gmail.com",
-    password: "password",
   },
-   {
+  {
     email: "ajcosta1@gmail.com",
-    password: "password",
   },
 
 ]
@@ -32,7 +32,8 @@ real_users.each do |user|
     User.create!(
       email: user[:email],
       password: 'password',
-      confirmed_at: DateTime.now
+      confirmed_at: DateTime.now,
+      state_waters: State.order("RANDOM()").first.name,
     )
     print '.'
   rescue
