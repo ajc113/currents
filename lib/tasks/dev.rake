@@ -10,6 +10,12 @@ namespace :dev do
 		create_reports
 	end
 
+  task :truncate, [:table_name] => :environment do |t, args|
+    table_name = args[:table_name]
+    ActiveRecord::Base.connection.execute("TRUNCATE #{table_name} RESTART IDENTITY")
+    puts "Table #{table_name} is truncated"
+  end
+
 	def create_reports
     primary_methods = ['Live Bait', 'Dead Bait', 'Kite', 'Jigging', 'Popping', 'Trolling']
     Location.all.each do |location|
