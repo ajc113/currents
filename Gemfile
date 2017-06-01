@@ -70,6 +70,7 @@ group :development, :test do
   gem 'coderay'
   gem 'm', '~>1.5.0'
   gem 'rspec-json_expectations'
+  gem 'pry-rails'
 
 end
 

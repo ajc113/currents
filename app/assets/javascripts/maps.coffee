@@ -53,8 +53,8 @@ $ ->
 
   window.initMap = ->
     myOptions =
-
       zoom: 8
+
       mapTypeId: google.maps.MapTypeId.SATELLITE
       scrollwheel: false
       scaleControl: false
@@ -71,7 +71,6 @@ $ ->
         lat = response[response.length-2].lat
         lng = response[response.length-2].lng
         zoom = response[response.length-1].zoom
-        console.log(lat, lng, zoom)
         map.setCenter
           lat: lat
           lng: lng
