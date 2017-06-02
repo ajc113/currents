@@ -9,6 +9,7 @@ $ ->
       type: 'get'
       data:
         location_id: loc.id
+        species_id: $('#species_select').val()
       success: (reports) ->
         for i in [0..reports.length-1] by 1
           contentString += '<tr><td>' + reports[i].date + '</td> <td>' + reports[i].species.name + '</td><td>' + reports[i].user.vessel_name + '</td><td>' + reports[i].primary_method + '</td><td>' + reports[i].catch_total + '</td><td>' + reports[i].trip_summary + '</td> </tr>'
