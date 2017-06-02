@@ -1,6 +1,6 @@
 class FilterBySpecies
 	def initialize(current_user, species, state)
-		@species = "Any" || species
+		@species = species || "Any"
     @state = state
     @locations = Location.where(state_waters: @state)
 	end
