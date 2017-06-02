@@ -48,6 +48,12 @@ class FilterBySpecies
 		@rep
 	end
 	def render_coordinate_file(location)
-    eval(location.coordinate_file.read).to_a
+    begin
+      eval(location.try(:coordinate_file).read).to_a
+    rescue Exception => msg
+      #PartyFoul::RacklessExceptionHandler.handle(msg, class: 'filter_by_species', method: 'render_coordinate_file')
+      puts "File not found for #{location.short_name}"
+      puts "Exception #{msg}"
+    end
 	end
 end

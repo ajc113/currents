@@ -72,7 +72,7 @@
 
               <div class="field">
               <%= f.label :state_waters %><br />
-	      <%= f.select :state_waters, State.where(visible: 1).pluck(:name), { prompt: 'Select State' }, class: "form-control", autofocus: true %>
+	      <%= f.select :state_waters, State.where(visible: 1).pluck(:name), {}, class: "form-control", autofocus: true %>
               </div>
 
 
