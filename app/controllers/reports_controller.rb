@@ -11,8 +11,8 @@ class ReportsController < ApplicationController
     @filtered_reports = @reports.filter(params.slice(:species, :location, :state, :tide, :date)).page params[:page]
 		@species_for_filter = @reports.select("DISTINCT(species_id)").unscope(:order)
 		@tides_for_filter = @reports.collect(&:tide).uniq
-    @state_for_filter = @reports.collect(&:state).uniq.sort_by!{ |state| [state.visible ? 0 : 1, state.name] }
-    @locations_for_filter = @reports.collect(&:location).uniq
+    @state_for_filter = @reports.collect(&:state).uniq.sort_by{ |state| [state.visible ? 0 : 1, state.name] }
+    @locations_for_filter = @reports.collect(&:location).uniq.sort_by { |location| location.short_name }
 	end
 
 	def show
