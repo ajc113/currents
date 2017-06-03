@@ -1,204 +1,187 @@
 <% provide(:title, "Reports") %>
 <%= image_tag 'lighthouse2.jpg',  class: 'img-responsive hidden-xs', style: 'display:block; opacity: .85' %>
-  <!-- log new report button -->
-  <div class="p-lg text-center">
-    <%= link_to 'Log New Report', new_report_path, class: "btn btn-inverse btn-lg" %>
-  </div>
-
-
-  <!-- Filter panel -->
-  <div class="panel panel-default col-sm-12 bg-gray">
-    <h3 class="h3">Report Filter</h3>
-      <div class="panel-body">
-        <form id="filter_form" action="/reports" class="form-horizontal">
-          <div class="form-group">
-            <!-- Species filter   -->
-            <div class="col-sm-2">
-              <label>Species</label><br>
-              <select id="species" name="species" class="form-control m-b">   
-                  <option value="">Select Species</option>
-                    <% @species_for_filter.each do |report| %>
-                  <option value="<%= report.species_id %>" <%= selected_species(report.species_id) %>><%= report.species.name %>
-                  </option>
-                    <% end %>
-              </select>
-            </div>
-	    <!-- state filter -->
-            <div class="col-sm-2">
-              <label>State</label><br>
-              <select id="state" name="state" class="form-control m-b"> 
-                <option value="">Select State</option>
-                  <% @state_for_filter.each do |state| %>
-			  <option value=<%= state.name %> <%= selected_state(state.name) %>> <%= state.name %></option> 
-                  <% end %>
-              </select> 
-            </div>
-
-            <!-- locations filter -->
-            <div class="col-sm-4">
-              <label>Location</label><br>
-              <select id="location" name="location" class="form-control m-b"> 
-                <option value="">Select Location</option>
-                  <% @locations_for_filter.each do |location| %>
-		    <%= render_location_option_with_state(location) %>
-                  <% end %>
-              </select> 
-            </div>
-              <!-- tide filter -->
-            <div class="col-sm-2">
-              <label>Tide</label><br>
-                <select id="tide" name="tide" class="form-control m-b">   
-                  <option value="">Select Tide</option>
-                    <% @tides_for_filter.each do |tide| %>
-                  <option value="<%= tide %>" <%= selected_tide(tide) %>><%= tide %>
-                  </option>
-                    <% end %>
-                </select>
-            </div>
-              <!-- date filter -->
-            <div class="col-sm-2">
-              <label>Month</label><br>  
-              <%= select_month(params[:date].to_i, { :prompt => "Select Date", :user_month_name => true }, name: "date", :class => "form-control m-b", id: "date") %>
-            </div>
-          </div>
-        </form>
+<!-- log new report button -->
+<div class="p-lg text-center">
+  <%= link_to 'Log New Report', new_report_path, class: "btn btn-inverse btn-lg" %>
+</div>
+<!-- Filter panel -->
+<div class="panel panel-default col-sm-12 bg-gray">
+  <h3 class="h3">Report Filter</h3>
+  <div class="panel-body">
+    <form id="filter_form" action="/reports" class="form-horizontal">
+      <div class="form-group">
+        <!-- Species filter   -->
+        <div class="col-sm-2">
+          <label>Species</label><br>
+          <select id="species" name="species" class="form-control m-b">
+            <option value="">Select Species</option>
+            <% @species_for_filter.each do |report| %>
+              <option value="<%= report.species_id %>" <%= selected_species(report.species_id) %>><%= report.species.name %>
+              </option>
+            <% end %>
+          </select>
+        </div>
+        <!-- state filter -->
+        <div class="col-sm-2">
+          <label>State</label><br>
+          <select id="state" name="state" class="form-control m-b">
+            <option value="">Select State</option>
+            <% @state_for_filter.each do |state| %>
+              <option value=<%= state.name %> <%= selected_state(state.name) %>><%= state.name %></option>
+            <% end %>
+          </select>
+        </div>
+        <!-- locations filter -->
+        <div class="col-sm-4">
+          <label>Location</label><br>
+          <select id="location" name="location" class="form-control m-b">
+            <option value="">Select Location</option>
+            <% @locations_for_filter.each do |location| %>
+              <%= render_location_option_with_state(location) %>
+            <% end %>
+          </select>
+        </div>
+        <!-- tide filter -->
+        <div class="col-sm-2">
+          <label>Tide</label><br>
+          <select id="tide" name="tide" class="form-control m-b">
+            <option value="">Select Tide</option>
+            <% @tides_for_filter.each do |tide| %>
+              <option value="<%= tide %>" <%= selected_tide(tide) %>><%= tide %>
+              </option>
+            <% end %>
+          </select>
+        </div>
+        <!-- date filter -->
+        <div class="col-sm-2">
+          <label>Month</label><br>
+          <%= select_month(params[:date].to_i, { :prompt => "Select Date", :user_month_name => true }, name: "date", :class => "form-control m-b", id: "date") %>
+        </div>
       </div>
+    </form>
   </div>
-  
-  <div class="text-center">
-    <%= link_to 'Clear Filter', reports_path, class: 'btn btn-info btn-lg' %>
-  </div>
-
- <p id="notice"><%= notice %></p>
-
+</div>
+<div class="text-center">
+  <%= link_to 'Clear Filter', reports_path, class: 'btn btn-info btn-lg' %>
+</div>
+<p id="notice"><%= notice %></p>
 <!-- filter script -->
 <script>
   $('#species').change(function(){
-    $('#filter_form').submit();
-  });
-  $('#state').change(function(){
-    $('#filter_form').submit();
-  });
-  $('#location').change(function(){
-    $('#filter_form').submit();
-  });
-   $('#tide').change(function(){
-    $('#filter_form').submit();
-  });
-    $('#date').change(function(){
-    $('#filter_form').submit();
-  });
+          $('#filter_form').submit();
+        });
+        $('#state').change(function(){
+          $('#filter_form').submit();
+        });
+        $('#location').change(function(){
+          $('#filter_form').submit();
+        });
+         $('#tide').change(function(){
+          $('#filter_form').submit();
+        });
+          $('#date').change(function(){
+          $('#filter_form').submit();
+        });
 </script>
 <!-- end of filter -->
-
-
-         <!-- Page content-->
-
-
+<!-- Page content-->
 <!-- start of REPORTS -->
 <div id="table-container">
   <div class="content-wrapper">
     <div class="row">
-    <!-- header   -->
+      <!-- header   -->
       <div class="panel-heading bg-info text-center">
         <h2>
           <%= current_user.vessel_name %> Catch Reports
         </h2>
       </div>
-    <!-- end of header -->
-
-    <!-- start of report table -->
+      <!-- end of header -->
+      <!-- start of report table -->
       <div class="panel panel-default">
-      <div class="table-responsive b0">
-        <table id="datatable1" class="table table-striped table-hover">
-          <thead>
-            <tr>
-              <th class="wd-td3">Date</th>
-              <th class="wd-sm">Target species</th>
-              <th class="wd-td3">Location</th>
-              <th class="wd-sm">State</th>
-              <th class="wd-md">Catch keepers</th>
-              <th class="wd-md">Catch total</th>
-              <th class="wd-td1"> Trip summary</th>
-              <th class="wd-md">Primary method</th>
-              <th class="wd-md">Tide</th>
-              <th class="wd-md">Weather</th>
-              <th class="wd-td3">Wind</th>
-              <th class="wd-md">Spot</th>
-              <th class="wd-md">Best bait</th>
-              <th class="wd-md">Trip description</th>  
-              <th class="wd-md">Edit</th> 
-              <th class="wd-md">Delete</th> 
-            </tr>
-          </thead>
-          <tbody>
-            <% if current_user %>
-            <% @filtered_reports.each do |report| %>
+        <div class="table-responsive b0">
+          <table id="datatable1" class="table table-striped table-hover">
+            <thead>
               <tr>
-                <td><%= report.date.try(:strftime, '%m/%d/%y') %></td>
-                <td class="wd-sm"><%= report.species.name %></td>
-                <td class="wd-td3"><%= report.location.try(:short_name) %></td>
-                <td class="wd-sm"><%= report.state.name %></td>
-                <td><%= report.catch_keepers %></td>
-                <td><%= report.catch_total %></td>
-                <td class="wd-td1"><%= report.trip_summary %></td>
-                <td><%= report.primary_method %></td>
-                <td><%= report.tide %></td>
-                <td><%= report.weather %></td>
-                <td class="wd-td3"><%= report.wind %></td>
-                <td><%= report.spot %></td>
-                <td><%= report.best_bait %></td>
-                <td class="wd-td1"><%= report.trip_description %></td>
-                <td><%= link_to 'Edit', edit_report_path(report) %></td>
-                <td><%= link_to 'Delete', report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <th class="wd-td3">Date</th>
+                <th class="wd-sm">Target species</th>
+                <th class="wd-td3">Location</th>
+                <th class="wd-sm">State</th>
+                <th class="wd-md">Catch keepers</th>
+                <th class="wd-md">Catch total</th>
+                <th class="wd-td1"> Trip summary</th>
+                <th class="wd-md">Primary method</th>
+                <th class="wd-md">Tide</th>
+                <th class="wd-md">Weather</th>
+                <th class="wd-td3">Wind</th>
+                <th class="wd-md">Spot</th>
+                <th class="wd-md">Best bait</th>
+                <th class="wd-md">Trip description</th>
+                <th class="wd-md">Edit</th>
+                <th class="wd-md">Delete</th>
               </tr>
-            <% end %>
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              <% if current_user %>
+                <% @filtered_reports.each do |report| %>
+                  <tr>
+                    <td><%= report.date.try(:strftime, '%m/%d/%y') %></td>
+                    <td class="wd-sm"><%= report.species.name %></td>
+                    <td class="wd-td3"><%= report.location.try(:short_name) %></td>
+                    <td class="wd-sm"><%= report.state.name %></td>
+                    <td><%= report.catch_keepers %></td>
+                    <td><%= report.catch_total %></td>
+                    <td class="wd-td1"><%= report.trip_summary %></td>
+                    <td><%= report.primary_method %></td>
+                    <td><%= report.tide %></td>
+                    <td><%= report.weather %></td>
+                    <td class="wd-td3"><%= report.wind %></td>
+                    <td><%= report.spot %></td>
+                    <td><%= report.best_bait %></td>
+                    <td class="wd-td1"><%= report.trip_description %></td>
+                    <td><%= link_to 'Edit', edit_report_path(report) %></td>
+                    <td><%= link_to 'Delete', report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- end of report table -->
       </div>
-      </div>
-      <!-- end of report table -->
-
     </div>
-  </div>
   <% end %>
   <div id="bottom_anchor"></div>
 </div>
-
-
 <div class="row">
   <div class="p-lg text-center">
     <%= link_to 'Log New Report', new_report_path, class: "btn btn-inverse btn-lg" %>
   </div>
 </div>
-
- <%= link_to "http://www.surveygizmo.com/s3/3252926/New-Survey", target: :_blank do %>
- <h1 style="font-size: 35px; color: red; text-align: center">Click here to provide feedback on feature </h1>
- <% end %>
+<%= link_to "http://www.surveygizmo.com/s3/3252926/New-Survey", target: :_blank do %>
+  <h1 style="font-size: 35px; color: red; text-align: center">Click here to provide feedback on feature </h1>
+<% end %>
 </div>
-
 <script>
   function moveScroll(){
-      var scroll = $(window).scrollTop();
-      var anchor_top = $("#datatable1").offset().top;
-      var anchor_bottom = $("#bottom_anchor").offset().top;
-      if (scroll>anchor_top && scroll<anchor_bottom) {
-      clone_table = $("#clone");
-      if(clone_table.length == 0){
-          clone_table = $("#datatable1").clone();
-          clone_table.attr('id', 'clone');
-          clone_table.css({position:'fixed',
-                   'pointer-events': 'none',
-                   top:0});
-          clone_table.width($("#datatable1").width());
-          $("#table-container").append(clone_table);
-          $("#clone").css({visibility:'hidden'});
-          $("#clone thead").css({visibility:'visible'});
-      }
-      } else {
-      $("#clone").remove();
-      }
-    }
-  $(window).scroll(moveScroll);
+            var scroll = $(window).scrollTop();
+            var anchor_top = $("#datatable1").offset().top;
+            var anchor_bottom = $("#bottom_anchor").offset().top;
+            if (scroll>anchor_top && scroll<anchor_bottom) {
+            clone_table = $("#clone");
+            if(clone_table.length == 0){
+                clone_table = $("#datatable1").clone();
+                clone_table.attr('id', 'clone');
+                clone_table.css({position:'fixed',
+                         'pointer-events': 'none',
+                         top:0});
+                clone_table.width($("#datatable1").width());
+                $("#table-container").append(clone_table);
+                $("#clone").css({visibility:'hidden'});
+                $("#clone thead").css({visibility:'visible'});
+            }
+            } else {
+            $("#clone").remove();
+            }
+          }
+        $(window).scroll(moveScroll);
 </script>
-
