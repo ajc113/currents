@@ -68,20 +68,20 @@
 <!-- filter script -->
 <script>
   $('#species').change(function(){
-          $('#filter_form').submit();
-        });
-        $('#state').change(function(){
-          $('#filter_form').submit();
-        });
-        $('#location').change(function(){
-          $('#filter_form').submit();
-        });
-         $('#tide').change(function(){
-          $('#filter_form').submit();
-        });
-          $('#date').change(function(){
-          $('#filter_form').submit();
-        });
+            $('#filter_form').submit();
+          });
+          $('#state').change(function(){
+            $('#filter_form').submit();
+          });
+          $('#location').change(function(){
+            $('#filter_form').submit();
+          });
+           $('#tide').change(function(){
+            $('#filter_form').submit();
+          });
+            $('#date').change(function(){
+            $('#filter_form').submit();
+          });
 </script>
 <!-- end of filter -->
 <!-- Page content-->
@@ -144,6 +144,9 @@
                 <% end %>
               </tbody>
             </table>
+            <div class="pagination-section">
+              <%= paginate @filtered_reports %>
+            </div>
           </div>
         </div>
         <!-- end of report table -->
@@ -163,25 +166,25 @@
 </div>
 <script>
   function moveScroll(){
-            var scroll = $(window).scrollTop();
-            var anchor_top = $("#datatable1").offset().top;
-            var anchor_bottom = $("#bottom_anchor").offset().top;
-            if (scroll>anchor_top && scroll<anchor_bottom) {
-            clone_table = $("#clone");
-            if(clone_table.length == 0){
-                clone_table = $("#datatable1").clone();
-                clone_table.attr('id', 'clone');
-                clone_table.css({position:'fixed',
-                         'pointer-events': 'none',
-                         top:0});
-                clone_table.width($("#datatable1").width());
-                $("#table-container").append(clone_table);
-                $("#clone").css({visibility:'hidden'});
-                $("#clone thead").css({visibility:'visible'});
+              var scroll = $(window).scrollTop();
+              var anchor_top = $("#datatable1").offset().top;
+              var anchor_bottom = $("#bottom_anchor").offset().top;
+              if (scroll>anchor_top && scroll<anchor_bottom) {
+              clone_table = $("#clone");
+              if(clone_table.length == 0){
+                  clone_table = $("#datatable1").clone();
+                  clone_table.attr('id', 'clone');
+                  clone_table.css({position:'fixed',
+                           'pointer-events': 'none',
+                           top:0});
+                  clone_table.width($("#datatable1").width());
+                  $("#table-container").append(clone_table);
+                  $("#clone").css({visibility:'hidden'});
+                  $("#clone thead").css({visibility:'visible'});
+              }
+              } else {
+              $("#clone").remove();
+              }
             }
-            } else {
-            $("#clone").remove();
-            }
-          }
-        $(window).scroll(moveScroll);
+          $(window).scroll(moveScroll);
 </script>

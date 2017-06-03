@@ -8,7 +8,7 @@ class ReportsController < ApplicationController
 
 	def index
     @reports = current_user.reports
-		@filtered_reports = @reports.filter(params.slice(:species, :location, :state, :tide, :date))
+    @filtered_reports = @reports.filter(params.slice(:species, :location, :state, :tide, :date)).page params[:page]
 		@species_for_filter = @reports.select("DISTINCT(species_id)").unscope(:order)
 		@tides_for_filter = @reports.collect(&:tide).uniq
     @state_for_filter = @reports.collect(&:state).uniq
