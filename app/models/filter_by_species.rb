@@ -10,7 +10,7 @@ class FilterBySpecies
       reports = location.reports.where(species)
       avgrep = reports.where(:date => 1.week.ago..Date.today).order(date: :desc)
       maps_data = GetMovingAverage.new(reports)
-      moving_average = maps_data.moving_average
+      moving_average = maps_data.moving_average.round(3)
       standart_deviation = maps_data.standard_deviation
       @lreports.push(location:location.as_json(only: [:id, :short_name, :long_name]),
                      reports: userreport(avgrep).length,
@@ -51,7 +51,7 @@ class FilterBySpecies
     begin
       eval(location.try(:coordinate_file).read).to_a
     rescue Exception => msg
-      #PartyFoul::RacklessExceptionHandler.handle(msg, class: 'filter_by_species', method: 'render_coordinate_file')
+      PartyFoul::RacklessExceptionHandler.handle(msg, class: 'filter_by_species', method: 'render_coordinate_file')
       puts "File not found for #{location.short_name}"
       puts "Exception #{msg}"
     end

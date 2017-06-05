@@ -16,7 +16,7 @@ module ReportsHelper
 	end
 
 	def all_species
-		Report.all.collect(&:species_id).compact.uniq
+    Species.where("id in (select species_id from reports)").uniq.sort
 	end
 
   def render_location_option location

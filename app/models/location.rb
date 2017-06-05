@@ -2,6 +2,8 @@ class Location < ActiveRecord::Base
 
 
   mount_uploader :coordinate_file, LocationJsonUploader
+  validates :coordinate_file, presence: true
+  validates :state_waters, presence: true
 
   has_many :reports
   has_many :users, through: :reports
