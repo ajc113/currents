@@ -11,8 +11,8 @@
         <select name="species" class="form-control m-b" id="species_select">
           <option value="Any">Any</option>
           <% all_species.each do |species| %>
-            <option value="<%= species %>">
-              <%= Species.find(species).name %>
+            <option value="<%= species.id %>">
+              <%= species.name %>
             </option>
           <% end %>
         </select>
