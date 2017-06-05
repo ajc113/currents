@@ -34,7 +34,7 @@
       <br>
       <div class="field">
         <%= f.label :state_waters %> (Required)<br>
-        <%= f.select :state_waters, State.all.pluck(:name), {prompt: 'Select State', selected: current_user.state.name }, class: "state_selection" %>
+        <%= f.select :state_waters, State.sorted.pluck(:name), {prompt: 'Select State', selected: current_user.state.name }, class: "state_selection" %>
       </div>
       <br>
       <div class="field">

@@ -48,6 +48,9 @@ gem 'rails_serve_static_assets'
 gem 'bootstrap-datepicker-rails'
 gem 'pg'
 gem 'ffaker'
+gem 'kaminari'
+gem 'delayed_job_active_record'
+gem 'daemons'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

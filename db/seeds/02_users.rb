@@ -5,7 +5,7 @@ puts "Creating users"
       email: FFaker::Internet.email,
       confirmed_at: DateTime.now,
       password: 'password',
-      state_waters: State.order("RANDOM()").first.name,
+      state_waters: State.where(visible: 1).order("RANDOM()").first.name,
     )
     print '.'
   rescue => error
@@ -33,7 +33,7 @@ real_users.each do |user|
       email: user[:email],
       password: 'password',
       confirmed_at: DateTime.now,
-      state_waters: State.order("RANDOM()").first.name,
+      state_waters: State.where(visible: 1).order("RANDOM()").first.name,
     )
     print '.'
   rescue

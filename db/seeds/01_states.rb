@@ -44,7 +44,7 @@ states = [
     name: "Offshore - Gulf of Maine",
     lat: 42.80346172417078,
     lng: -69.3621826171875,
-    visible: 0,
+    visible: false,
     zoom: 9
 
   },
@@ -52,7 +52,7 @@ states = [
     name: "Offshore - South of New England",
     lat: 40.89275342420696,
     lng: -70.97442626953125,
-    visible: 0,
+    visible: false,
     zoom: 9
 
   },
@@ -60,7 +60,7 @@ states = [
     name: "Offshore - East of Chatham and Georges Bank",
     lat: 41.430371882652814,
     lng: -69.3621826171875,
-    visible: 0,
+    visible: false,
     zoom: 9
 
   },
@@ -68,7 +68,7 @@ states = [
     name: "Offshore - Northeast Canyons",
     lat: 39.80853604144591,
     lng: -69.642333984375,
-    visible: 0,
+    visible: false,
     zoom: 8
 
   }
