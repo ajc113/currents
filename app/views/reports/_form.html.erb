@@ -38,7 +38,7 @@
       </div>
       <br>
       <div class="field">
-        <%= f.label :location_id %> (Required)<br>
+	      <span class="field_label"><%= f.label :location_id %> (Required)</span><br>
         <%= f.select  :location_id, @state_locations || Location.where(state_waters: current_user.state).order(number: :asc).map {|location| [location[:number].to_s.rjust(2, '0') + " - " + location[:short_name]] + [location.id]}, {prompt: 'Select Location'}, class: "location_id" %>
       </div>
       <br>

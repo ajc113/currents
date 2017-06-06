@@ -25,6 +25,7 @@ $ ->
           gmStyleTable = $('.gm-style-iw').children(':nth-child(1)').addClass('gm-style-table')
           gmStyleTable.css
             'width': '100%'
+            'display': 'table-row'
           iwBackground = iwOuter.prev()
           iwBackground.children(':nth-child(2)').css
             'display': 'none'
@@ -55,7 +56,6 @@ $ ->
   window.initMap = ->
     myOptions =
       zoom: 8
-
       mapTypeId: google.maps.MapTypeId.SATELLITE
       scrollwheel: false
       scaleControl: false
@@ -76,6 +76,9 @@ $ ->
           lat: lat
           lng: lng
         map.setZoom(zoom)
+        google.maps.event.addListener(map, 'click', (event) ->
+          infoWindow.close()
+        )
         for i in [0..response.length-3] by 1
           if(response[i].coordinate_file)
             polygons.push new google.maps.Polygon
@@ -102,6 +105,14 @@ $ ->
                 fillOpacity: 0.75
               )
             google.maps.event.addListener(p, 'click', (event) ->
+              notification  = 'Feteching reports for ' + this.loc.short_name + '<br>Please wait...'
+
+              infoWindow.close() if infoWindow
+              infoWindow = new google.maps.InfoWindow
+                disableAutoPan: false
+              infoWindow.setContent(notification)
+              infoWindow.setPosition(event.latLng)
+              infoWindow.open(map)
               openInfoWindow(this.loc, this.map, event)
             )
             google.maps.event.addListener(p, 'mouseout', (event) ->

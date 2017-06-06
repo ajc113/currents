@@ -7,15 +7,8 @@
   <h4> Filter by Species<small> - View only your target species by location</small></h4>
   <div class="row">
     <div class="col-md-3">
-      <%= form_tag species_filter_path, id: 'species_form' do %>
-        <select name="species" class="form-control m-b" id="species_select">
-          <option value="Any">Any</option>
-          <% all_species.each do |species| %>
-            <option value="<%= species.id %>">
-              <%= species.name %>
-            </option>
-          <% end %>
-        </select>
+      <%= form_for(:species_filter) do |f| %>
+        <%= f.select :species, all_species.map{ |species| [species.name, species.id] }, { prompt: "Any" }, class: "form-control m-b", id: "species_select" %>
       <% end %>
     </div>
     <div class="col-md-3">

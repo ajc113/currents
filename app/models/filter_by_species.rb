@@ -1,13 +1,13 @@
 class FilterBySpecies
-	def initialize(current_user, species, state)
-		@species = species || "Any"
-    @state = state
-    @locations = Location.where(state_waters: @state)
+	def initialize(current_user, species = '', state)
+		@species = "species_id = #{species}" unless species == ''
+    @state = State.find(state)
+    @locations = @state.locations
 	end
 	def maps_data
 		@lreports = []
 		@locations.all.each do |location|
-      reports = location.reports.where(species)
+      reports = location.reports.where(@species)
       avgrep = reports.where(:date => 1.week.ago..Date.today).order(date: :desc)
       maps_data = GetMovingAverage.new(reports)
       moving_average = maps_data.moving_average.round(3)
@@ -19,8 +19,8 @@ class FilterBySpecies
                      coordinate_file: render_coordinate_file(location)
                     )
 			end
-    @lreports.push(lat: State.find(@state).lat, lng: State.find(@state).lng)
-    @lreports.push(zoom: State.find(@state).zoom)
+    @lreports.push(lat: @state.lat, lng: @state.lng)
+    @lreports.push(zoom: @state.zoom)
     return @lreports
 	end
 
@@ -34,11 +34,6 @@ class FilterBySpecies
 		end
   end
 
-  def species
-    return nil if @species == "Any"
-    return "species_id = #{@species}"
-  end
-	
 	def userreport(reports)
 		@rep = []
 		i = 0

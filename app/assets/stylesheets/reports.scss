@@ -158,3 +158,12 @@ select#report_location_id {
 .pagination-section {
     text-align: center;
 }
+
+.report-header-image {
+    width: 100%;
+}
+
+.location_id[disabled] {
+    background: #ffc;
+    color: #998;
+}

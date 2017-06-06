@@ -9,7 +9,7 @@ RSpec.describe Report, "Scopes" do
   it { should belong_to :user }
 
   it ".selected_species should return records with specified species" do
-    report = Report.create! :species_id => 2, :date => "03-03-2016", :location_id => @location.id, :catch_keepers => 23, :state_waters => "MA"
+    report = build(:report, species_id: 2)
     species = Report.where(:species_id => 2)
     expect(Report.species(2)).to eq species
   end
@@ -20,7 +20,7 @@ RSpec.describe Report, "Scopes" do
   end
 
   it ".selected_location should return records with specified locations" do
-    location = Location.create!(:short_name => "NY", :coordinate_file => Rails.root.join("db/seed_data/location_coordinate_files/test.json").open)
+    location = build(:location)
     @location_id = location.id
     location = Report.where(:location_id => @location_id)
     expect(Report.location(@location_id)).to eq location
@@ -36,7 +36,7 @@ RSpec.describe Report, "Scopes" do
   end
 
   it ".selected_tide should return records with specified tide" do
-    Report.create! :tide => "Incoming", :date => "03-03-2016", :catch_keepers => 32, :location_id => @location.id, :species_id => 3, :state_waters => "MA"
+    build(:report, tide: "Incoming")
   	tide = Report.where(:tide => "Incoming")
   	expect(Report.tide("Incoming")).to eq tide
   end
