@@ -25,6 +25,7 @@ $ ->
           gmStyleTable = $('.gm-style-iw').children(':nth-child(1)').addClass('gm-style-table')
           gmStyleTable.css
             'width': '100%'
+            'display': 'table-row'
           iwBackground = iwOuter.prev()
           iwBackground.children(':nth-child(2)').css
             'display': 'none'
@@ -104,6 +105,14 @@ $ ->
                 fillOpacity: 0.75
               )
             google.maps.event.addListener(p, 'click', (event) ->
+              notification  = 'Feteching reports for ' + this.loc.short_name + '<br>Please wait...'
+
+              infoWindow.close() if infoWindow
+              infoWindow = new google.maps.InfoWindow
+                disableAutoPan: false
+              infoWindow.setContent(notification)
+              infoWindow.setPosition(event.latLng)
+              infoWindow.open(map)
               openInfoWindow(this.loc, this.map, event)
             )
             google.maps.event.addListener(p, 'mouseout', (event) ->
