@@ -2,6 +2,7 @@ require 'rails_helper'
 RSpec.feature "Admin visits" do
   before do
     @admin_user = create(:admin_user)
+    create(:state, name: "MA")
     @location = create(:location)
     admin_login(@admin_user)
   end 
