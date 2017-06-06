@@ -55,7 +55,6 @@ $ ->
   window.initMap = ->
     myOptions =
       zoom: 8
-
       mapTypeId: google.maps.MapTypeId.SATELLITE
       scrollwheel: false
       scaleControl: false
@@ -76,6 +75,9 @@ $ ->
           lat: lat
           lng: lng
         map.setZoom(zoom)
+        google.maps.event.addListener(map, 'click', (event) ->
+          infoWindow.close()
+        )
         for i in [0..response.length-3] by 1
           if(response[i].coordinate_file)
             polygons.push new google.maps.Polygon
