@@ -70,8 +70,8 @@ class ReportsController < ApplicationController
 		end
 	end
 	def locations_for_state
-		@state = params[:state_short_code]
-		@state_locations = Location.where(state_waters: @state).order(:number)
+    @state = State.find(params[:state_short_code])
+    @state_locations = @state.locations.order(:number)
 	end
 
 
