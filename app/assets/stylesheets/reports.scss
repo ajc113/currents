@@ -162,3 +162,8 @@ select#report_location_id {
 .report-header-image {
     width: 100%;
 }
+
+.location_id[disabled] {
+    background: #ffc;
+    color: #998;
+}
