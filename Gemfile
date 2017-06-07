@@ -30,10 +30,10 @@ gem 'seed_dump'
 gem 'gmaps4rails'
 gem 'devise'
 gem 'puma'
-gem 'activeadmin', github: 'activeadmin'
+gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin.git'
 gem 'filterrific'
 gem 'sprockets-rails', '2.3.3'
-gem 'by_star', git: "git://github.com/radar/by_star"	
+gem 'by_star', git: 'https://github.com/radar/by_star.git'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'colorize'
