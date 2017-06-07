@@ -4,7 +4,7 @@ ActiveAdmin.register Location do
 	# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 	#
 	permit_params :number, :short_name, :long_name, :state_waters, :demographic, :coordinates, :lat1, :lng1, :lat2, :lng2, :lat3, :lng3, :lat4, :lng4, :coordinate_file
-	remove_filter   :state
+	remove_filter :state
 
 	index do
 		selectable_column
@@ -16,7 +16,7 @@ ActiveAdmin.register Location do
 		column :demographic
 	end
 
-	form do |f|
+	form do
 		inputs do
 			input :short_name
 			input :long_name
