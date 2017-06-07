@@ -7,12 +7,12 @@ class ReportsController < ApplicationController
 	# @reports = current_user.reports.order("date DESC")
 
 	def index
-    @reports = current_user.reports
-    @filtered_reports = @reports.filter(params.slice(:species, :location, :state, :tide, :date)).page params[:page]
+		@reports = current_user.reports
+		@filtered_reports = @reports.filter(params.slice(:species, :location, :state, :tide, :date)).page params[:page]
 		@species_for_filter = @reports.select("DISTINCT(species_id)").unscope(:order)
 		@tides_for_filter = @reports.collect(&:tide).uniq
-    @state_for_filter = @reports.collect(&:state).uniq.sort_by{ |state| [state.visible ? 0 : 1, state.name] }
-    @locations_for_filter = @reports.collect(&:location).uniq.sort_by { |location| location.short_name }
+		@state_for_filter = @reports.collect(&:state).uniq.sort_by{ |state| [state.visible ? 0 : 1, state.name] }
+		@locations_for_filter = @reports.collect(&:location).uniq.sort_by { |location| location.short_name }
 	end
 
 	def show
@@ -23,7 +23,7 @@ class ReportsController < ApplicationController
 	def new
 		@report = Report.new
 		species
-			end
+	end
 
 	# GET /reports/1/edit
 	def edit
@@ -35,7 +35,7 @@ class ReportsController < ApplicationController
 	def create
 		@report = Report.new(report_params)
 		@report.user=current_user
-				respond_to do |format|
+		respond_to do |format|
 			if @report.save
 				format.html { redirect_to reports_url, notice: 'Report was successfully created.' }
 				# format.json { render :show, status: :created, location: @report }
@@ -70,8 +70,8 @@ class ReportsController < ApplicationController
 		end
 	end
 	def locations_for_state
-    @state = State.find(params[:state_short_code])
-    @state_locations = @state.locations.order(:number)
+		@state = State.find(params[:state_short_code])
+		@state_locations = @state.locations.order(:number)
 	end
 
 
