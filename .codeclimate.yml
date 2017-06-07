@@ -46,3 +46,4 @@ exclude_paths:
 - vendor/
 - app/assets/javascripts/map_theme/
 - app/assets/stylesheets/map_theme/
+- app/assets/stylesheets/bootstrap-rtl.css
