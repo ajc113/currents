@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
 	has_many :buzzs   
 	has_many :locations, through: :reports
   belongs_to :state, primary_key: :name, foreign_key: :state_waters
+
+  #display_name is defined for activeadmin
 	def display_name
 		self.email
 	end
