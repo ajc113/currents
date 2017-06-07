@@ -16,7 +16,7 @@ ActiveAdmin.register Location do
 		column :demographic
 	end
 
-	form do
+	form do |f|
 		inputs do
 			input :short_name
 			input :long_name
