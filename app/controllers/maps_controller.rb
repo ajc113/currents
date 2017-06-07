@@ -23,6 +23,6 @@ class MapsController < ApplicationController
     params.require(:report).permit(:date, :species_id, :general_location, :catch_keepers, :catch_total, :trip_summary, :primary_method, :tide, :weather, :wind, :spot, :picture, :best_bait, :trip_description, :location_id)
   end
   def location_params
-    @location = Location.where(params[:short_name])
+    @location = Location.find_by(short_name: params[:short_name])
   end
 end
