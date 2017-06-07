@@ -24,3 +24,5 @@ spec/example.txt
 
 #files generate by linux as backup
 .fuse_hidden*
+
+config/secrets.yml
