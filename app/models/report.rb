@@ -9,6 +9,8 @@ class Report < ActiveRecord::Base
   belongs_to :species
   belongs_to :state, foreign_key: :state_waters
 
+  by_star_field :date
+
   default_scope {order('date DESC')}
 
   scope :species, -> (species) { where(species_id: species)}
@@ -24,14 +26,7 @@ class Report < ActiveRecord::Base
 
 
   def location_json
-    f = File.read self.location.coordinate_file.path
-    # puts "f is #{f.inspect}".green
-    # # f = f[0]
-    # puts "f[0] is #{f}".blue
-    # location_json = JSON.parse(f)
-    # puts "location_json is #{location_json}".green
-    # return location_json
-    f
+    File.read self.location.coordinate_file.path
   end
 
   private

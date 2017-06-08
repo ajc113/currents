@@ -9,11 +9,11 @@ class GetMovingAverage
   end
 
   def one_weeks_reports
-    @reports.where(:date => Date.today-7..Date.today-1) unless blank?
+    @reports.past_week unless blank?
   end
 
   def eight_days_reports
-    @reports.where(:date => Date.today-8..Date.today-2) unless blank?
+    @reports.between_times(Date.today-8, Date.today-2) unless blank?
   end
 
   def standard_deviation
