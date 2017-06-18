@@ -1,46 +1,23 @@
 RSpec.describe GetMovingAverage do
   before do
-    create(:report, catch_keepers: 1, date: Date.today-8)
-    create(:report, catch_keepers: 2, date: Date.today-8)
-    create(:report, catch_keepers: 0, date: Date.today-8)
-    create(:report, catch_keepers: 1, date: Date.today-8)
-
-    create(:report, catch_keepers: 1, date: Date.today-7)
-    create(:report, catch_keepers: 2, date: Date.today-7)
-    create(:report, catch_keepers: 0, date: Date.today-7)
-    create(:report, catch_keepers: 1, date: Date.today-7)
-    
-    create(:report, catch_keepers: 1, date: Date.today-6)
-    create(:report, catch_keepers: 1, date: Date.today-6)
-    create(:report, catch_keepers: 2, date: Date.today-6)
-    create(:report, catch_keepers: 2, date: Date.today-6)
-
-    create(:report, catch_keepers: 0, date: Date.today-5)
-
-    create(:report, catch_keepers: 0, date: Date.today-4)
-
-    create(:report, catch_keepers: 1, date: Date.today-3)
-    create(:report, catch_keepers: 2, date: Date.today-3)
-    create(:report, catch_keepers: 3, date: Date.today-3)
-    create(:report, catch_keepers: 1, date: Date.today-3)
-
-    create(:report, catch_keepers: 3, date: Date.today-2)
-    create(:report, catch_keepers: 2, date: Date.today-2)
-    create(:report, catch_keepers: 1, date: Date.today-2)
-    create(:report, catch_keepers: 1, date: Date.today-2)
-    create(:report, catch_keepers: 2, date: Date.today-2)
-
-    create(:report, catch_keepers: 3, date: Date.today-1)
-    create(:report, catch_keepers: 3, date: Date.today-1)
-    create(:report, catch_keepers: 4, date: Date.today-1)
-    create(:report, catch_keepers: 2, date: Date.today-1)
-    create(:report, catch_keepers: 4, date: Date.today-1)
-
-    create(:report, catch_keepers: 5, date: Date.today)
-    create(:report, catch_keepers: 2, date: Date.today)
-    create(:report, catch_keepers: 3, date: Date.today)
-    create(:report, catch_keepers: 3, date: Date.today)
-    create(:report, catch_keepers: 4, date: Date.today)
+    # Following is the hash of each day and catch_keepers
+    # The new report will be created with each catch_keepers value
+    report = {
+     8 => [1,2,0,1],
+     7 => [1,2,0,1],
+     6 => [1,1,2,2],
+     5 => [0],
+     4 => [0],
+     3 => [1,2,3,1],
+     2 => [3,2,1,1,2],
+     1 => [3,3,4,2,4],
+     0 => [5,2,3,3,4]
+    }
+    report.each do |day, catch_keepers_array|
+      catch_keepers_array.each do |catch_keepers|
+        create(:report, catch_keepers: catch_keepers, date: Date.today - day)
+      end
+    end
   end
 
   it "should calculate moving average for the given reports" do
