@@ -32,7 +32,7 @@ class Report < ActiveRecord::Base
   private
 
   def validate_date
-    unless  self[:date] <  Date.today
+    if !self[:date].blank? and self[:date] > Date.today
       errors.add(:date, 'must not be set in the future')
     end
   end
