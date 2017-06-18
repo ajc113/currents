@@ -10,12 +10,12 @@ class FilterBySpecies
 			reports = location.reports.where(@species)
 			avgrep = reports.where(:date => 1.week.ago..Date.today).order(date: :desc)
 			maps_data = GetMovingAverage.new(reports)
-			moving_average = maps_data.moving_average.round(3)
-			standart_deviation = maps_data.standard_deviation
+			moving_average = maps_data.moving_average
+			standard_deviation = maps_data.standard_deviation
 			@lreports.push(location:location.as_json(only: [:id, :short_name, :long_name]),
 				reports: userreport(avgrep).length,
 				moving_average: moving_average,
-				color: color(standart_deviation),
+				color: color(standard_deviation),
 				coordinate_file: render_coordinate_file(location)
 			)
 		end
@@ -24,10 +24,10 @@ class FilterBySpecies
 		return @lreports
 	end
 
-	def color standart_deviation
-		if standart_deviation > 1
+	def color standard_deviation
+		if standard_deviation > 1
 			color = "#FF3E38"
-		elsif standart_deviation > 0
+		elsif standard_deviation > 0
 			color = "#C1AF6A"
 		else
 			color = "#4562A8"
