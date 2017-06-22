@@ -8,15 +8,15 @@ class FilterBySpecies
 		@lreports = []
 		@locations.all.each do |location|
 			reports = location.reports.where(@species)
-			avgrep = reports.where(:date => 1.week.ago..Date.today).order(date: :desc)
-			maps_data = GetMovingAverage.new(reports)
-			moving_average = maps_data.moving_average
-			standard_deviation = maps_data.standard_deviation
+			avgrep = reports.past_week.order(date: :desc)
+      maps_data = GetMovingAverage.new(reports) unless reports.blank?
+      moving_average = maps_data.try(:moving_average) || 0
+			standard_deviation = maps_data.try(:standard_deviation) || 0
 			@lreports.push(location:location.as_json(only: [:id, :short_name, :long_name]),
-				reports: userreport(avgrep).length,
+				reports: avgrep.length,
 				moving_average: moving_average,
 				color: color(standard_deviation),
-				coordinate_file: render_coordinate_file(location)
+				coordinate_file: render_coordinate_file(location),
 			)
 		end
 		@lreports.push(lat: @state.lat, lng: @state.lng)
@@ -34,14 +34,6 @@ class FilterBySpecies
 		end
 	end
 
-	def userreport(reports)
-		@rep = []
-		i = 0
-		reports.each do |rep|
-			@rep.push({rep: rep, vessel_name: rep.user.try(:vessel_name)})
-		end
-		@rep
-	end
 	def render_coordinate_file(location)
 		begin
 			eval(location.try(:coordinate_file).read).to_a
