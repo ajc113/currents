@@ -1,24 +1,37 @@
 FactoryGirl.define do
   factory :state do
-    name "MA"
+    name {  
+      [
+       "CT",
+       "MA",
+       "ME",
+       "NH",
+       "NY",
+       "RI",
+       "Offshore - Gulf of Maine",
+       "Offshore - South of New England",
+       "Offshore - East of Chatham and Georges Bank",
+       "Offshore - Northeast Canyons"
+      ].sample
+    }
     lat 1.5
     lng 1.51
     visible true
+    initialize_with { State.find_or_create_by(name: name) }
   end
 
   factory :species, class: 'Species' do
     name "MyString"
-
-
     state_waters "MyString"
     located "MyString"
   end
+
   factory :user do
     id "34"
     email "abc@gmail.com"
     password "abcdef"
     sign_in_count "4"
-    state_waters "MA"
+    state
     confirmed_at DateTime.now
   end
 
@@ -36,7 +49,7 @@ FactoryGirl.define do
 
   
   factory :location do
-    state_waters "MA"
+    state
     short_name "dummy_location"
     long_name "dummy_location_for_test"
     coordinate_file { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'support', 'dummy_location_data.json')) }
@@ -47,6 +60,11 @@ FactoryGirl.define do
     catch_keepers 20
     catch_total 2323
     date {2.years.ago}
+    location
+    state
+     factory :report_without_validation do
+       to_create {|instance| instance.save(validate: false) }
+     end
   end
 
 end

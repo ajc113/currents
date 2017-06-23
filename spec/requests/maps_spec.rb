@@ -6,7 +6,7 @@ RSpec.describe "/reports_of_location" do
     @new_user = create(:user)
     login_as(@new_user, scope: :user)
     @location = create(:location)
-    @report = create(:report, :location_id => @location.id, :state_waters => "MA")
+    @report = create(:report, :location_id => @location.id, :state_waters => state.name)
   end
 
   it "returns particular fiedls of reports for a location" do

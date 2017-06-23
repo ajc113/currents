@@ -4,32 +4,31 @@ class GetMovingAverage
   end
 
   def moving_average
-    @movingavg = one_week_average(one_weeks_reports, Date.today-7)
-    @prevmovingavg = one_week_average(eight_days_reports, Date.today-8)
+    one_week_average(one_weeks_reports).round(2)
+  end
+
+  def pre_moving_average
+    one_week_average(eight_days_reports).round(2)
   end
 
   def one_weeks_reports
-    @reports.where(:date => Date.today-7..Date.today-1) unless blank?
+    @reports.between_times(Date.today-6, Date.today) unless @reports.blank?
   end
 
   def eight_days_reports
-    @reports.where(:date => Date.today-8..Date.today-2) unless blank?
+    @reports.between_times(Date.today-7, Date.today-1) unless @reports.blank?
   end
 
   def standard_deviation
-    @movingavg.to_i - @prevmovingavg.to_i
+    (moving_average - pre_moving_average).round(2)
   end
 
-  def one_week_average(avgrep,startdate)
-    enddate = startdate + 7
-		avggroup = avgrep.group('date').average('catch_keepers')
-		avarray = (startdate..enddate).map {|date|
-			if avggroup[date]
-				avggroup[date].to_f
-			else
-				0.to_f
-			end
-		}
-		movingavg = avarray.reduce(:+).to_f / avarray.size
+  def one_week_average(avgrep)
+    group_average = avgrep.group('date').average('catch_keepers').map(&:last).flatten.reduce(:+) / 7 unless avgrep.blank?
+    if group_average.blank?
+      0
+    else
+      group_average
+    end
 	end
 end

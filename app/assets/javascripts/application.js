@@ -30,5 +30,4 @@
 //= require map_theme/app
 //= require reports
 //= require users
-//= require underscore
 //= require turbolinks

@@ -92,8 +92,9 @@ RSpec.configure do |config|
 		config.allow_unknown_urls
 	end
 	#Devise
-	config.include Devise::TestHelpers, type: :controller
-	config.include Devise::TestHelpers, type: :view
+	config.include Devise::Test::ControllerHelpers, type: :controller
+	config.include Devise::Test::ControllerHelpers, type: :view
+  config.include Devise::Test::IntegrationHelpers, type: :feature
 	config.extend ControllerMacros, :type => :controller
   config.include AdminSessionHelper, :type => :feature
 end

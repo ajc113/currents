@@ -74,6 +74,7 @@ group :development, :test do
   gem 'm', '~>1.5.0'
   gem 'rspec-json_expectations'
   gem 'pry-rails'
+  gem 'pry-byebug'
 
 end
 
