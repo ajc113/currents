@@ -2,7 +2,7 @@ RSpec.describe(ReportsController) do
   login_user
   before do
     @location = create(:location)
-    @report = create(:report, location_id: @location.id, state_waters: "MA")
+    @report = create(:report, location_id: @location.id)
   end
 
   it("should get index") do

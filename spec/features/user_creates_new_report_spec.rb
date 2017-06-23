@@ -3,7 +3,7 @@ RSpec.feature "User opens Log Catch Report page", :js => true do
 	before do
     @state = create(:state)
 		Species.create(name:"Bluefish")
-    new_user = create(:user, state_waters: "MA")
+    new_user = create(:user, state_waters: @state.name)
 		Location.create(number: 1,
 		  short_name: "Stellwagen Bank - (NWC) Northwest Corner",
       state_waters: @state.name,
