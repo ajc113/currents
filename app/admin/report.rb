@@ -11,6 +11,7 @@ ActiveAdmin.register Report do
     actions
     column :user_id
     column :date
+    column :state
     column :location
     column :species
     column :catch_keepers
