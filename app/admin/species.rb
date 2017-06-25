@@ -1,6 +1,6 @@
 ActiveAdmin.register Species do
 
-permit_params :name, :state_waters, :located
+permit_params :name, :located
     
     sidebar "Reports", only: [:show, :edit] do
         ul do
@@ -12,7 +12,6 @@ permit_params :name, :state_waters, :located
     selectable_column
     actions
     column :name
-    column :state_waters
     column :located
   end
 
