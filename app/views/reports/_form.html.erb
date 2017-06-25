@@ -1,7 +1,7 @@
 <%= form_for(@report) do |f| %>
   <legend class="text-left" style="margin-bottom: 0px">
     <div class="title-css">
-      <h1><%= current_user.vessel_name %></h1>
+      <h1><%= current_user.try(:vessel_name) %></h1>
       <h2>Edit Your Catch Report</h2>
     </div>
     <!-- public form panel -->
@@ -34,7 +34,7 @@
       <br>
       <div class="field">
         <%= f.label :state_waters %> (Required)<br>
-        <%= f.select :state_waters, State.sorted.pluck(:name), {prompt: 'Select State', selected: current_user.state.name }, class: "state_selection" %>
+	<%= f.select :state_waters, State.sorted.pluck(:name), { prompt: 'Select State', selected: ( @report.new_record? ? current_user.state.name : @report.state.name) }, class: "state_selection" %>
       </div>
       <br>
       <div class="field">
