@@ -29,12 +29,4 @@ module ReportsHelper
     return html.html_safe
   end
   
-  def state_name()
-    if @report.new_record?
-      current_user.state
-    else
-      @report.state
-    end
-  end
-
 end
