@@ -1,6 +1,6 @@
 ActiveAdmin.register Buzz do
 
-  permit_params :user_id,
+  permit_params :user_id, :post
 
 
   index do
