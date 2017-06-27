@@ -28,5 +28,5 @@ module ReportsHelper
     html = '<option value="' + location.id.to_s  + '">' + location.short_name + ' (' + location.state.name + ')' + '</option>'
     return html.html_safe
   end
-
+  
 end

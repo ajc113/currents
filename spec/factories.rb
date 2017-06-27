@@ -27,8 +27,7 @@ FactoryGirl.define do
   end
 
   factory :user do
-    id "34"
-    email "abc@gmail.com"
+    email { FFaker::Internet.email }
     password "abcdef"
     sign_in_count "4"
     state
@@ -36,8 +35,8 @@ FactoryGirl.define do
   end
 
   factory :buzz do
-    user_id "34"
     post "buzzz string"
+    user
   end
 
   factory :admin_user do
