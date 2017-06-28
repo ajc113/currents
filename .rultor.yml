@@ -19,6 +19,7 @@ release:
     git push -f heroku $(git symbolic-ref --short HEAD):master
   commanders:
   - tannakartikey
+  - ajc113
 deploy:
   script: |
     git remote add heroku git@heroku.com:currents-kt.git
@@ -29,5 +30,7 @@ deploy:
     git push -f heroku master:master
   commanders:
   - tannakartikey
+  - ajc113
 architect:
 - tannakartikey
+- ajc113
