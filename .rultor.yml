@@ -4,6 +4,11 @@ assets:
 install: |-
   git config --global user.email "hello@thefishing.network"
   git config --global user.name "currents-network"
+merge:
+  script: |
+    bundle install
+    rake
+  fast-froward: only
 release:
   script: |
     bundle install
