@@ -1,0 +1,41 @@
+assets:
+  id_rsa: "tannakartikey/currents_private#currents.heroku"
+  id_rsa.pub: "tannakartikey/currents_private#currents.heroku.pub"
+install: |-
+  git config --global user.email "hello@thefishing.network"
+  git config --global user.name "currents-network"
+merge:
+  script: |
+    bundle install
+    rake
+  fast-froward: only
+release:
+  script: |
+    bundle install
+    rake
+    git commit -am "${tag}"
+    git remote add heroku git@heroku.com:currents-kt.git
+    mkdir ~/.ssh
+    mv ../id_rsa ../id_rsa.pub ~/.ssh
+    chmod -R 600 ~/.ssh/*
+    echo -e \
+      "Host *\n  StrictHostKeyChecking no\n  UserKnownHostsFile=/dev/null" \
+      > ~/.ssh/config
+    git push -f heroku $(git symbolic-ref --short HEAD):master
+  commanders:
+  - tannakartikey
+  - ajc113
+deploy:
+  script: |
+    git remote add heroku git@heroku.com:currents-kt.git
+    mkdir ~/.ssh
+    mv ../id_rsa ../id_rsa.pub ~/.ssh
+    chmod -R 600 ~/.ssh/*
+    echo -e "Host *\n  StrictHostKeyChecking no\n  UserKnownHostsFile=/dev/null" > ~/.ssh/config
+    git push -f heroku master:master
+  commanders:
+  - tannakartikey
+  - ajc113
+architect:
+- tannakartikey
+- ajc113
