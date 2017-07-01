@@ -6,7 +6,7 @@ Rails.application.routes.draw do
         resources :reports
       end
     end
-  devise_for :users
+  devise_for :users, sign_out_via: [:get, :delete]
   root to: 'currents#index'
 
   # :registrations => "users/registrations"
@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   resources :locations
   resources :buzzs
   resources :reports
-  resources :users
   resources :maps
   resources :currents
 
