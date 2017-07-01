@@ -13,7 +13,7 @@ RSpec.feature "User opens Log Catch Report page", :js => true do
 
 	scenario "to log new catch report" do
 		visit new_report_path
-		select DateTime.now.day-1, :from => "report[date(3i)]"
+		select DateTime.now.day, :from => "report[date(3i)]"
 		select "Bluefish", :from => "report[species_id]"
     select @state.name, :from => "report[state_waters]" 
 		wait_for_ajax
