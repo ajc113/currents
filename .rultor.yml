@@ -6,9 +6,7 @@ install: |-
   git config --global user.name "currents-network"
 merge:
   script: |
-    bundle install
-    rake
-  fast-froward: only
+  fast-froward: no
 release:
   script: |
     git remote add heroku git@heroku.com:currents-dev.git
@@ -16,8 +14,6 @@ release:
     mv ../id_rsa ../id_rsa.pub ~/.ssh
     chmod -R 600 ~/.ssh/*
     echo -e "Host *\n  StrictHostKeyChecking no\n  UserKnownHostsFile=/dev/null" > ~/.ssh/config
-    git tag -a ${tag} -m "tagged with ${tag}"
-    git push origin --tags
     git push -f heroku $(git symbolic-ref --short HEAD):master
     curl -f --connect-timeout 15 --retry 5 --retry-delay 30 http://thefishing.network > /dev/null
   commanders:
