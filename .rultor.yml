@@ -1,3 +1,5 @@
+docker:
+  image: tannakartikey/currents
 assets:
   id_rsa: "tannakartikey/currents_private#currents.heroku"
   id_rsa.pub: "tannakartikey/currents_private#currents.heroku.pub"
@@ -6,9 +8,13 @@ install: |-
   git config --global user.name "currents-network"
 merge:
   script: |
+    bundle install
+    rake
   fast-froward: no
 release:
   script: |
+    bundle install
+    rake
     git remote add heroku git@heroku.com:currents-dev.git
     mkdir ~/.ssh
     mv ../id_rsa ../id_rsa.pub ~/.ssh
@@ -21,6 +27,8 @@ release:
   - ajc113
 deploy:
   script: |
+    bundle install
+    rake
     git remote add heroku git@heroku.com:currents-kt.git
     mkdir ~/.ssh
     mv ../id_rsa ../id_rsa.pub ~/.ssh
