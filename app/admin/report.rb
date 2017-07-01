@@ -25,21 +25,22 @@ ActiveAdmin.register Report do
 
   form do |f|
     inputs do
-      input :user
-      input :date
-      input :species
-      input :state, as: :select, include_blank: false
-      input :location
-      input :catch_keepers
-      input :trip_summary
-      input :catch_total
-      input :primary_method, as: :select, collection: ["Live Bait", "Dead Bait", "Kite", "Jigging", "Popping", "Trolling"]
-      input :tide, as: :select, collection: ["Incoming", "Outgoing", "Slack"]
-      input :weather, as: :select, collection: ["Overcast", "Rain", "Sun", "Fog"]
-      input :wind, as: :select, collection: ['W < 10 mph', 'W 10-20 mph', 'W > 20 mph', 'NW < 10 mph', 'NW 10-20 mph', 'NW > 20 mph','N < 10 mph', 'N 10-20 mph', 'N > 20 mph','NE < 10 mph', 'NE 10-20 mph', 'NE > 20 mph','E < 10 mph', 'E 10-20 mph', 'E > 20 mph', 'SE < 10 mph', 'SE 10-20 mph', 'SE > 20 mph','S < 10 mph', 'S 10-20 mph', 'S > 20 mph','SW < 10 mph', 'SW 10-20 mph', 'SW > 20 mph'] 
-      input :spot
-      input :best_bait
-      input :trip_description
+      input :user, include_blank: false
+      input :date, include_blank: false
+      input :species, include_blank: false
+      input :state, as: :select, include_blank: true, prompt: true, input_html: { class: "state_selection" }
+      input :location, as: :select, include_blank: true, prompt: "First select the state", input_html: { class: "location_id" }, collection: {}
+      input :catch_keepers, input_html: { style: "width: 100px" }
+      input :catch_total, input_html: { style: "width: 100px" }
+      input :primary_method, as: :select, include_blank: false, collection: ["Live Bait", "Dead Bait", "Kite", "Jigging", "Popping", "Trolling"]
+      input :tide, as: :select, include_blank: false, collection: ["Incoming", "Outgoing", "Slack"]
+      input :weather, as: :select, include_blank: false, collection: ["Overcast", "Rain", "Sun", "Fog"]
+      input :wind, as: :select, include_blank: false, collection: ['W < 10 mph', 'W 10-20 mph', 'W > 20 mph', 'NW < 10 mph', 'NW 10-20 mph', 'NW > 20 mph','N < 10 mph', 'N 10-20 mph', 'N > 20 mph','NE < 10 mph', 'NE 10-20 mph', 'NE > 20 mph','E < 10 mph', 'E 10-20 mph', 'E > 20 mph', 'SE < 10 mph', 'SE 10-20 mph', 'SE > 20 mph','S < 10 mph', 'S 10-20 mph', 'S > 20 mph','SW < 10 mph', 'SW 10-20 mph', 'SW > 20 mph'] 
+      input :spot, as: :string
+      input :best_bait, as: :string
+      input :trip_description, as: :text, input_html: { rows: 2 }
+      input :trip_summary, input_html: { rows: 2 }
+      div (image_tag "",  class: 'img-responsive location-legend-image admin', style: 'display:block; opacity: .95'), class: "location-legend-admin-div"
     end
     actions
   end
