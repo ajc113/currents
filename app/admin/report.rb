@@ -7,6 +7,11 @@ ActiveAdmin.register Report do
   filter :state, as: :check_boxes
   filter :date
   filter :location, multiple: :true
+  filter :primary_method, as: :select
+  filter :tide, as: :select
+  filter :wind, as: :select
+  filter :spot, as: :select
+  filter :best_bait, as: :select
   index do
     selectable_column
     actions
