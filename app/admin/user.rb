@@ -1,7 +1,20 @@
 ActiveAdmin.register User do
 
-	filter :state, as: :check_boxes
 	permit_params :email, :first_name, :last_name, :home_port, :state_waters, :vessel_name, :subscription_tier
+	filter :state, as: :check_boxes
+  filter :location, multiple: :true
+
+  index do
+    selectable_column
+    actions
+    column :email
+    column :subscription_tier
+    column :first_name
+    column :last_name
+    column :vessel_name
+    column :state
+    column :sign_in_count
+  end
 
 	sidebar "Reports", only: [:show, :edit] do
 		ul do
