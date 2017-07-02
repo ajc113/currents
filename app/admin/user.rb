@@ -2,7 +2,8 @@ ActiveAdmin.register User do
 
 	permit_params :email, :first_name, :last_name, :home_port, :state_waters, :vessel_name, :subscription_tier
 	filter :state, as: :check_boxes
-  filter :location, multiple: :true
+  filter :created_at, label: 'Sign up date'
+  filter :subscription_tier, as: :select
 
   index do
     selectable_column
