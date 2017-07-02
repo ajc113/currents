@@ -4,6 +4,10 @@ assets:
   id_rsa: "tannakartikey/currents_private#currents.heroku"
   id_rsa.pub: "tannakartikey/currents_private#currents.heroku.pub"
 install: |-
+  #sudo apt-get install -y postgresql
+  #sudo /etc/init.d/postgresql start
+  #sudo -u postgres -- sh -c "psql --command 'CREATE USER currents WITH SUPERUSER PASSWORD \'currents\'"
+  #sudo -u  postgres -- sh -c "createdb currents_test --owner currents"
   git config --global user.email "hello@thefishing.network"
   git config --global user.name "currents-network"
 merge:
