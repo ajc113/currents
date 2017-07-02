@@ -1,9 +1,12 @@
 ActiveAdmin.register Report do
   belongs_to :user, optional: true
   belongs_to :species, optional: true
+  config.sort_order = 'date desc'
 
   permit_params :catch_keepers, :catch_totals, :trip_summary, :primary_method, :tide, :weather, :wind, :spot, :best_bait, :trip_description, :lattitude, :longitude, :location_id, :user_id, :date, :species_id
-  remove_filter :state
+  filter :state, as: :check_boxes
+  filter :date
+  filter :location, multiple: :true
   index do
     selectable_column
     actions
@@ -45,13 +48,3 @@ ActiveAdmin.register Report do
     actions
   end
 end
-
-
-#
-# or
-#
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if params[:action] == 'create' && current_user.admin?
-#   permitted
-# end
