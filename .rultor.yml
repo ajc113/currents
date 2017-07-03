@@ -19,7 +19,11 @@ merge:
 release:
   script: |
     bundle install
-    rake
+    /etc/init.d/postgresql start
+    RAILS_ENV=test  rake db:create
+    Xvfb :99 &
+    export DISPLAY=:99
+    RAILS_ENV=test rake
     git remote add heroku git@heroku.com:currents-dev.git
     mkdir ~/.ssh
     mv ../id_rsa ../id_rsa.pub ~/.ssh
