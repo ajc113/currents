@@ -5,6 +5,7 @@ assets:
   id_rsa.pub: "tannakartikey/currents_private#currents.heroku.pub"
 env:
   RAILS_ENV: "test"
+  DISPLAY: ":99"
 install: |-
   git config --global user.email "hello@thefishing.network"
   git config --global user.name "currents-network"
@@ -27,6 +28,12 @@ release:
   - ajc113
 deploy:
   script: |-
+    sudo chown -R r:r /usr/local
+    bundle install
+    /etc/init.d/postgresql start
+    rake db:create
+    Xvfb :99 &
+    rake
     git remote add heroku git@heroku.com:currents-kt.git
     mkdir ~/.ssh
     mv ../id_rsa ../id_rsa.pub ~/.ssh
