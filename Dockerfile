@@ -73,6 +73,8 @@ RUN curl -L https://get.rvm.io | bash -s stable
 RUN /bin/bash -l -c "rvm requirements"
 RUN /bin/bash -l -c "rvm install 2.3.4"
 RUN /bin/bash -l -c "gem update && gem install --no-ri --no-rdoc nokogiri:1.6.7.2 bundler:1.15.1"
+ADD https://raw.githubusercontent.com/tannakartikey/currents/master/Gemfile /
+RUN bundle install
 
 # NodeJS
 RUN rm -rf /usr/lib/node_modules
