@@ -3,14 +3,11 @@ docker:
 assets:
   id_rsa: "tannakartikey/currents_private#currents.heroku"
   id_rsa.pub: "tannakartikey/currents_private#currents.heroku.pub"
+  application.yml: "tannakartikey/currents_private#config/application.yml"
 env:
   RAILS_ENV: "test"
   DISPLAY: ":99"
-  CURRENTS_DB_NAME: "currents_test"
-  CURRENTS_PSQL_USERNAME: "currents"
-  CURRENTS_PSQL_PASSWORD: "currents"
-  CODECLIMATE_REPO_TOKEN: "6baff733d54da0d4301ea7e9e9f4601e10ce557b6601523271df4ea9a08fc3c3"
-install: |-
+  install: |-
   sudo chown -R r:r /usr/local
   bundle install
   sudo /etc/init.d/postgresql start
