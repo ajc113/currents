@@ -36,10 +36,6 @@ RUN apt-get install -y ssh && \
 #Postgres
 RUN apt-get install -y postgresql postgresql-contrib libpq-dev
 
-# Note: The official Debian and Ubuntu images automatically ``apt-get clean``
-# after each ``apt-get``
-
-# Run the rest of the commands as the ``postgres`` user created by the ``postgres-9.3`` package when it was ``apt-get installed``
 USER postgres
 
 # Create a PostgreSQL role named ``docker`` with ``docker`` as the password and
@@ -68,6 +64,7 @@ CMD ["/usr/lib/postgresql/9.3/bin/postgres", "-D", "/var/lib/postgresql/9.3/main
 USER root
 #require for capybara-webkit
 RUN apt-get install -y qt5-default libqt5webkit5-dev gstreamer1.0-plugins-base gstreamer1.0-tools gstreamer1.0-x xvfb
+
 # Ruby
 RUN apt-get update && apt-get install -y ruby-dev libmagic-dev=1:5.14-2ubuntu3.3 \
   zlib1g-dev=1:1.2.8.dfsg-1ubuntu1
@@ -76,62 +73,6 @@ RUN curl -L https://get.rvm.io | bash -s stable
 RUN /bin/bash -l -c "rvm requirements"
 RUN /bin/bash -l -c "rvm install 2.3.4"
 RUN /bin/bash -l -c "gem update && gem install --no-ri --no-rdoc nokogiri:1.6.7.2 bundler:1.15.1"
-
-# PHP
-RUN apt-get install -y php5 php5-dev php-pear
-RUN curl --silent --show-error https://getcomposer.org/installer | php
-RUN mv composer.phar /usr/local/bin/composer
-RUN mkdir jsl && \
-  wget --quiet http://www.javascriptlint.com/download/jsl-0.3.0-src.tar.gz && \
-  tar xzf jsl-0.3.0-src.tar.gz && \
-  cd jsl-0.3.0/src && \
-  make -f Makefile.ref && \
-  mv Linux_All_DBG.OBJ/jsl /usr/local/bin && \
-  cd .. && \
-  rm -rf jsl
-# RUN pecl install xdebug-beta && \
-#   echo "zend_extension=xdebug.so" > /etc/php5/cli/conf.d/xdebug.ini
-# Java
-RUN apt-get install -y default-jdk
-
-# LaTeX
-RUN apt-get install -y texlive-latex-base
-RUN apt-get install -y texlive-fonts-recommended
-RUN apt-get install -y texlive-latex-extra
-RUN apt-get install -y xzdec
-RUN tlmgr init-usertree
-
-# PhantomJS
-RUN apt-get install -y phantomjs
-
-# S3cmd for AWS S3 integration
-RUN apt-get install -y s3cmd
-
-# NodeJS
-RUN rm -rf /usr/lib/node_modules
-RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
-RUN apt-get install -y nodejs
-
-# Maven
-ENV MAVEN_VERSION 3.3.9
-ENV M2_HOME "/usr/local/apache-maven/apache-maven-${MAVEN_VERSION}"
-RUN wget --quiet "http://mirror.dkd.de/apache/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz" && \
-  mkdir -p /usr/local/apache-maven && \
-  mv "apache-maven-${MAVEN_VERSION}-bin.tar.gz" /usr/local/apache-maven && \
-  tar xzvf "/usr/local/apache-maven/apache-maven-${MAVEN_VERSION}-bin.tar.gz" -C /usr/local/apache-maven/ && \
-  update-alternatives --install /usr/bin/mvn mvn "${M2_HOME}/bin/mvn" 1 && \
-  update-alternatives --config mvn
-
-# Warming it up a bit
-RUN /bin/bash -l -c "gem install jekyll:3.4.3"
-ENV MAVEN_OPTS "-Xms512m -Xmx2g"
-ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
-COPY settings.xml /root/.m2/settings.xml
-RUN git clone https://github.com/yegor256/rultor.git --depth=1
-RUN cd rultor && \
-  mvn clean install -DskipTests -Pqulice && \
-  cd .. && \
-  rm -rf rultor
 
 # Clean up
 RUN rm -rf /tmp/*
