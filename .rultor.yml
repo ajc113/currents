@@ -32,7 +32,6 @@ deploy:
     bundle install
     /etc/init.d/postgresql start
     rake db:create
-    Xvfb :99 &
     rake
     git remote add heroku git@heroku.com:currents-kt.git
     mkdir ~/.ssh
