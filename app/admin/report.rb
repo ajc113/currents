@@ -12,6 +12,7 @@ ActiveAdmin.register Report do
   filter :wind, as: :select
   filter :spot, as: :select
   filter :best_bait, as: :select
+  filter :trip_description
   index do
     selectable_column
     actions
