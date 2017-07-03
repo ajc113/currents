@@ -11,12 +11,14 @@ env:
   CURRENTS_PSQL_PASSWORD: "currents"
   CODECLIMATE_REPO_TOKEN: "6baff733d54da0d4301ea7e9e9f4601e10ce557b6601523271df4ea9a08fc3c3"
 install: |-
+  sudo chown -R r:r /usr/local
+  bundle install
+  sudo /etc/init.d/postgresql start
+  rake db:create
+  xvfb-run rake
   git config --global user.email "hello@thefishing.network"
   git config --global user.name "currents-network"
 merge:
-  script: |-
-    bundle install
-    rake
   fast-froward: no
 release:
   script: |-
@@ -32,11 +34,6 @@ release:
   - ajc113
 deploy:
   script: |-
-    sudo chown -R r:r /usr/local
-    bundle install
-    sudo /etc/init.d/postgresql start
-    rake db:create
-    xvfb-run rake
     git remote add heroku git@heroku.com:currents-kt.git
     mkdir ~/.ssh
     mv ../id_rsa ../id_rsa.pub ~/.ssh
