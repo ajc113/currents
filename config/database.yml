@@ -40,3 +40,4 @@ test:
   database: <%= ENV["CURRENTS_DB_NAME"] %>
   username: <%= ENV["CURRENTS_PSQL_USERNAME"] %>
   password: <%= ENV["CURRENTS_PSQL_PASSWORD"] %>
+  template: template0
