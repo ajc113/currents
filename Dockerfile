@@ -74,6 +74,11 @@ RUN /bin/bash -l -c "rvm requirements"
 RUN /bin/bash -l -c "rvm install 2.3.4"
 RUN /bin/bash -l -c "gem update && gem install --no-ri --no-rdoc nokogiri:1.6.7.2 bundler:1.15.1"
 
+# NodeJS
+RUN rm -rf /usr/lib/node_modules
+RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
+RUN apt-get install -y nodejs
+
 # Clean up
 RUN rm -rf /tmp/*
 RUN rm -rf /root/.ssh
