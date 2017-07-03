@@ -3,27 +3,18 @@ docker:
 assets:
   id_rsa: "tannakartikey/currents_private#currents.heroku"
   id_rsa.pub: "tannakartikey/currents_private#currents.heroku.pub"
+env:
+  RAILS_ENV: "test"
 install: |-
-  #sudo apt-get install -y postgresql
-  #sudo /etc/init.d/postgresql start
-  #sudo -u postgres -- sh -c "psql --command 'CREATE USER currents WITH SUPERUSER PASSWORD \'currents\'"
-  #sudo -u  postgres -- sh -c "createdb currents_test --owner currents"
-  sudo chown -R r:r /usr/local
   git config --global user.email "hello@thefishing.network"
   git config --global user.name "currents-network"
 merge:
-  script: |
+  script: |-
     bundle install
     rake
   fast-froward: no
 release:
-  script: |
-    bundle install
-    /etc/init.d/postgresql start
-    RAILS_ENV=test  rake db:create
-    Xvfb :99 &
-    export DISPLAY=:99
-    RAILS_ENV=test rake
+  script: |-
     git remote add heroku git@heroku.com:currents-dev.git
     mkdir ~/.ssh
     mv ../id_rsa ../id_rsa.pub ~/.ssh
@@ -35,8 +26,13 @@ release:
   - tannakartikey
   - ajc113
 deploy:
-  script: |
+  script: |-
+    sudo chown -R r:r /usr/local
     bundle install
+    /etc/init.d/postgresql start
+    rake db:create
+    Xvfb :99 &
+    export DISPLAY=:99
     rake
     git remote add heroku git@heroku.com:currents-kt.git
     mkdir ~/.ssh
