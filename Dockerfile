@@ -34,7 +34,7 @@ RUN apt-get install -y ssh && \
   chmod 0755 /var/run/sshd
 
 #Postgres
-RUN apt-get install -y postgresql postgresql-contrib
+RUN apt-get install -y postgresql postgresql-contrib libpq-dev
 
 # Note: The official Debian and Ubuntu images automatically ``apt-get clean``
 # after each ``apt-get``
