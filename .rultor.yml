@@ -6,6 +6,10 @@ assets:
 env:
   RAILS_ENV: "test"
   DISPLAY: ":99"
+  CURRENTS_DB_NAME: "currents_test"
+  CURRENTS_PSQL_USERNAME: "currents"
+  CURRENTS_PSQL_PASSWORD: "currents"
+  CODECLIMATE_REPO_TOKEN: "6baff733d54da0d4301ea7e9e9f4601e10ce557b6601523271df4ea9a08fc3c3"
 install: |-
   git config --global user.email "hello@thefishing.network"
   git config --global user.name "currents-network"
