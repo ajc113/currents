@@ -7,6 +7,8 @@ ActiveAdmin.register Species do
 		end
 	end
 
+  filter :name 
+
 	index do
 		selectable_column
 		actions
