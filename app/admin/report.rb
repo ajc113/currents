@@ -1,6 +1,7 @@
 ActiveAdmin.register Report do
   belongs_to :user, optional: true
   belongs_to :species, optional: true
+  belongs_to :location, optional: true
   config.sort_order = 'date desc'
 
   permit_params :catch_keepers, :catch_totals, :trip_summary, :primary_method, :tide, :weather, :wind, :spot, :best_bait, :trip_description, :lattitude, :longitude, :location_id, :user_id, :date, :species_id
