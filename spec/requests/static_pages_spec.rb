@@ -24,12 +24,12 @@ RSpec.describe "StaticPages" do
   describe "Rules page" do
     before { visit rules_path }
     it { should have_content('Network Rules') }
-    it { should have_title('Network Rules') }
+    it { should have_title('Network Rules' + base_title) }
   end
 
   describe "Pricing page" do
     before { visit pricing_path }
     it { should have_content('Select Subscription Level') }
-    it { should have_title('Pricing') }
+    it { should have_title('Pricing' + base_title) }
   end
 end
