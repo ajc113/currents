@@ -66,6 +66,10 @@
           </div>
         </div> 
       </div> 
+	<%= devise_error_messages! %>
+	    <% flash.each do |key, value| %>
+	       <div class="flash <%= key %>"><%= value %></div>
+	    <% end %>
       <div class="panel-body">
 
               <!-- Email input  -->
