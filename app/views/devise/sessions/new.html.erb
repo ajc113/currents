@@ -75,12 +75,12 @@
               <!-- Email input  -->
           <div class="form-group has-feedback">            
               <%= f.label :email %><br />
-              <%= f.email_field :email, class: "form-control", autofocus: true %>
+              <%= f.email_field :email, class: "form-control", autofocus: true, required: true %>
           </div>  
             <!-- password input -->
           <div class="field">
               <%= f.label :password %><br />
-              <%= f.password_field :password, class: "form-control", autocomplete: "on" %>
+              <%= f.password_field :password, class: "form-control", autocomplete: "on", required: true %>
           </div>
             <!-- remember me box -->
           <div class="field">         
