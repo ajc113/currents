@@ -20,7 +20,7 @@ merge:
   fast-froward: no
 release:
   script: |-
-    git remote add heroku git@heroku.com:currents-dev.git
+    git remote add heroku git@heroku.com:currents.git
     mkdir ~/.ssh
     mv ../id_rsa ../id_rsa.pub ~/.ssh
     chmod -R 600 ~/.ssh/*
@@ -32,7 +32,7 @@ release:
   - ajc113
 deploy:
   script: |-
-    git remote add heroku git@heroku.com:currents-kt.git
+    git remote add heroku git@heroku.com:currents-dev.git
     mkdir ~/.ssh
     mv ../id_rsa ../id_rsa.pub ~/.ssh
     chmod -R 600 ~/.ssh/*
