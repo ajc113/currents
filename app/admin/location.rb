@@ -30,13 +30,6 @@ ActiveAdmin.register Location do
 		end
 		actions
 	end
-
-  sidebar "Reports", only: [:show, :edit] do
-		ul do
-			li link_to "Reports", admin_location_reports_path(resource)
-		end
-	end
-
 end
 
 #

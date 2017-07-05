@@ -10,11 +10,11 @@
   }
   .panel-inverse {
     border: 1px solid;
-  
+
   }
   .form-control {
     background-color: white !important;
-  
+
   }
   /*flash*/
   .alert-error {
@@ -23,21 +23,21 @@
       color: #b94a48;
       text-align: left;
    }
-  
+
   .alert-alert {
       background-color: #f2dede;
       border-color: #eed3d7;
       color: #b94a48;
       text-align: left;
    }
-  
+
   .alert-success {
       background-color: #dff0d8;
       border-color: #d6e9c6;
       color: #468847;
       text-align: left;
    }
-  
+
   .alert-notice {
       background-color: #dff0d8;
       border-color: #d6e9c6;
@@ -51,6 +51,7 @@
       <div class="col-sm-4"></div>
       <div class="col-sm-4">
         <div class="panel panel-inverse panel-flat">
+          
           <div class="panel-heading">
             <div class="row">
               <div class="col-lg-4">
@@ -60,27 +61,30 @@
               </div>
               <div class="col-lg-8">
                 <h3>Forgot your password?</h3>
-              </div>
+              </div>		
             </div>
-          </div>
-          <div class="panel-body">
-            <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-              <%= devise_error_messages! %>
-              <div class="field">
-                <%= f.label :email, "Enter Email" %><br />
-                <%= f.email_field :email, class: "form-control", autofocus: true, required: true %>
-              </div>
-              <button type="submit" class="btn btn-block btn-inverse mt-lg">
-                <%= "Send me reset password" %>
-              </button>
-            <% end %>
-          </div>
-          <div class="panel-footer">
+          </div> 
+
+					<div class="panel-body">  
+						  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+						  <%= devise_error_messages! %>
+						  <div class="field">
+						    <%= f.label :email, "Enter Email" %><br />
+						    <%= f.email_field :email, class: "form-control", autofocus: true %>
+						  </div>
+						  <button type="submit" class="btn btn-block btn-inverse mt-lg">
+						    <%= "Send me reset password" %>
+						  </button>
+						<% end %>
+					</div>
+
+					<div class="panel-footer">
             <div class="text-center">
-              <%= render "devise/shared/links" %>
-            </div>
-          </div>
-        </div>
+						  <%= render "devise/shared/links" %>
+					  </div>
+          </div>		
+
+       </div>
       </div>
       <div class="col-sm-4"></div>
     </div>
