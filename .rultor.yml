@@ -12,7 +12,7 @@ install: |-
   sudo chown -R r:r /usr/local
   cp ../application.yml config/application.yml
   bundle install
-  curl -f --connect-timeout 15 --retry 5 --retry-delay 30 http://abc.qqq
+  sleep 20
   rake db:create
   xvfb-run rake
   git config --global user.email "hello@thefishing.network"
