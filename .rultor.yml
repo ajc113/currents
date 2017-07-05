@@ -8,11 +8,10 @@ env:
   RAILS_ENV: "test"
   DISPLAY: ":99"
 install: |-
+  sudo /etc/init.d/postgresql start
   sudo chown -R r:r /usr/local
   cp ../application.yml config/application.yml
   bundle install
-  sudo /etc/init.d/postgresql start
-  sleep 100
   rake db:create
   xvfb-run rake
   git config --global user.email "hello@thefishing.network"
