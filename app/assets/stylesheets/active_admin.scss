@@ -15,3 +15,20 @@
 // For example, to change the default status-tag color:
 //
 //   .status_tag { background: #6090DB; }
+.location-legend-admin-div {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 999;
+}
+.location-legend-image.admin {
+    display: block;
+    height: 550px;
+    width: auto;
+    margin-top: 38px;
+}
+#index_footer>ul.pagination{ 
+  li{
+    display: inline;
+  }
+}
