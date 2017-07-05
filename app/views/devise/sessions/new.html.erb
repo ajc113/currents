@@ -66,21 +66,17 @@
           </div>
         </div> 
       </div> 
-	<%= devise_error_messages! %>
-	    <% flash.each do |key, value| %>
-	       <div class="flash <%= key %>"><%= value %></div>
-	    <% end %>
       <div class="panel-body">
 
               <!-- Email input  -->
           <div class="form-group has-feedback">            
               <%= f.label :email %><br />
-              <%= f.email_field :email, class: "form-control", autofocus: true, required: true %>
+              <%= f.email_field :email, class: "form-control", autofocus: true %>
           </div>  
             <!-- password input -->
           <div class="field">
               <%= f.label :password %><br />
-              <%= f.password_field :password, class: "form-control", autocomplete: "on", required: true %>
+              <%= f.password_field :password, class: "form-control", autocomplete: "on" %>
           </div>
             <!-- remember me box -->
           <div class="field">         
