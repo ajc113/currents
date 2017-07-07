@@ -1,13 +1,11 @@
 <% provide(:title, "Account Settings") %>
-
 <div class = "container">
   <div class="row">
     <div class="content-wrapper">
       <div class="col-sm-3"></div>
       <div class="col-sm-6">
-        <div class="panel panel-default">     
+        <div class="panel panel-default">
           <div class="panel panel-inverse-edituser panel-flat">
-
             <div class="panel-heading-edituser">
               <div class="row">
                 <div class="col-lg-3" style="padding-top: 10px">
@@ -18,83 +16,65 @@
                 <div class="col-lg-9">
                   <h2>Edit <%= current_user.vessel_name %>
                   </h2>
-                </div>    
+                </div>
+              </div>
             </div>
           </div>
-
-
-
-            </div>  
-
-          <div class="panel-body-edituser"> 
+          <div class="panel-body-edituser">
             <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-            <%= devise_error_messages! %>
-            <form>    
-              <div class="field">
-                <%= f.label :email %><br />
-                <%= f.email_field :email, class: "form-control", autofocus: true %>
+              <%= devise_error_messages! %>
+              <form>
+                <div class="field">
+                  <%= f.label :email %><br />
+                  <%= f.email_field :email, class: "form-control", autofocus: true %>
+                </div>
+                <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                  <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+                <% end %>
+                <div class="field">
+                  <%= f.label :password %> <i>(Required only to update password)</i><br />
+                  <%= f.password_field :password, class: "form-control",  autocomplete: "off" %>
+                </div>
+                <div class="field">
+                  <%= f.label :password_confirmation %><br />
+                  <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "off" %>
+                </div>
+                <div class="field">
+                  <%= f.label :current_password %> <i>(Current password required to make any changes)</i><br />
+                  <%= f.password_field :current_password, class: "form-control", autocomplete: "off" %>
+                </div>
+                <div class="field">
+                  <%= f.label :first_name %><br />
+                  <%= f.text_field :first_name, class: "form-control", autofocus: true %>
+                </div>
+                <div class="field">
+                  <%= f.label :last_name %><br />
+                  <%= f.text_field :last_name, class: "form-control", autofocus: true %>
+                </div>
+                <div class="field">
+                  <%= f.label :home_port %><br />
+                  <%= f.text_field :home_port, class: "form-control", autofocus: true %>
+                </div>
+                <div class="field">
+                  <%= f.label :state_waters %><br />
+                  <%= f.select :state_waters, State.visible.pluck(:name), {}, class: "form-control", autofocus: true %>
+                </div>
+                <div class="field">
+                  <%= f.label :vessel_name %><br />
+                  <%= f.text_field :vessel_name, class: "form-control", autofocus: true %>
+                </div>
+                <button type="submit" class="btn btn-block btn-block-edituser mt-lg">
+                  <%= "Update" %>
+                </button>
+              </form>
+            </div>
+            <div class="panel-footer">
+              <div class="text-center">
+                <p> <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %> </p>
+                <p> <%= link_to "Back", :back %> </p>
               </div>
-
-              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-                <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-              <% end %>
-
-              <div class="field">
-                <%= f.label :password %> <i>(Required only to update password)</i><br />
-                <%= f.password_field :password, class: "form-control",  autocomplete: "off" %>
-              </div>
-
-              <div class="field">
-                <%= f.label :password_confirmation %><br />
-                <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "off" %>
-              </div>
-
-              <div class="field">
-                <%= f.label :current_password %> <i>(Current password required to make any changes)</i><br />
-                <%= f.password_field :current_password, class: "form-control", autocomplete: "off" %>
-              </div>
-
-
-              <div class="field">
-                <%= f.label :first_name %><br />
-                <%= f.text_field :first_name, class: "form-control", autofocus: true %>
-              </div>
-
-              <div class="field">
-                <%= f.label :last_name %><br />
-                <%= f.text_field :last_name, class: "form-control", autofocus: true %>
-              </div>
-
-              <div class="field">
-                <%= f.label :home_port %><br />
-                <%= f.text_field :home_port, class: "form-control", autofocus: true %>
-              </div>
-
-              <div class="field">
-              <%= f.label :state_waters %><br />
-	      <%= f.select :state_waters, State.visible.pluck(:name), {}, class: "form-control", autofocus: true %>
-              </div>
-
-
-               <div class="field">
-                <%= f.label :vessel_name %><br />
-                <%= f.text_field :vessel_name, class: "form-control", autofocus: true %>
-              </div>
-
-              <button type="submit" class="btn btn-block btn-block-edituser mt-lg">
-                <%= "Update" %>
-              </button>
-          
-            </form>
-          </div>  
-
-          <div class="panel-footer">
-            <div class="text-center">
-            <p> <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %> </p>
-            <p> <%= link_to "Back", :back %> </p>
-          </div> 
-        </div>
-        <% end %>
+            </div>
+          <% end %>
         </div>
       </div>
       <div class="col-sm-3"></div>

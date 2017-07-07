@@ -23,9 +23,11 @@
 }
 .location-legend-image.admin {
     display: block;
+    position: absolute;
     height: 550px;
     width: auto;
     margin-top: 38px;
+    right: 0px;
 }
 #index_footer>ul.pagination{ 
   li{
