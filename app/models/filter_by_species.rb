@@ -11,10 +11,13 @@ class FilterBySpecies
 			avgrep = reports.past_week.order(date: :desc)
       maps_data = GetMovingAverage.new(reports) unless reports.blank?
       moving_average = maps_data.try(:moving_average) || 0
+      pre_moving_average = maps_data.try(:pre_moving_average) || 0
 			standard_deviation = maps_data.try(:standard_deviation) || 0
 			@lreports.push(location:location.as_json(only: [:id, :short_name, :long_name]),
 				reports: avgrep.length,
 				moving_average: moving_average,
+        pre_moving_average: pre_moving_average,
+        standart_deviation: standard_deviation,
 				color: color(standard_deviation),
 				coordinate_file: render_coordinate_file(location),
 			)
