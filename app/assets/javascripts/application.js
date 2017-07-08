@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery.turbolinks 
 //= require jquery.validate
+//= require jquery_ujs
 //= require maps
 //= require map_theme/vendor/modernizr.custom
 //= require map_theme/vendor/matchMedia
