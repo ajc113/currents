@@ -116,8 +116,7 @@
                 <th class="wd-sm">Spot</th>
                 <th class="wd-sm">Best bait</th>
                 <th class="wd-md">Trip description</th>
-                <th class="wd-sm">Edit</th>
-                <th class="wd-sm">Delete</th>
+                <th class="wd-sm">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -138,8 +137,7 @@
                     <td class="wd-sm"><%= report.spot %></td>
                     <td class="wd-sm"><%= report.best_bait %></td>
                     <td class="wd-md"><%= report.trip_description %></td>
-                    <td class="wd-sm"><%= link_to 'Edit', edit_report_path(report) %></td>
-                    <td class="wd-sm"><%= link_to 'Delete', report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                    <td class="wd-sm"><%= link_to raw('<i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i>'), edit_report_path(report) %> <%= link_to raw('<i class="fa fa-minus-square fa-2x" aria-hidden="true"></i>'), report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                   </tr>
                 <% end %>
               </tbody>
