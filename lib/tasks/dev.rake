@@ -18,6 +18,9 @@ namespace :dev do
 
 	def create_reports
     primary_methods = ['Live Bait', 'Dead Bait', 'Kite', 'Jigging', 'Popping', 'Trolling']
+    tide = ['Incoming', 'Outgoing', 'Slack']
+    weather = ['Overcast', 'Rain', 'Sun', 'Fog'] 
+    wind = ['W < 10 mph', 'W 10-20 mph', 'W > 20 mph', 'NW < 10 mph', 'NW 10-20 mph', 'NW > 20 mph','N < 10 mph', 'N 10-20 mph', 'N > 20 mph','NE < 10 mph', 'NE 10-20 mph', 'NE > 20 mph','E < 10 mph', 'E 10-20 mph', 'E > 20 mph', 'SE < 10 mph', 'SE 10-20 mph', 'SE > 20 mph','S < 10 mph', 'S 10-20 mph', 'S > 20 mph','SW < 10 mph', 'SW 10-20 mph', 'SW > 20 mph'] 
     Location.all.each do |location|
       (1..5).to_a.sample.times do
         Report.create!(
@@ -30,6 +33,11 @@ namespace :dev do
           user_id: random("User"),
           primary_method: primary_methods.sample, 
           trip_summary: FFaker::Lorem.sentence,
+          tide: tide.sample,
+          weather: weather.sample,
+          wind: wind.sample,
+          spot: FFaker::Lorem.word,
+          best_bait: FFaker::Lorem.word,
         ) 
       end
     end
