@@ -173,5 +173,5 @@ select#report_location_id {
 #datatable1 {
     height: 500px;
     overflow-y: scroll;
-    display: inline-grid;
+    display: -webkit-box;
 }
