@@ -170,3 +170,8 @@ select#report_location_id {
 .fa-minus-square {
     color: #e78585;
 }
+#datatable1 {
+    height: 500px;
+    overflow-y: scroll;
+    display: inline-grid;
+}
