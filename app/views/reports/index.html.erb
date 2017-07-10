@@ -130,7 +130,7 @@
                     <td class="wd-sm"><%= report.catch_keepers %></td>
                     <td class="wd-sm"><%= report.catch_total %></td>
                     <td class="wd-td3"><%= report.trip_summary %></td>
-		    <td class="wd-sm"><%= report.primary_method %></td>
+                    <td class="wd-sm"><%= report.primary_method %></td>
                     <td class="wd-sm"><%= report.tide %></td>
                     <td class="wd-sm"><%= report.weather %></td>
                     <td class="wd-sm"><%= report.wind %></td>
@@ -157,32 +157,32 @@
   <div class="p-lg text-center">
     <%= link_to 'Log New Report', new_report_path, class: "btn btn-inverse btn-lg" %>
   </div>
-<!-- </div>
+  <!-- </div>
 <%= link_to "http://www.surveygizmo.com/s3/3252926/New-Survey", target: :_blank do %>
   <h1 style="font-size: 35px; color: red; text-align: center">Click here to provide feedback on feature </h1>
 <% end %>
 </div> -->
-<script>
-  function moveScroll(){
-              var scroll = $(window).scrollTop();
-              var anchor_top = $("#datatable1").offset().top;
-              var anchor_bottom = $("#bottom_anchor").offset().top;
-              if (scroll>anchor_top && scroll<anchor_bottom) {
-              clone_table = $("#clone");
-              if(clone_table.length == 0){
-                  clone_table = $("#datatable1").clone();
-                  clone_table.attr('id', 'clone');
-                  clone_table.css({position:'fixed',
-                           'pointer-events': 'none',
-                           top:0});
-                  clone_table.width($("#datatable1").width());
-                  $("#table-container").append(clone_table);
-                  $("#clone").css({visibility:'hidden'});
-                  $("#clone thead").css({visibility:'visible'});
+  <script>
+    function moveScroll(){
+                var scroll = $(window).scrollTop();
+                var anchor_top = $("#datatable1").offset().top;
+                var anchor_bottom = $("#bottom_anchor").offset().top;
+                if (scroll>anchor_top && scroll<anchor_bottom) {
+                clone_table = $("#clone");
+                if(clone_table.length == 0){
+                    clone_table = $("#datatable1").clone();
+                    clone_table.attr('id', 'clone');
+                    clone_table.css({position:'fixed',
+                             'pointer-events': 'none',
+                             top:0});
+                    clone_table.width($("#datatable1").width());
+                    $("#table-container").append(clone_table);
+                    $("#clone").css({visibility:'hidden'});
+                    $("#clone thead").css({visibility:'visible'});
+                }
+                } else {
+                $("#clone").remove();
+                }
               }
-              } else {
-              $("#clone").remove();
-              }
-            }
-          $(window).scroll(moveScroll);
-</script>
+            $(window).scroll(moveScroll);
+  </script>
