@@ -38,6 +38,7 @@ namespace :dev do
           wind: wind.sample,
           spot: FFaker::Lorem.word,
           best_bait: FFaker::Lorem.word,
+          trip_description: FFaker::Lorem.sentence
         ) 
       end
     end
