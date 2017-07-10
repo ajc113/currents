@@ -102,44 +102,44 @@
           <table id="datatable1" class="table table-striped table-hover">
             <thead>
               <tr>
-                <th class="wd-td3">Date</th>
+                <th class="wd-sm">Date</th>
                 <th class="wd-sm">Target species</th>
                 <th class="wd-td3">Location</th>
                 <th class="wd-sm">State</th>
-                <th class="wd-md">Catch keepers</th>
-                <th class="wd-md">Catch total</th>
-                <th class="wd-td1"> Trip summary</th>
-                <th class="wd-md">Primary method</th>
-                <th class="wd-md">Tide</th>
-                <th class="wd-md">Weather</th>
-                <th class="wd-td3">Wind</th>
-                <th class="wd-md">Spot</th>
-                <th class="wd-md">Best bait</th>
+                <th class="wd-sm">Catch keepers</th>
+                <th class="wd-sm">Catch total</th>
+                <th class="wd-td3"> Trip summary</th>
+                <th class="wd-sm">Primary method</th>
+                <th class="wd-sm">Tide</th>
+                <th class="wd-sm">Weather</th>
+                <th class="wd-sm">Wind</th>
+                <th class="wd-sm">Spot</th>
+                <th class="wd-sm">Best bait</th>
                 <th class="wd-md">Trip description</th>
-                <th class="wd-md">Edit</th>
-                <th class="wd-md">Delete</th>
+                <th class="wd-sm">Edit</th>
+                <th class="wd-sm">Delete</th>
               </tr>
             </thead>
             <tbody>
               <% if current_user %>
                 <% @filtered_reports.each do |report| %>
                   <tr>
-                    <td><%= report.date.try(:strftime, '%m/%d/%y') %></td>
+                    <td class="wd-sm"><%= report.date.try(:strftime, '%m/%d/%y') %></td>
                     <td class="wd-sm"><%= report.species.name %></td>
                     <td class="wd-td3"><%= report.location.try(:short_name) %></td>
                     <td class="wd-sm"><%= report.state.name %></td>
-                    <td><%= report.catch_keepers %></td>
-                    <td><%= report.catch_total %></td>
-                    <td class="wd-td1"><%= report.trip_summary %></td>
-                    <td><%= report.primary_method %></td>
-                    <td><%= report.tide %></td>
-                    <td><%= report.weather %></td>
-                    <td class="wd-td3"><%= report.wind %></td>
-                    <td><%= report.spot %></td>
-                    <td><%= report.best_bait %></td>
-                    <td class="wd-td1"><%= report.trip_description %></td>
-                    <td><%= link_to 'Edit', edit_report_path(report) %></td>
-                    <td><%= link_to 'Delete', report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                    <td class="wd-sm"><%= report.catch_keepers %></td>
+                    <td class="wd-sm"><%= report.catch_total %></td>
+                    <td class="wd-td3"><%= report.trip_summary %></td>
+		    <td class="wd-sm"><%= report.primary_method %></td>
+                    <td class="wd-sm"><%= report.tide %></td>
+                    <td class="wd-sm"><%= report.weather %></td>
+                    <td class="wd-sm"><%= report.wind %></td>
+                    <td class="wd-sm"><%= report.spot %></td>
+                    <td class="wd-sm"><%= report.best_bait %></td>
+                    <td class="wd-md"><%= report.trip_description %></td>
+                    <td class="wd-sm"><%= link_to 'Edit', edit_report_path(report) %></td>
+                    <td class="wd-sm"><%= link_to 'Delete', report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                   </tr>
                 <% end %>
               </tbody>
