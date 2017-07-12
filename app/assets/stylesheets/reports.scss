@@ -167,11 +167,40 @@ select#report_location_id {
     background: #ffc;
     color: #998;
 }
+
 .fa-minus-square {
     color: #e78585;
 }
-#datatable1 {
+
+#datatable1-body {
     height: 500px;
     overflow-y: scroll;
     display: -webkit-box;
+}
+
+tbody#datatable1-body> tr {
+    display: inline-flex;
+}
+
+#datatable1> thead> tr {
+    display: inline-flex;
+}
+
+.wd-td3 {
+    white-space: pre-wrap;
+}
+
+#datatable1> thead {
+    background: #e0e0e0;
+}
+
+@media screen and (max-width: 767px) {
+    .table-responsive> .table> thead> tr> th,
+    .table-responsive> .table> tbody> tr> th,
+    .table-responsive> .table> tfoot> tr> th,
+    .table-responsive> .table> thead> tr> td,
+    .table-responsive> .table> tbody> tr> td,
+    .table-responsive> .table> tfoot> tr> td {
+        white-space: pre-wrap;
+    }
 }
