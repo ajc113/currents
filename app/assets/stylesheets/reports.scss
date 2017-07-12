@@ -190,8 +190,8 @@ tbody#datatable1-body> tr {
     white-space: pre-wrap;
 }
 
-.wd-td1 {
-    width: 100px;
+#datatable1> thead {
+    background: #e0e0e0;
 }
 
 @media screen and (max-width: 767px) {
