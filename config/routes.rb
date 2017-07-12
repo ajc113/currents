@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   get 'reports_of_location', to: 'maps#reports_of_location', as: :reports_of_location, format: 'json'
   get 'locations_for_state', to: 'reports#locations_for_state', as: :locations_for_state
 
-  #Statick Pages
+  #Static Pages
   get 'about', to: 'currents#about'
   get 'blog', to: 'currents#blog'
   get 'rules', to: 'currents#rules'
