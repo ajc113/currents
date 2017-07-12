@@ -8,7 +8,7 @@ module ReportsHelper
   end
 
 	def selected_locations(location)
-		"selected" if params[:location].to_i == location
+    "selected" if params[:location].to_i == location
 	end
 
 	def selected_tide(tide)
@@ -25,7 +25,7 @@ module ReportsHelper
   end
 
   def render_location_option_with_state location
-    html = '<option value="' + location.id.to_s  + '">' + location.short_name + ' (' + location.state.name + ')' + '</option>'
+    html = '<option value="' + location.id.to_s + '" ' + selected_locations(location.id).to_s + '>' + location.short_name + ' (' + location.state.name + ')' + '</option>'
     return html.html_safe
   end
   
