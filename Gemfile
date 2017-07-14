@@ -34,6 +34,7 @@ gem 'ffaker'
 gem 'kaminari'
 gem 'delayed_job_active_record'
 gem 'daemons'
+gem 'stripe'
 
 group :production do
   gem 'rails_12factor'
