@@ -23,6 +23,7 @@ real_users.each do |user|
   rescue
     ActiveRecord::RecordInvalid
     print 'F'
+    puts $!.message
   end
 end
 
