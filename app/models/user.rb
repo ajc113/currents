@@ -16,16 +16,7 @@ class User < ActiveRecord::Base
 	end
 
   def generate_stripe_customer_id
-    customer = Stripe::Customer.create(
-      :email => self.email
-    )
-
-    @subscription = Stripe::Subscription.create(
-      :customer  => customer.id,
-      :plan      => 'monthly',
-      :trial_end => (Date.today + 31).to_time.to_i 
-    )
-    self.stripe_customer_id = customer.id
-    self.save!
+    StripeCustomer.new(self)
+    StripeCustomer.subscribe(self)
   end
 end
