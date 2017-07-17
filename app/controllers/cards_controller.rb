@@ -4,10 +4,10 @@ class CardsController < ApplicationController
   end
 
   def create
-    @customer = Stripe::Customer.retrieve(current_user.stripe_customer_id)
-    @card = @customer.sources.create({:source => params[:stripeSource]})
-    puts "params from create"
-    puts params
+    @customer = StripeCustomer.retrieve(current_user.stripe_customer_id)
+    @source = @customer.sources.create({:source => params[:stripeSource]})
+    @customer.default_source = @source.id
+    @customer.save
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
