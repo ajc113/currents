@@ -15,4 +15,4 @@ Figaro will load it into the environment
 `rake db:seed:single['<model_name>']` to seed populate single table. Seed file must be present in `db/seeds/`. 
 
 ## Staging  
-[currents-dev.herokuapp.com](currents-dev.herokuapp.com)
+[currents-dev.herokuapp.com](https://currents-dev.herokuapp.com)
