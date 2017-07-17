@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   resources :maps
   resources :currents
 
+  resource :card
+
   #Data API
   get 'species_filter', to: 'maps#filter_by_species', as: :species_filter
   get 'reports_of_location', to: 'maps#reports_of_location', as: :reports_of_location, format: 'json'
