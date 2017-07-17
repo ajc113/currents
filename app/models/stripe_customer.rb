@@ -1,12 +1,17 @@
 class StripeCustomer
-  def initialize(user)
-    @user = user
-  end
-
-  def self.new(user)
+    
+  def self.create(user)
     customer = Stripe::Customer.create(email: user.email)
     user.stripe_customer_id = customer.id
     user.save!
+  end
+  
+  def self.retrieve(customer_id)
+    new.retrieve(customer_id)
+  end
+
+  def retrieve(customer_id)
+    Stripe::Customer.retrieve(customer_id)
   end
 
   def self.subscribe(user)
