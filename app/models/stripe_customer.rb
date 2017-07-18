@@ -5,6 +5,10 @@ class StripeCustomer
     user.stripe_customer_id = customer.id
     user.save!
   end
+
+  def self.delete(user)
+    new.retrieve(user.stripe_customer_id).delete
+  end
   
   def self.retrieve(customer_id)
     new.retrieve(customer_id)

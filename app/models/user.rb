@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
 	has_many :locations, through: :reports
   belongs_to :state, primary_key: :name, foreign_key: :state_waters
   after_create :generate_stripe_customer_id
+  before_destroy :delete_stripe_customer
 
   #display_name is defined for activeadmin
 	def display_name
@@ -16,7 +17,11 @@ class User < ActiveRecord::Base
 	end
 
   def generate_stripe_customer_id
-    StripeCustomer.new(self)
+    StripeCustomer.create(self)
     StripeCustomer.subscribe(self)
+  end
+
+  def delete_stripe_customer
+    StripeCustomer.delete(self)
   end
 end
