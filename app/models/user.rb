@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 	has_many :buzzs   
 	has_many :locations, through: :reports
   belongs_to :state, primary_key: :name, foreign_key: :state_waters
-  after_create :generate_stripe_customer_id
+  after_create :create_stripe_customer
   before_destroy :delete_stripe_customer
 
   #display_name is defined for activeadmin
@@ -16,12 +16,16 @@ class User < ActiveRecord::Base
 		self.email
 	end
 
-  def generate_stripe_customer_id
+  def create_stripe_customer
     StripeCustomer.create(self)
-    StripeCustomer.subscribe(self)
+    StripeSubscription.create(self)
   end
 
   def delete_stripe_customer
-    StripeCustomer.delete(self)
+    StripeCustomer.delete(self.stripe_customer_id)
+  end
+
+  def trial_over?
+    Date.today > self.created_at.to_date + 31 ? true : false
   end
 end

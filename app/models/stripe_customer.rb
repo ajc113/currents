@@ -5,24 +5,17 @@ class StripeCustomer
     user.stripe_customer_id = customer.id
     user.save!
   end
-
-  def self.delete(user)
-    new.retrieve(user.stripe_customer_id).delete
-  end
   
   def self.retrieve(customer_id)
-    new.retrieve(customer_id)
-  end
-
-  def retrieve(customer_id)
     Stripe::Customer.retrieve(customer_id)
   end
 
-  def self.subscribe(user)
-    Stripe::Subscription.create(
-      :customer  => user.stripe_customer_id,
-      :plan      => 'monthly',
-      :trial_end => (Date.today + 31).to_time.to_i 
-    )
+  def self.delete(customer_id)
+    self.retrieve(customer_id).delete
   end
+
+  def self.payment_source(customer_id)
+    self.retrieve(customer_id).default_source
+  end
+  
 end
