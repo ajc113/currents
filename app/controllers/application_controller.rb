@@ -4,7 +4,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
   
-
+  def authorize_user!
+    authenticate_user!
+    unless current_user.is_active?
+      flash[:alert] = "There is a problem with your subscription"
+      redirect_to new_card_path
+    end
+  end
   protected
 
   def configure_permitted_parameters

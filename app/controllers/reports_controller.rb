@@ -1,7 +1,7 @@
 class ReportsController < ApplicationController
 	before_action :set_report, only: [:show, :edit, :update, :destroy]
 	# before_action :set_current_user_reports
-	before_action :authenticate_user!
+	before_action :authorize_user!
   skip_before_filter :authenticate_user!, :only => :locations_for_state
 
 
