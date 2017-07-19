@@ -14,7 +14,9 @@ class StripeSubscription
     Stripe::Subscription.retrieve(subscription_id)
   end
 
-  def self.delete(subscription_id)
-    self.retrieve(subscription_id).delete
+  def self.delete(user)
+    self.retrieve(user.subscription_id).delete
+    user.subscription_id = nil
+    user.save!
   end
 end
