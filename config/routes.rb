@@ -19,6 +19,9 @@ Rails.application.routes.draw do
 
   resource :card
 
+  get 'my_account', to: 'my_account#show', as: 'my_account'
+  post 'stripe_events', to: 'stripe#events', as: 'stripe_events'
+
   #Data API
   get 'species_filter', to: 'maps#filter_by_species', as: :species_filter
   get 'reports_of_location', to: 'maps#reports_of_location', as: :reports_of_location, format: 'json'
@@ -28,7 +31,7 @@ Rails.application.routes.draw do
   get 'about', to: 'currents#about'
   get 'blog', to: 'currents#blog'
   get 'rules', to: 'currents#rules'
-   get 'pricing', to: 'currents#pricing'
+  get 'pricing', to: 'currents#pricing'
 
   #Extra
   get 'test', to: 'currents#test'
