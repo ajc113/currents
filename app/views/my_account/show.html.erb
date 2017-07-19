@@ -1,6 +1,8 @@
 <h3>Welcome to accout management</h3>
+<% unless @card.nil? %>
 <p> Brand: <strong><%= @card.brand %></strong></P>
 <p> Expirty: <strong><%= @card.exp_month %>/<%= @card.exp_year %></strong></p>
 <p> Card: <strong>**** **** **** <%= @card.last4 %></strong></p>
+<% end %>
 
 <%= render 'shared/stripe' %>
