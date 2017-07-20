@@ -8,6 +8,8 @@ class CardsController < ApplicationController
     @source = @customer.sources.create({:source => params[:stripeSource]})
     @customer.default_source = @source.id
     @customer.save
+    current_user.payment_source = @source.id
+    current_user.save!
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
