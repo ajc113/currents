@@ -25,4 +25,8 @@ class StripeSubscription
     user.subscription_id = nil
     user.save!
   end
+
+  def self.is_active? (customer_id)
+    StripeCustomer.retrieve(customer_id).subscriptions.total_count == 0 ? false : true
+  end
 end
