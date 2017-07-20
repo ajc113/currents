@@ -1,11 +1,17 @@
 class StripeSubscription
 
-  def self.create(user)
+  def self.create(user, trial_end = 'now')
     subscription = Stripe::Subscription.create(
                       :customer  => user.stripe_customer_id,
                       :plan      => 'monthly',
-                      :trial_end => (Date.today + 31).to_time.to_i 
+                      :trial_end => trial_end
                     )
+    user.subscription_id = subscription.id
+    user.save!
+  end
+  
+  def self.create_with_trial(user)
+    
     user.subscription_id = subscription.id
     user.save!
   end
