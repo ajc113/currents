@@ -10,6 +10,9 @@ class CardsController < ApplicationController
     @customer.save
     current_user.payment_source = @source.id
     current_user.save!
+    if current_user.subscription_id == nil
+      StripeSubscription.create(current_user)
+    end
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
