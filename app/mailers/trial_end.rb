@@ -1,4 +1,5 @@
 class TrialEnd < ApplicationMailer
+  default from: "intel@thefishing.network"
   def notify_user(user)
     @user = user
     @url = 'https://#{HOST}/cards/new'
