@@ -1,4 +1,14 @@
 <%= javascript_include_tag "https://js.stripe.com/v3/" %>
+<% unless @card.nil? %>
+    <div style="text-align: center">Subscription Status: <strong><%= @subscription.status %></strong></div>
+    <div id="card_details" style="text-align: center">
+      <p> Card in Use</p>
+      <span> Type: <strong><%= @card.brand %></strong></span>
+      <span> Expirty: <strong><%= @card.exp_month %>/<%= @card.exp_year %></strong></span>
+      <span> Card: <strong>**** **** **** <%= @card.last4 %></strong></span>
+    </div>
+  <% end %>
+
 <div id="#new_card_container">
 <%= form_tag card_path, id: 'new_card' do |form| %>
    <div class="group">

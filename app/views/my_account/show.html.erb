@@ -11,15 +11,7 @@
   <% else %>
     <div>Subscription Status: <strong><%= @subscription.status %></strong></div>
   <% end %>
-  <% unless @card.nil? %>
-    <div id="card_details" style="text-align: center">
-      <p> Card in Use</p>
-      <span> Type: <strong><%= @card.brand %></strong></span>
-      <span> Expirty: <strong><%= @card.exp_month %>/<%= @card.exp_year %></strong></span>
-      <span> Card: <strong>**** **** **** <%= @card.last4 %></strong></span>
-    </div>
-  <% end %>
-</div>
+  </div>
   <%= render 'shared/stripe' %>
   <div id="invoices" style="display: block; margin-left: 20px; clear: both">
     <% @invoices.each do |invoice| %>
