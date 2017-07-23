@@ -1,8 +1,15 @@
-<h3>Welcome to accout management</h3>
+<style>
+  #card_details span {
+    padding-right: 20px;
+  }
+</style>
+<h3 style="text-align: center">Change Account Settings</h3>
 <% unless @card.nil? %>
-<p> Brand: <strong><%= @card.brand %></strong></P>
-<p> Expirty: <strong><%= @card.exp_month %>/<%= @card.exp_year %></strong></p>
-<p> Card: <strong>**** **** **** <%= @card.last4 %></strong></p>
+<div id="card_details" style="text-align: center">
+<p> Current Card</p>
+<span> Type: <strong><%= @card.brand %></strong></span>
+<span> Expirty: <strong><%= @card.exp_month %>/<%= @card.exp_year %></strong></span>
+<span> Card: <strong>**** **** **** <%= @card.last4 %></strong></span>
+</div>
 <% end %>
-
 <%= render 'shared/stripe' %>
