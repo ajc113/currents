@@ -5,6 +5,7 @@ class StripeCustomerIdToUsers < ActiveRecord::Migration
   User.find_each do |user|
     if user.stripe_customer_id == "" then
       StripeCustomer.create(user)
+      StripeSubscription.create(user, (Date.today + 31).to_time.to_i )
     end
   end
 end
