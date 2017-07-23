@@ -21,6 +21,7 @@ class StripeController < ApplicationController
     when "customer.subscription.deleted"
       #after three failed payment attempts as per the settings subscription will be deleted
       @user.subscription_id = nil
+      @user.is_active = false
       @user.save!
 
     when "customer.subscription.updated"
