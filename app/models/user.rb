@@ -18,7 +18,8 @@ class User < ActiveRecord::Base
 
   def create_stripe_customer
     StripeCustomer.create(self)
-    StripeSubscription.create(self, (Date.today + 31).to_time.to_i )
+    #StripeSubscription.create(self, (Date.today + 31).to_time.to_i )
+    StripeSubscription.create(self, DateTime.now.to_i + 300 )
   end
 
   def delete_stripe_customer
