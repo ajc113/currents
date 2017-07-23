@@ -1,15 +1,30 @@
+<%= provide(:title, "Account Details") %>
 <style>
   #card_details span {
     padding-right: 20px;
   }
 </style>
-<h3 style="text-align: center">Change Account Settings</h3>
-<% unless @card.nil? %>
-<div id="card_details" style="text-align: center">
-<p> Current Card</p>
-<span> Type: <strong><%= @card.brand %></strong></span>
-<span> Expirty: <strong><%= @card.exp_month %>/<%= @card.exp_year %></strong></span>
-<span> Card: <strong>**** **** **** <%= @card.last4 %></strong></span>
+<div style="text-align: center">
+  <h3 style="text-align: center">Account Details</h3>
+  <% if current_user.subscription_id == nil %>
+    <div>You do not have active subscription</div>
+  <% else %>
+    <div>Subscription Status: <strong><%= @subscription.status %></strong></div>
+  <% end %>
+  <% unless @card.nil? %>
+    <div id="card_details" style="text-align: center">
+      <p> Card in Use</p>
+      <span> Type: <strong><%= @card.brand %></strong></span>
+      <span> Expirty: <strong><%= @card.exp_month %>/<%= @card.exp_year %></strong></span>
+      <span> Card: <strong>**** **** **** <%= @card.last4 %></strong></span>
+    </div>
+  <% end %>
 </div>
-<% end %>
-<%= render 'shared/stripe' %>
+  <%= render 'shared/stripe' %>
+  <div id="invoices" style="display: block; margin-left: 20px; clear: both">
+    <% @invoices.each do |invoice| %>
+	    <p> ID: <%= invoice.id %></p>
+	    <p> Date: <%= Date.strptime(invoice.date.to_s, '%s') %></p>
+	    <p>Amount: <%= invoice.total %></p>
+    <% end %>
+  </div>
