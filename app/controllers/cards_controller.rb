@@ -23,9 +23,9 @@ class CardsController < ApplicationController
     rescue Stripe::CardError => e
       flash[:error] = e.message
       redirect_to new_card_path
-      abort
+    else
+      current_user.is_active = true
+      current_user.save!
     end
-    current_user.is_active = true
-    current_user.save!
   end
 end
