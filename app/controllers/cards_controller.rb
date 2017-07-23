@@ -9,6 +9,7 @@ class CardsController < ApplicationController
     @customer.default_source = @source.id
     @customer.save
     current_user.payment_source = @source.id
+    current_user.is_active = true
     current_user.save!
     if current_user.subscription_id == nil
       StripeSubscription.create(current_user)
