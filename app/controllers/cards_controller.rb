@@ -14,7 +14,9 @@ class CardsController < ApplicationController
     if current_user.subscription_id == nil
       StripeSubscription.create(current_user)
     end
-
+    respond_to do |format|
+      format.html { redirect_to my_account_path, notice: 'Card was added successfully added' }
+    end
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to new_card_path
