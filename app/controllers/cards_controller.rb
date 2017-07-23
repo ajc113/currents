@@ -1,6 +1,9 @@
 class CardsController < ApplicationController
 	before_action :authenticate_user!
   def new
+    @customer = StripeCustomer.retrieve(current_user.stripe_customer_id)
+    @card = Stripe::Source.retrieve(@customer.default_source).card unless current_user.payment_source.nil?
+    @subscription = StripeSubscription.retrieve(current_user.subscription_id) unless current_user.subscription_id.nil?
   end
 
   def create

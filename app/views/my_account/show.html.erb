@@ -9,7 +9,6 @@
   <% if current_user.subscription_id == nil %>
     <div>You do not have active subscription</div>
   <% else %>
-    <div>Subscription Status: <strong><%= @subscription.status %></strong></div>
   <% end %>
   </div>
   <%= render 'shared/stripe' %>
