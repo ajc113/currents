@@ -8,8 +8,7 @@ class MyAccountController < ApplicationController
                         rescue
                           nil
                         end
-    @invoice_list = Stripe::Invoice.list
-    @invoices = @invoice_list.data.select{ |invoice| invoice["customer"] == current_user.stripe_customer_id }
+    @invoices = @customer.invoices
   end
 
   private 

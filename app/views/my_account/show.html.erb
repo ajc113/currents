@@ -3,19 +3,43 @@
   #card_details span {
     padding-right: 20px;
   }
+  table, th, td {
+    border: 1px solid black;
+  }
+  th, td {
+    padding: 15px;
+  }
+  #invoices > table {
+    margin: auto;
+  }
 </style>
 <div style="text-align: center">
   <h3 style="text-align: center">Account Details</h3>
-  <% if current_user.subscription_id == nil %>
-    <div>You do not have active subscription</div>
-  <% else %>
-  <% end %>
-  </div>
-  <%= render 'shared/stripe' %>
-  <div id="invoices" style="display: block; margin-left: 20px; clear: both">
-    <% @invoices.each do |invoice| %>
-	    <p> ID: <%= invoice.id %></p>
-	    <p> Date: <%= Date.strptime(invoice.date.to_s, '%s') %></p>
-	    <p>Amount: <%= invoice.total %></p>
+</div>
+<%= render 'shared/stripe' %>
+<div style="text-align: center; clear: both">
+  <h3 style="text-align: center">Payment History</h3>
+</div>
+<div id="invoices" style="display: block; clear: both">
+  <table>
+    <thead>
+      <tr>
+        <td>ID</td>
+        <td>Date</td>
+        <td>Amount</td>
+	<td>Period</td>
+      </tr>
+    </thead>
+    <% @invoices.data.each do |invoice| %>
+	    <% unless invoice.total == 0 %>
+      <tr>
+        <td><%= invoice.id %></td>
+        <td><%= Date.strptime(invoice.date.to_s, '%s') %></td>
+        <td>$<%= invoice.total/100 %></td>
+        <td><%= Date.strptime(invoice.lines.data[0].period.start.to_s, '%s') %> to <%= Date.strptime(invoice.lines.data[0].period.end.to_s, '%s') %></td>
+      </tr>
+      <% end %>
     <% end %>
-  </div>
+  </table>
+  <strong> <%= @invoices %></strong>
+</div>

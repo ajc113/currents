@@ -2,7 +2,7 @@
   <% if current_user.subscription_id == nil %>
     <div>You do not have active subscription</div>
   <% else %>
-    <div>Subscription Status: <strong><%= @subscription.status %></strong></div>
+    <div style="text-align: center">Subscription Status: <strong><%= @subscription.status %></strong></div>
   <% end %>
 <% unless @card.nil? %>
     <div id="card_details" style="text-align: center">
