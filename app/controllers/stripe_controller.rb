@@ -1,5 +1,5 @@
 class StripeController < ApplicationController
-  protect_from_forgery :except => :webhook
+  protect_from_forgery :except => :events
 
   def events
     request.body.rewind
@@ -23,6 +23,7 @@ class StripeController < ApplicationController
       @user.subscription_id = nil
       @user.is_active = false
       @user.save!
+      StripeCustomer.delete_all_sources(@user)
 
     when "customer.subscription.updated"
       #to capture subscription from trial to active
