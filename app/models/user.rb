@@ -29,4 +29,8 @@ class User < ActiveRecord::Base
   def trial_over?
     Date.today > self.created_at.to_date + 31 ? true : false
   end
+
+  def has_active_subscription?
+    self.subscription_id.nil? && is_active?
+  end
 end
