@@ -1,47 +1,46 @@
 <%= javascript_include_tag "https://js.stripe.com/v3/" %>
-  <% unless current_user.has_active_subscription? %>
-    <div style="text-align: center">You do not have active subscription. Subscribe by updating the card details.</div>
-  <% else %>
-    <div style="text-align: center">Subscription Status: <strong><%= @subscription.status %></strong></div>
-  <% end %>
+<% unless current_user.has_active_subscription? %>
+  <div style="text-align: center">You do not have active subscription. Subscribe by updating the card details.</div>
+<% else %>
+  <div style="text-align: center">Subscription Status: <strong><%= @subscription.status %></strong></div>
+<% end %>
 <% unless @card.nil? %>
-    <div id="card_details" style="text-align: center">
-      <p> Card in Use</p>
-      <span> Type: <strong><%= @card.brand %></strong></span>
-      <span> Expirty: <strong><%= @card.exp_month %>/<%= @card.exp_year %></strong></span>
-      <span> Card: <strong>**** **** **** <%= @card.last4 %></strong></span>
-    </div>
-  <% end %>
-
+  <div id="card_details" style="text-align: center">
+    <p> Card in Use</p>
+    <span> Type: <strong><%= @card.brand %></strong></span>
+    <span> Expirty: <strong><%= @card.exp_month %>/<%= @card.exp_year %></strong></span>
+    <span> Card: <strong>**** **** **** <%= @card.last4 %></strong></span>
+  </div>
+<% end %>
 <div id="#new_card_container">
-<%= form_tag card_path, id: 'new_card' do |form| %>
-   <div class="group">
-    <label>
-      <span>Name</span>
-      <input name="cardholder-name" class="field" placeholder="Jane Doe" />
-    </label>
-    <label>
-      <span>Phone</span>
-      <input class="field" placeholder="(123) 456-7890" type="tel" />
-    </label>
-  <label>
-    <span>ZIP code</span>
-    <input name="address-zip" class="field" placeholder="94110" />
-  </label>
-  </div>
-  <div class="group">
-    <label>
-      <span>Card</span>
-      <div id="card-element" class="field"></div>
-    </label>
-  </div>
-  <button type="submit">Update Card</button>
-  <div class="outcome">
-    <div class="error" role="alert"></div>
-    <div class="success">
-      Success! Your Stripe token is <span class="token"></span>
+  <%= form_tag card_path, id: 'new_card' do |form| %>
+    <div class="group">
+      <label>
+        <span>Name</span>
+        <input name="cardholder-name" class="field" placeholder="Jane Doe" />
+      </label>
+      <label>
+        <span>Phone</span>
+        <input class="field" placeholder="(123) 456-7890" type="tel" />
+      </label>
+      <label>
+        <span>ZIP code</span>
+        <input name="address-zip" class="field" placeholder="94110" />
+      </label>
     </div>
-  </div>
+    <div class="group">
+      <label>
+        <span>Card</span>
+        <div id="card-element" class="field"></div>
+      </label>
+    </div>
+    <button type="submit">Update Card</button>
+    <div class="outcome">
+      <div class="error" role="alert"></div>
+      <div class="success">
+        Success! Your Stripe token is <span class="token"></span>
+      </div>
+    </div>
   <% end %>
 </div>
 <script>
@@ -50,7 +49,7 @@
   // Custom styling can be passed to options when creating an Element.
   
   var card = elements.create('card', {
-	  hidePostalCode: true,
+  	  hidePostalCode: true,
   style: {
     base: {
       iconColor: '#666EE8',
