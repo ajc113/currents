@@ -31,7 +31,7 @@
       </tr>
     </thead>
     <% @invoices.data.each do |invoice| %>
-      <% unless (invoice.total == 0 && invoice.lines.data[0].id == current_user.subscription_id) %>
+      <% unless (invoice.total == 0 || invoice.lines.data[0].id != current_user.subscription_id) %>
         <tr>
           <td><%= invoice.id %></td>
           <td><%= Date.strptime(invoice.date.to_s, '%s') %></td>
