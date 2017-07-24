@@ -17,6 +17,7 @@
   <h3 style="text-align: center">Account Details</h3>
 </div>
 <%= render 'shared/stripe' %>
+<% if current_user.has_active_subscription? %>
 <div style="text-align: center; clear: both">
   <h3 style="text-align: center">Payment History</h3>
 </div>
@@ -44,3 +45,4 @@
   <span><i>(If you had any previous cancelled subscription, thsoe invoices are not listed)</i></span>
   <div><%= link_to "Cancel My Subscription", my_account_url, method: :delete, data: { confirm: 'Are you sure?' } %></div>
 </div>
+<% end %>
