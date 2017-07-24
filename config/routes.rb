@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   resource :card
 
-  get 'my_account', to: 'my_account#show', as: 'my_account'
+  resource :my_account, only: [:show, :destroy], controller: 'my_account'
   post 'stripe_events', to: 'stripe#events', as: 'stripe_events'
 
   #Data API

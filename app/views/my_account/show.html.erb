@@ -42,4 +42,5 @@
     <% end %>
   </table>
   <span><i>(If you had any previous cancelled subscription, thsoe invoices are not listed)</i></span>
+  <div><%= link_to "Cancel My Subscription", my_account_url, method: :delete, data: { confirm: 'Are you sure?' } %></div>
 </div>

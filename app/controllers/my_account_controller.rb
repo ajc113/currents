@@ -1,4 +1,5 @@
 class MyAccountController < ApplicationController
+  before_action :authenticate_user!
   def show
     @customer = StripeCustomer.retrieve(current_user.stripe_customer_id)
     @subscription = StripeSubscription.retrieve(current_user.subscription_id) unless current_user.subscription_id.nil?
@@ -9,6 +10,13 @@ class MyAccountController < ApplicationController
                           nil
                         end
     @invoices = @customer.invoices
+  end
+
+  def destroy
+    StripeSubscription.delete(current_user)
+    respond_to do |format|
+      format.html { redirect_to my_account_url, alert: 'Subscription was cancelled successfully' }
+    end
   end
 
   private 
