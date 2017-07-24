@@ -1,0 +1,20 @@
+<table>
+    <thead>
+      <tr>
+        <td>ID</td>
+        <td>Date</td>
+        <td>Amount</td>
+        <td>Period</td>
+      </tr>
+    </thead>
+    <% @invoices.data.each do |invoice| %>
+      <% unless (invoice.total == 0 || invoice.lines.data[0].id != current_user.subscription_id) %>
+        <tr>
+          <td><%= invoice.id %></td>
+          <td><%= Date.strptime(invoice.date.to_s, '%s') %></td>
+          <td>$<%= invoice.total/100 %></td>
+          <td><%= Date.strptime(invoice.lines.data[0].period.start.to_s, '%s') %> to <%= Date.strptime(invoice.lines.data[0].period.end.to_s, '%s') %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
