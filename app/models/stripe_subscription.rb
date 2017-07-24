@@ -23,6 +23,7 @@ class StripeSubscription
   def self.delete(user)
     self.retrieve(user.subscription_id).delete
     user.subscription_id = nil
+    user.is_active = false
     user.save!
   end
 
