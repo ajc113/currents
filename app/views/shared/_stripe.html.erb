@@ -17,15 +17,15 @@
     <div class="group">
       <label>
         <span>Name</span>
-        <input name="cardholder-name" class="field" placeholder="Jane Doe" />
+        <input name="cardholder-name" id="cardholder-name" class="field" placeholder="Jane Doe" />
       </label>
       <label>
         <span>Phone</span>
-        <input class="field" placeholder="(123) 456-7890" type="tel" />
+        <input name="cardholder-phone" id="cardholder-phone" class="field" placeholder="(123) 456-7890" type="tel" />
       </label>
       <label>
         <span>ZIP code</span>
-        <input name="address-zip" class="field" placeholder="94110" />
+        <input name="postal-code" id="postal-code" class="field" placeholder="94110" />
       </label>
     </div>
     <div class="group">
@@ -43,6 +43,7 @@
     </div>
   <% end %>
 </div>
+<div id="card-errors"></div>
 <script>
   var stripe = Stripe('pk_test_pdD8tLwzMr7tZb3fhI0h7vJJ');
   var elements = stripe.elements();
@@ -65,8 +66,6 @@
     },
   }
   });
-  card.mount('#card-element');
-  
   // Add an instance of the card Element into the `card-element` <div>
   card.mount('#card-element');
   // Create a source or display an error when the form is submitted.
@@ -74,7 +73,15 @@
   form.addEventListener('submit', function(event) {
   event.preventDefault();
   
-  stripe.createSource(card).then(function(result) {
+  stripe.createSource(card, {
+  	  owner: {
+  		  name: document.getElementById('cardholder-name').value,
+  		  phone: document.getElementById('cardholder-phone').value,
+		  address: {
+  	          postal_code: document.getElementById('postal-code').value,
+		  },
+  	  },
+  }).then(function(result) {
     if (result.error) {
       // Inform the user if there was an error
       var errorElement = document.getElementById('card-errors');
