@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   end
 
   def delete_stripe_customer
-    StripeCustomer.delete(self.stripe_customer_id)
+    StripeCustomer.delete(self)
   end
 
   def trial_over?

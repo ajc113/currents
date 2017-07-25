@@ -9,15 +9,9 @@ class StripeSubscription
     user.subscription_id = subscription.id
     user.save!
   end
-  
-  def self.create_with_trial(user)
-    
-    user.subscription_id = subscription.id
-    user.save!
-  end
 
-  def self.retrieve(subscription_id)
-    Stripe::Subscription.retrieve(subscription_id)
+  def self.retrieve(user)
+    Stripe::Subscription.retrieve(user.subscription_id)
   end
 
   def self.delete(user)
@@ -27,7 +21,7 @@ class StripeSubscription
     user.save!
   end
 
-  def self.is_active? (customer_id)
-    StripeCustomer.retrieve(customer_id).subscriptions.total_count == 0 ? false : true
+  def self.is_active? (user)
+    StripeCustomer.retrieve(user.customer_id).subscriptions.total_count == 0 ? false : true
   end
 end

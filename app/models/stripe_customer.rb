@@ -6,20 +6,20 @@ class StripeCustomer
     user.save!
   end
   
-  def self.retrieve(customer_id)
-    Stripe::Customer.retrieve(customer_id)
+  def self.retrieve(user)
+    Stripe::Customer.retrieve(user.stripe_customer_id)
   end
 
-  def self.delete(customer_id)
-    self.retrieve(customer_id).delete
+  def self.delete(user)
+    self.retrieve(user.stripe_customer_id).delete
   end
 
-  def self.payment_source(customer_id)
-    self.retrieve(customer_id).default_source
+  def self.payment_source(user)
+    self.retrieve(user.stripe_customer_id).default_source
   end
 
   def self.delete_all_sources(user)
-    customer = self.retrieve(user)
+    customer = self.retrieve(user.stripe_customer_id)
     customer.sources.each do |source|
       source.delete
     end

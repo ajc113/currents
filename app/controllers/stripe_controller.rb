@@ -23,7 +23,7 @@ class StripeController < ApplicationController
       @user.subscription_id = nil
       @user.is_active = false
       @user.save!
-      StripeCustomer.delete_all_sources(@user)
+      StripeCustomer.delete_all_sources(@customer)
 
     when "customer.subscription.updated"
       #to capture subscription from trial to active

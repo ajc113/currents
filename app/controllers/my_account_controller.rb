@@ -1,11 +1,11 @@
 class MyAccountController < ApplicationController
   before_action :authenticate_user!
   def show
-    @customer = StripeCustomer.retrieve(current_user.stripe_customer_id)
-    @subscription = StripeSubscription.retrieve(current_user.subscription_id) unless current_user.subscription_id.nil?
+    @customer = StripeCustomer.retrieve(current_user)
+    @subscription = StripeSubscription.retrieve(current_user) unless current_user.subscription_id.nil?
     @card = Stripe::Source.retrieve(@customer.default_source).card unless current_user.payment_source.nil?
     @upcoming_invoice = begin 
-                          Stripe::Invoice.upcoming(customer: @customer.id) || nil
+                          Stripe::Invoice.upcoming(customer: @customer.id)
                         rescue
                           nil
                         end
