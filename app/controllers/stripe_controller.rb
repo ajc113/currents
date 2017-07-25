@@ -1,35 +1,49 @@
 class StripeController < ApplicationController
   protect_from_forgery :except => :events
+  @endpoint_secret = 'whsec_OtNLhY3vJSQrx1vRinEJ1iRL6FZ7Am1w'
 
   def events
     request.body.rewind
-    event_payload = JSON.parse(request.body.read)
-    event_id = event_payload["id"]
-    @event = Stripe::Event.retrieve(event_id) #so that we know event is valid and from Stripe
-    @customer = @event["data"]["object"]["customer"]
-    @user = User.find_by(stripe_customer_id: @customer)
-    @event_type = @event["type"]
+    payload = JSON.parse(request.body.read)
+    sig_header = request.headers["Stripe-Signature"]
+    puts "request header is = "
+    puts request.headers["Stripe-Signature"]
+    event = nil
+    #begin
+      #event = Stripe::Webhook.construct_event(
+        #payload, sig_header, @endpoint_secret
+      #)
+    #rescue JSON::ParserError => e
+      #return render(:nothing => true, :status => 400)
+    #rescue Stripe::SignatureVerificationError => e
+      #return render(:nothing => true, :status => 400)
+    #end
+    event_id = payload["id"]
+    event = Stripe::Event.retrieve(event_id) #so that we know event is valid and from Stripe
+    customer = event["data"]["object"]["customer"]
+    user = User.find_by(stripe_customer_id: customer)
+    event_type = event["type"]
 
-    case @event_type
+    case event_type
     when "charge.failed"
 
     when "customer.subscription.trial_will_end"
       #triggers three days before trial going to add
       #reming the user by email to add payment source
-      TrialEnd.notify_user(@user).deliver
+      TrialEnd.notify_user(user).deliver
 
     when "customer.subscription.deleted"
       #after three failed payment attempts as per the settings subscription will be deleted
-      @user.subscription_id = nil
-      @user.is_active = false
-      @user.save!
-      StripeCustomer.delete_all_sources(@customer)
+      user.subscription_id = nil
+      user.is_active = false
+      user.save!
+      StripeCustomer.delete_all_sources(customer)
 
     when "customer.subscription.updated"
       #to capture subscription from trial to active
-      if @event.data.object.status == "active" && @event.data.previous_attributes.status == "trialing" && @user.payment_source == nil
-        @user.is_active = false
-        @user.save!
+      if event.data.object.status == "active" && event.data.previous_attributes.status == "trialing" && user.payment_source == nil
+        user.is_active = false
+        user.save!
       end
       #to capture subscription failure
 
@@ -44,8 +58,8 @@ class StripeController < ApplicationController
     when "invoice.payment_failed"
 
     when "invoice.payment_succeeded"
-      @user.is_active = true
-      @user.save!
+      user.is_active = true
+      user.save!
     end
     render nothing: true
   end
