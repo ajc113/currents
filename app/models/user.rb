@@ -38,6 +38,6 @@ class User < ActiveRecord::Base
   end
 
   def has_active_subscription?
-    self.subscription_id.nil? && is_active?
+    self.subscription_id? && is_active?
   end
 end
