@@ -33,6 +33,10 @@ class User < ActiveRecord::Base
     Date.today > self.created_at.to_date + 31 ? true : false
   end
 
+  def remaining_trial_days
+    ((self.created_at.to_date + 31.days) - Date.today).to_i
+  end
+
   def has_active_subscription?
     self.subscription_id.nil? && is_active?
   end
