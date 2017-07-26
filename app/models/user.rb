@@ -30,7 +30,11 @@ class User < ActiveRecord::Base
   end
 
   def trial_over?
-    Date.today > self.created_at.to_date + 31 ? true : false
+    if Rails.env.development?
+      DateTime.now > self.created_at + 5.minutes ? true : false
+    else
+      Date.today > self.created_at.to_date + 31 ? true : false
+    end
   end
 
   def remaining_trial_days
