@@ -1,11 +1,11 @@
 <% unless current_user.has_active_subscription? %>
   <div style="text-align: center">You do not have active subscription. Subscribe by updating the card details.</div>
 <% else %>
-  <div style="text-align: center">Subscription Status: <strong><%= @subscription.status %></strong></div>
+  <div style="text-align: center">Subscription status: <strong><%= @subscription.status %></strong></div>
 <% end %>
 <% unless @card.nil? %>
   <div id="card_details" style="text-align: center">
-    <p> Card in Use</p>
+    <div> Card in use</div>
     <span> Type: <strong><%= @card.brand %></strong></span>
     <span> Expirty: <strong><%= @card.exp_month %>/<%= @card.exp_year %></strong></span>
     <span> Card: <strong>**** **** **** <%= @card.last4 %></strong></span>
