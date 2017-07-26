@@ -18,10 +18,14 @@
   <body>
     <div class="wrapper">
       <%= render 'layouts/navbar' %>
-      <% unless current_user.trial_over? %>
+      <% if !current_user.trial_over? %>
         <div class="alert alert-info alert-dismissable">
           <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-          Your trial period will end in <%= current_user.remaining_trial_days %> days. <%= if current_user.payment_source.nil? then link_to 'Subscribe Now', new_card_url  end %></div>
+	  Your trial period will end in <%= current_user.remaining_trial_days %> days. <%= if current_user.payment_source.nil? then link_to 'Subscribe Now', new_card_url, class: 'subscribe-link-alert'  end %></div>
+	<% elsif !current_user.is_active? %>
+        <div class="alert alert-info alert-dismissable">
+	  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	  Become a pro and see Heatmap! <%= link_to 'Subscribe Now', new_card_url, class: 'subscribe-link-alert' %></div>
         <% end %>
         <% if flash.any? %>
           <div class="container">
