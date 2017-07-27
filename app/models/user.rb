@@ -33,14 +33,15 @@ class User < ActiveRecord::Base
 
   def trial_over?
     if self.subscription_id?
-    StripeCustomer.retrieve(self).subscriptions.data[0].status == 'trialing' ? false : true
+      StripeCustomer.retrieve(self).subscriptions.data[0].status == 'trialing' ? false : true
     else
       true
     end
   end
 
   def remaining_trial_days
-    ((self.created_at.to_date + 31.days) - Date.today).to_i
+    trial_end_timestamp = StripeCustomer.retrieve(self).subscriptions.data.first.trial_end.to_s
+    ((DateTime.strptime(trial_end_timestamp, '%s').to_date) - Date.today).to_i
   end
 
   def has_active_subscription?
