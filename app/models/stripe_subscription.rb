@@ -15,10 +15,11 @@ class StripeSubscription
   end
 
   def self.delete(user)
-    self.retrieve(user.subscription_id).delete
+    self.retrieve(user).delete
     user.subscription_id = nil
     user.is_active = false
     user.save!
+    StripeCustomer.delete_all_sources(user)
   end
 
   def self.is_active? (user)

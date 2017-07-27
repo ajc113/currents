@@ -11,15 +11,15 @@ class StripeCustomer
   end
 
   def self.delete(user)
-    self.retrieve(user.stripe_customer_id).delete
+    self.retrieve(user).delete
   end
 
   def self.payment_source(user)
-    self.retrieve(user.stripe_customer_id).default_source
+    self.retrieve(user).default_source
   end
 
   def self.delete_all_sources(user)
-    customer = self.retrieve(user.stripe_customer_id)
+    customer = self.retrieve(user)
     customer.sources.each do |source|
       source.delete
     end
