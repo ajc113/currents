@@ -17,24 +17,25 @@
   <%= form_tag card_path, id: 'new_card' do |form| %>
     <div class="group">
       <label>
-        <span>Name</span>
-        <input name="cardholder-name" id="cardholder-name" class="field" placeholder="Jane Doe" />
+        <span>Name*</span>
+        <input name="cardholder-name" id="cardholder-name" class="field" placeholder="Jane Doe" required/>
       </label>
       <label>
-        <span>Phone</span>
+        <span>Phone*</span>
         <input name="cardholder-phone" id="cardholder-phone" class="field" placeholder="(123) 456-7890" type="tel" />
       </label>
       <label>
-        <span>ZIP code</span>
+        <span>ZIP code*</span>
         <input name="postal-code" id="postal-code" class="field" placeholder="94110" />
       </label>
     </div>
     <div class="group">
       <label>
-        <span>Card</span>
+        <span>Card*</span>
         <div id="card-element" class="field"></div>
       </label>
     </div>
+    <div id="card-errors"></div>
     <button type="submit">Update Card</button>
     <div class="outcome">
       <div class="error" role="alert"></div>
@@ -44,7 +45,6 @@
     </div>
   <% end %>
 </div>
-<div id="card-errors"></div>
 <script>
   var stripe = Stripe('pk_test_pdD8tLwzMr7tZb3fhI0h7vJJ');
   var elements = stripe.elements();
