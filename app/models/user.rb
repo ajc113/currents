@@ -17,11 +17,13 @@ class User < ActiveRecord::Base
 	end
 
   def create_stripe_customer
-    StripeCustomer.create(self)
-    if Rails.env.development?
-      StripeSubscription.create(self, DateTime.now.to_i + 300 )
-    else
-      StripeSubscription.create(self, (Date.today + 31).to_time.to_i )
+    unless Rails.env.test?
+      StripeCustomer.create(self)
+      if Rails.env.development?
+        StripeSubscription.create(self, DateTime.now.to_i + 300 )
+      else
+        StripeSubscription.create(self, (Date.today + 31).to_time.to_i )
+      end
     end
   end
 
