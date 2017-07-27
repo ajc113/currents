@@ -32,11 +32,7 @@ class User < ActiveRecord::Base
   end
 
   def trial_over?
-    if Rails.env.development?
-      DateTime.now > self.created_at + 5.minutes ? true : false
-    else
-      Date.today > self.created_at.to_date + 31 ? true : false
-    end
+    StripeCustomer.retrieve(self).subscriptions.data[0].status == 'trialing' ? true : false
   end
 
   def remaining_trial_days
