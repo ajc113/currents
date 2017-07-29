@@ -3,6 +3,6 @@ class TrialEndMailer < ApplicationMailer
   def notify_user(user)
     @user = user
     @url = 'http://' + ENV['HOST'] + '/card/new'
-    mail(to: @user.email, subject: "Currents | Your trial is going to end")
+    mail(to: @user.email, subject: "Currents Network | Your trial period is going to end soon")
   end
 end
