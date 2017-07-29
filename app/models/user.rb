@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
   end
 
   def has_active_subscription?
-    self.subscription_id? && self.is_active?
+    StripeCustomer.retrieve(self).subscriptions.total_count > 0
   end
 
   def soft_delete
