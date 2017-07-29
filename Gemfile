@@ -35,6 +35,7 @@ gem 'kaminari'
 gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'stripe'
+gem 'sucker_punch'
 
 group :production do
   gem 'rails_12factor'
