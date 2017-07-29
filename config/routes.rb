@@ -6,7 +6,8 @@ Rails.application.routes.draw do
         resources :reports
       end
     end
-  devise_for :users, sign_out_via: [:get, :delete]
+  devise_for :users, sign_out_via: [:get, :delete], :controllers => { :registrations => 'users/registrations' }
+
   root to: 'currents#index'
 
   # :registrations => "users/registrations"
