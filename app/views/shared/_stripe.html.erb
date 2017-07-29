@@ -1,9 +1,9 @@
-<% unless current_user.has_active_subscription? || current_user.trial_over? %>
+<% unless current_user.has_active_subscription? && current_user.trial_over? %>
   <h3 style="text-align: center">Subscribe for only $9/month</h3>
   <div style="text-align: center">You do not have active subscription. Subscribe by updating the card details.</div>
   <div style="text-align: center; text-decoration: underline">You will be charged only after the trial period is over!</div>
 <% else %>
-  <div style="text-align: center">Subscription status: <strong><%= @subscription.status %></strong></div>
+  <div style="text-align: center">Subscription status: <strong><%= @subscription.try(:status) %></strong></div>
 <% end %>
 <% unless @card.nil? %>
   <div id="card_details" style="text-align: center">
@@ -36,7 +36,7 @@
       </label>
     </div>
     <div id="card-errors"></div>
-    <button type="submit">Update Card</button>
+    <button class='submit' type="submit">Update Card</button>
     <div class="outcome">
       <div class="error" role="alert"></div>
       <div class="success">
@@ -87,8 +87,11 @@
       // Inform the user if there was an error
       var errorElement = document.getElementById('card-errors');
       errorElement.textContent = result.error.message;
+      $('.submit').prop('disabled', false);
+  
     } else {
       // Send the source to your server
+      $('.submit').prop('disabled', true);
       stripeSourceHandler(result.source);
     }
   });
