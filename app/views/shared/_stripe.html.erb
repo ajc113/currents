@@ -1,7 +1,7 @@
-<% unless current_user.has_active_subscription? && current_user.trial_over? %>
+<% unless current_user.has_active_subscription? || current_user.trial_over? %>
   <h3 style="text-align: center">Subscribe for only $9/month</h3>
   <div style="text-align: center">You do not have active subscription. Subscribe by updating the card details.</div>
-  <div style="text-align: center; text-decoration: underline">You will be charged only after subscription is over!</div>
+  <div style="text-align: center; text-decoration: underline">You will be charged only after the trial period is over!</div>
 <% else %>
   <div style="text-align: center">Subscription status: <strong><%= @subscription.status %></strong></div>
 <% end %>
