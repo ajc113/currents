@@ -211,6 +211,13 @@ h2.usp-heading {
     text-decoration: underline;
 }
 
+.footer {
+    background: black;
+    color: white;
+    vertical-align: middle;
+    padding: 15px;
+}
+
 @media (min-width: 1200px) {
     .list-group-item {
         height: 349px;
