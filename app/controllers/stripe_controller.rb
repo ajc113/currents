@@ -9,15 +9,6 @@ class StripeController < ApplicationController
     puts "request header is = "
     puts request.headers["Stripe-Signature"]
     event = nil
-    #begin
-      #event = Stripe::Webhook.construct_event(
-        #payload, sig_header, @endpoint_secret
-      #)
-    #rescue JSON::ParserError => e
-      #return render(:nothing => true, :status => 400)
-    #rescue Stripe::SignatureVerificationError => e
-      #return render(:nothing => true, :status => 400)
-    #end
     event_id = payload["id"]
     event = Stripe::Event.retrieve(event_id) #so that we know event is valid and from Stripe
     customer = event["data"]["object"]["customer"]
@@ -54,12 +45,19 @@ class StripeController < ApplicationController
       #if trial ends but user does not have payment source
 
     when "invoice.updated"
+      event.previous_attributes.attempt_count >= 0
+      next_attempt = event.previous_attributes.next_payment_attempt
 
     when "invoice.payment_failed"
 
     when "invoice.payment_succeeded"
       user.is_active = true
       user.save!
+
+    when "customer.source.updated"
+      #update user when credit card information is changed
+    when "charge.succeeded"
+      #inform the user about the charge
     end
     render nothing: true
   end
