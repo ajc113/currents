@@ -29,6 +29,13 @@ class Report < ActiveRecord::Base
     File.read self.location.coordinate_file.path
   end
 
+
+  after_create :send_notification
+
+  def send_notification
+    AdminMailer.new_report(self).deliver
+  end
+
   private
 
   def validate_date
@@ -36,5 +43,8 @@ class Report < ActiveRecord::Base
       errors.add(:date, 'must not be set in the future')
     end
   end
+
+
+
 
 end
