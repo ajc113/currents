@@ -16,6 +16,14 @@ class User < ActiveRecord::Base
 		self.email
 	end
 
+  def self.last_sign_in_before_week
+    where('last_sign_in_at = ? and create_at > ? and payment_source = ?', Date.today - 7, Date.today - 31, nil)
+  end
+
+  def self.last_sign_in_before_week_in_trial
+    where('last_sign_in_at = ? and created_at < ?', Date.today - 7, Date.today - 31)
+  end
+
   def create_stripe_customer
     unless Rails.env.test?
       StripeCustomer.create(self)
