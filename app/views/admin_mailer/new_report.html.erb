@@ -1,3 +1,7 @@
-<p>Hello, New report for </p>
-<h1><%= @report.location.short_name %></h1>
-<p> <%= @report.trip_summary %> </p>
+<%=
+ mandrill = Mandrill::API.new ENV['MANDRILL_API_KEY']
+    template_name = "new-report"
+    template_content = ''
+    merge_vars = [{"content"=> @report.location.short_name, "name"=>"REPORTNEW"}, {"content"=> @report.trip_summary, "name"=>"REPORTSUMMARY"}]
+    result = (mandrill.templates.render template_name, template_content, merge_vars)['html'].html_safe
+%>
