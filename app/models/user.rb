@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   end
 
 	def send_notification
-		AdminMailer.new_user(self).deliver
+    AdminMailer.delay.new_user(self)
 	end
 	
   def create_stripe_customer

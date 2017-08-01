@@ -21,7 +21,7 @@ class StripeController < ApplicationController
     when "customer.subscription.trial_will_end"
       #triggers three days before trial going to add
       #reming the user by email to add payment source
-      TrialEnd.notify_user(user).deliver
+      TrialEnd.delay.notify_user(user)
 
     when "customer.subscription.deleted"
       #after three failed payment attempts as per the settings subscription will be deleted
