@@ -8,8 +8,9 @@ class User < ActiveRecord::Base
 	has_many :buzzs   
 	has_many :locations, through: :reports
   belongs_to :state, primary_key: :name, foreign_key: :state_waters
-  after_create :create_stripe_customer
+  after_create :create_stripe_customer, :send_notification
   before_destroy :delete_stripe_customer
+
 
   #display_name is defined for activeadmin
 	def display_name
@@ -24,6 +25,10 @@ class User < ActiveRecord::Base
     where('last_sign_in_at = ? and created_at < ?', Date.today - 7, Date.today - 31)
   end
 
+	def send_notification
+		AdminMailer.new_user(self).deliver
+	end
+	
   def create_stripe_customer
     unless Rails.env.test?
       StripeCustomer.create(self)

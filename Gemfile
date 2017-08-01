@@ -23,7 +23,7 @@ gem 'sprockets-rails', '2.3.3'
 gem 'by_star', git: 'https://github.com/radar/by_star.git'
 gem 'colorize'
 gem 'carrierwave'
-gem 'mandrill-api'
+gem 'mandrill-api', require: "mandrill"
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'moving_average'
 gem 'party_foul'
@@ -36,6 +36,8 @@ gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'stripe'
 gem 'sucker_punch'
+gem 'nokogiri'
+gem 'premailer-rails'
 
 group :production do
   gem 'rails_12factor'
