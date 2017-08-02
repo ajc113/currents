@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
 	has_many :buzzs   
 	has_many :locations, through: :reports
   belongs_to :state, primary_key: :name, foreign_key: :state_waters
+  after_create :create_stripe_customer, :send_notification
+  before_destroy :delete_stripe_customer
 
 
   #display_name is defined for activeadmin
@@ -15,11 +17,59 @@ class User < ActiveRecord::Base
 		self.email
 	end
 
-	after_create :send_notification
+  def self.last_sign_in_before_week
+    where('last_sign_in_at = ? and create_at > ? and payment_source = ?', Date.today - 7, Date.today - 31, nil)
+  end
+
+  def self.last_sign_in_before_week_in_trial
+    where('last_sign_in_at = ? and created_at < ?', Date.today - 7, Date.today - 31)
+  end
 
 	def send_notification
-		AdminMailer.new_user(self).deliver
+    AdminMailer.delay.new_user(self)
 	end
 	
+  def create_stripe_customer
+    unless Rails.env.test?
+      StripeCustomer.create(self)
+      if Rails.env.development?
+        StripeSubscription.create(self, DateTime.now.to_i + 300 )
+      else
+        StripeSubscription.create(self, (Date.today + 31).to_time.to_i )
+      end
+    end
+  end
 
+  def delete_stripe_customer
+    StripeCustomer.delete(self)
+  end
+
+  def trial_over?
+    if self.subscription_id?
+      StripeCustomer.retrieve(self).subscriptions.data[0].status == 'trialing' ? false : true
+    else
+      true
+    end
+  end
+
+  def remaining_trial_days
+    trial_end_timestamp = StripeCustomer.retrieve(self).subscriptions.data.first.trial_end.to_s
+    ((DateTime.strptime(trial_end_timestamp, '%s').to_date) - Date.today).to_i
+  end
+
+  def has_active_subscription?
+    StripeCustomer.retrieve(self).subscriptions.total_count > 0
+  end
+
+  def soft_delete
+    update_attribute(:deleted_at, Time.current)
+  end
+
+  def active_for_authentication?
+    super && !deleted_at
+  end
+
+  def inactive_message
+    !deleted_at ? super : :deleted_account
+  end
 end

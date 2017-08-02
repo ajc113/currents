@@ -34,6 +34,8 @@ gem 'ffaker'
 gem 'kaminari'
 gem 'delayed_job_active_record'
 gem 'daemons'
+gem 'stripe'
+gem 'sucker_punch'
 gem 'nokogiri'
 gem 'premailer-rails'
 

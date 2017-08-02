@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag "https://js.stripe.com/v3/" %>
     <%= csrf_meta_tags %>
     <!-- Document Title
 	============================================= -->
@@ -17,16 +18,18 @@
   <body>
     <div class="wrapper">
       <%= render 'layouts/navbar' %>
+      <%= render 'layouts/subscription_alerts' %>
       <% if flash.any? %>
         <div class="container">
           <% flash.each do |key, value| %>
             <div class="alert alert-<%=key%>">
-              <%= value %>
+              <%= value.html_safe %>
             </div>
           <% end %>
         </div>
       <% end unless devise_controller? %>
       <%= yield %>
     </div>
+    <%= render 'layouts/footer' %>
   </body>
 </html>

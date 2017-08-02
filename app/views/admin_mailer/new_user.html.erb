@@ -1,1 +1,8 @@
 <p>New user registration for </p><h1> <%= @user.email %> </h1>
+<%=
+ mandrill = Mandrill::API.new ENV['MANDRILL_API_KEY']
+    template_name = "new-report"
+    template_content = ''
+    merge_vars = [{"content"=>"merge1 content", "name"=>"merge1"}]
+    result = (mandrill.templates.render template_name, template_content, merge_vars)['html'].html_safe
+    %>

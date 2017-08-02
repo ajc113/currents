@@ -1,0 +1,133 @@
+// Place all the styles related to the card controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#new_card {
+  font-family: "Helvetica Neue", Helvetica;
+  font-size: 15px;
+  font-variant: normal;
+  padding: 0;
+  margin: 0;
+}
+
+#new_card {
+  height: 100%;
+}
+
+#new_card_container {
+  background: #E6EBF1;
+  align-items: center;
+  min-height: 100%;
+  display: flex;
+  width: 100%;
+}
+
+#new_card {
+  width: 480px;
+  margin: 20px auto;
+}
+
+#new_card .group {
+  background: white;
+  box-shadow: 0 7px 14px 0 rgba(49,49,93,0.10),
+              0 3px 6px 0 rgba(0,0,0,0.08);
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+#new_card label {
+  position: relative;
+  color: #8898AA;
+  font-weight: 300;
+  height: 40px;
+  line-height: 40px;
+  margin-left: 20px;
+  display: block;
+}
+
+#new_card .group label:not(:last-child) {
+  border-bottom: 1px solid #F0F5FA;
+}
+
+#new_card label > span {
+  width: 20%;
+  text-align: right;
+  float: left;
+}
+
+#new_card .field {
+  background: transparent;
+  font-weight: 300;
+  border: 0;
+  color: #31325F;
+  outline: none;
+  padding-right: 10px;
+  padding-left: 10px;
+  cursor: text;
+  width: 70%;
+  height: 40px;
+  float: right;
+}
+
+#new_card .field::-webkit-input-placeholder { color: #CFD7E0; }
+#new_card .field::-moz-placeholder { color: #CFD7E0; }
+#new_card .field:-ms-input-placeholder { color: #CFD7E0; }
+
+#new_card button {
+  float: left;
+  display: block;
+  background: #1facd7;
+  color: white;
+  box-shadow: 0 7px 14px 0 rgba(49,49,93,0.10),
+              0 3px 6px 0 rgba(0,0,0,0.08);
+  border-radius: 4px;
+  border: 0;
+  margin-top: 20px;
+  font-size: 15px;
+  font-weight: 400;
+  width: 100%;
+  height: 40px;
+  line-height: 38px;
+  outline: none;
+}
+
+#new_card button:focus {
+  background: #555ABF;
+}
+
+#new_card button:active {
+  background: #43458B;
+}
+
+#new_card .outcome {
+  float: left;
+  width: 100%;
+  padding-top: 8px;
+  min-height: 24px;
+  text-align: center;
+}
+
+#new_card .success, .error {
+  display: none;
+  font-size: 13px;
+}
+
+#new_card .success.visible, .error.visible {
+  display: inline;
+}
+
+#new_card .error {
+  color: #E4584C;
+}
+
+#new_card .success {
+  color: #666EE8;
+}
+
+#new_card .success .token {
+  font-weight: 500;
+  font-size: 13px;
+}
+
+#card-errors {
+  color: red;
+}

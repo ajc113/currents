@@ -1,0 +1,34 @@
+// Place all the styles related to the my_account controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#card_details span {
+    padding-right: 20px;
+}
+
+#card_details span:last-child {
+    padding-right: 0px;
+}
+
+#card_details {
+    padding-top: 10px;
+}
+
+#invoices {
+    table,
+    th,
+    td {
+        border: 1px solid black;
+    }
+    th,
+    td {
+        padding: 15px;
+    }
+    table {
+        margin: auto;
+    }
+}
+
+.center-text {
+    clear: both;
+    text-align: center;
+}

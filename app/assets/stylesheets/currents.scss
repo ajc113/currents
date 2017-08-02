@@ -197,6 +197,27 @@ h2.usp-heading {
     margin: 0 auto;
 }
 
+.alert-info {
+    font-weight: 600;
+    text-align: center;
+    color: black;
+    background-color: #e3e334;
+    margin-bottom: 0;
+}
+
+.subscribe-link-alert {
+    color: #20aeda;
+    font-size: 15px;
+    text-decoration: underline;
+}
+
+.footer {
+    background: black;
+    color: white;
+    vertical-align: middle;
+    padding: 15px;
+}
+
 @media (min-width: 1200px) {
     .list-group-item {
         height: 349px;
