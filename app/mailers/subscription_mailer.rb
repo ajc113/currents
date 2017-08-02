@@ -12,7 +12,9 @@ class SubscriptionMailer < ApplicationMailer
   def charge_failed
   end
 
-  def customer_subscription_deleted
+  def customer_subscription_deleted(user)
+    @user = user
+    @url = 'http://' + ENV['HOST'] + '/card/new'
   end
 
   def customer_subscription_updated
