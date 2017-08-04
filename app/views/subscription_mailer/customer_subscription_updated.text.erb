@@ -1,0 +1,9 @@
+Dear, <%= @user.first_name %>
+
+Your trial period for Currents - The Fishing Network is over.
+
+You have not added a payment source to your account.
+
+Please <%= link_to 'add a payment source', new_card_url %> to continue using our services.
+
+<%= render 'layouts/mailer_footer' %>
