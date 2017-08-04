@@ -36,6 +36,9 @@ class StripeController < ApplicationController
       if event.data.object.status == "active" && event.data.previous_attributes.status == "trialing" && user.payment_source == nil
         user.is_active = false
         user.save!
+        SubscriptionMailer.delay.customer_subscription_updated(user)
+      else
+        SubscriptionMailer.delay.trial_over(user)
       end
       #to capture subscription failure
 
