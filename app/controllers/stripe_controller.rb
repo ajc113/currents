@@ -16,8 +16,6 @@ class StripeController < ApplicationController
     event_type = event["type"]
 
     case event_type
-    when "charge.failed"
-
     when "customer.subscription.trial_will_end"
       #triggers three days before trial going to add
       #reming the user by email to add payment source
@@ -40,29 +38,34 @@ class StripeController < ApplicationController
       else
         SubscriptionMailer.delay.trial_over(user)
       end
-      #to capture subscription failure
 
     when "invoice.upcoming"
       #if source added, notify customer about upcoming payment deduction
+      unless event.total == 0
+        SubscriptionMailer.delay.invoice_created(user)
+      end
 
     when "invoice.created"
       #if trial ends but user does not have payment source
 
     when "invoice.updated"
-      event.previous_attributes.attempt_count >= 0
+      if event.previous_attributes.attempt_count >= 0
       next_attempt = event.previous_attributes.next_payment_attempt
+      end
 
     when "invoice.payment_failed"
+      SubscriptionMailer.delay.invoice_payment_failed(user)
 
     when "invoice.payment_succeeded"
       user.is_active = true
       user.save!
+      SubscriptionMailer.delay.invoice_payment_succeeded(user)
 
     when "customer.source.updated"
       #update user when credit card information is changed
-    when "charge.succeeded"
-      #inform the user about the charge
-    end
+      SubscriptionMailer.delay.customer_source_updated(user)
+
     render nothing: true
+    end
   end
 end
