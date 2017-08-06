@@ -37,13 +37,15 @@ class StripeController < ApplicationController
 
     when "customer.subscription.updated"
       #to capture subscription from trial to active
-      if event.data.object.status == "active" && event.data.previous_attributes.status == "trialing" && user.payment_source == nil
+      if event.data.object.status == "active" && event.data.previous_attributes.status == "trialing" 
+        if user.payment_source == nil
         user.is_active = false
         user.save!
         SubscriptionMailer.delay.customer_subscription_updated(user)
       else
         SubscriptionMailer.delay.trial_over(user)
       end
+    end
 
     when "invoice.upcoming"
       #if source added, notify customer about upcoming payment deduction
