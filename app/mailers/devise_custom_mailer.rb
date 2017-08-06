@@ -16,32 +16,47 @@ require "mandrill"
       { name: key, content: value }
   end
 
+# new 
+  
+  def confirmation_instructions(record, token, opts={})
+       options = {
+      :subject => "Password Reset",
+      :email => record.email,
+      :global_merge_vars => [
+        {
+          name: "password_reset_link",
+          content: "http://www.example.com/users/password/edit?reset_password_token=#{token}"
+        }
+      ],
+      :template => "registration"
+    }
+    mandrill_send options  
+  end
+
+  def mandrill_send(opts={})
+    message = { 
+      :subject=> "#{opts[:subject]}", 
+      :from_name=> "example corp",
+      :from_email=>"example@somecorp.com",
+      :to=>
+            [{"name"=>"Some User",
+                "email"=>"#{opts[:email]}",
+                "type"=>"to"}],
+      :global_merge_vars => opts[:global_merge_vars]
+      }
+    sending = MANDRILL.messages.send_template opts[:template], [], message
+    rescue Mandrill::Error => e
+      Rails.logger.debug("#{e.class}: #{e.message}")
+      raise
+  end
+
 private
 
-  def confirmation_instructions(record, token, opts={})
-    template_name = "registration"
-    template_content = []
-    message = {
-      to: [{email: user.email}],
-      subject: "Hellow",
-      # subject: "Account Confirmation",
-      merge_vars: [
-        {rcpt: "email: user.email",
-          vars: [
-            {name: "USER_NAME", content: @email}
-            # {name: "ACCOUNT_CONFIRMATION_LINK", content: "http://localhost:3000/users/confirmation?confirmation_token=#{token}"}
-          ]
-        }
-       ]
-     }
-  end    
-    mandrill_template.messages.send_template registration, template_content, message
-  end
 
 
-  def send_mail(email, subject, body)
-    mail(to: email, subject: subject, body: body, content_type: "text/html")
-  end
+  # def send_mail(email, subject, body)
+  #   mail(to: email, subject: subject, body: body, content_type: "text/html")
+  # end
 
 
 
@@ -51,5 +66,6 @@ private
 
  end
 
+end
 
 
