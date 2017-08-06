@@ -11,7 +11,7 @@ class DeviseCustomMailer < Devise::Mailer
 
   def confirmation_instructions(user, token, opts={})
     @username = user.first_name || user.email
-    @confirmation_link = "http://" + ENV['HOST'] + "/users/confirmation/confirmation_token=" + token
+    @confirmation_link = "http://" + ENV['HOST'] + "/users/confirmation?confirmation_token=" + token
     mail(to: user.email, subject: 'Account confirmation')
   end
 
