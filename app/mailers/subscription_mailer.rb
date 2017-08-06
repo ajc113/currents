@@ -27,16 +27,15 @@ class SubscriptionMailer < ActionMailer::Base
     mail(to: @user.email, subject: subject("Invoice will be created in three days"))
   end
 
-  def invoice_created
+  def invoice_updated(user)
   end
 
-  def invoice_updated
+  def invoice_payment_failed(user)
+    @user = user
+    mail(to: @user.email, subject: subject("We failed to charge your card"))
   end
 
-  def invoice_payment_failed
-  end
-
-  def invoice_payment_succeeded
+  def invoice_payment_succeeded(user)
   end
   
   def customer_source_updated(user)
