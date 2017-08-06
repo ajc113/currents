@@ -14,7 +14,13 @@ class StripeController < ApplicationController
     customer = event["data"]["object"]["customer"]
     user = User.find_by(stripe_customer_id: customer)
     event_type = event["type"]
+    Thread.new do
+      event_process(event_type, event, user, customer)
+    end
+    render nothing: true, status: 200
+  end
 
+  def event_process(event_type, event, user, customer)
     case event_type
     when "customer.subscription.trial_will_end"
       #triggers three days before trial going to add
@@ -62,7 +68,5 @@ class StripeController < ApplicationController
       #update user when credit card information is changed
       SubscriptionMailer.delay.customer_source_updated(user)
     end
-
-    render nothing: true
   end
 end
