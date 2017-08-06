@@ -41,16 +41,13 @@ class StripeController < ApplicationController
 
     when "invoice.upcoming"
       #if source added, notify customer about upcoming payment deduction
-      unless event.total == 0
-        SubscriptionMailer.delay.invoice_created(user)
+      unless event.data.object.total == 0
+        SubscriptionMailer.delay.invoice_upcoming(user)
       end
-
-    when "invoice.created"
-      #if trial ends but user does not have payment source
 
     when "invoice.updated"
       if event.previous_attributes.attempt_count >= 0
-      next_attempt = event.previous_attributes.next_payment_attempt
+        next_attempt = event.previous_attributes.next_payment_attempt
       end
 
     when "invoice.payment_failed"
@@ -64,8 +61,8 @@ class StripeController < ApplicationController
     when "customer.source.updated"
       #update user when credit card information is changed
       SubscriptionMailer.delay.customer_source_updated(user)
+    end
 
     render nothing: true
-    end
   end
 end
