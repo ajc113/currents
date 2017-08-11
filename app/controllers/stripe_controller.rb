@@ -27,8 +27,6 @@ class StripeController < ApplicationController
   end
 
   def event_process(event_type, event, user, customer)
-    raise 'some error'
-    puts '****something after the error****'
     case event_type
     when "customer.subscription.trial_will_end"
       #triggers three days before trial going to add
