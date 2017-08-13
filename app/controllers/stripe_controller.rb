@@ -65,8 +65,11 @@ class StripeController < ApplicationController
       end
 
     when "invoice.payment_failed"
-      #next_payment_attempt = DateTime.strptime(event.data.object.next_payment_attempt, '%s').change(offset: "+0530")
-      #SubscriptionMailer.delay.invoice_payment_failed(user, next_payment_attempt)
+      next_payment_attempt = event.data.object.next_payment_attempt
+      unless next_payment_attempt.nil?
+        next_payment_attempt = Date.strptime(next_payment_attempt, '%s')
+        SubscriptionMailer.delay.invoice_payment_failed(user, next_payment_attempt)
+      end
 
     when "invoice.payment_succeeded"
       user.is_active = true
