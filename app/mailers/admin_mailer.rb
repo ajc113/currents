@@ -1,7 +1,7 @@
 class AdminMailer < ApplicationMailer
 	default from: "no_reply@thefishing.network"
 	#default to: "currentsfishingnetwork@gmail.com"
-	default to: "tannakartikey@gmail.com"
+  default to: AdminEmails.list
 
 	def new_user(user)
 		@user = user
