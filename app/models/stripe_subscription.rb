@@ -1,17 +1,25 @@
 class StripeSubscription
+  
+  def self.exception_handler(data, &block)
+    yield
+  rescue => error
+    GithubIssues.create(error, self.name, caller_locations(2,2)[0].label, data)
+  end
 
   def self.create(user, trial_end = 'now')
-    subscription = Stripe::Subscription.create(
+    self.exception_handler(user) do
+      subscription = Stripe::Subscription.create(
                       :customer  => user.stripe_customer_id,
                       :plan      => 'monthly',
                       :trial_end => trial_end
                     )
-    user.subscription_id = subscription.id
-    user.save!
+      user.subscription_id = subscription.id
+      user.save!
+    end
   end
 
   def self.retrieve(user)
-    Stripe::Subscription.retrieve(user.subscription_id)
+    self.exception_handler(user) { Stripe::Subscription.retrieve(user.subscription_id) }
   end
 
   def self.delete(user)
