@@ -22,6 +22,7 @@ class StripeController < ApplicationController
         puts error.message
         puts error.inspect
       end
+      ActiveRecord::Base.connection.close
     end
     render nothing: true, status: 200
   end
