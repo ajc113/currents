@@ -1,11 +1,10 @@
 class StripeSubscription
-
   def self.create(user, trial_end = 'now')
     subscription = Stripe::Subscription.create(
-                      :customer  => user.stripe_customer_id,
-                      :plan      => 'monthly',
-                      :trial_end => trial_end
-                    )
+                    :customer  => user.stripe_customer_id,
+                    :plan      => 'monthly',
+                    :trial_end => trial_end
+                  )
     user.subscription_id = subscription.id
     user.save!
   end
@@ -25,4 +24,6 @@ class StripeSubscription
   def self.is_active? (user)
     StripeCustomer.retrieve(user.customer_id).subscriptions.total_count == 0 ? false : true
   end
+
+  extend ExceptionWrapper
 end

@@ -27,4 +27,5 @@ class StripeCustomer
     user.save!
   end
   
+  extend ExceptionWrapper
 end

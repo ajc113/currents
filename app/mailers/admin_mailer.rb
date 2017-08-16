@@ -1,9 +1,11 @@
 class AdminMailer < ApplicationMailer
 	default from: "no_reply@thefishing.network"
 	#default to: "currentsfishingnetwork@gmail.com"
-	default to: "tannakartikey@gmail.com"
+  default to: AdminEmails.list
 
 	def new_user(user)
+    @username = user.first_name || user.email
+    @confirmation_link = "http://" + ENV['HOST'] + "/users/confirmation?confirmation_token=" + user.confirmation_token
 		@user = user
 		mail(subject: "New User: #{user.email}")
 	end

@@ -30,8 +30,9 @@ class SubscriptionMailer < ActionMailer::Base
   def invoice_updated(user)
   end
 
-  def invoice_payment_failed(user)
+  def invoice_payment_failed(user, next_payment_attempt = nil)
     @user = user
+    @next_payment_attempt = next_payment_attempt
     mail(to: @user.email, subject: subject("We failed to charge your card"))
   end
 
