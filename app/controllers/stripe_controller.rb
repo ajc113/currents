@@ -15,7 +15,14 @@ class StripeController < ApplicationController
     user = User.find_by(stripe_customer_id: customer)
     event_type = event["type"]
     Thread.new do
-      event_process(event_type, event, user, customer)
+      begin
+        event_process(event_type, event, user, customer)
+      rescue => error
+        PartyFould::RacklessExceptionHandler.handle(error, class: stripe_event, methods: method_name)
+        puts error.message
+        puts error.inspect
+      end
+      ActiveRecord::Base.connection.close
     end
     render nothing: true, status: 200
   end
@@ -39,13 +46,13 @@ class StripeController < ApplicationController
       #to capture subscription from trial to active
       if event.data.object.status == "active" && event.data.previous_attributes.status == "trialing" 
         if user.payment_source == nil
-        user.is_active = false
-        user.save!
-        SubscriptionMailer.delay.customer_subscription_updated(user)
-      else
-        SubscriptionMailer.delay.trial_over(user)
+          user.is_active = false
+          user.save!
+          SubscriptionMailer.delay.customer_subscription_updated(user)
+        else
+          SubscriptionMailer.delay.trial_over(user)
+        end
       end
-    end
 
     when "invoice.upcoming"
       #if source added, notify customer about upcoming payment deduction
@@ -59,7 +66,11 @@ class StripeController < ApplicationController
       end
 
     when "invoice.payment_failed"
-      SubscriptionMailer.delay.invoice_payment_failed(user)
+      next_payment_attempt = event.data.object.next_payment_attempt
+      unless next_payment_attempt.nil?
+        next_payment_attempt = Date.strptime(next_payment_attempt, '%s')
+        SubscriptionMailer.delay.invoice_payment_failed(user, next_payment_attempt)
+      end
 
     when "invoice.payment_succeeded"
       user.is_active = true
