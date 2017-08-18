@@ -4,7 +4,7 @@ class MarketingMailerPreview < ActionMailer::Preview
     MarketingMailer.trial_benefits User.first
   end
 
-  def subscription
-    MarketingMailer.subscription User.first
+  def subscription_reminder
+    MarketingMailer.subscription_reminder User.first
   end
 end
