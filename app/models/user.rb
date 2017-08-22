@@ -46,7 +46,11 @@ class User < ActiveRecord::Base
 
   def trial_over?
     if self.subscription_id?
-      StripeCustomer.retrieve(self).subscriptions.data[0].status == 'trialing' ? false : true
+      begin
+        StripeCustomer.retrieve(self).subscriptions.data[0].status == 'trialing' ? false : true
+      rescue
+        return true
+      end
     else
       true
     end
@@ -58,7 +62,11 @@ class User < ActiveRecord::Base
   end
 
   def has_active_subscription?
-    StripeCustomer.retrieve(self).subscriptions.total_count > 0
+    begin
+      StripeCustomer.retrieve(self).subscriptions.total_count > 0
+    rescue
+      return false
+    end
   end
 
   def soft_delete
