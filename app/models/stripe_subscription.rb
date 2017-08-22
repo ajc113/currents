@@ -10,7 +10,7 @@ class StripeSubscription
   end
 
   def self.retrieve(user)
-    Stripe::Subscription.retrieve(user.subscription_id)
+    Stripe::Subscription.retrieve(user.subscription_id) unless user.subscription_id.nil?
   end
 
   def self.delete(user)
