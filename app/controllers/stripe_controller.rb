@@ -1,6 +1,5 @@
 class StripeController < ApplicationController
   protect_from_forgery :except => :events
-  @endpoint_secret = 'whsec_OtNLhY3vJSQrx1vRinEJ1iRL6FZ7Am1w'
 
   def events
     request.body.rewind
@@ -80,6 +79,12 @@ class StripeController < ApplicationController
     when "customer.source.updated"
       #update user when credit card information is changed
       SubscriptionMailer.delay.customer_source_updated(user)
+
+    else
+      #Every other event we are not handling
+      #if Rails.env.development?
+        #OtherEventsMailer.notify(event).deliver
+      #end
     end
   end
 end
