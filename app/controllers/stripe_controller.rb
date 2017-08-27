@@ -4,24 +4,25 @@ class StripeController < ApplicationController
   def events
     request.body.rewind
     payload = JSON.parse(request.body.read)
-    sig_header = request.headers["Stripe-Signature"]
-    puts "request header is = "
-    puts request.headers["Stripe-Signature"]
     event = nil
     event_id = payload["id"]
-    event = Stripe::Event.retrieve(event_id) #so that we know event is valid and from Stripe
-    customer = event["data"]["object"]["customer"]
-    user = User.find_by(stripe_customer_id: customer)
-    event_type = event["type"]
-    Thread.new do
-      begin
-        event_process(event_type, event, user, customer)
-      rescue => error
-        PartyFould::RacklessExceptionHandler.handle(error, class: stripe_event, methods: method_name)
-        puts error.message
-        puts error.inspect
+    event = begin
+      Stripe::Event.retrieve(event_id) #so that we know event is valid and from Stripe
+    rescue => error
+      PartyFoul::RacklessExceptionHandler.handle(error, class: self, method: __method__, params: event_id)
+    end
+    if event
+      Thread.new do
+        begin
+          customer = event["data"]["object"]["customer"]
+          user = User.find_by(stripe_customer_id: customer)
+          event_type = event["type"]
+          event_process(event_type, event, user, customer)
+        rescue => error
+          PartyFoul::RacklessExceptionHandler.handle(error, class: self, method: __method__, params: user)
+        end
+        ActiveRecord::Base.connection.close
       end
-      ActiveRecord::Base.connection.close
     end
     render nothing: true, status: 200
   end
@@ -83,7 +84,7 @@ class StripeController < ApplicationController
     else
       #Every other event we are not handling
       #if Rails.env.development?
-        #OtherEventsMailer.notify(event).deliver
+      #OtherEventsMailer.notify(event).deliver
       #end
     end
   end
