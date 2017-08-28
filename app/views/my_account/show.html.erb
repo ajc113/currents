@@ -2,12 +2,8 @@
 <h3 class="center-text">Account Details</h3>
 <%= render 'shared/stripe' %>
 <% if current_user.has_active_subscription? %>
-  <% unless @invoices.data.count <= 1 %>
-    <h3 class="center-text">Payment History</h3>
-    <div id="invoices" style="display: block; clear: both; text-align: center">
-      <%= render 'invoice_table' %>
-      <span><i>(If you had any previous cancelled subscription, thsoe invoices are not listed)</i></span>
-      <div><%= link_to "Cancel My Subscription", my_account_url, method: :delete, data: { confirm: 'Are you sure?' } %></div>
-    </div>
-  <% end %>
+  <div style="display: block; clear: both; text-align: center">
+    Next invoice will be generated on: <%= Date.strptime(@upcoming_invoice['date'].to_s, '%s') %>
+  </div>
+  <%= render 'invoice_table' %>
 <% end %>
