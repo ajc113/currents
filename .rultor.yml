@@ -19,6 +19,7 @@ install: |-
   xvfb-run rake
   git config --global user.email "hello@thefishing.network"
   git config --global user.name "currents-network"
+  npm install -g heroku-cli
 merge:
   fast-froward: no
 release:
@@ -29,6 +30,7 @@ release:
     chmod -R 600 ~/.ssh/*
     echo -e "Host *\n  StrictHostKeyChecking no\n  UserKnownHostsFile=/dev/null" > ~/.ssh/config
     git push -f heroku $(git symbolic-ref --short HEAD):master
+    heroku run rake db:migrate --app currents
     curl -f --connect-timeout 15 --retry 5 --retry-delay 30 http://thefishing.network > /dev/null
   commanders:
   - tannakartikey
@@ -41,6 +43,7 @@ deploy:
     chmod -R 600 ~/.ssh/*
     echo -e "Host *\n  StrictHostKeyChecking no\n  UserKnownHostsFile=/dev/null" > ~/.ssh/config
     git push -f heroku master:master
+    heroku run rake db:migrate --app currents-dev
   commanders:
   - tannakartikey
   - ajc113
