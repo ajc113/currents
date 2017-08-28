@@ -19,7 +19,7 @@ install: |-
   xvfb-run rake
   git config --global user.email "hello@thefishing.network"
   git config --global user.name "currents-network"
-  npm install -g heroku-cli
+  sudo npm install -g heroku-cli
 merge:
   fast-froward: no
 release:
