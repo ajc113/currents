@@ -14,8 +14,8 @@ install: |-
   sudo chown -R r:r /usr/local
   cp ../application.yml config/application.yml
   bundle install
-  sleep 20
   rake db:create
+  sleep 20
   xvfb-run rake
   git config --global user.email "hello@thefishing.network"
   git config --global user.name "currents-network"
