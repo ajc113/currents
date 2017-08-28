@@ -19,7 +19,7 @@ install: |-
   xvfb-run rake
   git config --global user.email "hello@thefishing.network"
   git config --global user.name "currents-network"
-  sudo npm install -g heroku-cli
+  wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh
 merge:
   fast-froward: no
 release:
