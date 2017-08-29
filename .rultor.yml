@@ -6,6 +6,8 @@ assets:
   kartikey_heroku: "tannakartikey/currents_private#tannakartikey.heroku"
   kartikey_heroku.pub: "tannakartikey/currents_private#tannakartikey.heroku.pub"
   application.yml: "tannakartikey/currents_private#config/application.yml"
+  .netrc: "tannakartikey/currents_private#.netrc"
+  .curlrc: "tannakartikey/currents_private#.curlrc"
 env:
   RAILS_ENV: "test"
   DISPLAY: ":99"
@@ -43,6 +45,7 @@ deploy:
     chmod -R 600 ~/.ssh/*
     echo -e "Host *\n  StrictHostKeyChecking no\n  UserKnownHostsFile=/dev/null" > ~/.ssh/config
     git push -f heroku master:master
+    curl https://api.heroku.com/apps
     heroku run rake db:migrate --app currents-dev
   commanders:
   - tannakartikey
