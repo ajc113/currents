@@ -6,8 +6,8 @@ assets:
   kartikey_heroku: "tannakartikey/currents_private#tannakartikey.heroku"
   kartikey_heroku.pub: "tannakartikey/currents_private#tannakartikey.heroku.pub"
   application.yml: "tannakartikey/currents_private#config/application.yml"
-  netrc: "tannakartikey/currents_private#.netrc"
-  curlrc: "tannakartikey/currents_private#.curlrc"
+  netrc: "tannakartikey/currents_private#netrc"
+  curlrc: "tannakartikey/currents_private#curlrc"
 env:
   RAILS_ENV: "test"
   DISPLAY: ":99"
