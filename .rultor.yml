@@ -22,6 +22,9 @@ install: |-
   git config --global user.email "hello@thefishing.network"
   git config --global user.name "currents-network"
   wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh
+  mv ../curlrc ../.curlrc
+  mv ../netrc ../.netrc
+  curl --silent --output /dev/null https://api.heroku.com/apps
 merge:
   fast-froward: no
 release:
@@ -45,9 +48,6 @@ deploy:
     chmod -R 600 ~/.ssh/*
     echo -e "Host *\n  StrictHostKeyChecking no\n  UserKnownHostsFile=/dev/null" > ~/.ssh/config
     git push -f heroku master:master
-    mv ../curlrc ../.curlrc
-    mv ../netrc ../.netrc
-    curl https://api.heroku.com/apps
     heroku run rake db:migrate --app currents-dev
   commanders:
   - tannakartikey
