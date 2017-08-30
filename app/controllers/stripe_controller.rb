@@ -7,7 +7,7 @@ class StripeController < ApplicationController
     event = nil
     event_id = payload["id"]
     event = begin
-      Stripe::Event.retrieve(event_id) #so that we know event is valid and from Stripe
+              Stripe::Event.retrieve(event_id) unless Rails.env.test? #so that we know event is valid and from Stripe
     rescue => error
       PartyFoul::RacklessExceptionHandler.handle(error, class: self, method: __method__, params: event_id)
     end
