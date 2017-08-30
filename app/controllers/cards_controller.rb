@@ -2,7 +2,11 @@ class CardsController < ApplicationController
 	before_action :authenticate_user!
   def new
     @customer = StripeCustomer.retrieve(current_user)
-    @card = Stripe::Source.retrieve(@customer.default_source).card unless current_user.payment_source.nil?
+    @card ||= begin
+                Stripe::Source.retrieve(@customer.default_source).card unless current_user.payment_source.nil?
+              rescue => error
+                GithubIssues.create(error, self, __method__, current_user) 
+              end
     @subscription = StripeSubscription.retrieve(current_user) unless current_user.subscription_id.nil?
   end
 
