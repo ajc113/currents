@@ -9,6 +9,7 @@
             <td>Date</td>
             <td>Amount</td>
             <td>Period</td>
+	    <td>Status</td>
           </tr>
         </thead>
         <% @invoices.data.each do |invoice| %>
@@ -18,6 +19,7 @@
               <td><%= Date.strptime(invoice.date.to_s, '%s') %></td>
               <td>$<%= invoice.total/100 %></td>
               <td><%= Date.strptime(invoice.lines.data[0].period.start.to_s, '%s') %> to <%= Date.strptime(invoice.lines.data[0].period.end.to_s, '%s') %></td>
+              <td><%= invoice.paid == true ? 'Paid' : 'Unpaid' %></td>
             </tr>
           <% end %>
         <% end %>
