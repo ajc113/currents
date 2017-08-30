@@ -6,6 +6,7 @@ class StripeSubscription
                     :trial_end => trial_end
                   )
     user.subscription_id = subscription.id
+    user.is_active = true
     user.save!
   end
 
