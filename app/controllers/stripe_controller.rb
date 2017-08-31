@@ -6,17 +6,21 @@ class StripeController < ApplicationController
     payload = JSON.parse(request.body.read)
     event = nil
     event_id = payload["id"]
-    event = begin
-              Stripe::Event.retrieve(event_id) unless Rails.env.test? #so that we know event is valid and from Stripe
-    rescue => error
-      PartyFoul::RacklessExceptionHandler.handle(error, class: self, method: __method__, params: event_id)
+    if Rails.env.production?
+      begin
+        event = Stripe::Event.retrieve(event_id)  #so that we know event is valid and from Stripe
+      rescue => error
+        PartyFoul::RacklessExceptionHandler.handle(error, class: self, method: __method__, params: event_id)
+      end
+    else
+      event = JSON.parse(request.body.read, object_class: OpenStruct)
     end
     if event
       Thread.new do
         begin
-          customer = event["data"]["object"]["customer"]
+          customer = event.data.object.customer
           user = User.find_by(stripe_customer_id: customer)
-          event_type = event["type"]
+          event_type = event.type
           event_process(event_type, event, user, customer)
         rescue => error
           PartyFoul::RacklessExceptionHandler.handle(error, class: self, method: __method__, params: user)
