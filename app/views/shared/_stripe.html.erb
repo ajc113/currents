@@ -1,111 +1,112 @@
-<% unless current_user.has_active_subscription? && current_user.trial_over? %>
+<% if subscription_instruction_should_be_shown? %>
   <h3 style="text-align: center">Subscribe for only $9/month</h3>
   <div style="text-align: center">You do not have active subscription. Subscribe by updating the card details.</div>
   <div style="text-align: center; text-decoration: underline">You will be charged only after the trial period is over!</div>
-<% else %>
-  <div style="text-align: center">Subscription status: <strong><%= @subscription.try(:status) %></strong></div>
 <% end %>
-<% unless @card.nil? %>
-  <div id="card_details" style="text-align: center">
-    <div> Card in use</div>
-    <span> Type: <strong><%= @card.brand %></strong></span>
-    <span> Expirty: <strong><%= @card.exp_month %>/<%= @card.exp_year %></strong></span>
-    <span> Card: <strong>**** **** **** <%= @card.last4 %></strong></span>
-  </div>
+<% unless current_user.subscription_id.nil? %>
+  <div style="text-align: center">Subscription status: <strong><%= subscription_status %></strong></div>
 <% end %>
-<div id="#new_card_container">
-  <%= form_tag card_path, id: 'new_card' do |form| %>
-    <div class="group">
-      <label>
-        <span>Name*</span>
-        <input name="cardholder-name" id="cardholder-name" class="field" placeholder="Jane Doe" required/>
-      </label>
-      <label>
-        <span>Phone*</span>
-        <input name="cardholder-phone" id="cardholder-phone" class="field" placeholder="(123) 456-7890" type="tel" />
-      </label>
-      <label>
-        <span>ZIP code*</span>
-        <input name="postal-code" id="postal-code" class="field" placeholder="94110" />
-      </label>
-    </div>
-    <div class="group">
-      <label>
-        <span>Card*</span>
-        <div id="card-element" class="field"></div>
-      </label>
-    </div>
-    <div id="card-errors"></div>
-    <button class='submit' type="submit">Update Card</button>
-    <div class="outcome">
-      <div class="error" role="alert"></div>
-      <div class="success">
-        Success! Your Stripe token is <span class="token"></span>
-      </div>
+  <% unless @card.nil? %>
+    <div id="card_details" style="text-align: center">
+      <div> Card in use</div>
+      <span> Type: <strong><%= @card.brand %></strong></span>
+      <span> Expirty: <strong><%= @card.exp_month %>/<%= @card.exp_year %></strong></span>
+      <span> Card: <strong>**** **** **** <%= @card.last4 %></strong></span>
     </div>
   <% end %>
-</div>
-<script>
-var stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
-  var elements = stripe.elements();
-  // Custom styling can be passed to options when creating an Element.
-  
-  var card = elements.create('card', {
-  	  hidePostalCode: true,
-  style: {
-    base: {
-      iconColor: '#666EE8',
-      color: '#31325F',
-      lineHeight: '40px',
-      fontWeight: 300,
-      fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-      fontSize: '15px',
-  
-      '::placeholder': {
-        color: '#CFD7E0',
-      },
-    },
-  }
-  });
-  // Add an instance of the card Element into the `card-element` <div>
-  card.mount('#card-element');
-  // Create a source or display an error when the form is submitted.
-  var form = document.getElementById('new_card');
-  form.addEventListener('submit', function(event) {
-  event.preventDefault();
-  
-  stripe.createSource(card, {
-  	  owner: {
-  		  name: document.getElementById('cardholder-name').value,
-  		  phone: document.getElementById('cardholder-phone').value,
-  		  address: {
-  	          postal_code: document.getElementById('postal-code').value,
-  		  },
-  	  },
-  }).then(function(result) {
-    if (result.error) {
-      // Inform the user if there was an error
-      var errorElement = document.getElementById('card-errors');
-      errorElement.textContent = result.error.message;
-      $('.submit').prop('disabled', false);
-  
-    } else {
-      // Send the source to your server
-      $('.submit').prop('disabled', true);
-      stripeSourceHandler(result.source);
-    }
-  });
-  });
-  function stripeSourceHandler(source) {
-  // Insert the source ID into the form so it gets submitted to the server
-  var form = document.getElementById('new_card');
-  var hiddenInput = document.createElement('input');
-  hiddenInput.setAttribute('type', 'hidden');
-  hiddenInput.setAttribute('name', 'stripeSource');
-  hiddenInput.setAttribute('value', source.id);
-  form.appendChild(hiddenInput);
-  
-  // Submit the form
-  form.submit();
-  }
-</script>
+  <div id="#new_card_container">
+    <%= form_tag card_path, id: 'new_card' do |form| %>
+      <div class="group">
+        <label>
+          <span>Name*</span>
+          <input name="cardholder-name" id="cardholder-name" class="field" placeholder="Jane Doe" required/>
+        </label>
+        <label>
+          <span>Phone*</span>
+          <input name="cardholder-phone" id="cardholder-phone" class="field" placeholder="(123) 456-7890" type="tel" />
+        </label>
+        <label>
+          <span>ZIP code*</span>
+          <input name="postal-code" id="postal-code" class="field" placeholder="94110" />
+        </label>
+      </div>
+      <div class="group">
+        <label>
+          <span>Card*</span>
+          <div id="card-element" class="field"></div>
+        </label>
+      </div>
+      <div id="card-errors"></div>
+      <button class='submit' type="submit">Update Card</button>
+      <div class="outcome">
+        <div class="error" role="alert"></div>
+        <div class="success">
+          Success! Your Stripe token is <span class="token"></span>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <script>
+    var stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
+      var elements = stripe.elements();
+      // Custom styling can be passed to options when creating an Element.
+    
+      var card = elements.create('card', {
+      	  hidePostalCode: true,
+      style: {
+        base: {
+          iconColor: '#666EE8',
+          color: '#31325F',
+          lineHeight: '40px',
+          fontWeight: 300,
+          fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+          fontSize: '15px',
+    
+          '::placeholder': {
+            color: '#CFD7E0',
+          },
+        },
+      }
+      });
+      // Add an instance of the card Element into the `card-element` <div>
+      card.mount('#card-element');
+      // Create a source or display an error when the form is submitted.
+      var form = document.getElementById('new_card');
+      form.addEventListener('submit', function(event) {
+      event.preventDefault();
+    
+      stripe.createSource(card, {
+      	  owner: {
+      		  name: document.getElementById('cardholder-name').value,
+      		  phone: document.getElementById('cardholder-phone').value,
+      		  address: {
+      	          postal_code: document.getElementById('postal-code').value,
+      		  },
+      	  },
+      }).then(function(result) {
+        if (result.error) {
+          // Inform the user if there was an error
+          var errorElement = document.getElementById('card-errors');
+          errorElement.textContent = result.error.message;
+          $('.submit').prop('disabled', false);
+    
+        } else {
+          // Send the source to your server
+          $('.submit').prop('disabled', true);
+          stripeSourceHandler(result.source);
+        }
+      });
+      });
+      function stripeSourceHandler(source) {
+      // Insert the source ID into the form so it gets submitted to the server
+      var form = document.getElementById('new_card');
+      var hiddenInput = document.createElement('input');
+      hiddenInput.setAttribute('type', 'hidden');
+      hiddenInput.setAttribute('name', 'stripeSource');
+      hiddenInput.setAttribute('value', source.id);
+      form.appendChild(hiddenInput);
+    
+      // Submit the form
+      form.submit();
+      }
+  </script>
