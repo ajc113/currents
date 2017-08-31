@@ -52,6 +52,11 @@ class StripeController < ApplicationController
         else
           SubscriptionMailer.delay.trial_over(user)
         end
+      elsif event.data.object.status == "trialing" && event.data.previous_attributes.status == "active" 
+        user.is_active = true
+        user.save!
+        #trial_end_date = Date.strptime(event.data.trial_end, '%s')
+        SubscriptionMailer.delay.trial_extended(user, Date.today)
       end
 
     when "invoice.upcoming"

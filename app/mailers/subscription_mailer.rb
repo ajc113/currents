@@ -22,6 +22,12 @@ class SubscriptionMailer < ActionMailer::Base
     mail(to: @user.email, subject: subject("Your trial period has ended"))
   end
 
+  def trial_extended(user, trial_end_date = nil)
+    @user = user
+    @trial_end_date = trial_end_date
+    mail(to: @user.email, subject: subject("Your trial period is extended"))
+  end
+
   def invoice_upcoming(user)
     @user = user
     mail(to: @user.email, subject: subject("Invoice will be created in three days"))
