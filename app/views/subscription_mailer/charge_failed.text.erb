@@ -1,0 +1,7 @@
+<%= render 'layouts/mailer_header' %>
+We failed to charge your card ending with '<%= @source %>'.
+
+The error we received from the payment gateway:
+<%= @error %>
+
+<%= render 'layouts/mailer_footer' %>
