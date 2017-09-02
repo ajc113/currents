@@ -26,12 +26,14 @@ PartyFoul.configure do |config|
   # Additional labels to add to issues created
   # config.additional_labels    = ['production']
   # or
-  # config.additional_labels    = Proc.new do |exception, env|
-  #   []
-  # end
+   config.additional_labels    = Proc.new do |exception, env|
+     labels = if ENV['HOST'] =~ /currents-dev\./
+                ['staging']
+              end
+   end
 
   # Limit the number of comments per issue
-  # config.comment_limit        = 10
+   config.comment_limit        = 10
 
   # Setting your title prefix can help with 
   # distinguising the issue between environments
