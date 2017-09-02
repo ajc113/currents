@@ -97,9 +97,9 @@ class StripeController < ApplicationController
 
     else
       #Every other event we are not handling
-      #if Rails.env.development?
-      #OtherEventsMailer.notify(event).deliver
-      #end
+      if Rails.env.development?
+        OtherEventsMailer.delay.notify(request.body.read)
+      end
     end
   end
 end
