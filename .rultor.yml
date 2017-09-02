@@ -28,6 +28,7 @@ merge:
   fast-froward: no
 release:
   script: |-
+    heroku pg:backups:capture --app currents
     git remote add heroku git@heroku.com:currents.git
     mkdir ~/.ssh
     mv ../id_rsa ../id_rsa.pub ../kartikey_heroku.pub ../kartikey_heroku ~/.ssh
@@ -41,6 +42,7 @@ release:
   - ajc113
 deploy:
   script: |-
+    heroku pg:backups:capture --app currents-dev
     git remote add heroku git@heroku.com:currents-dev.git
     mkdir ~/.ssh
     mv ../id_rsa ../id_rsa.pub ../kartikey_heroku.pub ../kartikey_heroku ~/.ssh
