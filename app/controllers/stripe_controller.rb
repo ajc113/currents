@@ -39,7 +39,7 @@ class StripeController < ApplicationController
       user.subscription_id = nil
       user.is_active = false
       user.save!
-      StripeCustomer.delete_all_sources(customer)
+      StripeCustomer.delete_all_sources(user)
       SubscriptionMailer.delay.customer_subscription_deleted(user)
 
     when "customer.subscription.updated"

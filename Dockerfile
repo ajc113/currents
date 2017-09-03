@@ -33,6 +33,7 @@ RUN apt-get install -y ssh && \
   mkdir /var/run/sshd && \
   chmod 0755 /var/run/sshd
 
+RUN wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh
 #Postgres
 RUN apt-get install -y postgresql postgresql-contrib libpq-dev
 
