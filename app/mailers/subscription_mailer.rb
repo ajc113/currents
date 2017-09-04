@@ -52,8 +52,9 @@ class SubscriptionMailer < ActionMailer::Base
   def invoice_payment_succeeded(user)
   end
   
-  def customer_source_updated(user)
+  def customer_source_created(user, source=nil)
     @user = user
+    @source = source
     mail(to: @user.email, subject: subject("Your payment source was updated"))
   end
 

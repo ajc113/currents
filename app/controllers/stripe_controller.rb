@@ -90,9 +90,9 @@ class StripeController < ApplicationController
       user.save!
       SubscriptionMailer.delay.invoice_payment_succeeded(user)
 
-    when "customer.source.updated"
-      #update user when credit card information is changed
-      SubscriptionMailer.delay.customer_source_updated(user)
+    when "customer.source.created"
+      source = event.data.object.card.last4
+      SubscriptionMailer.delay.customer_source_created(user, source)
 
     else
       #Every other event we are not handling
