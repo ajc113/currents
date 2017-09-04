@@ -1,6 +1,5 @@
 class StripeController < ApplicationController
   protect_from_forgery :except => :events
-
   def events
     request.body.rewind
     payload = JSON.parse(request.body.read)
@@ -23,7 +22,7 @@ class StripeController < ApplicationController
           event_type = event.type
           event_process(event_type, event, user, customer)
         rescue => error
-          PartyFoul::RacklessExceptionHandler.handle(error, class: self, method: __method__, params: user)
+          PartyFoul::RacklessExceptionHandler.handle(error, class: self, method: __method__, params: user.inspect)
         end
         ActiveRecord::Base.connection.close
       end
@@ -56,11 +55,11 @@ class StripeController < ApplicationController
         else
           SubscriptionMailer.delay.trial_over(user)
         end
-      elsif event.data.object.status == "trialing" && event.data.previous_attributes.status == "active" 
+      elsif event.data.previous_attributes.trial_end.present?
         user.is_active = true
         user.save!
-        #trial_end_date = Date.strptime(event.data.trial_end, '%s')
-        SubscriptionMailer.delay.trial_extended(user, Date.today)
+        trial_end_date = Date.strptime(event.data.object.trial_end.to_s, '%s')
+        SubscriptionMailer.delay.trial_extended(user, trial_end_date)
       end
 
     when "invoice.upcoming"
