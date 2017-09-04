@@ -75,6 +75,7 @@
       form.addEventListener('submit', function(event) {
       event.preventDefault();
     
+      $('.submit').prop('disabled', true);
       stripe.createSource(card, {
       	  owner: {
       		  name: document.getElementById('cardholder-name').value,
@@ -89,10 +90,11 @@
           var errorElement = document.getElementById('card-errors');
           errorElement.textContent = result.error.message;
           $('.submit').prop('disabled', false);
+	  $('.submit').text('Update Card');
     
         } else {
           // Send the source to your server
-          $('.submit').prop('disabled', true);
+	  $('.submit').text('Uploading details...');
           stripeSourceHandler(result.source);
         }
       });

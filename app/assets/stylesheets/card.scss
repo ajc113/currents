@@ -94,6 +94,11 @@
   background: #555ABF;
 }
 
+#new_card button:disabled {
+  cursor: not-allowed;
+  background: lightgrey;
+}
+
 #new_card button:active {
   background: #43458B;
 }
