@@ -23,6 +23,9 @@ class Report < ActiveRecord::Base
 
   scope :date, -> (month) {where("extract(month from date) = ?", month)}
 
+  scope :past_one_week, -> {where("date >= ?", Date.today-6)}
+
+  scope :past_eight_days, -> {where("date between ? AND ?", Date.today-7, Date.today-1)}
 
 
   def location_json
@@ -30,7 +33,7 @@ class Report < ActiveRecord::Base
   end
 
 
-  after_create :send_notification
+  after_create :send_notification if Rails.env.production?
 
   def send_notification
     AdminMailer.delay.new_report(self)

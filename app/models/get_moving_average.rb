@@ -12,11 +12,11 @@ class GetMovingAverage
   end
 
   def one_weeks_reports
-    @reports.between_times(Date.today-6, Date.today) unless @reports.blank?
+    @reports.past_one_week unless @reports.blank?
   end
 
   def eight_days_reports
-    @reports.between_times(Date.today-7, Date.today-1) unless @reports.blank?
+    @reports.past_eight_days unless @reports.blank?
   end
 
   def standard_deviation
