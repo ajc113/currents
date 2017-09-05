@@ -8,7 +8,7 @@ class FilterBySpecies
 		@lreports = []
 		@locations.all.each do |location|
 			reports = location.reports.where(@species)
-			avgrep = reports.past_week.order(date: :desc)
+			avgrep = reports.past_one_week
       maps_data = GetMovingAverage.new(reports) unless reports.blank?
       moving_average = maps_data.try(:moving_average) || 0
       pre_moving_average = maps_data.try(:pre_moving_average) || 0
