@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
 	has_many :buzzs   
 	has_many :locations, through: :reports
   belongs_to :state, primary_key: :name, foreign_key: :state_waters
-  after_create :create_stripe_customer, :send_notification
+  after_create :create_stripe_customer
+  after_create :send_notification if Rails.env.production?
   before_destroy :delete_stripe_customer
 
 
