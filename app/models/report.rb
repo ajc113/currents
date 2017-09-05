@@ -25,6 +25,8 @@ class Report < ActiveRecord::Base
 
   scope :past_one_week, -> {where("date >= ?", Date.today-6)}
 
+  scope :past_eight_days, -> {where("date between ? AND ?", Date.today-7, Date.today-1)}
+
 
   def location_json
     File.read self.location.coordinate_file.path
