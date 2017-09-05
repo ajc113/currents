@@ -14,8 +14,8 @@ class MapsController < ApplicationController
   end
 
   def reports_of_location
-    @reports= Report.where(location_id: params[:location_id])
-    @reports= @reports.where(species_id: params[:species_id]) if params[:species_id].present? unless params[:species_id] == 'Any'
+    @reports= Report.location(params[:location_id]).past_one_week
+    @reports= @reports.species(params[:species_id]) if params[:species_id].present? unless params[:species_id] == 'Any'
     render json: @reports.as_json(only: [:id, :date, :vessel_name, :primary_method, :catch_keepers, :trip_summary], :include => {:species => { only: :name }, :location => {only: :long_name}, :user => { only: [:id, :vessel_name] }})
   end
 

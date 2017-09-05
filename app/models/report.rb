@@ -23,6 +23,7 @@ class Report < ActiveRecord::Base
 
   scope :date, -> (month) {where("extract(month from date) = ?", month)}
 
+  scope :past_one_week, -> {where("date >= ?", Date.today-6)}
 
 
   def location_json
