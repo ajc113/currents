@@ -58,6 +58,11 @@ class SubscriptionMailer < ActionMailer::Base
     mail(to: @user.email, subject: subject("Your payment source was updated"))
   end
 
+  def customer_subscription_created(user)
+    @user = user
+    mail(to: @user.email, subject: subject("Your subscription at Currents is created"))
+  end
+
   private
   
   def subject(subject)

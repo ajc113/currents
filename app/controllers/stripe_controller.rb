@@ -94,6 +94,12 @@ class StripeController < ApplicationController
       source = event.data.object.card.last4
       SubscriptionMailer.delay.customer_source_created(user, source)
 
+    when "customer.subscription.created"
+      user.subscription_id =  event.data.object.id
+      user.is_active = true
+      user.save!
+      SubscriptionMailer.delay.customer_subscription_created(user)
+
     else
       #Every other event we are not handling
       if Rails.env.development?
