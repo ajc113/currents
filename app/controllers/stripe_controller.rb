@@ -98,12 +98,12 @@ class StripeController < ApplicationController
       user.subscription_id =  event.data.object.id
       user.is_active = true
       user.save!
-      SubscriptionMailer.delay.customer_subscription_created(user)
+      SubscriptionMailer.delay.customer_subscription_created(user) unless event.data.object.metadata.methods(false).include? 'automatic'
 
     else
       #Every other event we are not handling
       if Rails.env.development?
-        OtherEventsMailer.delay.notify(request.body.read)
+        #OtherEventsMailer.delay.notify(request.body.read)
       end
     end
   end
