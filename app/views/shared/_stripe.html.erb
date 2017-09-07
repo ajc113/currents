@@ -6,7 +6,7 @@
 <% unless current_user.subscription_id.nil? %>
   <div style="text-align: center">Subscription status: <strong><%= subscription_status %></strong></div>
 <% end %>
-  <% unless @card.nil? %>
+  <% if current_user.has_active_subscription? %>
     <div id="card_details" style="text-align: center">
       <div> Card in use</div>
       <span> Type: <strong><%= @card.brand %></strong></span>
