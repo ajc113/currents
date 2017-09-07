@@ -9,7 +9,7 @@
             <td>Date</td>
             <td>Amount</td>
             <td>Period</td>
-	    <td>Status</td>
+            <td>Status</td>
           </tr>
         </thead>
         <% @invoices.data.each do |invoice| %>
@@ -17,7 +17,7 @@
             <tr>
               <td><%= invoice.id %></td>
               <td><%= Date.strptime(invoice.date.to_s, '%s') %></td>
-	      <td><%= number_to_currency(invoice.total/100, negative_format: "(%u%n)") %></td>
+              <td><%= number_to_currency(invoice.total/100, negative_format: "(%u%n)") %></td>
               <td><%= Date.strptime(invoice.lines.data[0].period.start.to_s, '%s') %> to <%= Date.strptime(invoice.lines.data[0].period.end.to_s, '%s') %></td>
               <td><%= invoice.paid == true ? 'Paid' : 'Unpaid' %></td>
             </tr>
@@ -25,7 +25,6 @@
         <% end %>
       </table>
       <span><i>(If you had any previous cancelled subscription, thsoe invoices are not listed)</i></span>
-      <div><%= link_to "Cancel My Subscription", my_account_url, method: :delete, data: { confirm: 'Are you sure?' } %></div>
     </div>
   <% end %>
 <% end %>

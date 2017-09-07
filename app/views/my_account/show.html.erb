@@ -2,8 +2,9 @@
 <h3 class="center-text">Account Details</h3>
 <%= render 'shared/stripe' %>
 <% if current_user.has_active_subscription? %>
-  <div style="display: block; clear: both; text-align: center">
+  <div class="center">
     Next invoice will be generated on: <%= Date.strptime(@upcoming_invoice['date'].to_s, '%s') %>
   </div>
   <%= render 'invoice_table' %>
+  <div class="center"><%= link_to "Cancel My Subscription", my_account_url, method: :delete, data: { confirm: 'Are you sure?' } %></div>
 <% end %>
