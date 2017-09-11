@@ -81,7 +81,7 @@ class StripeController < ApplicationController
     when "invoice.payment_failed"
       next_payment_attempt = event.data.object.next_payment_attempt
       unless next_payment_attempt.nil?
-        next_payment_attempt = Date.strptime(next_payment_attempt, '%s')
+        next_payment_attempt = Date.strptime(next_payment_attempt.to_s, '%s')
         SubscriptionMailer.delay.invoice_payment_failed(user, next_payment_attempt)
       end
 
