@@ -12,6 +12,8 @@ module CardHelper
       true
     elsif current_user.does_not_have_active_subscription?
       true
+    elsif current_user.has_active_subscription? && current_user.payment_source.nil?
+      true
     end
   end
 end
