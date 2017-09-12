@@ -3,9 +3,11 @@ class StripeSubscription
     subscription = Stripe::Subscription.create(
                     :customer  => user.stripe_customer_id,
                     :plan      => 'monthly',
-                    :trial_end => trial_end
+                    :trial_end => trial_end,
+                    :metadata  => { "automatic" => true }
                   )
     user.subscription_id = subscription.id
+    user.is_active = true
     user.save!
   end
 
@@ -18,7 +20,7 @@ class StripeSubscription
     user.subscription_id = nil
     user.is_active = false
     user.save!
-    StripeCustomer.delete_all_sources(user)
+    StripeCustomer.delay.delete_all_sources(user)
   end
 
   def self.is_active? (user)

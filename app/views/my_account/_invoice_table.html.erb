@@ -1,20 +1,30 @@
-<table>
-    <thead>
-      <tr>
-        <td>ID</td>
-        <td>Date</td>
-        <td>Amount</td>
-        <td>Period</td>
-      </tr>
-    </thead>
-    <% @invoices.data.each do |invoice| %>
-      <% unless (invoice.total == 0 || invoice.lines.data[0].id != current_user.subscription_id) %>
-        <tr>
-          <td><%= invoice.id %></td>
-          <td><%= Date.strptime(invoice.date.to_s, '%s') %></td>
-          <td>$<%= invoice.total/100 %></td>
-          <td><%= Date.strptime(invoice.lines.data[0].period.start.to_s, '%s') %> to <%= Date.strptime(invoice.lines.data[0].period.end.to_s, '%s') %></td>
-        </tr>
-      <% end %>
-    <% end %>
-  </table>
+<% if current_user.has_active_subscription? %>
+  <% unless @invoices.data.count <= 1 %>
+    <h3 class="center-text">Payment History</h3>
+    <div id="invoices" style="display: block; clear: both; text-align: center">
+      <table>
+        <thead>
+          <tr>
+            <td>ID</td>
+            <td>Date</td>
+            <td>Amount</td>
+            <td>Period</td>
+            <td>Status</td>
+          </tr>
+        </thead>
+        <% @invoices.data.each do |invoice| %>
+          <% unless (invoice.total == 0 || invoice.subscription != current_user.subscription_id) %>
+            <tr>
+              <td><%= invoice.id %></td>
+              <td><%= Date.strptime(invoice.date.to_s, '%s') %></td>
+              <td><%= number_to_currency(invoice.total/100, negative_format: "(%u%n)") %></td>
+              <td><%= Date.strptime(invoice.lines.data[0].period.start.to_s, '%s') %> to <%= Date.strptime(invoice.lines.data[0].period.end.to_s, '%s') %></td>
+              <td><%= invoice.paid == true ? 'Paid' : 'Unpaid' %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
+      <span><i>(If you had any previous cancelled subscription, thsoe invoices are not listed)</i></span>
+    </div>
+  <% end %>
+<% end %>

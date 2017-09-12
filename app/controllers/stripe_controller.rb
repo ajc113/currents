@@ -1,28 +1,31 @@
 class StripeController < ApplicationController
   protect_from_forgery :except => :events
-  @endpoint_secret = 'whsec_OtNLhY3vJSQrx1vRinEJ1iRL6FZ7Am1w'
-
   def events
     request.body.rewind
     payload = JSON.parse(request.body.read)
-    sig_header = request.headers["Stripe-Signature"]
-    puts "request header is = "
-    puts request.headers["Stripe-Signature"]
     event = nil
     event_id = payload["id"]
-    event = Stripe::Event.retrieve(event_id) #so that we know event is valid and from Stripe
-    customer = event["data"]["object"]["customer"]
-    user = User.find_by(stripe_customer_id: customer)
-    event_type = event["type"]
-    Thread.new do
+    if Rails.env.production?
       begin
-        event_process(event_type, event, user, customer)
+        event = Stripe::Event.retrieve(event_id)  #so that we know event is valid and from Stripe
       rescue => error
-        PartyFould::RacklessExceptionHandler.handle(error, class: stripe_event, methods: method_name)
-        puts error.message
-        puts error.inspect
+        PartyFoul::RacklessExceptionHandler.handle(error, class: self, method: __method__, params: event_id)
       end
-      ActiveRecord::Base.connection.close
+    else
+      event = JSON.parse(request.body.read, object_class: OpenStruct)
+    end
+    if event
+      Thread.new do
+        begin
+          customer = event.data.object.customer
+          user = User.find_by(stripe_customer_id: customer)
+          event_type = event.type
+          event_process(event_type, event, user, customer)
+        rescue => error
+          PartyFoul::RacklessExceptionHandler.handle(error, class: self, method: __method__, params: user.inspect)
+        end
+        ActiveRecord::Base.connection.close
+      end
     end
     render nothing: true, status: 200
   end
@@ -52,6 +55,11 @@ class StripeController < ApplicationController
         else
           SubscriptionMailer.delay.trial_over(user)
         end
+      elsif event.data.previous_attributes.trial_end.present?
+        user.is_active = true
+        user.save!
+        trial_end_date = Date.strptime(event.data.object.trial_end.to_s, '%s')
+        SubscriptionMailer.delay.trial_extended(user, trial_end_date)
       end
 
     when "invoice.upcoming"
@@ -65,10 +73,15 @@ class StripeController < ApplicationController
         next_attempt = event.previous_attributes.next_payment_attempt
       end
 
+    when "charge.failed"
+      source = event.data.object.source.last4
+      error = event.data.object.outcome.seller_message
+      SubscriptionMailer.delay.charge_failed(user, source, error)
+
     when "invoice.payment_failed"
       next_payment_attempt = event.data.object.next_payment_attempt
       unless next_payment_attempt.nil?
-        next_payment_attempt = Date.strptime(next_payment_attempt, '%s')
+        next_payment_attempt = Date.strptime(next_payment_attempt.to_s, '%s')
         SubscriptionMailer.delay.invoice_payment_failed(user, next_payment_attempt)
       end
 
@@ -77,9 +90,21 @@ class StripeController < ApplicationController
       user.save!
       SubscriptionMailer.delay.invoice_payment_succeeded(user)
 
-    when "customer.source.updated"
-      #update user when credit card information is changed
-      SubscriptionMailer.delay.customer_source_updated(user)
+    when "customer.source.created"
+      source = event.data.object.card.last4
+      SubscriptionMailer.delay.customer_source_created(user, source)
+
+    when "customer.subscription.created"
+      user.subscription_id =  event.data.object.id
+      user.is_active = true
+      user.save!
+      SubscriptionMailer.delay.customer_subscription_created(user) unless event.data.object.metadata.methods(false).include? :automatic
+
+    else
+      #Every other event we are not handling
+      if Rails.env.development?
+        #OtherEventsMailer.delay.notify(request.body.read)
+      end
     end
   end
 end

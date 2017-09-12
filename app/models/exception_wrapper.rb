@@ -9,6 +9,8 @@ module ExceptionWrapper
           define_method(method) do |*args|
             begin
               method(alias_method).call(*args)
+            rescue Stripe::CardError => error
+              raise
             rescue => error
               GithubIssues.create(error, self, method, args[0])
             end
