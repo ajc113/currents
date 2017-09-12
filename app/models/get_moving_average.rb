@@ -8,7 +8,8 @@ class GetMovingAverage
   end
 
   def pre_moving_average
-    one_week_average(eight_days_reports).round(2)
+    #one_week_average(eight_days_reports).round(2)
+    one_week_average(one_week_prior_five_days_reports).round(2)
   end
 
   def one_weeks_reports
@@ -19,8 +20,12 @@ class GetMovingAverage
     @reports.past_eight_days unless @reports.blank?
   end
 
+  def one_week_prior_five_days_reports
+    @reports.one_week_prior_five_days unless @reports.blank?
+  end
+
   def standard_deviation
-    (moving_average - pre_moving_average).round(2)
+    (moving_average - pre_moving_average).round(2).to_f
   end
 
   def one_week_average(avgrep)
