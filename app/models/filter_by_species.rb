@@ -17,7 +17,7 @@ class FilterBySpecies
 				reports: avgrep.length,
 				moving_average: moving_average,
         pre_moving_average: pre_moving_average,
-        standart_deviation: standard_deviation,
+        standard_deviation: standard_deviation,
 				color: color(standard_deviation),
 				coordinate_file: render_coordinate_file(location),
 			)

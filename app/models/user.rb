@@ -56,6 +56,10 @@ class User < ActiveRecord::Base
       true
     end
   end
+  
+  def trial_running?
+    !trial_over?
+  end
 
   def remaining_trial_days
     trial_end_timestamp = StripeCustomer.retrieve(self).subscriptions.data.first.trial_end.to_s
@@ -68,6 +72,10 @@ class User < ActiveRecord::Base
     rescue
       return false
     end
+  end
+
+  def does_not_have_active_subscription?
+    !has_active_subscription?
   end
 
   def soft_delete

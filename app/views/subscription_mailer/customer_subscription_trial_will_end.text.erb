@@ -3,10 +3,11 @@
 Your trial period is going to expire in three days.
 
 <% if @user.payment_source.nil? %>
-  <%= link_to 'Click Here', new_card_url %> to add the card details.
+Click on the link below to add the card details.
+<%= new_card_url %>
 
 <% end %>
-If you have any queries, mail us on <%= mail_to 'support@thefishing.network' %>
+If you have any queries, mail us on support@thefishing.network
 Thanks for joining and have a great day!
 
 <%= render 'layouts/mailer_footer' %>

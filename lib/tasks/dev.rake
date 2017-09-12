@@ -29,7 +29,7 @@ namespace :dev do
           location_id: location.id,
           catch_total: rand(1..150),
           catch_keepers: rand(1..150),
-          date: rand(0..7).days.ago,
+          date: rand(1...12).days.ago,
           user_id: random("User"),
           primary_method: primary_methods.sample, 
           trip_summary: FFaker::Lorem.sentence,

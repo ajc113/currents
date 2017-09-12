@@ -3,11 +3,16 @@ class MyAccountController < ApplicationController
   def show
     @customer = StripeCustomer.retrieve(current_user)
     @subscription = StripeSubscription.retrieve(current_user) unless current_user.subscription_id.nil?
-    @card = Stripe::Source.retrieve(@customer.default_source).card unless current_user.payment_source.nil?
+    @card = begin Stripe::Source.retrieve(@customer.default_source).card unless current_user.payment_source.nil?
+              rescue => error
+                GithubIssues.create(error, self, __method__, current_user.inspect)
+              end
     @upcoming_invoice = begin 
                           Stripe::Invoice.upcoming(customer: @customer.id)
+                        rescue Stripe::InvalidRequestError => error
+                          return nil
                         rescue
-                          nil
+                          GithubIssues.create(error, self, __method__, current_user.inspect) 
                         end
     @invoices = @customer.invoices
   end

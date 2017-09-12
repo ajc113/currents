@@ -27,17 +27,18 @@ class Report < ActiveRecord::Base
 
   scope :past_eight_days, -> {where("date between ? AND ?", Date.today-7, Date.today-1)}
 
+  scope :one_week_prior_five_days, -> {where("date between ? AND ?", Date.today - 11, Date.today - 5)}
 
   def location_json
     File.read self.location.coordinate_file.path
   end
-
 
   after_create :send_notification if Rails.env.production?
 
   def send_notification
     AdminMailer.delay.new_report(self)
   end
+
 
   private
 
@@ -46,8 +47,4 @@ class Report < ActiveRecord::Base
       errors.add(:date, 'must not be set in the future')
     end
   end
-
-
-
-
 end
