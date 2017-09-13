@@ -6,17 +6,10 @@ RSpec.describe GetMovingAverage do
     # It has been removed from the test to demonstrate that if the records not
     # found than program considers it as zero
     report = {
-     11 => [0.75],
-     10 => [0.8],
-     9  => [0.9],
-     8  => [1],
-     7  => [1,2,0,1],
-     6  => [1,1,2,2],
-     5  => [0],
-     3  => [1,2,3,1],
-     2  => [3,2,1,1,2],
-     1  => [3,3,4,2,4],
-     0  => [5,2,3,3,4]
+     5  => [5,1],
+     4  => [4,3],
+     3  => [3,4],
+     2  => [2],
     }
     report.each do |day, catch_keepers_array|
       catch_keepers_array.each do |catch_keepers|
@@ -42,9 +35,9 @@ RSpec.describe GetMovingAverage do
   end
 
   it "should calculate moving average for the given reports" do
-    expect(@maps_data.moving_average).to eq(1.66)
-    expect(@maps_data.pre_moving_average).to eq(0.85)
-    expect(@maps_data.standard_deviation).to eq(0.81)
+    expect(@maps_data.moving_average).to eq(1.71)
+    expect(@maps_data.pre_moving_average).to eq(1.43)
+    expect(@maps_data.standard_deviation).to eq(0.28)
   end
 
   it "should return zero if no reports are passed" do
