@@ -27,14 +27,10 @@ class FilterBySpecies
 		return @lreports
 	end
 
-	def color standard_deviation
-		if standard_deviation > 1
-			color = "#FF3E38"
-		elsif standard_deviation > 0
-			color = "#C1AF6A"
-		else
-			color = "#4562A8"
-		end
+	def color(standard_deviation)
+    if standard_deviation > 0.5 then return "#FF3E38" end
+    if standard_deviation > 0.1 then return "#C1AF6A" end
+    if standard_deviation < 0.1 then return "#4562A8" end
 	end
 
 	def render_coordinate_file(location)
