@@ -6,10 +6,16 @@ RSpec.describe GetMovingAverage do
     # It has been removed from the test to demonstrate that if the records not
     # found than program considers it as zero
     report = {
+     9  => [0],
+     8  => [0],
+     7  => [0],
+     6  => [0],
      5  => [5,1],
      4  => [4,3],
      3  => [3,4],
      2  => [2],
+     1  => [0],
+     0  => [0]
     }
     report.each do |day, catch_keepers_array|
       catch_keepers_array.each do |catch_keepers|
@@ -32,6 +38,13 @@ RSpec.describe GetMovingAverage do
     last_report_date = @maps_data.eight_days_reports.last.date
     expect(first_report_date).to eq(Date.today-1)
     expect(last_report_date).to eq(Date.today-7)
+  end
+
+  it "should return reports one week prior three days" do
+    first_report_date = @maps_data.one_week_prior_three_days_reports.first.date
+    last_report_date = @maps_data.one_week_prior_three_days_reports.last.date
+    expect(first_report_date).to eq(Date.today-3)
+    expect(last_report_date).to eq(Date.today-9)
   end
 
   it "should calculate moving average for the given reports" do
