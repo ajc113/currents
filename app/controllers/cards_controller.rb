@@ -12,11 +12,11 @@ class CardsController < ApplicationController
 
   def create
     begin
+      source = params[:stripeSource]
       @customer = StripeCustomer.retrieve(current_user)
-      @source = @customer.sources.create({:source => params[:stripeSource]})
-      @customer.default_source = @source.id
+      @customer.source = source
       @customer.save
-      current_user.payment_source = @source.id
+      current_user.payment_source = source
       current_user.save!
     rescue Stripe::CardError => error
       flash[:error] = error.message
