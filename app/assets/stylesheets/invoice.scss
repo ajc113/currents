@@ -15,11 +15,11 @@
   margin-top: 50px;
 }
 
-.amount-table, tr, td {
+.amount-table, .amount-table tr, .amount-table td {
   border: solid 1px black;
 }
 
-td {
+.amount-table td {
   height: 30px;
   width: 400px;
   padding-left: 10px;

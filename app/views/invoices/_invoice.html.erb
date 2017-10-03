@@ -2,7 +2,7 @@
   <tr>
     <td><%= link_to invoice.number, invoice_path(invoice.id) %></td>
     <td><%= invoice.date %></td>
-    <td><%= number_to_currency(invoice.total/100, negative_format: "(%u%n)") %></td>
+    <td><%= number_to_currency(invoice.total, negative_format: "(%u%n)") %></td>
     <td><%= invoice.period_start %> to <%= invoice.period_end %></td>
     <td><%= invoice.paid == true ? 'Paid' : 'Unpaid' %></td>
   </tr>
