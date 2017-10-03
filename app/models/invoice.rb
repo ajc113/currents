@@ -1,7 +1,6 @@
 class Invoice
 
   attr_reader :stripe_invoice
-
   def self.find_all_by_user(user)
     stripe_invoices_for_user(user).map do |invoice|
       new(invoice)
@@ -29,7 +28,7 @@ class Invoice
   end
 
   def total
-    stripe_invoice.total
+    cents_to_dollars(stripe_invoice.total)
   end
 
   def date
@@ -55,7 +54,39 @@ class Invoice
   def user
     @user ||= User.find_by(stripe_customer_id: stripe_invoice.customer)
   end
-  
+
+  def balance
+    if paid
+      0.00
+    else
+      amount_due
+    end
+  end
+
+  def amount_due
+    cents_to_dollars(stripe_invoice.amount_due)
+  end
+
+  def subtotal
+    cents_to_dollars(stripe_invoice.subtotal)
+  end
+
+  def amount_paid
+    if paid
+      amount_due
+    else
+      0.00
+    end
+  end
+
+  def plan
+    stripe_invoice.lines.data[0].plan.name
+  end
+
+  def plan_amount
+    cents_to_dollars stripe_invoice.lines.data[0].plan.amount
+  end
+
   private
 
   def self.stripe_invoices_for_user(user)
@@ -68,5 +99,9 @@ class Invoice
 
   def convert_stripe_time(time)
     Time.zone.at(time).strftime('%D')
+  end
+
+  def cents_to_dollars(amount)
+    amount / 100.0
   end
 end

@@ -1,0 +1,26 @@
+.invoice-container {
+  width: 50%;
+  margin: auto;
+}
+
+.sold-by {
+  margin-bottom: 25px;
+}
+
+.right {
+  text-align: right;
+}
+
+.amount-breakdown {
+  margin-top: 50px;
+}
+
+.amount-table, tr, td {
+  border: solid 1px black;
+}
+
+td {
+  height: 30px;
+  width: 400px;
+  padding-left: 10px;
+}
