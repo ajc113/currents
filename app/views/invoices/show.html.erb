@@ -1,0 +1,66 @@
+<% provide(:title, 'Invoice') %>
+<div class="container-fluid invoice-container">
+<h3> Invoice <%= @invoice.id %></h2>
+  <p>Date:</p>
+  <b>
+    <p><%= @invoice.date %></p>
+  </b>
+  <p>Sold by:</p>
+  <h4 class="sold-by">Currents - The Fishing Network</h4>
+  <p>Billed to:</p>
+  <b>
+    <p><%= current_user.try { |user| "#{user.first_name} #{user.last_name}" } %></p>
+  </b>
+  <div class="amount-breakdown">
+    <table class="amount-table">
+      <tbody>
+        <tr class="line-item">
+          <td>
+            Subscription to <%= @invoice.plan %>
+          </td>
+          <td> <%= number_to_currency @invoice.plan_amount %> </td>
+        </tr>
+        <tr class="subtotal">
+          <td>
+            Subtotal
+          </td>
+          <td>
+            <%= number_to_currency @invoice.subtotal %>
+          </td>
+        </tr>
+        <tr class="tax">
+          <td>
+            Tax
+          </td>
+          <td>
+            $0.00
+          </td>
+        </tr>
+        <tr class="total">
+          <td>
+            Total
+          </td>
+          <td>
+            <%= number_to_currency @invoice.total %>
+          </td>
+        </tr>
+        <tr class="paid">
+          <td>
+            Amount paid
+          </td>
+          <td>
+            <%= number_to_currency @invoice.amount_paid %>
+          </td>
+        </tr>
+        <tr class="balance">
+          <td>
+            Balance due
+          </td>
+          <td>
+            <%= number_to_currency @invoice.balance %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
