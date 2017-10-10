@@ -8,7 +8,7 @@ class MyAccountController < ApplicationController
               GithubIssues.create(error, self, __method__, current_user.inspect)
             end
     @upcoming_invoice = begin 
-                          Stripe::Invoice.upcoming(customer: @customer.id)
+                          Invoice.upcoming(current_user)
                         rescue Stripe::InvalidRequestError => error
                           return nil
                         rescue

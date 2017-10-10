@@ -30,6 +30,8 @@ class CardsController < ApplicationController
         flash[:error] = "There is some problem with your card. Please consult your bank"
         redirect_to new_card_path and return
       end
+    else
+      Invoice.pay_if_pending(current_user)
     end
 
     respond_to do |format|

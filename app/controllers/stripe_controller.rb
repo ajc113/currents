@@ -69,8 +69,10 @@ class StripeController < ApplicationController
       end
 
     when "invoice.updated"
-      if event.previous_attributes.attempt_count >= 0
-        next_attempt = event.previous_attributes.next_payment_attempt
+      if event.previous_attributes.paid == 'false'
+        user.is_active = true
+        user.save!
+        SubscriptionMailer.invoice_payment_succeeded(user).deliver
       end
 
     when "charge.failed"

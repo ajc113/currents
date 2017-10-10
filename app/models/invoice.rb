@@ -87,6 +87,21 @@ class Invoice
     cents_to_dollars stripe_invoice.lines.data[0].plan.amount
   end
 
+  def pay
+    stripe_invoice.pay
+  end
+
+  def self.pay_if_pending(user)
+    invoices = find_all_by_user(user)
+    if !invoices.empty? && invoices.first.paid
+      invoices.first.pay
+    end
+  end
+
+  def self.upcoming(user)
+    new(Stripe::Invoice.upcoming(customer: user.stripe_customer_id) || nil )
+  end
+
   private
 
   def self.stripe_invoices_for_user(user)
