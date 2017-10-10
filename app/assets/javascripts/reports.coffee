@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $('.new_report').validate()
-$(document).ready ->
+$(document).on 'turbolinks:load',  ->
   $('.datecker').datepicker()
   $('.state_selection').on "change", ->
     $.ajax
