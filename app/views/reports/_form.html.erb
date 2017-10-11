@@ -23,8 +23,8 @@
         </div>
       <% end %>
       <div class="field">
-        <%= f.label :date %> (Required)<br>
-        <%= f.date_select :date, end_year: Date.today.year %>
+        <%= f.label :date %> [mm/dd/yy] (Required)<br>
+        <%= f.text_field :date, 'data-provide': 'datepicker', class: 'datepicker' %>
       </div>
       <br>
       <div class="field">

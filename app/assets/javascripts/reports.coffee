@@ -4,7 +4,14 @@
 
 $('.new_report').validate()
 $(document).on 'turbolinks:load',  ->
-  $('.datecker').datepicker()
+  $('.datepicker').datepicker
+    startDate: "-3y"
+    endDate: "+0d"
+    todayHighlight: true
+    orientation: "bottom auto"
+    format: "mm/dd/yyyy"
+    autoclose: true
+    maxViewMode: 2
   $('.state_selection').on "change", ->
     $.ajax
       url: "/locations_for_state"
