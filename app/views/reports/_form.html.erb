@@ -22,33 +22,33 @@
           </ul>
         </div>
       <% end %>
-      <div class="field">
+      <div class="field form-group">
         <%= f.label :date %> [mm/dd/yy] (Required)<br>
-        <%= f.text_field :date, 'data-provide': 'datepicker', class: 'datepicker' %>
+        <%= f.text_field :date, 'data-provide': 'datepicker', class: 'datepicker form-control' %>
       </div>
       <br>
-      <div class="field">
+      <div class="field form-group">
         <%= f.label :species_id %> (Required)<br>
-        <%= f.select :species_id, Species.all.order("name ASC").pluck(:name, :id) %>
+        <%= f.select :species_id, Species.all.order("name ASC").pluck(:name, :id), {}, class: 'form-control' %>
       </div>
       <br>
-      <div class="field">
+      <div class="field form-group">
         <%= f.label :state_waters %> (Required)<br>
-	<%= f.select :state_waters, State.sorted.pluck(:name), { prompt: 'Select State', selected: ( @report.new_record? ? current_user.try(:state).try(:name) : @report.state.name) }, class: "state_selection" %>
+        <%= f.select :state_waters, State.sorted.pluck(:name), { prompt: 'Select State', selected: ( @report.new_record? ? current_user.try(:state).try(:name) : @report.state.name) }, class: "state_selection form-control" %>
       </div>
       <br>
-      <div class="field">
-	      <span class="field_label"><%= f.label :location_id %> (Required)</span><br>
-        <%= f.select  :location_id, @state_locations || Location.where(state_waters: (@report.new_record? ? current_user.try(:state).try(:name) : @report.state)).order(number: :asc).map {|location| [location[:number].to_s.rjust(2, '0') + " - " + location[:short_name]] + [location.id]}, {prompt: 'Select Location'}, class: "location_id" %>
+      <div class="field form-group">
+        <span class="field_label"><%= f.label :location_id %> (Required)</span><br>
+        <%= f.select  :location_id, @state_locations || Location.where(state_waters: (@report.new_record? ? current_user.try(:state).try(:name) : @report.state)).order(number: :asc).map {|location| [location[:number].to_s.rjust(2, '0') + " - " + location[:short_name]] + [location.id]}, {prompt: 'Select Location'}, class: "location_id form-control" %>
       </div>
       <br>
-      <div class="field">
+      <div class="field form-group">
         <%= f.label :catch_keepers %> (Required)<br>
-        <%= f.number_field :catch_keepers %>
+        <%= f.number_field :catch_keepers, class: 'form-control' %>
       </div>
-      <div class="field">
+      <div class="field form-group">
         <%= f.label :trip_summary %><br>
-        <%= f.text_area :trip_summary, placeholder: "Enter brief summary of todays trip" %>
+        <%= f.text_area :trip_summary, placeholder: "Enter brief summary of todays trip", class: 'form-control' %>
       </div>
       <br>
     </div>
@@ -60,37 +60,37 @@
           </u></b>
         <p class="small">Report fields are for your use only.  Use to detail catch information like bait, tide, or location numbers</p>
       </div>
-      <div class="field">
+      <div class="field form-group">
         <%= f.label :catch_total %><br>
-        <%= f.number_field :catch_total %>
+        <%= f.number_field :catch_total, class: 'form-control' %>
       </div>
-      <div class="field">
+      <div class="field form-group">
         <%= f.label :primary_method %><br>
-        <%= f.select :primary_method, ['Live Bait', 'Dead Bait', 'Kite', 'Jigging', 'Popping', 'Trolling'] %>
+        <%= f.select :primary_method, ['Live Bait', 'Dead Bait', 'Kite', 'Jigging', 'Popping', 'Trolling'], {}, class: 'form-control' %>
       </div>
-      <div class="field">
+      <div class="field form-group">
         <%= f.label :tide %><br>
-        <%= f.select :tide, ['Incoming', 'Outgoing', 'Slack'] %>
+        <%= f.select :tide, ['Incoming', 'Outgoing', 'Slack'], {}, class: 'form-control' %>
       </div>
-      <div class="field">
+      <div class="field form-group">
         <%= f.label :weather %><br>
-        <%= f.select :weather, ['Overcast', 'Rain', 'Sun', 'Fog'] %>
+        <%= f.select :weather, ['Overcast', 'Rain', 'Sun', 'Fog'], {}, class: 'form-control' %>
       </div>
-      <div class="field">
+      <div class="field form-group">
         <%= f.label :wind %><br>
-        <%= f.select :wind, ['W < 10 mph', 'W 10-20 mph', 'W > 20 mph', 'NW < 10 mph', 'NW 10-20 mph', 'NW > 20 mph','N < 10 mph', 'N 10-20 mph', 'N > 20 mph','NE < 10 mph', 'NE 10-20 mph', 'NE > 20 mph','E < 10 mph', 'E 10-20 mph', 'E > 20 mph', 'SE < 10 mph', 'SE 10-20 mph', 'SE > 20 mph','S < 10 mph', 'S 10-20 mph', 'S > 20 mph','SW < 10 mph', 'SW 10-20 mph', 'SW > 20 mph'] %>
+        <%= f.select :wind, ['W < 10 mph', 'W 10-20 mph', 'W > 20 mph', 'NW < 10 mph', 'NW 10-20 mph', 'NW > 20 mph','N < 10 mph', 'N 10-20 mph', 'N > 20 mph','NE < 10 mph', 'NE 10-20 mph', 'NE > 20 mph','E < 10 mph', 'E 10-20 mph', 'E > 20 mph', 'SE < 10 mph', 'SE 10-20 mph', 'SE > 20 mph','S < 10 mph', 'S 10-20 mph', 'S > 20 mph','SW < 10 mph', 'SW 10-20 mph', 'SW > 20 mph'], {}, class: 'form-control' %>
       </div>
-      <div class="field">
+      <div class="field form-group">
         <%= f.label :spot %><br>
-        <%= f.text_area :spot %>
+        <%= f.text_area :spot, class: 'form-control' %>
       </div>
-      <div class="field">
+      <div class="field form-group">
         <%= f.label :best_bait %><br>
-        <%= f.text_area :best_bait %>
+        <%= f.text_area :best_bait, class: 'form-control' %>
       </div>
-      <div class="field">
+      <div class="field form-group">
         <%= f.label :trip_description %><br>
-        <%= f.text_area :trip_description %>
+        <%= f.text_area :trip_description, class: 'form-control' %>
       </div>
       <br>
     </div>

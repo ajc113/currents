@@ -194,6 +194,10 @@ tbody#datatable1-body> tr {
     background: #e0e0e0;
 }
 
+.field_with_errors {
+  color: red;
+}
+
 @media screen and (max-width: 767px) {
     .table-responsive> .table> thead> tr> th,
     .table-responsive> .table> tbody> tr> th,
