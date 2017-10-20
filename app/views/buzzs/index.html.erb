@@ -27,6 +27,7 @@
                         <th>Post</th>
                         <th>Vessel</th>
                         <th>Port</th>
+                        <th>Edit/Delete</th>
                       </tr>
                     </thead>
                  
@@ -38,6 +39,7 @@
                         <td class="wd-td1"><%= buzz.post %></td>
                         <td><%= buzz.user.try(:vessel_name) %></td>
                         <td><%= buzz.user.try(:home_port) %></td>
+                        <td class="wd-xs"><%= link_to raw('<i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i>'), edit_buzz_path(buzz) %> <%= link_to raw('<i class="fa fa-minus-square fa-2x" aria-hidden="true"></i>'), buzz, method: :delete, data: { confirm: 'Are you sure you want to delete post?' } %></td>
                       </tr>
                         <% end %>
                     
