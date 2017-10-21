@@ -93,7 +93,7 @@ class Invoice
 
   def self.pay_if_pending(user)
     invoices = find_all_by_user(user)
-    if !invoices.empty? && invoices.first.paid
+    unless invoices.empty? || invoices.first.paid
       invoices.first.pay
     end
   end
