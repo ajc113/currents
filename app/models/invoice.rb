@@ -1,9 +1,14 @@
 class Invoice
 
   attr_reader :stripe_invoice
+
   def self.find_all_by_user(user)
-    stripe_invoices_for_user(user).map do |invoice|
-      new(invoice)
+    if user.present?
+      stripe_invoices_for_user(user).map do |invoice|
+        new(invoice)
+      end
+    else
+      []
     end
   end
 

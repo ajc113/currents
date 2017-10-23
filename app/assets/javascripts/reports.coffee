@@ -4,7 +4,7 @@
 
 $('.new_report').validate()
 $(document).on 'turbolinks:load',  ->
-  $('.datepicker').datepicker
+  $('#report_date').datepicker
     startDate: "-3y"
     endDate: "+0d"
     todayHighlight: true
