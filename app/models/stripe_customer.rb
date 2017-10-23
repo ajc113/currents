@@ -35,5 +35,5 @@ class StripeCustomer
     user.save!
   end
 
-  extend ExceptionWrapper
+  extend ExceptionWrapper if Rails.env.production?
 end

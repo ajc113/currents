@@ -27,5 +27,5 @@ class StripeSubscription
     StripeCustomer.retrieve(user).subscriptions.total_count == 0 ? false : true
   end
 
-  extend ExceptionWrapper
+  extend ExceptionWrapper if Rails.env.production?
 end
