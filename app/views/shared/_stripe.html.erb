@@ -46,6 +46,14 @@
       </div>
     <% end %>
   </div>
+
+  <% if Rails.env.test? %>
+    <script type="text/javascript" charset="utf-8">
+      $(document).ready(function() {
+        Stripe.endpoint = '<%== Stripe.api_base + '/v1' %>';
+      });
+    </script>
+  <% end %>
   <script>
     var stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
       var elements = stripe.elements();
