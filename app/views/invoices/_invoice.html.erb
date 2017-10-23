@@ -4,6 +4,6 @@
     <td><%= invoice.date %></td>
     <td><%= number_to_currency(invoice.total, negative_format: "(%u%n)") %></td>
     <td><%= invoice.period_start %> to <%= invoice.period_end %></td>
-    <td><%= invoice.paid == true ? 'Paid' : 'Unpaid' %></td>
+    <td><%= invoice.paid? ? 'Paid' : 'Unpaid' %></td>
   </tr>
 <% end %>

@@ -19,7 +19,7 @@
               <td><%= Date.strptime(invoice.date.to_s, '%s') %></td>
               <td><%= number_to_currency(invoice.total/100, negative_format: "(%u%n)") %></td>
               <td><%= Date.strptime(invoice.lines.data[0].period.start.to_s, '%s') %> to <%= Date.strptime(invoice.lines.data[0].period.end.to_s, '%s') %></td>
-              <td><%= invoice.paid == true ? 'Paid' : 'Unpaid' %></td>
+              <td><%= invoice.paid? ? 'Paid' : 'Unpaid' %></td>
             </tr>
           <% end %>
         <% end %>
