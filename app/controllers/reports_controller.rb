@@ -37,6 +37,7 @@ class ReportsController < ApplicationController
   # POST /reports.json
   def create
     @report = Report.new(report_params)
+    @report.date = @report.date.strftime("%m/%d/%Y")
     @report.user=current_user
     respond_to do |format|
       if @report.save

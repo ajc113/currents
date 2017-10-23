@@ -1,12 +1,12 @@
 class User < ActiveRecord::Base
-	# Include default devise modules. Others available are:
-	# :confirmable, :lockable, :timeoutable and :omniauthable
-	devise :database_authenticatable, :registerable,
-	:recoverable, :rememberable, :trackable, :validatable, :confirmable
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+    :recoverable, :rememberable, :trackable, :validatable, :confirmable
   validates :state_waters, presence: true
-	has_many :reports
-	has_many :buzzs   
-	has_many :locations, through: :reports
+  has_many :reports
+  has_many :buzzs   
+  has_many :locations, through: :reports
   belongs_to :state, primary_key: :name, foreign_key: :state_waters
   after_create :create_stripe_customer
   after_create :send_notification if Rails.env.production?
@@ -14,9 +14,9 @@ class User < ActiveRecord::Base
 
 
   #display_name is defined for activeadmin
-	def display_name
-		self.email
-	end
+  def display_name
+    self.email
+  end
 
   def self.last_sign_in_before_week
     where('last_sign_in_at = ? and create_at > ? and payment_source = ?', Date.today - 7, Date.today - 31, nil)
@@ -26,10 +26,10 @@ class User < ActiveRecord::Base
     where('last_sign_in_at = ? and created_at < ?', Date.today - 7, Date.today - 31)
   end
 
-	def send_notification
+  def send_notification
     AdminMailer.delay.new_user(self)
-	end
-	
+  end
+
   def create_stripe_customer
     unless Rails.env.test?
       StripeCustomer.create(self)
@@ -56,7 +56,7 @@ class User < ActiveRecord::Base
       true
     end
   end
-  
+
   def trial_running?
     !trial_over?
   end
