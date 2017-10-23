@@ -31,6 +31,22 @@ class FakeStripe < Sinatra::Base
     }.to_json
   end
 
+  get "/v1/invoices/upcoming" do
+    content_type :json
+
+    customer_invoice.to_json
+  end
+
+  get "/v1/invoices/:id" do
+    content_type :json
+
+    case params[:id]
+    when INVOICE_ID
+      customer_invoice.to_json
+    end
+  end
+
+
   def source
     {
       "id": "src_1AzqOHLl1LzrhllYoncK7PI3",
@@ -82,92 +98,83 @@ class FakeStripe < Sinatra::Base
 
   def customer_invoice
     {
-      date: 1369159688,
       id: INVOICE_ID,
-      period_start: 1366567645,
-      period_end: 1369159645,
+      object: "invoice",
+      amount_due: 900,
+      application_fee: nil,
+      attempt_count: 0,
+      attempted: false,
+      billing: "charge_automatically",
+      charge: nil,
+      closed: false,
+      currency: "usd",
+      customer: CUSTOMER_ID,
+      date: 1508524062,
+      description: nil,
+      discount: nil,
+      ending_balance: nil,
+      forgiven: false,
       lines: {
         object: "list",
-        total_count: 1,
-        has_more: false,
-        url: "/v1/invoices/in_1s4JSgbcUaElzU/lines",
         data: [
           {
-            id: "sub_1ri03Utwow0Sue",
+            id: "sub_BR508hMxoCPe0V",
             object: "line_item",
-            type: "subscription",
-            livemode: true,
-            amount: 9900,
+            amount: 900,
             currency: "usd",
-            proration: false,
-            period: {
-              start: 1371755084,
-              end: 1374347084
-            },
-            quantity: 1,
-            plan: {
-              interval: "month",
-              name: I18n.t("shared.subscription.name"),
-              created: 1367971199,
-              amount: 9900,
-              currency: "usd",
-              id: "upcase",
-              object: "plan",
-              livemode: false,
-              interval_count: 1,
-              trial_period_days: nil,
-              metadata: {},
-              statement_description: nil
-            },
             description: nil,
-            metadata: nil
+            discountable: true,
+            livemode: false,
+            metadata: {
+              automatic: "true"
+            },
+            period: {
+              start: 1508524060,
+              end: 1511202460
+            },
+            plan: {
+              id: "monthly",
+              object: "plan",
+              amount: 900,
+              created: 1504073905,
+              currency: "usd",
+              interval: "month",
+              interval_count: 1,
+              livemode: false,
+              metadata: {
+              },
+              name: "Monthly",
+              statement_descriptor: nil,
+              trial_period_days: nil
+            },
+            proration: false,
+            quantity: 1,
+            subscription: nil,
+            subscription_item: "si_1B4CqMLl1LzrhllYIci3hTkg",
+            type: "subscription"
           }
         ],
+        has_more: false,
+        total_count: 1,
+        url: "/v1/invoices/#{INVOICE_ID}/lines"
       },
-      subtotal: 9900,
-      total: 7900,
-      customer: CUSTOMER_ID,
-      object: "invoice",
-      attempted: true,
-      closed: true,
-      forgiven: false,
-      paid: true,
       livemode: false,
-      attempt_count: 1,
-      amount_due: 7900,
-      currency: "usd",
-      starting_balance: 0,
-      ending_balance: 0,
-      next_payment_attempt: nil,
-      webhooks_delivered_at: 1403972754,
-      charge: "ch_JQhSfU9Rz21owt",
-      discount: {
-        coupon: {
-          id: "railsconf",
-          created: 1410384799,
-          percent_off: nil,
-          amount_off: 2000,
-          currency: "usd",
-          object: "coupon",
-          livemode: false,
-          duration: "once",
-          redeem_by: 1367971199,
-          max_redemptions: nil,
-          times_redeemed: 1,
-          duration_in_months: nil,
-          valid: true,
-          metadata: {}
-        },
-        start: 1336671710,
-        object: "discount",
-        customer: CUSTOMER_ID,
-        subscription: nil,
-        end: 1339350110
+      metadata: {
       },
-      application_fee: nil,
-      subscription: "sub_3Xehu54zpkQS1b",
-      description: nil,
-      receipt_number: nil
+      next_payment_attempt: 1508527662,
+      number: "b9181a962e-0003",
+      paid: true,
+      period_end: 1508524060,
+      period_start: 1505932060,
+      receipt_number: nil,
+      starting_balance: 0,
+      statement_descriptor: nil,
+      subscription: "sub_BR508hMxoCPe0V",
+      subtotal: 900,
+      tax: nil,
+      tax_percent: nil,
+      total: 900,
+      webhooks_delivered_at: nil
     }
   end
 end
