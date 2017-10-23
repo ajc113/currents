@@ -1,17 +1,17 @@
 <%= form_for(@report) do |f| %>
-  <legend class="text-left" style="margin-bottom: 0px">
-    <div class="title-css">
-      <h1><%= current_user.try(:vessel_name) %></h1>
-      <h2>Edit Your Catch Report</h2>
+    <div class="panel-heading" style="font-size: 35px; padding: 4px">
+      <%= current_user.try(:vessel_name) %>
+        <br>
+          New Catch Report
     </div>
+    <legend style="padding: 10px"></legend>
+    
     <!-- public form panel -->
-    <div class="title-css-bodyt">
-      <div class="h4-color">
-        <b><u>
-            <h4>Public</h4>
-          </u></b>
-        <p class="small">Report fields are visible by the network and used for heatmaps</p>
-      </div>
+    <div class="panel-body">
+      Public View
+      <br>
+      Report fields are visible by the network and used for heatmaps
+    </div>
       <% if @report.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@report.errors.count, "error") %> prohibited this report from being saved:</h2>
