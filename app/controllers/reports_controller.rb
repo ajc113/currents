@@ -29,7 +29,7 @@ class ReportsController < ApplicationController
   # GET /reports/1/edit
   def edit
     @report = Report.find(params[:id])
-    @report.date = @report.date.strftime("%m/%d/%Y")
+    @report.date = @report.date.strftime("%d/%m/%Y")
     species
   end
 
@@ -37,7 +37,6 @@ class ReportsController < ApplicationController
   # POST /reports.json
   def create
     @report = Report.new(report_params)
-    @report.date = @report.date.strftime("%m/%d/%Y")
     @report.user=current_user
     respond_to do |format|
       if @report.save
