@@ -9,7 +9,7 @@ $(document).on 'turbolinks:load',  ->
     endDate: "+0d"
     todayHighlight: true
     orientation: "bottom auto"
-    format: "mm/dd/yyyy"
+    format: "dd/mm/yyyy"
     autoclose: true
     maxViewMode: 2
   $('.state_selection').on "change", ->
