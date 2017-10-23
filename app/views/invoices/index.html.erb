@@ -1,0 +1,17 @@
+<%= content_for(:title, "Invoices") %>
+<h3 class="center-text">Invoices</h3>
+<div id="invoices" style="display: block; clear: both; text-align: center">
+  <table>
+    <thead>
+      <tr>
+        <td>ID</td>
+        <td>Date</td>
+        <td>Amount</td>
+        <td>Period</td>
+        <td>Status</td>
+      </tr>
+    </thead>
+    <%= render @invoices %>
+  </table>
+  <span><i>(If you had any previous cancelled subscription, thsoe invoices are not listed)</i></span>
+</div>

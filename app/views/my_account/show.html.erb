@@ -3,8 +3,7 @@
 <%= render 'shared/stripe' %>
 <% if current_user.has_active_subscription? %>
   <div class="center">
-    Next invoice will be generated on: <%= Date.strptime(@upcoming_invoice['date'].to_s, '%s') %>
+    Next invoice will be generated on: <%= @upcoming_invoice.date %>
   </div>
-  <%= render 'invoice_table' %>
-  <div class="center"><%= link_to "Cancel My Subscription", my_account_url, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+  <div class="center"><%= link_to "Invoices", invoices_path %> | <%= link_to "Cancel My Subscription", my_account_url, method: :delete, data: { confirm: 'Are you sure?' } %></div>
 <% end %>

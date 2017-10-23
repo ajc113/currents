@@ -3,8 +3,15 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $('.new_report').validate()
-$(document).ready ->
-  $('.datecker').datepicker()
+$(document).on 'turbolinks:load',  ->
+  $('.datepicker').datepicker
+    startDate: "-3y"
+    endDate: "+0d"
+    todayHighlight: true
+    orientation: "bottom auto"
+    format: "mm/dd/yyyy"
+    autoclose: true
+    maxViewMode: 2
   $('.state_selection').on "change", ->
     $.ajax
       url: "/locations_for_state"

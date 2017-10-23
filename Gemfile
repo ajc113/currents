@@ -38,6 +38,7 @@ gem 'stripe'
 gem 'sucker_punch'
 gem 'nokogiri'
 gem 'premailer-rails'
+gem 'activemodel-associations'
 
 group :production do
   gem 'rails_12factor'
@@ -57,11 +58,23 @@ group :development, :test do
   gem 'rspec-json_expectations'
   gem 'pry-rails'
   gem 'pry-byebug'
+  gem 'rack-mini-profiler', require: false
+  gem 'quiet_assets'
+  gem 'flamegraph'
+  gem 'stackprof'
+  gem 'fast_stack'
 end
 
 group :test do
   gem "simplecov"
   gem "codeclimate-test-reporter", "~> 1.0.0"
+  gem "capybara_discoball"
+  gem "email_spec"
+  gem "launchy"
+  gem "sinatra"
+  gem "timecop"
+  gem "webmock"
+  gem "capybara-bootstrap-datepicker"
 end
 
 group :development do
