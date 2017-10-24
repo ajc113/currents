@@ -118,7 +118,7 @@ class FakeStripe < Sinatra::Base
         object: "list",
         data: [
           {
-            id: "sub_BR508hMxoCPe0V",
+            id: SUBSCRIPTION_ID,
             object: "line_item",
             amount: 900,
             currency: "usd",
@@ -169,7 +169,7 @@ class FakeStripe < Sinatra::Base
       receipt_number: nil,
       starting_balance: 0,
       statement_descriptor: nil,
-      subscription: "sub_BR508hMxoCPe0V",
+      subscription: SUBSCRIPTION_ID,
       subtotal: 900,
       tax: nil,
       tax_percent: nil,
