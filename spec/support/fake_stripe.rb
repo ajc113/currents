@@ -13,6 +13,15 @@ class FakeStripe < Sinatra::Base
   SUBSCRIPTION_ID = "sub_4uJxAs8DlW3Z0w"
   SUBSCRIPTION_BILLING_PERIOD_END = 1361234235
 
+  cattr_reader :last_charge, :last_customer_email, :last_token, :coupons, :customer_plan_id, :last_coupon_used, :customer_plan_quantity
+  cattr_accessor :coupons, :customer_ids, :failure
+
+  def self.reset
+    self.coupons = {}
+    self.customer_ids = [CUSTOMER_ID]
+    self.failure = nil
+  end
+
   get "/v1/tokens" do
     content_type "application/javascript"
 
@@ -43,9 +52,89 @@ class FakeStripe < Sinatra::Base
     case params[:id]
     when INVOICE_ID
       customer_invoice.to_json
+    else
+      {
+        'something': 'valuable'
+      }.to_json
     end
   end
 
+  get "/v1/customers/:id" do
+    content_type :json
+
+    case params[:id]
+    when CUSTOMER_ID
+      customer(params[:id]).to_json
+    else
+      status 401
+    end
+  end
+
+  delete "/v1/customers/:id" do
+    content_type :json
+    case params[:id]
+    when CUSTOMER_ID
+      {
+        "deleted": true,
+        "id": CUSTOMER_ID
+      }.to_json
+    end
+  end
+
+  delete "/v1/customers/:id/sources/:source" do
+    content_type :json
+
+    {
+      id: "src_1BDT3BLl1LzrhllYSAFu2MMu",
+      object: "source",
+      amount: nil,
+      client_secret: "src_client_secret_BaeLB3dFzUd6tmmZsiYl8Moq",
+      created: 1508139013,
+      currency: nil,
+      flow: "none",
+      livemode: false,
+      metadata: {},
+      owner:
+      {
+        address:
+        {
+          city: nil,
+          country: nil,
+          line1: nil,
+          line2: nil,
+          postal_code: "Error commodo voluptate officiis ad eveniet quas",
+          state: nil
+        },
+        email: nil,
+        name: "Mollie Salinas",
+        phone: "+774-89-6785446",
+        verified_address: nil,
+        verified_email: nil,
+        verified_name: nil,
+        verified_phone: nil,
+      },
+      statement_descriptor: nil,
+      status: "consumed",
+      type: "card",
+      usage: "reusable",
+      card:
+      {
+        exp_month: 4,
+        exp_year: 2024,
+        address_zip_check: "unchecked",
+        brand: "Visa",
+        country: "US",
+        cvc_check: "unchecked",
+        fingerprint: "0Kb8LJC2bIUK0qfS",
+        funding: "credit",
+        last4: "4242",
+        three_d_secure: "optional",
+        address_line1_check: nil,
+        tokenization_method: nil,
+        dynamic_last4: nil
+      }
+    }.to_json
+  end
 
   def source
     {
@@ -177,9 +266,173 @@ class FakeStripe < Sinatra::Base
       webhooks_delivered_at: nil
     }
   end
+
+  def customer(id = CUSTOMER_ID)
+    {
+      object: "customer",
+      created: 1359583041,
+      id: id,
+      livemode: false,
+      description: CUSTOMER_EMAIL,
+      email: CUSTOMER_EMAIL,
+      delinquent: false,
+      metadata: {},
+      discount: nil,
+      account_balance: 0,
+      currency: "usd",
+      cards: {
+        object: "list",
+        total_count: 1,
+        has_more: false,
+        url: "/v1/customers/#{id}/cards"
+      },
+      default_source: "src_1BDT3BLl1LzrhllYSAFu2MMu",
+      default_card: "card_2NCtCAVwvnMUUs",
+      sources:
+      {
+        object: "list",
+        data: [{
+          id: "src_1BDT3BLl1LzrhllYSAFu2MMu",
+          object: "source",
+          amount: nil,
+          client_secret: "src_client_secret_BaeLB3dFzUd6tmmZsiYl8Moq",
+          created: 1508139013,
+          currency: nil,
+          customer: "cus_BJ1cLzc7y1qKmK",
+          flow: "none",
+          livemode: false,
+          metadata: {},
+          owner: {
+            address: {
+              city: nil,
+              country: nil,
+              line1: nil,
+              line2: nil,
+              postal_code: "Error commodo voluptate officiis ad eveniet quas",
+              state: nil
+            },
+            email: nil,
+            name: "Mollie Salinas",
+            phone: "+774-89-6785446",
+            verified_address: nil,
+            verified_email: nil,
+            verified_name: nil,
+            verified_phone: nil
+          },
+          statement_descriptor: nil,
+          status: "chargeable",
+          type: "card",
+          usage: "reusable",
+          card: {
+            exp_month: 4,
+            exp_year: 2024,
+            address_zip_check: "unchecked",
+            brand: "Visa",
+            country: "US",
+            cvc_check: "unchecked",
+            fingerprint: "0Kb8LJC2bIUK0qfS",
+            funding: "credit",
+            last4: "4242",
+            three_d_secure: "optional",
+            address_line1_check: nil,
+            tokenization_method: nil,
+            dynamic_last4: nil
+          }
+        }],
+        has_more: false,
+        total_count: 1,
+        url: "/v1/customers/cus_BJ1cLzc7y1qKmK/sources"
+      },
+      subscriptions:
+      {
+        object: "list",
+        data: [{
+          id: "sub_Bae7GaNX4y11ST",
+          object: "subscription",
+          application_fee_percent: nil,
+          billing: "charge_automatically",
+          cancel_at_period_end: false,
+          canceled_at: nil,
+          created: 1508138142,
+          current_period_end: 1510816542,
+          current_period_start: 1508138142,
+          customer: "cus_BJ1cLzc7y1qKmK",
+          discount: nil,
+          ended_at: nil,
+          items: {
+            object: "list",
+            data: [{
+              id: "si_1BDSp8Ll1LzrhllYeT423SwH",
+              object: "subscription_item",
+              created: 1508138142,
+              metadata: {},
+              plan: {
+                id: "monthly",
+                object: "plan",
+                amount: 900,
+                created: 1504073905,
+                currency: "usd",
+                interval: "month",
+                interval_count: 1,
+                livemode: false,
+                metadata: {},
+                name: "Monthly",
+                statement_descriptor: nil,
+                trial_period_days: nil
+              },
+              quantity: 1
+            }],
+            has_more: false,
+            total_count: 1,
+            url: "/v1/subscription_items?subscription=sub_Bae7GaNX4y11ST"
+          },
+          livemode: false,
+          metadata: {
+            automatic: "true"
+          },
+          plan: {
+            id: "monthly",
+            object: "plan",
+            amount: 900,
+            created: 1504073905,
+            currency: "usd",
+            interval: "month",
+            interval_count: 1,
+            livemode: false,
+            metadata: {},
+            name: "Monthly",
+            statement_descriptor: nil,
+            trial_period_days: nil
+          },
+          quantity: 1,
+          start: 1508138142,
+          status: "active",
+          tax_percent: nil,
+          trial_end: nil,
+          trial_start: nil
+        }],
+        has_more: false,
+        total_count: 1,
+        url: "/v1/customers/cus_BJ1cLzc7y1qKmK/subscriptions"
+      }
+    }
+  end
 end
 
 FakeStripeRunner = Capybara::Discoball::Runner.new(FakeStripe) do |server|
   url = "http://#{server.host}:#{server.port}"
   Stripe.api_base = url
+end
+
+RSpec.configure do |config|
+  config.before { FakeStripe.reset }
+end
+
+#Stripe.verify_ssl_certs = false
+
+module Stripe
+  # Overriding this so it does not warn us about turning off SSL
+  def self.ssl_preflight_passed?
+    true
+  end
 end

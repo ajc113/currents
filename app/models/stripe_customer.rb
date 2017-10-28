@@ -12,6 +12,8 @@ class StripeCustomer
 
   def self.delete(user)
     self.retrieve(user).delete
+    user.stripe_customer_id = "" 
+    user.save!
   end
 
   def self.payment_source(user)
@@ -35,5 +37,5 @@ class StripeCustomer
     user.save!
   end
 
-  extend ExceptionWrapper if Rails.env.production?
+  extend ExceptionWrapper
 end
