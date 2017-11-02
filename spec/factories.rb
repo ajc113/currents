@@ -34,7 +34,7 @@ FactoryGirl.define do
     confirmed_at DateTime.now
 
     factory :non_customer do
-      stripe_customer_id "i_dont_exist"
+      stripe_customer_id ""
     end
 
     factory :stripe_customer do

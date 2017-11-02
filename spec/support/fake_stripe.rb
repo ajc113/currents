@@ -12,6 +12,7 @@ class FakeStripe < Sinatra::Base
   PLAN_ID = "JAVA-PLAN-1b3a5c51-5c1a-421b-8822-69138c2d937b"
   SUBSCRIPTION_ID = "sub_4uJxAs8DlW3Z0w"
   SUBSCRIPTION_BILLING_PERIOD_END = 1361234235
+  SOURCE = "src_abcdefghijkl"
 
   cattr_reader :last_charge, :last_customer_email, :last_token, :coupons, :customer_plan_id, :last_coupon_used, :customer_plan_quantity
   cattr_accessor :coupons, :customer_ids, :failure
@@ -70,6 +71,55 @@ class FakeStripe < Sinatra::Base
     end
   end
 
+  get "/v1/subscriptions/:id" do
+    content_type :json
+
+    case params[:id]
+    when SUBSCRIPTION_ID
+    {
+      id: SUBSCRIPTION_ID,
+      customer: CUSTOMER_ID
+    }.to_json
+    end
+  end
+
+  get "/v1/customers/:id/subscriptions" do
+    case params[:id]
+    when CUSTOMER_ID
+      {
+        total_count: 1
+      }.to_json
+    end
+  end
+
+  post "/v1/subscriptions" do
+    content_type :json
+
+    {
+      id: SUBSCRIPTION_ID
+    }.to_json
+  end
+
+  post "/v1/customers" do
+    content_type :json
+    
+    {
+      id: CUSTOMER_ID
+    }.to_json
+  end
+
+  post "/v1/customers/:id" do
+    content_type :json
+
+    case params[:id]
+    when CUSTOMER_ID
+      {
+        id: CUSTOMER_ID,
+        subscription_id: SUBSCRIPTION_ID
+      }.to_json
+    end
+  end
+
   delete "/v1/customers/:id" do
     content_type :json
     case params[:id]
@@ -77,6 +127,16 @@ class FakeStripe < Sinatra::Base
       {
         "deleted": true,
         "id": CUSTOMER_ID
+      }.to_json
+    end
+  end
+
+  delete "/v1/subscriptions/:id" do
+    case params[:id]
+    when SUBSCRIPTION_ID
+      {
+        id: SUBSCRIPTION_ID,
+        customer: CUSTOMER_ID
       }.to_json
     end
   end

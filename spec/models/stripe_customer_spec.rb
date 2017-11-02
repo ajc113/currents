@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe StripeCustomer do
+  it "creates stripe customer" do
+    user = build(:user)
+    StripeCustomer.create(user)
+    expect(user.stripe_customer_id).to eq("cus_1CXxPJDpw1VLvJ")
+  end
+
   context "customer retrieve" do
     it 'creates issue if customer does not exist' do
       allow(GithubIssues).to receive(:create)
@@ -36,5 +42,11 @@ RSpec.describe StripeCustomer do
     user = build(:stripe_customer)
     StripeCustomer.delete_all_sources(user)
     expect(user.payment_source).to be_nil
+  end
+
+  it "replaces the default source of a stripe customer" do
+    user = build(:stripe_customer)
+    StripeCustomer.save_source(user, FakeStripe::SOURCE)
+    expect(user.payment_source).to eq("src_abcdefghijkl")
   end
 end
