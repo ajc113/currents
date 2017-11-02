@@ -44,6 +44,8 @@ Rails.application.configure do
     :port    => ENV["SMTP_PORT"]
   }
 
-
   config.action_mailer.default_url_options = { host: ENV["ADDRESS"], port: ENV["PORT"] }
+
+  config.middleware.insert_after ActionDispatch::Static, Rack::LiveReload
+
 end
