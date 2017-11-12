@@ -1,16 +1,15 @@
 <%= form_for(@report) do |f| %>
-  <legend class="text-left" style="margin-bottom: 0px">
-    <div class="title-css">
-      <h1><%= current_user.try(:vessel_name) %></h1>
-      <h2>Edit Your Catch Report</h2>
+    <div class="panel-heading" style="font-size: 35px; padding: 4px">
+      <%= current_user.try(:vessel_name) %>
+        <br>
+        Catch Report
     </div>
+    <legend style="padding: 10px"></legend>
+    
     <!-- public form panel -->
-    <div class="title-css-bodyt">
-      <div class="h4-color">
-        <b><u>
-            <h4>Public</h4>
-          </u></b>
-        <p class="small">Report fields are visible by the network and used for heatmaps</p>
+      <div class="field form-group">
+        <b><u><h4>Public View</h4></b></u>
+        General data in public view fields are veiwable by other users
       </div>
       <% if @report.errors.any? %>
         <div id="error_explanation">
@@ -26,12 +25,10 @@
         <%= f.label :date %> (Required)<br>
         <%= f.text_field :date, class: 'form-control report-date', type: 'date' %>
       </div>
-      <br>
       <div class="field form-group">
         <%= f.label :species_id %> (Required)<br>
         <%= f.select :species_id, Species.all.order("name ASC").pluck(:name, :id), {}, class: 'form-control' %>
       </div>
-      <br>
       <div class="field form-group">
         <%= f.label :state_waters %> (Required)<br>
         <%= f.select :state_waters, State.sorted.pluck(:name), { prompt: 'Select State', selected: ( @report.new_record? ? current_user.try(:state).try(:name) : @report.state.name) }, class: "state_selection form-control" %>
@@ -42,20 +39,21 @@
         <%= link_to "Go to reference legend", { anchor: "legend-image" }, { id: "location-legend-link", class: "mobile-only small" } %> 
         <%= f.select  :location_id, @state_locations || Location.where(state_waters: (@report.new_record? ? current_user.try(:state).try(:name) : @report.state)).order(number: :asc).map {|location| [location[:number].to_s.rjust(2, '0') + " - " + location[:short_name]] + [location.id]}, {prompt: 'Select Location'}, class: "location_id form-control" %>
       </div>
-      <br>
       <div class="field form-group">
         <%= f.label :catch_keepers %> (Required)<br>
         <%= f.number_field :catch_keepers, class: 'form-control' %>
       </div>
       <div class="field form-group">
         <%= f.label :trip_summary %><br>
-        <%= f.text_area :trip_summary, placeholder: "Enter brief summary of todays trip", class: 'form-control' %>
+        <%= f.text_area :trip_summary, placeholder: "Enter brief trip summary, will be visible in Heatmap", class: 'form-control' %>
       </div>
-      <br>
-    </div>
+
+    <!-- break -->
+    <legend style="padding: 10px"></legend>
+
     <!-- private form panel -->
-    <div class="title-css-bodyb">
-      <div class="h4-color">
+    <div class="form-group">
+      <div class="field form-group">
         <b><u>
             <h4>Private</h4>
           </u></b>
@@ -95,12 +93,12 @@
       </div>
       <br>
     </div>
-    <div class="footer-css">
-      <%= f.submit class: "btn btn-inverse btn-md", id: "submit-button" %>
+    <!-- submit buttons -->
+    <div class="form-group text-center">
+      <%= f.submit class: "btn btn-inverse btn-md" %>
       <br>
       <br>
       <%= link_to 'Back', reports_path, class: "btn btn-default bg-gray" %>
     </div>
-  </legend>
 </div>
 <% end %>
