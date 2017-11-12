@@ -4,7 +4,6 @@
 
 $('.new_report').validate()
 $(document).on 'turbolinks:load',  ->
-  console.log($('.report-date').prop('type'))
   if $('.report-date').prop('type') != 'date' 
     $('.report-date').datepicker
       startDate: "-3y"
@@ -14,6 +13,17 @@ $(document).on 'turbolinks:load',  ->
       format: "dd/mm/yyyy"
       autoclose: true
       maxViewMode: 2
+  $('a').on "click", (event)->
+    if this.hash != ""
+      event.preventDefault()
+      hash = this.hash
+      console.log(hash)
+      $('html, body').animate
+        scrollTop: $(hash).offset().top
+        duratin: 800
+        easing: "linear"
+        ->
+          window.location.hash = hash
   $('.state_selection').on "change", ->
     $.ajax
       url: "/locations_for_state"

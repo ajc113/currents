@@ -37,8 +37,9 @@
         <%= f.select :state_waters, State.sorted.pluck(:name), { prompt: 'Select State', selected: ( @report.new_record? ? current_user.try(:state).try(:name) : @report.state.name) }, class: "state_selection form-control" %>
       </div>
       <br>
-      <div class="field form-group">
+      <div class="field form-group", id="location-select">
         <span class="field_label"><%= f.label :location_id %> (Required)</span><br>
+        <%= link_to "Go to reference legend", { anchor: "legend-image" }, { id: "location-legend-link", class: "mobile-only small" } %> 
         <%= f.select  :location_id, @state_locations || Location.where(state_waters: (@report.new_record? ? current_user.try(:state).try(:name) : @report.state)).order(number: :asc).map {|location| [location[:number].to_s.rjust(2, '0') + " - " + location[:short_name]] + [location.id]}, {prompt: 'Select Location'}, class: "location_id form-control" %>
       </div>
       <br>
@@ -95,7 +96,7 @@
       <br>
     </div>
     <div class="footer-css">
-      <%= f.submit class: "btn btn-inverse btn-md" %>
+      <%= f.submit class: "btn btn-inverse btn-md", id: "submit-button" %>
       <br>
       <br>
       <%= link_to 'Back', reports_path, class: "btn btn-default bg-gray" %>
