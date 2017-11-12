@@ -4,14 +4,16 @@
 
 $('.new_report').validate()
 $(document).on 'turbolinks:load',  ->
-  $('#report_date').datepicker
-    startDate: "-3y"
-    endDate: "+0d"
-    todayHighlight: true
-    orientation: "bottom auto"
-    format: "dd/mm/yyyy"
-    autoclose: true
-    maxViewMode: 2
+  console.log($('.report-date').prop('type'))
+  if $('.report-date').prop('type') != 'date' 
+    $('.report-date').datepicker
+      startDate: "-3y"
+      endDate: "+0d"
+      todayHighlight: true
+      orientation: "bottom auto"
+      format: "dd/mm/yyyy"
+      autoclose: true
+      maxViewMode: 2
   $('.state_selection').on "change", ->
     $.ajax
       url: "/locations_for_state"
