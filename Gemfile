@@ -80,4 +80,6 @@ end
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem "guard-livereload", "~> 2.5", require: false
+  gem "rack-livereload"
 end

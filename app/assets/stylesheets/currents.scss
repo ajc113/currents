@@ -154,7 +154,7 @@ h2.usp-heading {
 }
 
 .tk-blackoak-std {
-    font-size: 2.5em !important;
+    font-size: 2.5em;
     letter-spacing: .12em;
     margin: 05px;
     /*line-height: 250%;*/
@@ -235,4 +235,14 @@ h2.usp-heading {
   display: block;
   clear: both;
   text-align: center;
+}
+
+@media (max-width: 500px) {
+  .tk-blackoak-std {
+    font-size: 1.5em;
+  }
+
+  .home-subtitle {
+    padding-top: 40px;
+  }
 }

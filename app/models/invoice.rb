@@ -40,7 +40,7 @@ class Invoice
     convert_stripe_time(stripe_invoice.date)
   end
 
-  def paid
+  def paid?
     stripe_invoice.paid
   end
 
@@ -61,7 +61,7 @@ class Invoice
   end
 
   def balance
-    if paid
+    if paid?
       0.00
     else
       amount_due
@@ -77,7 +77,7 @@ class Invoice
   end
 
   def amount_paid
-    if paid
+    if paid?
       amount_due
     else
       0.00
@@ -98,7 +98,7 @@ class Invoice
 
   def self.pay_if_pending(user)
     invoices = find_all_by_user(user)
-    unless invoices.empty? || invoices.first.paid
+    unless invoices.empty? || invoices.first.paid?
       invoices.first.pay
     end
   end
