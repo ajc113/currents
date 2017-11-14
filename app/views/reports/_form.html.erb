@@ -22,10 +22,8 @@
         </div>
       <% end %>
       <div class="field form-group">
-
-        <%= f.label :date %> [dd/mm/yy] (Required)<br>
-        <%= f.text_field :date, 'data-provide': 'datepicker', class: 'form-control' %>
-
+        <%= f.label :date %> (Required)<br>
+        <%= f.text_field :date, class: 'form-control report-date', type: 'date' %>
       </div>
       <div class="field form-group">
         <%= f.label :species_id %> (Required)<br>
@@ -35,8 +33,10 @@
         <%= f.label :state_waters %> (Required)<br>
         <%= f.select :state_waters, State.sorted.pluck(:name), { prompt: 'Select State', selected: ( @report.new_record? ? current_user.try(:state).try(:name) : @report.state.name) }, class: "state_selection form-control" %>
       </div>
-      <div class="field form-group">
+      <br>
+      <div class="field form-group", id="location-select">
         <span class="field_label"><%= f.label :location_id %> (Required)</span><br>
+        <%= link_to "Go to reference legend", { anchor: "legend-image" }, { id: "location-legend-link", class: "mobile-only small" } %> 
         <%= f.select  :location_id, @state_locations || Location.where(state_waters: (@report.new_record? ? current_user.try(:state).try(:name) : @report.state)).order(number: :asc).map {|location| [location[:number].to_s.rjust(2, '0') + " - " + location[:short_name]] + [location.id]}, {prompt: 'Select Location'}, class: "location_id form-control" %>
       </div>
       <div class="field form-group">

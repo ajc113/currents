@@ -2,6 +2,8 @@
     position: relative;
     padding-top: 25px;
     height: 500px;
+    margin: auto;
+    width: 100%;
   }
   .wrapper iframe {
     position: absolute;
@@ -53,4 +55,14 @@
     color: #468847;
     text-align: left;
   }
+@media (min-width: 1200px) {
+  .video-wrapper {
+    width: 70%;
+  }
+}
 
+@media (max-width: 500px) {
+  .video-wrapper {
+    height: 150px;
+  }
+}

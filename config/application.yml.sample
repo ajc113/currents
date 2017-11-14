@@ -6,6 +6,8 @@ development:
   CURRENTS_DB_NAME: "currents_dev"
   CURRENTS_PSQL_USERNAME: "currents"
   CURRENTS_PSQL_PASSWORD: "currents"
+  ADDRESS: "localhost"
+  SMTP_PORT: 1025
 
 test:
   CURRENTS_DB_NAME: "currents_test"
