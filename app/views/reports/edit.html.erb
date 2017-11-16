@@ -1,20 +1,32 @@
 <% provide(:title, "Edit Report") %>
 <div class="content-wrapper">
   <div class="row">
+    
+
     <!-- margin panel -->
     <div class="col-lg-1">
     </div>
+    
     <!-- form panel -->
     <div class="col-lg-5">
+    
       <div class="panel panel-default" style="padding: 10px">
         <%= render 'reports/form' %>
       </div>
+    
+       <!-- legend panel -->
       <div class="col-lg-5">
-        <div class="panel panel-default", style="display: inline-block; padding: 5px">
+        <div class="panel panel-default", id="legend-image", style="display: inline-block; padding: 5px">
+          <%= link_to "Back to Top", "#location-select", class: "mobile-only" %>
           <%= image_tag "location_legends/" + current_user.state.name + ".png",  class: 'img-responsive location-legend-image', style: 'display:block; opacity: .95' %>
         </div>
       </div>
+    
+      <!-- margin panel --> 
       <div class="col-lg-1">
       </div>
-    </div>
+
+    </div>   
+
   </div>
+</div>
