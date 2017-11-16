@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :maps
   resources :currents
   resources :invoices, only: [:index, :show]
+  resources :posts
 
   resource :card
 
