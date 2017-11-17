@@ -1,4 +1,9 @@
 FactoryGirl.define do
+  factory :comment do
+    name "MyString"
+    body "MyText"
+    post nil
+  end
   factory :post do
     title "MyString"
     body "MyText"
