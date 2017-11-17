@@ -1,13 +1,49 @@
-<% @posts.each do |post| %>
+<section>
+	<div class="content-wrapper">	
 
-<div class="post_wrapper">
-	<h2 class="title">
-		<%= link_to post.title, post %>
-	</h2>
-	<p class="date">
-		<%= post.created_at.strftime(" %B, %d, %Y") %>
-	</p>
+		<div class="row">
+			<div class="nav navbar-nav">	
+					<%= link_to "New Post", new_post_path, class: "btn btn-oval btn-info" %>
+					<%= link_to "Logout", new_post_path, class: "mb-sm btn btn-inverse" %>
+			</div>
+		</div>
+
+		<!-- button row -->
+			<div class="row">
+				<div class="col-lg-9">
+					
+					<!-- posts row -->
+						<div class="row">
+							<!-- Posts -->
+								<% @posts.each do |post| %>
+									<div class="panel">
+										<div class="panel-body bg-info">
+											<h3 class="mv-sm">
+												<%= link_to post.title, post %>
+											</h3>	
+										</div>
+										<div class="panel-body">
+											<p class="clearfix">
+												<%= post.body %>
+												<br>
+													<span class="pull-left">
+														<%= post.created_at.strftime(" %B, %d, %Y") %>
+													</span>
+											</p>
+										</div>
+									</div>				
+								<% end %>
+						</div>
+
+				</div>
+			</div>			
+
+			</div>
+					<% flash.each do |name, msg| %>
+					<% content_tag(:div, msg, class: "alert") %>
+					<% end %>
+			</div>
 
 
-</div>
-<% end %>
+	</div>
+</section>
