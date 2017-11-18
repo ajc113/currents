@@ -1,6 +1,7 @@
 <div class="content-wrapper">	
 	<div class="row">
-		<div class="col-lg-9">
+		<div class="col-lg-2"></div>
+		<div class="col-lg-8">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<div class="bb">
@@ -8,18 +9,41 @@
 							<%= @post.title %>
 						</h2>
 						<p class="date">
-						Submitted <%= time_ago_in_words(@post.created_at) %> A go
+						Submitted <%= time_ago_in_words(@post.created_at) %> a go
 						| <%= link_to 'Edit', edit_post_path(@post) %>
  						| <%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are you sure?'} %>
  						</p>
+
 					</div>
 				</div>
 
+				<!-- Post body	 -->
 				<div class="panel-body text-md">
+					<br>	
 					<%= @post.body %>
 				</div>
+
+				<!-- Post comment stats -->
+				<div class="panel-body text-sm">
+					<span class="pull-left">
+						<small class="mr-sm">By <a href="">AJ Costa</a></small>
+						<small class="mr-sm"><%= @post.created_at.strftime(" %B, %d, %Y") %></small>
+						<small><strong><%= @post.comments.count %></strong><span>  comments</span></small>
+					</span>
+				</div>
+					
+				<!-- line break -->
+				<p class="bb"></p>
+
+				<div class="panel-body">
+					<%= render @post.comments %>
+					<%= render 'comments/form' %>
+				</div>
+					
+
 		
 			</div>
 		</div>
+		<div class="col-lg-2"></div>
 	</div>
 </div>
