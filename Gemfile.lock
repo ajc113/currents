@@ -115,6 +115,9 @@ GEM
       mime-types (>= 1.16)
     case_transform (0.2)
       activesupport
+    climate_control (0.2.0)
+    cocaine (0.5.8)
+      climate_control (>= 0.0.3, < 1.0)
     codeclimate-test-reporter (1.0.8)
       simplecov (<= 0.13)
     coderay (1.1.1)
@@ -257,6 +260,7 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
+    mimemagic (0.3.0)
     mini_portile2 (2.2.0)
     minitest (5.10.2)
     moving_average (0.1.1)
@@ -273,6 +277,12 @@ GEM
     octokit (3.8.0)
       sawyer (~> 0.6.0, >= 0.5.3)
     orm_adapter (0.5.0)
+    paperclip (4.3.7)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      cocaine (~> 0.5.5)
+      mime-types
+      mimemagic (= 0.3.0)
     party_foul (1.5.5)
       octokit (~> 3.1)
     pg (0.20.0)
@@ -481,6 +491,7 @@ DEPENDENCIES
   mandrill-api
   moving_average
   nokogiri
+  paperclip (~> 4.3, >= 4.3.6)
   party_foul
   pg
   premailer-rails

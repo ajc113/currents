@@ -40,6 +40,7 @@ gem 'nokogiri'
 gem 'premailer-rails'
 gem 'activemodel-associations'
 gem 'active_skin'
+gem 'paperclip', '~> 4.3', '>= 4.3.6'
 
 group :production do
   gem 'rails_12factor'
