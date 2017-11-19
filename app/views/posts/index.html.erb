@@ -10,10 +10,11 @@
 			<div class="row">
 				<div class="nav navbar-nav">	
 						<%= link_to "New Post", new_post_path, class: "btn btn-oval btn-inverse" %>
-						<%= link_to "Logout", new_post_path, class: "mb-sm btn btn-inverse" %>
 				</div>
 			</div>
 		<% end %>	
+
+		<br>
 		<!-- button row -->
 			<div class="row">
 				<div class="col-lg-9">
@@ -23,20 +24,27 @@
 							<!-- Posts -->
 								<% @posts.each do |post| %>
 									<div class="panel">
-										<div class="panel-body bg-info">
-										<!-- 	<h3 class="mv-sm"> -->
-
-												<%= link_to post.title, post %>
-										<!-- 	</h3>	 -->
-										</div>
 										<div class="panel-body">
-											<p class="clearfix">
+											<h1 class="mv-lg">
+												<%= link_to post.title, post %>
+											</h1>
+											
+											<span class="pull-left">
+												<%= post.created_at.strftime(" %B, %d, %Y") %>
+											</span>
+											<p class="bb"></p>
+										</div>
+										
+
+										
+										<div class="panel-body text-md">
+
+
 												<%= post.body %>
+
 												<br>
-													<span class="pull-left">
-														<%= post.created_at.strftime(" %B, %d, %Y") %>
-													</span>
-											</p>
+
+						
 										</div>
 									</div>				
 								<% end %>
