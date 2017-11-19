@@ -39,6 +39,7 @@ gem 'sucker_punch'
 gem 'nokogiri'
 gem 'premailer-rails'
 gem 'activemodel-associations'
+gem 'active_skin'
 
 group :production do
   gem 'rails_12factor'
