@@ -6,12 +6,14 @@
 <section>
 	<div class="content-wrapper">	
 
-		<% if user_signed_in? %>
+		<% if current_admin_user %>
 			<div class="row">
 				<div class="nav navbar-nav">	
 						<%= link_to "New Post", new_post_path, class: "btn-lg btn-oval btn-inverse" %>
 				</div>
 			</div>
+		<% else %>	
+
 		<% end %>	
 
 		<br>
@@ -23,7 +25,7 @@
 						<div class="row">
 							<!-- Posts -->
 								<% @posts.each do |post| %>
-									<div class="panel">
+									<div class="panel panel-default">
 										<div class="panel-body">
 											<h1 class="mv-lg">
 												<%= link_to post.title, post %>
