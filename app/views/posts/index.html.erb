@@ -9,7 +9,7 @@
 		<% if user_signed_in? %>
 			<div class="row">
 				<div class="nav navbar-nav">	
-						<%= link_to "New Post", new_post_path, class: "btn btn-oval btn-inverse" %>
+						<%= link_to "New Post", new_post_path, class: "btn-lg btn-oval btn-inverse" %>
 				</div>
 			</div>
 		<% end %>	
@@ -38,15 +38,31 @@
 
 										
 										<div class="panel-body text-md">
+										<% if post.image.present? %>	
 
-
-												<%= post.body %>
-
+										<!-- style logic -->
+											<div class="col-lg-5">
+												<% if post.image.present? %>
+												<%= image_tag post.image.url(:medium) %>
+												<% end %>
+											
 												<br>
+											</div>
+											
+											<div class="col-lg-7">
+												<%= post.body %> <br>
+											</div>
 
-						
+										<% else %>
+											<%= post.body %> <br>
+										<% end %>	
+
+
+
 										</div>
+									
 									</div>				
+								
 								<% end %>
 						</div>
 
