@@ -26,6 +26,8 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
 
+  helper_method :current_admin_user
+
   private
   
   
