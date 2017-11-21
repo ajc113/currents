@@ -13,7 +13,7 @@
 				</div>
 			</div>
 		<% else %>	
-
+		YOLO
 		<% end %>	
 
 		<br>
@@ -28,11 +28,11 @@
 									<div class="panel panel-default">
 										<div class="panel-body">
 											<h1 class="mv-lg">
-												<%= link_to post.title, post %>
+												<%= link_to post.title, post, {:style => 'color: #022FB8'} %>
 											</h1>
 											
 											<span class="pull-left">
-												<%= post.created_at.strftime(" %B, %d, %Y") %>
+												<%= post.created_at.strftime(" %B %d, %Y") %>
 											</span>
 											<p class="bb"></p>
 										</div>
@@ -40,25 +40,41 @@
 
 										
 										<div class="panel-body text-md">
-										<% if post.image.present? %>	
-
-										<!-- style logic -->
-											<div class="col-lg-5">
-												<% if post.image.present? %>
-												<%= image_tag post.image.url(:medium) %>
-												<% end %>
-											
-												<br>
-											</div>
-											
-											<div class="col-lg-7">
-												<%= post.body %> <br>
+										<% if post.youtube_id.present? %>	
+								
+										<span>
+										<%= post.body %> 
+										</span>
+										<br>
+										<div class="video-wrapper">  
+											<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= post.youtube_id %>" frameborder="0" allowfullscreen>
+											</iframe>
 											</div>
 
-										<% else %>
-											<%= post.body %> <br>
-										<% end %>	
 
+
+										<% else %>	
+										
+											<% if post.image.present? %>	
+
+												<!-- style logic -->
+												<div class="col-lg-5">
+													<% if post.image.present? %>
+													<%= image_tag post.image.url(:medium) %>
+													<% end %>
+												
+													<br>
+												</div>
+												
+												<div class="col-lg-7">
+													<%= post.body %> <br>
+												</div>
+
+												<% else %>
+													<%= post.body %> <br>
+												<% end %>	
+
+										<% end %>
 
 
 										</div>

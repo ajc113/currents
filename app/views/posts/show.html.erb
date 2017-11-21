@@ -3,29 +3,46 @@
 		<div class="col-lg-2"></div>
 		<div class="col-lg-8">
 			<div class="panel panel-default">
+				<!-- post heading -->
 				<div class="panel-heading">
 					<div class="bb">
-						<h2 class="text-lg">
-							<%= @post.title %>
+						<h2 class="text-lg" style= "color: #022FB8"}>
+								<%= @post.title %>
 						</h2>
 						<p class="date">
-						<% if user_signed_in? %>	
+							
 							Submitted <%= time_ago_in_words(@post.created_at) %> a go
-							| <%= link_to 'Edit', edit_post_path(@post) %>
-	 						| <%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are you sure?'} %>
+							<% if current_admin_user %>	
+
+								| <%= link_to 'Edit', edit_post_path(@post) %>
+	 							| <%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are you sure?'} %>
  						</p>
- 						<% end %>		
+ 							<% end %>			
 					</div>
 				</div>
 
 				<!-- Post body	 -->
-				<div class="panel-body text-md">
-					<br>	
-					<%= @post.body %>
-					<%= image_tag @post.image, class: 'img-responsive' %>
+				<div class="panel-body text-md" style="padding:30px">
+
+						<%= @post.body %>
+					</br>
+						<% if @post.youtube_id.present? %>	
+							<!-- video wrapper -->
+							<div class="video-wrapper">
+								<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= @post.youtube_id %>" frameborder="0" allowfullscreen>
+								</iframe>
+							</div>	
+
+						<% else  %>							
+								<br>				
+						<% if @post.image.present? %>	
+							<%= image_tag @post.image, class: 'img-responsive' %>				
+							<% else %>		
+						<% end %>
+					<% end %>
 				</div>
 
-				<!-- Post comment stats -->
+				<!-- Post footer author and comment count -->
 				<div class="panel-body text-sm">
 					<span class="pull-left">
 						<small class="mr-sm">By <a href="">AJ Costa</a></small>
@@ -33,17 +50,12 @@
 						<small><strong><%= @post.comments.count %></strong><span>  comments</span></small>
 					</span>
 				</div>
-					
-				<!-- line break -->
-				<p class="bb"></p>
 
-				<div class="panel-body">
+				<!-- Post comments and form -->
+				<div class="panel-body">	<p class="bb"></p>
 					<%= render @post.comments %>
 					<%= render 'comments/form' %>
 				</div>
-					
-
-		
 			</div>
 		</div>
 		<div class="col-lg-2"></div>
