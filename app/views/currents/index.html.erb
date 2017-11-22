@@ -101,108 +101,57 @@
         <!-- hot spot of week row -->
 
         <div class="row" style="padding: 20px">
-         
-
-
-          <div class="col-lg-3">
-          </div> 
+          <div class="col-lg-3"></div> 
+          
           <div class="col-lg-6">
             <div class="text-center">
-                <div class="helvetica">      
-                    Hot Spot of the Week
-                </div>
-                <div class="h4">      
-                    The Giants have started to show up east of crab ledge out to the BC.
-                </div>
+              <div class="helvetica">      
+                  Hot Spot of the Week
+              </div>
+              <div class="h4">      
+                  The Giants have started to show up east of crab ledge out to the BC.
+              </div>
             </div>
+            
             <br>   
+            
             <%= image_tag 'hotspot.png',  class: 'img-responsive hidden-xs homepage-header-image', style: 'display:block; opacity: .95' %>
           </div>   
-          <div class="col-lg-3">
-          </div>
+          
+          <div class="col-lg-3"></div>
         </div>
+        
         <br>        
 
         <!-- explainer video row -->
+        
 
-        <div class="row" style="padding: 20px">
-          <div class="col-lg-12">
+        <div class="row">
+          <div class="col-lg-3"></div> 
+          <div class="col-lg-6">
             <div class="text-center">
-            <h2 class="helvetica">      
-              Currents Explained
-            </h2>
-          </div>
-            <br>   
-            <div class="video-wrapper"> 
-              <iframe width="640" height="460" src="https://www.youtube.com/embed/a6asyqPILbI?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-            </div>
-          </div>   
-        </div>
-        <br>
-        <!-- join network button -->
-        <% unless current_user.present? %>
-            <div class="p-lg text-center">
-                <%= link_to "Join Network", new_user_registration_path, class: 'btn btn-info btn-lg' %>
-            </div>
-            <br>
-            <% end %>
-                <!-- how it works section -->
-                <!-- <div class="how_it_works"> -->
-                   <!--  <div class="p-lg">
-                        <h2 class="h22" style="text-align:center">How it works</h2>
-                        <%= image_tag 'how_it_works2.png',  class: 'img-responsive', style: 'display:block; opacity: .80; padding:50px' %>
-                            <div class="row">
-                                <div class="col-lg-3">
-                                    <div class="panel-heading-how-it-works ">
-                                        Join the network
-                                    </div>
-                                    <div class="panel-body-how-it-works">
-                                        <ul>
-                                            <li>Benefit from real time reports</li>
-                                        </ul>
-                                    </div>
-                                </div> -->
-                                <!-- <div class="col-lg-3">
-                                    <div class="panel-heading-how-it-works ">
-                                        Contribute to network
-                                    </div>
-                                    <div class="panel-body-how-it-works">
-                                        <ul>
-                                            <li>Fish Hard</li>
-                                            <li>Post Catch Reports</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="panel-heading-how-it-works ">
-                                        Build your network
-                                    </div>
-                                    <div class="panel-body-how-it-works">
-                                        <ul>
-                                            <li>Expand your connections</li>
-                                            <li>Collaborate to cover more ground</li>
-                                            <li>Coordinate buddy boats for offshore trips</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3"> -->
-                                  <!--   <div class="panel-heading-how-it-works ">
-                                        Benefit from network
-                                    </div>
-                                    <div class="panel-body-how-it-works">
-                                        <ul>
-                                            <li>Review real time reports</li>
-                                            <li>Use Heatmaps to idenfity hotspots</li>
-                                            <li>Get real time intel before you leave the dock</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                    </div> -->
-<!--                     <div class="p-lg text-center">
-                        <%= link_to "View Network Rules", rules_path, class: 'btn btn-inverse btn-lg ' %>
-                    </div> -->
+              <div class="helvetica">      
+                  Currents Explained
+              </div>
+                <div class="video-container"> 
+                  <iframe src="https://www.youtube.com/embed/a6asyqPILbI" frameborder="0" allowfullscreen></iframe>
                 </div>
+            </div>   
+          </div>   
+          <div class="col-lg-3"></div>
+        </div>
+
+
+        <!-- join network button -->
+        
+                <br>
+            <div class="p-lg text-center">
+              <% unless current_user.present? %>
+                <%= link_to "Join Network", new_user_registration_path, class: 'btn btn-info btn-lg' %>
+              <% end %>
+            </div>
+
+
 
 
 

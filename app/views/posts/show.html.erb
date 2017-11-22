@@ -6,29 +6,29 @@
 				<!-- post heading -->
 				<div class="panel-heading">
 					<div class="bb">
-						<h2 class="text-lg" style= "color: #022FB8"}>
+						<h2 style= "color: #022FB8">
 								<%= @post.title %>
 						</h2>
+
 						<p class="date">
-							
 							Submitted <%= time_ago_in_words(@post.created_at) %> a go
 							<% if current_admin_user %>
 
 								| <%= link_to 'Edit', edit_post_path(@post) %>
 	 							| <%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are you sure?'} %>
+ 							<% end %>
  						</p>
- 							<% end %>			
+ 										
 					</div>
-				</div>
+				</div>	
 
 				<!-- Post body	 -->
-				<div class="panel-body text-md" style="padding:30px">
-
+				<div class="panel-body text-md" >
 						<%= @post.body %>
 					</br>
 						<% if @post.youtube_id.present? %>	
 							<!-- video wrapper -->
-							<div class="video-wrapper">
+							<div class="video-container">
 								<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= @post.youtube_id %>" frameborder="0" allowfullscreen>
 								</iframe>
 							</div>	
