@@ -109,13 +109,10 @@
                   Hot Spot of the Week
               </div>
               <div class="h4">      
-                  The Giants have started to show up east of crab ledge out to the BC.
+                <%= @hotspot.commentary %>
               </div>
-            </div>
-            
-            <br>   
-            
-            <%= image_tag 'hotspot.png',  class: 'img-responsive', style: 'display:block; opacity: .95' %>
+            </div>            
+            <%= image_tag @hotspot.image,  class: 'img-responsive', style: 'display:block; opacity: .95' %>
           </div>   
           
           <div class="col-lg-3"></div>

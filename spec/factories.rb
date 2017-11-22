@@ -1,4 +1,8 @@
 FactoryGirl.define do
+  factory :hotspot do
+    name "MyString"
+    commentary "MyText"
+  end
   factory :comment do
     name "MyString"
     body "MyText"

@@ -4,6 +4,7 @@ class CurrentsController < ApplicationController
 
 	def index
 		@buzzs = Buzz.all.order("created_at DESC").limit(5)
+		@hotspot = Hotspot.last
 	end
 
 
