@@ -5,17 +5,14 @@
 
 <section>
 	<div class="content-wrapper">	
-
-		<% if current_admin_user %>
-			<div class="row">
-				<div class="nav navbar-nav">	
-						<%= link_to "New Post", new_post_path, class: "btn-lg btn-oval btn-inverse" %>
-				</div>
-			</div>
-		<% else %>	
-	
-		<% end %>	
-
+			<% if current_admin_user %>
+					<div class="nav navbar-nav">	
+							<%= link_to "New Post", new_post_path, class: "btn-lg btn-oval btn-inverse" %>
+					</div>
+			<% else %>	
+		
+			<% end %>	
+		</div>
 		<br>
 		<!-- button row -->
 			<div class="row">
