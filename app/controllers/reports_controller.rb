@@ -14,6 +14,14 @@ class ReportsController < ApplicationController
     @tides_for_filter = @reports.collect(&:tide).uniq
     @state_for_filter = @reports.collect(&:state).uniq.sort_by{ |state| [state.visible ? 0 : 1, state.name] }
     @locations_for_filter = @reports.collect(&:location).uniq.sort_by { |location| location.short_name }
+    respond_to do |format|
+    format.html
+    format.csv { send_data @reports.to_csv }
+    format.xls  { send_data @reports.to_csv(col_sep: "\t") }
+  end
+
+
+
   end
 
   def show

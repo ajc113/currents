@@ -153,6 +153,14 @@
   <% end %>
   <div id="bottom_anchor"></div>
 </div>
+
+<p>
+  Download Reports Table:
+  <%= link_to "CSV", reports_path(format: "csv") %> |
+  <%= link_to "Excel", reports_path(format: "xls") %>
+</p>
+
+
 <div class="row">
   <div class="p-lg text-center">
     <%= link_to 'Log New Report', new_report_path, class: "btn btn-inverse btn-lg" %>
