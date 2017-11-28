@@ -4,7 +4,7 @@ before_action :authenticate_user!, except: [:index, :show]
 
 def index
 @posts = Post.all.order('created_at DESC')
-
+@meta_description = "Fresh catch intel and original content blog offering fishing reports, tackle reviews, and locaction analysis"
 end
 
 
@@ -25,6 +25,7 @@ end
 
 def show
 @post = Post.friendly.find(params[:id])
+@meta_description = @post.title
 end
 
 
