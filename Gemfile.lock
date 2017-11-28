@@ -483,7 +483,6 @@ DEPENDENCIES
   friendly_id (~> 5.1.0)
   geocoder
   gmaps4rails
-  guard
   guard-livereload (~> 2.5)
   jbuilder (~> 2.0)
   jquery-rails

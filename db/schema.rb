@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171128154755) do
+ActiveRecord::Schema.define(version: 20171128162211) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,52 +49,6 @@ ActiveRecord::Schema.define(version: 20171128154755) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "blogo_posts", force: :cascade do |t|
-    t.integer  "user_id",          null: false
-    t.string   "permalink",        null: false
-    t.string   "title",            null: false
-    t.boolean  "published",        null: false
-    t.datetime "published_at",     null: false
-    t.string   "markup_lang",      null: false
-    t.text     "raw_content",      null: false
-    t.text     "html_content",     null: false
-    t.text     "html_overview"
-    t.string   "tags_string"
-    t.string   "meta_description", null: false
-    t.string   "meta_image"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "blogo_posts", ["permalink"], name: "index_blogo_posts_on_permalink", unique: true, using: :btree
-  add_index "blogo_posts", ["published_at"], name: "index_blogo_posts_on_published_at", using: :btree
-  add_index "blogo_posts", ["user_id"], name: "index_blogo_posts_on_user_id", using: :btree
-
-  create_table "blogo_taggings", force: :cascade do |t|
-    t.integer "post_id", null: false
-    t.integer "tag_id",  null: false
-  end
-
-  add_index "blogo_taggings", ["tag_id", "post_id"], name: "index_blogo_taggings_on_tag_id_and_post_id", unique: true, using: :btree
-
-  create_table "blogo_tags", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "blogo_tags", ["name"], name: "index_blogo_tags_on_name", unique: true, using: :btree
-
-  create_table "blogo_users", force: :cascade do |t|
-    t.string   "name",            null: false
-    t.string   "email",           null: false
-    t.string   "password_digest", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "blogo_users", ["email"], name: "index_blogo_users_on_email", unique: true, using: :btree
-
   create_table "buzzs", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "post"
@@ -129,17 +83,6 @@ ActiveRecord::Schema.define(version: 20171128154755) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
-
-  create_table "friendly_id_slugs", force: :cascade do |t|
-    t.string   "slug",                      null: false
-    t.integer  "sluggable_id",              null: false
-    t.string   "sluggable_type", limit: 40
-    t.datetime "created_at"
-  end
-
-  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", unique: true, using: :btree
-  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
-  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "hotspots", force: :cascade do |t|
     t.string   "name"
