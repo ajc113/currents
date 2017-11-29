@@ -13,7 +13,12 @@
     <%= csrf_meta_tags %>
     <!-- Document Title
 	============================================= -->
-    <title><%= full_title(yield(:title)) %></title>
+    <title><%= full_title(yield(:title)) %>
+         <% if @meta_description.present? %>
+        <meta name="description" content="<%= @meta_description %>">
+        <% end %>
+
+    </title>
   </head>
   <body>
     <div class="wrapper">

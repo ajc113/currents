@@ -1,6 +1,7 @@
 class MapsController < ApplicationController
   before_action :authorize_user!
   def index
+   @meta_description = "Heatmap of community catch reports showing locations where the action is occuring"
   end
 
   def create
