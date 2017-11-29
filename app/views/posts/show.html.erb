@@ -48,7 +48,9 @@
 						<small class="mr-sm">By <a href="">AJ Costa</a></small>
 						<small class="mr-sm"><%= @post.created_at.strftime(" %B, %d, %Y") %></small>
 						<small><strong><%= @post.comments.count %></strong><span>  comments</span></small>
+						 <%= link_to "Back to posts", posts_path %>
 					</span>
+
 				</div>
 
 				<!-- Post comments and form -->
