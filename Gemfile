@@ -42,6 +42,9 @@ gem 'activemodel-associations'
 gem 'active_skin'
 gem 'paperclip', '~> 4.3', '>= 4.3.6'
 gem 'friendly_id', '~> 5.1.0'
+gem 'fog'
+gem 'fog-aws'
+gem 'mini_magick'
 
 
 group :production do
