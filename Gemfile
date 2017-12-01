@@ -45,6 +45,7 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'fog'
 gem 'fog-aws'
 gem 'mini_magick'
+gem 'ckeditor', '4.1.3'
 
 
 group :production do
