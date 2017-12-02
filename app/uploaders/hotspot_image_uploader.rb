@@ -2,11 +2,14 @@ class HotspotImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-   include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  #storage :file
-   storage :fog
+  if Rails.env.test?
+    storage :file
+  else
+    storage :fog
+  end
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
@@ -34,17 +37,17 @@ class HotspotImageUploader < CarrierWave::Uploader::Base
   #   process resize_to_fit: [50, 50]
   # end
 
-   version :thumb do
-     process resize_to_fit: [100, 100]
-   end
+  version :thumb do
+    process resize_to_fit: [100, 100]
+  end
 
-   version :medium do
-     process resize_to_fit: [300, 300]
-   end
+  version :medium do
+    process resize_to_fit: [300, 300]
+  end
 
-   version :large do
-     process resize_to_fit: [600, 600]
-   end
+  version :large do
+    process resize_to_fit: [600, 600]
+  end
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   # def extension_whitelist
