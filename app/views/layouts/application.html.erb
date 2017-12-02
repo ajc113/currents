@@ -11,11 +11,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag "https://js.stripe.com/v3/" %>
     <%= csrf_meta_tags %>
-    <!-- Document Title
-	============================================= -->
-
   </head>
-
       <title><%= full_title(yield(:title)) %>
         <% if @meta_description.present? %>
         <meta name="description" content="<%= @meta_description %>">

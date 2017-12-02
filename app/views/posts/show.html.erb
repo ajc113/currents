@@ -7,7 +7,7 @@
 				<div class="panel-heading">
 					<div class="bb">
 						<h2 style= "color: #022FB8">
-								<%= @post.title.html_safe %>
+								<%= @post.title %>
 						</h2>
 
 						<p class="date">
@@ -24,7 +24,7 @@
 
 				<!-- Post body	 -->
 				<div class="panel-body text-md" >
-						<%= @post.body.html_safe %>
+						<%= @post.body %>
 					</br>
 						<% if @post.youtube_id.present? %>	
 							<!-- video wrapper -->
