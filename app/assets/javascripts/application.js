@@ -14,8 +14,6 @@
 //= require jquery.turbolinks 
 //= require jquery.validate
 //= require jquery_ujs
-//= require ckeditor/init
-//= require ckeditor/config
 //= require maps
 //= require map_theme/vendor/modernizr.custom
 //= require map_theme/vendor/matchMedia
@@ -34,8 +32,8 @@
 //= require reports
 //= require users
 //= require turbolinks
-
-
+//= require ckeditor/init
+//= require ckeditor/init_ckeditor
 
 
 

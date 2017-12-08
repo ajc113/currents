@@ -18,6 +18,8 @@ CKEDITOR.editorConfig = function( config ) {
   config.filebrowserUploadUrl = "/ckeditor/attachment_files";
   config.allowedContent = true;
   // Toolbar groups configuration.
+  
+
   config.toolbar = [
     { name: 'document', groups: [ 'mode', 'document', 'doctools' ], items: [ 'Source'] },
     { name: 'clipboard', groups: [ 'clipboard', 'undo' ], items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ] },
