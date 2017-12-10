@@ -13,6 +13,7 @@
 		
 			<% end %>	
 		</div>
+		
 		<br>
 		<!-- button row -->
 			<div class="row">
@@ -23,30 +24,38 @@
 							<!-- Posts -->
 								<% @posts.each do |post| %>
 									<div class="panel panel-default">
-										<div class="panel-body">
+										
+
+									<!-- post heading -->
+									<div class="panel-heading">
+										<div class="bb">
 											<h1 class="mv-lg">
 												<%= link_to post.title, post, {:style => 'color: #022FB8'} %>
 											</h1>
-											
-											<span class="pull-left">
-												<%= post.created_at.strftime(" %B %d, %Y") %>
-											</span>
-											<p class="bb"></p>
+
+												<p class="date">
+													Submitted <%= time_ago_in_words(post.created_at) %> a go
+													
+													| <%= post.reading_time %> Minute Read
+						 						</p>					
 										</div>
-										
+									</div>
 
 										
-										<div class="panel-body text-md">
+									<div class="panel-body text-md">
 										<% if post.youtube_id.present? %>	
 								
-										<span>
-										<%= raw(post.body).truncate(1000) %>
-										</span>	
-										<%= link_to "READ MORE", post_path(post) %>
-										<br>
-										<div class="video-container">  
-											<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= post.youtube_id %>" frameborder="0" allowfullscreen>
-											</iframe>
+											<span>
+											<%= post.body.truncate(1000).html_safe %>
+											</span>	
+
+											<%= link_to "READ MORE", post_path(post) %>
+											
+											<br>
+
+											<div class="video-container">  
+												<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= post.youtube_id %>" frameborder="0" allowfullscreen>
+												</iframe>
 											</div>
 
 
@@ -65,13 +74,13 @@
 												</div>
 												
 												<div class="col-lg-7">
-													<%= raw(post.body).truncate(1000) %>
+													<%= post.body.truncate(1000).html_safe %>
 													<%= link_to "READ MORE", post_path(post) %>
 												 	<br>
 												</div>
 
 												<% else %>
-													<%= raw(post.body).truncate(1000) %>
+													<%= post.body.truncate(1000).html_safe %>
 													<%= link_to "READ MORE", post_path(post) %>
 													<br>
 												<% end %>	
