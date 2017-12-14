@@ -8,7 +8,7 @@ unless Rails.env.test?
       host:                  's3.amazonaws.com',
     }
     config.fog_provider = 'fog'
-    config.fog_directory  = 'currents-test2'
+    config.fog_directory  = ENV['S3_BUCKET']
     #config.asset_host = "https://s3-us-east-1.amazonaws.com"
     config.fog_use_ssl_for_aws = false
     config.fog_attributes = { cache_control: "public, max-age=#{365.day.to_i}" }
