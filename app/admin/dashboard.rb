@@ -10,6 +10,15 @@ ActiveAdmin.register_page "Dashboard" do
       end
     end
 
+
+
+   columns do
+    # renders app/views/admin/posts/_some_partial.html.erb
+    render 'users/graph'
+    end
+
+
+
     # Here is an example of a simple dashboard with columns and panels.
     #
     # columns do

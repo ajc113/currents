@@ -1,0 +1,4 @@
+
+<%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
+<%= line_chart User.group_by_day(:created_at).count %>
+

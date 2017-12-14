@@ -124,6 +124,7 @@ GEM
       mime-types (>= 1.16)
     case_transform (0.2)
       activesupport
+    chartkick (2.2.5)
     climate_control (0.2.0)
     cocaine (0.5.8)
       climate_control (>= 0.0.3, < 1.0)
@@ -334,6 +335,8 @@ GEM
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     gmaps4rails (2.1.2)
+    groupdate (3.2.0)
+      activesupport (>= 3)
     guard (2.14.1)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -624,6 +627,7 @@ DEPENDENCIES
   capybara-webkit
   capybara_discoball
   carrierwave
+  chartkick
   ckeditor!
   codeclimate-test-reporter (~> 1.0.0)
   coderay
@@ -645,6 +649,7 @@ DEPENDENCIES
   friendly_id (~> 5.1.0)
   geocoder
   gmaps4rails
+  groupdate
   guard-livereload (~> 2.5)
   jbuilder (~> 2.0)
   jquery-rails

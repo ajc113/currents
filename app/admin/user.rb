@@ -5,6 +5,9 @@ ActiveAdmin.register User do
   filter :created_at, label: 'Sign up date'
   filter :subscription_tier, as: :select
 
+ 
+
+
   index do
     selectable_column
     actions
@@ -16,6 +19,7 @@ ActiveAdmin.register User do
     column :state
     column :sign_in_count
   end
+
 
 	sidebar "Reports", only: [:show, :edit] do
 		ul do

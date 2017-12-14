@@ -6,6 +6,8 @@ ActiveAdmin.setup do |config|
   #
   config.site_title = "Currents"
 
+  config.register_javascript 'https://www.google.com/jsapi'
+
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
   #
@@ -269,6 +271,17 @@ ActiveAdmin.setup do |config|
   # of those filters by default here.
   #
   # config.include_default_association_filters = true
+
+  # == Friendly Id addon
+  ActiveAdmin::ResourceController.class_eval do
+    def find_resource
+      resource_class.is_a?(FriendlyId) ? scoped_collection.friendly.find(params[:id]) : scoped_collection.find(params[:id])
+    end
+  end
+
+
+
+  
 end
 module ActiveAdmin::ViewHelpers
   include ApplicationHelper

@@ -35,6 +35,8 @@
 //= require ckeditor/init
 //= require ckeditor/init_ckeditor
 //= require social-share-button
+//= require Chart.bundle
+//= require chartkick
 
 
 

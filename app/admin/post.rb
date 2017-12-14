@@ -2,6 +2,9 @@ ActiveAdmin.register Post do
 
 permit_params :title, :body, :image, :youtube_id, :created_at
 
+
+
+
 show do |t|
 	attributes_table do
 		row :title

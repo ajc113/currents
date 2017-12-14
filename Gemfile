@@ -47,6 +47,8 @@ gem 'fog-aws'
 gem 'mini_magick'
 gem 'ckeditor', github: 'galetahub/ckeditor'
 gem 'social-share-button'
+gem "chartkick"
+gem 'groupdate'
 
 
 group :production do
