@@ -2,3 +2,4 @@
 #= require jquery
 #= require jquery.validate
 #= require reports
+#= require chartkick
