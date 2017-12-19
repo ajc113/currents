@@ -5,6 +5,14 @@ before_action :authenticate_user!, except: [:index, :show]
 def index
 @posts = Post.all.order('created_at DESC')
 @meta_description = "Fresh catch intel and original content blog offering fishing reports, tackle reviews, and locaction analysis"
+
+  # if params[:tag]
+  #   @posts = Post.tagged_with(params[:tag])
+  # else
+  #   @posts = Post.all
+  # end
+
+
 end
 
 
@@ -57,7 +65,7 @@ end
 
 private
 def post_params
-	params.require(:post).permit(:title, :body, :image, :youtube_id)
+	params.require(:post).permit(:title, :body, :image, :youtube_id, :tag_list)
 end
 
 

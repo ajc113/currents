@@ -22,8 +22,9 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments
   end
-
   resource :card
+  resources :tags, only: [:index, :show]
+
 
   resource :my_account, only: [:show, :destroy], controller: 'my_account'
   post 'stripe_events', to: 'stripe#events', as: 'stripe_events'
@@ -38,7 +39,7 @@ Rails.application.routes.draw do
   get 'blog', to: 'currents#blog'
   get 'rules', to: 'currents#rules'
   get 'pricing', to: 'currents#pricing'
-
+  get 'tags/:tag', to: 'posts#index', as: :tag
   #Extra
   get 'test', to: 'currents#test'
 
