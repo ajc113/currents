@@ -49,6 +49,7 @@ gem 'ckeditor', github: 'galetahub/ckeditor'
 gem 'social-share-button'
 gem "chartkick"
 gem 'groupdate'
+gem 'acts-as-taggable-on', '~> 4.0'
 
 
 group :production do

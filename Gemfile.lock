@@ -90,6 +90,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    acts-as-taggable-on (4.0.0)
+      activerecord (>= 4.0)
     addressable (2.3.8)
     arbre (1.1.1)
       activesupport (>= 3.0.0)
@@ -619,6 +621,7 @@ DEPENDENCIES
   active_skin
   activeadmin!
   activemodel-associations
+  acts-as-taggable-on (~> 4.0)
   bootstrap-datepicker-rails
   by_star!
   byebug
