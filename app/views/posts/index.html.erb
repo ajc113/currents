@@ -6,103 +6,100 @@
 
 	<div class="content-wrapper">	
 		<!-- button row -->
-			<div class="row">
-				<div class="col-lg-2">
-			<% if current_admin_user %>
+		<div class="row">
+			<div class="col-lg-2">
+					<% if current_admin_user %>
+						<%= link_to "New Post", new_post_path, class: "btn-lg btn-oval btn-inverse" %>
+					<% else %>	
+					<% end %>	
+			</div>
+			<div class="col-lg-8">
+				
+				<!-- posts row -->
+					<div class="row">
+						<!-- Posts -->
+							<% @posts.each do |post| %>
+								<div class="panel panel-default">
+									
 
-							<%= link_to "New Post", new_post_path, class: "btn-lg btn-oval btn-inverse" %>
+								<!-- post heading -->
+								<div class="panel-heading">
+									<div class="bb">
+										<h1 class="mv-lg">
+											<%= link_to post.title, post, {:style => 'color: #022FB8'} %>
+										</h1>
 
-			<% else %>	
-		
-			<% end %>	
-
-				</div>
-				<div class="col-lg-8">
-					
-					<!-- posts row -->
-						<div class="row">
-							<!-- Posts -->
-								<% @posts.each do |post| %>
-									<div class="panel panel-default">
-										
-
-									<!-- post heading -->
-									<div class="panel-heading">
-										<div class="bb">
-											<h1 class="mv-lg">
-												<%= link_to post.title, post, {:style => 'color: #022FB8'} %>
-											</h1>
-
-												<p class="date">
-													Submitted <%= time_ago_in_words(post.created_at) %> a go
-													
-													| <%= post.reading_time %> Minute Read
-						 						</p>					
-										</div>
+											<p class="date">
+												Submitted <%= time_ago_in_words(post.created_at) %> a go
+												
+												| <%= post.reading_time %> Minute Read
+					 						</p>					
 									</div>
+								</div>
 
+									
+								<div class="panel-body text-md">
+									<% if post.youtube_id.present? %>	
+							
+										<span>
+										<%= post.body.truncate(1000).html_safe %>
+										</span>	
+
+										<%= link_to "READ MORE", post_path(post) %>
 										
-									<div class="panel-body text-md">
-										<% if post.youtube_id.present? %>	
-								
-											<span>
-											<%= post.body.truncate(1000).html_safe %>
-											</span>	
+										<br>
 
-											<%= link_to "READ MORE", post_path(post) %>
+										<div class="video-container">  
+											<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= post.youtube_id %>" frameborder="0" allowfullscreen>
+											</iframe>
+										</div>
+
+
+
+									<% else %>	
+									
+										<% if post.image.present? %>	
+
+											<!-- style logic -->
+											<div class="col-lg-5">
+												<% if post.image.present? %>
+												<%= image_tag post.image.url(:medium) %>
+												<% end %>
 											
-											<br>
-
-											<div class="video-container">  
-												<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= post.youtube_id %>" frameborder="0" allowfullscreen>
-												</iframe>
+												<br>
+											</div>
+											
+											<div class="col-lg-7">
+												<%= post.body.truncate(1000).html_safe %>
+												<%= link_to "READ MORE", post_path(post) %>
+											 	<br>
 											</div>
 
+											<% else %>
+												<%= post.body.truncate(1000).html_safe %>
+												<%= link_to "READ MORE", post_path(post) %>
+												<br>
+											<% end %>	
+
+									<% end %>
 
 
-										<% else %>	
-										
-											<% if post.image.present? %>	
-
-												<!-- style logic -->
-												<div class="col-lg-5">
-													<% if post.image.present? %>
-													<%= image_tag post.image.url(:medium) %>
-													<% end %>
-												
-													<br>
-												</div>
-												
-												<div class="col-lg-7">
-													<%= post.body.truncate(1000).html_safe %>
-													<%= link_to "READ MORE", post_path(post) %>
-												 	<br>
-												</div>
-
-												<% else %>
-													<%= post.body.truncate(1000).html_safe %>
-													<%= link_to "READ MORE", post_path(post) %>
-													<br>
-												<% end %>	
-
-										<% end %>
-
-
-										</div>
-									
-									</div>				
+									</div>
 								
-								<% end %>
-						</div>
-				</div>
-				<div class="col-lg-2"></div>
-			</div>			
-
+								</div>				
+							
+							<% end %>
+					</div>
 			</div>
-					<% flash.each do |name, msg| %>
-					<% content_tag(:div, msg, class: "alert") %>
-					<% end %>
-			</div>
-
-
+			<div class="col-lg-2"></div>
+		</div>			
 	</div>
+					
+
+	<div>
+		<% flash.each do |name, msg| %>
+		<% content_tag(:div, msg, class: "alert") %>
+		<% end %>
+	</div>
+
+
