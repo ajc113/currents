@@ -8,7 +8,7 @@ ActiveAdmin.register_page "Dashboard" do
       column do
         panel "Recent Catch Reports" do
           table_for Report.order("id desc").limit(10) do
-            
+            column(:date) { |report| link_to(report.date, report_path(report.user)) }
             column(:user) { |report| link_to(report.user.email, report_path(report.user)) }
             column(:location) { |report| link_to(report.location.short_name, report_path(report.location)) }
             column(:species) { |report| link_to(report.species.name, report_path(report.species.name)) }
@@ -19,7 +19,7 @@ ActiveAdmin.register_page "Dashboard" do
 
        
 
-      column do
+    column do
       panel "Recent User Additions" do
         table_for User.order("id desc").limit(10).each do |_user|
           column(:email)    { |user| link_to(user.email, admin_user_path(user)) }
@@ -29,10 +29,11 @@ ActiveAdmin.register_page "Dashboard" do
       end
     end #columns
 
+    
     columns do
       panel "User Graph" do
         div do
-        render("layouts/graph", model: "dashboard")
+          render("layouts/graph", model: "dashboard")
         end
       end
     end

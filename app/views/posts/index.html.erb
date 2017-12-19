@@ -3,22 +3,21 @@
 <%= image_tag 'harbor2.jpg',  class: 'img-responsive hidden-xs', style: 'display:block; opacity: .55' %>
 
 
-<section>
+
 	<div class="content-wrapper">	
+		<!-- button row -->
+			<div class="row">
+				<div class="col-lg-2">
 			<% if current_admin_user %>
-					<div class="nav navbar-nav">	
+
 							<%= link_to "New Post", new_post_path, class: "btn-lg btn-oval btn-inverse" %>
-					</div>
+
 			<% else %>	
 		
 			<% end %>	
-		</div>
-		
-		<br>
-		<!-- button row -->
-			<div class="row">
-				
-				<div class="col-lg-9">
+
+				</div>
+				<div class="col-lg-8">
 					
 					<!-- posts row -->
 						<div class="row">
@@ -95,8 +94,8 @@
 								
 								<% end %>
 						</div>
-
 				</div>
+				<div class="col-lg-2"></div>
 			</div>			
 
 			</div>
@@ -107,4 +106,3 @@
 
 
 	</div>
-</section>

@@ -1,6 +1,6 @@
 class Comment < ActiveRecord::Base
   belongs_to :post
-  before_save :anti_spam
+
  
 
  # def anti_spam
