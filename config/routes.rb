@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     resources :comments
   end
   resource :card
-  resources :tags, only: [:index, :show]
+  # resources :tags, only: [:index, :show]
 
 
   resource :my_account, only: [:show, :destroy], controller: 'my_account'

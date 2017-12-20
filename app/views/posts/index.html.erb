@@ -6,12 +6,18 @@
 
 <div class="content-wrapper">	
 		<!-- button row -->
+	
+<div>
+<!-- 		<% if current_admin_user %>
+			<%= link_to "New Post", new_post_path, class: "btn-lg btn-oval btn-inverse" %>
+		<% else %>	
+		<% end %>	 -->
+</div>
+
+
 	<div class="row">
 		<div class="col-lg-2">
-				<% if current_admin_user %>
-					<%= link_to "New Post", new_post_path, class: "btn-lg btn-oval btn-inverse" %>
-				<% else %>	
-				<% end %>	
+
 		</div>
 		<div class="col-lg-8">
 			
@@ -33,6 +39,14 @@
 											Submitted <%= time_ago_in_words(post.created_at) %> a go
 											
 											| <%= post.reading_time %> Minute Read
+
+											<% if current_admin_user %>
+			
+												|  <%= link_to "Add New Post", new_post_path %>
+											<% else %>	
+											<% end %>	
+
+
 				 						</p>					
 								</div>
 							</div>
