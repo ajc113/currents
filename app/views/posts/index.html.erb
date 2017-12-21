@@ -110,52 +110,32 @@
 		<div class="col-lg-2">
 			<!-- Search-->
 			<div class="panel panel-default">
-			   <div class="panel-heading">Search</div>
 			   <div class="panel-body">
+			   	<strong>Search Blog Content</strong><br>
 			      <form class="form-horizontal">
-			         <div class="input-group">
-			            <input type="text" placeholder="Search for..." class="form-control">
-			            <span class="input-group-btn">
-			               <button type="button" class="btn btn-default">
-			                  <em class="fa fa-search"></em>
-			               </button>
-			            </span>
-			         </div>
+			            <%= form_tag @post, :method => 'get' do %>
+  								<p><%= text_field_tag  :search, params[:search]  %></p>
+  								<%= submit_tag 'Search', :name => nil  %>
+									<% end %>
 			      </form>
 			   </div>
 			</div>
 			<!-- Categories-->
 			<div class="panel panel-default">
-			   <div class="panel-heading">Categories</div>
-			   <div class="panel-body">
+			  
+			   <div class="panel-body"><strong>Top Blog Categories</strong><br>
 			      <ul class="list-unstyled">
 			         <li>
-			            <a href="">
-			               <em class="fa fa-angle-right fa-fw"></em>Smartphones</a>
-			         </li>
-			         <li>
-			            <a href="">
-			               <em class="fa fa-angle-right fa-fw"></em>Mobiles</a>
-			         </li>
-			         <li>
-			            <a href="">
-			               <em class="fa fa-angle-right fa-fw"></em>Tech</a>
-			         </li>
-			         <li>
-			            <a href="">
-			               <em class="fa fa-angle-right fa-fw"></em>Inpiration</a>
-			         </li>
-			         <li>
-			            <a href="">
-			               <em class="fa fa-angle-right fa-fw"></em>Workspace</a>
+			         	<% @tags.each do |tag| %>
+			          <li><%= link_to tag.name, { :action => :tag, :id => tag.name } %></li>
+			          <% end %>
 			         </li>
 			      </ul>
 			   </div>
 			</div>
 			<!-- Tag Cloud-->
 			<div class="panel panel-default">
-			   <div class="panel-heading">Tag Activity</div>
-			   <div class="panel-body">
+			   <div class="panel-body"><strong>Categories</strong><br>
 			      <div id='tag_cloud'>
 						  <% tag_cloud Post.tag_counts, %w{s m l} do |tag, css_class| %>
 						    <%= link_to tag.name, tag_path(tag.name), class: css_class %>

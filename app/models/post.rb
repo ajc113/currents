@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
 	acts_as_taggable_on :tags
-	
+
 
 	has_many :comments, dependent: :destroy
 	belongs_to :admin_user
@@ -21,4 +21,12 @@ class Post < ActiveRecord::Base
      (word_count / 180.0).ceil
 	end
 	
+	def self.search(search)
+  if search
+    self.where("name like ?", "%#{search}%")
+  else
+   self.all
+  end
+end  
+
 end
