@@ -42,5 +42,5 @@ Rails.application.routes.draw do
   get 'tags/:tag', to: 'posts#index', as: :tag
   #Extra
   get 'test', to: 'currents#test'
-
+  get 'tag', to: 'posts#tag'
 end

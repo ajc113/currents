@@ -11,8 +11,10 @@ def index
   # else
   #   @posts = Post.all
   # end
+ @tags = Post.tag_counts_on(:tags).limit(5)
+ @post= Post.where(id: params[:id]) if params[:id].present?
 
-
+ @tag_counts = Post.tag_counts_on(:tags).limit(10)
 end
 
 
@@ -39,8 +41,6 @@ end
 
 def edit
 @post = Post.friendly.find(params[:id])
-
-
 end
 
 def update
@@ -60,7 +60,10 @@ def destroy
 	redirect_to posts_path
 end
 
-
+def tag
+@tag = ActsAsTaggableOn::Tag.find_by(name: params[:name])
+@posts = Post.tagged_with(@tag.name)
+end
 
 
 private
