@@ -2,15 +2,6 @@
 <%= image_tag 'harbor2.jpg',  class: 'img-responsive hidden-xs', style: 'display:block; opacity: .55' %>
 
 <div class="content-wrapper">
-  <!-- button row -->
-  <div>
-    <!--
-    <% if current_admin_user %>
-      <%= link_to "New Post", new_post_path, class: "btn-lg btn-oval btn-inverse" %>
-    <% else %>	
-    <% end %>	 
-    -->
-  </div>
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10">
       <!-- posts row -->
@@ -39,9 +30,10 @@
             <div class="panel-body text-md posts-body">
               <span>
                 <%= post.body.truncate(1000).html_safe %>
+            
               </span>
-              <%= link_to "READ MORE", post_path(post) %>
-              
+              <%= link_to "READ MORE", post_path(post) %><br>
+                Tags: <%= raw post.tag_list.map { |t| link_to t, tag_path(t)}.join(', ')%><br>  
             </div>
           </div>
         <% end %>
@@ -51,72 +43,44 @@
     <div class="col-lg-2 col-md-2">
       <!-- Search-->
       <div class="panel panel-default">
-        <div class="panel-heading">Search</div>
         <div class="panel-body">
-          <form class="form-horizontal">
-            <div class="input-group">
-              <input type="text" placeholder="Search for..." class="form-control">
-              <span class="input-group-btn">
-                <button type="button" class="btn btn-default">
-                  <em class="fa fa-search"></em>
-                </button>
-              </span>
-            </div>
-          </form>
+            <strong>Search Blog Content</strong><br>
+            <form class="form-horizontal">
+                  <%= form_tag @post, :method => 'get' do %>
+                  <p><%= text_field_tag  :search, params[:search]  %></p>
+                  <%= submit_tag 'Search', :name => nil  %>
+                  <% end %>
+            </form>
         </div>
       </div>
       <!-- Categories-->
       <div class="panel panel-default">
-        <div class="panel-heading">Categories</div>
-        <div class="panel-body">
-          <ul class="list-unstyled">
-            <li>
-              <a href="">
-                <em class="fa fa-angle-right fa-fw"></em>Smartphones</a>
-            </li>
-            <li>
-              <a href="">
-                <em class="fa fa-angle-right fa-fw"></em>Mobiles</a>
-            </li>
-            <li>
-              <a href="">
-                <em class="fa fa-angle-right fa-fw"></em>Tech</a>
-            </li>
-            <li>
-              <a href="">
-                <em class="fa fa-angle-right fa-fw"></em>Inpiration</a>
-            </li>
-            <li>
-              <a href="">
-                <em class="fa fa-angle-right fa-fw"></em>Workspace</a>
-            </li>
-          </ul>
+        <div class="panel-body"><strong>Top Blog Categories</strong><br>
+            <ul class="list-unstyled">
+               <li>
+                <% @tags.each do |tag| %>
+                <li><%= link_to tag.name, { :action => :tag, :id => tag.name } %></li>
+                <% end %>
+               </li>
+            </ul>
         </div>
       </div>
       <!-- Tag Cloud-->
       <div class="panel panel-default">
-        <div class="panel-heading">Tag Activity</div>
-        <div class="panel-body">
+        <div class="panel-body"><strong>Categories</strong><br>
           <div id='tag_cloud'>
-            <% tag_cloud Post.tag_counts, %w{s m l} do |tag, css_class| %>
-              <%= link_to tag.name, tag_path(tag.name), class: css_class %>
-            <% end %>
+              <% tag_cloud Post.tag_counts, %w{s m l} do |tag, css_class| %>
+                <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+              <% end %>
           </div>
-        </div>
-        <!-- Ads-->
-        <!-- 		<div class="panel panel-default">
-
-				   <div class="panel-heading">Ads</div>
-				   <div class="panel-body">
-				      <a href="">
-				         <img src="img/mockup.png" class="img-responsive img-thumbnail">
-				      </a>
-				   </div>
-				</div> -->
+        </div>  
       </div>
+    </div>
+    
     </div>
   </div>
 </div>
+
 <div>
   <% flash.each do |name, msg| %>
     <% content_tag(:div, msg, class: "alert") %>
