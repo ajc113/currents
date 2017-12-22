@@ -9,3 +9,17 @@
   .m { font-size: 1.2em; }
   .l { font-size: 1.8em; }
 }
+
+.posts-image img {
+  width: 100%;
+}
+
+.posts-body {
+  font-size: 18px;
+
+  img {
+    display: block;
+    margin: auto;
+  }
+}
+

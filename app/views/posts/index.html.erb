@@ -1,149 +1,111 @@
 <% provide(:title, "Posts") %>
-
 <%= image_tag 'harbor2.jpg',  class: 'img-responsive hidden-xs', style: 'display:block; opacity: .55' %>
 
+<div class="content-wrapper">
+  <!-- button row -->
+  <div>
+    <!--
+    <% if current_admin_user %>
+      <%= link_to "New Post", new_post_path, class: "btn-lg btn-oval btn-inverse" %>
+    <% else %>	
+    <% end %>	 
+    -->
+  </div>
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10">
+      <!-- posts row -->
+      <div class="row">
+        <!-- Posts -->
+        <% @posts.each do |post| %>
+          <div class="panel panel-default">
+            <%= render 'posts/media', post: post %>
+            <!-- post heading -->
+            <div class="panel-heading">
+              <div class="bb">
+                <h1 class="mv-lg">
+                  <%= link_to post.title, post, {:style => 'color: #022FB8'} %>
+                </h1>
+                <p class="date">
+                  Submitted <%= time_ago_in_words(post.created_at) %> a go
+                  | <%= post.reading_time %> Minute Read
+                  <%= raw "| Tags: " + post.tag_list.map { |t| link_to t, tag_path(t)}.join(', ') if post.tags.exists? %>
+                  <% if current_admin_user %>
+                    |  <%= link_to "Add New Post", new_post_path %>
+                  <% else %>
+                  <% end %>
+                </p>
+              </div>
+            </div>
+            <div class="panel-body text-md posts-body">
+              <span>
+                <%= post.body.truncate(1000).html_safe %>
+              </span>
+              <%= link_to "READ MORE", post_path(post) %>
+              
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <!-- Aside -->
+    <div class="col-lg-2 col-md-2">
+      <!-- Search-->
+      <div class="panel panel-default">
+        <div class="panel-heading">Search</div>
+        <div class="panel-body">
+          <form class="form-horizontal">
+            <div class="input-group">
+              <input type="text" placeholder="Search for..." class="form-control">
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default">
+                  <em class="fa fa-search"></em>
+                </button>
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- Categories-->
+      <div class="panel panel-default">
+        <div class="panel-heading">Categories</div>
+        <div class="panel-body">
+          <ul class="list-unstyled">
+            <li>
+              <a href="">
+                <em class="fa fa-angle-right fa-fw"></em>Smartphones</a>
+            </li>
+            <li>
+              <a href="">
+                <em class="fa fa-angle-right fa-fw"></em>Mobiles</a>
+            </li>
+            <li>
+              <a href="">
+                <em class="fa fa-angle-right fa-fw"></em>Tech</a>
+            </li>
+            <li>
+              <a href="">
+                <em class="fa fa-angle-right fa-fw"></em>Inpiration</a>
+            </li>
+            <li>
+              <a href="">
+                <em class="fa fa-angle-right fa-fw"></em>Workspace</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- Tag Cloud-->
+      <div class="panel panel-default">
+        <div class="panel-heading">Tag Activity</div>
+        <div class="panel-body">
+          <div id='tag_cloud'>
+            <% tag_cloud Post.tag_counts, %w{s m l} do |tag, css_class| %>
+              <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+            <% end %>
+          </div>
+        </div>
+        <!-- Ads-->
+        <!-- 		<div class="panel panel-default">
 
-
-<div class="content-wrapper">	
-		<!-- button row -->
-	
-<div>
-<!-- 		<% if current_admin_user %>
-			<%= link_to "New Post", new_post_path, class: "btn-lg btn-oval btn-inverse" %>
-		<% else %>	
-		<% end %>	 -->
-</div>
-
-
-	<div class="row">
-		<div class="col-lg-2">
-
-		</div>
-		<div class="col-lg-8">
-			
-			<!-- posts row -->
-				<div class="row">
-					<!-- Posts -->
-						<% @posts.each do |post| %>
-							<div class="panel panel-default">
-								
-
-							<!-- post heading -->
-							<div class="panel-heading">
-								<div class="bb">
-									<h1 class="mv-lg">
-										<%= link_to post.title, post, {:style => 'color: #022FB8'} %>
-									</h1>
-
-										<p class="date">
-											Submitted <%= time_ago_in_words(post.created_at) %> a go
-											
-											| <%= post.reading_time %> Minute Read
-
-											<% if current_admin_user %>
-			
-												|  <%= link_to "Add New Post", new_post_path %>
-											<% else %>	
-											<% end %>	
-
-
-				 						</p>					
-								</div>
-							</div>
-
-								
-							<div class="panel-body text-md">
-								<% if post.youtube_id.present? %>	
-						
-									<span>
-									<%= post.body.truncate(1000).html_safe %>
-									</span>	
-
-									<%= link_to "READ MORE", post_path(post) %>
-									
-									<br>
-
-									<div class="video-container">  
-										<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= post.youtube_id %>" frameborder="0" allowfullscreen>
-										</iframe>
-									</div>
-
-
-
-								<% else %>	
-								
-									<% if post.image.present? %>	
-
-										<!-- style logic -->
-										<div class="col-lg-5">
-											<% if post.image.present? %>
-											<%= image_tag post.image.url(:medium) %>
-											<% end %>
-											<br>
-										</div>
-										
-										<div class="col-lg-7">
-											<%= post.body.truncate(1000).html_safe %><br>
-											Tags: <%= raw post.tag_list.map { |t| link_to t, tag_path(t)}.join(', ')%><br>
-											<%= link_to "READ MORE", post_path(post) %>
-										 	<br>
-										</div>
-
-										<% else %>
-											<%= post.body.truncate(1000).html_safe %><br>
-											Tags: <%= raw post.tag_list.map { |t| link_to t, tag_path(t)}.join(', ')%><br>
-											<%= link_to "READ MORE", post_path(post) %>
-											<br>
-										<% end %>	
-
-								<% end %>
-
-
-								</div>
-							
-							</div>				
-						
-						<% end %>
-				</div>
-		</div>
-		<!-- Aside -->
-		<div class="col-lg-2">
-			<!-- Search-->
-			<div class="panel panel-default">
-			   <div class="panel-body">
-			   	<strong>Search Blog Content</strong><br>
-			      <form class="form-horizontal">
-			            <%= form_tag @post, :method => 'get' do %>
-  								<p><%= text_field_tag  :search, params[:search]  %></p>
-  								<%= submit_tag 'Search', :name => nil  %>
-									<% end %>
-			      </form>
-			   </div>
-			</div>
-			<!-- Categories-->
-			<div class="panel panel-default">
-			  
-			   <div class="panel-body"><strong>Top Blog Categories</strong><br>
-			      <ul class="list-unstyled">
-			         <li>
-			         	<% @tags.each do |tag| %>
-			          <li><%= link_to tag.name, { :action => :tag, :id => tag.name } %></li>
-			          <% end %>
-			         </li>
-			      </ul>
-			   </div>
-			</div>
-			<!-- Tag Cloud-->
-			<div class="panel panel-default">
-			   <div class="panel-body"><strong>Categories</strong><br>
-			      <div id='tag_cloud'>
-						  <% tag_cloud Post.tag_counts, %w{s m l} do |tag, css_class| %>
-						    <%= link_to tag.name, tag_path(tag.name), class: css_class %>
-						  <% end %>
-			   </div>
-			</div>
-			<!-- Ads-->
-		<!-- 		<div class="panel panel-default">
 				   <div class="panel-heading">Ads</div>
 				   <div class="panel-body">
 				      <a href="">
@@ -151,16 +113,12 @@
 				      </a>
 				   </div>
 				</div> -->
-		</div>
-
-		</div>			
+      </div>
+    </div>
+  </div>
 </div>
-					
-
-	<div>
-		<% flash.each do |name, msg| %>
-		<% content_tag(:div, msg, class: "alert") %>
-		<% end %>
-	</div>
-
-
+<div>
+  <% flash.each do |name, msg| %>
+    <% content_tag(:div, msg, class: "alert") %>
+  <% end %>
+</div>
