@@ -1,0 +1,10 @@
+<% if post.image.present? %>
+  <div class="posts-image">
+    <%= image_tag post.image.url(:large) %>
+  </div>
+<% elsif post.youtube_id.present? %>
+  <div class="video-container">
+    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= post.youtube_id %>" frameborder="0" allowfullscreen>
+    </iframe>
+  </div>
+<% end %>
