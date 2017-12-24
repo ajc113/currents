@@ -44,7 +44,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.friendly.find(params[:id])
 
-    if @post.update(params[:post].permit(:title, :body, :image, :youtube_id))
+    if @post.update(post_params)
       redirect_to @post
     else
       render 'edit'
@@ -68,7 +68,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :body, :image, :youtube_id, :tag_list)
+    params.require(:post).permit(:title, :body, :image, :image_cache, :remove_image, :youtube_id, :tag_list)
   end
 
 

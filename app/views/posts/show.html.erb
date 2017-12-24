@@ -14,8 +14,9 @@
                 Submitted <%= time_ago_in_words(@post.created_at) %> a go
                 | <%= @post.reading_time %> Minute Read
                 <% if current_admin_user %>
-                  | <%= link_to 'Edit', edit_post_path(@post) %>
-                  | <%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are you sure?'} %>
+                | <%= link_to 'Edit', edit_post_path(@post) %>
+                | <%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are you sure?'} %>
+                <%= raw "| Tags: " + @post.tag_list.map { |t| link_to t, tag_path(t)}.join(', ') if @post.tags.exists? %>
                 <% end %>
               </p>
             </div>
