@@ -1,13 +1,12 @@
 <%= content_for(:title, @post.title) %>
 <% if @post.image.present? %>
-  <%= link_to image_tag(@post.image.url, class: "img-responsive report-header-image", target: '_blank', style: "display:block; opacity: .85; height: 350px; object-fit: cover"), @post.image.url %>
+  <%= link_to image_tag(@post.image.url, class: "img-responsive report-header-image posts-header-image", target: '_blank'), @post.image.url %>
 <% elsif @post.youtube_id.present? %>
   <div class="video-container blog-post-video">
     <iframe class="embed-responsive-item " src="https://www.youtube.com/embed/<%= @post.youtube_id %>" frameborder="0" allowfullscreen>
     </iframe>
   </div>
 <% end %>
-<section>
   <div id="blog-post-image" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -20,9 +19,10 @@
       </div>
     </div>
   </div>
+  <section class="posts">
   <div class="content-wrapper">
     <div class="row">
-      <div class="col-lg-10">
+      <div class="col-lg-8 col-lg-offset-2 col-md-12">
         <div class="panel panel-default">
           <!-- post heading -->
           <div class="panel-heading">
@@ -83,4 +83,4 @@
     <div class="col-lg-2"></div>
   </div>
 </div>
-</section>
+  </section>

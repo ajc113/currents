@@ -1,6 +1,6 @@
 <% if post.image.present? %>
   <div class="posts-image">
-    <%= image_tag post.image.url(:large) %>
+    <%= link_to image_tag(post.image.url(:large)), post %>
   </div>
 <% elsif post.youtube_id.present? %>
   <div class="video-container">
