@@ -1,5 +1,25 @@
 <%= content_for(:title, @post.title) %>
+<% if @post.image.present? %>
+  <%= link_to image_tag(@post.image.url, class: "img-responsive report-header-image", target: '_blank', style: "display:block; opacity: .85; height: 350px; object-fit: cover"), @post.image.url %>
+<% elsif @post.youtube_id.present? %>
+  <div class="video-container blog-post-video">
+    <iframe class="embed-responsive-item " src="https://www.youtube.com/embed/<%= @post.youtube_id %>" frameborder="0" allowfullscreen>
+    </iframe>
+  </div>
+<% end %>
 <section>
+  <div id="blog-post-image" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <%= image_tag @post.image.url, class: 'blog-post-modal-image', width: '100%', height: '100%' %>
+        </div>
+        <div class="modal-footer">
+          <%= button_tag "Close", 'data-dismiss': 'modal' %>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="content-wrapper">
     <div class="row">
       <div class="col-lg-10">
@@ -14,9 +34,9 @@
                 Submitted <%= time_ago_in_words(@post.created_at) %> a go
                 | <%= @post.reading_time %> Minute Read
                 <% if current_admin_user %>
-                | <%= link_to 'Edit', edit_post_path(@post) %>
-                | <%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are you sure?'} %>
-                <%= raw "| Tags: " + @post.tag_list.map { |t| link_to t, tag_path(t)}.join(', ') if @post.tags.exists? %>
+                  | <%= link_to 'Edit', edit_post_path(@post) %>
+                  | <%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are you sure?'} %>
+                  <%= raw "| Tags: " + @post.tag_list.map { |t| link_to t, tag_path(t)}.join(', ') if @post.tags.exists? %>
                 <% end %>
               </p>
             </div>
@@ -46,7 +66,7 @@
             <small class="mr-sm"><%= @post.created_at.strftime(" %B, %d, %Y") %></small>
             <small> | <strong><%= @post.comments.count %></strong><span>  comments</span>   |</small>
             <%= link_to "Back to posts", posts_path %>
-             <%= raw "| Tags: " + @post.tag_list.map { |t| link_to t, tag_path(t)}.join(', ') if @post.tags.exists? %>
+            <%= raw "| Tags: " + @post.tag_list.map { |t| link_to t, tag_path(t)}.join(', ') if @post.tags.exists? %>
           </span>
           <span class="pull-right"><%= social_share_button_tag(@post.title, :url => post_url(@post), desc: @post.title) %>
           </span>
