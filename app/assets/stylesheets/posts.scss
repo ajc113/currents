@@ -51,3 +51,25 @@
 section.posts {
   margin-left: 0px;
 }
+
+.wrapper {
+  position: unset;
+}
+
+.modal-dialog {
+  width: 100%;
+}
+
+.modal-header {
+  background-color: white;
+  border: 0;
+}
+
+.modal-content {
+  border: 0;
+  box-shadow: none;
+}
+
+.modal-body {
+  background: white;
+}
