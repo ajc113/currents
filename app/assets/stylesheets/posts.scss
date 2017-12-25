@@ -58,6 +58,9 @@ section.posts {
 
 .modal-dialog {
   width: 100%;
+  @media(max-width: 752px) {
+    margin-left: 0;
+  }
 }
 
 .modal-header {
@@ -72,4 +75,9 @@ section.posts {
 
 .modal-body {
   background: white;
+}
+
+.posts-categories {
+  display: flex;
+  flex-wrap: wrap;
 }

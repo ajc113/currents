@@ -67,7 +67,7 @@
       </div>
       <!-- Tag Cloud-->
       <div class="panel panel-default">
-        <div class="panel-body"><strong>Categories</strong><br>
+        <div class="panel-body posts-categories"><strong>Categories</strong><br>
           <div id='tag_cloud'>
               <% tag_cloud Post.tag_counts, %w{s m l} do |tag, css_class| %>
                 <%= link_to tag.name, tag_path(tag.name), class: css_class %>
