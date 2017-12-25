@@ -80,4 +80,19 @@ section.posts {
 .posts-categories {
   display: flex;
   flex-wrap: wrap;
+  @media ( max-width: 990px ) {
+    flex-direction: column;
+  }
+}
+
+#q {
+  width: 100%;
+}
+
+.posts-sidebar.fixed {
+  @media ( min-width: 990px ) {
+    position: fixed;
+    right: 0;
+    top: 0;
+  }
 }
