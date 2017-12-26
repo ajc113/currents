@@ -40,14 +40,14 @@
       </div>
     </div>
     <!-- Aside -->
-    <div class="col-lg-2 col-md-2">
+    <div class="col-lg-2 col-md-2 posts-sidebar">
       <!-- Search-->
       <div class="panel panel-default">
         <div class="panel-body">
             <strong>Search Blog Content</strong><br>
             <form class="form-horizontal">
-                  <%= form_tag @post, :method => 'get' do %>
-                  <p><%= text_field_tag  :search, params[:search]  %></p>
+                  <%= form_tag posts_path, :method => 'get' do %>
+                  <p><%= text_field_tag  :q, params[:q]  %></p>
                   <%= submit_tag 'Search', :name => nil  %>
                   <% end %>
             </form>
@@ -59,7 +59,7 @@
             <ul class="list-unstyled">
                <li>
                 <% @tags.each do |tag| %>
-                <li><%= link_to tag.name, { :action => :tag, :id => tag.name } %></li>
+                <li><%= link_to tag.name, tag_path(tag.name) %></li>
                 <% end %>
                </li>
             </ul>
@@ -67,7 +67,7 @@
       </div>
       <!-- Tag Cloud-->
       <div class="panel panel-default">
-        <div class="panel-body"><strong>Categories</strong><br>
+        <div class="panel-body posts-categories"><strong>Categories</strong><br>
           <div id='tag_cloud'>
               <% tag_cloud Post.tag_counts, %w{s m l} do |tag, css_class| %>
                 <%= link_to tag.name, tag_path(tag.name), class: css_class %>
@@ -79,7 +79,6 @@
     
     </div>
   </div>
-</div>
 
 <div>
   <% flash.each do |name, msg| %>

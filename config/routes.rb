@@ -39,7 +39,7 @@ Rails.application.routes.draw do
   get 'blog', to: 'currents#blog'
   get 'rules', to: 'currents#rules'
   get 'pricing', to: 'currents#pricing'
-  get 'tags/:tag', to: 'posts#index', as: :tag
+  get 'tags/:tag', to: 'posts#tag', as: :tag
   #Extra
   get 'test', to: 'currents#test'
   get 'tag', to: 'posts#tag'
