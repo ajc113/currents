@@ -25,9 +25,9 @@
   <div class="content-wrapper">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-12">
-        <div class="panel panel-default">
+        <div class="panel panel-default" style="overflow:auto">
           <!-- post heading -->
-          <div class="panel-heading">
+          <div class="panel-heading" style="overflow:auto">
             <div class="bb">
               <h2 style= "color: #022FB8">
                 <%= @post.title %>
@@ -44,7 +44,7 @@
             </div>
           </div>
           <!-- Post body	 -->
-          <div class="panel-body text-md posts-body" >
+          <div class="panel-body text-md posts-body" style="overflow:auto">
             <%= @post.body.html_safe %>
           </br>
           <% if @post.youtube_id.present? %>
@@ -54,11 +54,7 @@
               </iframe>
             </div>
           <% else  %>
-            <br>
-            <% if @post.image.present? %>
-              <%= image_tag @post.image, class: 'img-responsive' %>
-            <% else %>
-            <% end %>
+
           <% end %>
         </div>
         <!-- Post footer author and comment count -->
