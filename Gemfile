@@ -18,7 +18,7 @@ gem 'gmaps4rails'
 gem 'devise'
 gem 'puma'
 gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin.git'
-gem 'filterrific'
+gem 'filterrific', '~> 4'
 gem 'sprockets-rails', git: 'https://github.com/rails/sprockets-rails.git'
 gem 'by_star', git: 'https://github.com/radar/by_star.git'
 gem 'colorize'
@@ -50,6 +50,7 @@ gem 'social-share-button'
 gem "chartkick"
 gem 'groupdate'
 gem 'acts-as-taggable-on', '~> 4.0'
+gem 'gibbon'
 
 
 group :production do

@@ -187,7 +187,7 @@ GEM
     ffi (1.9.18-x86-mingw32)
     figaro (1.1.1)
       thor (~> 0.14)
-    filterrific (2.1.2)
+    filterrific (4.0.0)
     fission (0.5.0)
       CFPropertyList (~> 2.2)
     flamegraph (0.9.5)
@@ -334,6 +334,9 @@ GEM
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
     geocoder (1.4.4)
+    gibbon (3.2.0)
+      faraday (>= 0.9.1)
+      multi_json (>= 1.11.0)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     gmaps4rails (2.1.2)
@@ -645,12 +648,13 @@ DEPENDENCIES
   fast_stack
   ffaker
   figaro
-  filterrific
+  filterrific (~> 4)
   flamegraph
   fog
   fog-aws
   friendly_id (~> 5.1.0)
   geocoder
+  gibbon
   gmaps4rails
   groupdate
   guard-livereload (~> 2.5)
