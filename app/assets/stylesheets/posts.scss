@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.posts-heading {
+  display: inline-block;
+}
+
 #tag_cloud {
   width: 400px;
   line-height: 1.6em;
