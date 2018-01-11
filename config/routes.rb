@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     resources :comments
   end
   resource :card
+  put 'subscribe', to: 'subscribe#create'
   # resources :tags, only: [:index, :show]
 
 

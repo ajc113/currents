@@ -69,6 +69,9 @@
           <span class="pull-right"><%= social_share_button_tag(@post.title, :url => post_url(@post), desc: @post.title) %>
           </span>
         </div>
+        <!-- subscription form -->
+        <p class="bb"></p>
+        <%= render 'shared/subscribe_email' %>
         <!-- comment break -->
         <p class="bb"></p>
         <!-- Post comments and form -->
