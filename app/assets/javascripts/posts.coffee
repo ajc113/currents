@@ -3,11 +3,15 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).on 'turbolinks:load', ->
+  delete sidebar
+  delete top
+  delete y
   sidebar = $('.posts-sidebar')
   top = sidebar.offset().top
 
   $(window).scroll (event) ->
     y = $(this).scrollTop()
+    console.log(y)
     if y >= top
       sidebar.addClass('fixed')
     else
