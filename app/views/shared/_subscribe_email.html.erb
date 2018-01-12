@@ -1,7 +1,7 @@
 <div class="<%= page %> subscribe-email-form">
 <%= form_tag(subscribe_url, method: :put, remote: true, id: 'subscribe-email-form') do %>
-  <%= text_field_tag :email %>
-  <%= submit_tag "Subscribe" %>
+  <%= text_field_tag :email, nil, placeholder: 'ADD EMAIL TO RECIEVE CURRENT INTEL', style:"background:#ECE4F2" %>
+  <%= submit_tag "Subscribe", class: 'btn btn-warning btn-lg' %>
 <% end %>
 </div>
 <div class="subscribe-email-form error"></div>
