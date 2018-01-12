@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.posts-heading {
+  display: inline-block;
+}
+
 #tag_cloud {
   width: 400px;
   line-height: 1.6em;
@@ -94,5 +98,42 @@ section.posts {
     position: fixed;
     right: 0;
     top: 0;
+  }
+}
+
+.posts_show {
+  &.subscribe-email-form {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    width: 70%;
+    margin: auto;
+    margin-bottom: 10.5px;
+    padding-top: 0;
+    padding-bottom: 0;
+
+    form {
+      display: flex;
+      width: 80%;
+
+      input[type=text] {
+        width: 100%;
+      }
+
+      input[type=submit] {
+      }
+    }
+  }
+}
+
+.subscribe-email-form.error {
+  display: flex;
+  justify-content: center;
+
+  &.error {
+    color: red;
+  }
+  &.success {
+    color: green;
   }
 }

@@ -1,0 +1,8 @@
+<div class="<%= page %> subscribe-email-form">
+<%= form_tag(subscribe_url, method: :put, remote: true, id: 'subscribe-email-form') do %>
+  <%= text_field_tag :email %>
+  <%= submit_tag "Subscribe" %>
+<% end %>
+</div>
+<div class="subscribe-email-form error"></div>
+<div class="subscribe-email-form success"></div>

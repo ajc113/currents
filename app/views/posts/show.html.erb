@@ -1,8 +1,8 @@
 <div id="blog-post-image" class="modal fade" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-lg">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      </div>
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
     <div class="modal-content">
       <div class="modal-body">
         <%= image_tag @post.image.url, class: 'blog-post-modal-image', width: '100%', height: '100%' %>
@@ -25,9 +25,9 @@
   <div class="content-wrapper">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-12">
-        <div class="panel panel-default" style="overflow:auto">
+        <div class="panel panel-default">
           <!-- post heading -->
-          <div class="panel-heading" style="overflow:auto">
+          <div class="posts-heading panel-heading">
             <div class="bb">
               <h2 style= "color: #022FB8">
                 <%= @post.title %>
@@ -44,7 +44,7 @@
             </div>
           </div>
           <!-- Post body	 -->
-          <div class="panel-body text-md posts-body" style="overflow:auto">
+          <div class="panel-body text-md posts-body">
             <%= @post.body.html_safe %>
           </br>
           <% if @post.youtube_id.present? %>
@@ -69,6 +69,9 @@
           <span class="pull-right"><%= social_share_button_tag(@post.title, :url => post_url(@post), desc: @post.title) %>
           </span>
         </div>
+        <!-- subscription form -->
+        <p class="bb"></p>
+        <%= render 'shared/subscribe_email', page: 'posts_show' %>
         <!-- comment break -->
         <p class="bb"></p>
         <!-- Post comments and form -->
@@ -77,8 +80,7 @@
           <%= render 'comments/form' %>
         </div>
       </div>
+      <div class="col-lg-2"></div>
     </div>
-    <div class="col-lg-2"></div>
   </div>
-</div>
 </section>
