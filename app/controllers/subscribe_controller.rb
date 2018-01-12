@@ -6,7 +6,7 @@ class SubscribeController < ApplicationController
         email_address: params[:email],
         status: "pending"
       })
-      render json: { success: "Subscribed successfully" }
+      render json: { 'success': "Please check your mailbox to finish the process." }
     rescue Gibbon::MailChimpError => e
       puts e.class
       puts e.raw_body.class

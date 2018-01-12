@@ -100,3 +100,40 @@ section.posts {
     top: 0;
   }
 }
+
+.posts_show {
+  &.subscribe-email-form {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    width: 70%;
+    margin: auto;
+    margin-bottom: 10.5px;
+    padding-top: 0;
+    padding-bottom: 0;
+
+    form {
+      display: flex;
+      width: 80%;
+
+      input[type=text] {
+        width: 100%;
+      }
+
+      input[type=submit] {
+      }
+    }
+  }
+}
+
+.subscribe-email-form.error {
+  display: flex;
+  justify-content: center;
+
+  &.error {
+    color: red;
+  }
+  &.success {
+    color: green;
+  }
+}
