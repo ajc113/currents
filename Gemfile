@@ -51,6 +51,7 @@ gem "chartkick"
 gem 'groupdate'
 gem 'acts-as-taggable-on', '~> 4.0'
 gem 'gibbon'
+gem 'rack-cache'
 
 
 group :production do
