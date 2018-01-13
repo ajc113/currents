@@ -29,7 +29,7 @@ gem 'moving_average'
 gem 'party_foul'
 gem 'rails_serve_static_assets'
 gem 'bootstrap-datepicker-rails'
-gem 'pg'
+gem 'pg', '~> 0.21'
 gem 'ffaker'
 gem 'kaminari'
 gem 'delayed_job_active_record'
@@ -51,6 +51,7 @@ gem "chartkick"
 gem 'groupdate'
 gem 'acts-as-taggable-on', '~> 4.0'
 gem 'gibbon'
+gem 'rack-cache'
 
 
 group :production do
