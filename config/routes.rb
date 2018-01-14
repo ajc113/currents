@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   root to: 'currents#index'
 
   # :registrations => "users/registrations"
-
+  resources :intels 
   resources :locations
   resources :buzzs
   resources :reports
@@ -20,7 +20,9 @@ Rails.application.routes.draw do
   resources :currents
   resources :invoices, only: [:index, :show]
   resources :posts do
-    resources :comments
+  resources :comments
+
+
   end
   resource :card
   put 'subscribe', to: 'subscribe#create'

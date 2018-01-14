@@ -1,0 +1,63 @@
+<% provide(:title, "Intel") %>
+
+<%= image_tag 'harbor2.jpg',  class: 'img-responsive hidden-xs', style: 'display:block; opacity: .55' %>
+
+<div class="content-wrapper">
+  <div class="row">
+    <h2 class="text-lg center">Daily Intel</h2>
+    <div class="col-lg-8 col-lg-offset-2 col-md-10">
+      <!-- posts row -->
+      <div class="row">
+        <!-- Posts -->
+          <% @intels.each do |intel| %>
+          <div class="panel panel-default">
+            <%#= render 'posts/media', post: post %>
+            <!-- post heading -->
+            <div class="posts-heading panel-heading">
+              <div class="bb">
+                <h1 class="mv-lg">
+                  <%= link_to intel.title, intel, {:style => 'color: #000000'} %>
+                </h1>
+                <p class="date">
+                  Submitted <%= time_ago_in_words(intel.created_at) %> a go
+                  <%= raw "| Tags: " + intel.tag_list.map { |t| link_to t, tag_path(t)}.join(', ') if intel.tags.exists? %>
+                </p>
+              </div>
+            </div>
+            <div class="panel-body text-md posts-body">
+              <span>
+                <%= intel.body %>
+            
+              </span>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <!-- Aside -->
+    <div class="col-lg-2 col-md-2 posts-sidebar">
+      <!-- Search-->
+      <div class="panel panel-default">
+        <div class="panel-body">
+            <strong>Search Intel</strong><br>
+            <form class="form-horizontal">
+                  <%= form_tag intels_path, :method => 'get' do %>
+                  <p><%= text_field_tag  :q, params[:q]  %></p>
+                  <%= submit_tag 'Search', :name => nil  %>
+                  <% end %>
+            </form>
+        </div>
+      </div>
+      <!-- Categories-->
+      <% if current_admin_user %>
+      <%= link_to 'New Intel', new_intel_path, class: "btn btn-inverse btn-lg" %>
+      <% end %>
+    </div>
+    
+    </div>
+
+  <div class="center">
+  <%= paginate @intels %>
+  </div>
+</div>
+

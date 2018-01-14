@@ -1,0 +1,2 @@
+module IntelsHelper
+end

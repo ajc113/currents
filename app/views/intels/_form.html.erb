@@ -1,0 +1,32 @@
+<div class="panel-body text-md">
+  <%= form_for(@intel) do |f| %>
+    <% if @intel.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@intel.errors.count, "error") %> prohibited this intel from being saved:</h2>
+
+        <ul>
+        <% @intel.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+
+    <div class="field form-group">
+      <%= f.label :title %><br>
+      <%= f.text_field :title,  class: 'form-control'  %>
+    </div>
+    <div class="field">
+      <%= f.label :body %><br>
+      <%= f.cktext_area :body, class: 'form-control'   %>
+    </div>
+    <div class="field form-group">
+      <%= f.label :tag_list, "Tags (seperated by commas)" %> <br>
+      <%= f.text_field :tag_list, value: f.object.tag_list.to_s, class: 'form-control' %>
+    </div>
+    <div class="field form-group">
+      <%= f.submit class: "btn btn-inverse btn-md" %>
+    </div>
+  <% end %><%= link_to 'Back', intels_path %>
+</div>
