@@ -19,6 +19,7 @@
                   <%= link_to intel.title, intel, {:style => 'color: #000000'} %>
                 </h1>
                 <p class="date">
+                   <%= intel.created_at.strftime(" %B, %d, %Y") %></small> |
                   Submitted <%= time_ago_in_words(intel.created_at) %> a go
                   <%= raw "| Tags: " + intel.tag_list.map { |t| link_to t, tag_path(t)}.join(', ') if intel.tags.exists? %>
                 </p>
@@ -26,7 +27,7 @@
             </div>
             <div class="panel-body text-md posts-body">
               <span>
-                <%= intel.body %>
+                <%= intel.body.html_safe %>
             
               </span>
             </div>
