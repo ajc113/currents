@@ -1,4 +1,9 @@
 FactoryGirl.define do
+  factory :spot do
+    title "MyString"
+    body "MyText"
+    slug "MyString"
+  end
   factory :intel do
     title "MyString"
     body "MyText"

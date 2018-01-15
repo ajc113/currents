@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   mount Ckeditor::Engine => '/ckeditor'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
   root to: 'currents#index'
 
   # :registrations => "users/registrations"
+    resources :spots
   resources :intels 
   resources :locations
   resources :buzzs
