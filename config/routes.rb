@@ -43,6 +43,7 @@ Rails.application.routes.draw do
   get 'rules', to: 'currents#rules'
   get 'pricing', to: 'currents#pricing'
   get 'tags/:tag', to: 'posts#tag', as: :tag
+    get 'spotter', to: 'intels#spotter'
   #Extra
   get 'test', to: 'currents#test'
   get 'tag', to: 'posts#tag'

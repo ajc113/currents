@@ -11,7 +11,7 @@ class IntelsController < InheritedResources::Base
     #   @intels = intel.all
     # end
     @tags = Intel.tag_counts_on(:tags).limit(5)
-    @post= Intel.where(id: params[:id]) if params[:id].present?
+    # @post= Intel.where(id: params[:id]) if params[:id].present?
     @tag_counts = Intel.tag_counts_on(:tags).limit(10)
   end
 
@@ -65,12 +65,16 @@ class IntelsController < InheritedResources::Base
     render template: "intels/index"
   end
 
-
+  def spotter
+    @tags = Intel.tag_counts_on(:tags).limit(5)
+    @intels = Intel.tagged_with(["spotter"], :match_all => true).order('created_at DESC').page(params[:page]).per(5)
+    @intels = Intel.search(params[:q]).order('created_at DESC').page(params[:page]).per(5)
+  end
 
   private
 
     def intel_params
-      params.require(:intel).permit(:title, :body)
+      params.require(:intel).permit(:title, :body, :tag_list)
     end
 end
 

@@ -10,6 +10,12 @@ class Intel < ActiveRecord::Base
 	extend FriendlyId
 	friendly_id :title, use: :slugged
 
+
+	def spotter
+	Intel.tagged_with(["spotter"], :match_all => true)
+	end
+
+
 	def self.search(search)
 	if search
 	  self.where("title LIKE ? OR body LIKE ?", "%#{search}%", "%#{search}%")

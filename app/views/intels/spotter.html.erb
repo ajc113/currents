@@ -1,0 +1,48 @@
+<% provide(:title, "Spotter") %>
+<%= image_tag 'harbor2.jpg',  class: 'img-responsive hidden-xs', style: 'display:repeat; opacity: .55' %>
+
+<div class="content-wrapper">
+	<div class="row">
+		<h2 class="text-lg center" style="color: #56585C">Spotter Plane Reports</h2>
+		<div class="col-lg-8 col-lg-offset-2 col-md-10">
+			<div class="row">
+				<% @intels.each do |intel| %>
+				<div class="panel panel-default">
+					<div class="posts-heading panel-heading">
+						<div class="bb">
+							<h1 class="mv-lg">
+								<%= intel.title %>
+							</h1>
+						</div>
+					</div>
+					<div class="panel-body text-md posts-body">
+					<span>
+						<%= intel.body.html_safe %>
+					</span>
+					</div>	
+				</div>
+				<% end %>
+		</div>	
+	  <div class="center">
+	  	<%= paginate @intels %>
+	  </div>
+	</div>
+  <div class="col-lg-2 col-md-2 posts-sidebar">
+    <!-- Search-->
+    <div class="panel panel-default">
+      <div class="panel-body">
+          <strong>Search Intel</strong><br>
+          <form class="form-horizontal">
+                <%= form_tag intels_path, :method => 'get' do %>
+                <p><%= text_field_tag  :q, params[:q]  %></p>
+                <%= submit_tag 'Search', :name => nil  %>
+                <% end %>
+          </form>
+      </div>
+    </div>
+    <!-- Categories-->
+    <% if current_admin_user %>
+    <%= link_to 'New Intel', new_intel_path, class: "btn btn-inverse btn-lg" %>
+    <% end %>
+  </div>
+ </div>
