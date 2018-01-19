@@ -15,7 +15,7 @@
             <div class="posts-heading panel-heading">
               <div class="bb">
                 <h1 class="mv-lg">
-                  <%= link_to spot.title, spot, {:style => 'color: #022FB8'} %>
+                  <%= link_to spot.title, spot, {:style => 'color: #84868C'} %>
                 </h1>
                 <p class="date">
                   Submitted <%= time_ago_in_words(spot.created_at) %> a go
@@ -51,15 +51,15 @@
         <div class="panel-body"><strong>Locations</strong><br>
             <ul class="list-unstyled">
                <li>
-                <% @spots.each do |tag| %>
-                <li><%#= link_to tag.name, tag_path(tag.name) %></li>
+                <% @tags.each do |tag| %>
+                <li><%= link_to tag.name, tag_path(tag.name) %></li>
                 <% end %>
                </li>
             </ul>
         </div>
       </div>
       <% if current_admin_user %>
-        <%= link_to "Add New Spot", new_spot_path %>
+        <%= link_to "Add New Spot", new_spot_path, class: "btn btn-inverse btn-lg" %>
       <% end %>    
     </div>
   </div>

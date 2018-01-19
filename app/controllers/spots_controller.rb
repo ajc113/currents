@@ -5,15 +5,11 @@ class SpotsController < InheritedResources::Base
   def index
     @spots = Spot.search(params[:q]).order('created_at DESC')
     @meta_description = "Fresh catch intel and original content blog offering fishing reports, tackle reviews, and locaction analysis"
-    # if params[:tag]
-    #   @spots = spot.tagged_with(params[:tag])
-    # else
-    #   @spots = Spot.all
-    # end
     @tags = Spot.tag_counts_on(:tags).limit(5)
-    @spot= Spot.where(id: params[:id]) if params[:id].present?
-    @tag_counts = Spot.tag_counts_on(:tags).limit(10)
-  end
+    # @spot= Spot.where(id: params[:id]) if params[:id].present?
+    # @tag_counts = Spot.tag_counts_on(:tags).limit(10)
+    
+   end
 
 
   def new
@@ -60,7 +56,7 @@ class SpotsController < InheritedResources::Base
 
   def tag
     @tag = ActsAsTaggableOn::Tag.find_by(name: params[:tag])
-    @tags = Spot.tag_counts_on(:tags).limit(5)
+    @tags = Spot.tag_counts_on(:tags).limit(15)
     @spots = Spot.tagged_with(@tag.name)
     render template: "spots/index"
   end

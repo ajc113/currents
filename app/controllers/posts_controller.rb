@@ -11,7 +11,7 @@ class PostsController < ApplicationController
     #   @posts = Post.all
     # end
     @tags = Post.tag_counts_on(:tags).limit(5)
-    @post= Post.where(id: params[:id]) if params[:id].present?
+    # @post= Post.where(id: params[:id]) if params[:id].present?
     @tag_counts = Post.tag_counts_on(:tags).limit(10)
   end
 

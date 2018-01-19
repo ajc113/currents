@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   root to: 'currents#index'
 
   # :registrations => "users/registrations"
-    resources :spots
+  resources :spots
   resources :intels 
   resources :locations
   resources :buzzs
@@ -45,8 +45,10 @@ Rails.application.routes.draw do
   get 'rules', to: 'currents#rules'
   get 'pricing', to: 'currents#pricing'
   get 'tags/:tag', to: 'posts#tag', as: :tag
-    get 'spotter', to: 'intels#spotter'
-  #Extra
+  get 'spotter', to: 'intels#spotter'
+  # get 'spot_intel/:tag', to: 'spots#tag', as: :spot_intel
+
+    #Extra
   get 'test', to: 'currents#test'
   get 'tag', to: 'posts#tag'
 end
