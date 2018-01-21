@@ -61,19 +61,19 @@ class SpotsController < InheritedResources::Base
   end
 
   def ma_inshore
-    @spots = Spot.tagged_with(["MA Inshore"], :match_all => true).order('created_at DESC').page(params[:page]).per(15)
+    @spots = Spot.search(params[:q]).tagged_with(["MA Inshore"], :match_all => true).order('created_at DESC').page(params[:page]).per(15)
   end
 
   def east_of_chatham
-    @spots = Spot.tagged_with(["east of chatham"], :match_all => true).order('created_at DESC').page(params[:page]).per(15)
+    @spots = Spot.search(params[:q]).tagged_with(["east of chatham"], :match_all => true).order('created_at DESC').page(params[:page]).per(15)
   end
 
   def south_of_vineyard
-    @spots = Spot.tagged_with(["south of vineyard"], :match_all => true).order('created_at DESC').page(params[:page]).per(15)
+    @spots = Spot.search(params[:q]).tagged_with(["south of vineyard"], :match_all => true).order('created_at DESC').page(params[:page]).per(15)
   end
 
     def gulf_of_maine
-    @spots = Spot.tagged_with(["gulf of maine"], :match_all => true).order('created_at DESC').page(params[:page]).per(15)
+    @spots = Spot.search(params[:q]).tagged_with(["gulf of maine"], :match_all => true).order('created_at DESC').page(params[:page]).per(15)
   end
 
   private
