@@ -1,0 +1,25 @@
+
+      <div class="row">
+        <!-- Sposts -->
+        <% @spots.each do |spot| %>
+          <div class="panel widget">
+            <!-- post heading -->
+            <div class="posts-heading panel-heading">
+              <div class="bb">
+                <h1 class="mv-lg">
+                  <%= link_to spot.title, spot, {:style => 'color: #84868C'} %>
+                </h1>
+                <p class="date">
+                  Submitted <%= time_ago_in_words(spot.created_at) %> a go
+                </p>
+              </div>
+            </div>
+            <div class="panel-body text-md posts-body">
+              <span>
+                <%= spot.body.truncate(250).html_safe %>
+              </span>
+              <%= link_to "READ MORE", spot_path(spot) %><br>
+            </div>
+          </div>
+        <% end %>
+      </div>

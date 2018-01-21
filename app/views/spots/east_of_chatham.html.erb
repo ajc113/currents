@@ -1,36 +1,8 @@
-<% provide(:title, "Spots") %>
-<%= image_tag 'harbor2.jpg',  class: 'img-responsive hidden-xs', style: 'display:block; opacity: .55' %>
-
-
-
 <div class="content-wrapper">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-2 col-md-10">
-      <!-- spots row -->
-      <div class="row">
-        <!-- Sposts -->
-        <% @spots.each do |spot| %>
-          <div class="panel widget">
-            <!-- post heading -->
-            <div class="posts-heading panel-heading">
-              <div class="bb">
-                <h1 class="mv-lg">
-                  <%= link_to spot.title, spot, {:style => 'color: #84868C'} %>
-                </h1>
-                <p class="date">
-                  Submitted <%= time_ago_in_words(spot.created_at) %> a go
-                </p>
-              </div>
-            </div>
-            <div class="panel-body text-md posts-body">
-              <span>
-                <%= spot.body.truncate(250).html_safe %>
-              </span>
-              <%= link_to "READ MORE", spot_path(spot) %><br>
-            </div>
-          </div>
-        <% end %>
-      </div>
+  		<h1 class="text-lg center">East of Chatham</h1>
+  <div class="row">    	  
+   	<div class="col-lg-8 col-lg-offset-2 col-lg-10">
+			<%= render 'static_spots' %>
     </div>
     <!-- Aside -->
     <div class="col-lg-2 col-md-2 posts-sidebar">
@@ -64,11 +36,7 @@
         <%= link_to "Add New Spot", new_spot_path, class: "btn btn-danger  btn-lg" %>
       <% end %>    
     </div>
-  </div>
-</div>
 
-<div>
-  <% flash.each do |name, msg| %>
-    <% content_tag(:div, msg, class: "alert") %>
-  <% end %>
+    
+  </div>
 </div>

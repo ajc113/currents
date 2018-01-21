@@ -11,9 +11,9 @@ class Intel < ActiveRecord::Base
 	friendly_id :title, use: :slugged
 
 
-	def spotter
-	Intel.tagged_with(["spotter"], :match_all => true)
-	end
+	# def spotter
+	# Intel.tagged_with(["spotter"], :match_all => true)
+	# end
 
 
 	def self.search(search)

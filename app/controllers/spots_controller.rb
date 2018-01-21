@@ -6,8 +6,7 @@ class SpotsController < InheritedResources::Base
     @spots = Spot.search(params[:q]).order('created_at DESC')
     @meta_description = "Fresh catch intel and original content blog offering fishing reports, tackle reviews, and locaction analysis"
     @tags = Spot.tag_counts_on(:tags).limit(5)
-    # @spot= Spot.where(id: params[:id]) if params[:id].present?
-    # @tag_counts = Spot.tag_counts_on(:tags).limit(10)
+
     
    end
 
@@ -61,6 +60,21 @@ class SpotsController < InheritedResources::Base
     render template: "spots/index"
   end
 
+  def ma_inshore
+    @spots = Spot.tagged_with(["MA Inshore"], :match_all => true).order('created_at DESC').page(params[:page]).per(15)
+  end
+
+  def east_of_chatham
+    @spots = Spot.tagged_with(["east of chatham"], :match_all => true).order('created_at DESC').page(params[:page]).per(15)
+  end
+
+  def south_of_vineyard
+    @spots = Spot.tagged_with(["south of vineyard"], :match_all => true).order('created_at DESC').page(params[:page]).per(15)
+  end
+
+    def gulf_of_maine
+    @spots = Spot.tagged_with(["gulf of maine"], :match_all => true).order('created_at DESC').page(params[:page]).per(15)
+  end
 
   private
 

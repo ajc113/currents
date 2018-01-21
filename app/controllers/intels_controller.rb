@@ -68,7 +68,7 @@ class IntelsController < InheritedResources::Base
   def spotter
     @tags = Intel.tag_counts_on(:tags).limit(5)
     @intels = Intel.tagged_with(["spotter"], :match_all => true).order('created_at DESC').page(params[:page]).per(5)
-    @intels = Intel.search(params[:q]).order('created_at DESC').page(params[:page]).per(5)
+    # @intels = Intel.search(params[:q]).order('created_at DESC').page(params[:page]).per(5)
   end
 
   private

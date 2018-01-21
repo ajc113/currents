@@ -23,9 +23,11 @@ Rails.application.routes.draw do
   resources :invoices, only: [:index, :show]
   resources :posts do
   resources :comments
-
-
   end
+
+
+ 
+  
   resource :card
   put 'subscribe', to: 'subscribe#create'
   # resources :tags, only: [:index, :show]
@@ -46,7 +48,14 @@ Rails.application.routes.draw do
   get 'pricing', to: 'currents#pricing'
   get 'tags/:tag', to: 'posts#tag', as: :tag
   get 'spotter', to: 'intels#spotter'
-  # get 'spot_intel/:tag', to: 'spots#tag', as: :spot_intel
+  
+  # Spots Pages
+  get 'ma_inshore', to: 'spots#ma_inshore'
+  get 'east_of_chatham', to: 'spots#east_of_chatham'
+  get 'gulf_of_maine', to: 'spots#gulf_of_maine'
+  get 'south_of_vineyard', to: 'spots#south_of_vineyard'
+
+
 
     #Extra
   get 'test', to: 'currents#test'
