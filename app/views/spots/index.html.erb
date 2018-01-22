@@ -5,7 +5,7 @@
 
 <div class="content-wrapper">
   <div class="row">
-    <div class="col-lg-8 col-lg-offset-2 col-md-10">
+    <div class="col-lg-8 col-lg-offset-1 col-md-9">
       <!-- spots row -->
       <div class="row">
         <!-- Sposts -->
@@ -31,21 +31,29 @@
           </div>
         <% end %>
       </div>
+       <div class="center">
+      <%= paginate @spots %>
+    </div> 
+
     </div>
+
+
+
     <!-- Aside -->
-    <div class="col-lg-2 col-md-2 posts-sidebar">
+    <div class="col-lg-3 col-md-3 posts-sidebar">
       <!-- Search-->
-      <div class="panel widget bg-gray-light">
+      <div class="panel widget bg-inverse-light">
         <div class="panel-body">
             <strong>Search Spots</strong><br>
             <form class="form-horizontal">
                   <%= form_tag spots_path, :method => 'get' do %>
                   <p><%= text_field_tag  :q, params[:q]  %></p>
-                  <%= submit_tag 'Search', :name => nil  %>
+                  <%= submit_tag 'Search', :name => nil, class: "mb-sm btn btn-inverse btn-outline" %>
                   <% end %>
             </form>
         </div>
       </div>
+
       <!-- Categories-->
       <div class="panel widget bg-inverse-light">
         <div class="panel-body">
@@ -66,6 +74,7 @@
     </div>
   </div>
 </div>
+
 
 <div>
   <% flash.each do |name, msg| %>

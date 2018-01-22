@@ -1,7 +1,7 @@
 class Spot < ActiveRecord::Base
 	acts_as_taggable_on :tags
 	belongs_to :admin_user
-	paginates_per 5
+	paginates_per 10
 
 	validates :title, presence: true, length: { minimum: 5 }
 	validates :body, presence: true

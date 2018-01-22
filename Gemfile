@@ -40,7 +40,7 @@ gem 'nokogiri'
 gem 'premailer-rails'
 gem 'activemodel-associations'
 gem 'active_skin'
-gem 'paperclip', '~> 4.3', '>= 4.3.6'
+gem "paperclip", "~> 5.0.0"
 gem 'friendly_id', '~> 5.1.0'
 gem 'fog'
 gem 'fog-aws'

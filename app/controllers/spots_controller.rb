@@ -3,7 +3,7 @@ class SpotsController < InheritedResources::Base
 
 
   def index
-    @spots = Spot.search(params[:q]).order('created_at DESC')
+    @spots = Spot.search(params[:q]).order('created_at DESC').page(params[:page]).per(10)
     @meta_description = "Fresh catch intel and original content blog offering fishing reports, tackle reviews, and locaction analysis"
     @tags = Spot.tag_counts_on(:tags).limit(5)
 
@@ -61,19 +61,19 @@ class SpotsController < InheritedResources::Base
   end
 
   def ma_inshore
-    @spots = Spot.search(params[:q]).tagged_with(["MA Inshore"], :match_all => true).order('created_at DESC').page(params[:page]).per(15)
+    @spots = Spot.search(params[:q]).tagged_with(["MA Inshore"], :match_all => true).order('created_at DESC').page(params[:page]).per(10)
   end
 
   def east_of_chatham
-    @spots = Spot.search(params[:q]).tagged_with(["east of chatham"], :match_all => true).order('created_at DESC').page(params[:page]).per(15)
+    @spots = Spot.search(params[:q]).tagged_with(["east of chatham"], :match_all => true).order('created_at DESC').page(params[:page]).per(10)
   end
 
   def south_of_vineyard
-    @spots = Spot.search(params[:q]).tagged_with(["south of vineyard"], :match_all => true).order('created_at DESC').page(params[:page]).per(15)
+    @spots = Spot.search(params[:q]).tagged_with(["south of vineyard"], :match_all => true).order('created_at DESC').page(params[:page]).per(10)
   end
 
     def gulf_of_maine
-    @spots = Spot.search(params[:q]).tagged_with(["gulf of maine"], :match_all => true).order('created_at DESC').page(params[:page]).per(15)
+    @spots = Spot.search(params[:q]).tagged_with(["gulf of maine"], :match_all => true).order('created_at DESC').page(params[:page]).per(10)
   end
 
   private
