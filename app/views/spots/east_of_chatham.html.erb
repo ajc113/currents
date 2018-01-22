@@ -1,19 +1,21 @@
+<body class="background"></body>
+
 <div class="content-wrapper">
   		<h1 class="text-lg center">East of Chatham</h1>
   <div class="row">    	  
-   	<div class="col-lg-8 col-lg-offset-2 col-lg-10">
+   	<div class="col-lg-8 col-lg-offset-1 col-lg-9">
 			<%= render 'static_spots' %>
     </div>
     <!-- Aside -->
-    <div class="col-lg-2 col-md-2 posts-sidebar">
+    <div class="col-lg-3 col-md-3 posts-sidebar">
       <!-- Search-->
-      <div class="panel widget bg-gray-light">
+      <div class="panel widget bg-inverse-light">
         <div class="panel-body">
             <strong>Search Spots</strong><br>
             <form class="form-horizontal">
                   <%= form_tag spots_path, :method => 'get' do %>
-                  <p><%= text_field_tag  :q, params[:q]  %></p>
-                  <%= submit_tag 'Search', :name => nil  %>
+                  <p><%= text_field_tag  :q, params[:q], class: 'form-control'   %></p>
+                  <%= submit_tag 'Search', :name => nil,  class: "mb-sm btn btn-inverse btn-outline"  %>
                   <% end %>
             </form>
         </div>

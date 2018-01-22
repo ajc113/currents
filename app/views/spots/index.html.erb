@@ -1,7 +1,16 @@
 <% provide(:title, "Spots") %>
-<%= image_tag 'harbor2.jpg',  class: 'img-responsive hidden-xs', style: 'display:block; opacity: .55' %>
+<body class="background"></body>
 
 
+<div class="col-lg-11 col-lg-offset-1 col-md-8" style="color: #243948;"> 
+  <h1>
+    Fishing Spots
+  </h1>
+  <h3>
+    A comprehensive list of New England's top fishing spots. A mix of some of the most vistied inshore and offshore locations to provide background on how to target different areas. 
+  </h3>
+  <div style="border-bottom: 5px solid #243948;"></div><br>
+</div>
 
 <div class="content-wrapper">
   <div class="row">
@@ -15,7 +24,7 @@
             <div class="posts-heading panel-heading">
               <div class="bb">
                 <h1 class="mv-lg">
-                  <%= link_to spot.title, spot, {:style => 'color: #84868C'} %>
+                  <%= link_to spot.title, spot, {:style => 'color: #243948'} %>
                 </h1>
                 <p class="date">
                   Submitted <%= time_ago_in_words(spot.created_at) %> a go
@@ -47,7 +56,7 @@
             <strong>Search Spots</strong><br>
             <form class="form-horizontal">
                   <%= form_tag spots_path, :method => 'get' do %>
-                  <p><%= text_field_tag  :q, params[:q]  %></p>
+                  <p><%= text_field_tag  :q, params[:q], class: 'form-control'  %></p>
                   <%= submit_tag 'Search', :name => nil, class: "mb-sm btn btn-inverse btn-outline" %>
                   <% end %>
             </form>
@@ -58,12 +67,12 @@
       <div class="panel widget bg-inverse-light">
         <div class="panel-body">
           <div class="text-md m0">
-            <strong>Fishing Locations</strong><br>
+            <strong style="text-decoration: underline;">Fishing Locations</strong><br>
             <ul class="list-unstyled" >
-                <li><%= link_to "MA Inshore", ma_inshore_path %></li>
-                  <li><%= link_to "Gulf of Maine", gulf_of_maine_path %></li>
-                  <li><%= link_to "South of Vineyard", south_of_vineyard_path %></li>
-                  <li><%= link_to "East of Chatham", east_of_chatham_path %></li>
+                <li><%= link_to "MA Inshore", ma_inshore_path, {:style => 'color: #FFFFFF'} %></li>
+                  <li><%= link_to "Gulf of Maine", gulf_of_maine_path, {:style => 'color: #FFFFFF'} %></li>
+                  <li><%= link_to "South of Vineyard", south_of_vineyard_path, {:style => 'color: #FFFFFF'} %></li>
+                  <li><%= link_to "East of Chatham", east_of_chatham_path, {:style => 'color: #FFFFFF'} %></li>
             </ul>
           </div>
         </div>
