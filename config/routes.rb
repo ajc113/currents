@@ -43,6 +43,7 @@ Rails.application.routes.draw do
 
   #Static Pages
   get 'about', to: 'currents#about'
+  get 'vhf', to: 'currents#vhf'
   get 'blog', to: 'currents#blog'
   get 'rules', to: 'currents#rules'
   get 'pricing', to: 'currents#pricing'

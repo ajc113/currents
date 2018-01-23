@@ -15,9 +15,6 @@ class CurrentsController < ApplicationController
 	def rules
 	end
 
-	def test
-		@species = Species.all
-	end
 
 	def show
 	end
