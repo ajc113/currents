@@ -1,9 +1,8 @@
 <% provide(:title, "Posts") %>
-<%= image_tag 'harbor2.jpg',  class: 'img-responsive hidden-xs', style: 'display:block; opacity: .55' %>
 
 <div class="content-wrapper">
   <div class="row">
-    <div class="col-lg-8 col-lg-offset-2 col-md-10">
+    <div class="col-lg-8 col-lg-offset-1 col-md-9">
       <!-- posts row -->
       <div class="row">
         <!-- Posts -->
@@ -40,9 +39,9 @@
       </div>
     </div>
     <!-- Aside -->
-    <div class="col-lg-2 col-md-2 posts-sidebar">
+    <div class="col-lg-3 col-md-3 posts-sidebar">
       <!-- Search-->
-      <div class="panel panel-default">
+      <div class="panel widget bg-gray">
         <div class="panel-body">
             <strong>Search Blog Content</strong><br>
             <form class="form-horizontal">
@@ -54,19 +53,22 @@
         </div>
       </div>
       <!-- Categories-->
-      <div class="panel panel-default">
-        <div class="panel-body"><strong>Top Blog Categories</strong><br>
+      <div class="panel widget bg-gray">
+        <div class="panel-body">
+          <div class="text-md m0">
+            <strong>Top Blog Categories</strong><br>
             <ul class="list-unstyled">
                <li>
                 <% @tags.each do |tag| %>
-                <li><%= link_to tag.name, tag_path(tag.name) %></li>
+                <li><%= link_to tag.name, tag_path(tag.name), {:style => 'color: #022FB8'} %></li>
                 <% end %>
                </li>
             </ul>
+          </div>    
         </div>
       </div>
       <!-- Tag Cloud-->
-      <div class="panel panel-default">
+      <div class="panel widget bg-gray">
         <div class="panel-body posts-categories"><strong>Categories</strong><br>
           <div id='tag_cloud'>
               <% tag_cloud Post.tag_counts, %w{s m l} do |tag, css_class| %>

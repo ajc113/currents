@@ -42,20 +42,20 @@
     <!-- Aside -->
     <div class="col-lg-2 col-md-2 posts-sidebar">
       <!-- Search-->
-      <div class="panel panel-default">
+      <div class="panel panel-default bg-inverse-light">
         <div class="panel-body">
             <strong>Search Intel</strong><br>
             <form class="form-horizontal">
                   <%= form_tag intels_path, :method => 'get' do %>
-                  <p><%= text_field_tag  :q, params[:q]  %></p>
-                  <%= submit_tag 'Search', :name => nil  %>
+                  <p><%= text_field_tag  :q, params[:q], class: 'form-control'   %></p>
+                  <%= submit_tag 'Search', :name => nil, class: "mb-sm btn btn-inverse btn-outline"  %>
                   <% end %>
             </form>
         </div>
       </div>
       <!-- Categories-->
       <% if current_admin_user %>
-      <%= link_to 'New Intel', new_intel_path, class: "btn btn-inverse btn-lg" %>
+      <%= link_to 'New Intel', new_intel_path, class: "btn btn-danger btn-lg" %>
       <% end %>
     </div>
     
