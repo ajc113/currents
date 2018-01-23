@@ -1,7 +1,20 @@
+<% provide(:title, "East of Chatham") %>
 <body class="background"></body>
 
+<!-- header -->
+<div class="col-lg-11 col-lg-offset-1 col-md-8" style="color: #243948;"> 
+  <h1>
+    East of Chatham Spots
+  </h1>
+  <h3>
+    Dive into the area east of chatham including shipping lanes through the great south channel.
+  </h3>
+  <!-- border -->
+  <div style="border-bottom: 5px solid #243948;"></div><br>
+</div>
+
+<!-- spot content -->
 <div class="content-wrapper">
-  		<h1 class="text-lg center">East of Chatham</h1>
   <div class="row">    	  
    	<div class="col-lg-8 col-lg-offset-1 col-lg-9">
 			<%= render 'static_spots' %>
@@ -26,10 +39,10 @@
           <div class="text-md m0">
             <strong>Fishing Locations</strong><br>
             <ul class="list-unstyled" >
-                <li><%= link_to "MA Inshore", ma_inshore_path %></li>
-                  <li><%= link_to "Gulf of Maine", gulf_of_maine_path %></li>
-                  <li><%= link_to "South of Vineyard", south_of_vineyard_path %></li>
-                  <li><%= link_to "East of Chatham", east_of_chatham_path %></li>
+                <li><%= link_to "MA Inshore", ma_inshore_path,  {:style => 'color: #FFFFFF'} %></li>
+                  <li><%= link_to "Gulf of Maine", gulf_of_maine_path,  {:style => 'color: #FFFFFF'} %></li>
+                  <li><%= link_to "South of Vineyard", south_of_vineyard_path,  {:style => 'color: #FFFFFF'} %></li>
+                  <li><%= link_to "East of Chatham", east_of_chatham_path,  {:style => 'color: #FFFFFF'} %></li>
             </ul>
           </div>
         </div>

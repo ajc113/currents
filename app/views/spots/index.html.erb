@@ -1,17 +1,19 @@
 <% provide(:title, "Spots") %>
 <body class="background"></body>
 
-
+<!-- header -->
 <div class="col-lg-11 col-lg-offset-1 col-md-8" style="color: #243948;"> 
   <h1>
     Fishing Spots
   </h1>
   <h3>
-    A comprehensive list of New England's top fishing spots. A mix of some of the most vistied inshore and offshore locations to provide background on how to target different areas. 
+    A comprehensive list of New England's top fishing spots. A mix of some of the most vistied inshore and offshore locations to provide background on how to target each area. 
   </h3>
+  <!-- border -->
   <div style="border-bottom: 5px solid #243948;"></div><br>
 </div>
 
+<!-- spot content -->
 <div class="content-wrapper">
   <div class="row">
     <div class="col-lg-8 col-lg-offset-1 col-md-9">
@@ -20,25 +22,36 @@
         <!-- Sposts -->
         <% @spots.each do |spot| %>
           <div class="panel widget">
-            <!-- post heading -->
-            <div class="posts-heading panel-heading">
-              <div class="bb">
-                <h1 class="mv-lg">
-                  <%= link_to spot.title, spot, {:style => 'color: #243948'} %>
-                </h1>
-                <p class="date">
-                  Submitted <%= time_ago_in_words(spot.created_at) %> a go
-                </p>
+            <div class="col-lg-4">
+              <div class="spots-image">
+              <%= link_to image_tag(spot.image.url(:medium)), spot %>
               </div>
             </div>
-            <div class="panel-body text-md posts-body">
-              <span>
-                <%= spot.body.truncate(250).html_safe %>
-              </span>
-              <%= link_to "READ MORE", spot_path(spot) %><br>
+            <!-- post heading -->
+            <div class="col-lg-8">
+              <div class="posts-heading panel-heading">
+                <!-- <div class="bb"> -->
+                  <h1 class="text-lg">
+                    <%= link_to spot.title, spot, {:style => 'color: #243948'} %>
+
+                  </h1>
+                  <p class="date">
+                    <strong>  
+                    Submitted <%= time_ago_in_words(spot.created_at) %> a go
+                    </strong>
+                  </p>
+                <!-- </div> -->
+              </div>
+              <div class="panel-body text-md posts-body">
+                <span>
+                  <%= spot.body.truncate(250).html_safe %>
+                </span>
+                <%#= link_to "READ MORE", spot_path(spot) %><br>
+              </div>
             </div>
-          </div>
-        <% end %>
+         </div> 
+          <% end %>
+        
       </div>
        <div class="center">
       <%= paginate @spots %>
@@ -84,7 +97,7 @@
   </div>
 </div>
 
-
+<!-- alerts -->
 <div>
   <% flash.each do |name, msg| %>
     <% content_tag(:div, msg, class: "alert") %>

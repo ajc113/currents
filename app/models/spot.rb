@@ -3,6 +3,9 @@ class Spot < ActiveRecord::Base
 	belongs_to :admin_user
 	paginates_per 10
 
+
+	mount_uploader :image, SpotUploader
+
 	validates :title, presence: true, length: { minimum: 5 }
 	validates :body, presence: true
 

@@ -79,7 +79,7 @@ class SpotsController < InheritedResources::Base
   private
 
     def spot_params
-      params.require(:spot).permit(:title, :body, :tag_list)
+      params.require(:spot).permit(:title, :body, :image, :tag_list)
     end
 end
 

@@ -4334,7 +4334,7 @@ x:-o-prefocus,
 .widget .lateral-picture {
   position: relative;
   display: block;
-  height: 240px;
+/*  height: 240px;*/
   width: auto;
   overflow: hidden;
 }

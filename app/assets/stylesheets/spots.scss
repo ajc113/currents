@@ -6,3 +6,13 @@ background-size: cover;
 -o-background-size: cover;
 }
 
+
+.spots-image img {
+  width: 100%;
+  height: 225px;
+  object-fit: cover;
+}
+
+.col-lg-4 {
+padding-left: 1px;
+}

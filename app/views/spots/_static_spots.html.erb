@@ -3,23 +3,39 @@
         <!-- Sposts -->
         <% @spots.each do |spot| %>
           <div class="panel widget">
-            <!-- post heading -->
-            <div class="posts-heading panel-heading">
-              <div class="bb">
-                <h1 class="mv-lg">
-                  <%= link_to spot.title, spot, {:style => 'color: #84868C'} %>
-                </h1>
-                <p class="date">
-                  Submitted <%= time_ago_in_words(spot.created_at) %> a go
-                </p>
+            <div class="col-lg-4">
+              <div class="spots-image">
+                <%= link_to image_tag(spot.image.url(:medium)), spot %>
               </div>
             </div>
+            <!-- post heading -->
+            <div class="col-lg-8">
+              <div class="posts-heading panel-heading">
+                <h1 class="text-lg">
+                    <%= link_to spot.title, spot, {:style => 'color: #243948'} %>
+                </h1>
+                
+                <p class="date">
+                  <strong>
+                  Submitted <%= time_ago_in_words(spot.created_at) %> a go
+                  </strong>
+                </p>
+              </div>
+            
+
             <div class="panel-body text-md posts-body">
               <span>
                 <%= spot.body.truncate(250).html_safe %>
               </span>
-              <%= link_to "READ MORE", spot_path(spot) %><br>
+              <%#= link_to "READ MORE", spot_path(spot) %><br>
             </div>
           </div>
+        </div>
+        
         <% end %>
+      
       </div>
+
+      <div class="center">
+      <%= paginate @spots %>
+      </div> 
