@@ -1,6 +1,18 @@
 <% provide(:title, "Reports") %>
 <%= image_tag 'lighthouse2.jpg',  class: 'img-responsive report-header-image hidden-xs', style: 'display:block; opacity: .85' %>
 <!-- log new report button -->
+<div class="col-lg-12" style="color: #243948;padding-left: 0px; padding-right: 0px;"> 
+  <h1>
+    Log a Report
+  </h1>
+  <h3>
+    Catch logging tool to track trip history and analyze historical conditions  
+  </h3>
+  <!-- border -->
+  <div style="border-bottom: 5px solid #243948;"></div><br>
+</div>
+
+
 <div class="p-lg text-center">
   <%= link_to 'Log New Report', new_report_path, class: "btn btn-inverse btn-lg" %>
 </div>
@@ -64,7 +76,6 @@
 <div class="text-center">
   <%= link_to 'Clear Filter', reports_path, class: 'btn btn-info btn-lg' %>
 </div>
-<p id="notice"><%= notice %></p>
 <!-- filter script -->
 <script>
   $('#species').change(function(){

@@ -1,16 +1,29 @@
 <% provide(:title, "Spotter") %>
 <%= image_tag 'harbor2.jpg',  class: 'img-responsive hidden-xs', style: 'display:repeat; opacity: .55' %>
 
+<div class="col-lg-11 col-lg-offset-1 col-md-8" style="color: #243948;padding-left: 0px;"> 
+  <h1>
+    Spotter Plane Reports
+  </h1>
+  <h3>
+    Weekly spotter reports from our network of pilots.
+  </h3>
+  <!-- border -->
+  <div style="border-bottom: 5px solid #243948;"></div><br>
+</div>
+
+
+
+
 <div class="content-wrapper">
 	<div class="row">
-		<h2 class="text-lg center" style="color: #56585C">Spotter Plane Reports</h2>
-		<div class="col-lg-8 col-lg-offset-2 col-md-10">
+		<div class="col-lg-8 col-lg-offset-1 col-md-9">
 			<div class="row">
 				<% @intels.each do |intel| %>
 				<div class="panel panel-default">
 					<div class="posts-heading panel-heading">
 						<div class="bb">
-							<h1 class="mv-lg" style="color: #84868C">
+							<h1 class="mv-lg" style="color: #243948">
 								<%= intel.title %>
 							</h1>
 						</div>
@@ -27,22 +40,22 @@
 	  	<%= paginate @intels %>
 	  </div>
 	</div>
-  <div class="col-lg-2 col-md-2 posts-sidebar">
+  <div class="col-lg-3 col-md-3 posts-sidebar">
     <!-- Search-->
-    <div class="panel panel-default">
+    <div class="panel widget bg-inverse-light">
       <div class="panel-body">
           <strong>Search Intel</strong><br>
           <form class="form-horizontal">
                 <%= form_tag intels_path, :method => 'get' do %>
-                <p><%= text_field_tag  :q, params[:q]  %></p>
-                <%= submit_tag 'Search', :name => nil  %>
+                <p><%= text_field_tag  :q, params[:q], class: 'form-control'  %></p>
+                <%= submit_tag 'Search', :name => nil, class: "mb-sm btn btn-inverse btn-outline"  %>
                 <% end %>
           </form>
       </div>
     </div>
     <!-- Categories-->
     <% if current_admin_user %>
-    <%= link_to 'New Intel', new_intel_path, class: "btn btn-inverse btn-lg" %>
+    <%= link_to 'New Intel', new_intel_path, class: "btn btn-danger btn-lg" %>
     <% end %>
   </div>
  </div>

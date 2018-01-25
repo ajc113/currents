@@ -18,34 +18,42 @@
   }
   /*flash*/
   .alert-error {
-    background-color: #f2dede;
-    border-color: #eed3d7;
-    color: #b94a48;
+  background-color: #f05050;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #ffffff;
     text-align: left;
    }
   
   .alert-alert {
-    background-color: #f2dede;
-    border-color: #eed3d7;
-    color: #b94a48;
+  background-color: #ff902b;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #ffffff;
+    text-align: left;
+   }
+
+  .alert {
+  background-color: #f05050;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #ffffff;
     text-align: left;
    }
   
   .alert-success {
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-    color: #468847;
+  background-color: #27c24c;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #ffffff;
     text-align: left;
    }
   
   .alert-notice {
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-    color: #468847;
+  background-color: #27c24c;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #ffffff;
     text-align: left;
    }
 </style>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
   <div class="block-center mt-xl wd-xl">
     <!-- START panel-->
     <div class="panel panel-inverse panel-flat">
@@ -70,7 +78,7 @@
       <div class="panel-body">
 
               <!-- Email input  -->
-          <div class="form-group has-feedback">            
+      <div class="form-group has-feedback">            
               <%= f.label :email %><br />
         <%= f.email_field :email, class: "form-control", autofocus: true, required: true %>
       </div>

@@ -2,14 +2,21 @@
 
 <%= image_tag 'harbor2.jpg',  class: 'img-responsive hidden-xs', style: 'display:block; opacity: .55' %>
 
-
-<%#= image_tag 'map_theme/chart.jpg',  class: 'img-responsive hidden-xs', style: 'display:background; opacity: .25' %>
+<div class="col-lg-11 col-lg-offset-1 col-md-8" style="color: #243948;padding-left: 0px;"> 
+  <h1>
+    Daily Intel
+  </h1>
+  <h3>
+    Daily intel from our network of charter, recreational and spotter reports. 
+  </h3>
+  <!-- border -->
+  <div style="border-bottom: 5px solid #243948;"></div><br>
+</div>
 
 
 <div class="content-wrapper">
   <div class="row">
-    <h2 class="text-lg center" style="color: #56585C">Daily Intel</h2>
-    <div class="col-lg-8 col-lg-offset-2 col-md-10">
+    <div class="col-lg-8 col-lg-offset-1 col-md-9">
       <!-- posts row -->
       <div class="row">
         <!-- Posts -->
@@ -20,7 +27,7 @@
             <div class="posts-heading panel-heading">
               <div class="bb">
                 <h1 class="mv-lg">
-                  <%= link_to intel.title, intel, {:style => 'color: #84868C'} %>
+                  <%= link_to intel.title, intel, {:style => 'color: #243948'} %>
                 </h1>
                 <p class="date">
                    <%= intel.created_at.strftime(" %B, %d, %Y") %></small> |
@@ -40,9 +47,9 @@
       </div>
     </div>
     <!-- Aside -->
-    <div class="col-lg-2 col-md-2 posts-sidebar">
+    <div class="col-lg-3 col-md-3 posts-sidebar">
       <!-- Search-->
-      <div class="panel panel-default bg-inverse-light">
+      <div class="panel widget bg-inverse-light">
         <div class="panel-body">
             <strong>Search Intel</strong><br>
             <form class="form-horizontal">
