@@ -7,6 +7,17 @@ GIT
       orm_adapter (~> 0.5.0)
 
 GIT
+  remote: git://github.com/thoughtbot/paperclip.git
+  revision: 69056cd9a75d19e3718e45677931c76420599e6f
+  specs:
+    paperclip (5.2.1)
+      activemodel (>= 4.2.0)
+      activesupport (>= 4.2.0)
+      cocaine (~> 0.5.5)
+      mime-types
+      mimemagic (~> 0.3.0)
+
+GIT
   remote: https://github.com/activeadmin/activeadmin.git
   revision: 21c50cafc5bfda16df6ffe741d8fb0f3ecd66e9e
   specs:
@@ -437,12 +448,6 @@ GEM
     octokit (3.8.0)
       sawyer (~> 0.6.0, >= 0.5.3)
     orm_adapter (0.5.0)
-    paperclip (5.0.0)
-      activemodel (>= 4.2.0)
-      activesupport (>= 4.2.0)
-      cocaine (~> 0.5.5)
-      mime-types
-      mimemagic (~> 0.3.0)
     party_foul (1.5.5)
       octokit (~> 3.1)
     pg (0.21.0)
@@ -671,7 +676,7 @@ DEPENDENCIES
   mini_magick
   moving_average
   nokogiri
-  paperclip (~> 5.0.0)
+  paperclip!
   party_foul
   pg (~> 0.21)
   premailer-rails
