@@ -5,14 +5,7 @@ class IntelsController < InheritedResources::Base
   def index
     @intels = Intel.search(params[:q]).order('created_at DESC').page(params[:page]).per(5)
     @meta_description = "Fresh catch intel and original content blog offering fishing reports, tackle reviews, and locaction analysis"
-    # if params[:tag]
-    #   @intels = intel.tagged_with(params[:tag])
-    # else
-    #   @intels = intel.all
-    # end
-    @tags = Intel.tag_counts_on(:tags).limit(5)
-    # @post= Intel.where(id: params[:id]) if params[:id].present?
-    @tag_counts = Intel.tag_counts_on(:tags).limit(10)
+
   end
 
 
