@@ -4,6 +4,7 @@ class SpotsController < InheritedResources::Base
 
   def index
     @spots = Spot.search(params[:q]).order('created_at DESC').page(params[:page]).per(10)
+    
     @meta_description = "Fresh catch intel and original content blog offering fishing reports, tackle reviews, and locaction analysis"
 
 
