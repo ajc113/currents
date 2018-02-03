@@ -4,7 +4,7 @@ class SpotsController < InheritedResources::Base
 
   def index
     @spots = Spot.search(params[:q]).order('created_at DESC').page(params[:page]).per(10)
-    
+    @spots = Kaminari.paginate_array(@spots).page(params[:page]).per(5)
     @meta_description = "Fresh catch intel and original content blog offering fishing reports, tackle reviews, and locaction analysis"
 
 

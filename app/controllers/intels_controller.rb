@@ -3,9 +3,9 @@ class IntelsController < InheritedResources::Base
 
 
   def index
-    @intels = Intel.search(params[:q]).order('created_at DESC').page(params[:page]).per(5)
+    @intels = Intel.search(params[:q]).order('created_at DESC') 
+    @intels = Kaminari.paginate_array(@intels).page(params[:page]).per(5)
     @meta_description = "Fresh catch intel and original content blog offering fishing reports, tackle reviews, and locaction analysis"
-
   end
 
 
