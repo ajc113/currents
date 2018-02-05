@@ -2,7 +2,8 @@
 <div class = "container">
   <div class="row">
     <div class="content-wrapper">
-      <div class="col-sm-3"></div>
+      <div class="col-sm-3">
+      </div>
       <div class="col-sm-6">
         <div class="panel panel-default">
           <div class="panel panel-inverse-edituser panel-flat">
@@ -13,10 +14,10 @@
                     <%= image_tag 'map_theme/tuna.png',  class: 'img-responsive', style: 'height: 50px;' %>
                   </a>
                 </div>
-                <div class="col-lg-9">
-                  <h2>Edit <%= current_user.vessel_name %>
+
+                  <h2>Update Your Account Info
                   </h2>
-                </div>
+
               </div>
             </div>
           </div>
@@ -77,7 +78,23 @@
           <% end %>
         </div>
       </div>
-      <div class="col-sm-3"></div>
+      <div class="col-sm-3">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="text-center">
+              <h3 class="mt0">Your Subscriptions</h3>
+            </div>
+            <hr>
+            <ul class="list-unstyled ph-xl">
+               <li>
+                  <em class="fa fa-credit-card fa-fw mr-lg"></em><a href="#"><%= link_to "View My Subscription", my_account_path %></a>
+               </li>
+            </ul>
+          </div>
+        </div>
+
+
+      </div>
     </div>
   </div>
 </div>
