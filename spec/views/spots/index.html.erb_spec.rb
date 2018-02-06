@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "spots/index", type: :view do
   before(:each) do
-    assign(:spots, [
+    assign(:spots, Kaminari.paginate_array([
       Spot.create!(
         :title => "Title",
         :body => "MyText",
@@ -13,13 +13,12 @@ RSpec.describe "spots/index", type: :view do
         :body => "MyText",
         :slug => "Slug"
       )
-    ])
+    ]).page(1))
   end
 
   it "renders a list of spots" do
     render
-    assert_select "tr>td", :text => "Title".to_s, :count => 2
-    assert_select "tr>td", :text => "MyText".to_s, :count => 2
-    assert_select "tr>td", :text => "Slug".to_s, :count => 2
+    expect(rendered).to match /Title/
+    expect(rendered).to match /MyText/
   end
 end

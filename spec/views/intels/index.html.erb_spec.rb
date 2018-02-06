@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "intels/index", type: :view do
   before(:each) do
-    assign(:intels, [
+    assign(:intels, Kaminari.paginate_array([
       Intel.create!(
         :title => "Title",
         :body => "MyText"
@@ -11,12 +11,12 @@ RSpec.describe "intels/index", type: :view do
         :title => "Title",
         :body => "MyText"
       )
-    ])
+    ]).page(1))
   end
 
   it "renders a list of intels" do
     render
-    assert_select "tr>td", :text => "Title".to_s, :count => 2
-    assert_select "tr>td", :text => "MyText".to_s, :count => 2
+    expect(rendered).to match /Title/
+    expect(rendered).to match /MyText/
   end
 end
