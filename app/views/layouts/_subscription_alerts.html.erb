@@ -1,15 +1,15 @@
 <% if user_signed_in? %>
   <% if !current_user.trial_over? %>
-    <div class="alert alert-info alert-dismissable">
+    <div class="alert alert-warning alert-dismissable" style="margin: 0px;">
       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
       Your trial period will end in <%= pluralize(current_user.remaining_trial_days, 'day') %>. 
       <% if current_user.payment_source.nil? %>
-        <%= link_to 'Add a payment source', new_card_url, class: 'subscribe-link-alert' %>
+        <%= link_to 'Add a payment source', new_card_url, class: 'subscribe-link-alert', style: 'color: black' %>
         to continue after the trial period.
       <% end %>
     </div>
   <% elsif !current_user.is_active? %>
-    <div class="alert alert-info alert-dismissable">
+    <div class="alert alert-success alert-dismissable" style="margin: 0px;">
       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
       Start fishing like a pro! Checkout our <%= link_to 'Heatmap',maps_url %> feature. <%= link_to 'Add card details', new_card_url, class: 'subscribe-link-alert' %></div>
   <% end %>
