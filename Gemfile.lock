@@ -568,6 +568,8 @@ GEM
     seed_dump (3.2.4)
       activerecord (>= 4)
       activesupport (>= 4)
+    sentry-raven (2.7.2)
+      faraday (>= 0.7.6, < 1.0)
     shellany (0.0.1)
     shoulda-matchers (3.1.1)
       activesupport (>= 4.0.0)
@@ -695,6 +697,7 @@ DEPENDENCIES
   sass-rails (~> 5.0.6)
   sdoc (~> 0.4.0)
   seed_dump
+  sentry-raven
   shoulda-matchers
   simplecov
   sinatra

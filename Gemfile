@@ -52,7 +52,7 @@ gem 'groupdate'
 gem 'acts-as-taggable-on', '~> 4.0'
 gem 'gibbon'
 gem 'rack-cache'
-
+gem "sentry-raven"
 
 group :production do
   gem 'rails_12factor'

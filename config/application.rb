@@ -13,6 +13,12 @@ module Currents
 
 
 require 'csv'
+
+
+Raven.configure do |config|
+  config.dsn = 'https://bb708a31d3cf4207b8fba0858dd0aed7:3521b84ea8364a4185c28181e73296ae@sentry.io/284690'
+
+end
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
