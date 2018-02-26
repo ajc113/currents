@@ -8,7 +8,7 @@
   </h1>
   <p class="date">
     <strong> 
-    By: Capt. AJ Costa </strong> | 
+    By: AJ Costa </strong> | 
     Submitted <%= time_ago_in_words(@spot.created_at) %> a go
       <% if current_admin_user %>
         | <%= link_to 'Edit', edit_spot_path(@spot) %>
@@ -68,6 +68,7 @@
                   <li><%= link_to "Gulf of Maine", gulf_of_maine_path, {:style => 'color: #FFFFFF'} %></li>
                   <li><%= link_to "South of Vineyard", south_of_vineyard_path, {:style => 'color: #FFFFFF'} %></li>
                   <li><%= link_to "East of Chatham", east_of_chatham_path, {:style => 'color: #FFFFFF'} %></li>
+                  <li><%= link_to "Boat Ramps", boat_ramps_path,  {:style => 'color: #FFFFFF'} %></li>
             </ul>
           </div>
         </div>

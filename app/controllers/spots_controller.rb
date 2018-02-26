@@ -76,6 +76,10 @@ class SpotsController < InheritedResources::Base
     @spots = Spot.search(params[:q]).tagged_with(["gulf of maine"], :match_all => true).order('created_at DESC').page(params[:page]).per(10)
   end
 
+  def boat_ramps
+    @spots = Spot.search(params[:q]).tagged_with(["boat launch locations"], :match_all => true).order('created_at DESC').page(params[:page]).per(10)
+  end
+
   private
 
     def spot_params

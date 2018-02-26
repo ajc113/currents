@@ -55,7 +55,7 @@ Rails.application.routes.draw do
   get 'east_of_chatham', to: 'spots#east_of_chatham'
   get 'gulf_of_maine', to: 'spots#gulf_of_maine'
   get 'south_of_vineyard', to: 'spots#south_of_vineyard'
-
+  get 'boat_ramps', to: 'spots#boat_ramps'
 
 
     #Extra
