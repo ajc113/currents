@@ -29,6 +29,8 @@ PartyFoul.configure do |config|
    config.additional_labels    = Proc.new do |exception, env|
      labels = if ENV['HOST'] =~ /currents-dev\./
                 ['staging']
+              elsif ENV['HOST'] =~ /localhost/
+                ['local']
               end
    end
 
