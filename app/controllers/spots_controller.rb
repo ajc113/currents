@@ -77,7 +77,7 @@ class SpotsController < InheritedResources::Base
   end
 
   def boat_ramps
-    @spots = Spot.search(params[:q]).tagged_with(["boat launch locations"], :match_all => true).order('created_at DESC').page(params[:page]).per(10)
+    @spots = Spot.search(params[:q]).order('title ASC').tagged_with(["boat launch locations"], :match_all => true).order('created_at DESC').page(params[:page]).per(10)
   end
 
   private
