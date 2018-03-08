@@ -35,7 +35,7 @@ PartyFoul.configure do |config|
    end
 
   # Limit the number of comments per issue
-   config.comment_limit        = 10
+   config.comment_limit        = 100
 
   # Setting your title prefix can help with 
   # distinguising the issue between environments
