@@ -17,8 +17,8 @@ class StripeController < ApplicationController
     if event
       Thread.new do
         begin
-          customer = event.data.object.customer
-          user = User.find_by(stripe_customer_id: customer)
+          customer = event.data.object.customer if event.data.object.customer.present?
+          user = User.find_by(stripe_customer_id: customer) if customer
           event_type = event.type
           event_process(event_type, event, user, customer)
         rescue => error
