@@ -22,7 +22,11 @@ class StripeController < ApplicationController
           event_type = event.type
           event_process(event_type, event, user, customer)
         rescue => error
-          PartyFoul::RacklessExceptionHandler.handle(error, class: self, method: __method__, params: user.inspect)
+          error_details = Hash.new
+          error_details['user'] = user.inspect
+          error_details['event_type'] = event_type
+          error_details['event_id'] = event.id
+          PartyFoul::RacklessExceptionHandler.handle(error, class: self, method: __method__, params: error_details)
         end
         ActiveRecord::Base.connection.close
       end
