@@ -27,6 +27,8 @@ class StripeController < ApplicationController
           error_details['event_type'] = event_type
           error_details['event_id'] = event.id
           PartyFoul::RacklessExceptionHandler.handle(error, class: self, method: __method__, params: error_details)
+        ensure
+          Rails.logger.flush
         end
         ActiveRecord::Base.connection.close
       end
