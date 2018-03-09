@@ -53,13 +53,15 @@ class StripeController < ApplicationController
 
     when "customer.subscription.updated"
       #to capture subscription from trial to active
-      if event.data.object.status == "active" && event.data.previous_attributes.status == "trialing" 
-        if user.payment_source == nil
-          user.is_active = false
-          user.save!
-          SubscriptionMailer.delay.customer_subscription_updated(user)
-        else
-          SubscriptionMailer.delay.trial_over(user)
+      if event.data.object.status == "active" && event.data.previous_attributes.status.present?
+        if event.data.previous_attributes.status == "trialing"
+          if user.payment_source == nil
+            user.is_active = false
+            user.save!
+            SubscriptionMailer.delay.customer_subscription_updated(user)
+          else
+            SubscriptionMailer.delay.trial_over(user)
+          end
         end
       elsif event.data.previous_attributes.trial_end.present?
         user.is_active = true
@@ -75,10 +77,12 @@ class StripeController < ApplicationController
       end
 
     when "invoice.updated"
-      if event.previous_attributes.paid == 'false'
-        user.is_active = true
-        user.save!
-        SubscriptionMailer.invoice_payment_succeeded(user).deliver
+      if event.previous_attributes.paid.present? && event.previous_attributes.paid.present?
+        if event.previous_attributes.paid == 'false'
+          user.is_active = true
+          user.save!
+          SubscriptionMailer.invoice_payment_succeeded(user).deliver
+        end
       end
 
     when "charge.failed"
