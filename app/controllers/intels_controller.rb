@@ -4,7 +4,11 @@ class IntelsController < InheritedResources::Base
 
   def index
     @intels = Intel.search(params[:q]).order('created_at DESC').page params[:page]
-    @meta_description = "Fresh catch intel and original content blog offering fishing reports, tackle reviews, and locaction analysis"
+    set_meta_tags title: "Daily Intel",
+                  site: "Currents Fishing Network",
+                  reverse: true,
+                  description: "New england daily fishing intel and catch reports", 
+                  keywords: "New england fishing intel, boat ramps, catch reports, big game fishing, offshore fishing"
   end
 
 
@@ -25,7 +29,13 @@ class IntelsController < InheritedResources::Base
 
   def show
     @intel = Intel.friendly.find(params[:id])
-    @meta_description = @intel.title
+    set_meta_tags title: @intel.title,
+                  site: "Currents Fishing Network",
+                  reverse: true,
+                  description: @intel.body,
+                  keywords: "New england fishing intel, fishing reports, catch reports, big game fishing, offshore fishing"
+
+
   end
 
 
@@ -59,7 +69,12 @@ class IntelsController < InheritedResources::Base
 
   def spotter
     @intels = Intel.tagged_with(["spotter"], :match_all => true).order('created_at DESC').page(params[:page]).per(5)
-    # @intels = Intel.search(params[:q]).order('created_at DESC').page(params[:page]).per(5)
+    set_meta_tags title: "Spotter Plane Intel",
+                  site: "Currents Fishing Network",
+                  reverse: true,
+                  description: "Spotter plane intel weekly report",
+                  keywords: "New england fishing intel, fishing reports, catch reports, big game fishing, offshore fishing, spotter plane"
+                  
   end
 
   private

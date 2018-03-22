@@ -1,7 +1,12 @@
 class MapsController < ApplicationController
   before_action :authorize_user!
+  
   def index
-   @meta_description = "Heatmap of community catch reports showing locations where the action is occuring"
+  set_meta_tags title: "HeatMap",
+            site: "Currents Fishing Network",
+            reverse: true,
+            description: "Heat map charting hot spot catch activity.  View by target speicies or location where you want to fish", 
+            keywords: "New england fishing intel, boat ramps, catch reports, big game fishing, offshore fishing"
   end
 
   def create

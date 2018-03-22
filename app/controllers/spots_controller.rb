@@ -4,10 +4,11 @@ class SpotsController < InheritedResources::Base
 
   def index
     @spots = Spot.search(params[:q]).order('created_at DESC').page(params[:page])
-    @meta_description = "Fresh catch intel and original content blog offering fishing reports, tackle reviews, and locaction analysis"
-
-
-    
+      set_meta_tags title: "Fishing Spots",
+                  site: "Currents Fishing Network",
+                  reverse: true,
+                  description: "New england offshore fishing spots and boat launch locations", 
+                  keywords: "New england fishing intel, boat ramps, catch reports, big game fishing, offshore fishing"
    end
 
 
@@ -28,7 +29,13 @@ class SpotsController < InheritedResources::Base
 
   def show
     @spot = Spot.friendly.find(params[:id])
-    @meta_description = @spot.title
+    set_meta_tags title: @spot.title,
+                  site: "Currents Fishing Network",
+                  reverse: true,
+                  description: @spot.body,
+                  keywords: "New england fishing intel, fishing reports, catch reports, big game fishing, offshore fishing"
+
+
   end
 
 
@@ -62,22 +69,53 @@ class SpotsController < InheritedResources::Base
 
   def ma_inshore
     @spots = Spot.search(params[:q]).tagged_with(["MA Inshore"], :match_all => true).order('created_at DESC').page(params[:page]).per(10)
+    set_meta_tags title: "MA Fishing Spots",
+                      site: "Currents Fishing Network",
+                      reverse: true,
+                      keywords: "New england fishing intel, fishing reports, catch reports, big game fishing, offshore fishing"  
+
   end
 
   def east_of_chatham
     @spots = Spot.search(params[:q]).tagged_with(["east of chatham"], :match_all => true).order('created_at DESC').page(params[:page]).per(10)
+    set_meta_tags title: "East of Chatham Fishing Spots",
+                      site: "Currents Fishing Network",
+                      reverse: true,
+                      keywords: "New england fishing intel, fishing reports, catch reports, big game fishing, offshore fishing"  
+  
+
+
   end
 
   def south_of_vineyard
     @spots = Spot.search(params[:q]).tagged_with(["south of vineyard"], :match_all => true).order('created_at DESC').page(params[:page]).per(10)
+    set_meta_tags title: "South of Vineyard Fishing Spots",
+                      site: "Currents Fishing Network",
+                      reverse: true,
+                      keywords: "New england fishing intel, fishing reports, catch reports, big game fishing, offshore fishing"  
+  
+
+
   end
 
     def gulf_of_maine
     @spots = Spot.search(params[:q]).tagged_with(["gulf of maine"], :match_all => true).order('created_at DESC').page(params[:page]).per(10)
+    set_meta_tags title: "Gulf of Maine Fishing Spots",
+                      site: "Currents Fishing Network",
+                      reverse: true,
+                      keywords: "New england fishing intel, fishing reports, catch reports, big game fishing, offshore fishing"  
+  
+
   end
 
   def boat_ramps
     @spots = Spot.search(params[:q]).order('title ASC').tagged_with(["boat launch locations"], :match_all => true).order('created_at DESC').page(params[:page]).per(10)
+    set_meta_tags title: "New England Boat Ramps",
+                    site: "Currents Fishing Network",
+                    reverse: true,
+                    keywords: "New england fishing intel, fishing reports, catch reports, big game fishing, offshore fishing"  
+
+
   end
 
   private

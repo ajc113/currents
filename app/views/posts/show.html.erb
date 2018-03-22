@@ -10,7 +10,6 @@
     </div>
   </div>
 </div>
-<%= content_for(:title, @post.title) %>
 <% if @post.image.present? %>
   <%= link_to '#blog-post-image', 'data-toggle': 'modal' do %>
     <%= image_tag(@post.image.url, class: "img-responsive report-header-image posts-header-image") %>

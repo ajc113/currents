@@ -4,14 +4,12 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.search(params[:q]).order('created_at DESC')
-    @meta_description = "Fresh catch intel and original content blog offering fishing reports, tackle reviews, and locaction analysis"
-    # if params[:tag]
-    #   @posts = Post.tagged_with(params[:tag])
-    # else
-    #   @posts = Post.all
-    # end
+    set_meta_tags title: "Blog",
+                  site: "Currents Fishing Network",
+                  reverse: true,
+                  description: "Big game fishing articles covering catch reports, tackle reviews, and locations",
+                  keywords: "New england fishing intel, fishing reports, catch reports, big game fishing, offshore fishing"
     @tags = Post.tag_counts_on(:tags).limit(5)
-    # @post= Post.where(id: params[:id]) if params[:id].present?
     @tag_counts = Post.tag_counts_on(:tags).limit(10)
   end
 
@@ -33,7 +31,11 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.friendly.find(params[:id])
-    @meta_description = @post.title
+    set_meta_tags title: @post.title,
+                  site: "Currents Fishing Network",
+                  reverse: true,
+                  description: @post.body,
+                  keywords: "New england fishing intel, fishing reports, catch reports, big game fishing, offshore fishing"
   end
 
 
