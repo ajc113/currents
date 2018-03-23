@@ -8,7 +8,7 @@ class CurrentsController < ApplicationController
 		@meta_description = "Community based fishing networking site with logging tols and a heatmap to share integligence.  Catch intel, local fishing reports, video, product reviews, and hot spots"
 		
 		set_meta_tags title: "Home",
-                  site: "Currents Fishing Network",
+                  site: "Currents Network",
                   reverse: true,
                   description: "Sportfishing network providing catch reports, action heatmap, fishing spot, and tackle information for offshore big game fishing",
                   keywords: "New england fishing intel, fishing reports, catch reports, big game fishing, offshore fishing"	
@@ -17,8 +17,8 @@ class CurrentsController < ApplicationController
 
 
 	def about
-		set_meta_tags title: "About",
-                  site: "Currents Fishing Network",
+		set_meta_tags title: "About Us",
+                  site: "Currents Network",
                   reverse: true,
                   description: "Big game fishing articles covering catch reports, tackle reviews, and locations",
                   keywords: "New england fishing intel, fishing reports, catch reports, big game fishing, offshore fishing"		
