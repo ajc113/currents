@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   after_create :send_notification if Rails.env.production?
   before_destroy :delete_stripe_customer
 
+  belongs_to :plan
+
 
   #display_name is defined for activeadmin
   def display_name
