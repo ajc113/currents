@@ -17,12 +17,18 @@ class StripeController < ApplicationController
     if event
       Thread.new do
         begin
-          customer = event.data.object.customer
-          user = User.find_by(stripe_customer_id: customer)
+          customer = event.data.object.customer if event.data.object.customer.present?
+          user = User.find_by(stripe_customer_id: customer) if customer
           event_type = event.type
           event_process(event_type, event, user, customer)
         rescue => error
-          PartyFoul::RacklessExceptionHandler.handle(error, class: self, method: __method__, params: user.inspect)
+          error_details = Hash.new
+          error_details['user'] = user.inspect
+          error_details['event_type'] = event_type
+          error_details['event_id'] = event.id
+          PartyFoul::RacklessExceptionHandler.handle(error, class: self, method: __method__, params: error_details)
+        ensure
+          Rails.logger.flush
         end
         ActiveRecord::Base.connection.close
       end
@@ -47,13 +53,15 @@ class StripeController < ApplicationController
 
     when "customer.subscription.updated"
       #to capture subscription from trial to active
-      if event.data.object.status == "active" && event.data.previous_attributes.status == "trialing" 
-        if user.payment_source == nil
-          user.is_active = false
-          user.save!
-          SubscriptionMailer.delay.customer_subscription_updated(user)
-        else
-          SubscriptionMailer.delay.trial_over(user)
+      if event.data.object.status == "active" && event.data.previous_attributes.status.present?
+        if event.data.previous_attributes.status == "trialing"
+          if user.payment_source == nil
+            user.is_active = false
+            user.save!
+            SubscriptionMailer.delay.customer_subscription_updated(user)
+          else
+            SubscriptionMailer.delay.trial_over(user)
+          end
         end
       elsif event.data.previous_attributes.trial_end.present?
         user.is_active = true
@@ -69,10 +77,12 @@ class StripeController < ApplicationController
       end
 
     when "invoice.updated"
-      if event.previous_attributes.paid == 'false'
-        user.is_active = true
-        user.save!
-        SubscriptionMailer.invoice_payment_succeeded(user).deliver
+      if event.previous_attributes.paid.present? && event.previous_attributes.paid.present?
+        if event.previous_attributes.paid == 'false'
+          user.is_active = true
+          user.save!
+          SubscriptionMailer.invoice_payment_succeeded(user).deliver
+        end
       end
 
     when "charge.failed"
