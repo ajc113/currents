@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_many :buzzs   
   has_many :locations, through: :reports
   belongs_to :state, primary_key: :name, foreign_key: :state_waters
-  after_create :create_stripe_customer
+  #after_create :create_stripe_customer
   after_create :send_notification if Rails.env.production?
   before_destroy :delete_stripe_customer
 
@@ -90,5 +90,16 @@ class User < ActiveRecord::Base
 
   def inactive_message
     !deleted_at ? super : :deleted_account
+  end
+
+  def trialing?
+    return true if calculate_trial_days
+    return false
+  end
+
+  def calculate_trial_days
+    result = 30 - (Date.today - self.created_at.to_date).to_i
+    return result if result > 0
+    return nil if result < 0
   end
 end
