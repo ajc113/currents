@@ -9,12 +9,6 @@ RSpec.describe "StaticPages" do
     it { should have_title('Home' + base_title) }
   end
 
-  describe "Blog page" do
-    before { visit blog_path }
-    it { should have_content('Weekly Fishing Reports') }
-    it { should have_title('Weekly Forecast' + base_title) }
-  end
-
   describe "About page" do
     before { visit about_path }
     it { should have_content('About Us') }
