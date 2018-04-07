@@ -71,6 +71,7 @@ class SpotsController < InheritedResources::Base
     @spots = Spot.search(params[:q]).tagged_with(["MA Inshore"], :match_all => true).order('created_at DESC').page(params[:page]).per(10)
     set_meta_tags title: "MA Fishing Spots",
                       site: "Currents Fishing Network",
+                      description: "Massachusetts Inshore fishing spots",
                       reverse: true,
                       keywords: "New england fishing intel, fishing reports, catch reports, big game fishing, offshore fishing"  
 
@@ -80,6 +81,7 @@ class SpotsController < InheritedResources::Base
     @spots = Spot.search(params[:q]).tagged_with(["east of chatham"], :match_all => true).order('created_at DESC').page(params[:page]).per(10)
     set_meta_tags title: "East of Chatham Fishing Spots",
                       site: "Currents Fishing Network",
+                      description: "East of Chatham fishing spots",
                       reverse: true,
                       keywords: "New england fishing intel, fishing reports, catch reports, big game fishing, offshore fishing"  
   
@@ -91,6 +93,7 @@ class SpotsController < InheritedResources::Base
     @spots = Spot.search(params[:q]).tagged_with(["south of vineyard"], :match_all => true).order('created_at DESC').page(params[:page]).per(10)
     set_meta_tags title: "South of Vineyard Fishing Spots",
                       site: "Currents Fishing Network",
+                      description: "South of the Vineyard fishing spots out to the shipping lanes and canyons",
                       reverse: true,
                       keywords: "New england fishing intel, fishing reports, catch reports, big game fishing, offshore fishing"  
   
@@ -102,6 +105,7 @@ class SpotsController < InheritedResources::Base
     @spots = Spot.search(params[:q]).tagged_with(["gulf of maine"], :match_all => true).order('created_at DESC').page(params[:page]).per(10)
     set_meta_tags title: "Gulf of Maine Fishing Spots",
                       site: "Currents Fishing Network",
+                      description: "Gulf of Maine offshore fishing spots",
                       reverse: true,
                       keywords: "New england fishing intel, fishing reports, catch reports, big game fishing, offshore fishing"  
   

@@ -4,13 +4,11 @@ class CurrentsController < ApplicationController
 
 	def index
 		@buzzs = Buzz.all.order("created_at DESC").limit(5)
-		@hotspot = Hotspot.last
-		@meta_description = "Community based fishing networking site with logging tols and a heatmap to share integligence.  Catch intel, local fishing reports, video, product reviews, and hot spots"
-		
+		@hotspot = Hotspot.last		
 		set_meta_tags title: "Home",
-                  site: "Currents Network",
+                  site: "Currents Fishing Network",
                   reverse: true,
-                  description: "Sportfishing network providing catch reports, action heatmap, fishing spot, and tackle information for offshore big game fishing",
+                  description: "Sportfishing network providing catch reports, activity heatmap, fishing spots, and tackle information for offshore big game fishing",
                   keywords: "New england fishing intel, fishing reports, catch reports, big game fishing, offshore fishing"	
 
 	end
@@ -35,7 +33,7 @@ class CurrentsController < ApplicationController
 		set_meta_tags title: "VHF Stream",
                   site: "Currents Fishing Network",
                   reverse: true,
-                  description: "Stream New England VHF radio online to monitor marine chatter",
+                  description: "Stream New England VHF marine radio online to monitor marine and fishing chatter",
                   keywords: "New england fishing intel, fishing reports, catch reports, big game fishing, offshore fishing"		
 	end
 

@@ -7,7 +7,7 @@ class IntelsController < InheritedResources::Base
     set_meta_tags title: "Daily Intel",
                   site: "Currents Fishing Network",
                   reverse: true,
-                  description: "New england daily fishing intel and catch reports", 
+                  description: "New england daily fishing intel and catch reports from our network of charter, commercial, and recreational captains", 
                   keywords: "New england fishing intel, boat ramps, catch reports, big game fishing, offshore fishing"
   end
 
@@ -72,7 +72,7 @@ class IntelsController < InheritedResources::Base
     set_meta_tags title: "Spotter Plane Intel",
                   site: "Currents Fishing Network",
                   reverse: true,
-                  description: "Spotter plane intel weekly report",
+                  description: "Spotter plane weekly intel report",
                   keywords: "New england fishing intel, fishing reports, catch reports, big game fishing, offshore fishing, spotter plane"
                   
   end

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <%= display_meta_tags  %>
+    <%= display_meta_tags %>
     <script src="https://use.typekit.net/yzs0vln.js"></script>
     <script>
       try{Typekit.load({ async: true });}catch(e){}
@@ -24,11 +24,8 @@
       gtag('config', 'UA-97111691-1');
     </script>
   </head>
-    <title><%= full_title(yield(:title)) %>
-        <% if @meta_description.present? %>
-        <meta name="description" content="<%= @meta_description %>">
-        <% end %>
-    </title>
+    
+
   <body>
     <div class="wrapper">
       <%= render 'layouts/navbar' %>

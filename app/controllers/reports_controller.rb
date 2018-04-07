@@ -18,7 +18,12 @@ class ReportsController < ApplicationController
     format.html
     format.csv { send_data @reports.to_csv }
     format.xls  { send_data @reports.to_csv(col_sep: "\t") }
-    @meta_description = "Fish report catch logging tool to track and analyze historic trends"
+    set_meta_tags title: "Log Report",
+            site: "Currents Fishing Network",
+            reverse: true,
+            description: "Fish report catch logging tool to track and analyze historic trends", 
+            keywords: "New england fishing intel, boat ramps, catch reports, big game fishing, offshore fishing"
+
   end
 
 
