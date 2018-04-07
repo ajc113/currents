@@ -13,7 +13,6 @@ RSpec.feature "User views invoices", type: :feature do
 
   scenario "User views list of all invoices" do
     visit  invoices_path
-    expect(page).to have_title('Invoices')
     expect(page).to have_selector('table tr td')
     expect(page).to have_text('b9181a962e-0003')
     expect(page).to have_text('10/20/17')
@@ -24,7 +23,6 @@ RSpec.feature "User views invoices", type: :feature do
 
   scenario "User views an invoice" do
     visit invoice_path(FakeStripe::INVOICE_ID)
-    expect(page).to have_title('Invoice')
     expect(page).to have_content('Invoice in_1s4JSgbcUaElzU')
     expect(page).to have_selector('table tr td')
     expect(page).to have_css('.amount-table')
