@@ -45,11 +45,13 @@ class StripeController < ApplicationController
 
     when "customer.subscription.deleted"
       #after three failed payment attempts as per the settings subscription will be deleted
-      user.subscription_id = nil
-      user.is_active = false
-      user.save!
-      StripeCustomer.delete_all_sources(user)
-      SubscriptionMailer.delay.customer_subscription_deleted(user)
+      if user
+        user.subscription_id = nil
+        user.is_active = false
+        user.save!
+        StripeCustomer.delete_all_sources(user)
+        SubscriptionMailer.delay.customer_subscription_deleted(user)
+      end
 
     when "customer.subscription.updated"
       #to capture subscription from trial to active
