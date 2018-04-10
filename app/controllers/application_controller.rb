@@ -31,7 +31,6 @@ class ApplicationController < ActionController::Base
   helper_method :current_admin_user
 
 
-
   private
   def set_raven_context
     Raven.user_context(id: session[:current_user_id]) # or anything else in session
