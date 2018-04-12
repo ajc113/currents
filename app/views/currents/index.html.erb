@@ -4,158 +4,166 @@
   </script>
 </head>
 
-
-    <%= image_tag 'Homepage3.png',  class: 'img-responsive hidden-xs homepage-header-image', style: 'display:block; opacity: .85' %>
+<!-- image -->
+<%= image_tag 'Homepage3.png',  class: 'img-responsive hidden-xs homepage-header-image', style: 'display:block; opacity: .85' %>
         <!-- title container -->
 
-      <div class="padding">  
-        <div class="p-lg text-center">
-            <div><h1 class="tk-blackoak-std">Currents Fishing Network</h1><br></div>
-            <div class="home-subtitle"><h2 class="helvetica">Your source for real time intel from on the water.</h2></div>
-        </div>
+<!-- header -->
+<div class="padding">  
+  <div class="p-lg text-center">
+      <div>
+        <h1 class="tk-blackoak-std">
+          Currents Fishing Network
+        </h1><br>
       </div>
-        <!-- Features -->
-        <div class="row">
-            <div class="container-fluid">
-                <!-- heatmaps container -->
-                <div class="col-lg-4">
-                    <a href="maps" class="list-group-item">
-                        <div class="panel-heading">
-                            <div class="row vertical-align">
-                                <div class="col-lg-4 col-xs-4">
-                                    <%= image_tag 'mapcopy.png', class: 'img-responsive usp-icon', style: 'display:block' %>
-                                        <!-- <div class="panel-body text-center bg-yellow-light"> -->
-                                </div>
-                                <div class="col-lg-8 col-xs-8">
-                                    <h2 class="usp-heading">Heatmaps</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel-body">
-                            <p>
-                                <strong>Analyze newtork catch reports to target where the fish are.</strong>
-                            </p>
-                            <ul>
-                                <li>Review catch data over past 7 days</li>
-                                <li>View catches by location</li>
-                                <li>Target specific species by location</li>
-                                <li>Heatmap highlights where the bite is</li>
-                                <li>Analyze catch patterns make informaed decisions</li>
-                                <li>Reduce fuel expenses by targeting where the action is</li>
-                            </ul>
-                        </div>
-                    </a>
-                </div>
-                <!-- reports container  -->
-                <div class="col-lg-4">
-                    <a href="reports" class="list-group-item">
-                        <div class="panel-heading">
-                            <div class="row vertical-align">
-                                <div class="col-lg-4 col-xs-4">
-                                    <%= image_tag 'hook.png', class: 'img-responsive usp-icon', style: 'display:block' %>
-                                </div>
-                                <div class="col-lg-8 col-xs-8">
-                                    <h2 class="usp-heading">Daily Intel</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel-body">
-                            <p>
-                                <strong>Daily reports from our network of charter/recreational captains and spotter pilots </strong>
-                            </p>
-                            <ul>
-                                <li>This is <strong>NOT</strong> report chasing</li>
-                                <li>Stay informed with recent intel </li>
-                                <li>Make informed decision on where the bite is moving </li>
-                                <li>Activie community of fisherman who help each other</li>
-                                <li>Stay current on trends that are working</li>
-                                <li>Eliminate lifeless water by knowing where to avoid</li>  
-                            </ul>
-                        </div>
-                    </a>
-                </div>
-                <!-- Intel container -->
-                <div class="col-lg-4">
-                    <a href="buzzs" class="list-group-item">
-                        <div class="panel-heading vertical-align">
-                            <div class="row vertical-align">
-                                <div class="col-lg-4 col-xs-4">
-                                    <%= image_tag 'binocs.png', class: 'img-responsive usp-icon', style: 'display:block' %>
-                                </div>
-                                <div class="col-lg-8 col-xs-8">
-                                    <h2 class="usp-heading">Spotter Planes</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel-body">
-                            <p>
-                                <strong>Weekly spotter plane intel to target where the fish are. We then pass along the exact GPS numbers of offshore fish schools, kelp paddies and more.</strong>
-                            </p>
-                            <ul>
-                                <li>Numbers where schools are spotted</li>
-                                <li>Aeriel photos</li>
-                                <li>Gain advantage by knowing where the fish are</li>
-                                <li>Eliminate Fuel costs</li>
-                                <br>
-                            </ul>
-                        </div>
-                    </a>
+      <div class="home-subtitle">
+        <h2 class="helvetica">
+          Your source for real time intel from on the water
+        </h2>
+      </div>
+  </div>
+</div>
+
+<!-- Features -->
+<div class="row" style="margin-left: 0px;">
+  <div class="container-fluid">
+    <!-- heatmaps container -->
+    <div class="col-lg-4">
+        <a href="maps" class="list-group-item">
+            <div class="panel-body bg-gray-light" style="height: 108px !important;">
+                <div class="row vertical-align" style="margin-left: 0px!important; margin-right: 0px!important;">
+                    <div class="col-lg-4 col-xs-4">
+                        <%= image_tag 'mapcopy.png', class: 'img-responsive usp-icon', style: 'display:block' %>
+                    </div>
+                    <div class="col-lg-8 col-xs-8">
+                        <h2 class="usp-heading">Heatmaps</h2>
+                    </div>
                 </div>
             </div>
-        </div>
-        <br>
-        <!-- hot spot of week row -->
-        <% unless @hotspot.nil? %>
-          <div class="row" style="padding: 20px">
-            <div class="col-lg-3"></div> 
-            
-            <div class="col-lg-6">
-              <div class="text-center">
-                <div class="helvetica">      
-                    Hot Spot of the Week
+            <div class="panel-body">
+                <p>
+                    <strong>Analyze newtork catch reports to target where the fish are.</strong>
+                </p>
+                <ul>
+                    <li>Review catch data over past 7 days</li>
+                    <li>View catches by location</li>
+                    <li>Target specific species by location</li>
+                    <li>Heatmap highlights where the bite is</li>
+                    <li>Analyze catch patterns make informaed decisions</li>
+                    <li>Reduce fuel expenses by targeting where the action is</li>
+                </ul>
+            </div>
+        </a>
+    </div>
+    <!-- reports container  -->
+    <div class="col-lg-4">
+        <a href="reports" class="list-group-item">
+            <div class="panel-body bg-gray-light" style="height: 108px !important;">
+                <div class="row vertical-align" style="margin-left: 0px!important; margin-right: 0px !important;">
+                    <div class="col-lg-4 col-xs-4">
+                        <%= image_tag 'hook.png', class: 'img-responsive usp-icon', style: 'display:block' %>
+                    </div>
+                    <div class="col-lg-8 col-xs-8">
+                        <h2 class="usp-heading">Daily Intel</h2>
+                    </div>
                 </div>
-                <div class="h4">      
-                  <%= @hotspot.commentary %>
+            </div>
+            <div class="panel-body">
+                <p>
+                    <strong>Daily reports from our network of charter/recreational captains and spotter pilots </strong>
+                </p>
+                <ul>
+                    <li>This is <strong>NOT</strong> report chasing</li>
+                    <li>Stay informed with recent intel </li>
+                    <li>Make informed decision on where the bite is moving </li>
+                    <li>Activie community of fisherman who help each other</li>
+                    <li>Stay current on trends that are working</li>
+                    <li>Eliminate lifeless water by knowing where to avoid</li>  
+                </ul>
+            </div>
+        </a>
+    </div>
+    <!-- Intel container -->
+    <div class="col-lg-4">
+        <a href="buzzs" class="list-group-item">
+
+            <div class="panel-heading bg-gray-light vertical-align" style="height: 108px !important;">
+                <div class="row vertical-align" style="margin-left: 0px!important; margin-right: 0px!important;">
+                    <div class="col-lg-4 col-xs-4">
+                        <%= image_tag 'binocs.png', class: 'img-responsive usp-icon', style: 'display:block' %>
+                    </div>
+                    <div class="col-lg-8 col-xs-8">
+                        <h2 class="usp-heading">Spotter Planes</h2>
+                    </div>
                 </div>
-              </div>            
-              <%= image_tag @hotspot.image,  class: 'img-responsive', style: 'display:block; opacity: .95' %>
-            </div>   
-            
-            <div class="col-lg-3"></div>
-          </div>
-      <% end %>
-        
-        <br>        
-
-        <!-- explainer video row -->
-        
-
-        <div class="row">
-          <div class="col-lg-3"></div> 
-          <div class="col-lg-6">
-            <div class="text-center">
-              <div class="helvetica">      
-                  Currents Explained
-              </div>
-                <div class="video-container"> 
-                  <iframe class="homepage_youtube_video" src="https://www.youtube.com/embed/a6asyqPILbI" frameborder="0" allowfullscreen></iframe>
-                </div>
-            </div>   
-          </div>   
-          <div class="col-lg-3"></div>
-        </div>
-
-
-        <!-- join network button -->
-        
-                <br>
-            <div class="p-lg text-center">
-              <% unless current_user.present? %>
-                <%= link_to "Join Network", new_user_registration_path, class: 'btn btn-info btn-lg' %>
-              <% end %>
+            </div>
+            <div class="panel-body">
+                <p>
+                    <strong>Weekly spotter plane intel to target where the fish are. We then pass along the exact GPS numbers of offshore fish schools, kelp paddies and more.</strong>
+                </p>
+                <ul>
+                    <li>Numbers where schools are spotted</li>
+                    <li>Aeriel photos</li>
+                    <li>Gain advantage by knowing where the fish are</li>
+                    <li>Eliminate Fuel costs</li>
+                    <br>
+                </ul>
             </div>
 
+        </a>
+    </div>
+  </div>
+</div>
+
+<!-- feature examples screenshot row -->
+
+<br>        
+<!-- explainer video row -->
+<div class="row">
+  <div class="col-lg-3"></div> 
+  <div class="col-lg-6">
+    <div class="text-center">
+      <div class="helvetica">      
+          Currents Explained
+      </div>
+        <div class="video-container"> 
+          <iframe class="homepage_youtube_video" src="https://www.youtube.com/embed/a6asyqPILbI" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>   
+  </div>   
+  <div class="col-lg-3"></div>
+</div>
 
 
+<!-- join network button -->        
+<br>
+<div class="p-lg text-center">
+  <% unless current_user.present? %>
+    <%= link_to "Join Network", new_user_registration_path, class: 'btn btn-info btn-lg' %>
+  <% end %>
+</div>
+
+
+
+<!-- hot spot of week row -->
+<%# unless @hotspot.nil? %>
+ <!--  <div class="row" style="padding: 20px">
+    <div class="col-lg-3"></div> 
+    
+    <div class="col-lg-6">
+      <div class="text-center">
+        <div class="helvetica">      
+            Hot Spot of the Week
+        </div>
+        <div class="h4">      
+          <%= @hotspot.commentary %>
+        </div>
+      </div>            
+      <%#= image_tag @hotspot.image,  class: 'img-responsive', style: 'display:block; opacity: .95' %>
+    </div>   
+    
+    <div class="col-lg-3"></div>
+  </div> -->
+<%# end %>
 
 

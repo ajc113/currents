@@ -52,9 +52,7 @@ body {
     padding: 0px;
 }
 
-.list-group-item {
-    border: 5px solid #e4eaec;
-}
+
 
 .h1 {
     color: rgba(49, 63, 78, 0.90);
@@ -155,9 +153,10 @@ h2.usp-heading {
 }
 
 .tk-blackoak-std {
-    font-size: 2.3em;
-    letter-spacing: .12em;
+    font-size: 2.2em;
+    letter-spacing: .15em;
     margin: 05px;
+    text-shadow: 1px .5px #1797be;
     /*line-height: 250%;*/
     -webkit-transform: scale(1, 2.1);
     /* Safari and Chrome */
