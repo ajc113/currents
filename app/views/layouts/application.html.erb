@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-97111691-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-97111691-1');
+    </script>
     <%= display_meta_tags %>
     <script src="https://use.typekit.net/yzs0vln.js"></script>
     <script>
@@ -15,14 +23,6 @@
     <%= favicon_link_tag 'favicon.png' %>
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-97111691-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'UA-97111691-1');
-    </script>
   </head>
     
 
