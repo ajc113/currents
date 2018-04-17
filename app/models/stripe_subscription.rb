@@ -2,6 +2,7 @@ class StripeSubscription
   def self.create(user, trial_end = 'now')
     subscription = Stripe::Subscription.create(
       :customer  => user.stripe_customer_id,
+      #:plan      => user.plan.stripe_id,
       :plan      => 'monthly',
       :trial_end => trial_end,
       :metadata  => { "automatic" => true }
