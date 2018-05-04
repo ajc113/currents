@@ -31,11 +31,11 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.friendly.find(params[:id])
-    set_meta_tags title: @post.title,
+    set_meta_tags title: @post.meta_title,
                   site: "Currents Fishing Network",
                   reverse: true,
-                  description: @post.body,
-                  keywords: "New england fishing intel, fishing reports, catch reports, big game fishing, offshore fishing"
+                  description: @post.meta_description,
+                  keywords: @post.meta_keywords
   end
 
 
@@ -70,7 +70,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :body, :image, :image_cache, :remove_image, :youtube_id, :tag_list)
+    params.require(:post).permit(:title, :body, :image, :image_cache, :remove_image, :youtube_id, :tag_list, :meta_title, :meta_description, :meta_keywords)
   end
 
 

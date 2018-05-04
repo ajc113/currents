@@ -38,7 +38,19 @@
     <div class="field form-group">
       <%= f.label :tag_list, "Tags (seperated by commas)" %> <br>
       <%= f.text_field :tag_list, value: f.object.tag_list.to_s, class: 'form-control' %>
-    </div>
+    </div> 
+    <div class="field form-group">
+        <%= f.label :meta_title %><br>
+        <%= f.text_field :meta_title %>
+      </div>
+      <div class="field form-group">
+        <%= f.label :meta_description %><br>
+        <%= f.text_field :meta_description %>
+      </div>
+    <div class="field form-group">
+        <%= f.label :meta_keywords %><br>
+        <%= f.text_field :meta_keywords %>
+      </div>
     <div class="field form-group">
       <%= f.submit  class: "btn btn-inverse btn-md"%> <br>
     </div>

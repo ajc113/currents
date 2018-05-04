@@ -29,11 +29,11 @@ class SpotsController < InheritedResources::Base
 
   def show
     @spot = Spot.friendly.find(params[:id])
-    set_meta_tags title: @spot.title,
+    set_meta_tags title: @spot.meta_title,
                   site: "Currents Fishing Network",
                   reverse: true,
-                  description: @spot.body,
-                  keywords: "New england fishing intel, fishing reports, catch reports, big game fishing, offshore fishing"
+                  description: @spot.meta_description,
+                  keywords: @spot.meta_keywords
 
 
   end
@@ -125,7 +125,7 @@ class SpotsController < InheritedResources::Base
   private
 
     def spot_params
-      params.require(:spot).permit(:title, :body, :image, :tag_list)
+      params.require(:spot).permit(:title, :body, :image, :tag_list,:meta_title, :meta_description, :meta_keywords)
     end
 end
 
