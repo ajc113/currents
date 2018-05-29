@@ -2,11 +2,6 @@ puts "\nCreating Plans"
 
 plans = [
   {
-    name: "Free",
-    stripe_id: nil,
-    price: 0
-  },
-  {
     name: "Monthly",
     stripe_id: "monthly",
     price: 16.99

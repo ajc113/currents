@@ -8,22 +8,23 @@ class ApplicationController < ActionController::Base
 
   def authorize_user!
     authenticate_user!
-    #unless current_user.is_active?
-      #requested_path = request.fullpath
-      #case requested_path
-      #when "/reports"
-        #flash[:warning] = "You must have active subscription to see the <b>Live Fishing Reoports</b> of other users"
-      #when "/maps"
-        #flash[:warning] = "You must have active subscription to use this feature"
-      #end
-      #redirect_to new_card_path
-    #end
+    unless current_user.is_active?
+      requested_path = request.fullpath
+      case requested_path
+      when "/reports"
+        flash[:warning] = "You must have active subscription to see the <b>Live Fishing Reoports</b> of other users"
+      when "/maps"
+        flash[:warning] = "You must have active subscription to use this feature"
+      end
+      redirect_to new_card_path
+    end
   end
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :home_port, :state_waters, :vessel_name])
+    added_attrs = [:first_name, :last_name, :home_port, :state_waters, :vessel_name, :payment_source, :plan_id]
     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :home_port, :state_waters, :vessel_name])
+    devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
   end
 
   helper_method :current_user
@@ -32,13 +33,13 @@ class ApplicationController < ActionController::Base
 
 
   private
+
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :home_port, :state_waters, :vessel_name, :cardholder_name, :cardholder_phone, :postal_code, :payment_source)
+  end
+
   def set_raven_context
     Raven.user_context(id: session[:current_user_id]) # or anything else in session
     Raven.extra_context(params: params.to_unsafe_h, url: request.url)
   end
-  
 end
-
-
-
-

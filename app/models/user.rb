@@ -3,12 +3,12 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable, :confirmable
-  validates :state_waters, presence: true
+  validates :state_waters, :payment_source, presence: true
   has_many :reports
   has_many :buzzs   
   has_many :locations, through: :reports
   belongs_to :state, primary_key: :name, foreign_key: :state_waters
-  #after_create :create_stripe_customer
+  validate :create_stripe_customer, on: :create
   after_create :send_notification if Rails.env.production?
   before_destroy :delete_stripe_customer
 
@@ -33,13 +33,40 @@ class User < ActiveRecord::Base
   end
 
   def create_stripe_customer
+    begin
+      customer = Stripe::Customer.create(
+        email: email,
+        source: payment_source
+      )
+      self.stripe_customer_id = customer.id
+    rescue Stripe::CardError => error
+      errors[:payment_source] << error.message
+    else
+      create_stripe_subscription
+    end
+  end
+
+  def create_stripe_subscription
     unless Rails.env.test?
-      StripeCustomer.create(self)
-      #if Rails.env.development?
-        #StripeSubscription.create(self, DateTime.now.to_i + 300 )
-      #else
-        #StripeSubscription.create(self, (Date.today + 31).to_time.to_i )
-      #end
+      if Rails.env.development?
+        subscription = Stripe::Subscription.create(
+          :customer  => stripe_customer_id,
+          :plan      => plan.stripe_id,
+          :trial_end => DateTime.now.to_i + 300,
+          :metadata  => { "automatic" => true }
+        )
+        self.subscription_id = subscription.id
+        self.is_active = true
+      else
+        subscription = Stripe::Subscription.create(
+          :customer  => stripe_customer_id,
+          :plan      => plan.stripe_id,
+          :trial_end => (Date.today + 3).to_time.to_i,
+          :metadata  => { "automatic" => true }
+        )
+        self.subscription_id = subscription.id
+        self.is_active = true
+      end
     end
   end
 

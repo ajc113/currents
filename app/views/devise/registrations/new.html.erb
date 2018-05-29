@@ -104,8 +104,13 @@
                 <%= f.label :password_confirmation %><br />
                 <%= f.password_field :password_confirmation,  class: "form-control", autocomplete: "off" %>
               </div>
+              <div class="field">
+                <%= f.label :plan_id %>
+                <%= f.select :plan_id, Plan.all.pluck(:name, :id), { prompt: 'Select Plan' }, class: "form-control", autofocus: true, required: true %>
+              </div>
+              <%= render 'shared/sign_up_stripe' %>
               <div class="panel-footer">
-                <button type="submit" class="btn btn-block btn-inverse mt-lg">
+                <button type="submit" class="btn btn-block btn-inverse mt-lg submit">
                   <%= "Sign up" %>
                 </button>
               <% end %>
