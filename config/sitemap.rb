@@ -20,6 +20,7 @@ SitemapGenerator::Sitemap.create do
   add '/reports'
   add '/spotter'
   add '/vhf'
+
   #
   #   add articles_path, :priority => 0.7, :changefreq => 'daily'
   #
