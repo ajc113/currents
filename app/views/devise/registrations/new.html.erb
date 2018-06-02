@@ -106,7 +106,17 @@
               </div>
               <div class="field">
                 <%= f.label :plan_id %>
-                <%= f.select :plan_id, Plan.all.pluck(:name, :id), { prompt: 'Select Plan' }, class: "form-control", autofocus: true, required: true %>
+                <div class="plans">
+                  <% Plan.active.each do |plan| %>
+                    <div class="plan">
+                      <h4><%= plan.name %></h4>
+                      <h4><%= number_to_currency plan.price %></h4>
+                      <h5><%= 'Discount of <b>$93.00</b>'.html_safe if plan.stripe_id == 'yearly' %></h5>
+                      <%= f.label "select" %>
+                      <%= f.radio_button :plan_id, plan.id %>
+                    </div>
+                  <% end %>
+                </div>
               </div>
               <%= render 'shared/sign_up_stripe' %>
               <div class="panel-footer">

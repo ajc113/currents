@@ -242,3 +242,12 @@ h2.usp-heading {
 .turbolinks-progress-bar {
   background-color: #8b0000;
 }
+
+.plans {
+  display: flex;
+  text-align: center;
+}
+
+.plan {
+  flex: 1;
+}

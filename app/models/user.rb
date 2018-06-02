@@ -51,7 +51,7 @@ class User < ActiveRecord::Base
       if Rails.env.development?
         subscription = Stripe::Subscription.create(
           :customer  => stripe_customer_id,
-          :plan      => plan.stripe_id,
+          :plan      => self.plan.stripe_id,
           :trial_end => DateTime.now.to_i + 300,
           :metadata  => { "automatic" => true }
         )
