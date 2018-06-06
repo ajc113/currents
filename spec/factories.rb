@@ -48,12 +48,20 @@ FactoryGirl.define do
     located "MyString"
   end
 
+  factory :plan do
+    stripe_id "monthly"
+    name "Monthly"
+    active true
+    price 16
+  end
+
   factory :user do
     email { FFaker::Internet.email }
     password "abcdef"
     sign_in_count "4"
     state
     confirmed_at DateTime.now
+    plan
 
     factory :non_customer do
       stripe_customer_id ""

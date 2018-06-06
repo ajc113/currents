@@ -17,7 +17,7 @@
             "charge": null,
             "closed": true,
             "currency": "usd",
-            "customer": "cus_ChH7mwvQrC9gxh",
+            "customer": "cus_dummy_stripe",
             "date": 1523967067,
             "description": null,
             "discount": null,

@@ -2,6 +2,12 @@ require 'rails_helper'
 
 RSpec.describe StripeController, type: :controller do
 
+  describe "customer.subscription.trial_will_end" do
+    let(:payload) { File.read("spec/support/stripe/evt_customer_subscription_trial_will_end.json") }
+    it "is successful" do
+    end
+  end
+
   describe "customer.subscription.deleted" do
     let(:payload) { File.read("spec/support/stripe/evt_customer_subscription_deleted.json") }
     it "is successful" do

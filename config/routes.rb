@@ -3,18 +3,18 @@ Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-    namespace :admin do
-      resources :users do
-        resources :reports
-      end
+  namespace :admin do
+    resources :users do
+      resources :reports
     end
+  end
   devise_for :users, sign_out_via: [:get, :delete], :controllers => { :registrations => 'users/registrations' }
 
   root to: 'currents#index'
 
   # :registrations => "users/registrations"
   resources :spots
-  resources :intels 
+  resources :intels
   resources :locations
   resources :buzzs
   resources :reports
@@ -22,19 +22,17 @@ Rails.application.routes.draw do
   resources :currents
   resources :invoices, only: [:index, :show]
   resources :posts do
-  resources :comments
+    resources :comments
   end
 
-
- 
-  
   resource :card
   put 'subscribe', to: 'subscribe#create'
   # resources :tags, only: [:index, :show]
 
 
   resource :my_account, only: [:show, :destroy], controller: 'my_account'
-  post 'stripe_events', to: 'stripe#events', as: 'stripe_events'
+  #post 'stripe_events', to: 'stripe#events', as: 'stripe_events'
+  mount StripeEvent::Engine, at: '/stripe_events'
 
   #Data API
   get 'species_filter', to: 'maps#filter_by_species', as: :species_filter
@@ -48,7 +46,7 @@ Rails.application.routes.draw do
   get 'pricing', to: 'currents#pricing'
   get 'tags/:tag', to: 'posts#tag', as: :tag
   get 'spotter', to: 'intels#spotter'
-  
+
   # Spots Pages
   get 'ma_inshore', to: 'spots#ma_inshore'
   get 'east_of_chatham', to: 'spots#east_of_chatham'
@@ -57,7 +55,7 @@ Rails.application.routes.draw do
   get 'boat_ramps', to: 'spots#boat_ramps'
 
 
-    #Extra
+  #Extra
   get 'test', to: 'currents#test'
   get 'tag', to: 'posts#tag'
 end
