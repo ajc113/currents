@@ -31,6 +31,8 @@ Rails.application.routes.draw do
 
 
   resource :my_account, only: [:show, :destroy], controller: 'my_account'
+  resource :plan, only: [:show, :update]
+  post 'preview' => "plans#preview_proration"
   #post 'stripe_events', to: 'stripe#events', as: 'stripe_events'
   mount StripeEvent::Engine, at: '/stripe_events'
 

@@ -129,4 +129,8 @@ class User < ActiveRecord::Base
     return result if result > 0
     return nil if result < 0
   end
+
+  def active_plans_for_user
+    Plan.active.where.not(id: plan.id)
+  end
 end

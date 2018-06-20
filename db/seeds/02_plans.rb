@@ -4,12 +4,14 @@ plans = [
   {
     name: "Monthly",
     stripe_id: "monthly",
-    price: 16.99
+    price: 16.99,
+    active: true
   },
   {
     name: "Yearly",
     stripe_id: "yearly",
-    price: 99.99
+    price: 99.99,
+    active: true
   }
 ]
 

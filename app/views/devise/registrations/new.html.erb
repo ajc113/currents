@@ -113,7 +113,7 @@
                       <h4><%= number_to_currency plan.price %></h4>
                       <h5><%= 'Discount of <b>$93.00</b>'.html_safe if plan.stripe_id == 'yearly' %></h5>
                       <%= f.label "select" %>
-                      <%= f.radio_button :plan_id, plan.id %>
+                      <%= f.radio_button :plan_id, plan.id, required: true %>
                     </div>
                   <% end %>
                 </div>
