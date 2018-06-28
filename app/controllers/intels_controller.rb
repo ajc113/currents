@@ -7,8 +7,8 @@ class IntelsController < InheritedResources::Base
     set_meta_tags title: "Daily Intel",
                   site: "Currents Fishing Network",
                   reverse: true,
-                  description: "New england daily fishing intel and catch reports from our network of charter, commercial, and recreational captains", 
-                  keywords: "New england fishing intel, boat ramps, catch reports, big game fishing, offshore fishing"
+                  description: "New england fishing reports from our network of charter, commercial, and recreational captains", 
+                  keywords: "New england fishing reports, boat ramps, catch reports, big game fishing, offshore fishing"
   end
 
 
@@ -29,11 +29,11 @@ class IntelsController < InheritedResources::Base
 
   def show
     @intel = Intel.friendly.find(params[:id])
-    set_meta_tags title: @intel.title,
+    set_meta_tags title: "Catch reports for " @intel.title,
                   site: "Currents Fishing Network",
                   reverse: true,
-                  description: @intel.body,
-                  keywords: "New england fishing intel, fishing reports, catch reports, big game fishing, offshore fishing"
+                  description: "Daily fishing reports for New England",
+                  keywords: "New england fishing reports, fishing reports, catch reports, big game fishing, offshore fishing"
 
 
   end
