@@ -1,5 +1,5 @@
 class IntelsController < InheritedResources::Base
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
 
 
   def index
@@ -29,7 +29,7 @@ class IntelsController < InheritedResources::Base
 
   def show
     @intel = Intel.friendly.find(params[:id])
-    set_meta_tags title: "Catch reports for " @intel.title,
+    set_meta_tags title: "Daily fishing reports for New England",
                   site: "Currents Fishing Network",
                   reverse: true,
                   description: "Daily fishing reports for New England",
