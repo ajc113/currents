@@ -39,6 +39,7 @@
 //= require Chart.bundle
 //= require chartkick
 //= require posts
+//= require plans
 
 
 

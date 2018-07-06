@@ -1,7 +1,10 @@
 class StripeCustomer
 
   def self.create(user)
-    customer = Stripe::Customer.create(email: user.email)
+    customer = Stripe::Customer.create(
+      email: user.email,
+      source: user.payment_source
+    )
     user.stripe_customer_id = customer.id
     user.save!
   end

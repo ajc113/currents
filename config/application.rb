@@ -8,17 +8,18 @@ Bundler.require(*Rails.groups)
 require 'carrierwave/orm/activerecord'
 module Currents
   class Application < Rails::Application
-  config.active_record.raise_in_transactional_callbacks = true
-  config.active_job.queue_adapter = :delayed_job
+    config.active_record.raise_in_transactional_callbacks = true
+    config.active_job.queue_adapter = :delayed_job
 
 
-require 'csv'
+    require 'csv'
 
+    if Rails.env.production?
+      Raven.configure do |config|
+        config.dsn = 'https://bb708a31d3cf4207b8fba0858dd0aed7:3521b84ea8364a4185c28181e73296ae@sentry.io/284690'
 
-Raven.configure do |config|
-  config.dsn = 'https://bb708a31d3cf4207b8fba0858dd0aed7:3521b84ea8364a4185c28181e73296ae@sentry.io/284690'
-
-end
+      end
+    end
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

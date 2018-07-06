@@ -1,4 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+
   # DELETE /resource
   def destroy
     resource.soft_delete

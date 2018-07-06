@@ -1,0 +1,30 @@
+{
+  "id": "evt_1C51YADyDCrOMJ6PJCC4lIjt",
+  "type": "payout.paid",
+  "data": {
+    "object": {
+      "id": "po_1C51YADyDCrOMJ6PSKVfVnbr",
+      "object": "payout",
+      "amount": 844,
+      "arrival_date": 1520985600,
+      "automatic": true,
+      "balance_transaction": "txn_1C51YADyDCrOMJ6PgiJ7LUPk",
+      "created": 1520903014,
+      "currency": "usd",
+      "description": "STRIPE TRANSFER",
+      "destination": "ba_1AwDB0DyDCrOMJ6Pb68azIzw",
+      "failure_balance_transaction": null,
+      "failure_code": null,
+      "failure_message": null,
+      "livemode": false,
+      "metadata": {
+      },
+      "method": "standard",
+      "source_type": "card",
+      "statement_descriptor": null,
+      "status": "in_transit",
+      "type": "bank_account"
+    },
+    "previous_attributes": null
+  }
+}

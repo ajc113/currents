@@ -1,0 +1,17 @@
+<div style="text-align: center;">
+  <h3>Current Plan</h3>
+  <div>
+    Current Plan: <%= current_user.plan.name + "|" + current_user.plan.stripe_id %>
+  </div>
+  <div>
+    <%= form_for :plan, method: :patch, html: { style: "width: 50%; margin: auto" } do |f| %>
+      <div class="field">
+        <%= f.collection_select 'current_plan_id', current_user.active_plans_for_user, :id, :name, { prompt: "Change Plan" }, { class: "form-control" } %>
+      </div>
+      <div class="field">
+        <%= f.submit 'Submit', class: "form-control" %>
+      </div>
+    <% end %>
+        <%= button_to 'Preview Update', { action: 'preview_proration' }, form_class: 'preivew-proration', remote: true  %>
+  </div>
+</div>

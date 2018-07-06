@@ -6,7 +6,8 @@ class GithubIssues
     @data = data
   end
   def self.create(error, class_name, method_name, data)
-    puts "#{error.message} || #{class_name} || #{method_name} || #{data.inspect.to_yaml}"
-    PartyFoul::RacklessExceptionHandler.handle(error, class: @class_name, method: @method_name, params: data.inspect) if Rails.env.production?
+    Rails.logger.debug("\e[31mERROR: #{error.message} || #{class_name} || #{method_name} || #{data.inspect.to_yaml}\e[0m")
+    PartyFoul::RacklessExceptionHandler.handle(error, class: @class_name, method: @method_name, params: data.inspect) if Rails.env.production? and return
+    raise unless Rails.env.production? and return
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180504013345) do
+ActiveRecord::Schema.define(version: 20180602061745) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -136,6 +136,15 @@ ActiveRecord::Schema.define(version: 20180504013345) do
     t.text     "demographic"
     t.integer  "number"
     t.string   "state_waters"
+  end
+
+  create_table "plans", force: :cascade do |t|
+    t.string   "stripe_id"
+    t.string   "name"
+    t.integer  "price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "active",     default: false
   end
 
   create_table "posts", force: :cascade do |t|
@@ -264,10 +273,12 @@ ActiveRecord::Schema.define(version: 20180504013345) do
     t.boolean  "is_active",              default: true, null: false
     t.string   "payment_source"
     t.datetime "deleted_at"
+    t.integer  "plan_id"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["plan_id"], name: "index_users_on_plan_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "buzzs", "users"

@@ -1,0 +1,116 @@
+{
+  "id": "evt_1CZt35Ll1LzrhllYmVIu0hR9",
+  "object": "event",
+  "api_version": "2017-06-05",
+  "created": 1528258503,
+  "data": {
+    "object": {
+      "id": "ch_1CZt34Ll1LzrhllY5N4ZmdhB",
+      "object": "charge",
+      "amount": 9999,
+      "amount_refunded": 0,
+      "application": null,
+      "application_fee": null,
+      "balance_transaction": null,
+      "captured": false,
+      "created": 1528258502,
+      "currency": "usd",
+      "customer": "cus_CzsFw6y3mFPVkL",
+      "description": null,
+      "destination": null,
+      "dispute": null,
+      "failure_code": "card_declined",
+      "failure_message": "Your card was declined.",
+      "fraud_details": {
+      },
+      "invoice": "in_1CZsbBLl1LzrhllYvoqNmRRg",
+      "livemode": false,
+      "metadata": {
+      },
+      "on_behalf_of": null,
+      "order": null,
+      "outcome": {
+        "network_status": "declined_by_network",
+        "reason": "generic_decline",
+        "risk_level": "normal",
+        "seller_message": "The bank did not return any further details with this decline.",
+        "type": "issuer_declined"
+      },
+      "paid": false,
+      "receipt_email": null,
+      "receipt_number": null,
+      "refunded": false,
+      "refunds": {
+        "object": "list",
+        "data": [
+        ],
+        "has_more": false,
+        "total_count": 0,
+        "url": "/v1/charges/ch_1CZt34Ll1LzrhllY5N4ZmdhB/refunds"
+      },
+      "review": null,
+      "shipping": null,
+      "source": {
+        "id": "src_1CZsVELl1LzrhllY06DZX95t",
+        "object": "source",
+        "amount": null,
+        "card": {
+          "exp_month": 2,
+          "exp_year": 2022,
+          "address_zip_check": "pass",
+          "brand": "Visa",
+          "card_automatically_updated": false,
+          "country": "US",
+          "cvc_check": null,
+          "fingerprint": "9v9FCPP2l1FZBQ66",
+          "funding": "credit",
+          "last4": "0341",
+          "three_d_secure": "optional",
+          "address_line1_check": null,
+          "tokenization_method": null,
+          "dynamic_last4": null
+        },
+        "client_secret": "src_client_secret_CzsFtB8kw7FtK0Wl5HFgNP7o",
+        "created": 1528258503,
+        "currency": null,
+        "customer": "cus_CzsFw6y3mFPVkL",
+        "flow": "none",
+        "livemode": false,
+        "metadata": {
+        },
+        "owner": {
+          "address": {
+            "city": null,
+            "country": null,
+            "line1": null,
+            "line2": null,
+            "postal_code": "Laborum Porro consequatur Inventore commodo autem dolores sit accusantium corrupti aliquam et aut adipisci eos sed itaque dolor et",
+            "state": null
+          },
+          "email": null,
+          "name": "Xandra Booth",
+          "phone": "+459-47-3147173",
+          "verified_address": null,
+          "verified_email": null,
+          "verified_name": null,
+          "verified_phone": null
+        },
+        "statement_descriptor": null,
+        "status": "chargeable",
+        "type": "card",
+        "usage": "reusable"
+      },
+      "source_transfer": null,
+      "statement_descriptor": null,
+      "status": "failed",
+      "transfer_group": null
+    }
+  },
+  "livemode": false,
+  "pending_webhooks": 1,
+  "request": {
+    "id": "req_rqVSrNb64u88Tz",
+    "idempotency_key": null
+  },
+  "type": "charge.failed"
+}

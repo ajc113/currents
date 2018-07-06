@@ -1,0 +1,104 @@
+{
+  "id": "evt_1CZsVILl1LzrhllYUqrZOyWg",
+  "object": "event",
+  "api_version": "2017-06-05",
+  "created": 1528256408,
+  "data": {
+    "object": {
+      "id": "sub_CzsFwGlEJHnKxO",
+      "object": "subscription",
+      "application_fee_percent": null,
+      "billing": "charge_automatically",
+      "billing_cycle_anchor": 1528256707,
+      "cancel_at_period_end": false,
+      "canceled_at": null,
+      "created": 1528256408,
+      "current_period_end": 1528256707,
+      "current_period_start": 1528256408,
+      "customer": "cus_dummy_stripe",
+      "days_until_due": null,
+      "discount": null,
+      "ended_at": null,
+      "items": {
+        "object": "list",
+        "data": [
+          {
+            "id": "si_CzsFpuYuoLk7mv",
+            "object": "subscription_item",
+            "created": 1528256408,
+            "metadata": {
+            },
+            "plan": {
+              "id": "yearly",
+              "object": "plan",
+              "aggregate_usage": null,
+              "amount": 9999,
+              "billing_scheme": "per_unit",
+              "created": 1527613704,
+              "currency": "usd",
+              "interval": "year",
+              "interval_count": 1,
+              "livemode": false,
+              "metadata": {
+              },
+              "name": "Yearly",
+              "nickname": null,
+              "product": "prod_Cx5UyyRvN2RFd2",
+              "statement_descriptor": null,
+              "tiers": null,
+              "tiers_mode": null,
+              "transform_usage": null,
+              "trial_period_days": null,
+              "usage_type": "licensed"
+            },
+            "quantity": 1,
+            "subscription": "sub_CzsFwGlEJHnKxO"
+          }
+        ],
+        "has_more": false,
+        "total_count": 1,
+        "url": "/v1/subscription_items?subscription=sub_CzsFwGlEJHnKxO"
+      },
+      "livemode": false,
+      "metadata": {
+        "automatic": "true"
+      },
+      "plan": {
+        "id": "yearly",
+        "object": "plan",
+        "aggregate_usage": null,
+        "amount": 9999,
+        "billing_scheme": "per_unit",
+        "created": 1527613704,
+        "currency": "usd",
+        "interval": "year",
+        "interval_count": 1,
+        "livemode": false,
+        "metadata": {
+        },
+        "name": "Yearly",
+        "nickname": null,
+        "product": "prod_Cx5UyyRvN2RFd2",
+        "statement_descriptor": null,
+        "tiers": null,
+        "tiers_mode": null,
+        "transform_usage": null,
+        "trial_period_days": null,
+        "usage_type": "licensed"
+      },
+      "quantity": 1,
+      "start": 1528256408,
+      "status": "trialing",
+      "tax_percent": null,
+      "trial_end": 1528256707,
+      "trial_start": 1528256408
+    }
+  },
+  "livemode": false,
+  "pending_webhooks": 1,
+  "request": {
+    "id": "req_2sb6OTPLFAaXjR",
+    "idempotency_key": null
+  },
+  "type": "customer.subscription.created"
+}
