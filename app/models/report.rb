@@ -33,8 +33,8 @@ class Report < ActiveRecord::Base
     File.read self.location.coordinate_file.path
   end
 
-  after_create :send_notification if Rails.env.production?
-
+  after_create :send_notification
+  # after_create :send_notification if Rails.env.production?
   def send_notification
     AdminMailer.delay.new_report(self)
   end
