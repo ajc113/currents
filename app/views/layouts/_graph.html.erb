@@ -1,5 +1,4 @@
 <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
+<% @users = User.all  %>
+<%= line_chart @users %>
 <%= line_chart User.group_by_week(:created_at).count %>
-
-
-

@@ -37,7 +37,6 @@ class CurrentsController < ApplicationController
                   keywords: "New england fishing intel, fishing reports, catch reports, big game fishing, offshore fishing"		
 	end
 
-
 end
 
 private
