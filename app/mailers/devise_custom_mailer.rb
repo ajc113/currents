@@ -4,7 +4,7 @@ class DeviseCustomMailer < Devise::Mailer
   include Devise::Controllers::UrlHelpers
   #layout 'mailer'
   default from: 'Fishing Network <intel@thefishing.network>'
-  default to: "tannakartikey@gmail.com"
+  default to: "costa.aj@gmail.com"
 
   require "mandrill"
 
@@ -19,7 +19,7 @@ class DeviseCustomMailer < Devise::Mailer
     mail(to: user.email, subject: 'Account confirmation')
   end
 
-  def welcome_mailer (user, opts={})
+  def welcome_mailer(user, opts={})
     @username = name_or_email user
     mandrill = Mandrill::API.new ENV['MANDRILL_API_KEY']
     template_name = "welcome"

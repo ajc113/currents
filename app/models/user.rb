@@ -9,7 +9,8 @@ class User < ActiveRecord::Base
   has_many :locations, through: :reports
   belongs_to :state, primary_key: :name, foreign_key: :state_waters
   after_create :create_stripe_customer
-  after_create :send_notification if Rails.env.production?
+  # after_create :send_notification if Rails.env.production?
+  after_create :send_notification
   before_destroy :delete_stripe_customer
 
 
@@ -27,7 +28,7 @@ class User < ActiveRecord::Base
   end
 
   def send_notification
-    AdminMailer.delay.new_user(self)
+    AdminMailer.new_user(self)
   end
 
   def create_stripe_customer

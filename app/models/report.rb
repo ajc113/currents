@@ -35,6 +35,7 @@ class Report < ActiveRecord::Base
 
   after_create :send_notification
   # after_create :send_notification if Rails.env.production?
+  
   def send_notification
     AdminMailer.delay.new_report(self)
   end
