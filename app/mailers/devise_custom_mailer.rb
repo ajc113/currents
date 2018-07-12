@@ -8,6 +8,8 @@ class DeviseCustomMailer < Devise::Mailer
 
   require "mandrill"
 
+
+
   def confirmation_instructions(user, token, opts={})
     @username = name_or_email user
     @confirmation_link = "http://" + ENV['HOST'] + "/users/confirmation?confirmation_token=" + token
@@ -27,7 +29,9 @@ class DeviseCustomMailer < Devise::Mailer
     merge_vars = [{"content"=> @username, "name"=>"USER_NAME"}]
     @result = (mandrill.templates.render template_name, template_content, merge_vars)['html']
     mail(to: user.email, subject: 'Welcome to Currents Fishing')
-  end  
+  end
+
+
 
   def name_or_email user
     return user.email if user.first_name.blank?

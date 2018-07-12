@@ -1,8 +1,8 @@
 class HotspotsController < ApplicationController
 	
-	def new
-		@hotspot = Hotspot.new
-	end
+def new
+	@hotspot = Hotspot.new
+end
 
 def create 
 	@hostspot = Hotspot.new(hotspot_params)
