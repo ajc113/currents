@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   belongs_to :state, primary_key: :name, foreign_key: :state_waters
   after_create :create_stripe_customer
   after_create :send_notification if Rails.env.production?
+  after_create :send_welcome_email
   before_destroy :delete_stripe_customer
 
 
@@ -28,6 +29,10 @@ class User < ActiveRecord::Base
 
   def send_notification
     AdminMailer.delay.new_user(self)
+  end
+
+  def send_welcome_email
+    DeviseCustomMailer.welcome_mailer(self).deliver
   end
 
   def create_stripe_customer
