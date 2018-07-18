@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   belongs_to :state, primary_key: :name, foreign_key: :state_waters
   after_create :create_stripe_customer
   after_create :send_notification if Rails.env.production?
+  after_create :add_user_to_list
   before_destroy :delete_stripe_customer
 
 
@@ -34,9 +35,9 @@ class User < ActiveRecord::Base
     unless Rails.env.test?
       StripeCustomer.create(self)
       #if Rails.env.development?
-        #StripeSubscription.create(self, DateTime.now.to_i + 300 )
+      #StripeSubscription.create(self, DateTime.now.to_i + 300 )
       #else
-        #StripeSubscription.create(self, (Date.today + 31).to_time.to_i )
+      #StripeSubscription.create(self, (Date.today + 31).to_time.to_i )
       #end
     end
   end
@@ -88,5 +89,17 @@ class User < ActiveRecord::Base
 
   def inactive_message
     !deleted_at ? super : :deleted_account
+  end
+
+  def add_user_to_list
+    gibbon = Gibbon::Request.new(api_key: ENV['MAILCHIMP_KEY'], debug: true)
+    begin
+      gibbon.lists(ENV["MAILCHIMP_LIST_ID_NEWSLETTER"]).members.create(body: {
+        email_address: self.email,
+        status: "subscribed"
+      })
+    rescue Gibbon::MailChimpError => error
+      GithubIssues.create(error, self.class.name, __method__, self.inpsect)
+    end
   end
 end
