@@ -32,7 +32,6 @@ class DeviseCustomMailer < Devise::Mailer
   end
 
 
-
   def name_or_email user
     return user.email if user.first_name.blank?
     user.first_name

@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   after_create :create_stripe_customer
   after_create :send_notification if Rails.env.production?
   after_create :send_welcome_email
+  after_create :add_user_to_list
   before_destroy :delete_stripe_customer
 
 
@@ -30,11 +31,23 @@ class User < ActiveRecord::Base
   end
 
   def send_notification
-    AdminMailer.new_user(self)
+    AdminMailer.new_user(self).deliver
   end
 
   def send_welcome_email
     DeviseCustomMailer.welcome_mailer(self).deliver
+  end
+
+  def add_user_to_list
+    gibbon = Gibbon::Request.new(api_key: ENV['MAILCHIMP_KEY'], debug: true)
+    begin
+      gibbon.lists(ENV["MAILCHIMP_LIST_ID_NEWSLETTER"]).members.create(body: {
+        email_address: self.email,
+        status: "subscribed"
+      })
+    rescue Gibbon::MailChimpError => error
+      GithubIssues.create(error, self.class.name, __method__, self.inpsect)
+    end
   end
 
   def create_stripe_customer

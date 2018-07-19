@@ -2,7 +2,7 @@ class SubscribeController < ApplicationController
   def create
     gibbon = Gibbon::Request.new(api_key: ENV['MAILCHIMP_KEY'], debug: true)
     begin
-      gibbon.lists(ENV["MAILCHIMP_LIST_ID"]).members.create(body: {
+      gibbon.lists(ENV["MAILCHIMP_LIST_ID_LEADS"]).members.create(body: {
         email_address: params[:email],
         status: "pending"
       })
