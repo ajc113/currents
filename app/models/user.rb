@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   belongs_to :state, primary_key: :name, foreign_key: :state_waters
   after_create :create_stripe_customer
   after_create :send_notification if Rails.env.production?
-  after_create :send_welcome_email
+  # after_create :send_welcome_email
   after_create :add_user_to_list
   before_destroy :delete_stripe_customer
 
