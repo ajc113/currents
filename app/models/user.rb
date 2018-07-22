@@ -41,9 +41,10 @@ class User < ActiveRecord::Base
   def add_user_to_list
     gibbon = Gibbon::Request.new(api_key: ENV['MAILCHIMP_KEY'], debug: true)
     begin
-      gibbon.lists(ENV["MAILCHIMP_LIST_ID_NEWSLETTER"]).members.create(body: {
+      gibbon.lists(ENV["MAILCHIMP_LIST_ID_NEWSLETTER"]).members.create(body: { 
         email_address: self.email,
-        status: "subscribed"
+        status: "subscribed",
+        merge_fields: {:FNAME => self.first_name, :LNAME => self.last_name}
       })
     rescue Gibbon::MailChimpError => error
       GithubIssues.create(error, self.class.name, __method__, self.inspect)
