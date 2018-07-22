@@ -46,7 +46,7 @@ class User < ActiveRecord::Base
         status: "subscribed"
       })
     rescue Gibbon::MailChimpError => error
-      GithubIssues.create(error, self.class.name, __method__, self.inpsect)
+      GithubIssues.create(error, self.class.name, __method__, self.inspect)
     end
   end
 
