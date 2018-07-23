@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   after_create :create_stripe_customer
   after_create :send_notification if Rails.env.production?
   # after_create :send_welcome_email
-  after_create :add_user_to_list
+  after_create :add_user_to_list unless Rails.env.test?
   before_destroy :delete_stripe_customer
 
 
