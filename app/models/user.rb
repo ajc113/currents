@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
   end
 
   def add_user_to_list
-    gibbon = Gibbon::Request.new(api_key: ENV['MAILCHIMP_KEY'], debug: true)
+    gibbon = Gibbon::Request.new(api_key: ENV['MAILCHIMP_API_KEY'], debug: true)
     begin
       gibbon.lists(ENV["MAILCHIMP_LIST_ID_NEWSLETTER"]).members.create(body: { 
         email_address: self.email,
