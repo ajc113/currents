@@ -22,6 +22,8 @@ class User < ActiveRecord::Base
     self.email
   end
 
+
+
   def self.last_sign_in_before_week
     where('last_sign_in_at = ? and create_at > ? and payment_source = ?', Date.today - 7, Date.today - 31, nil)
   end
@@ -110,4 +112,15 @@ class User < ActiveRecord::Base
   def inactive_message
     !deleted_at ? super : :deleted_account
   end
+
+
+  # def user_hash
+  #   @data = User.group_by_week(:created_at).count
+  #   accumulator = 0
+  #   @data.transform_values! do |val|
+  #       val += accumulator
+  #       accumulator = val
+  #   end
+  # end
+
 end

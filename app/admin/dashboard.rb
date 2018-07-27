@@ -44,6 +44,16 @@ ActiveAdmin.register_page "Dashboard" do
     end
   end # columns
 
+  def user_hash
+    @data = User.group_by_week(:created_at).count
+    accumulator = 0
+    @data.transform_values! do |val|
+        val += accumulator
+        accumulator = val
+    end
+  end
+
+
      
  end
 end
