@@ -9,7 +9,7 @@ class Report < ActiveRecord::Base
   belongs_to :species
   belongs_to :state, foreign_key: :state_waters
 
-  by_star_field :date
+  # by_star_field :date
 
   default_scope {order('date DESC')}
 
