@@ -1,15 +1,19 @@
 <%= form_for(@report) do |f| %>
-    <div class="panel-heading" style="font-size: 35px; padding: 4px">
-      <%= current_user.try(:vessel_name) %>
-        <br>
-        Catch Report
-    </div>
-    <legend style="padding: 10px"></legend>
-    
-    <!-- public form panel -->
+
+<!-- Form Title -->
+<div class="panel-title bg-info-dark" style="font-size: 35px; padding: 7px; border-radius: 5px;">
+  <%= current_user.try(:vessel_name) %><br>
+  New Catch Report
+</div>
+
+<!-- line break -->
+
+
+<!-- public form panel -->
+<div class="panel-body bg-gray-lighter"> 
       <div class="field form-group">
         <b><u><h4>Public View</h4></b></u>
-        General data in public view fields are veiwable by other users
+        Users Catch reports are private.  Data in public fields such as location and # of keeprs feed the heatmap for the benefit of the community.
       </div>
       <% if @report.errors.any? %>
         <div id="error_explanation">
@@ -21,7 +25,7 @@
           </ul>
         </div>
       <% end %>
-      <div class="field form-group">
+      <div class="form-group">
         <%= f.label :date %> (Required)<br>
         <%= f.text_field :date, class: 'form-control report-date', type: 'date' %>
       </div>
@@ -47,11 +51,11 @@
         <%= f.label :trip_summary %><br>
         <%= f.text_area :trip_summary, placeholder: "Enter brief trip summary, will be visible in Heatmap", class: 'form-control' %>
       </div>
+</div>
+    
 
-    <!-- break -->
-    <legend style="padding: 10px"></legend>
-
-    <!-- private form panel -->
+<!-- private form panel -->
+<div class="panel-body bg-gray-lighter">
     <div class="form-group">
       <div class="field form-group">
         <b><u>
@@ -91,14 +95,18 @@
         <%= f.label :trip_description %><br>
         <%= f.text_area :trip_description, class: 'form-control' %>
       </div>
-      <br>
     </div>
-    <!-- submit buttons -->
-    <div class="form-group text-center">
-      <%= f.submit class: "btn btn-inverse btn-md" %>
-      <br>
-      <br>
-      <%= link_to 'Back', reports_path, class: "btn btn-default bg-gray" %>
-    </div>
+</div>
+
+<!-- submit buttons -->
+<div class="panel-body bg-gray-lighter">
+  <div class="form-group text-center">
+  <%= f.submit class: "btn btn-inverse btn-md" %>
+    <br>
+    <br>
+  <%= link_to 'Back', reports_path, class: "btn btn-default bg-gray" %>
+  </div>
+</div>
+
 </div>
 <% end %>
