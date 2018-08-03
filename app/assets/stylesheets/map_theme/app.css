@@ -1041,7 +1041,7 @@ _:-ms-lang(x),
 }
 @media only screen and (min-width: 768px) {
   .topnavbar .navbar-header {
-    width: 220px;
+    width: 120px;
     text-align: center;
   }
   .topnavbar .navbar-header .navbar-brand {
