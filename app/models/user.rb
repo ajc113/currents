@@ -15,6 +15,9 @@ class User < ActiveRecord::Base
   before_destroy :delete_stripe_customer
 
 
+  def full_name
+    (first_name if first_name) + ' ' + (last_name if last_name)
+  end
 
 
   #display_name is defined for activeadmin
