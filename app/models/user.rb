@@ -14,8 +14,7 @@ class User < ActiveRecord::Base
   after_create :add_user_to_list unless Rails.env.test?
   before_destroy :delete_stripe_customer
 
-
-    def self.accumulated_user_count
+  def self.accumulated_user_count
     @data = User.group_by_week(:created_at).count
     accumulator = 0
     @data.transform_values! do |val|
@@ -23,6 +22,10 @@ class User < ActiveRecord::Base
         accumulator = val
     end
     @data
+  end
+
+  def full_name
+    (first_name if first_name) + ' ' + (last_name if last_name)
   end
 
 

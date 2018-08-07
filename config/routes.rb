@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     end
   devise_for :users,  :controllers => { :registrations => 'users/registrations' }
 
+  get 'discourse/sso' => 'discourse_sso#sso'
+
   root to: 'currents#index'
 
   # :registrations => "users/registrations"
