@@ -12,6 +12,6 @@ class DiscourseSsoController < ApplicationController
     sso.external_id = current_user.id # from devise
     sso.sso_secret = secret
 
-    redirect_to sso.to_url("http://178.128.5.47/session/sso_login")
+    redirect_to sso.to_url("http://community.thefishing.network/session/sso_login")
   end
 end
