@@ -1,11 +1,7 @@
 ActiveAdmin.register_page "Dashboard" do
-
-  menu priority: 1, label: proc{ I18n.t("active_admin.dashboard") }
+menu priority: 1, label: proc{ I18n.t("active_admin.dashboard") }
   content title: proc{ I18n.t("active_admin.dashboard") } do
     # div class: "blank_slate_container", id: "dashboard_default_message" do
-
-
-
 
 
 
@@ -43,15 +39,6 @@ ActiveAdmin.register_page "Dashboard" do
       end
     end
   end # columns
-
-  def user_hash
-    @data = User.group_by_week(:created_at).count
-    accumulator = 0
-    @data.transform_values! do |val|
-        val += accumulator
-        accumulator = val
-    end
-  end
 
 
      

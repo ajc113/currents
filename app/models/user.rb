@@ -15,6 +15,15 @@ class User < ActiveRecord::Base
   before_destroy :delete_stripe_customer
 
 
+    def self.accumulated_user_count
+    @data = User.group_by_week(:created_at).count
+    accumulator = 0
+    @data.transform_values! do |val|
+        val += accumulator
+        accumulator = val
+    end
+    @data
+  end
 
 
   #display_name is defined for activeadmin
@@ -113,14 +122,5 @@ class User < ActiveRecord::Base
     !deleted_at ? super : :deleted_account
   end
 
-
-  # def user_hash
-  #   @data = User.group_by_week(:created_at).count
-  #   accumulator = 0
-  #   @data.transform_values! do |val|
-  #       val += accumulator
-  #       accumulator = val
-  #   end
-  # end
 
 end

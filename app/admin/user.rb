@@ -1,22 +1,13 @@
 ActiveAdmin.register User do
 
-	permit_params :email, :first_name, :last_name, :home_port, :state_waters, :vessel_name, :subscription_tier, :created_at
+	permit_params :email, :first_name, :last_name, :home_port, :state_waters, :vessel_name, :subscription_tier, :created_at, :HashPatch, :user_hash
 	filter :state, as: :check_boxes
   filter :created_at, label: 'Sign up date'
   filter :subscription_tier, as: :select
 
-   controller do
-    # This code is evaluated within the controller class
-    def users
-    @users = User.all
-    @data = @users.group_by_week(:created_at).count
-    accumulator = 0
-    @data.transform_values! do |val|
-      val += accumulator
-      accumulator = val
-    end
-  end
-end
+
+
+
 
   index do
     selectable_column
@@ -30,6 +21,8 @@ end
     column :sign_in_count
     column :created_at
   end
+
+
 
 
 	sidebar "Reports", only: [:show, :edit] do

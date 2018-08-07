@@ -7,17 +7,5 @@ class Users::RegistrationsController < Devise::RegistrationsController
     yield resource if block_given?
     respond_with_navigational(resource){ redirect_to after_sign_out_path_for(resource_name) }
   end
-
-module HashPatch
-  def accumulate_values!
-    accumulator = 0
-    transform_values! do |val|
-      val+= accumulator
-      accumulator = val
-    end
-  end
-end
-Hash.include HashPatch
-
   
 end

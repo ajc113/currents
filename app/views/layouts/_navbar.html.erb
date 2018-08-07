@@ -18,7 +18,6 @@
       </button>
       <div class="brand-logo">
         <%= link_to image_tag('map_theme/tuna.png',  class: 'img-responsive site-logo', style: 'height: 46px;'), root_path %>
-              <!-- <img src="/assets/map_theme/tuna.png" alt="App Logo" class="img-responsive" style="height: 55px"> -->
       </div>
       <div class="brand-logo-collapsed">
         <%= image_tag 'map_theme/tuna.png',  class: 'img-responsive', style: 'height: 46px;' %>
@@ -31,24 +30,21 @@
     <div class="navbar-collapse collapse">
     <!-- START Left navbar-->
       <ul class="nav navbar-nav">
+        
         <li>
-          <%= link_to "Home", root_path, class: 'navbar-brand', style: "font-size: 15px" %>
+          <%= link_to "Forum", "https://community.thefishing.network", class: 'navbar-brand', style: "font-size: 15px" %>
         </li>
         <li>
           <%= link_to "Intel", intels_path, class: 'navbar-brand', style: "font-size: 15px" %>
         </li>
-        <!--     <li>
-                  <%#= link_to "Spotter  ", spotter_path, class: 'navbar-brand', style: "font-size: 15px" %>
-                </li> -->
+
         <li>
           <%= link_to "Submit a Report", reports_path, class: 'navbar-brand', style: "font-size: 15px" %>
         </li>
         <li>
           <%= link_to "HeatMap", maps_path, class: 'navbar-brand', 'data-turbolinks' => false, style: "font-size: 15px" %>
         </li>
-        <li>
-          <%= link_to "VHF", vhf_path, class: 'navbar-brand', style: "font-size: 15px" %>
-        </li>
+
         <li>
           <%= link_to "Blog", posts_path, class: 'navbar-brand', style: "font-size: 15px" %>
         </li>
@@ -61,8 +57,13 @@
       </ul>
     <!-- END Left navbar-->
 
-
-
+<!-- Links to use in future -->
+<!--     <li>
+<%#= link_to "Spotter  ", spotter_path, class: 'navbar-brand', style: "font-size: 15px" %>
+</li> -->
+<!--         <li>
+<%#= link_to "VHF", vhf_path, class: 'navbar-brand', style: "font-size: 15px" %>
+</li> -->
 
 
     <!-- START Right Navbar-->
@@ -73,9 +74,6 @@
             <span class="link-unstyled">Report Hotline 1-800-208-3817</span>
           </a>
         </li>
-
-
-
 
         <li>
          <a href="https://www.youtube.com/channel/UC2m-KyTZDGfMqss_KQ0E9Xw" target="_blank">
