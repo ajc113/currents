@@ -18,6 +18,7 @@ CKEDITOR.editorConfig = function( config ) {
   config.filebrowserUploadUrl = "/ckeditor/attachment_files";
   config.allowedContent = true;
   // Toolbar groups configuration.
+
   
 
   config.toolbar = [
