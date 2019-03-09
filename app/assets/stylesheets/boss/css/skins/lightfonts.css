@@ -1,0 +1,161 @@
+/* ==============================================
+-------------------------------------------------
+
+Boss Css File to make fonts ligher
+Copy and paste the code below to html file head section
+-------
+<link rel="stylesheet" href="css/skins/lightfonts.css">
+-------
+Caution: Include this file after style.css file
+
+-------------------------------------------------
+============================================== */
+
+body,
+#qLoverlay,
+h1,.h1,
+h2,.h2,
+h3,.h3,
+h4,.h4,
+h5,.h5,
+h6,.h6,
+.lead,
+.team-member .member-desc,
+.big-block h1,
+.big-block .h1,
+.btn,
+.tp-caption.rev-title,
+.tp-caption.rev-subtitle,
+.tp-caption.rev-text,
+.tp-caption.rev-bgtitle,
+.landing-home h3 {
+	font-weight: 300;
+}
+
+h5.lead,
+blockquote cite,
+label.input-desc,
+.progress-text,
+.progress-tooltip,
+.count-container h3 > span,
+.navbar-top .dropdown-menu > li > a,
+.cart-dropdown-desc,
+.cart-dropdown .product-price-container,
+.cart-dropdown .cart-action-total,
+.breadcrumb > li,
+.entry-overlay-meta .entry-title,
+.category-block,
+.social-block > span,
+.pricing-table .price,
+.entry-footer a,
+.entry-label,
+.entry-simple .entry-title,
+.sidebar .widget .latest-posts-list .entry-content p a,
+.sidebar .widget .products-list .entry-content p a,
+.comments-list .comment-date,
+.reply-link,
+.about-box h5,
+.testimonial-content h4,
+.testimonial-content h5,
+.testimonial-content h4 a,
+.testimonial-content h5 a,
+.event-label,
+.knowledge-box ul li,
+.product-price,
+.product-old-price,
+.product-details .product-title,
+.product-details .product-ratings-count,
+.product-details .product-price,
+.product-details .product-tags > span,
+.filter-row-label,
+#category-widget > li > a,
+.table .price-col,
+.table .price-total-col,
+.table .table-info-title,
+.table .table-info-content,
+.table .table-info-title,
+.shop-continue-box .subtotal-row,
+.shop-continue-box .shipping-row,
+.shop-continue-box .grandtotal-row,
+.shop-continue-box .grandtotal-row > span,
+.shop-continue-box .multiple-link,
+.table .brand-col,
+.checkout .helper-link,
+.checkout-progress-box ul li > span,
+.checkout-progress-box a,
+.portfolio-tags a,
+.portfolio-favourite > span,
+.portfolio-details-list li span,
+.error-subtitle,
+#footer a,
+.corporate-widget .social-icons-label,
+.widget .products-list p,
+#footer.footer-inverse a,
+#footer.footer-default a,
+#footer.footer-custom a,
+.navbar-nav > li > a, 
+.navbar-nav li a,
+.progress-title,
+.popover-title,
+.count,
+.label,
+.navbar-top,
+.navbar-brand,
+#header-search-form .form-control,
+.cart-dropdown .product-name ,
+.portfolio-header .typed-heading ,
+.portfolio-heading-title ,
+#infscr-loading,
+.pricing-table .price span,
+.entry-date,
+.timeline-date,
+.timeline-section-date,
+.product-title,
+.product-box,
+#category-widget a,
+.filter-brand-list a,
+.table thead > tr > th,
+.table thead > tr > th,
+.table .table-title,
+#portfolio-filter li a,
+.portfolio-title,
+.error-title,
+.error-subtitle,
+#footer .widget h4,
+.footer-logo,
+.section-title.normal,
+.bg-lightergray .section-title.normal,
+.bg-lightgray .section-title.normal,
+.bg-gray .section-title.normal,
+.section-title.smaller.normal,
+.landing-home h1,
+.newsletter-popup label.input-desc,
+.newsletter-popup .popup-end-info,
+.tparrows.preview4 .tp-arr-titleholder {
+	font-weight: 400;
+}
+
+b, strong {
+	font-weight: 500;
+}
+
+.title-underblock:after {
+	height:1px;
+}
+
+.title-border {
+	border-left-width: 1px;
+}
+
+.nav-tabs > li.active > a, 
+.nav-tabs > li.active > a:hover, 
+.nav-tabs > li.active > a:focus {
+	border-top-width: 2px;
+	margin-top: -1px;
+}
+
+.callout.bordered,
+.tp-caption.rev-title,
+.btn.btn-border {
+	border-width: 1px;
+}

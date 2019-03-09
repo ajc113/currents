@@ -1,126 +1,86 @@
-<style>
-.nav > li {
-    display: flex;
-}
-</style>
-
-<header class="topnavbar-wrapper">
-
-  <!-- START Top Navbar-->
-  <nav role="navigation" class="navbar topnavbar">
-  <!-- START navbar header-->
-    <div class="navbar-header">
-      <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <div class="brand-logo">
-        <%= link_to image_tag('map_theme/tuna.png',  class: 'img-responsive site-logo', style: 'height: 46px;'), root_path %>
+<div class="boss-loader-overlay"></div>
+<!-- End .boss-loader-overlay -->
+  <style>
+    .nav > li {
+        display: flex;
+    }
+  </style>
+  <header id="header" role="banner">
+    <div class="collapse navbar-inverse special-for-mobile" id="header-search-form">
+      <div class="container">
+        <form class="navbar-form animated fadeInDown">
+          <input type="search" id="s" name="s" class="form-control" placeholder="Search in here...">
+          <button type="submit" class="btn-circle" title="Search"><i class="fa fa-search"></i></button>
+        </form>
       </div>
-      <div class="brand-logo-collapsed">
-        <%= image_tag 'map_theme/tuna.png',  class: 'img-responsive', style: 'height: 46px;' %>
+      <!-- End .container -->
+    </div>
+    <!-- End #header-search-form -->
+    <nav class="navbar navbar-inverse navbar-transparent animated-dropdown ttb-dropdown" role="navigation">
+      <div class="sticky-wrapper">
+        <div class="navbar-inner sticky-menu">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle btn-circle pull-right collapsed" data-toggle="collapse" data-target="#main-navbar-container">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+              </button>
+              <%= link_to image_tag('map_theme/tuna.png', style: 'background: #1797be', height: 50, width: 50), root_path, class: 'navbar-brand' %>
+              <button type="button" class="navbar-btn btn-icon btn-circle pull-right last visible-sm visible-xs" data-toggle="collapse" data-target="#header-search-form"><i class="fa fa-search"></i></button>
+            </div>
+            <!-- End .navbar-header -->
+            <div class="collapse navbar-collapse" id="main-navbar-container">
+              <ul class="nav navbar-nav">
+                <li>
+                  <%= link_to "Forum", "https://community.thefishing.network" %>
+                </li>
+                <li>
+                  <%= link_to "Intel", intels_path %>
+                </li>
+                <li>
+                  <%= link_to "Submit a Report", reports_path %>
+                </li>
+                <li>
+                  <%= link_to "HeatMap", maps_path %>
+                </li>
+                <li>
+                  <%= link_to "Blog", posts_path %>
+                </li>
+                <li>
+                  <%= link_to "Spots", spots_path %>
+                </li>
+                <li>
+                  <%= link_to "About", about_path %>
+                </li>
+              </ul>
+              <ul class="nav navbar-nav pull-right">
+                <li>
+                  <a href="tel:+18002083817">
+                    <span class="link-unstyled">Report Hotline 1-800-208-3817</span>
+                  </a>
+                </li>
+                <% if current_user %>
+                  <li>
+                    <%= link_to "My Account", edit_user_registration_path %>
+                  </li>
+                  <li>
+                    <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+                  </li>
+                <% else %>
+                  <li>
+                    <%= link_to "Register", new_user_registration_path %>
+                  </li>
+                  <li>
+                    <%= link_to "Sign In", new_user_session_path %>
+                  </li>
+                </ul>
+              <% end %>
+            </div>
+            <!-- /.navbar-collapse -->
+          </div>
+          <!-- /.container -->
+        </div>
       </div>
-    </div>
-  <!-- END navbar header-->
-  
-
-    <!-- START Nav wrapper-->
-    <div class="navbar-collapse collapse">
-    <!-- START Left navbar-->
-      <ul class="nav navbar-nav">
-        
-        <li>
-          <%= link_to "Forum", "https://community.thefishing.network", class: 'navbar-brand', style: "font-size: 16px" %>
-        </li>
-        <li>
-          <%= link_to "Intel", intels_path, class: 'navbar-brand', style: "font-size: 16px" %>
-        </li>
-
-        <li>
-          <%= link_to "Submit a Report", reports_path, class: 'navbar-brand', style: "font-size: 16px" %>
-        </li>
-        <li>
-          <%= link_to "HeatMap", maps_path, class: 'navbar-brand', 'data-turbolinks' => false, style: "font-size: 16px" %>
-        </li>
-
-        <li>
-          <%= link_to "Blog", posts_path, class: 'navbar-brand', style: "font-size: 16px" %>
-        </li>
-        <li>
-          <%= link_to "Spots", spots_path, class: 'navbar-brand', style: "font-size: 16px" %>
-        </li>
-        <li>
-          <%= link_to "About", about_path, class: 'navbar-brand', style: "font-size: 16px" %>
-        </li>
-      </ul>
-    <!-- END Left navbar-->
-
-<!-- Links to use in future -->
-<!--     <li>
-<%#= link_to "Spotter  ", spotter_path, class: 'navbar-brand', style: "font-size: 15px" %>
-</li> -->
-<!--         <li>
-<%#= link_to "VHF", vhf_path, class: 'navbar-brand', style: "font-size: 15px" %>
-</li> -->
-
-
-    <!-- START Right Navbar-->
-      <ul class="nav navbar-nav navbar-right">
-      <!-- Social Media Icones-->
-        <li>
-          <a href="tel:+18002083817">
-            <span class="link-unstyled">Report Hotline 1-800-208-3817</span>
-          </a>
-        </li>
-
-        <li>
-         <a href="https://www.youtube.com/channel/UC2m-KyTZDGfMqss_KQ0E9Xw" target="_blank">
-            <em class="icon-social-youtube"></em>
-          </a>
-        </li>
-        <li>
-           <a href="https://twitter.com/network_fishing" target="_blank">
-            <em class="icon-social-twitter"></em>
-           </a>
-        </li>
-        <li>
-         <a href="https://www.facebook.com/CurrentsFishingNetwork/" target="_blank">
-            <em class="icon-social-facebook"></em>
-          </a>
-        </li>
-        <li>
-         <a href="https://www.instagram.com/currentsfishingnetwork" target="_blank">
-            <em class="icon-social-instagram"></em>
-          </a>
-        </li>
-    
-        
-        <!-- User Link -->       
-        <% if current_user %>
-          <li>
-              <%= link_to "My Account", edit_user_registration_path %>
-          </li>
-          
-	  <li>
-              <%#= link_to "My Account", my_account_path %>
-          </li>
-
-          <li>
-            <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-          </li>
-          <% else %>
-          <li>
-          <%= link_to "Register", new_user_registration_path %>
-          </li>
-          <li>
-            <%= link_to "Sign In", new_user_session_path %>
-          </li>
-            <% end %>
-      </ul>
-      <!-- END Right Navbar-->
-    </div>
-  </nav>
-    <!-- END Top Navbar-->
-</header>
+      <!-- End .navbar-inner -->
+    </nav>
+  </header>

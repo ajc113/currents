@@ -1,0 +1,221 @@
+.sbHolder {
+	background-color: transparent;
+	border: 1px solid #eaeaea;
+	font-size: 14px;
+	line-height: 24px;
+	height: 40px;
+	position: relative;
+	width: 100%;
+	float:none;
+	border-radius:4px;
+}
+
+.large-selectbox .sbHolder {
+	height:46px;
+	font-size:16px;
+	border-radius:6px;
+}
+
+.small-selectbox .sbHolder {
+	height:32px;
+	font-size:13px;
+	border-radius:3px;
+}
+
+.input-group .sbHolder {
+	border-radius: 0 4px 4px 0;
+}
+
+.input-group .large-selectbox .sbHolder {
+	border-radius: 0 6px 6px 0;
+}
+
+.input-group .large-selectbox {
+	display:table-cell;
+}
+
+.input-group .normal-selectbox {
+	display:table-cell;
+}
+
+.sbSelector {
+	display: block;
+	height: 40px;
+	left: 0;
+	line-height:40px;
+	outline: none;
+	overflow: hidden;
+	position: absolute;
+	text-indent: 16px;
+	top: 0;
+	width: 100%;
+}
+
+.large-selectbox .sbSelector { 
+	height:48px;
+	line-height:48px;
+	text-indent: 18px;
+}
+
+.small-selectbox .sbSelector { 
+	height:32px;
+	line-height:32px;
+	text-indent: 10px;
+}
+
+.sbSelector:link, 
+.sbSelector:visited, 
+.sbSelector:hover {
+	color: inherit;
+	outline: none;
+	text-decoration: none;
+}
+
+.sbToggle {
+	color: #6a6a6a;
+	background: transparent;
+	display: block;
+	width: 40px;
+	outline: none;
+	position: absolute;
+	right: 0;
+	top: -1px;
+	height: 40px;
+	font-family: 'FontAwesome';
+	font-size:18px;
+	border-radius:0 4px 4px 0;
+	border-left:1px solid #eaeaea;
+}
+
+.sbToggle:after {
+	content: "\f107";
+	position: absolute;
+	right:0;
+	top:0;
+	display: inline-block;
+	width:40px;
+	height:40px;
+	line-height: 40px;
+	text-align: center;
+}
+
+
+.large-selectbox .sbToggle  { 
+	width: 46px;
+	height:46px;
+	right:-1px;
+	border-radius:0 6px 6px 0;
+	font-size:24px;
+}
+
+.large-selectbox .sbToggle:after {
+	width: 46px;
+	height:46px;
+	line-height: 46px;
+}
+
+.small-selectbox .sbToggle  { 
+	width: 32px;
+	height:32px;
+	right:-1px;
+	border-radius:0 3px 3px 0;
+	font-size:14px;
+}
+
+.small-selectbox .sbToggle:after {
+	width: 32px;
+	height:32px;
+	line-height: 32px;
+}
+
+.sbToggle.sbToggleOpen:after {
+	content:"\f106";
+}
+
+.sbHolderDisabled{
+	background-color: #999;
+	border: solid 1px #aeaeae;
+}
+
+.sbOptions{
+	background-color: #fff;
+	list-style: none;
+	border-bottom: 1px solid #eaeaea;
+	left: -1px;
+	margin:0 ;
+	padding: 0;
+	position: absolute;
+	top: 40px;
+	width: 100%;
+	z-index: 800;
+	overflow-y: auto;
+	box-shadow: 0 2px 8px rgba(0,0,0, 0.22);
+	-webkit-box-shadow: 0 2px 8px rgba(0,0,0, 0.22);
+	border-radius:0 0 4px 4px;
+}
+
+.accordion-panel-body ul.sbOptions {
+	padding:0;
+}
+
+.sbOptions li{
+	padding: 0;
+	list-style-type:none !important;
+}
+
+.sbOptions a {
+	display: block;
+	outline: none;
+	padding: 5px 0 5px 16px;
+	font-size:14px;
+}
+
+.large-selectbox .sbOptions a { 
+	padding:8px 0 8px 18px;
+	font-size:16px;
+}
+
+.small-selectbox .sbOptions a { 
+	padding:3px 0 3px 10px;
+	font-size:13px;
+}
+
+.sbOptions a:link, 
+.sbOptions a:visited{
+	color: inherit;
+	text-decoration: none;
+	transition:color 0s;
+	-webkit-transition:color 0s;
+	-moz-transition:color 0s;
+	-ms-transition:color 0s;
+	-o-transition:color 0s;
+}
+
+.sbOptions a:hover,
+.sbOptions a:focus,
+.sbOptions a.sbFocus{
+	color: #fff;
+}
+
+.sbOptions li.last a{
+	border-bottom: none;
+}
+
+.sbOptions .sbDisabled{
+	border-bottom: dotted 1px #515151;
+	color: #999;
+	display: block;
+	padding: 7px 0 7px 3px;
+}
+
+.sbOptions .sbGroup{
+	border-bottom: dotted 1px #515151;
+	color: #EBB52D;
+	display: block;
+	font-weight: bold;
+	padding: 7px 0 7px 3px;
+}
+
+.sbOptions .sbSub{
+	padding-left: 17px;
+}
