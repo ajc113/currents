@@ -12,6 +12,7 @@
  *
  *= stub active_admin
  *= require ./boss/css/font-awesome
+ *= require ./boss/css/simple-line-icons
  *= require ./boss/css/index
  * require reports
  * require_self
