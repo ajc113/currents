@@ -3,80 +3,77 @@
     <%= display_meta_tags  %>
   </script>
 </head>
-
-<%= image_tag 'radar.jpg',  class: 'img-responsive hidden-xs', style: 'display:block; opacity: .55' %>
-
-<!-- header -->
-<div class="col-lg-11 col-lg-offset-1 col-md-8" style="color: #243948;padding-left: 0px;"> 
-  <h1>
-    Daily Intel
-  </h1>
-  <h3>
-    Information from our network of charter, recreational and spotter reports. 
-  </h3>
-  <!-- border -->
-  <div style="border-bottom: 5px solid #243948;"></div><br>
-</div>
-
-
-<div class="content-wrapper">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-1 col-md-9">
-      <!-- posts row -->
+<div id="content" role="main">
+  <!-- <div class="page&#45;header larger larger&#45;desc"> -->
+  <div class="page-header parallax dark half-largest larger-desc" data-bgattach="<%= image_path('boss/backgrounds/aboutme-header2.jpg') %>" data-0="background-position:50% 0px;" data-500="background-position:50% -100%">
+    <div class="container">
       <div class="row">
-        <!-- Posts -->
-          <% @intels.each do |intel| %>
-          <div class="panel panel-default">
-            <%#= render 'posts/media', post: post %>
-            <!-- post heading -->
-            <div class="posts-heading panel-heading">
-              <div class="bb">
-                <h1 class="mv-lg">
-                  <%= link_to intel.title, intel, {:style => 'color: #243948'} %>
-                </h1>
-                <p class="date">
-                   <%= intel.created_at.strftime(" %B, %d, %Y") %></small> |
-                  Submitted <%= time_ago_in_words(intel.created_at) %> a go
-                  <%= raw "| Tags: " + intel.tag_list.map { |t| link_to t, tag_path(t)}.join(', ') if intel.tags.exists? %>
-                </p>
-              </div>
-            </div>
-            <div class="panel-body text-md posts-body">
-              <span>
-                <%= intel.body.html_safe %>
-            
-              </span>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    </div>
-    <!-- Aside -->
-    <div class="col-lg-3 col-md-3 posts-sidebar">
-      <!-- Search-->
-      <div class="panel widget bg-inverse-light">
-        <div class="panel-body">
-            <strong>Search Intel</strong><br>
-            <form class="form-horizontal">
-                  <%= form_tag intels_path, :method => 'get' do %>
-                  <p><%= text_field_tag  :q, params[:q], class: 'form-control'   %></p>
-                  <%= submit_tag 'Search', :name => nil, class: "mb-sm btn btn-inverse btn-outline"  %>
-                  <% end %>
-            </form>
+        <div class="col-md-6">
+          <h1>Blog Simple <small class="hidden-xs">(Clean -Sidebar)</small></h1>
+          <p class="page-header-desc">Read latest and popular news about us and do not miss out!</p>
         </div>
+        <!-- End .col-md-6 -->
+        <div class="col-md-6">
+          <ol class="breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li class="active">Blog</li>
+          </ol>
+        </div>
+        <!-- End .col-md-6 -->
       </div>
-      <!-- Categories-->
-      <% if current_admin_user %>
-      <%= link_to 'New Intel', new_intel_path, class: "btn btn-danger btn-lg" %>
-      <% end %>
+      <!-- End .row -->
     </div>
-    
-    </div>
-
-  <div class="center">
-  
-  <%= paginate @intels %>
-
+    <!-- End .container -->
   </div>
+  <!-- End .page-header -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <%= render 'index' %>
+      </div>
+      <!-- End .col-md-9 -->
+      <div class="mb60 clearfix visible-sm visible-xs"></div>
+      <!-- space -->
+      <aside class="col-md-3 sidebar" role="complementary">
+        <div class="widget">
+          <h3>Categories</h3>
+          <ul class="links">
+            <li><a href=""><i class="fa fa-angle-right"></i>Templates (10)</a></li>
+            <li><a href=""><i class="fa fa-angle-right"></i>Business (8)</a></li>
+            <li><a href=""><i class="fa fa-angle-right"></i>Corporate (7)</a></li>
+            <li><a href=""><i class="fa fa-angle-right"></i>Wordpress Themes (5)</a></li>
+            <li><a href=""><i class="fa fa-angle-right"></i>Wordpress Plugins (4)</a></li>
+            <li><a href=""><i class="fa fa-angle-right"></i>Bootstrap Components (14)</a></li>
+          </ul>
+        </div>
+        <!-- End .widget -->
+        <div class="widget">
+          <h3>TagCloud</h3>
+          <div class="tagcloud clearfix">
+            <a href="#">Bootstrap</a>
+            <a href="#">Wordpress</a>
+            <a href="#">Html5</a>
+            <a href="#">Css3</a>
+            <a href="#">Jquery</a>
+            <a href="#">Multipurpose</a>
+            <a href="#">Corporate</a>
+            <a href="#">Creative</a>
+          </div>
+          <!-- End .tagcloud -->
+        </div>
+        <!-- End .widget -->
+        <div class="widget">
+          <h3>Flickr Feed</h3>
+          <ul class="flickr-widget flickr-widget-two clearfix"></ul>
+        </div>
+        <!-- End .widget -->
+      </aside>
+      <!-- End .col-md-3 -->
+    </div>
+    <!-- End .row -->
+  </div>
+  <!-- End .container -->
+  <div class="mb20 hidden-xs hidden-sm"></div>
+  <!-- space -->
 </div>
-
+<!-- End #content -->

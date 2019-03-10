@@ -1,0 +1,19 @@
+<% @intels.each do |intel| %>
+  <article class="entry entry-simple">
+    <h2 class="entry-title"><%= link_to intel.title, intel_path(intel) %></h2>
+    <footer class="entry-footer clearfix">
+      <span class="entry-cats">
+        <span class="entry-label">Categories:</span><a href="#">Life</a>, <a href="#">Design</a>, <a href="#">Nature</a>
+      </span><!-- End .entry-tags -->
+      <span class="entry-separator">/</span>
+      <a href="#" class="entry-comments">10 Comments</a>
+      <span class="entry-separator">/</span>
+      by <a href="#" class="entry-author">Eon</a>
+      <!-- <a href="#" class="entry&#45;readmore text&#45;right">Read More <i class="fa fa&#45;angle&#45;right"></i></a> -->
+      <%= link_to 'Read More <i class="fa fa-angle-right"></i>'.html_safe, intel_path(intel), class: 'entry-readmore text-right' %>
+    </footer>
+  </article>
+<% end %>
+<div class="mb60"></div>
+<!-- space -->
+<%= paginate @intels %>

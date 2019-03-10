@@ -1,3 +1,3 @@
 <li>
-  <%= link_to_unless current_page.first?, raw(t 'views.pagination.previous'), url, :rel => 'prev', :remote => remote %>
+  <%= link_to_unless current_page.last?, raw('<span aria-hidden="true"><i class="fa fa-angle-left"></i></span>'), url, rel: 'prev', remote: remote, 'aria-label' => 'Previous' %>
 </li>
