@@ -1,95 +1,36 @@
-<head>
-  <script type="application/ld+json">
-    <%= display_meta_tags  %>
-  </script>
-</head>
-
-
-<div class="content-wrapper">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-1 col-md-9">
-      <!-- posts row -->
+<div id="content" role="main">
+  <div class="page-header parallax dark half-largest larger-desc" data-bgattach="<%= image_path('boss/backgrounds/aboutme-header2.jpg') %>" data-0="background-position:50% 0px;" data-500="background-position:50% -100%">
+    <div class="container">
       <div class="row">
-        <!-- Posts -->
-        <% @posts.each do |post| %>
-          <div class="panel panel-default">
-            <%= render 'posts/media', post: post %>
-            <!-- post heading -->
-            <div class="posts-heading panel-heading">
-              <div class="bb">
-                <h1 class="mv-lg">
-                  <%= link_to post.title, post, {:style => 'color: #022FB8'} %>
-                </h1>
-                <p class="date">
-                  Submitted <%= time_ago_in_words(post.created_at) %> a go
-                  | <%= post.reading_time %> Minute Read
-                  <%= raw "| Tags: " + post.tag_list.map { |t| link_to t, tag_path(t)}.join(', ') if post.tags.exists? %>
-                  <% if current_admin_user %>
-                    |  <%= link_to "Add New Post", new_post_path %>
-                  <% else %>
-                  <% end %>
-                </p>
-              </div>
-            </div>
-            <div class="panel-body text-md posts-body">
-              <span>
-                <%= post.body.truncate(1000).html_safe %>
-            
-              </span>
-              <%= link_to "READ MORE", post_path(post) %><br>
-                Tags: <%= raw post.tag_list.map { |t| link_to t, tag_path(t)}.join(', ')%><br>  
-            </div>
-          </div>
-        <% end %>
-      </div>
-    </div>
-    <!-- Aside -->
-    <div class="col-lg-3 col-md-3 posts-sidebar">
-      <!-- Search-->
-      <div class="panel widget bg-gray">
-        <div class="panel-body">
-            <strong>Search Blog Content</strong><br>
-            <form class="form-horizontal">
-                  <%= form_tag posts_path, :method => 'get' do %>
-                  <p><%= text_field_tag  :q, params[:q]  %></p>
-                  <%= submit_tag 'Search', :name => nil  %>
-                  <% end %>
-            </form>
+        <div class="col-md-6">
+          <h1>Blog Classic <small class="hidden-xs">(Full Width)</small></h1>
+          <p class="page-header-desc">Read latest and popular news about us and do not miss out!</p>
         </div>
-      </div>
-      <!-- Categories-->
-      <div class="panel widget bg-gray">
-        <div class="panel-body">
-          <div class="text-md m0">
-            <strong>Top Blog Categories</strong><br>
-            <ul class="list-unstyled">
-               <li>
-                <% @tags.each do |tag| %>
-                <li><%= link_to tag.name, tag_path(tag.name), {:style => 'color: #022FB8'} %></li>
-                <% end %>
-               </li>
-            </ul>
-          </div>    
+        <!-- End .col-md-6 -->
+        <div class="col-md-6">
+          <ol class="breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li class="active">Blog</li>
+          </ol>
         </div>
+        <!-- End .col-md-6 -->
       </div>
-      <!-- Tag Cloud-->
-      <div class="panel widget bg-gray">
-        <div class="panel-body posts-categories"><strong>Categories</strong><br>
-          <div id='tag_cloud'>
-              <% tag_cloud Post.tag_counts, %w{s m l} do |tag, css_class| %>
-                <%= link_to tag.name, tag_path(tag.name), class: css_class %>
-              <% end %>
-          </div>
-        </div>  
-      </div>
+      <!-- End .row -->
     </div>
+    <!-- End .container -->
   </div>
+  <!-- End .page-header -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <%= render 'index' %>
+      </div>
+      <!-- End .col-md-9 -->
+    </div>
+    <!-- End .row -->
+  </div>
+  <!-- End .container -->
+  <div class="mb20"></div>
+  <!-- space -->
 </div>
-
-
-<!-- Flash -->
-<div>
-  <% flash.each do |name, msg| %>
-    <% content_tag(:div, msg, class: "alert") %>
-  <% end %>
-</div>
+<!-- End #content -->

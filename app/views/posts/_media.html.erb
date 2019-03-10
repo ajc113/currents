@@ -1,10 +1,11 @@
 <% if post.image.present? %>
-  <div class="posts-image">
-    <%= link_to image_tag(post.image.url(:large)), post %>
+  <div class="entry-media">
+    <figure>
+      <%= link_to image_tag(post.image.url), post_path(post) %>
+    </figure>
   </div>
 <% elsif post.youtube_id.present? %>
-  <div class="video-container">
-    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= post.youtube_id %>" frameborder="0" allowfullscreen>
-    </iframe>
+  <div class="entry-media embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= post.youtube_id %>" width="500" height="281" allowfullscreen></iframe>
   </div>
 <% end %>

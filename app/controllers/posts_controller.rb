@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
 
   def index
-    @posts = Post.search(params[:q]).order('created_at DESC')
+    @posts = Post.search(params[:q]).order('created_at DESC').page params[:page]
     set_meta_tags title: "Blog",
                   site: "Currents Fishing Network",
                   reverse: true,
