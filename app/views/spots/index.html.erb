@@ -1,110 +1,160 @@
-<head>
-  <script type="application/ld+json">
-    <%= display_meta_tags  %>
-  </script>
-</head>
-
-<body class="background"></body>
-
-<!-- header -->
-<div class="col-lg-11 col-lg-offset-1 col-md-8" style="color: #243948;"> 
-  <h1>
-    Fishing Spots
-  </h1>
-  <h3>
-    A comprehensive list of New England's top fishing spots. A mix of some of the most vistied inshore and offshore locations to provide background on how to target each area. 
-  </h3>
-  <!-- border -->
-  <div style="border-bottom: 5px solid #243948;"></div><br>
-</div>
-
-<!-- spot content -->
-<div class="content-wrapper">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-1 col-md-9">
-      <!-- spots row -->
+<div id="content" role="main">
+  <div class="page-header parallax dark half-largest larger-desc" data-bgattach="<%= image_path('boss/backgrounds/aboutme-header2.jpg') %>" data-0="background-position:50% 0px;" data-500="background-position:50% -100%">
+    <div class="container">
       <div class="row">
-        <!-- Sposts -->
-        <% @spots.each do |spot| %>
-          <div class="panel widget">
-            <div class="col-lg-4">
-              <div class="spots-image">
-              <%= link_to image_tag(spot.image.url(:large)), spot %>
-              </div>
-            </div>
-            <!-- post heading -->
-            <div class="col-lg-8">
-              <div class="posts-heading panel-heading">
-                  <h1 class="text-lg">
-                    <%= link_to spot.title, spot, {:style => 'color: #243948'} %>
-
-                  </h1>
-                  <p class="date">
-                    <strong>  
-                    <%= spot.created_at.strftime("%B %d, %Y") %> 
-                    </strong>
-                  </p>
-                <!-- </div> -->
-              </div>
-              <div class="panel-body text-md posts-body">
-                <span>
-                  <%= spot.body.truncate(250).html_safe %>
-                </span>
-                <%#= link_to "READ MORE", spot_path(spot) %><br>
-              </div>
-            </div>
-         </div> 
-          <% end %>
-        
-      </div>
-       <div class="center">   
-      <%= paginate @spots %>
-      </div> 
-
-    </div>
-
-
-
-    <!-- Aside -->
-    <div class="col-lg-3 col-md-3 posts-sidebar">
-      <!-- Search-->
-      <div class="panel widget bg-inverse-light">
-        <div class="panel-body">
-            <strong>Search Spots</strong><br>
-            <form class="form-horizontal">
-                  <%= form_tag spots_path, :method => 'get' do %>
-                  <p><%= text_field_tag  :q, params[:q], class: 'form-control'  %></p>
-                  <%= submit_tag 'Search', :name => nil, class: "mb-sm btn btn-inverse btn-outline" %>
-                  <% end %>
-            </form>
+        <div class="col-md-6">
+          <h1>Blog List <small class="hidden-xs">(Right Sidebar)</small></h1>
+          <p class="page-header-desc">Read latest and popular news about us and do not miss out!</p>
         </div>
-      </div>
-
-      <!-- Categories-->
-      <div class="panel widget bg-inverse-light">
-        <div class="panel-body">
-          <div class="text-md m0">
-            <strong style="text-decoration: underline;">Fishing Locations</strong><br>
-            <ul class="list-unstyled" >
-                <li><%= link_to "MA Inshore", ma_inshore_path, {:style => 'color: #FFFFFF'} %></li>
-                  <li><%= link_to "Gulf of Maine", gulf_of_maine_path, {:style => 'color: #FFFFFF'} %></li>
-                  <li><%= link_to "South of Vineyard", south_of_vineyard_path, {:style => 'color: #FFFFFF'} %></li>
-                  <li><%= link_to "East of Chatham", east_of_chatham_path, {:style => 'color: #FFFFFF'} %></li>
-                  <li><%= link_to "Boat Ramps", boat_ramps_path,  {:style => 'color: #FFFFFF'} %></li>
-            </ul>
-          </div>
+        <!-- End .col-md-6 -->
+        <div class="col-md-6">
+          <ol class="breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li class="active">Blog</li>
+          </ol>
         </div>
+        <!-- End .col-md-6 -->
       </div>
-      <% if current_admin_user %>
-        <%= link_to "Add New Spot", new_spot_path, class: "btn btn-danger  btn-lg" %>
-      <% end %>    
+      <!-- End .row -->
     </div>
+    <!-- End .container -->
   </div>
-</div>
-
-<!-- alerts -->
-<div>
-  <% flash.each do |name, msg| %>
-    <% content_tag(:div, msg, class: "alert") %>
-  <% end %>
+  <!-- End .page-header -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <%= render 'index' %>
+      </div>
+      <!-- End .col-md-9 -->
+      <div class="mb60 clearfix visible-sm visible-xs"></div>
+      <!-- space -->
+      <aside class="col-md-3 sidebar" role="complementary">
+        <div class="widget">
+          <div class="about-widget-box">
+            <header>
+              <h4><a href="#">Eon Dean</a></h4>
+              <h5>Front-End Developer </h5>
+            </header>
+            <figure>
+              <img src="images/blog/eon.jpg" alt="Ean Dean">
+            </figure>
+            <div class="about-widget-content">
+              <p>Hello! I am Eon, 26 years old front-end developer who also loves wordpress. I make awesome templates and themes.</p>
+            </div>
+            <!-- End .about-widget-content -->
+            <div class="social-icons">
+              <a href="#" class="social-icon icon-facebook" title="Facebook">
+                <i class="fa fa-facebook"></i>
+              </a>
+              <a href="#" class="social-icon icon-twitter" title="Twitter">
+                <i class="fa fa-twitter"></i>
+              </a>
+              <a href="#" class="social-icon icon-dribbble" title="Dribbble">
+                <i class="fa fa-dribbble"></i>
+              </a>
+              <a href="#" class="social-icon icon-skype" title="Skype">
+                <i class="fa fa-skype"></i>
+              </a>
+              <a href="#" class="social-icon icon-linkedin" title="Linkedin">
+                <i class="fa fa-linkedin"></i>
+              </a>
+            </div>
+            <!-- End .social-icons -->
+          </div>
+          <!-- End .about-widget-box -->
+        </div>
+        <!-- End .widget -->
+        <div class="widget">
+          <h3>Categories</h3>
+          <ul class="links">
+            <li><a href=""><i class="fa fa-angle-right"></i>Templates (10)</a></li>
+            <li><a href=""><i class="fa fa-angle-right"></i>Business (8)</a></li>
+            <li><a href=""><i class="fa fa-angle-right"></i>Corporate (7)</a></li>
+            <li><a href=""><i class="fa fa-angle-right"></i>Wordpress Themes (5)</a></li>
+            <li><a href=""><i class="fa fa-angle-right"></i>Wordpress Plugins (4)</a></li>
+            <li><a href=""><i class="fa fa-angle-right"></i>Bootstrap Components (14)</a></li>
+          </ul>
+        </div>
+        <!-- End .widget -->
+        <div class="widget">
+          <h3>TagCloud</h3>
+          <div class="tagcloud clearfix">
+            <a href="#">Bootstrap</a>
+            <a href="#">Wordpress</a>
+            <a href="#">Html5</a>
+            <a href="#">Css3</a>
+            <a href="#">Jquery</a>
+            <a href="#">Multipurpose</a>
+            <a href="#">Corporate</a>
+            <a href="#">Creative</a>
+          </div>
+          <!-- End .tagcloud -->
+        </div>
+        <!-- End .widget -->
+        <div class="widget">
+          <h3>Latest Posts</h3>
+          <ul class="latest-posts-list">
+            <li class="clearfix">
+              <figure><img src="images/blog/thumbnails/post1.jpg" alt="Entry name"></figure>
+              <div class="entry-content">
+                <h5><a href="#">Lorem ipsum dolor sit amet sine butou.</a></h5>
+                <p>17/01/2015 - by <a href="#">Eon</a></p>
+              </div>
+              <!-- End .entry-content -->
+            </li>
+            <li class="clearfix">
+              <figure><img src="images/blog/thumbnails/post2.jpg" alt="Entry name"></figure>
+              <div class="entry-content">
+                <h5><a href="#">Quo commodi quidem saepe quos.</a></h5>
+                <p>12/01/2015 - by <a href="#">Eon</a></p>
+              </div>
+            </li>
+            <li class="clearfix">
+              <figure><img src="images/blog/thumbnails/post3.jpg" alt="Entry name"></figure>
+              <div class="entry-content">
+                <h5><a href="#">Ducimus volupta tibus, alias.</a></h5>
+                <p>07/01/2015 - by <a href="#">Eon</a></p>
+              </div>
+            </li>
+            <li class="clearfix">
+              <figure><img src="images/blog/thumbnails/post4.jpg" alt="Entry name"></figure>
+              <div class="entry-content">
+                <h5><a href="#">Lorem dolor sit amet vinche mae testai.</a></h5>
+                <p>01/01/2015 - by <a href="#">John</a></p>
+              </div>
+              <!-- End .entry-content -->
+            </li>
+          </ul>
+        </div>
+        <!-- End .widget -->
+        <div class="widget">
+          <h3>Random Video</h3>
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" width="560" height="315" src="//www.youtube.com/embed/kn-1D5z3-Cs" allowfullscreen=""></iframe>
+          </div>
+          <!-- End .embed-responsive -->
+        </div>
+        <!-- End .widget -->
+        <div class="widget">
+          <h3>Flickr Feed</h3>
+          <ul class="flickr-widget flickr-widget-two clearfix">
+            <li><a href="http://farm4.staticflickr.com/3924/14935761141_be0966bbc4.jpg" title="Joffrey Baratheon - Game of Thrones"><img src="http://farm4.staticflickr.com/3924/14935761141_be0966bbc4_s.jpg" alt="Joffrey Baratheon - Game of Thrones"></a></li>
+            <li><a href="http://farm6.staticflickr.com/5577/14915797176_5ba493bbd2.jpg" title="Releitura de Earthworm Jim"><img src="http://farm6.staticflickr.com/5577/14915797176_5ba493bbd2_s.jpg" alt="Releitura de Earthworm Jim"></a></li>
+            <li><a href="http://farm4.staticflickr.com/3918/14752243967_647a437c85.jpg" title="Releitura de Earthworm Jim"><img src="http://farm4.staticflickr.com/3918/14752243967_647a437c85_s.jpg" alt="Releitura de Earthworm Jim"></a></li>
+            <li><a href="http://farm8.staticflickr.com/7091/13673111733_bfbdc2d01c.jpg" title="Bom domingo pessoas! o/ #illustration #ilustação #sunday #domingo"><img src="http://farm8.staticflickr.com/7091/13673111733_bfbdc2d01c_s.jpg" alt="Bom domingo pessoas! o/ #illustration #ilustação #sunday #domingo"></a></li>
+            <li><a href="http://farm8.staticflickr.com/7272/13654329525_b052b65d9e.jpg" title="Mp3songs"><img src="http://farm8.staticflickr.com/7272/13654329525_b052b65d9e_s.jpg" alt="Mp3songs"></a></li>
+            <li><a href="http://farm3.staticflickr.com/2905/13468126905_ece12b768f.jpg" title="MARS 014"><img src="http://farm3.staticflickr.com/2905/13468126905_ece12b768f_s.jpg" alt="MARS 014"></a></li>
+            <li><a href="http://farm9.staticflickr.com/8525/8481348580_ea3bd29c20.jpg" title="Munny Toy Manual"><img src="http://farm9.staticflickr.com/8525/8481348580_ea3bd29c20_s.jpg" alt="Munny Toy Manual"></a></li>
+            <li><a href="http://farm9.staticflickr.com/8094/8435096297_0dfd7393ef.jpg" title="Ron Weasley"><img src="http://farm9.staticflickr.com/8094/8435096297_0dfd7393ef_s.jpg" alt="Ron Weasley"></a></li>
+          </ul>
+        </div>
+        <!-- End .widget -->
+      </aside>
+      <!-- End .col-md-3 -->
+    </div>
+    <!-- End .row -->
+  </div>
+  <!-- End .container -->
+  <div class="sm-margin"></div>
+  <!-- space -->
 </div>

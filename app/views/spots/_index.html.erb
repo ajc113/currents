@@ -1,0 +1,38 @@
+<% @spots.each do |spot| %>
+  <article class="entry">
+    <span class="entry-date"><%= spot.created_at.day %><span><%= spot.created_at.strftime('%b') %></span></span>
+    <span class="entry-format"><i class="fa fa-file-text"></i></span>
+    <div class="row">
+      <% if spot.image.present? %>
+        <div class="col-md-6">
+          <div class="entry-media">
+            <figure>
+              <%= link_to image_tag(spot.image.url), spot_path(spot) %>
+            </figure>
+          </div>
+          <!-- End .entry-media -->
+        </div>
+      <% end %>
+      <!-- End .col-md-6 -->
+      <div class="col-md-6">
+        <h2 class="entry-title"><%= link_to spot.title, spot_path(spot) %></h2>
+        <div class="entry-content">
+          <p><%= spot.body.truncate(500).html_safe %></p>
+        </div>
+        <!-- End .entry-content -->
+        <footer class="entry-footer clearfix">
+          <span class="entry-cats">
+            <span class="entry-label"><i class="fa fa-tag"></i>Categories:</span><%= post_tags(spot) %>
+          </span><!-- End .entry-tags -->
+          <span class="entry-separator">/</span>
+          <a href="#" class="entry-comments">5 Comments</a>
+          <span class="entry-separator">/</span>
+          by <a href="#" class="entry-author">Eon</a>
+        </footer>
+      </div>
+      <!-- End .col-md-6 -->
+    </div>
+    <!-- End .row -->
+  </article>
+<% end %>
+<%= paginate @spots %>
