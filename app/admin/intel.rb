@@ -17,7 +17,6 @@ form :html => { :enctype => "multipart/form-data" } do |f|
 		f.input :title
 		f.input :body
 		f.input :created_at
-		f.input :youtube_id
 	end
 	f.actions
 	end
