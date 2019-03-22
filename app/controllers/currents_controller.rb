@@ -10,7 +10,8 @@ class CurrentsController < ApplicationController
                   reverse: true,
                   description: "Sportfishing network providing catch reports, activity heatmap, fishing spots, and tackle information for offshore big game fishing",
                   keywords: "New england fishing intel, fishing reports, catch reports, big game fishing, offshore fishing"	
-
+        @posts = Post.all.order("created_at DESC").limit(5)
+        @intels = Intel.all.order("created_at DESC").limit(3)
 	end
 
 
