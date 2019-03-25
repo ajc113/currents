@@ -18,4 +18,5 @@
 //=require ./wow.min.js
 //=require ./jquery.validate.min.js
 //=require ./contact.js
+//=require ./mediaelement-and-player.min.js
 //=require ./main.js

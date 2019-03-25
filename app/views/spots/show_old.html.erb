@@ -1,0 +1,87 @@
+<%= content_for(:title, @spot.title) %>
+<body class="background"></body>
+
+<!-- Title -->
+<div class="col-lg-11 col-lg-offset-1 col-md-8" style="color: #243948;"> 
+  <h1 class="text-lg">
+    <%= @spot.title %>
+  </h1>
+  <p class="date">
+    <strong> 
+    By: AJ Costa </strong> | 
+    Submitted <%= time_ago_in_words(@spot.created_at) %> a go
+      <% if current_admin_user %>
+        | <%= link_to 'Edit', edit_spot_path(@spot) %>
+        | <%= link_to 'Delete', spot_path(@spot), method: :delete, data: { confirm: 'Are you sure?'} %>
+        | <%= link_to 'Back', spots_path %>
+        <%= raw "| Tags: " + @spot.tag_list.map { |t| link_to t, tag_path(t)}.join(', ') if @spot.tags.exists? %>
+      <% end %>
+  </p>
+                  
+  <!-- border -->
+  <div style="border-bottom: 5px solid #243948;"></div><br>
+</div>
+
+<!-- spot content -->
+<!-- <section class="posts"> -->
+
+<div class="content-wrapper">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-1 col-md-9">
+      <!-- spots row -->
+      <div class="row">
+        <!-- Sposts -->
+        <div class="panel widget">
+
+          <%= image_tag(@spot.image.url, class: "img-responsive report-header-image posts-header-image") %>
+
+          <!-- Post body	 -->
+          <div class="panel-body text-md posts-body">
+            <%= @spot.body.html_safe %>
+          </div>
+          <!-- Post footer author and comment count -->
+        </div>
+      </div>
+    </div>  
+    <!-- </section> -->
+    <div class="col-lg-3 col-md-3 posts-sidebar">
+      <!-- Search-->
+      <div class="panel widget bg-inverse-light">
+        <div class="panel-body">
+            <strong>Search Spots</strong><br>
+            <form class="form-horizontal">
+                  <%= form_tag spots_path, :method => 'get' do %>
+                  <p><%= text_field_tag  :q, params[:q], class: 'form-control'  %></p>
+                  <%= submit_tag 'Search', :name => nil, class: "mb-sm btn btn-inverse btn-outline" %>
+                  <% end %>
+            </form>
+        </div>
+      </div>
+
+          <!-- Categories-->
+      <div class="panel widget bg-inverse-light">
+        <div class="panel-body">
+          <div class="text-md m0">
+            <strong style="text-decoration: underline;">Fishing Locations</strong><br>
+            <ul class="list-unstyled" >
+                <li><%= link_to "MA Inshore", ma_inshore_path, {:style => 'color: #FFFFFF'} %></li>
+                  <li><%= link_to "Gulf of Maine", gulf_of_maine_path, {:style => 'color: #FFFFFF'} %></li>
+                  <li><%= link_to "South of Vineyard", south_of_vineyard_path, {:style => 'color: #FFFFFF'} %></li>
+                  <li><%= link_to "East of Chatham", east_of_chatham_path, {:style => 'color: #FFFFFF'} %></li>
+                  <li><%= link_to "Boat Ramps", boat_ramps_path,  {:style => 'color: #FFFFFF'} %></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+          
+      <% if current_admin_user %>
+        <%= link_to "Add New Spot", new_spot_path, class: "btn btn-danger  btn-lg" %>
+      <% end %>    
+    </div> 
+  </div>
+</div>
+
+
+
+
+

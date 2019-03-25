@@ -1,6 +1,9 @@
 class CurrentsController < ApplicationController
 	# before_action :authenticate_user!
-
+  layout 'test', only: [:test]
+  def test
+    render file: 'layouts/test'
+  end
 
 	def index
 		@buzzs = Buzz.all.order("created_at DESC").limit(5)

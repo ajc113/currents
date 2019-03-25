@@ -4,4 +4,7 @@
  *= require ./magnific-popup
  *= require ./style
  *= require ./colors/darkblue
+ *= require ./colors/green
+ *= require ./mediaelementplayer.css
+ *= require ./vspacing.min
 */

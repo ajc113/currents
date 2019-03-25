@@ -1,0 +1,42 @@
+<div id="blog-post-image" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+  </div>
+</div>
+
+
+
+<section class="posts">
+  <div class="content-wrapper">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-12">
+        <div class="panel panel-default">
+          <!-- post heading -->
+          <div class="posts-heading panel-heading">
+            <div class="bb">
+              <h2 style= "color: #000000'">
+                <%= @intel.title %>
+              </h2>
+              <p class="date">
+
+                <% if current_admin_user %>
+                  <%= link_to 'Edit', edit_intel_path(@intel) %>
+                  | <%= link_to 'Delete', intel_path(@intel), method: :delete, data: { confirm: 'Are you sure?'} %>
+                  <%= raw "| Tags: " + @intel.tag_list.map { |t| link_to t, tag_path(t)}.join(', ') if @intel.tags.exists? %>
+                <% end %>
+              </p>
+            </div>
+          </div>
+          <!-- Post body	 -->
+          <div class="panel-body text-md posts-body">
+            <%= @intel.body.html_safe %>
+          </div>
+            <!-- Post footer author and comment count -->
+        </div>
+      </div>
+      <div class="col-lg-2"></div>
+    </div>
+  </div>
+</section>
