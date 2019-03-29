@@ -3,8 +3,7 @@
  *= require ./bootstrap
  *= require ./magnific-popup
  *= require ./style
- *= require ./colors/darkblue
- *= require ./colors/green
+ *= require ./colors/lightblue
  *= require ./mediaelementplayer.css
  *= require ./vspacing.min
 */

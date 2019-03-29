@@ -1,17 +1,21 @@
 <% @intels.each do |intel| %>
   <article class="entry entry-simple">
-    <h2 class="entry-title"><%= link_to intel.title, intel_path(intel) %></h2>
+    <h2 class="entry-title"><%= link_to intel.title.truncate(75), intel_path(intel) %></h2>
     <footer class="entry-footer clearfix">
+      <!-- blog categories -->
       <span class="entry-cats">
-        <span class="entry-label">Categories:</span><a href="#">Life</a>, <a href="#">Design</a>, <a href="#">Nature</a>
+        <span class="entry-label">Submitted <%= time_ago_in_words(intel.created_at) %> a go
+        </span>
       </span><!-- End .entry-tags -->
-      <span class="entry-separator">/</span>
-      <a href="#" class="entry-comments">10 Comments</a>
-      <span class="entry-separator">/</span>
-      by <a href="#" class="entry-author">Eon</a>
-      <!-- <a href="#" class="entry&#45;readmore text&#45;right">Read More <i class="fa fa&#45;angle&#45;right"></i></a> -->
-      <%= link_to 'Read More <i class="fa fa-angle-right"></i>'.html_safe, intel_path(intel), class: 'entry-readmore text-right' %>
-    </footer>
+      <span class="entry-separator"></span>
+      <!-- blog tags -->
+      <a href="#" class="entry-comments"><%= raw "/ Tags: " + intel.tag_list.map { |t| link_to t, tag_path(t)}.join(', /') if intel.tags.exists? %></a>
+      <!-- blog writer -->
+      <span class="entry-separator"></span>
+      by <a href="#" class="entry-author"> Currents Staff</a>
+      <!-- read more -->
+      <a href="#"><%= link_to "READ MORE >", intel_path(intel), class: "entry-readmore text-right" %></a>
+    </footer>  
   </article>
 <% end %>
 <div class="mb60"></div>
