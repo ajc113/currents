@@ -1,44 +1,29 @@
 <div id="content" role="main">
-  <div class="page-header parallax dark half-largest larger-desc" data-bgattach="<%= image_path('boss/backgrounds/aboutme-header2.jpg') %>" data-0="background-position:50% 0px;" data-500="background-position:50% -100%">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <h1>Blog Post <small class="hidden-xs">(Full Width)</small></h1>
-          <p class="page-header-desc">Read latest and popular news about us and do not miss out!</p>
-        </div>
-        <!-- End .col-md-6 -->
-        <div class="col-md-6">
-          <ol class="breadcrumb">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="blog-classic-right-sidebar.html">Blog</a></li>
-            <li class="active">Post</li>
-          </ol>
-        </div>
-        <!-- End .col-md-6 -->
-      </div>
-      <!-- End .row -->
-    </div>
-    <!-- End .container -->
+  <div class="page-header parallax dark half-largest larger-desc" data-bgattach="<%= image_path('boss/backgrounds/index35/bg1.jpg') %>" data-0="background-position:50% 0px;" data-500="background-position:50% -100%">
   </div>
   <!-- End .page-header -->
   <div class="container">
     <div class="row">
       <div class="col-md-12">
         <article class="entry single">
-          <div class="entry-media">
-            <figure>
-              <img src="images/blog/post1.jpg" alt="Entry Title">
-            </figure>
-          </div>
-          <!-- End .entry-media -->
-          <span class="entry-date"><%= post.created_at.day %><span><%= post.created_at.strftime('%b') %></span></span>
-          <span class="entry-format"><i class="fa fa-file-text-o"></i></span>
+          <span class="entry-date">
+            <%= post.created_at.day %>
+            <span>
+              <%= post.created_at.strftime('%b') %>
+            </span>
+          </span>
+          
+          <span class="entry-format">
+            <i class="fa fa-binoculars"></i>
+          </span> 
           <h2 class="entry-title"><%= post.title %></h2>
+
+    
           <div class="entry-content">
-            <p><span class="dropcap"><%= post.body.first %></span></p>
-            <%= post.body[1..-1] %>
+            <%= post.body.html_safe %>
           </div>
           <!-- End .entry-content -->
+          
           <footer class="entry-footer clearfix">
             <span class="entry-cats">
               <span class="entry-label"><i class="fa fa-tag"></i>Categories: <%= post_tags post %>
@@ -46,41 +31,20 @@
               <span class="entry-separator">/</span>
               <a href="#" class="entry-comments">10 Comments</a>
               <span class="entry-separator">/</span>
-              by <a href="#" class="entry-author">Eon</a>
-            </footer>
-            <div class="about-author clearfix">
-              <h3 class="title-underblock custom">Post Author: <a href="#">Eon</a></h3>
-              <figure class="pull-left"><%= image_tag 'boss/blog/eon.jpg', class: 'img-circle' %></figure>
-              <div class="author-content">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae iusto hic neque quam, sapiente eligendi adipisci porro, odio incidunt, asperiores illum earum natus reprehenderit quo atque aspernatur commodi, cumque deleniti!Placeat a et at vero esse, dolores eveniet deserunt molestias laboriosam. Consequuntur earum ad cumque voluptatem sunt quas velit molestiae sit sapiente aspernatur ipsam nobis, odit animi non consequatur quae.</p>
-              </div>
-              <!-- End .athor-content -->
-              <div class="social-icons">
-                <a href="#" class="social-icon icon-facebook add-tooltip" data-placement="top" title="" data-original-title="Facebook">
-                  <i class="fa fa-facebook"></i>
-                </a>
-                <a href="#" class="social-icon icon-twitter add-tooltip" data-placement="top" title="" data-original-title="Twitter">
-                  <i class="fa fa-twitter"></i>
-                </a>
-                <a href="#" class="social-icon icon-google-plus add-tooltip" data-placement="top" title="" data-original-title="Google Plus">
-                  <i class="fa fa-google-plus"></i>
-                </a>
-                <a href="#" class="social-icon icon-dribbble add-tooltip" data-placement="top" title="" data-original-title="Dribbble">
-                  <i class="fa fa-dribbble"></i>
-                </a>
-                <a href="#" class="social-icon icon-skype add-tooltip" data-placement="top" title="" data-original-title="Skype">
-                  <i class="fa fa-skype"></i>
-                </a>
-                <a href="#" class="social-icon icon-linkedin add-tooltip" data-placement="top" title="" data-original-title="Linkedin">
-                  <i class="fa fa-linkedin"></i>
-                </a>
-              </div>
-              <!-- End .social-icons -->
-            </div>
-            <!-- End .about-author -->
-          </article>
+              by <a href="#" class="entry-author">Currents Staff</a>
+              <span class="entry-separator">/</span>
+                <% if current_admin_user %>
+                  <%= link_to 'Edit', edit_intel_path(@intel) %>
+                  / <%= link_to 'Delete', intel_path(@intel), method: :delete, data: { confirm: 'Are you sure?'} %>
+                <% end %> 
+              </span>
+          </footer>
+                 <%= link_to 'Back to Intels', intels_path, class: "btn btn-default btn-lg" %>
+        </article>
+          
+
           <%#= #TODO: Fix the related posts slider %>
-          <h3 class="mb30 title-underblock custom">Related Posts</h3>
+<!--           <h3 class="mb30 title-underblock custom">Related Posts</h3>
           <div class="blog-related-carousel owl-carousel small-nav owl-theme owl-loaded owl-responsive-1200">
             <div class="owl-stage-outer">
               <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 1540px;">
@@ -93,21 +57,21 @@
                         </a>
                       </figure>
                     </div>
-                    <!-- End .entry-media -->
+
                     <div class="entry-content-wrapper">
-                      <span class="entry-date">20<span>Feb</span></span>
+                    <span class="entry-date">20<span>Feb</span></span>
                       <span class="entry-format"><i class="fa fa-file-image-o"></i></span>
                       <h2 class="entry-title"><a href="single.html">Donec interdum condimentum erat.</a></h2>
                       <div class="entry-content">
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum condimentum erat..</p>
                       </div>
-                      <!-- End .entry-content -->
+
                     </div>
-                    <!-- End .entry-content-wrapper -->
+
                     <footer class="entry-footer clearfix">
                       <span class="entry-cats">
                         <span class="entry-label"><i class="fa fa-tag"></i></span><a href="#">Cars</a>, <a href="#">Design</a>
-                      </span><!-- End .entry-tags -->
+                      </span> 
                       <a href="#" class="entry-readmore text-right">Read More <i class="fa fa-angle-right"></i></a>
                     </footer>
                   </article>
@@ -117,7 +81,7 @@
                     <div class="entry-media embed-responsive embed-responsive-16by9">
                       <iframe class="embed-responsive-item" src="//player.vimeo.com/video/30173582?color=ffffff" width="500" height="281" allowfullscreen=""></iframe>
                     </div>
-                    <!-- End .entry-media -->
+                    End .entry-media
                     <div class="entry-content-wrapper">
                       <span class="entry-date">10<span>Feb</span></span>
                       <span class="entry-format"><i class="fa fa-file-video-o"></i></span>
@@ -125,13 +89,13 @@
                       <div class="entry-content">
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum condimentum erat..</p>
                       </div>
-                      <!-- End .entry-content -->
+                      End .entry-content
                     </div>
-                    <!-- End .entry-content-wrapper -->
+                    End .entry-content-wrapper
                     <footer class="entry-footer clearfix">
                       <span class="entry-cats">
                         <span class="entry-label"><i class="fa fa-tag"></i></span><a href="#">Life</a>
-                      </span><!-- End .entry-tags -->
+                      </span>End .entry-tags
                       <a href="#" class="entry-readmore text-right">Read More <i class="fa fa-angle-right"></i></a>
                     </footer>
                   </article>
@@ -145,7 +109,7 @@
                         </a>
                       </figure>
                     </div>
-                    <!-- End .entry-media -->
+                    End .entry-media
                     <div class="entry-content-wrapper">
                       <span class="entry-date">06<span>Feb</span></span>
                       <span class="entry-format"><i class="fa fa-file-image-o"></i></span>
@@ -153,13 +117,13 @@
                       <div class="entry-content">
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum condimentum erat..</p>
                       </div>
-                      <!-- End .entry-content -->
+                      End .entry-content
                     </div>
-                    <!-- End .entry-content-wrapper -->
+                    End .entry-content-wrapper
                     <footer class="entry-footer clearfix">
                       <span class="entry-cats">
                         <span class="entry-label"><i class="fa fa-tag"></i></span><a href="#">Nature</a>, <a href="#">Design</a>
-                      </span><!-- End .entry-tags -->
+                      </span>End .entry-tags
                       <a href="#" class="entry-readmore text-right">Read More <i class="fa fa-angle-right"></i></a>
                     </footer>
                   </article>
@@ -173,7 +137,7 @@
                         </a>
                       </figure>
                     </div>
-                    <!-- End .entry-media -->
+                    
                     <div class="entry-content-wrapper">
                       <span class="entry-date">02<span>Feb</span></span>
                       <span class="entry-format"><i class="fa fa-file-image-o"></i></span>
@@ -181,19 +145,19 @@
                       <div class="entry-content">
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum condimentum erat..</p>
                       </div>
-                      <!-- End .entry-content -->
+                 
                     </div>
-                    <!-- End .entry-content-wrapper -->
+              
                     <footer class="entry-footer clearfix">
                       <span class="entry-cats">
                         <span class="entry-label"><i class="fa fa-tag"></i></span><a href="#">Travel</a>, <a href="#">Life</a>
-                      </span><!-- End .entry-tags -->
+                      </span>
                       <a href="#" class="entry-readmore text-right">Read More <i class="fa fa-angle-right"></i></a>
                     </footer>
                   </article>
                 </div>
               </div>
-            </div>
+            </div> 
             <div class="owl-controls">
               <div class="owl-nav">
                 <div class="owl-prev" style=""><i class="fa fa-angle-left"></i></div>
@@ -202,7 +166,7 @@
               <div class="owl-dots" style="display: none;"></div>
             </div>
           </div>
-          <!-- End .blog-related-carousel -->
+
           <div class="comments">
             <h3 class="mb35 title-underblock custom">3 Comment(s)</h3>
             <ul class="comments-list media-list">
@@ -210,7 +174,7 @@
                 <div class="media-left">
                   <img class="media-object img-circle" src="images/blog/dean.jpg" alt="Dean Hunter">
                 </div>
-                <!-- End .media-left -->
+        
                 <div class="media-body">
                   <h4 class="media-heading">Dean Hunter<span class="comment-date">(10 February 2015 - 17:25)</span></h4>
                   <a href="#" class="reply-link">Reply </a>
@@ -220,33 +184,33 @@
                       <div class="media-left">
                         <img class="media-object img-circle" src="images/blog/sarah.jpg" alt="Sarah Hunter">
                       </div>
-                      <!-- End .media-left -->
+                      End .media-left
                       <div class="media-body">
                         <h4 class="media-heading">Sarah Hunter<span class="comment-date">(11 February 2015 - 09:11)</span></h4>
                         <a href="#" class="reply-link">Reply </a>
                         <p>Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in fac sed odio dui.</p>
                       </div>
-                      <!-- End .media-body -->
+                      End .media-body
                     </li>
                   </ul>
                 </div>
-                <!-- End .media-body -->
+                End .media-body
               </li>
               <li class="media">
                 <div class="media-left">
                   <img class="media-object img-circle" src="images/blog/john.jpg" alt="Sarah Hunter">
                 </div>
-                <!-- End .media-left -->
+                End .media-left
                 <div class="media-body">
                   <h4 class="media-heading">John Doe<span class="comment-date">(08 February 2015 - 21:11)</span></h4>
                   <a href="#" class="reply-link">Reply </a>
                   <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in fac sed odio dui.</p>
                 </div>
-                <!-- End .media-body -->
+    
               </li>
             </ul>
           </div>
-          <!-- End .comments -->
+
           <div id="respond" class="comment-respond">
             <h3 class="mb30 title-underblock custom">Leave a Comment</h3>
             <form action="#" method="post">
@@ -256,37 +220,37 @@
                     <label for="name" class="input-desc">Name</label>
                     <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required="">
                   </div>
-                  <!-- End .from-group -->
+             
                 </div>
-                <!-- End .col-sm-6 -->
+                
                 <div class="col-sm-6">
                   <div class="form-group">
                     <label for="email" class="input-desc">Email</label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="Your E-mail" required="">
                   </div>
-                  <!-- End .from-group -->
+                 
                 </div>
-                <!-- End .col-sm-6 -->
+                
               </div>
-              <!-- End .row -->
+             
               <div class="form-group">
                 <label for="message" class="input-desc">Message</label>
                 <textarea class="form-control" rows="6" id="message" name="message" placeholder="Your Message" required=""></textarea>
               </div>
-              <!-- End .from-group -->
+              
               <div class="form-group">
                 <input type="submit" class="btn btn-dark" value="Post Comment">
               </div>
-              <!-- End .from-group -->
+             
             </form>
-          </div>
-          <!-- End #respond -->
+          </div> -->
+          
         </div>
-        <!-- End .col-md-12 -->
+
       </div>
-      <!-- End .row -->
+
     </div>
-    <!-- End .container -->
+
     <div class="mb20"></div>
-    <!-- space -->
+    
   </div>
