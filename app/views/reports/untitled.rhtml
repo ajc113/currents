@@ -1,0 +1,31 @@
+<form action="php/mail.php" method="post" id="contact-form" novalidate="novalidate">
+  <div class="form-group">
+      <label for="contactname" class="input-desc">Name</label>
+      <input type="text" class="form-control no-radius" id="contactname" name="contactname" placeholder="Your Name" required="" aria-required="true">
+  </div><!-- End .from-group -->
+  <div class="form-group">
+      <label for="contactemail" class="input-desc">Email</label>
+      <input type="email" class="form-control no-radius" id="contactemail" name="contactemail" placeholder="Your Email" required="" aria-required="true">
+  </div><!-- End .from-group -->
+  <div class="form-group">
+      <label for="contactsubject" class="input-desc">Subject</label>
+      <input type="text" class="form-control no-radius" id="contactsubject" name="contactsubject" placeholder="Subject">
+  </div><!-- End .from-group -->
+  <div class="form-group">
+      <label for="contactmessage" class="input-desc">Message</label>
+      <textarea class="form-control no-radius" rows="6" id="contactmessage" name="contactmessage" placeholder="Your Message" required="" aria-required="true"></textarea>
+  </div><!-- End .from-group -->
+
+  <div class="mb10"></div><!-- space -->
+
+  <div class="form-group">
+      <input type="submit" class="btn btn-dark btn-border min-width no-radius" data-loading-text="Sending..." value="Send Message">
+  </div><!-- End .from-group -->
+</form>
+
+
+
+<div class="input-group date form-date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+  <input class="form-control" size="16" type="text" value="" readonly="">
+  <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+</div>
