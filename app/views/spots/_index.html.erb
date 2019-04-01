@@ -1,7 +1,7 @@
 <% @spots.each do |spot| %>
   <article class="entry">
-    <span class="entry-date"><%= spot.created_at.day %><span><%= spot.created_at.strftime('%b') %></span></span>
-    <span class="entry-format"><i class="fa fa-file-text"></i></span>
+  <span class="entry-date"><%= spot.created_at.day %><span><%= spot.created_at.strftime('%b') %></span></span>
+  <span class="entry-format"><i class="fa fa-map"></i></span>
     <div class="row">
       <% if spot.image.present? %>
         <div class="col-md-6">
