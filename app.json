@@ -2,6 +2,9 @@
   "addons": [
     "heroku-postgresql"
   ],
+  "scripts": {
+    "postdeploy": "bundle exec rake db:migrate db:seed dev:prime"
+  },
   "buildpacks": [
     {
       "url": "heroku/ruby"
