@@ -1,0 +1,105 @@
+{
+  "addons": [
+    "heroku-postgresql"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/ruby"
+    }
+  ],
+  "env": {
+    "google_map_api_key": {
+      "required": true
+    },
+    "HEROKU_APP_ID": {
+      "required": true
+    },
+    "HEROKU_APP_NAME": {
+      "required": true
+    },
+    "HEROKU_RELEASE_CREATED_AT": {
+      "required": true
+    },
+    "HEROKU_RELEASE_VERSION": {
+      "required": true
+    },
+    "HEROKU_SLUG_COMMIT": {
+      "required": true
+    },
+    "HEROKU_SLUG_DESCRIPTION": {
+      "required": true
+    },
+    "HOST": {
+      "required": true
+    },
+    "IS_STAGING": {
+      "required": true
+    },
+    "LANG": {
+      "required": true
+    },
+    "MAILCHIMP_API_KEY": {
+      "required": true
+    },
+    "MAILCHIMP_KEY": {
+      "required": true
+    },
+    "MAILCHIMP_LIST_ID_LEADS": {
+      "required": true
+    },
+    "MAILCHIMP_LIST_ID_NEWSLETTER": {
+      "required": true
+    },
+    "MANDRILL_API_KEY": {
+      "required": true
+    },
+    "PARTY_FOUL_OAUTH_TOKEN": {
+      "required": true
+    },
+    "PARTY_FOUL_OWNER": {
+      "required": true
+    },
+    "RACK_ENV": {
+      "required": true
+    },
+    "RAILS_ENV": {
+      "required": true
+    },
+    "RAILS_SERVE_STATIC_FILES": {
+      "required": true
+    },
+    "S3_BUCKET": {
+      "required": true
+    },
+    "S3_KEY": {
+      "required": true
+    },
+    "S3_REGION": {
+      "required": true
+    },
+    "S3_SECRET": {
+      "required": true
+    },
+    "SECRET_KEY_BASE": {
+      "required": true
+    },
+    "STRIPE_PUBLISHABLE_KEY": {
+      "required": true
+    },
+    "STRIPE_SECRET_KEY": {
+      "required": true
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    },
+    "worker": {
+      "quantity": 1
+    }
+  },
+  "name": "currents",
+  "scripts": {
+  },
+  "stack": "cedar-14"
+}
