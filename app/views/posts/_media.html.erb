@@ -8,4 +8,10 @@
   <div class="entry-media embed-responsive embed-responsive-16by9">
     <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= post.youtube_id %>" width="500" height="281" allowfullscreen></iframe>
   </div>
+<% elsif %>
+    <figure>
+      <%= link_to image_tag('currentslogoblack.png'), post_path(post) %>
+    </figure>
+
+
 <% end %>

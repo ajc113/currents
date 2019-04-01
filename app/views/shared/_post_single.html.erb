@@ -14,7 +14,7 @@
           </span>
           
           <span class="entry-format">
-            <i class="fa fa-binoculars"></i>
+            <i class="fas fa-binoculars"></i>
           </span> 
           <h2 class="entry-title"><%= post.title %></h2>
 
@@ -34,12 +34,12 @@
               by <a href="#" class="entry-author">Currents Staff</a>
               <span class="entry-separator">/</span>
                 <% if current_admin_user %>
-                  <%= link_to 'Edit', edit_intel_path(@intel) %>
-                  / <%= link_to 'Delete', intel_path(@intel), method: :delete, data: { confirm: 'Are you sure?'} %>
+                  <%= link_to 'Edit', edit_post_path(@post) %>
+                  / <%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are you sure?'} %>
                 <% end %> 
               </span>
           </footer>
-                 <%= link_to 'Back to Intels', intels_path, class: "btn btn-default btn-lg" %>
+                 <%= link_to 'Back to Intels', intels_path, class: "btn btn-dark" %>
         </article>
           
 

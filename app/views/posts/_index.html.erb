@@ -1,23 +1,45 @@
 <% @posts.each do |post| %>
-<article class="entry">
-  <%= render 'posts/media', post: post %>
+
+
+<!-- post with image -->
+<article class="entry"> 
   <span class="entry-date"><%= post.created_at.day %><span><%= post.created_at.strftime('%b') %></span></span>
   <span class="entry-format"><i class="fa fa-file-<%= post_format post %>-o"></i></span>
-  <h2 class="entry-title"><%= link_to post.title, post_path(post) %></h2>
-  <div class="entry-content">
-    <p><%= post.body.truncate(500).html_safe %></p>
-  </div>
-  <!-- End .entry-content -->
-  <footer class="entry-footer clearfix">
-    <span class="entry-cats">
-      <span class="entry-label"><i class="fa fa-tag"></i>Categories:</span><%= post_tags(post) %>
-    </span><!-- End .entry-tags -->
-    <span class="entry-separator">/</span>
-    <%= link_to "#{ post.comments.count } Comments", post_path(post), class: 'entry-comments' %>
-    <span class="entry-separator">/</span>
-    by <a href="#" class="entry-author">Eon</a>
-    <%= link_to 'Read More <i class="fa fa-angle-right"></i>'.html_safe, post_path(post).html_safe, class: 'entry-readmore text-right' %>
-  </footer>
+  <!-- posts -->
+  <div class="row">
+    <!-- post media -->
+    <div class="col-md-6">
+      <div class="entry-media"> 
+          <figure>
+              <a>
+                  <%= render "posts/media", post: post %>
+              </a>
+          </figure>
+      </div><!-- End .entry-media -->
+    </div>
+
+    <div class="col-md-6">
+        <!-- post title -->
+        <h2 class="entry-title"><a href="single.html"><%= link_to post.title, post_path(post) %></a></h2> <!-- end post title -->
+        <!-- post body -->
+        <div class="entry-content">
+            <p><%= post.body.truncate(500).html_safe %></p>
+            <p><%= link_to "READ MORE", post_path(post) %></p>
+        </div><!-- End post body -->
+        <footer class="entry-footer clearfix">
+            <span class="entry-cats">
+                <span class="entry-label"><i class="fa fa-tag"></i>Categories:</span><a href="#"><%= post_tags(post) %></a>
+            </span><!-- End .entry-tags -->
+            <span class="entry-separator">/</span>
+            <a href="#" class="entry-comments"><%= link_to "#{ post.comments.count } Comments", post_path(post), class: 'entry-comments' %></a>
+            <span class="entry-separator">/</span>
+            by <a href="#" class="entry-author">Currents Staff</a>            
+        </footer>
+    </div>
+  </div> <!-- end posts -->
 </article>
+
+
+
 <% end %>
 <%= paginate @posts %>
