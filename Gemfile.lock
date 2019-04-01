@@ -1,9 +1,8 @@
 GIT
   remote: git://github.com/galetahub/ckeditor.git
-  revision: 32bc0c6702388549cb4b3f00f82afbc3798d6891
+  revision: f6ce3a98b29efec16fcff7bcf34b1e4e6827d835
   specs:
-    ckeditor (4.2.4)
-      cocaine
+    ckeditor (5.0.0)
       orm_adapter (~> 0.5.0)
 
 GIT
@@ -109,9 +108,6 @@ GEM
     case_transform (0.2)
       activesupport
     chartkick (2.2.5)
-    climate_control (0.2.0)
-    cocaine (0.5.8)
-      climate_control (>= 0.0.3, < 1.0)
     codeclimate-test-reporter (1.0.8)
       simplecov (<= 0.13)
     coderay (1.1.1)
@@ -517,4 +513,4 @@ RUBY VERSION
    ruby 2.3.4p301
 
 BUNDLED WITH
-   1.16.2
+   1.16.4
