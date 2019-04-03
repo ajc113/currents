@@ -13,6 +13,7 @@
 //= require ./boss/js/index
 //= require jquery_ujs
 //
+//= require maps
 //= require currents
 //= require reports
 //= require users
