@@ -1,55 +1,65 @@
 <head>
+  <%= display_meta_tags  %>
   <script type="application/ld+json">
-    <%= display_meta_tags  %>
   </script>
 </head>
 
 <%= stylesheet_link_tag params[:controller] %>
-  
-<div class="content-wrapper">
-  <!-- heading -->
-  <div class="row">
-    <br>
-    
-    <!-- title panel -->
-    <div class="col-lg-7"> 
-      <div class="text-center">
-        <h1 style="font-size: 55px;">HeatMap</h1>
-        <h4 style="font-weight: normal;">Network catch activity view of past 7 days.  Areas of significant catch increases are highlighted.</h4>
-      </div>
-    </div> 
-    
-    <!-- filter panel -->
-    <div class="col-lg-5">
-      <div class="panel panel-default">
-        <div class="panel-body" style="background-color: #edf1f2">
-          <h4>Filter Heatmap by target species or location</h4>
-          <div class="row">
-            <div class="col-lg-6">  
-                <%= form_for(:species_filter) do |f| %>
-                <%= f.label :species %>
-                <%= f.select :species, all_species.map{ |species| [species.name, species.id] }, { prompt: "Select Species" }, class: "form-control m-b", style: "width: 100% !important", id: "species_select" %>
-                <% end %>
-            </div>
-    
-            <div class="col-lg-6">
-              <%= form_for(:states_filter) do |f| %>
-              <%= f.label :location %>
-              <%= f.select :state, State.sorted.pluck(:name), { selected: current_user.state.name }, class: "form-control m-b", id: "state_select", style: "width: 100% !important" %>
-              <% end %>
-            </div>
-          </div>
+<div id="content" role="main"></div>  
 
-      </div>
-    </div>    
-  </div>
+
+<div class="page-header parallax dark half-largest larger-desc" data-bgattach="<%= image_path('boss/backgrounds/index35/bg1.jpg') %>" data-0="background-position:50% 0px;" data-500="background-position:50% -100%">
+
+    <!-- maps header -->
+  <div class="page-header larger larger-desc" style="border-bottom: none;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7">
+          <h1 class="title-border custom" style="font-size: 45px;">HeatMap</h1>
+          <p class="page-header-desc" style="padding-left: 35px;">Network catch activity view of past 7 days.  Areas of significant catch increases are highlighted.</p>
+        </div>
+        <!-- search widget  -->
+        <div class="col-md-5 bg-lightgray">
+          <div class="widget ">
+            <div class="panel-body pull-right">
+              <!-- filter panel -->
+              <div class="col-lg-12 ">
+                <h4>Filter Heatmap by target species or location</h4>
+                <div class="row">
+                  <div class="col-lg-6">  
+                      <%= form_for(:species_filter) do |f| %>
+                      <%= f.label :species %>
+                      <%= f.select :species, all_species.map{ |species| [species.name, species.id] }, { prompt: "Select Species" }, class: "form-control m-b", style: "width: 100% !important", id: "species_select" %>
+                      <% end %>
+                  </div>
+          
+                  <div class="col-lg-6">
+                    <%= form_for(:states_filter) do |f| %>
+                    <%= f.label :location %>
+                    <%= f.select :state, State.sorted.pluck(:name), { selected: current_user.state.name }, class: "form-control m-b", id: "state_select", style: "width: 100% !important" %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>  
+          </div> <!-- end widget -->
+        </div> <!-- end filter widget -->
+      </div> <!-- end row -->
+    </div> <!-- end container -->
+  </div>  <!-- end maps header -->
+
+
+<div >
   <br>
   <div id="locdetails" style="display:none;">
   </div>
+  <!-- map -->
   <div style="height: 900px; width: 100%;">
     <div id="map" class="gmap">
     </div>
-  </div>
+  </div> <!-- end map -->
+</div>
+
 </div>
 
 

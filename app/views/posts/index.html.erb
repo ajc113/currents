@@ -1,4 +1,4 @@
-<div id="content" role="main">
+<div id="content" role="main"></div>
   <div class="page-header parallax dark half-largest larger-desc" data-bgattach="<%= image_path('boss/backgrounds/index35/bg1.jpg') %>" data-0="background-position:50% 0px;" data-500="background-position:50% -100%">
 
     <!-- blog header -->
@@ -32,13 +32,14 @@
     <div class="row">
       <div class="col-md-12">
         <%= render 'index' %>
+      </div>
+
+        <% if current_admin_user %>
+        <%= link_to 'New Blog Post', new_post_path, class: "btn btn-dark btn-sm" %>
+        <% end %>
     </div>
+    <div class="mb20"></div>
+  </div> <!-- end container -->
 
-    <% if current_admin_user %>
-    <%= link_to 'New Blog Post', new_post_path, class: "btn btn-dark btn-sm" %>
-    <% end %>
-  </div>
-  <div class="mb20"></div>
 </div>
-
 

@@ -44,7 +44,6 @@ Rails.application.routes.draw do
   get 'locations_for_state', to: 'reports#locations_for_state', as: :locations_for_state
 
   #Static Pages
-  get 'about', to: 'currents#about'
   get 'vhf', to: 'currents#vhf'
   get 'rules', to: 'currents#rules'
   get 'pricing', to: 'currents#pricing'
