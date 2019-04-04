@@ -20,7 +20,7 @@ $(document).on 'turbolinks:load',  ->
       console.log(hash)
       $('html, body').animate
         scrollTop: $(hash).offset().top
-        duratin: 800
+        duration: 800
         easing: "linear"
         ->
           window.location.hash = hash
