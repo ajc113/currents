@@ -16,6 +16,7 @@
 //= require maps
 //= require currents
 //= require reports
+//= require bootstrap-datepicker/core
 //= require users
 //= require turbolinks
 //= require ckeditor/init_ckeditor

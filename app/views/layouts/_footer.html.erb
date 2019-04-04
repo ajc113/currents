@@ -29,14 +29,12 @@
         <div class="widget">
             <h3 class="title-underblock text-white mb20"><span>Tag Cloud</span></h3>
             <div class="tagcloud clearfix">
-                <a>
               <% tag_cloud Post.tag_counts, %w{s m l} do |tag, css_class| %>
                 <%= link_to tag.name, tag_path(tag.name), class: css_class %>
                 <% end %>
                  <% tag_cloud Spot.tag_counts, %w{s m l} do |tag, css_class| %>
                 <%= link_to tag.name, tag_path(tag.name), class: css_class %>
                 <% end %>
-                </a>
             </div><!-- End .tagcloud -->
         </div><!-- End .widget -->
       </div>  

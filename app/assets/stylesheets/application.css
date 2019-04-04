@@ -14,7 +14,7 @@
  *= require ./boss/css/font-awesome
  *= require ./boss/css/simple-line-icons
  *= require ./boss/css/index
- * require reports
+ *= require bootstrap-datepicker
  * require_self
  * require bootstrap-datepicker
  * require custom
@@ -27,3 +27,13 @@
  * require social-share-button
  * require posts
  */
+
+.mobile-only {
+  display: none;
+}
+
+@media screen and (max-width: 1200px) {
+  .mobile-only {
+    display: block;
+  }
+}
