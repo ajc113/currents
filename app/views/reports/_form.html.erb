@@ -21,7 +21,7 @@
         <% end %>
         <div class="form-group">
           <%= f.label :date %> (Required)<br>
-          <%= f.text_field :date, class: 'form-control report-date', type: 'date' %>
+          <%= f.text_field :date, class: 'form-control report-date', type: 'date', min: Date.today - 3.years, max: Date.today %>
         </div>
         <div class="field form-group">
           <%= f.label :species_id %> (Required)<br>

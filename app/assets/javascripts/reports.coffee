@@ -4,7 +4,7 @@
 
 $('.new_report').validate()
 $(document).on 'turbolinks:load',  ->
-  if $('.report-date').prop('type') != 'date' 
+  if $('.report-date').length && $('.report-date').prop('type') != 'date'
     $('.report-date').datepicker
       startDate: "-3y"
       endDate: "+0d"
@@ -35,5 +35,5 @@ $(document).on 'turbolinks:load',  ->
         $('#report_location_id').prop('disabled', 'disabled')
         $('.field_label').text("Updaing locations...")
       success: () ->
-        $('#report_location_id').removeProp('disabled')
+        $('#report_location_id').prop('disabled', false)
         $('.field_label').html('<label for="report_location_id">Location</label> (Required)')

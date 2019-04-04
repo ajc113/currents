@@ -14,6 +14,7 @@
  *= require ./boss/css/font-awesome
  *= require ./boss/css/simple-line-icons
  *= require ./boss/css/index
+ *= require bootstrap-datepicker
  * require reports
  * require_self
  * require bootstrap-datepicker
