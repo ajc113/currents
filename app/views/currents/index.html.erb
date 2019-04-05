@@ -12,8 +12,15 @@
         <h1>Currents Fishing</h1>
         <h3 >Networking tool built by fisherman to maximize your time on the water.</h3>
         <div class="block-action">
-          <a href="#" class="btn btn-dark btn-border radius-lger min-width">Join Today</a>
-          <a href="portfolio-grid-4col.html" class="btn btn-dark btn-border radius-lger min-width">More Features</a>
+          <% if current_user %>
+          <%= link_to "Sign In", new_user_session_path, class: "btn btn-dark btn-border radius-lger min-width" %>
+          <% else %>
+          <%= link_to "Join Now", new_user_registration_path, class: "btn btn-dark btn-border radius-lger min-width" %>
+          <% end %>
+          <%= link_to "Go to Heatmap", maps_path, class: "btn btn-dark btn-border radius-lger min-width" %>
+          <%= link_to "Go to Intel", intels_path, class: "btn btn-dark btn-border radius-lger min-width" %>
+          <%= link_to "Go to Reports", reports_path, class: "btn btn-dark btn-border radius-lger min-width" %>
+      
         </div>
         <!-- End .block-action -->
       </div>
@@ -48,25 +55,25 @@
       <div class="col-sm-4">
         <div class="service vertical">
           <span class="service-icon">
-
-          <i class="icon-directions"></i>
-          
-
+            <%= link_to '<i class="icon-directions" style="color: black"></i>'.html_safe, reports_path %>
           </span>
           <a>
-          <div class="service-content">
+            <div class="service-content">
             <h3 class="service-title title-underblock dark text-uppercase">Forum</h3>
           </a>
-            <p>Connect with the currents fishing community to share intel, action, and techniques</p>
+          <p>Connect with the currents fishing community to share intel, action, and techniques</p>
           </div>
           <!-- End .service-content -->
         </div>
         <!-- End .service -->
       </div>
+    </a>
       <!-- End .col-sm-4 -->
       <div class="col-sm-4">
         <div class="service vertical">
-          <span class="service-icon"><i class="icon-anchor"></i></span>
+          <span class="service-icon">
+           <%= link_to '<i class="icon-anchor" style="color: black"></i>'.html_safe, reports_path %>
+          </span>
           <div class="service-content">
             <h3 class="service-title title-underblock dark text-uppercase">Weekly Intel</h3>
             <p>We consolidate the community intel and post periodic updates on what is going on out on the water</p>
@@ -78,7 +85,9 @@
       <!-- End .col-sm-4 -->
       <div class="col-sm-4">
         <div class="service vertical">
-          <span class="service-icon"><i class="icon-picture"></i></span>
+          <span class="service-icon">
+            <%= link_to '<i class="icon-picture" style="color: black"></i>'.html_safe, reports_path %>
+          </span>
           <div class="service-content">
             <h3 class="service-title title-underblock dark text-uppercase">Catch Activity Heatmaps</h3>
             <p>View real time heatmaps of catch areas that are fishing well based off community catch reports</p>
@@ -93,7 +102,9 @@
     <div class="row">
       <div class="col-sm-4">
         <div class="service vertical">
-          <span class="service-icon"><i class="icon-notebook"></i></span>
+          <span class="service-icon">
+            <%= link_to '<i class="icon-notebook" style="color: black"></i>'.html_safe, reports_path %>
+          </span>
           <div class="service-content">
             <h3 class="service-title title-underblock dark text-uppercase">Catch Logging Tools</h3>
             <p>Use the catch logging tools as a trip log to keep all key information.  Your reports are private only general location is shared with the community</p>
@@ -105,7 +116,9 @@
       <!-- End .col-sm-4 -->
       <div class="col-sm-4">
         <div class="service vertical">
-          <span class="service-icon"><i class="icon-note"></i></span>
+          <span class="service-icon">
+            <%= link_to '<i class="icon-note" style="color: black"></i>'.html_safe, reports_path %>
+          </span>
           <div class="service-content">
             <h3 class="service-title title-underblock dark text-uppercase">Blog</h3>
             <p>Blog posts on relevant tackle, product reviews and breaking news</p>
@@ -117,7 +130,9 @@
       <!-- End .col-sm-4 -->
       <div class="col-sm-4">
         <div class="service vertical">
-          <span class="service-icon"><i class="icon-globe"></i></span>
+          <span class="service-icon">
+            <%= link_to '<i class="icon-globe" style="color: black"></i>'.html_safe, reports_path %>
+          </span>
           <div class="service-content">
             <h3 class="service-title title-underblock dark text-uppercase">Spots</h3>
             <p>Detailed information on some of the best fishign spots and locations.  Detailed information on how to fish each spot.</p>

@@ -17,6 +17,7 @@ ActiveAdmin.register User do
     column :first_name
     column :last_name
     column :vessel_name
+    column :home_port
     column :state
     column :sign_in_count
     column :created_at
