@@ -39,9 +39,7 @@
               <span class="entry-label"><i class="fa fa-tag"></i>Categories: <%= raw "| Tags: " + @spot.tag_list.map { |t| link_to t, tag_path(t)}.join(', ') if @spot.tags.exists? %>
               </span><!-- End .entry-tags -->
               <span class="entry-separator">/</span>
-              <a href="#" class="entry-comments">10 Comments</a>
-              <span class="entry-separator">/</span>
-              by <a href="#" class="entry-author">Currents Staff</a>
+              <a href="<%= request.url%>#disqus_thread" class="entry-comments"></a>
               <span class="entry-separator">/</span>
                 <% if current_admin_user %>
                   <%= link_to 'Edit', edit_spot_path(@spot) %>
@@ -52,7 +50,7 @@
                  <%= link_to 'Back to Spots', spots_path, class: "btn btn-dark" %>
         </article>
           
-
+          <%= render 'shared/disqus' %>
           
         </div>
 

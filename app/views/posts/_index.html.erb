@@ -28,12 +28,14 @@
         </div><!-- End post body -->
         <footer class="entry-footer clearfix">
             <span class="entry-cats">
-                <span class="entry-label"><i class="fa fa-tag"></i>Categories:</span><a href="#"><%= post_tags(post) %></a>
+              <span class="entry-label">Submitted <%= time_ago_in_words(post.created_at)%> a go
+              </span>
+              <span class="entry-separator">/</span> 
+              <span class="entry-label"><i class="fa fa-tag"></i>Categories:</span><a href="#"><%= post_tags(post) %></a>
             </span><!-- End .entry-tags -->
             <span class="entry-separator">/</span>
-            <a href="#" class="entry-comments"><%= link_to "#{ post.comments.count } Comments", post_path(post), class: 'entry-comments' %></a>
-            <span class="entry-separator">/</span>
-            by <a href="#" class="entry-author">Currents Staff</a>            
+                   <a href="<%= post_url(post).html_safe %>#disqus_thread" class="entry-comments">
+                 </a>
         </footer>
     </div>
   </div> <!-- end posts -->

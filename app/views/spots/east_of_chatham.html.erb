@@ -1,62 +1,101 @@
 <head>
+  <%= display_meta_tags  %>
   <script type="application/ld+json">
-    <%= display_meta_tags  %>
   </script>
 </head>
-<body class="background"></body>
 
-<!-- header -->
-<div class="col-lg-11 col-lg-offset-1 col-md-8" style="color: #243948;"> 
-  <h1>
-    East of Chatham Spots
-  </h1>
-  <h3>
-    Isight into the waters east of Chatham including shipping lanes through the great south channel.
-  </h3>
-  <!-- border -->
-  <div style="border-bottom: 5px solid #243948;"></div><br>
-</div>
+
+<div id="content" role="main">
+  <div class="page-header parallax dark half-largest larger-desc" data-bgattach="<%= image_path('chart5.jpg') %>" data-0="background-position:100% 0px;" data-500="background-position:50% -50%">
+    
+   <!-- spot header -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1>East of Chatham Spots</h1>
+          <p class="page-header-desc"> Insight into the waters east of Chatham including shipping lanes through the great south channel.</p>
+        </div>
+        <div class="col-md-6">
+          <ol class="breadcrumb">
+          </ol>
+        </div>
+      </div>
+    </div> 
+  </div><!-- end header -->
+
 
 <!-- spot content -->
-<div class="content-wrapper">
-  <div class="row">    	  
-   	<div class="col-lg-8 col-lg-offset-1 col-lg-9">
-			<%= render 'static_spots' %>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9">
+      <%= render 'static_spots' %>
     </div>
-    <!-- Aside -->
-    <div class="col-lg-3 col-md-3 posts-sidebar">
-      <!-- Search-->
-      <div class="panel widget bg-inverse-light">
+
+    <div class="mb60 clearfix visible-sm visible-xs"></div>
+    
+      <!-- aside right  -->
+      <aside class="col-lg-3 sidebar" role="complementary">
+      <div class="widget">
         <div class="panel-body">
-            <strong>Search Spots</strong><br>
+            <label class"input-desc">Search Spots</label>
             <form class="form-horizontal">
                   <%= form_tag spots_path, :method => 'get' do %>
-                  <p><%= text_field_tag  :q, params[:q], class: 'form-control'   %></p>
-                  <%= submit_tag 'Search', :name => nil,  class: "mb-sm btn btn-inverse btn-outline"  %>
+                  <p><%= text_field_tag  :q, params[:q], class: 'form-control'  %></p>
+                  <%= submit_tag 'Search', :name => nil, class: "btn btn-dark btn-border" %>
                   <% end %>
             </form>
         </div>
-      </div>
-      <!-- Categories-->
-      <div class="panel widget bg-inverse-light">
-        <div class="panel-body">
-          <div class="text-md m0">
-            <strong>Fishing Locations</strong><br>
-            <ul class="list-unstyled" >
-                <li><%= link_to "MA Inshore", ma_inshore_path,  {:style => 'color: #FFFFFF'} %></li>
-                  <li><%= link_to "Gulf of Maine", gulf_of_maine_path,  {:style => 'color: #FFFFFF'} %></li>
-                  <li><%= link_to "South of Vineyard", south_of_vineyard_path,  {:style => 'color: #FFFFFF'} %></li>
-                  <li><%= link_to "East of Chatham", east_of_chatham_path,  {:style => 'color: #FFFFFF'} %></li>
-                  <li><%= link_to "Boat Ramps", boat_ramps_path,  {:style => 'color: #FFFFFF'} %></li>
-            </ul>
+      </div> 
+        <div class="widget">
+          <h3>Fishing Locations</h3>
+          <ul class="links">
+            <li>
+              <i class="fa fa-angle-right">
+                <strong>
+                  <%= link_to "MA Inshore", ma_inshore_path %>
+                </strong>
+              </i>
+            </li>
+            <li>
+              <i class="fa fa-angle-right">
+                <strong>
+                  <%= link_to "Gulf of Maine", gulf_of_maine_path %>
+                </strong>
+              </i>
+            </li>
+            <li>
+              <i class="fa fa-angle-right">
+                <strong>
+                  <%= link_to "South of Vineyard", south_of_vineyard_path %>
+                </strong>
+              </i>
+            </li>
+            <li>
+              <i class="fa fa-angle-right">
+                <strong>
+                  <%= link_to "East of Chatham", east_of_chatham_path %>
+                </strong>
+              </i>
+            </li>
+            <li>
+              <i class="fa fa-angle-right">
+                <strong>
+                  <%= link_to "Boat Ramps", boat_ramps_path %>
+                </strong>
+              </i>
+            </li>
+          </ul>
+        </div>
+        <div class="widget">
+          <div class="panel-body">
+            <% if current_admin_user %>
+            <%= link_to "Add New Spot", new_spot_path, class: "btn btn-dark" %>
+            <% end %>  
           </div>
         </div>
-      </div>
-      <% if current_admin_user %>
-        <%= link_to "Add New Spot", new_spot_path, class: "btn btn-danger  btn-lg" %>
-      <% end %>    
+      </aside> <!-- aside end -->
     </div>
-
-    
   </div>
+  <div class="sm-margin"></div>
 </div>

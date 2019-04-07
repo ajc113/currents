@@ -29,7 +29,7 @@
               <span class="entry-label"><i class="fa fa-tag"></i>Categories: <%= post_tags post %>
               </span><!-- End .entry-tags -->
               <span class="entry-separator">/</span>
-              <a href="#" class="entry-comments">10 Comments</a>
+              <a href="<%= request.url%>#disqus_thread" class="entry-comments"></a>
               <span class="entry-separator">/</span>
               by <a href="#" class="entry-author">Currents Staff</a>
               <span class="entry-separator">/</span>
@@ -39,211 +39,12 @@
                 <% end %> 
               </span>
           </footer>
-                 <%= link_to 'Back to Intels', intels_path, class: "btn btn-dark" %>
+            <%= link_to 'Back to Intels', intels_path, class: "btn btn-dark" %>
         </article>
           
+          <%= render 'shared/disqus' %>
 
-          <%#= #TODO: Fix the related posts slider %>
-<!--           <h3 class="mb30 title-underblock custom">Related Posts</h3>
-          <div class="blog-related-carousel owl-carousel small-nav owl-theme owl-loaded owl-responsive-1200">
-            <div class="owl-stage-outer">
-              <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 1540px;">
-                <div class="owl-item active" style="width: 370px; margin-right: 15px;">
-                  <article class="entry entry-box">
-                    <div class="entry-media">
-                      <figure>
-                        <a href="single.html">
-                          <img src="images/blog/post1.jpg" alt="Entry Title">
-                        </a>
-                      </figure>
-                    </div>
-
-                    <div class="entry-content-wrapper">
-                    <span class="entry-date">20<span>Feb</span></span>
-                      <span class="entry-format"><i class="fa fa-file-image-o"></i></span>
-                      <h2 class="entry-title"><a href="single.html">Donec interdum condimentum erat.</a></h2>
-                      <div class="entry-content">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum condimentum erat..</p>
-                      </div>
-
-                    </div>
-
-                    <footer class="entry-footer clearfix">
-                      <span class="entry-cats">
-                        <span class="entry-label"><i class="fa fa-tag"></i></span><a href="#">Cars</a>, <a href="#">Design</a>
-                      </span> 
-                      <a href="#" class="entry-readmore text-right">Read More <i class="fa fa-angle-right"></i></a>
-                    </footer>
-                  </article>
-                </div>
-                <div class="owl-item active" style="width: 370px; margin-right: 15px;">
-                  <article class="entry entry-box">
-                    <div class="entry-media embed-responsive embed-responsive-16by9">
-                      <iframe class="embed-responsive-item" src="//player.vimeo.com/video/30173582?color=ffffff" width="500" height="281" allowfullscreen=""></iframe>
-                    </div>
-                    End .entry-media
-                    <div class="entry-content-wrapper">
-                      <span class="entry-date">10<span>Feb</span></span>
-                      <span class="entry-format"><i class="fa fa-file-video-o"></i></span>
-                      <h2 class="entry-title"><a href="single.html">Sit amet, consectetur adipiscing.</a></h2>
-                      <div class="entry-content">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum condimentum erat..</p>
-                      </div>
-                      End .entry-content
-                    </div>
-                    End .entry-content-wrapper
-                    <footer class="entry-footer clearfix">
-                      <span class="entry-cats">
-                        <span class="entry-label"><i class="fa fa-tag"></i></span><a href="#">Life</a>
-                      </span>End .entry-tags
-                      <a href="#" class="entry-readmore text-right">Read More <i class="fa fa-angle-right"></i></a>
-                    </footer>
-                  </article>
-                </div>
-                <div class="owl-item active" style="width: 370px; margin-right: 15px;">
-                  <article class="entry entry-box">
-                    <div class="entry-media">
-                      <figure>
-                        <a href="single.html">
-                          <img src="images/blog/post4.jpg" alt="Entry Title">
-                        </a>
-                      </figure>
-                    </div>
-                    End .entry-media
-                    <div class="entry-content-wrapper">
-                      <span class="entry-date">06<span>Feb</span></span>
-                      <span class="entry-format"><i class="fa fa-file-image-o"></i></span>
-                      <h2 class="entry-title"><a href="single.html">Ipsa quasi praesentium eos.</a></h2>
-                      <div class="entry-content">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum condimentum erat..</p>
-                      </div>
-                      End .entry-content
-                    </div>
-                    End .entry-content-wrapper
-                    <footer class="entry-footer clearfix">
-                      <span class="entry-cats">
-                        <span class="entry-label"><i class="fa fa-tag"></i></span><a href="#">Nature</a>, <a href="#">Design</a>
-                      </span>End .entry-tags
-                      <a href="#" class="entry-readmore text-right">Read More <i class="fa fa-angle-right"></i></a>
-                    </footer>
-                  </article>
-                </div>
-                <div class="owl-item" style="width: 370px; margin-right: 15px;">
-                  <article class="entry entry-box">
-                    <div class="entry-media">
-                      <figure>
-                        <a href="single.html">
-                          <img src="images/blog/post5.jpg" alt="Entry Title">
-                        </a>
-                      </figure>
-                    </div>
-                    
-                    <div class="entry-content-wrapper">
-                      <span class="entry-date">02<span>Feb</span></span>
-                      <span class="entry-format"><i class="fa fa-file-image-o"></i></span>
-                      <h2 class="entry-title"><a href="single.html">dolor sit amet, consectetur sie.</a></h2>
-                      <div class="entry-content">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum condimentum erat..</p>
-                      </div>
-                 
-                    </div>
-              
-                    <footer class="entry-footer clearfix">
-                      <span class="entry-cats">
-                        <span class="entry-label"><i class="fa fa-tag"></i></span><a href="#">Travel</a>, <a href="#">Life</a>
-                      </span>
-                      <a href="#" class="entry-readmore text-right">Read More <i class="fa fa-angle-right"></i></a>
-                    </footer>
-                  </article>
-                </div>
-              </div>
-            </div> 
-            <div class="owl-controls">
-              <div class="owl-nav">
-                <div class="owl-prev" style=""><i class="fa fa-angle-left"></i></div>
-                <div class="owl-next" style=""><i class="fa fa-angle-right"></i></div>
-              </div>
-              <div class="owl-dots" style="display: none;"></div>
-            </div>
-          </div>
-
-          <div class="comments">
-            <h3 class="mb35 title-underblock custom">3 Comment(s)</h3>
-            <ul class="comments-list media-list">
-              <li class="media">
-                <div class="media-left">
-                  <img class="media-object img-circle" src="images/blog/dean.jpg" alt="Dean Hunter">
-                </div>
-        
-                <div class="media-body">
-                  <h4 class="media-heading">Dean Hunter<span class="comment-date">(10 February 2015 - 17:25)</span></h4>
-                  <a href="#" class="reply-link">Reply </a>
-                  <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in fac sed odio dui.</p>
-                  <ul>
-                    <li class="media">
-                      <div class="media-left">
-                        <img class="media-object img-circle" src="images/blog/sarah.jpg" alt="Sarah Hunter">
-                      </div>
-                      End .media-left
-                      <div class="media-body">
-                        <h4 class="media-heading">Sarah Hunter<span class="comment-date">(11 February 2015 - 09:11)</span></h4>
-                        <a href="#" class="reply-link">Reply </a>
-                        <p>Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in fac sed odio dui.</p>
-                      </div>
-                      End .media-body
-                    </li>
-                  </ul>
-                </div>
-                End .media-body
-              </li>
-              <li class="media">
-                <div class="media-left">
-                  <img class="media-object img-circle" src="images/blog/john.jpg" alt="Sarah Hunter">
-                </div>
-                End .media-left
-                <div class="media-body">
-                  <h4 class="media-heading">John Doe<span class="comment-date">(08 February 2015 - 21:11)</span></h4>
-                  <a href="#" class="reply-link">Reply </a>
-                  <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in fac sed odio dui.</p>
-                </div>
-    
-              </li>
-            </ul>
-          </div>
-
-          <div id="respond" class="comment-respond">
-            <h3 class="mb30 title-underblock custom">Leave a Comment</h3>
-            <form action="#" method="post">
-              <div class="row">
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <label for="name" class="input-desc">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required="">
-                  </div>
-             
-                </div>
-                
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <label for="email" class="input-desc">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Your E-mail" required="">
-                  </div>
-                 
-                </div>
-                
-              </div>
-             
-              <div class="form-group">
-                <label for="message" class="input-desc">Message</label>
-                <textarea class="form-control" rows="6" id="message" name="message" placeholder="Your Message" required=""></textarea>
-              </div>
-              
-              <div class="form-group">
-                <input type="submit" class="btn btn-dark" value="Post Comment">
-              </div>
-             
-            </form>
-          </div> -->
+          </div> 
           
         </div>
 
@@ -254,4 +55,4 @@
     <div class="mb20"></div>
     
   </div>
-  <%= render 'shared/disqus' if Rails.env.production? %>
+ 

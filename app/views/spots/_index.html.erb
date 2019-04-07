@@ -25,9 +25,8 @@
             <span class="entry-label"><i class="fa fa-tag"></i>Categories:</span><%= post_tags(spot) %>
           </span><!-- End .entry-tags -->
           <span class="entry-separator">/</span>
-          <a href="#" class="entry-comments">5 Comments</a>
-          <span class="entry-separator">/</span>
-          by <a href="#" class="entry-author">Eon</a>
+            <a href="<%= spot_url(spot).html_safe %>#disqus_thread" class="entry-comments">
+            </a>
         </footer>
       </div>
       <!-- End .col-md-6 -->

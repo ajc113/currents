@@ -34,19 +34,12 @@
     <%= csrf_meta_tags %>
     <%= favicon_link_tag 'favicon.png' %>
   </head>
+  
   <body data-spy="scroll" data-target="#main-navbar-container">
     <div id="wrapper">
+      <%= render 'layouts/alerts' %>
       <%= render 'layouts/navbar' %>
-      <%= render 'layouts/subscription_alerts' %>
-      <% if flash.any? %>
-        <div class="container">
-          <% flash.each do |key, value| %>
-            <div role="alert" class="alert alert-<%=key%>">
-              <%= value.html_safe %>
-            </div>
-          <% end %>
-        </div>
-      <% end unless devise_controller? %>
+      <%#= render 'layouts/subscription_alerts' %>
       <%= yield %>
       <%= render 'layouts/footer' %>
     </div>

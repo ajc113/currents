@@ -11,6 +11,7 @@ class PostsController < ApplicationController
                   keywords: "New england fishing intel, fishing reports, catch reports, big game fishing, offshore fishing"
     @tags = Post.tag_counts_on(:tags).limit(5)
     @tag_counts = Post.tag_counts_on(:tags).limit(10)
+
   end
 
 

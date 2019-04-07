@@ -196,8 +196,6 @@
         <!-- blog title -->
         <h2 class="entry-title"><%= link_to intel.title, intel %></a></h2>
         <!-- blog description -->
-        
-        <h3 class="entry-title"><a href="single.html"><%= link_to intel.body.truncate(100).html_safe, intel %></a></h3>
 
         <footer class="entry-footer clearfix">
           <!-- blog categories -->
@@ -206,11 +204,15 @@
             </span>
           </span><!-- End .entry-tags -->
           <span class="entry-separator"></span>
-          <!-- blog tags -->
-          <a href="#" class="entry-comments"><%= raw "/ Tags: " + intel.tag_list.map { |t| link_to t, tag_path(t)}.join(', /') if intel.tags.exists? %></a>
-          <!-- blog writer -->
-          <span class="entry-separator"></span>
           by <a href="#" class="entry-author"> Currents Staff</a>
+          <span class="entry-separator"></span>
+          <!-- blog tags -->
+          <span class="entry-label"><i class="fa fa-tag"></i>Categories:<%= raw intel.tag_list.map { |t| link_to t, tag_path(t)}.join(', ') if intel.tags.exists? %></a>
+          <!-- blog writer -->
+          <span class="entry-separator">/</span>
+            <a href="<%= intel_url(intel).html_safe %>#disqus_thread" class="entry-comments">
+            </a>
+          
           <!-- read more -->
           <a href="#"><%= link_to "READ MORE >", intel_path(intel), class: "entry-readmore text-right" %></a>
         </footer>   
@@ -353,11 +355,15 @@
             </span>
           </span><!-- End .entry-tags -->
           <span class="entry-separator">/</span>
-          <!-- blog tags -->
-          <a href="#" class="entry-comments"><%= raw "Tags: " + post.tag_list.map { |t| link_to t, tag_path(t)}.join(', ') if post.tags.exists? %></a>
-          <!-- blog writer -->
-          <span class="entry-separator">/</span>
           by <a href="#" class="entry-author"> Currents Staff</a>
+          <span class="entry-separator">/</span>
+          <!-- blog tags -->
+          <span class="entry-label"><i class="fa fa-tag"></i>Categories:<%= raw post.tag_list.map { |t| link_to t, tag_path(t)}.join(', ') if post.tags.exists? %></a>
+          <span class="entry-separator">/</span>
+            <a href="<%= post_url(post).html_safe %>#disqus_thread" class="entry-comments">
+                 </a>  
+          <!-- blog writer -->
+
           <!-- read more -->
           <a href="#"><%= link_to "READ MORE >", post_path(post), class: "entry-readmore text-right" %></a>
         </footer>   
