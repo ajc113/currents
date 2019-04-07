@@ -1,85 +1,96 @@
 <div class="boss-loader-overlay"></div>
 <!-- End .boss-loader-overlay -->
 
-  <header id="header" role="banner">
-    <div class="collapse navbar-inverse special-for-mobile" id="header-search-form">
-      <div class="container">
-        <form class="navbar-form animated fadeInDown">
-          <input type="search" id="s" name="s" class="form-control" placeholder="Search in here...">
-          <button type="submit" class="btn-circle" title="Search"><i class="fa fa-search"></i></button>
-        </form>
-      </div>
-      <!-- End .container -->
+<header id="header" role="banner">
+    
+  <div class="collapse navbar-inverse special-for-mobile" id="header-search-form">
+    <div class="container">
+      <form class="navbar-form animated fadeInDown">
+        <input type="search" id="s" name="s" class="form-control" placeholder="Search in here...">
+        <button type="submit" class="btn-circle" title="Search"><i class="fa fa-search"></i></button>
+      </form>
     </div>
-    <!-- End #header-search-form -->
-    <nav class="navbar navbar-inverse navbar-transparent animated-dropdown ttb-dropdown" role="navigation">
-      <div class="sticky-wrapper">
-        <div class="navbar-inner sticky-menu">
-          <div class="container" style="margin-left:10px;">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle btn-circle pull-right collapsed" data-toggle="collapse" data-target="#main-navbar-container">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-              </button>
-               <a class="navbar-brand " href="/" title="Boss - Multipurpose Premium Html5 Template" >Currents</a>
-              <button type="button" class="navbar-btn btn-icon btn-circle pull-right last visible-sm visible-xs" data-toggle="collapse" data-target="#header-search-form"><i class="fa fa-search"></i></button>
-            </div>
-            <!-- End .navbar-header -->
-            <div class="collapse navbar-collapse" id="main-navbar-container">
-              <ul class="nav navbar-nav">
-                <li>
-                  <%= link_to "Forum", "https://community.thefishing.network" %>
-                </li>
-                <li>
-                  <%= link_to "Intel", intels_path %>
-                </li>
-                <li>
-                  <%= link_to "Submit a Report", reports_path %>
-                </li>
-                <li>
-                  <%= link_to "HeatMap", maps_path %>
-                </li>
-                <li>
-                  <%= link_to "Blog", posts_path %>
-                </li>
-                <li>
-                  <%= link_to "Spots", spots_path %>
-                </li>
-                <li>
-                  <%= link_to "About Us", "/#about_us", 'data-turbolinks' => false %> 
-                </li>
-                <li>
-                 <%= link_to "Contact", "/#contact_us", 'data-turbolinks' => false %>
-                </li> 
-              </ul>
-              <ul class="nav navbar-nav pull-right">
-<!--                 <li>
-                  <a href="tel:+18002083817">
-                    <span class="link-unstyled">Report Hotline 1-800-208-3817</span>
-                  </a>
-                </li> -->
-                <% if current_user %>
-                  <li>
-                    <%= link_to "My Account", edit_user_registration_path %>
-                  </li>
-                  <li>
-                    <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-                  </li>
-                <% else %>
-                  <li>
-                    <%= link_to "Register", new_user_registration_path %>
-                  </li>
-                  <li>
-                    <%= link_to "Sign In", new_user_session_path %>
-                  </li>
-                </ul>
-              <% end %>
-            </div>
-            <!-- /.navbar-collapse -->
+    <!-- End .container -->
+  </div>
+  
+  <!-- End #header-search-form -->
+  <nav class="navbar navbar-inverse navbar-transparent animated-dropdown ttb-dropdown" role="navigation">
+    <div class="sticky-wrapper">
+    
+      <!-- top navbar -->
+      <div class="navbar-top clearfix">
+          <div class="container">
+              <div class="pull-right">
+                  <ul class="navbar-top-nav clearfix hidden-sm hidden-xs">
+                  <% if current_user %>
+                    <li><a href="#"><i class="fa fa-user"></i><%= link_to "My Account", edit_user_registration_path %></a></li>
+        
+                     <li><a href="login.html"><i class="fa fa-external-link"></i><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></a></li>
+
+                      <% else %>
+                    <li><a href="register.html"><i class="fa fa-terminal"></i>%= link_to "Register", new_user_registration_path %></a></li>
+                    
+                    <li><a href="login.html"><i class="fa fa-external-link"></i><%= link_to "Sign In", new_user_session_path %></a></li>
+                    <li>
+                      
+                  
+                    <% end %>
+
+                  </ul>
+              </div><!-- End .pull-left -->
+          </div><!-- End .container-fluid -->
+      </div><!-- End .navbar-top -->
+
+      <!-- inner navbar -->
+      <div class="navbar-inner sticky-menu">
+        <div class="container" style="margin-left:10px; margin-right: 10px;">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle btn-circle pull-right collapsed" data-toggle="collapse" data-target="#main-navbar-container">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+            </button>
+             <a class="navbar-brand " href="/" title="Boss - Multipurpose Premium Html5 Template" >Currents</a>
+            <button type="button" class="navbar-btn btn-icon btn-circle pull-right last visible-sm visible-xs" data-toggle="collapse" data-target="#header-search-form"><i class="fa fa-search"></i></button>
           </div>
-          <!-- /.container -->
+          <!-- End .navbar-header -->
+          <div class="collapse navbar-collapse" id="main-navbar-container">
+            <ul class="nav navbar-nav">
+              <li>
+                <%= link_to "Forum", "https://community.thefishing.network" %>
+              </li>
+              <li>
+                <%= link_to "Intel", intels_path %>
+              </li>
+              <li>
+                <%= link_to "Submit a Report", reports_path %>
+              </li>
+              <li>
+                <%= link_to "HeatMap", maps_path %>
+              </li>
+              <li>
+                <%= link_to "Blog", posts_path %>
+              </li>
+              <li>
+                <%= link_to "Spots", spots_path %>
+              </li>
+              <li>
+                <%= link_to "About Us", "/#about_us", 'data-turbolinks' => false %> 
+              </li>
+              <li>
+               <%= link_to "Contact", "/#contact_us", 'data-turbolinks' => false %>
+              </li> 
+            </ul>
+
+          </div>
+          <!-- /.navbar-collapse -->
         </div>
+        <!-- /.container -->
       </div>
-      <!-- End .navbar-inner -->
-    </nav>
-  </header>
+        
+    </div>
+    <!-- End .navbar-inner -->
+  </nav>
+
+</header>
+
+
