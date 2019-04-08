@@ -21,12 +21,14 @@
       <%= f.label :body %><br>
       <%= f.cktext_area :body, class: 'form-control'   %>
     </div>
+    <br>
     <div class="field form-group">
       <%= f.label :tag_list, "Tags (seperated by commas)" %> <br>
       <%= f.text_field :tag_list, value: f.object.tag_list.to_s, class: 'form-control' %>
     </div>
     <div class="field form-group">
-      <%= f.submit class: "btn btn-inverse btn-md" %>
+      <%= f.submit class: "btn btn-dark" %>
     </div>
-  <% end %><%= link_to 'Back', intels_path %>
+  <% end %>
+  <%= link_to 'Back', intels_path, class: "btn btn-default" %>
 </div>

@@ -1,214 +1,189 @@
 <head>
-  <script type="application/ld+json">
     <%= display_meta_tags  %>
+  <script type="application/ld+json">
   </script>
 </head>
-
-<%= image_tag 'lighthouse2.jpg',  class: 'img-responsive report-header-image hidden-xs', style: 'display:block; opacity: .85' %>
-<!-- log new report button -->
-
-
-<div class="row">
-  <div class="col-lg-12  col-md-6" >  
-    <div class="panel b">
-      <div class="col-lg-4 col-md-6"></div>
-      <div class="col-lg-4 col-md-6"> 
-        <div class="panel-heading text-center" style="padding: 20px;">
-          <h1 class="m0">Catch History</h1>
-          <h4 class="text-muted">Catch logging tools to track and analyze catch history</h4>
-        </div>
-        <div class="panel-body">
-          <div class="p-lg text-center">
-            <%= link_to 'Log New Report', new_report_path, class: "btn btn-inverse btn-lg" %>
-          </div>
-        </div>
+<div id="content" role="main"></div>
+<div class="page-header dark parallax half-largest larger-desc" data-bgattach="<%= image_path('boss/backgrounds/index35/bg1.jpg') %>" style="" data-0="background-position:50% 0px;" data-500="background-position:50% -50%">
+    
+    <!-- start header -->
+    <div class="row" style="padding: 10px;">
+      <div class="col-md-10">
+        <h1 class="title-border custom" style="font-size: 45px;"><%= current_user.vessel_name %> Catch Reports</h1>
+        <p class="title-border" style="padding-left: 45px;">Log reports and analyze past trip data</p>
       </div>
-      <div class="col-lg-4 col-md-6">
-        <div class="row text-center col-lg-offset-3">
-          <div class="col-md-12" style="padding: 20px;">
-            <div class="panel b">
-              <div class="panel-body text-center">
-                 <a href="tel:+18002083817" class="link-unstyled text-danger">
-                    <em class="fa fa-phone fa-lg"></em>
-                    <span class="h4">Currents Report Hotline</span>
-                    <br>
-                    <span class="h2">1-800-208-3817</span>
-                    <br>
-                    <span class="h4">Call in your report today</span>
-                 </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <%= link_to 'Log New Report', new_report_path, class: "btn btn-dark btn-lg", style: "text-right" %>
     </div>
-  </div>
-</div>
 
-
-
-<!-- Filter panel -->
-<div class="panel panel-default col-sm-12 bg-gray">
-  <h3 class="h3">Report Filter</h3>
-  <div class="panel-body">
-    <form id="filter_form" action="/reports" class="form-horizontal">
-      <div class="form-group">
-        <!-- Species filter   -->
-        <div class="col-sm-2">
-          <label>Species</label><br>
-          <select id="species" name="species" class="form-control m-b">
-            <option value="">Select Species</option>
-            <% @species_for_filter.each do |report| %>
-              <option value="<%= report.species_id %>" <%= selected_species(report.species_id) %>><%= report.species.name %>
-              </option>
-            <% end %>
-          </select>
-        </div>
-        <!-- state filter -->
-        <div class="col-sm-2">
-          <label>State</label><br>
-          <select id="state" name="state" class="form-control m-b">
-            <option value="">Select State</option>
-            <% @state_for_filter.each do |state| %>
-              <option value=<%= state.name %> <%= selected_state(state.name) %>><%= state.name %></option>
-            <% end %>
-          </select>
-        </div>
-        <!-- locations filter -->
-        <div class="col-sm-4">
-          <label>Location</label><br>
-          <select id="location" name="location" class="form-control m-b">
-            <option value="">Select Location</option>
-            <% @locations_for_filter.each do |location| %>
-              <%= render_location_option_with_state(location) %>
-            <% end %>
-          </select>
-        </div>
-        <!-- tide filter -->
-        <div class="col-sm-2">
-          <label>Tide</label><br>
-          <select id="tide" name="tide" class="form-control m-b">
-            <option value="">Select Tide</option>
-            <% @tides_for_filter.each do |tide| %>
-              <option value="<%= tide %>" <%= selected_tide(tide) %>><%= tide %>
-              </option>
-            <% end %>
-          </select>
-        </div>
-        <!-- date filter -->
-        <div class="col-sm-2">
-          <label>Month</label><br>
-          <%= select_month(params[:date].to_i, { :prompt => "Select Date", :user_month_name => true }, name: "date", :class => "form-control m-b", id: "date") %>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
-<div class="text-center">
-  <%= link_to 'Clear Filter', reports_path, class: 'btn btn-info btn-lg' %>
-</div>
-<!-- filter script -->
-<script>
-  $('#species').change(function(){
-            $('#filter_form').submit();
-          });
-          $('#state').change(function(){
-            $('#filter_form').submit();
-          });
-          $('#location').change(function(){
-            $('#filter_form').submit();
-          });
-           $('#tide').change(function(){
-            $('#filter_form').submit();
-          });
-            $('#date').change(function(){
-            $('#filter_form').submit();
-          });
-</script>
-<!-- end of filter -->
-<!-- Page content-->
-<!-- start of REPORTS -->
-<div id="table-container">
-  <div class="content-wrapper">
-    <div class="row">
-      <!-- header   -->
-      <div class="panel-heading bg-info text-center">
-        <h2>
-          <%= current_user.vessel_name %> Catch Reports
-        </h2>
-      </div>
-      <!-- end of header -->
-      <!-- start of report table -->
-      <div class="panel panel-default">
-        <div class="table-responsive b0">
-          <table id="datatable1" class="table table-striped table-hover">
+    <!-- Filter table -->
+    <div class="col-sm-12">
+      <h2 class="title-border dark text-right">Report Filter</h2>
+      <%= link_to 'Clear Filter', reports_path %>
+      <form id="filter_form" action="/reports" class="form-horizontal">
+      <div class="table-responsive">
+        <table class="table">
             <thead>
-              <tr>
-                <th class="wd-xs">Date<br>(mm/dd/yy)</th>
-                <th class="wd-sm">Target species</th>
-                <th class="wd-td3">Location</th>
-                <th class="wd-sm">State</th>
-                <th class="wd-xxs">Catch keepers</th>
-                <th class="wd-xxs">Catch total</th>
-                <th class="wd-td3"> Trip summary</th>
-                <th class="wd-xs">Primary method</th>
-                <th class="wd-xs">Tide</th>
-                <th class="wd-xs">Weather</th>
-                <th class="wd-sm">Wind</th>
-                <th class="wd-xs">Spot</th>
-                <th class="wd-xs">Best bait</th>
-                <th class="wd-md">Trip description</th>
-                <th class="wd-xxs">Actions</th>
-              </tr>
+                <tr>
+                    <th>Species</th>
+                    <th>State</th>
+                    <th>Location</th>
+                    <th>Tide</th>
+                    <th>Month</th>
+                </tr>
             </thead>
-            <tbody id="datatable1-body">
-              <% if current_user %>
-                <% @filtered_reports.each do |report| %>
-                  <tr>
-                    <td class="wd-xs"><%= report.date.try(:strftime, '%m/%d/%y') %></td>
-                    <td class="wd-sm"><%= report.species.name %></td>
-                    <td class="wd-td3"><%= report.location.try(:short_name) %></td>
-                    <td class="wd-sm"><%= report.state.name %></td>
-                    <td class="wd-xxs"><%= report.catch_keepers %></td>
-                    <td class="wd-xxs"><%= report.catch_total %></td>
-                    <td class="wd-td3"><%= report.trip_summary %></td>
-                    <td class="wd-xs"><%= report.primary_method %></td>
-                    <td class="wd-xs"><%= report.tide %></td>
-                    <td class="wd-xs"><%= report.weather %></td>
-                    <td class="wd-sm"><%= report.wind %></td>
-                    <td class="wd-xs"><%= report.spot %></td>
-                    <td class="wd-xs"><%= report.best_bait %></td>
-                    <td class="wd-md"><%= report.trip_description %></td>
-                    <td class="wd-xs"><%= link_to raw('<i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i>'), edit_report_path(report) %> <%= link_to raw('<i class="fa fa-minus-square fa-2x" aria-hidden="true"></i>'), report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                  </tr>
-                <% end %>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <!-- end of report table -->
-        <div class="pagination-section">
-          <%= paginate @filtered_reports %>
-        </div>
+            <tbody>
+                <!-- filter select row -->
+                <tr>
+                    <!-- species filter select -->
+                    <td> 
+                      <select id="species" name="species" class="form-control m-b">
+                      <option value="">Select Species</option>
+                      <% @species_for_filter.each do |report| %>
+                      <option value="<%= report.species_id %>" <%= selected_species(report.species_id) %>><%= report.species.name %>
+                      </option>
+                      <% end %>
+                      </select>
+                    </td>
+                    <!-- state filter select -->
+                    <td>
+                      <select id="state" name="state" class="form-control m-b">
+                        <option value="">Select State</option>
+                        <% @state_for_filter.each do |state| %>
+                          <option value=<%= state.name %> <%= selected_state(state.name) %>><%= state.name %></option>
+                        <% end %>
+                      </select>
+                    </td> 
+                    <!-- location filter select -->
+                    <td>
+                      <select id="location" name="location" class="form-control m-b">
+                        <option value="">Select Location</option>
+                        <% @locations_for_filter.each do |location| %>
+                          <%= render_location_option_with_state(location) %>
+                        <% end %>
+                      </select> 
+                    </td> 
+                    <!-- tide filter select-->
+                    <td>
+                      <select id="tide" name="tide" class="form-control m-b">
+                        <option value="">Select Tide</option>
+                        <% @tides_for_filter.each do |tide| %>
+                          <option value="<%= tide %>" <%= selected_tide(tide) %>><%= tide %>
+                          </option>
+                        <% end %>
+                      </select>
+                    </td>                       
+                    <!-- month filter select -->
+                    <td>
+                      <%= select_month(params[:date].to_i, { :prompt => "Select Date", :user_month_name => true }, name: "date", :class => "form-control m-b", id: "date") %>
+                    </td>                       
+                </tr>
+            </tbody>
+        
+        </table>
       </div>
+     </form> 
     </div>
-  <% end %>
-  <div id="bottom_anchor"></div>
+      
+    <!-- start reports table -->
+    <div class="col-lg-12">
+            <h2 class="title-border dark text-right">Catch Log</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Target</th>
+                        <th>Location</th>
+                        <th>State</th>
+                        <th>Keepers</th>
+                        <th>Total</th>
+                        <th>Trip summary</th>
+                        <th>Method</th>
+                        <th>Tide</th>
+                        <th>Weather</th>
+                        <th>Wind</th>
+                        <th>Spot</th>
+                        <th>Best Bait</th>
+                        <th>Trip Details</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="datatable1-body">
+                    
+                      <% if current_user %>
+                        <% @filtered_reports.each do |report| %>
+                    <tr>
+                        <td><%= report.date.try(:strftime, '%m/%d/%y') %></td>
+                        <td><%= report.species.name %></td>
+                        <td><%= report.location.try(:short_name) %></td>
+                        <td><%= report.state.name %></td>
+                        <td><%= report.catch_keepers %></td>
+                        <td><%= report.catch_total %></td>
+                        <td><%= report.trip_summary %></td>
+                        <td><%= report.primary_method %></td>
+                        <td><%= report.tide %></td>
+                        <td><%= report.weather %></td>
+                        <td><%= report.wind %></td>
+                        <td><%= report.spot %></td>
+                        <td><%= report.best_bait %></td>
+                        <td><%= report.trip_description %></td>
+                        <td class="wd-xs"><%= link_to raw('<i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i>'), edit_report_path(report) %> <%= link_to raw('<i class="fa fa-minus-square fa-2x" aria-hidden="true"></i>'), report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                       
+                    </tr><% end %>
+                </tbody>
+            </table>
+                      <!-- end of report table -->
+          <div class="pagination-section">
+            <%= paginate @filtered_reports %>
+          </div>
+        </div id="bottom_anchor">
+        <!-- download table -->
+        <p>
+          Download Reports Table:
+          <%= link_to "CSV", reports_path(format: "csv") %> |
+          <%= link_to "Excel", reports_path(format: "xls") %>
+        </p>
+        <!-- log new button -->
+        <%= link_to 'Log New Report', new_report_path, class: "btn btn-dark btn-lg" %>
+    </div><!-- end reports table -->
+
+    <!-- Call in report info -->
+    <div class="col-md-124">
+      <div class="panel-body text-right">
+        <a href="tel:+18002083817" class="link-unstyled text-danger">
+        <em class="fa fa-phone fa-lg"></em>
+        <span class="h4">Currents Report Hotline</span>
+        <br>
+        <span class="h2">1-800-208-3817</span>
+        <br>
+        <span class="h4">Call in your report today</span>
+        </a>
+      </div>
+    </div> <!-- end call in report info -->
+
+  <!-- filter script -->
+  <script>
+    $('#species').change(function(){
+              $('#filter_form').submit();
+            });
+            $('#state').change(function(){
+              $('#filter_form').submit();
+            });
+            $('#location').change(function(){
+              $('#filter_form').submit();
+            });
+             $('#tide').change(function(){
+              $('#filter_form').submit();
+            });
+              $('#date').change(function(){
+              $('#filter_form').submit();
+            });
+  </script>
+  <!-- end of filter -->
+
+  <div class="row">
+  </div>
 </div>
 
-<p>
-  Download Reports Table:
-  <%= link_to "CSV", reports_path(format: "csv") %> |
-  <%= link_to "Excel", reports_path(format: "xls") %>
-</p>
 
-
-<div class="row">
-  <div class="p-lg text-center">
-    <%= link_to 'Log New Report', new_report_path, class: "btn btn-inverse btn-lg" %>
-  </div>
-  <!-- </div>
-<%= link_to "http://www.surveygizmo.com/s3/3252926/New-Survey", target: :_blank do %>
-  <h1 style="font-size: 35px; color: red; text-align: center">Click here to provide feedback on feature </h1>
 <% end %>
-</div> -->

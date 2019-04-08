@@ -1,21 +1,15 @@
 <%= form_for(@report) do |f| %>
 
-<!-- Form Title -->
-<div class="panel-title bg-info-dark" style="font-size: 35px; padding: 7px; border-radius: 5px;">
-  <%= current_user.try(:vessel_name) %><br>
-  New Catch Report
-</div>
-
-<!-- line break -->
-
-
 <!-- public form panel -->
-<div class="panel-body bg-gray-lighter"> 
-      <div class="field form-group">
-        <b><u><h4>Public View</h4></b></u>
-        Users Catch reports are private.  Data in public fields such as location and # of keeprs feed the heatmap for the benefit of the community.
-      </div>
-      <% if @report.errors.any? %>
+<section class="section bg-lightgray" style="padding: 25px;" id="public">
+  <div class="panel-body"> 
+        <div class="field form-group">
+          All Catch reports are private!  Data in the public fields below feed the heatmap for the benefit of the community.
+        </div>
+        <div class="field form-group">
+          <b><u><h4>Public View</h4></b></u>
+        </div>
+        <% if @report.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@report.errors.count, "error") %> prohibited this report from being saved:</h2>
           <ul>
@@ -24,89 +18,93 @@
             <% end %>
           </ul>
         </div>
-      <% end %>
-      <div class="form-group">
-        <%= f.label :date %> (Required)<br>
-        <%= f.text_field :date, class: 'form-control report-date', type: 'date' %>
-      </div>
-      <div class="field form-group">
-        <%= f.label :species_id %> (Required)<br>
-        <%= f.select :species_id, Species.all.order("name ASC").pluck(:name, :id), {}, class: 'form-control' %>
-      </div>
-      <div class="field form-group">
-        <%= f.label :state_waters %> (Required)<br>
-        <%= f.select :state_waters, State.sorted.pluck(:name), { prompt: 'Select State', selected: ( @report.new_record? ? current_user.try(:state).try(:name) : @report.state.name) }, class: "state_selection form-control" %>
-      </div>
-      <br>
-      <div class="field form-group", id="location-select">
-        <span class="field_label"><%= f.label :location_id %> (Required)</span><br>
-        <%= link_to "Go to reference legend", { anchor: "legend-image" }, { id: "location-legend-link", class: "mobile-only small" } %> 
-        <%= f.select  :location_id, @state_locations || Location.where(state_waters: (@report.new_record? ? current_user.try(:state).try(:name) : @report.state)).order(number: :asc).map {|location| [location[:number].to_s.rjust(2, '0') + " - " + location[:short_name]] + [location.id]}, {prompt: 'Select Location'}, class: "location_id form-control" %>
-      </div>
-      <div class="field form-group">
-        <%= f.label :catch_keepers %> (Required)<br>
-        <%= f.number_field :catch_keepers, class: 'form-control' %>
-      </div>
-      <div class="field form-group">
-        <%= f.label :trip_summary %><br>
-        <%= f.text_area :trip_summary, placeholder: "Enter brief trip summary, will be visible in Heatmap", class: 'form-control' %>
-      </div>
-</div>
-    
+        <% end %>
+        <div class="form-group">
+          <%= f.label :date %> (Required)<br>
+          <%= f.text_field :date, class: 'form-control report-date', type: 'date', min: Date.today - 3.years, max: Date.today %>
+        </div>
+        <div class="field form-group">
+          <%= f.label :species_id %> (Required)<br>
+          <%= f.select :species_id, Species.all.order("name ASC").pluck(:name, :id), {}, class: 'form-control' %>
+        </div>
+        <div class="field form-group">
+          <%= f.label :state_waters %> (Required)<br>
+          <%= f.select :state_waters, State.sorted.pluck(:name), { prompt: 'Select State', selected: ( @report.new_record? ? current_user.try(:state).try(:name) : @report.state.name) }, class: "state_selection form-control" %>
+        </div>
+        <br>
+        <div class="field form-group", id="location-select">
+          <span class="field_label"><%= f.label :location_id %> (Required)</span><br>
+          <%= link_to "Go to reference legend", { anchor: "location-legend-image" }, { id: "location-legend-link", class: "mobile-only small", data: { turbolinks: false } } %> 
+          <%= f.select  :location_id, @state_locations || Location.where(state_waters: (@report.new_record? ? current_user.try(:state).try(:name) : @report.state)).order(number: :asc).map {|location| [location[:number].to_s.rjust(2, '0') + " - " + location[:short_name]] + [location.id]}, {prompt: 'Select Location'}, class: "location_id form-control" %>
+        </div>
+        <div class="field form-group">
+          <label class="input"># of Keepers</label>
+          <%= f.number_field :catch_keepers, class: 'form-control' %>
+        </div>
+        <div class="field form-group">
+          <%= f.label :trip_summary %><br>
+          <%= f.text_area :trip_summary, placeholder: "Enter brief trip summary, will be visible in Heatmap", class: 'form-control' %>
+        </div>
+  </div>
+</section>    
 
 <!-- private form panel -->
-<div class="panel-body bg-gray-lighter">
-    <div class="form-group">
-      <div class="field form-group">
-        <b><u>
-            <h4>Private</h4>
-          </u></b>
-        <p class="small">Report fields are for your use only.  Use to detail catch information like bait, tide, or location numbers</p>
+<section class="section bg-lightergray" id="private" style="padding: 25px;">
+  <div class="panel-body">
+      <div class="form-group">
+        <div class="field form-group">
+          <b><u>
+              <h4>Private</h4>
+            </u></b>
+          <p class="small">Report fields are for your use only.  Use to detail catch information like bait, tide, or location numbers</p>
+        </div>
+        <div class="field form-group">
+          <%= f.label :catch_total %><br>
+          <%= f.number_field :catch_total, class: 'form-control' %>
+        </div>
+        <div class="field form-group">
+          <%= f.label :primary_method %><br>
+          <%= f.select :primary_method, ['Live Bait', 'Dead Bait', 'Kite', 'Jigging', 'Popping', 'Trolling'], {}, class: 'form-control' %>
+        </div>
+        <div class="field form-group">
+          <%= f.label :tide %><br>
+          <%= f.select :tide, ['Incoming', 'Outgoing', 'Slack'], {}, class: 'form-control' %>
+        </div>
+        <div class="field form-group">
+          <%= f.label :weather %><br>
+          <%= f.select :weather, ['Overcast', 'Rain', 'Sun', 'Fog'], {}, class: 'form-control' %>
+        </div>
+        <div class="field form-group">
+          <%= f.label :wind %><br>
+          <%= f.select :wind, ['W < 10 mph', 'W 10-20 mph', 'W > 20 mph', 'NW < 10 mph', 'NW 10-20 mph', 'NW > 20 mph','N < 10 mph', 'N 10-20 mph', 'N > 20 mph','NE < 10 mph', 'NE 10-20 mph', 'NE > 20 mph','E < 10 mph', 'E 10-20 mph', 'E > 20 mph', 'SE < 10 mph', 'SE 10-20 mph', 'SE > 20 mph','S < 10 mph', 'S 10-20 mph', 'S > 20 mph','SW < 10 mph', 'SW 10-20 mph', 'SW > 20 mph'], {}, class: 'form-control' %>
+        </div>
+        <div class="field form-group">
+          <%= f.label :spot %><br>
+          <%= f.text_area :spot, class: 'form-control' %>
+        </div>
+        <div class="field form-group">
+          <%= f.label :best_bait %><br>
+          <%= f.text_area :best_bait, class: 'form-control' %>
+        </div>
+        <div class="field form-group">
+          <%= f.label :trip_description %><br>
+          <%= f.text_area :trip_description, class: 'form-control' %>
+        </div>
       </div>
-      <div class="field form-group">
-        <%= f.label :catch_total %><br>
-        <%= f.number_field :catch_total, class: 'form-control' %>
-      </div>
-      <div class="field form-group">
-        <%= f.label :primary_method %><br>
-        <%= f.select :primary_method, ['Live Bait', 'Dead Bait', 'Kite', 'Jigging', 'Popping', 'Trolling'], {}, class: 'form-control' %>
-      </div>
-      <div class="field form-group">
-        <%= f.label :tide %><br>
-        <%= f.select :tide, ['Incoming', 'Outgoing', 'Slack'], {}, class: 'form-control' %>
-      </div>
-      <div class="field form-group">
-        <%= f.label :weather %><br>
-        <%= f.select :weather, ['Overcast', 'Rain', 'Sun', 'Fog'], {}, class: 'form-control' %>
-      </div>
-      <div class="field form-group">
-        <%= f.label :wind %><br>
-        <%= f.select :wind, ['W < 10 mph', 'W 10-20 mph', 'W > 20 mph', 'NW < 10 mph', 'NW 10-20 mph', 'NW > 20 mph','N < 10 mph', 'N 10-20 mph', 'N > 20 mph','NE < 10 mph', 'NE 10-20 mph', 'NE > 20 mph','E < 10 mph', 'E 10-20 mph', 'E > 20 mph', 'SE < 10 mph', 'SE 10-20 mph', 'SE > 20 mph','S < 10 mph', 'S 10-20 mph', 'S > 20 mph','SW < 10 mph', 'SW 10-20 mph', 'SW > 20 mph'], {}, class: 'form-control' %>
-      </div>
-      <div class="field form-group">
-        <%= f.label :spot %><br>
-        <%= f.text_area :spot, class: 'form-control' %>
-      </div>
-      <div class="field form-group">
-        <%= f.label :best_bait %><br>
-        <%= f.text_area :best_bait, class: 'form-control' %>
-      </div>
-      <div class="field form-group">
-        <%= f.label :trip_description %><br>
-        <%= f.text_area :trip_description, class: 'form-control' %>
-      </div>
-    </div>
-</div>
+  </div>
+</section>
 
 <!-- submit buttons -->
-<div class="panel-body bg-gray-lighter">
-  <div class="form-group text-center">
-  <%= f.submit class: "btn btn-inverse btn-md" %>
-    <br>
-    <br>
-  <%= link_to 'Back', reports_path, class: "btn btn-default bg-gray" %>
+<section class="section bg-lightergray" id="private" style="padding: 25px;">
+  <div class="panel-body">
+    <div class="form-group text-center">
+      <%= f.submit class: "btn btn-dark" %>
+      <br>
+      <br>
+      <%= link_to 'Back to reports', reports_path, class: "btn btn-default" %>
+    </div>
   </div>
-</div>
+</section>
 
 </div>
 <% end %>

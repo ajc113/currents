@@ -1,32 +1,34 @@
 <% provide(:title, "Edit Report") %>
-<div class="content-wrapper">
-  <div class="row">
+ 
+<div class="page-header dark parallax half-largest larger-desc" data-bgattach="<%= image_path('boss/backgrounds/index35/bg1.jpg') %>" style="" data-0="background-position:50% 0px;" data-500="background-position:50% -50%">
     
+      
+<section class="section" id="New Report">
+  <div class="container-fluid  no-border">
 
-    <!-- margin panel -->
-    <div class="col-lg-1">
-    </div>
-    
-    <!-- form panel -->
-    <div class="col-lg-5">
-    
-      <div class="panel panel-default" style="padding: 10px">
-        <%= render 'reports/form' %>
-      </div>
-    
-       <!-- legend panel -->
-      <div class="col-lg-5">
-        <div class="panel panel-default", id="legend-image", style="display: inline-block; padding: 5px">
-          <%= link_to "Back to Top", "#location-select", class: "mobile-only" %>
-          <%= image_tag "location_legends/" + current_user.state.name + ".png",  class: 'img-responsive location-legend-image', style: 'display:block; opacity: .95' %>
-        </div>
-      </div>
-    
-      <!-- margin panel --> 
-      <div class="col-lg-1">
-      </div>
+      <!-- reports new form -->
+      <div class="col-lg-6">
+          <header class="section-header container mb30">
+            <h2 class="section-title shadow-title" data-title="<%= current_user.try(:vessel_name) %>  New Catch Report">  
+            </h2>
+          </header>
 
-    </div>   
+              <div class="form-group">
+                <%= render 'reports/form' %>
+              </div>
 
+       <!-- end reports new form -->
+      
+      <!-- location legend aside -->
+      <div class="col-sm-6 no-padding-left">
+          <div class="panel panel-default", style="display: inline-block; padding: 5px">
+          <div class="vertical-service-image fullscreen bg-image text-center" data-bgattach="">   
+              <%= link_to "Back to Top", "#location-select", class: "mobile-only" %>
+              <%= image_tag "location_legends/" + current_user.state.name + ".png",  class: 'img-responsive location-legend-image', style: 'display:block; opacity: .85' %>
+          </div>                 
+      </div><!-- End location legend -->
+  
   </div>
-</div>
+</section>
+
+</div> 

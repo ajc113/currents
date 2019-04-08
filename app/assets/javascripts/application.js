@@ -10,36 +10,17 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery.turbolinks 
-//= require jquery.validate
+//= require ./boss/js/index
 //= require jquery_ujs
+//
 //= require maps
-//= require map_theme/vendor/modernizr.custom
-//= require map_theme/vendor/matchMedia
-//= require map_theme/vendor/bootstrap
-//= require map_theme/vendor/jquery.storageapi
-//= require map_theme/vendor/jquery.easing
-//= require map_theme/vendor/animo
-//= require map_theme/vendor/jquery.slimscroll.min
-//= require map_theme/vendor/screenfull
-//= require bootstrap-datepicker/core
-//= require map_theme/demo/demo-rtl
-//= require map_theme/vendor/index
-//= require map_theme/vendor/jquery.classyloader.min
-//= require map_theme/vendor/moment-with-locales.min
-//= require map_theme/app
 //= require currents
 //= require reports
+//= require bootstrap-datepicker/core
 //= require users
 //= require turbolinks
-//= require ckeditor/init
 //= require ckeditor/init_ckeditor
 //= require social-share-button
 //= require Chart.bundle
 //= require chartkick
 //= require posts
-
-
-
-

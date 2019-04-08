@@ -1,0 +1,25 @@
+<% @intels.each do |intel| %>
+  <article class="entry entry-simple">
+    <h2 class="entry-title"><%= link_to intel.title.truncate(75), intel_path(intel) %></h2>
+    <footer class="entry-footer clearfix">
+      <!-- blog categories -->
+      <span class="entry-cats">
+        <span class="entry-label">Submitted <%= time_ago_in_words(intel.created_at) %> a go
+        </span>
+      </span><!-- End .entry-tags -->
+      <span class="entry-separator"></span>
+      by <a href="#" class="entry-author"> Currents Staff</a>      
+      <span class="entry-separator"></span>
+      <!-- blog tags -->
+      <span class="entry-label"><i class="fa fa-tag"></i>Categories: <%= raw intel.tag_list.map { |t| link_to t, tag_path(t)}.join(', ') if intel.tags.exists? %></a>
+      <span class="entry-separator"></span>
+       <a href="<%= intel_url(intel).html_safe %>#disqus_thread" class="entry-comments">
+      </a>
+      <!-- read more -->
+      <a href="#"><%= link_to "READ MORE >", intel_path(intel), class: "entry-readmore text-right" %></a>
+    </footer>  
+  </article>
+<% end %>
+<div class="mb60"></div>
+<!-- space -->
+<%= paginate @intels %>

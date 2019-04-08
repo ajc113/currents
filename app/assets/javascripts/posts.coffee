@@ -4,7 +4,7 @@
 
 $(document).on 'turbolinks:load', ->
   sidebar = $('.posts-sidebar')
-  if sidebar
+  if sidebar.length
     delete top
     delete y
     top = sidebar.offset().top

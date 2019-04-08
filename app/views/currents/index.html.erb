@@ -1,212 +1,429 @@
 <head>
   <script type="application/ld+json">
-    <%= display_meta_tags  %>
   </script>
+  <%= display_meta_tags  %>
 </head>
+<!-- header section -->
+<section class="section home-section fullscreen parallax skrollable skrollable-between" id="home" data-bgattach="" data-bottom-top="background-position:0% 0%" data-top-bottom="background-position:0% 0%" style="height: 78vh !important;">
+  <div class="vcenter-container bg-lightgray"> 
+    <div class="vcenter">
+      <div class="container big-block skrollable skrollable-between" data-0="opacity:1;" data-top-bottom="opacity:0;" style="opacity: 1;">
+        <h1>Currents Fishing</h1>
+        <h3 >Networking tool built by fisherman to maximize your time on the water.</h3>
+        <div class="block-action">
+          <% if current_user %>
+          <%= link_to "Sign In", new_user_session_path, class: "btn btn-dark btn-border radius-lger min-width" %>
+          <% else %>
+          <%= link_to "Join Now", new_user_registration_path, class: "btn btn-dark btn-border radius-lger min-width" %>
+          <% end %>
+          <%= link_to "Go to Heatmap", maps_path, class: "btn btn-dark btn-border radius-lger min-width" %>
+          <%= link_to "Go to Intel", intels_path, class: "btn btn-dark btn-border radius-lger min-width" %>
+          <%= link_to "Go to Reports", reports_path, class: "btn btn-dark btn-border radius-lger min-width" %>
+      
+        </div>
+        <!-- End .block-action -->
+      </div>
+      <!-- End .container -->
+    </div>
+    <!-- End .vcenter -->
+  </div>
+  <!-- End .vcenter-container -->
+  <a href="#intel" class="scroll-btn skrollable skrollable-between" data-offset="0" data-0="opacity:1" data-top-bottom="opacity:0;" title="Go Down" style="1;"><span></span></a>
+</section> <!-- end header section -->
 
-<!-- image -->
-<%= image_tag 'Homepage3.png',  class: 'img-responsive hidden-xs homepage-header-image', style: 'display:block; opacity: .85' %>
-        <!-- title container -->
 
-<!-- header -->
-<div class="padding">  
-  <div class="p-lg text-center">
+<!-- parallax image scroll -->
+<div class="parallax-fixed callout callout-vertical largest no-margin" style="background-image: url('<%= image_path('daybreak.jpg')%>">
+  <div class="parallax section section-sm padding-top-lg" data-bgattach="background-image: url('<%= image_path('daybreak.jpg')%>"  data-bottom-top="background-position:50% 0%" data-top-bottom="background-position:50% 90%">
+
+    <h3 class="callout-title text-white">Get real intel before leaving the dock</h3>
+
+    <div class="callout-action">
+        <%= link_to "Visit the Forum", "https://community.thefishing.network", class: "btn btn-white btn-border no-radius min-width" %>
+    </div><!-- End .callout-action -->
+  </div>
+</div><!-- end parallax image scroll -->
+
+<!-- features section -->
+<section class="section" id="services">
+  <header class="section-header container mb30">
+    <h2 class="section-title shadow-title" data-title="Network Features">Network Features</h2>
+  </header>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="service vertical">
+          <span class="service-icon">
+            <%= link_to '<i class="icon-directions" style="color: black"></i>'.html_safe, reports_path %>
+          </span>
+          <a>
+            <div class="service-content">
+            <h3 class="service-title title-underblock dark text-uppercase">Forum</h3>
+          </a>
+          <p>Connect with the currents fishing community to share intel, action, and techniques</p>
+          </div>
+          <!-- End .service-content -->
+        </div>
+        <!-- End .service -->
+      </div>
+    </a>
+      <!-- End .col-sm-4 -->
+      <div class="col-sm-4">
+        <div class="service vertical">
+          <span class="service-icon">
+           <%= link_to '<i class="icon-anchor" style="color: black"></i>'.html_safe, reports_path %>
+          </span>
+          <div class="service-content">
+            <h3 class="service-title title-underblock dark text-uppercase">Weekly Intel</h3>
+            <p>We consolidate the community intel and post periodic updates on what is going on out on the water</p>
+          </div>
+          <!-- End .service-content -->
+        </div>
+        <!-- End .service -->
+      </div>
+      <!-- End .col-sm-4 -->
+      <div class="col-sm-4">
+        <div class="service vertical">
+          <span class="service-icon">
+            <%= link_to '<i class="icon-picture" style="color: black"></i>'.html_safe, reports_path %>
+          </span>
+          <div class="service-content">
+            <h3 class="service-title title-underblock dark text-uppercase">Catch Activity Heatmaps</h3>
+            <p>View real time heatmaps of catch areas that are fishing well based off community catch reports</p>
+          </div>
+          <!-- End .service-content -->
+        </div>
+        <!-- End .service -->
+      </div>
+      <!-- End .col-sm-4 -->
+    </div>
+    <!-- End .row -->
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="service vertical">
+          <span class="service-icon">
+            <%= link_to '<i class="icon-notebook" style="color: black"></i>'.html_safe, reports_path %>
+          </span>
+          <div class="service-content">
+            <h3 class="service-title title-underblock dark text-uppercase">Catch Logging Tools</h3>
+            <p>Use the catch logging tools as a trip log to keep all key information.  Your reports are private only general location is shared with the community</p>
+          </div>
+          <!-- End .service-content -->
+        </div>
+        <!-- End .service -->
+      </div>
+      <!-- End .col-sm-4 -->
+      <div class="col-sm-4">
+        <div class="service vertical">
+          <span class="service-icon">
+            <%= link_to '<i class="icon-note" style="color: black"></i>'.html_safe, reports_path %>
+          </span>
+          <div class="service-content">
+            <h3 class="service-title title-underblock dark text-uppercase">Blog</h3>
+            <p>Blog posts on relevant tackle, product reviews and breaking news</p>
+          </div>
+          <!-- End .service-content -->
+        </div>
+        <!-- End .service -->
+      </div>
+      <!-- End .col-sm-4 -->
+      <div class="col-sm-4">
+        <div class="service vertical">
+          <span class="service-icon">
+            <%= link_to '<i class="icon-globe" style="color: black"></i>'.html_safe, reports_path %>
+          </span>
+          <div class="service-content">
+            <h3 class="service-title title-underblock dark text-uppercase">Spots</h3>
+            <p>Detailed information on some of the best fishign spots and locations.  Detailed information on how to fish each spot.</p>
+          </div>
+          <!-- End .service-content -->
+        </div>
+        <!-- End .service -->
+      </div>
+      <!-- End .col-sm-4 -->
+    </div>
+
+
+
+    <!-- End .row -->
+    <div class="mb30"></div>
+      <!-- registration box -->
+      <div class="callout bordered no-margin">
+        <span class="callout-icon"><i class="icon-bubbles"></i></span>
+        <div class="callout-wrapper">
+          <div class="callout-left">
+            <h3 class="callout-title">Do you want to participate in a growing offshore fishing community?</h3>
+            <p class="callout-desc">Our goal to maximize everyones experience on the water?  Join us now there are no fees </p>
+          </div>
+          
+          <!-- End .callout-left -->
+          <div class="callout-right">
+            <% if current_user %>
+            <a href="#contactus">
+                <%= link_to "Sign In", new_user_session_path, class: "scrollto btn btn-danger btn-border radius-lger min-width" %>
+                <% else %>
+                <%= link_to "Register", new_user_registration_path, class: "scrollto btn btn-danger btn-border radius-lger min-width" %>
+              <% end %>
+            </a>
+          </div>
+          <!-- End .callout-right -->
+        </div>
+        <!-- End .callout-wrapper -->
+      </div> <!-- End registration box -->
+    </div>
+
+
+
+
+
+  <!-- End .container -->
+  <div class="mb10 visible-sm visible-xs"></div>
+  <!-- space -->
+</section> <!-- end services section -->
+
+<a id="intel"></a>
+<!-- intel teaser section -->
+<section class="section" id="blog">
+
+  <header class="section-header container mb30">
+    <h2 class="section-title shadow-title" data-title="Latest Intel">Latest Intel</h2>
+  </header>
+  <div class="container">
+    <% @intels.each do |intel| %>
+      <!-- blog entry -->
+      <article class="entry entry-simple">
+        <!-- blog title -->
+        <h2 class="entry-title"><%= link_to intel.title, intel %></a></h2>
+        <!-- blog description -->
+
+        <footer class="entry-footer clearfix">
+          <!-- blog categories -->
+          <span class="entry-cats">
+            <span class="entry-label">Submitted <%= time_ago_in_words(intel.created_at) %> a go
+            </span>
+          </span><!-- End .entry-tags -->
+          <span class="entry-separator"></span>
+          by <a href="#" class="entry-author"> Currents Staff</a>
+          <span class="entry-separator"></span>
+          <!-- blog tags -->
+          <span class="entry-label"><i class="fa fa-tag"></i>Categories:<%= raw intel.tag_list.map { |t| link_to t, tag_path(t)}.join(', ') if intel.tags.exists? %></a>
+          <!-- blog writer -->
+          <span class="entry-separator">/</span>
+            <a href="<%= intel_url(intel).html_safe %>#disqus_thread" class="entry-comments">
+            </a>
+          
+          <!-- read more -->
+          <a href="#"><%= link_to "READ MORE >", intel_path(intel), class: "entry-readmore text-right" %></a>
+        </footer>   
+      </article>
+      <% end %>
+      <div class="mb50"></div>
+      <!-- space -->
+      
+      <!-- blog button -->
       <div>
-        <h1 class="tk-blackoak-std">
-          Currents Fishing Network
-        </h1><br>
-      </div>
-      <div class="home-subtitle">
-        <h2 class="helvetica">
-          Your source for real time intel from on the water
-        </h2>
-      </div>
+      <br>
+      <a><%= link_to "Check latest Intel", intels_path, class: "btn btn-dark btn-border radius-lger min-width" %></a>
+      </div>  
   </div>
-</div>
+  <!-- End .container -->
+  <div class="mb15 visible-sm visible-xs"></div>
+  <!-- space -->
+</section> <!-- end intel teaser section -->
 
-<!-- Features -->
-<div class="row" style="margin-left: 0px;">
-  <div class="container-fluid">
-    <!-- heatmaps container -->
-    <div class="col-lg-4">
-        <a href="maps" class="list-group-item">
-            <div class="panel-body bg-gray-light" style="height: 108px !important;">
-                <div class="row vertical-align" style="margin-left: 0px!important; margin-right: 0px!important;">
-                    <div class="col-lg-4 col-xs-4">
-                        <%= image_tag 'mapcopy.png', class: 'img-responsive usp-icon', style: 'display:block' %>
-                    </div>
-                    <div class="col-lg-8 col-xs-8">
-                        <h2 class="usp-heading">Heatmaps</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="panel-body">
-                <p>
-                    <strong>Analyze newtork catch reports to target where the fish are.</strong>
-                </p>
-                <ul>
-                    <li>Review catch data over past 7 days</li>
-                    <li>View catches by location</li>
-                    <li>Target specific species by location</li>
-                    <li>Heatmap highlights where the bite is</li>
-                    <li>Analyze catch patterns make informaed decisions</li>
-                    <li>Reduce fuel expenses by targeting where the action is</li>
-                </ul>
-            </div>
-        </a>
-    </div>
-    <!-- reports container  -->
-    <div class="col-lg-4">
-        <a href="reports" class="list-group-item">
-            <div class="panel-body bg-gray-light" style="height: 108px !important;">
-                <div class="row vertical-align" style="margin-left: 0px!important; margin-right: 0px !important;">
-                    <div class="col-lg-4 col-xs-4">
-                        <%= image_tag 'hook.png', class: 'img-responsive usp-icon', style: 'display:block' %>
-                    </div>
-                    <div class="col-lg-8 col-xs-8">
-                        <h2 class="usp-heading">Daily Intel</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="panel-body">
-                <p>
-                    <strong>Daily reports from our network of charter/recreational captains</strong>
-                </p>
-                <ul>
-                    <li>Stay informed with recent intel </li>
-                    <li>Make informed decision on where the bite is moving </li>
-                    <li>Activie community of fisherman who network and share intel</li>
-                    <li>Stay current on trends that are working</li>
-                    <li>Eliminate lifeless water by knowing where to avoid</li>  
-                </ul>
-            </div>
-        </a>
-    </div>
-    <!-- Intel container -->
-    <div class="col-lg-4">
-        <a href="buzzs" class="list-group-item">
+<!-- heatmap teaser section -->
+<section class="section" id="heatmap">
+  <header class="section-header container mb30">
+    <h2 class="section-title shadow-title" data-title="Activity Heapmap">Activity Heapmap</h2>
+  </header>
+  <!-- Heatmap  -->
+  <div class="container-fluid vertical-service-block no-border">
+      <div class="row">
+          <div class="col-sm-6 no-padding-right", style= "opacity: .75">
+            <div class="vertical-service-image fullscreen bg-image text-center" data-bgattach="<%= image_path('hotspot.png')%>" > 
+                  <div class="vcenter-container">
+                      <div class="vcenter">
+                          <h2 class="title-underblock white text-center text-white text-uppercase mb30">Tap into the Currents Network</h2>
+                      </div><!-- End .vcenter -->
+                  </div>
+              </div>
+              </a>
+          </div><!-- End .col-sm-6 -->
 
-            <div class="panel-heading bg-gray-light vertical-align" style="height: 108px !important;">
-                <div class="row vertical-align" style="margin-left: 0px!important; margin-right: 0px!important;">
-                    <div class="col-lg-4 col-xs-4">
-                        <%= image_tag 'binocs.png', class: 'img-responsive usp-icon', style: 'display:block' %>
-                    </div>
-                    <div class="col-lg-8 col-xs-8">
-                        <h2 class="usp-heading">Forum</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="panel-body">
-                <p>
-                    <strong>New England based sportfishing community forum</strong>
-                </p>
-                <ul>
-                    <li>Network with a large community</li>
-                    <li>Share intel</li>
-                    <li>Build contacts</li>
-                    <li>Find what is working</li>
-                    <li>Introduction to new areas and techniques</li>
-                    <br>
-                </ul>
-            </div>
+          <div class="col-sm-6">
+              <div class="vertical-service-content fullscreen">
+                  <div class="vcenter-container">
+                      <div class="vcenter">
+                          <div class="service vertical">
+                              <span class="service-icon"><i class="icon-picture"></i></span>
+                            
+                              <div class="service-content">
+                                  <h3 class="service-title  title-underblock dark  text-uppercase">Heatmap highlights recent activity</h3>
+                                  <p>The Currents Heatmap highlights general locations that are showing increased catch rates over the past 7 days.  Based off catch data from our network the map will highlight activity in real time</p>
+                              </div><!-- End .service-content -->
+                          </div><!-- End .service -->
 
-        </a>
-    </div>
+                          <div class="service vertical">
+
+                              <span class="service-icon"><i class="fa fa-binoculars"></i></span>
+                              <div class="service-content">
+                                  <h3 class="service-title  title-underblock dark  text-uppercase">Another set of eyes</h3>
+
+                                  <p>Where fish are today will not be tomorrow.  Utlize the intel of of network to make decisions on where the action is heading.  Maximize your time on the water by avoiding inactive areas already scouted.</p>
+                              </div><!-- End .service-content -->                           
+                          </div><!-- End .service -->
+                              <a>
+                                  <%= link_to "Go to Heatmap", maps_path, class: "btn btn-dark btn-border radius-lger min-width" %>
+                              </a>
+                      </div><!-- End .vcenter-->
+                  </div><!-- End .vcenter-container-->
+              </div><!-- End .vertical-center-content -->
+          </div><!-- end .col-sm-6 -->
+      </div><!-- End .row -->
+  </div><!-- End .container-fluid -->
+</section> <!-- end heat map teaser section -->
+
+<!-- catch logging tools teaser section -->
+<section class="section bg-lightergray" id="reports">
+  <header class="section-header container mb30">
+    <h2 class="section-title shadow-title" data-title="Catch Loging Tools">Catch Logging Tools</h2>
+  </header>
+  <!-- Heatmap  -->
+  <div class="container-fluid vertical-service-block no-border">
+      <div class="row">
+          <!-- copy -->
+          <div class="col-sm-6">
+              <div class="vertical-service-content text-right fullscreen">
+                  <div class="vcenter-container">
+                      <div class="vcenter">
+                          <div class="service vertical">
+                              <span class="service-icon"><i class="icon-picture"></i></span>
+                            
+                              <div class="service-content">
+                                  <h3 class="service-title text-right title-underblock dark  text-uppercase">Log your catches</h3>
+                                  <p>Utilize the catch logging tool to track all your trip data, conditions, baits, and locations.  All your catch information is private and can be access to analyze past trips to plan for your next trip</p>
+                              </div><!-- End .service-content -->
+                          </div><!-- End .service -->
+
+                          <div class="service vertical">
+
+                              <span class="service-icon"><i class="fa fa-binoculars"></i></span>
+                              <div class="service-content">
+                                  <h3 class="service-title  text-right title-underblock dark  text-uppercase">Historical Data</h3>
+
+                                  <p>Easily load your old catch data into a private database and analyze past trends.  Looking too see what tide worked best at a location during spring, what moon phase you caught that trophy on, analyze past data with ease</p>
+                              </div><!-- End .service-content -->  
+                          </div><!-- End .service -->
+                          <%= link_to "Log a Report", reports_path, class: "btn btn-dark btn-border radius-lger min-width" %>
+                      </div><!-- End .vcenter-->
+                  </div><!-- End .vcenter-container-->
+              </div><!-- End .vertical-center-content -->
+          </div><!-- end .col-sm-6 -->
+          <!-- graphic -->
+          <div class="col-sm-6 no-padding-left", style= "opacity: .75">
+            <div class="vertical-service-image fullscreen bg-image text-center" data-bgattach="<%= image_path('tuna-halfbeaks.jpg')%>" > 
+                  <div class="vcenter-container">
+                      <div class="vcenter">
+                          <h2 class="title-underblock white text-center text-white text-uppercase mb30">Log and Analyze catch data</h2>
+                      </div><!-- End .vcenter -->
+                  </div>
+              </div>
+              </a>
+          </div><!-- End .col-sm-6 -->
+      </div>
+  </div><!-- End .container-fluid -->
+</section> <!-- catch logging tools section -->
+
+<!-- blog teaser section -->
+<section class="section bg-lightergray" id="blog">
+  <header class="section-header container mb30">
+    <h2 class="section-title shadow-title" data-title="Recent Blog Posts">Recent Blog Posts</h2>
+  </header>
+  <div class="container">
+    <% @posts.each do |post| %>
+      <!-- blog entry -->
+      <article class="entry entry-simple">
+        <!-- blog title -->
+        <h2 class="entry-title"><%= link_to post.title, post %></a></h2>
+        <!-- blog description -->
+        <h2 class="entry-title"><a href="single.html"><%= link_to post.meta_description, post %></a></h2>
+        <footer class="entry-footer clearfix">
+          <!-- blog categories -->
+          <span class="entry-cats">
+            <span class="entry-label">Submitted <%= time_ago_in_words(post.created_at) %> a go
+            </span>
+          </span><!-- End .entry-tags -->
+          <span class="entry-separator">/</span>
+          by <a href="#" class="entry-author"> Currents Staff</a>
+          <span class="entry-separator">/</span>
+          <!-- blog tags -->
+          <span class="entry-label"><i class="fa fa-tag"></i>Categories:<%= raw post.tag_list.map { |t| link_to t, tag_path(t)}.join(', ') if post.tags.exists? %></a>
+          <span class="entry-separator">/</span>
+            <a href="<%= post_url(post).html_safe %>#disqus_thread" class="entry-comments">
+                 </a>  
+          <!-- blog writer -->
+
+          <!-- read more -->
+          <a href="#"><%= link_to "READ MORE >", post_path(post), class: "entry-readmore text-right" %></a>
+        </footer>   
+      </article>
+      <% end %>
+      <div class="mb50"></div>
+      <!-- space -->
+      
+      <!-- blog button -->
+      <div>
+      <br>
+      <a><%= link_to "See Blog", posts_path, class: "btn btn-dark btn-border radius-lger min-width" %></a>
+      </div>  
   </div>
-</div>
-
-<!-- feature examples screenshot row -->
-
-<br>        
-<!-- explainer video row -->
-<div class="row">
-  <div class="text-center">
-    <div class="helvetica">      
-      Use Currents to find your fish!!!  Check out video for features.
-    </div>
-  </div><br>
-  <div class="col-lg-3"></div> 
-  <div class="col-lg-6">
-    <div class="video-container"> 
-      <iframe class="homepage_youtube_video" src="https://www.youtube.com/embed/sUYv7M_JXM8" frameborder="0" allowfullscreen></iframe>
-    </div>
-  </div>    
-  <div class="col-lg-3"></div>
-</div>
+  <!-- End .container -->
+  <div class="mb15 visible-sm visible-xs"></div>
+  <!-- space -->
+</section> <!-- end blog teaser section -->
 
 
 
-<!-- join network button -->        
-<br>
-<div class="p-lg text-center">
-  <% unless current_user.present? %>
-    <%= link_to "Join Network", new_user_registration_path, class: 'btn btn-info btn-lg' %>
-  <% end %>
-</div>
-
-
-
-<!-- <div class="content-wrapper"> -->
-<div class="container-fluid">
-  <div class="row">
-
-    <div class="col-sm-3">
-     <div class="panel-widget"> 
-      <div class="panel-body bg-gray-dark text-center">
-        <h2>Find your own fish</h2> 
+<!-- about us section -->
+<a id="about_us"></a>
+<section class="section bg-lightgray" id="aboutus">
+  <header class="section-header container mb30">
+    <h2 class="section-title shadow-title" data-title="About Us">About Us</h2>
+  </header>
+  <div class="container">
+    <h3 class="title-underblock dark mb30">Who we are</h3>
+    <div class="row">
+      <div class="col-md-6">
+        <h5 class="lead mb30">Currents is a network of like minded hardcore saltwater fisherman </h5>
+        <p>We contribute intel to the network so that the group can benefit from real time intel from on the water.  All info good or bad can benefit others and the goal is to share it so the next person leaving the dock can possibly avoid that dead water I just spent hours searching through.</p>
+        <p>We all know that fish have tails and where they are today they certainly will be somewhere else tommorow. Tap into the network to gather intel and make informed decisions on where to go your next trip.  The goal of currents is to help facilitate access to a network of likeminded fisherman outside your immediate group of friends or your home part.  There is a lot of water to cover and intel is invaluable. </p>
+        <p>This is not for report chasers or people looking for some secret numbers, you have to put in the time for that.  Private report information is not shared with the network just general locations to assist in movements of inshore and pelagic species.</p>
       </div>
-     </div> 
-    </div>
- 
-    <div class="col-sm-3">
-      <div class="panel-widget"> 
-        <div class="panel-body bg-gray-dark text-center">
-            <h2 >Save Fuel<br>
-            </h2 >
-        </div>
+      <!-- End .col-md-6 -->
+      <div class="mb30 visible-xs visible-sm"></div>
+      <!--space -->
+      <div class="col-md-6">
+        <p>The concept of Currents came to me in 2016 after realizing in todays day and age of social media, apps, and networking tools for just about everything, the sportfishing community is still stuck in old school tradition, misdirection, and lack of trust amongst fisherman.  After spending a few years designing working on developement its finaly ready to make an impact to this community</p>
+        <p>I have grown up fishing the water of Cape Cod both recreationally and commercially.  I was raised on charter boats and started before I was even old enough to work.  That matured into commercial fishing stripers, tuna and groundfish.  Today I run my own boat mainly chasing bluefin around the gulf of Maine.</p>
+        <p>I am also willing to share intel when out on the water or share the latest intel that we have received via the network.  Please reach out to me via the contacts below with any questions or if you want to connect while on the water.  - AJ Costa (Founder Currents Fishing) </p>
       </div>
+      <!-- End .col-md-6 -->
     </div>
+    <!-- End .row -->
+    <div class="mb30"></div>
+    <!--space -->
 
-    <div class="col-sm-3">
-      <div class="panel-widget"> 
-        <div class="panel-body bg-gray-dark text-center">
-            <h2 >Save Time<br>
-            </h2 >
-        </div>
-      </div>
-    </div>
-
-    <div class="col-sm-3">
-      <div class="panel-widget"> 
-        <div class="panel-body bg-gray-dark text-center">
-          <h2 style="margin-top: 0px !important; margin-bottom: 0px !important;">Expand your network</h2>
-        </div>
-      </div>
-    </div>
-
+    <!-- End .row -->
+    <div class="mb25"></div>
   </div>
-</div>
+  <!-- End .container -->
+  <div class="mb30 visible-sm visible-xs"></div>
+  <!-- space -->
+</section> <!-- end about us section -->
 
-<br>
-<%#= image_tag 'banner.png',  class: 'img-responsive hidden-xs homepage-header-image', style: 'display:block; opacity: .85' %>  
 
-<!-- hot spot of week row -->
-<%# unless @hotspot.nil? %>
- <!--  <div class="row" style="padding: 20px">
-    <div class="col-lg-3"></div> 
-    
-    <div class="col-lg-6">
-      <div class="text-center">
-        <div class="helvetica">      
-            Hot Spot of the Week
-        </div>
-        <div class="h4">      
-          <%#= @hotspot.commentary %>
-        </div>
-      </div>            
-      <%#= image_tag @hotspot.image,  class: 'img-responsive', style: 'display:block; opacity: .95' %>
-    </div>   
-    
-    <div class="col-lg-3"></div>
-  </div> -->
-<%# end %>
+
+
+
+
+

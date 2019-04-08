@@ -1,0 +1,8 @@
+  <% if flash.any? %>
+  <% flash.each do |key, value| %>
+  <div style="margin: 0px;" role="alert" class="alert alert-info alert-dismissable">
+  <%= value.html_safe %>
+   <% end %>
+	</div>
+ 
+  <% end unless devise_controller? %>

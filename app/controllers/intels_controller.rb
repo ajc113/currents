@@ -9,6 +9,7 @@ class IntelsController < InheritedResources::Base
                   reverse: true,
                   description: "New england fishing reports from our network of charter, commercial, and recreational captains", 
                   keywords: "New england fishing reports, boat ramps, catch reports, big game fishing, offshore fishing"
+
   end
 
 

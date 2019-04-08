@@ -1,0 +1,47 @@
+<% @posts.each do |post| %>
+
+
+<!-- post with image -->
+<article class="entry"> 
+  <span class="entry-date"><%= post.created_at.day %><span><%= post.created_at.strftime('%b') %></span></span>
+  <span class="entry-format"><i class="fa fa-arrow-right"></i></span>
+  <!-- posts -->
+  <div class="row">
+    <!-- post media -->
+    <div class="col-md-6">
+      <div class="entry-media"> 
+          <figure>
+              <a>
+                  <%= render "posts/media", post: post %>
+              </a>
+          </figure>
+      </div><!-- End .entry-media -->
+    </div>
+
+    <div class="col-md-6">
+        <!-- post title -->
+        <h2 class="entry-title"><a href="single.html"><%= link_to post.title, post_path(post) %></a></h2> <!-- end post title -->
+        <!-- post body -->
+        <div class="entry-content">
+            <p><%= post.body.truncate(500).html_safe %></p>
+            <p><%= link_to "READ MORE", post_path(post) %></p>
+        </div><!-- End post body -->
+        <footer class="entry-footer clearfix">
+            <span class="entry-cats">
+              <span class="entry-label">Submitted <%= time_ago_in_words(post.created_at)%> a go
+              </span>
+              <span class="entry-separator">/</span> 
+              <span class="entry-label"><i class="fa fa-tag"></i>Categories:</span><a href="#"><%= post_tags(post) %></a>
+            </span><!-- End .entry-tags -->
+            <span class="entry-separator">/</span>
+                   <a href="<%= post_url(post).html_safe %>#disqus_thread" class="entry-comments">
+                 </a>
+        </footer>
+    </div>
+  </div> <!-- end posts -->
+</article>
+
+
+
+<% end %>
+<%= paginate @posts %>

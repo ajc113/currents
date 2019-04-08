@@ -11,25 +11,29 @@
  * file per style scope.
  *
  *= stub active_admin
- *= require map_theme/vendor/font-awesome.min
- *= require map_theme/vendor/simple-line-icons
- *= require map_theme/vendor/animate.min
- *= require map_theme/vendor/whirl
- *= require map_theme/vendor/weather-icons.min
- *= require map_theme/vendor/bootstrap
- *= require map_theme/app
- *= require map_theme/theme-e
- *= require reports
- *= require_self
+ *= require ./boss/css/font-awesome
+ *= require ./boss/css/simple-line-icons
+ *= require ./boss/css/index
  *= require bootstrap-datepicker
- *= require custom
- *= require currents
- *= require currents_blog
- *= require pricing
- *= require card
- *= require my_account
- *= require invoice
- *= require social-share-button
-  *= require spots
- *= require posts
+ * require_self
+ * require bootstrap-datepicker
+ * require custom
+ * require currents
+ * require currents_blog
+ * require pricing
+ * require card
+ * require my_account
+ * require invoice
+ * require social-share-button
+ * require posts
  */
+
+.mobile-only {
+  display: none;
+}
+
+@media screen and (max-width: 1200px) {
+  .mobile-only {
+    display: block;
+  }
+}

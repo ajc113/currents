@@ -3,6 +3,7 @@ class Post < ActiveRecord::Base
 
   has_many :comments, dependent: :destroy
   belongs_to :admin_user
+  paginates_per 5
 
   mount_uploader :image, PostImageUploader
 

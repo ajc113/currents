@@ -3,52 +3,47 @@
   <head>
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
-     (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-5519376602594387",
-          enable_page_level_ads: true
-     });
+      (adsbygoogle = window.adsbygoogle || []).push({
+           google_ad_client: "ca-pub-5519376602594387",
+           enable_page_level_ads: true
+      });
     </script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-97111691-1">
-    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-97111691-1"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
+      
       gtag('config', 'UA-97111691-1');
     </script>
     <%= display_meta_tags %>
-    <script src="https://use.typekit.net/yzs0vln.js"></script>
-    <script>
-      try{Typekit.load({ async: true });}catch(e){}
-    </script>
+    
     <meta charset="utf-8">
+    <!--[if IE]> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,300,700,900,300italic,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300italic,400italic,600italic,700italic,600,800,300,700,800italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
+    <!-- Google Fonts -->
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag "https://js.stripe.com/v3/" %>
+    <%#= javascript_include_tag "https://js.stripe.com/v3/" %>
     <%= csrf_meta_tags %>
     <%= favicon_link_tag 'favicon.png' %>
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
   </head>
-    
-
-  <body>
-    <div class="wrapper">
+  
+  <body data-spy="scroll" data-target="#main-navbar-container">
+    <div id="wrapper">
+      <%= render 'layouts/alerts' %>
       <%= render 'layouts/navbar' %>
-      <%= render 'layouts/subscription_alerts' %>
-      <% if flash.any? %>
-        <div class="container">
-          <% flash.each do |key, value| %>
-            <div role="alert" class="alert alert-<%=key%>">
-              <%= value.html_safe %>
-            </div>
-          <% end %>
-        </div>
-      <% end unless devise_controller? %>
+      <%#= render 'layouts/subscription_alerts' %>
       <%= yield %>
+      <%= render 'layouts/footer' %>
     </div>
-    <%= render 'layouts/footer' %>
+    <!-- End #wrapper -->
+    <script id="dsq-count-scr" src="//currents-fishing.disqus.com/count.js" async></script>
   </body>
 </html>

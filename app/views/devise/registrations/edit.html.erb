@@ -2,29 +2,15 @@
 <% nofollow %>
 <% noindex %>
 
+<div class="page-header parallax dark half-largest larger-desc" data-bgattach="<%= image_path('boss/backgrounds/index35/bg1.jpg') %>" data-0="background-position:50% 0px;" data-500="background-position:50% -100%">
+
+
 <div class = "container">
   <div class="row">
-    <div class="content-wrapper">
-      <div class="col-sm-3">
-      </div>
-      <div class="col-sm-6">
-        <div class="panel panel-default">
-          <div class="panel panel-inverse-edituser panel-flat">
-            <div class="panel-heading-edituser">
-              <div class="row">
-                <div class="col-lg-3" style="padding-top: 10px">
-                  <a href="#">
-                    <%= image_tag 'map_theme/tuna.png',  class: 'img-responsive', style: 'height: 50px;' %>
-                  </a>
-                </div>
-
-                  <h2>Update Your Account Info
-                  </h2>
-
-              </div>
-            </div>
-          </div>
-          <div class="panel-body-edituser">
+      <div class="col-sm-7">
+        <div class="form-wrapper">
+          <h2 class="title-underblock custom mb40">Update Your Account Info</h2>
+          <div class="panel-body">
             <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
               <%= devise_error_messages! %>
               <form>
@@ -67,37 +53,35 @@
                   <%= f.label :vessel_name %><br />
                   <%= f.text_field :vessel_name, class: "form-control", autofocus: true %>
                 </div>
-                <button type="submit" class="btn btn-block btn-block-edituser mt-lg">
+                <button type="submit" class="btn btn-block btn-custom">
                   <%= "Update" %>
                 </button>
               </form>
             </div>
-            <div class="panel-footer">
               <div class="text-center">
-                <p> <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %> </p>
-                <p> <%= link_to "Back", :back %> </p>
+                <p> <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-default" %> </p>
+                <p> <%= link_to "Back", :back , class: "btn btn-default" %> </p>
               </div>
-            </div>
-          <% end %>
-        </div>
-      </div>
-      <div class="col-sm-3">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <div class="text-center">
-              <h3 class="mt0">Your Subscriptions</h3>
-            </div>
-            <hr>
-            <ul class="list-unstyled ph-xl">
-               <li>
-                  <em class="fa fa-credit-card fa-fw mr-lg"></em><a href="#"><%= link_to "View My Subscription", my_account_path %></a>
-               </li>
-            </ul>
+
+            <% end %>
           </div>
         </div>
-
-
-      </div>
+        <br>
+        <div class="col-sm-3">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="text-center">
+                <h3 class="mt0">Your Subscriptions</h3>
+              </div>
+              <hr>
+              <ul class="list-unstyled ph-xl">
+                 <li>
+                    <em class="fa fa-credit-card fa-fw mr-lg"></em><a href="#"><%= link_to "View My Subscription", my_account_path %></a>
+                 </li>
+              </ul>
+            </div>
+          </div>
+        </div>
     </div>
   </div>
 </div>

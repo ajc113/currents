@@ -1,20 +1,19 @@
 <%= content_for(:title, "Daily Intel") %>
 
-<div class="content-wrapper">
-  <div class="row">
-    <div class="col-lg-2"></div>
-    <div class="col-lg-8">
-      <div class="panel panel-default" data-no-turbolink>
-        <div class="panel-heading">
-          <div class="bb">
-            <h2 class="text-lg">
-              Add New Intel
-            </h2>
-          </div>
+<div class="page-header dark parallax half-largest larger-desc" data-bgattach="<%= image_path('boss/backgrounds/index35/bg1.jpg') %>" style="" data-0="background-position:50% 0px;" data-500="background-position:50% -50%">
+  <section class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+            <h3 class="h2 title-underblock dark mb30">
+                <span>Add New Intel</span>
+            </h3>
+
+            <div class="form-group" data-no-turbolink>
+              <%= render 'form' %>
+            </div>  
         </div>
-        <%= render 'form' %>
       </div>
-    </div>
-    <div class="col-lg-2"></div>
-  </div>
+    </div>  
+  </section>
 </div>

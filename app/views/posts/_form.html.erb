@@ -1,58 +1,64 @@
-<div class="panel-body text-md">
-  <%= form_for @post, html: { multipart: true } do |f| %>
-    <% if @post.errors.any? %>
-      <div id="errors">
-        <h2>
-          <%= pluralize(@post.errors.count, "error" ) %> prevented this post from saving
-        </h2>
-        <ul>
-          <% @post.errors.full_messages.each do |msg| %>
-            <li> <%= msg %> </li>
-          </ul>
-        <% end %>
-      </div>
-    <% end %>
-    <div class="field form-group">
-      <%= f.label :image %> <br>
-      <% if f.object.image.present? %>
-        <%= image_tag f.object.image.url, width: 150, height: 150 %>
-        <%= f.label :remove_image do %>
-          <%= f.check_box :remove_image %>
-        <% end %>
+<article class="entry single">
+  <div class="panel-body text-md">
+    <%= form_for @post, html: { multipart: true } do |f| %>
+
+      <!-- errors -->
+      <% if @post.errors.any? %>
+        <div id="errors">
+          <h2>
+            <%= pluralize(@post.errors.count, "error" ) %> prevented this post from saving
+          </h2>
+          <ul>
+            <% @post.errors.full_messages.each do |msg| %>
+              <li> <%= msg %> </li>
+            </ul>
+          <% end %>
+        </div>
       <% end %>
-      <%= f.file_field :image %>
-      <%= f.hidden_field :image_cache %>
-    </div>
-    <div class="field form-group">
-      <%= f.label :title %> <br>
-      <%= f.text_field :title, class: 'form-control'  %>
-    </div>
-    <div class="field form-group">
-      <%= f.label :body %> <br>
-      <%= f.cktext_area :body, class: 'form-control'  %>
-    </div>
-    <div class="field form-group">
-      <%= f.label :youtube_id %> <br>
-      <%= f.text_field :youtube_id, class: 'form-control' %>
-    </div>
-    <div class="field form-group">
-      <%= f.label :tag_list, "Tags (seperated by commas)" %> <br>
-      <%= f.text_field :tag_list, value: f.object.tag_list.to_s, class: 'form-control' %>
-    </div> 
-    <div class="field form-group">
-        <%= f.label :meta_title %><br>
-        <%= f.text_field :meta_title %>
+      
+      <!-- submit post form -->
+      <div class="field form-group">
+        <%= f.label :image, "Thumb" %> <br>
+        <% if f.object.image.present? %>
+          <%= image_tag f.object.image.url, width: 150, height: 150 %>
+          <%= f.label :remove_image do %>
+            <%= f.check_box :remove_image %>
+          <% end %>
+        <% end %>
+        <%= f.file_field :image %>
+        <%= f.hidden_field :image_cache %>
       </div>
       <div class="field form-group">
-        <%= f.label :meta_description %><br>
-        <%= f.text_field :meta_description %>
+        <%= f.label :title %> <br>
+        <%= f.text_field :title, class: 'form-control'  %>
       </div>
-    <div class="field form-group">
-        <%= f.label :meta_keywords %><br>
-        <%= f.text_field :meta_keywords %>
+      <div class="field form-group">
+        <%= f.label :body %> <br>
+        <%= f.cktext_area :body, class: 'form-control'  %>
       </div>
-    <div class="field form-group">
-      <%= f.submit  class: "btn btn-inverse btn-md"%> <br>
-    </div>
-  <% end %>
-</div>
+      <div class="field form-group">
+        <%= f.label :youtube_id %> <br>
+        <%= f.text_field :youtube_id, class: 'form-control' %>
+      </div>
+      <div class="field form-group">
+        <%= f.label :tag_list, "Tags (seperated by commas)" %> <br>
+        <%= f.text_field :tag_list, value: f.object.tag_list.to_s, class: 'form-control' %>
+      </div> 
+      <div class="field form-group">
+          <%= f.label :meta_title %><br>
+          <%= f.text_field :meta_title %>
+        </div>
+        <div class="field form-group">
+          <%= f.label :meta_description %><br>
+          <%= f.text_field :meta_description %>
+        </div>
+      <div class="field form-group">
+          <%= f.label :meta_keywords %><br>
+          <%= f.text_field :meta_keywords %>
+        </div>
+      <div class="field form-group">
+        <%= f.submit  class: "btn btn-dark btn-lg"%> <br>
+      </div>
+    <% end %>
+  </div>
+</article>

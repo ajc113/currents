@@ -2,17 +2,21 @@
 <% nofollow %>
 <% noindex %>
 
-<div class = "container">
-  <div class="row">
-    <div class="content-wrapper">
-      <div class="col-sm-4">
-        <div class="panel panel-default">     
-          <div class="panel bg-inverse">
-            <h2>Change your password</h2>
-          </div>    
-
-          <div class="panel-body"> 
-            <form>
+<div id="login-section" class="fullheight">
+  <div class="vcenter-container">
+    <div class="vcenter">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 col-sm-push-3 col-lg-4 col-lg-push-4">
+            <div class="mb100"></div>
+            <!-- header image -->
+            <h1 class="logo text-center">
+                <a href="index.html" title="Boss - Multipurpose Premium Html5 Template">
+                    <img src="<%= image_path('currentslogoblack.png')%>"  alt="Logo" style="height: 75px;">
+                </a>
+            </h1> <!-- end header image -->
+            <div class="form-wrapper"><h3>Change your password</h3>
+              <div class="panel-body">
               <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
                 <%= devise_error_messages! %>
                 <%= f.hidden_field :reset_password_token %>
@@ -20,29 +24,32 @@
                 <div class="field">
                   <%= f.label :password, "New password" %><br />
                   <% if @minimum_password_length %>
-                    <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+                    <em>(<%= @minimum_password_length %> char minimum)</em><br />
                   <% end %>
                   <%= f.password_field :password, autofocus: true, autocomplete: "off", required: true %>
                 </div>
 
                 <div class="field">
-                  <%= f.label :password_confirmation, "Confirm new password" %><br />
+                  <%= f.label :password_confirmation, "Confirm password" %><br />
                   <%= f.password_field :password_confirmation, autocomplete: "off", required: true %>
                 </div>
-
+                <br>
                 <div class="actions">
-                  <%= f.submit "Change my password" %>
+                  <%= f.submit "Change my password", class: "btn btn-block btn-custom" %>
                 </div>
                 <% end %>
-              </form>
-          </div>
 
-          <div class="panel-footer">
-            <%= render "devise/shared/links" %>
-          </div>
+              <div class="form-group text-right">
+                <a href="recover-password.html" class="add-tooltip" data-placement="top" title="Recover your password">
+                <%= render "devise/shared/links" %>
+                </a>
+              </div>
+            </div><!-- End .form-wrapper -->
+          </div><!-- End .col-sm-6 -->
+        </div><!-- End .row -->
+      </div><!-- End .container -->
+    </div><!-- End .vcenter -->
+  </div><!-- End .vcenter-container -->
+</div><!-- End .fullheight -->
 
-        </div>
-      </div>
-    </div>
-  </div>
-</div>       
+

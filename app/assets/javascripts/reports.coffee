@@ -4,7 +4,7 @@
 
 $('.new_report').validate()
 $(document).on 'turbolinks:load',  ->
-  if $('.report-date').prop('type') != 'date' 
+  if $('.report-date').length && $('.report-date').prop('type') != 'date'
     $('.report-date').datepicker
       startDate: "-3y"
       endDate: "+0d"
@@ -20,7 +20,7 @@ $(document).on 'turbolinks:load',  ->
       console.log(hash)
       $('html, body').animate
         scrollTop: $(hash).offset().top
-        duratin: 800
+        duration: 800
         easing: "linear"
         ->
           window.location.hash = hash
@@ -35,5 +35,5 @@ $(document).on 'turbolinks:load',  ->
         $('#report_location_id').prop('disabled', 'disabled')
         $('.field_label').text("Updaing locations...")
       success: () ->
-        $('#report_location_id').removeProp('disabled')
+        $('#report_location_id').prop('disabled', false)
         $('.field_label').html('<label for="report_location_id">Location</label> (Required)')

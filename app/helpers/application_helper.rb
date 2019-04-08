@@ -7,4 +7,9 @@ module ApplicationHelper
   		page_title + base_title
   	end
   end
+
+  def post_tags post
+    return '-' if post.tags.empty?
+    raw post.tags.map { |tag| tag_link(tag) }.join(", ")
+  end
 end

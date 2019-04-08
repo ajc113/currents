@@ -1,82 +1,58 @@
 <head>
-  <script type="application/ld+json">
-    <%= display_meta_tags  %>
+  <%= display_meta_tags  %>
+  <script type="application/ld+json">  
   </script>
 </head>
-
-<%= image_tag 'radar.jpg',  class: 'img-responsive hidden-xs', style: 'display:block; opacity: .55' %>
-
-<!-- header -->
-<div class="col-lg-11 col-lg-offset-1 col-md-8" style="color: #243948;padding-left: 0px;"> 
-  <h1>
-    Daily Intel
-  </h1>
-  <h3>
-    Information from our network of charter, recreational and spotter reports. 
-  </h3>
-  <!-- border -->
-  <div style="border-bottom: 5px solid #243948;"></div><br>
-</div>
-
-
-<div class="content-wrapper">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-1 col-md-9">
-      <!-- posts row -->
+<div id="content" role="main">
+  <!-- <div class="page&#45;header larger larger&#45;desc"> -->
+  <div class="page-header dark parallax half-largest larger-desc" data-bgattach="<%= image_path('boss/backgrounds/index35/bg1.jpg') %>" style="" data-0="background-position:50% 0px;" data-500="background-position:50% -50%">
+    
+    <div class="container">
       <div class="row">
-        <!-- Posts -->
-          <% @intels.each do |intel| %>
-          <div class="panel panel-default">
-            <%#= render 'posts/media', post: post %>
-            <!-- post heading -->
-            <div class="posts-heading panel-heading">
-              <div class="bb">
-                <h1 class="mv-lg">
-                  <%= link_to intel.title, intel, {:style => 'color: #243948'} %>
-                </h1>
-                <p class="date">
-                   <%= intel.created_at.strftime(" %B, %d, %Y") %></small> |
-                  Submitted <%= time_ago_in_words(intel.created_at) %> a go
-                  <%= raw "| Tags: " + intel.tag_list.map { |t| link_to t, tag_path(t)}.join(', ') if intel.tags.exists? %>
-                </p>
-              </div>
-            </div>
-            <div class="panel-body text-md posts-body">
-              <span>
-                <%= intel.body.html_safe %>
-            
-              </span>
-            </div>
-          </div>
-        <% end %>
+        <div class="col-md-7">
+          <h1 style="font-size: 55px !important;">Intel</h1>
+          <p class="page-header-desc" style="font-size: 25px !important; " >Check out current intel from around the network</p>
+        </div>
       </div>
+      <!-- End .row -->
     </div>
-    <!-- Aside -->
-    <div class="col-lg-3 col-md-3 posts-sidebar">
-      <!-- Search-->
-      <div class="panel widget bg-inverse-light">
-        <div class="panel-body">
-            <strong>Search Intel</strong><br>
+    <!-- End .container -->
+  </div>
+  <!-- End .page-header -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <%= render 'index' %>
+      </div>
+      <!-- End .col-md-9 -->
+      <div class="mb60 clearfix visible-sm visible-xs"></div>
+      <!-- space -->
+      <!-- aside search box -->
+      <aside class="col-md-3 sidebar" role="complementary">
+        <div class="widget">
+          <h3>Search Intels</h3>
             <form class="form-horizontal">
                   <%= form_tag intels_path, :method => 'get' do %>
                   <p><%= text_field_tag  :q, params[:q], class: 'form-control'   %></p>
-                  <%= submit_tag 'Search', :name => nil, class: "mb-sm btn btn-inverse btn-outline"  %>
+                  <%= submit_tag 'Search', :name => nil, class: "btn btn-dark btn-lg"  %>
                   <% end %>
             </form>
         </div>
-      </div>
-      <!-- Categories-->
-      <% if current_admin_user %>
-      <%= link_to 'New Intel', new_intel_path, class: "btn btn-danger btn-lg" %>
-      <% end %>
-    </div>
-    
-    </div>
+        <!-- admin new button -->
+        <div class="widget">
+          <% if current_admin_user %>
+          <%= link_to 'New Intel', new_intel_path, class: "btn btn-custom btn-lg" %>
+          <% end %>
+        </div>      
+      </aside>
 
-  <div class="center">
-  
-  <%= paginate @intels %>
 
+      <!-- End .col-md-3 -->
+    </div>
+    <!-- End .row -->
   </div>
+  <!-- End .container -->
+  <div class="mb20 hidden-xs hidden-sm"></div>
+  <!-- space -->
 </div>
-
+<!-- End #content -->

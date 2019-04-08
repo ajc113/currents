@@ -1,0 +1,58 @@
+<div id="content" role="main">
+  <div class="page-header parallax dark half-largest larger-desc" data-bgattach="<%= image_path('boss/backgrounds/index35/bg1.jpg') %>" data-0="background-position:50% 0px;" data-500="background-position:50% -100%">
+  </div>
+  <!-- End .page-header -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <article class="entry single">
+          <span class="entry-date">
+            <%= post.created_at.day %>
+            <span>
+              <%= post.created_at.strftime('%b') %>
+            </span>
+          </span>
+          
+          <span class="entry-format">
+            <i class="fa fa-binoculars"></i>
+          </span> 
+          <h2 class="entry-title"><%= post.title %></h2>
+
+    
+          <div class="entry-content">
+            <%= post.body.html_safe %>
+          </div>
+          <!-- End .entry-content -->
+          
+          <footer class="entry-footer clearfix">
+            <span class="entry-cats">
+              <span class="entry-label"><i class="fa fa-tag"></i>Categories: <%= post_tags post %>
+              </span><!-- End .entry-tags -->
+              <span class="entry-separator">/</span>
+              <a href="<%= request.url%>#disqus_thread" class="entry-comments"></a>
+              <span class="entry-separator">/</span>
+              by <a href="#" class="entry-author">Currents Staff</a>
+              <span class="entry-separator">/</span>
+                <% if current_admin_user %>
+                  <%= link_to 'Edit', edit_post_path(@post) %>
+                  / <%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are you sure?'} %>
+                <% end %> 
+              </span>
+          </footer>
+            <%= link_to 'Back to Blog', posts_path, class: "btn btn-dark pull-right" %>
+        </article>
+          
+          <%= render 'shared/disqus' %>
+
+          </div> 
+          
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="mb20"></div>
+    
+  </div>
+ 
