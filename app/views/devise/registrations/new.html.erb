@@ -29,7 +29,7 @@
                 <%= f.text_field :home_port, class: "form-control" %>
               </div>
               <div class="field">
-                <%= f.label :state_waters %><br />
+                <%= f.label :state_waters %> (you fish most)<br />
                 <%= f.select :state_waters, State.visible.pluck(:name), { prompt: 'Select State' }, class: "form-control", autofocus: true, required: true %>
               </div>
               <div class="field">

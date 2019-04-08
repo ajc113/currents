@@ -11,7 +11,7 @@
 <div class="page-header parallax dark half-largest larger-desc" data-bgattach="<%= image_path('boss/backgrounds/index35/bg1.jpg') %>" data-0="background-position:50% 0px;" data-500="background-position:50% -100%">
 
     <!-- maps header -->
-  <div class="page-header larger larger-desc" style="border-bottom: none;">
+  <div class="page-header" style="border-bottom: none; margin-bottom: 2px;">
     <div class="container">
       <div class="row">
         <div class="col-md-7">
@@ -29,7 +29,7 @@
                   <div class="col-lg-6">  
                       <%= form_for(:species_filter) do |f| %>
                       <%= f.label :species %>
-                      <%= f.select :species, all_species.map{ |species| [species.name, species.id] }, { prompt: "Select Species" }, class: "form-control m-b", style: "width: 100% !important", id: "species_select" %>
+                      <%= f.select :species, all_species.map{ |species| [species.name, species.id] }, { prompt: "Select Species" }, class: "form-control",  id: "species_select", style: "width: 100% !important" %>
                       <% end %>
                   </div>
           
@@ -45,6 +45,7 @@
           </div> <!-- end widget -->
         </div> <!-- end filter widget -->
       </div> <!-- end row -->
+      <%= render 'heatmap_legend' %>
     </div> <!-- end container -->
   </div>  <!-- end maps header -->
 

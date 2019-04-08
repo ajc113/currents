@@ -23,16 +23,16 @@
               <div class="pull-right">
                   <ul class="navbar-top-nav clearfix hidden-sm hidden-xs">
                   <% if current_user %>
-                    <li><a href="#"><i class="fa fa-user"></i><%= link_to "My Account", edit_user_registration_path %></a></li>
+                    <li><a href="#"><i class="fa fa-user"></i>
+                      <%= link_to "My Account", edit_user_registration_path %></a></li>
         
-                     <li><a href="login.html"><i class="fa fa-external-link"></i><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></a></li>
-
+                     <li><a><i class="fa fa-external-link"></i>
+                      <%= link_to "Sign Out", destroy_user_session_path, method: :delete %></a></li>
                       <% else %>
-                    <li><a href="register.html"><i class="fa fa-terminal"></i>%= link_to "Register", new_user_registration_path %></a></li>
-                    
-                    <li><a href="login.html"><i class="fa fa-external-link"></i><%= link_to "Sign In", new_user_session_path %></a></li>
+                    <li><a><i class="fa fa-terminal"></i><%= link_to "Register", new_user_registration_path %></a></li>
+                    <li><a><i class="fa fa-external-link"></i>
+                      <%= link_to "Sign In", new_user_session_path %></a></li>
                     <li>
-                      
                   
                     <% end %>
 
@@ -77,7 +77,7 @@
                 <%= link_to "About Us", "/#about_us", 'data-turbolinks' => false %> 
               </li>
               <li>
-               <%= link_to "Contact", "/#contact_us", 'data-turbolinks' => false %>
+               <%= link_to "Contact Us", "/#contact_us", 'data-turbolinks' => false %>
               </li> 
             </ul>
 

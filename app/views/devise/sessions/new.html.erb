@@ -2,74 +2,72 @@
 <% nofollow %>
 <% noindex %>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
+<div id="content" role="main"></div>
 <div id="login-section" class="fullheight">
-    <div class="vcenter-container">
-        <div class="vcenter">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-6 col-sm-push-3 col-lg-4 col-lg-push-4">
-
-                        <div class="mb100"></div>
-                        <!-- header image -->
-                        <h1 class="logo text-center">
-                            <a href="index.html" title="Boss - Multipurpose Premium Html5 Template">
-                                <img src="<%= image_path('currentslogoblack.png')%>"  alt="Logo" style="height: 75px;">
-                            </a>
-                        </h1> <!-- end header image -->
-
-
-                        <div class="form-wrapper">
-                          <%= devise_error_messages! %>
-                          <% flash.each do |key, value| %>
-                          <div class="flash <%= key %>"><%= value %></div>
-                          <% end %>
-                          <h2 class="title-underblock custom mb30">Login</h2>
-                            <form action="#">
-                                <div class="form-group">
-                                    <%= f.label :email %><br />
-                                    <%= f.email_field :email, class: "form-control", autofocus: true, required: true %>
-                                </div><!-- End .from-group -->
-                                <div class="form-group mb10">
-
-
-                                    <%= f.label :password %><br />
-                                    <%= f.password_field :password, class: "form-control", autocomplete: "on", required: true %>
-
-                                </div><!-- End .from-group -->
-                                <div class="form-group text-right">
-                                    <a href="recover-password.html" class="add-tooltip" data-placement="top" title="Recover your password">
-                                      <%= render "devise/shared/links" %>
-                                    </a>
-                                </div><!-- End .form-group -->
-                                <div class="form-group mt15">
-                                    <div class="checkbox">
-                                      <label class="custom-checkbox-wrapper">
-                                        <span class="custom-checkbox-container">
-                                            <input type="checkbox" name="remember" id="remember" value="true">
-                                            <span class="custom-checkbox-icon"></span>
-                                        </span>
-                                       <span>
-                                        <% if devise_mapping.rememberable? -%>
-                                        <%= f.label :remember_me %>
-                                        <% end %>
-                                        </span>
-                                      </label>
-                                    </div><!-- End .checkbox -->
-                                </div><!-- End .form-group -->
-                                <div class="form-group mb5">
-                                    <button type="submit" value="Log In"class="btn btn-custom">
-                                    <%= "Log In Now" %>
-                                   </button>
-                                </div><!-- End .from-group -->
-                            </form>
-                        </div><!-- End .form-wrapper -->
-                    </div><!-- End .col-sm-6 -->
-                </div><!-- End .row -->
-            </div><!-- End .container -->
-        </div><!-- End .vcenter -->
-    </div><!-- End .vcenter-container -->
-</div><!-- End .fullheight -->
-
-<% end %>
+  <div class="vcenter-container">
+    <div class="vcenter">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 col-sm-push-3 col-lg-4 col-lg-push-4">
+              <div class="mb100"></div>
+              <!-- header image -->
+<!--               <h1 class="logo text-center">
+                  <a href="index.html" title="Boss - Multipurpose Premium Html5 Template">
+                      <img src="<%#= image_path('currentslogoblack.png')%>"  alt="Logo" style="height: 75px;">
+                  </a>
+              </h1> <!-- end header image --> 
+              <div class="form-wrapper">
+                  <%= devise_error_messages! %>
+                  <% flash.each do |key, value| %>
+                  <div class="flash <%= key %>"><%= value %></div>
+                  <% end %>
+                  <h2 class="title-underblock custom mb30">Login</h2>
+                <div class="panel-body">
+                  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                  <form action="#">
+                      <div class="form-group">
+                          <%= f.label :email %><br />
+                          <%= f.email_field :email, class: "form-control", autofocus: true, required: true %>
+                      </div><!-- End .from-group -->
+                      <div class="form-group mb10">
+                          <%= f.label :password %><br />
+                          <%= f.password_field :password, class: "form-control", autocomplete: "on", required: true %>
+                      </div><!-- End .from-group -->
+                      <div class="form-group text-right">
+                          <a href="recover-password.html" class="add-tooltip" data-placement="top" title="Recover your password">
+                            <%= render "devise/shared/links" %>
+                          </a>
+                      </div><!-- End .form-group -->
+                      <div class="form-group mt15">
+                          <div class="checkbox">
+                            <label class="custom-checkbox-wrapper">
+                              <span class="custom-checkbox-container">
+                                  <input type="checkbox" name="remember" id="remember" value="true">
+                                  <span class="custom-checkbox-icon"></span>
+                              </span>
+                             <span>
+                              <% if devise_mapping.rememberable? -%>
+                              <%= f.label :remember_me %>
+                              <% end %>
+                              </span>
+                            </label>
+                          </div><!-- End .checkbox -->
+                      </div><!-- End .form-group -->
+                      <div class="form-group mb5">
+                          <button type="submit" value="Log In"class="btn btn-custom">
+                          <%= "Log In Now" %>
+                         </button>
+                      </div><!-- End .from-group -->
+                  
+                    <% end %> 
+                  </form>
+                </div>
+               
+              </div><!-- End .form-wrapper -->
+          </div><!-- End .col-sm-6 -->
+        </div><!-- End .row -->
+      </div><!-- End .container -->
+    </div><!-- End .vcenter -->
+        
+  </div><!-- End .vcenter-container -->
+</div>
