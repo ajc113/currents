@@ -2,7 +2,14 @@
 <% nofollow %>
 <% noindex %>
 
+
+
+
 <div id="content" role="main"></div>
+
+
+
+
 <div id="login-section" class="fullheight">
   <div class="vcenter-container">
     <div class="vcenter">
@@ -17,12 +24,14 @@
                   </a>
               </h1> <!-- end header image --> 
               <div class="form-wrapper">
-                  <%= devise_error_messages! %>
-                  <% flash.each do |key, value| %>
-                  <div class="flash <%= key %>"><%= value %></div>
-                  <% end %>
                   <h2 class="title-underblock custom mb30">Login</h2>
                 <div class="panel-body">
+                  <% flash.each do |key, value| %>
+                  <div role="alert" class="alert alert-danger alert-dismissable">
+                  <%= devise_error_messages! %>
+                  <%= value %>
+                  <% end %>
+                  </div>
                   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                   <form action="#">
                       <div class="form-group">
