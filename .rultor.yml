@@ -1,5 +1,6 @@
 docker:
   image: tannakartikey/currents
+  as_root: true
 assets:
   id_rsa: "tannakartikey/currents_private#currents.heroku"
   id_rsa.pub: "tannakartikey/currents_private#currents.heroku.pub"
@@ -13,7 +14,6 @@ env:
   DISPLAY: ":99"
 install: |-
   sudo /etc/init.d/postgresql start
-  sudo chown -R r:r /usr/local
   cp ../application.yml config/application.yml
   bundle install
   rake db:create
