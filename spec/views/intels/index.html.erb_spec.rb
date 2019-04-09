@@ -17,6 +17,5 @@ RSpec.describe "intels/index", type: :view do
   it "renders a list of intels" do
     render
     expect(rendered).to match /Title/
-    expect(rendered).to match /MyText/
   end
 end
