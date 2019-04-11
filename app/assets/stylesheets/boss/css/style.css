@@ -92,11 +92,11 @@ Version:1.0
 Import vertical spacing helper css file (minified) 
 To see how it work see vspacing.css file (unminified)
 */
-@import url('vspacing.min.css');
+@import url('boss/css/vspacing.min.css');
 
 /* Import font icons */
 /* @import url('font-awesome.scss'); */
-@import url('simple-line-icons.css');
+@import url('boss/css/simple-line-icons.css');
 
 /* =============================================
 -------------------  1.General ---------------
