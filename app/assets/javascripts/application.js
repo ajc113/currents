@@ -19,7 +19,7 @@
 //= require bootstrap-datepicker/core
 //= require users
 //= require turbolinks
-//= require ckeditor/init_ckeditor
+//= require ckeditor/config
 //= require social-share-button
 //= require Chart.bundle
 //= require chartkick
