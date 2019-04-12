@@ -27,3 +27,5 @@ spec/example.txt
 
 config/secrets.yml
 coverage/
+
+/*theme*
