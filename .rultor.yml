@@ -31,10 +31,10 @@ release:
   script: |-
     heroku pg:backups:capture --app currents
     git remote add heroku git@heroku.com:currents.git
-    mkdir ~/.ssh
-    mv ../id_rsa ../id_rsa.pub ../kartikey_heroku.pub ../kartikey_heroku ~/.ssh
-    chmod -R 600 ~/.ssh/*
-    echo -e "Host *\n  StrictHostKeyChecking no\n  UserKnownHostsFile=/dev/null" > ~/.ssh/config
+    mkdir /root/.ssh
+    mv ../id_rsa ../id_rsa.pub ../kartikey_heroku.pub ../kartikey_heroku /root/.ssh
+    chmod -R 600 /root/.ssh/*
+    echo -e "Host *\n  StrictHostKeyChecking no\n  UserKnownHostsFile=/dev/null" > /root/.ssh/config
     git push -f heroku $(git symbolic-ref --short HEAD):master
     heroku run rake db:migrate --app currents
     curl -f --connect-timeout 15 --retry 5 --retry-delay 30 http://thefishing.network > /dev/null
@@ -45,10 +45,10 @@ deploy:
   script: |-
     heroku pg:backups:capture --app currents-dev
     git remote add heroku git@heroku.com:currents-dev.git
-    mkdir ~/.ssh
-    mv ../id_rsa ../id_rsa.pub ../kartikey_heroku.pub ../kartikey_heroku ~/.ssh
-    chmod -R 600 ~/.ssh/*
-    echo -e "Host *\n  StrictHostKeyChecking no\n  UserKnownHostsFile=/dev/null" > ~/.ssh/config
+    mkdir /root/.ssh
+    mv ../id_rsa ../id_rsa.pub ../kartikey_heroku.pub ../kartikey_heroku /root/.ssh
+    chmod -R 600 /root/.ssh/*
+    echo -e "Host *\n  StrictHostKeyChecking no\n  UserKnownHostsFile=/dev/null" > /root/.ssh/config
     git push -f heroku master:master
     heroku run rake db:migrate --app currents-dev
   commanders:
