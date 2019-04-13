@@ -17,7 +17,7 @@ RSpec.describe IntelsController, type: :controller do
   describe "GET #index" do
     it "returns a success response" do
       intel = Intel.create! valid_attributes
-      get :index, {}, valid_session
+      get :index, valid_session
       expect(response).to be_success
     end
   end
@@ -32,7 +32,7 @@ RSpec.describe IntelsController, type: :controller do
 
   describe "GET #new" do
     it "returns a success response" do
-      get :new, {}, valid_session
+      get :new, valid_session
       expect(response).to be_success
     end
   end

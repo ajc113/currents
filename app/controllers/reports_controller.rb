@@ -1,15 +1,14 @@
 class ReportsController < ApplicationController
   before_action :set_report, only: [:show, :edit, :update, :destroy]
   # before_action :set_current_user_reports
-  before_action :authorize_user!
-  skip_before_filter :authenticate_user!, :only => :locations_for_state
+  before_action :authorize_user!, except: [:locations_for_state]
 
 
   # @reports = current_user.reports.order("date DESC")
 
   def index
     @reports = current_user.reports
-    @filtered_reports = @reports.filter(params.slice(:species, :location, :state, :tide, :date)).page params[:page]
+    @filtered_reports = @reports._filter(params.slice(:species, :location, :state, :tide, :date)).page params[:page]
     @species_for_filter = @reports.select("DISTINCT(species_id)").unscope(:order)
     @tides_for_filter = @reports.collect(&:tide).uniq
     @state_for_filter = @reports.collect(&:state).uniq.sort_by{ |state| [state.visible ? 0 : 1, state.name] }

@@ -16,7 +16,7 @@ RSpec.feature "Admin visits" do
 
   scenario "Edit Species page" do
     click_link('Species')
-    click_link('Edit')
+    click_link('Edit', match: :first)
     expect(page).to have_field('species_name', with: @species.name)
     expect(page).to have_field('species_located', with: @species.located)
   end

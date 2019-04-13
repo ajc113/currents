@@ -33,7 +33,7 @@ class StripeController < ApplicationController
         ActiveRecord::Base.connection.close
       end
     end
-    render nothing: true, status: 200
+    head :ok
   end
 
   def event_process(event_type, event, user, customer)
