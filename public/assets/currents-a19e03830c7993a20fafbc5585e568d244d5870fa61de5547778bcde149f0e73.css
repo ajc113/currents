@@ -1,0 +1,272 @@
+/* line 1, /Users/AJ/Desktop/projects/currents/app/assets/stylesheets/currents.scss */
+body {
+  background-color: #f7f7f7;
+}
+
+/* line 6, /Users/AJ/Desktop/projects/currents/app/assets/stylesheets/currents.scss */
+.alert-error {
+  background-color: #f05050;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #ffffff;
+  text-align: center;
+  font-size: 25px !important;
+  padding: 0px !important;
+  margin-bottom: 0px !important;
+  border-radius: 2px 2px 0 0;
+}
+
+/* line 17, /Users/AJ/Desktop/projects/currents/app/assets/stylesheets/currents.scss */
+.alert-alert {
+  background-color: #f05050;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #ffffff;
+  text-align: center;
+  font-size: 25px !important;
+  padding: 0px !important;
+  margin-bottom: 0px !important;
+  border-radius: 2px 2px 0 0;
+}
+
+/* line 28, /Users/AJ/Desktop/projects/currents/app/assets/stylesheets/currents.scss */
+.alert-success {
+  background-color: #27c24c;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #ffffff;
+  text-align: center;
+  font-size: 25px !important;
+  padding: 0px !important;
+  margin-bottom: 0px !important;
+  border-radius: 2px 2px 0 0;
+}
+
+/* line 39, /Users/AJ/Desktop/projects/currents/app/assets/stylesheets/currents.scss */
+.alert-notice {
+  background-color: #27c24c;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #ffffff;
+  text-align: center;
+  font-size: 25px !important;
+  padding: 0px !important;
+  margin-bottom: 0px !important;
+  border-radius: 2px 2px 0 0;
+}
+
+/* line 50, /Users/AJ/Desktop/projects/currents/app/assets/stylesheets/currents.scss */
+.container {
+  width: auto;
+  padding: 0px;
+}
+
+/* line 57, /Users/AJ/Desktop/projects/currents/app/assets/stylesheets/currents.scss */
+.h1 {
+  color: rgba(49, 63, 78, 0.9);
+  font-size: 75px;
+  line-height: 100px;
+  font-weight: 700;
+  text-align: center;
+  /*text-transform: uppercase;*/
+  text-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+}
+
+/* line 67, /Users/AJ/Desktop/projects/currents/app/assets/stylesheets/currents.scss */
+.h2 {
+  color: rgba(49, 63, 78, 0.75);
+  margin-bottom: 40px;
+  font-family: "Roboto Slab", serif;
+  font-size: 25px;
+  line-height: 40px;
+}
+
+/* line 75, /Users/AJ/Desktop/projects/currents/app/assets/stylesheets/currents.scss */
+.h22 {
+  color: #454647;
+  font-size: 50px;
+  line-height: 40px;
+  opacity: .90;
+}
+
+/* line 82, /Users/AJ/Desktop/projects/currents/app/assets/stylesheets/currents.scss */
+.how_it_works {
+  background-color: rgba(81, 82, 83, 0.1);
+  padding: 0px;
+}
+
+/* line 87, /Users/AJ/Desktop/projects/currents/app/assets/stylesheets/currents.scss */
+.intro {
+  background-color: rgba(20, 133, 204, 0.55);
+  padding: 0px;
+}
+
+/* line 92, /Users/AJ/Desktop/projects/currents/app/assets/stylesheets/currents.scss */
+.panel-heading-how-it-works {
+  height: auto;
+  font-family: "Roboto Slab", serif;
+  font-size: 30px;
+  line-height: 25px;
+  padding-left: 20px;
+}
+
+/* line 100, /Users/AJ/Desktop/projects/currents/app/assets/stylesheets/currents.scss */
+.panel-body-how-it-works {
+  height: 100px;
+  text-align: left;
+  padding-left: 20px;
+  line-height: 22px;
+  padding-top: 20px;
+}
+
+/* line 108, /Users/AJ/Desktop/projects/currents/app/assets/stylesheets/currents.scss */
+.vertical-align {
+  display: flex;
+  align-items: center;
+  flex: 100;
+}
+
+/* line 114, /Users/AJ/Desktop/projects/currents/app/assets/stylesheets/currents.scss */
+h2.usp-heading {
+  margin-top: 0px;
+}
+
+/* line 118, /Users/AJ/Desktop/projects/currents/app/assets/stylesheets/currents.scss */
+.panel-heading {
+  height: 100px;
+}
+
+/* line 123, /Users/AJ/Desktop/projects/currents/app/assets/stylesheets/currents.scss */
+.panel-default-reports {
+  border-top-width: 3px;
+  background-color: #88888F !important;
+  color: white;
+}
+
+/* line 130, /Users/AJ/Desktop/projects/currents/app/assets/stylesheets/currents.scss */
+.panel-heading-edituser {
+  background-color: #88888F !important;
+  padding-left: 40px !important;
+  color: white;
+}
+
+/* line 136, /Users/AJ/Desktop/projects/currents/app/assets/stylesheets/currents.scss */
+.panel-body-edituser {
+  line-height: 2.0 !important;
+  padding: 30px;
+}
+
+/* line 141, /Users/AJ/Desktop/projects/currents/app/assets/stylesheets/currents.scss */
+.panel-inverse-edituser {
+  border: 1px solid;
+}
+
+/* line 145, /Users/AJ/Desktop/projects/currents/app/assets/stylesheets/currents.scss */
+.btn-block-edituser {
+  background-color: #88888F !important;
+  color: white;
+}
+
+/* line 151, /Users/AJ/Desktop/projects/currents/app/assets/stylesheets/currents.scss */
+.panel-body-buzz {
+  padding: 1px;
+}
+
+/* line 155, /Users/AJ/Desktop/projects/currents/app/assets/stylesheets/currents.scss */
+.tk-blackoak-std {
+  font-size: 2.2em;
+  letter-spacing: .15em;
+  margin: 05px;
+  text-shadow: 1px .5px #1797be;
+  /*line-height: 250%;*/
+  -webkit-transform: scale(1, 2.1);
+  /* Safari and Chrome */
+  -moz-transform: scale(1, 2.1);
+  /* Firefox */
+  -ms-transform: scale(1, 2.1);
+  /* IE 9+ */
+  -o-transform: scale(1, 2.1);
+  /* Opera */
+}
+
+/* line 171, /Users/AJ/Desktop/projects/currents/app/assets/stylesheets/currents.scss */
+.helvetica {
+  font: Helvetica;
+  font-size: 1.5em !important;
+  font-weight: normal;
+  letter-spacing: .07em;
+  margin: 05px;
+  /*line-height: 200%;*/
+  -webkit-transform: scale(1, 2.1);
+  /* Safari and Chrome */
+  -moz-transform: scale(1, 2.1);
+  /* Firefox */
+  -ms-transform: scale(1, 2.1);
+  /* IE 9+ */
+  -o-transform: scale(1, 2.1);
+  /* Opera */
+}
+
+/* line 188, /Users/AJ/Desktop/projects/currents/app/assets/stylesheets/currents.scss */
+.padding {
+  padding: 50px;
+}
+
+/* line 192, /Users/AJ/Desktop/projects/currents/app/assets/stylesheets/currents.scss */
+.homepage-header-image {
+  width: 100%;
+}
+
+/* line 196, /Users/AJ/Desktop/projects/currents/app/assets/stylesheets/currents.scss */
+.site-logo {
+  margin: 0 auto;
+}
+
+/* line 200, /Users/AJ/Desktop/projects/currents/app/assets/stylesheets/currents.scss */
+.subscribe-link-alert {
+  color: #ff902b;
+  font-size: 15px;
+  text-decoration: underline;
+}
+
+/* line 206, /Users/AJ/Desktop/projects/currents/app/assets/stylesheets/currents.scss */
+.footer {
+  background: black;
+  color: white;
+  vertical-align: middle;
+  padding: 15px;
+}
+
+@media (min-width: 1200px) {
+  /* line 214, /Users/AJ/Desktop/projects/currents/app/assets/stylesheets/currents.scss */
+  .list-group-item {
+    height: 349px;
+  }
+
+  /* line 217, /Users/AJ/Desktop/projects/currents/app/assets/stylesheets/currents.scss */
+  .homepage_youtube_video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+/* line 226, /Users/AJ/Desktop/projects/currents/app/assets/stylesheets/currents.scss */
+.center {
+  display: block;
+  clear: both;
+  text-align: center;
+}
+
+@media (max-width: 500px) {
+  /* line 233, /Users/AJ/Desktop/projects/currents/app/assets/stylesheets/currents.scss */
+  .tk-blackoak-std {
+    font-size: 1.5em;
+  }
+
+  /* line 237, /Users/AJ/Desktop/projects/currents/app/assets/stylesheets/currents.scss */
+  .home-subtitle {
+    padding-top: 40px;
+  }
+}
+/* line 242, /Users/AJ/Desktop/projects/currents/app/assets/stylesheets/currents.scss */
+.turbolinks-progress-bar {
+  background-color: #8b0000;
+}

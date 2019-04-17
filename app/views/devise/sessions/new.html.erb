@@ -1,13 +1,20 @@
+
 <% provide(:title, "Log In") %>
 <% nofollow %>
 <% noindex %>
 
 
 
-
 <div id="content" role="main"></div>
-
-
+ 
+<section class="section home-section fullscreen parallax skrollable skrollable-between" id="home" data-bgattach="" data-bottom-top="background-position:0% 0%" data-top-bottom="background-position:0% 0%" style="height: 15vh !important;">
+  <div class="vcenter-container bg-lightgray"> 
+    <div class="vcenter">
+      <div class="container big-block skrollable skrollable-between" data-0="opacity:1;" data-top-bottom="opacity:0;" style="opacity: 1;">
+      </div>
+    </div>
+  </div>
+</section> <!-- end header section -->
 
 
 <div id="login-section" class="fullheight">
@@ -17,15 +24,15 @@
         <div class="row">
           <div class="col-sm-6 col-sm-push-3 col-lg-4 col-lg-push-4">
               <div class="mb100"></div>
-              <!-- header image -->
-<!--               <h1 class="logo text-center">
-                  <a href="index.html" title="Boss - Multipurpose Premium Html5 Template">
-                      <img src="<%#= image_path('currentslogoblack.png')%>"  alt="Logo" style="height: 75px;">
-                  </a>
-              </h1> <!-- end header image --> 
+                          <!-- header image -->
+            <h1 class="logo text-center">
+                <a href="index.html" title="Boss - Multipurpose Premium Html5 Template">
+                    <img src="<%= image_path('currentslogoblack.png')%>"  alt="Logo" style="height: 75px;">
+                </a>
+            </h1> <!-- end header image -->
               <div class="form-wrapper">
                   <h2 class="title-underblock custom mb30">Login</h2>
-                <div class="panel-body">
+                  <div class="panel-body">
                   <% flash.each do |key, value| %>
                   <div role="alert" class="alert alert-danger alert-dismissable">
                   <%= devise_error_messages! %>
@@ -70,13 +77,13 @@
                   
                     <% end %> 
                   </form>
-                </div>
-               
+                  </div>
               </div><!-- End .form-wrapper -->
           </div><!-- End .col-sm-6 -->
         </div><!-- End .row -->
       </div><!-- End .container -->
-    </div><!-- End .vcenter -->
-        
+    </div><!-- End .vcenter -->   
   </div><!-- End .vcenter-container -->
+</div>
+
 </div>
