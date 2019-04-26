@@ -38,6 +38,8 @@
                   / <%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are you sure?'} %>
                 <% end %> 
               </span>
+              <span class="pull-right"><%= social_share_button_tag(@post.title, :url => post_url(@post), desc: @post.title) %>
+              </span>
           </footer>
             <%= link_to 'Back to Blog', posts_path, class: "btn btn-dark pull-right" %>
         </article>

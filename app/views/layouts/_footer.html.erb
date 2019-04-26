@@ -2,32 +2,35 @@
   <div id="footer-bottom">
     <div class="container">
       <div class="row">
-        <!-- social media section -->
         <a id="contact_us"></a>
+        
+        <!-- social media section -->
         <div class="col-md-4">
-          <h3 class="title-underblock text-white mb20"><span>Contact Us</span></h3>
+          <div class="widget">
+            <h3 class="title-underblock text-white mb20"><span>Contact Us</span></h3>
             <p>Connect to us directly using social media options below.  We are always looking to share intel while out on the water.  Get in touch today.</p>
-          <div class="social-icons pull-left">
-            <a href="https://www.facebook.com/CurrentsFishingNetwork/" class="social-icon icon-facebook" title="Facebook">
-              <i class="fa fa-facebook text-white"></i>
-            </a>
-            <a href="https://twitter.com/network_fishing" class="social-icon icon-twitter" title="Twitter">
-              <i class="fa fa-twitter text-white"></i>
-            </a>
-            <a href="https://www.youtube.com/channel/UC2m-KyTZDGfMqss_KQ0E9Xw" class="social-icon icon-youtube" title="YouTube">
-              <i class="fa fa-youtube text-white"></i>
-            </a>
-            <a href="https://www.instagram.com/currentsfishingnetwork" class="social-icon icon-instagram" title="Instagram">
-              <i class="fa fa-instagram text-white"></i>
-            </a>
-            <a href="mailto:intel@thefishing.network" class="social-icon" title="Email">
-              <i class="fa fa-envelope text-white"></i>
-            </a>
-          </div> <!-- End .social-icons -->
+           
+              <a href="https://www.facebook.com/CurrentsFishingNetwork/" class="social-icon icon-facebook" title="Facebook">
+                <i class="fa fa-facebook text-white"></i>
+              </a>
+              <a href="https://twitter.com/network_fishing" class="social-icon icon-twitter" title="Twitter">
+                <i class="fa fa-twitter text-white"></i>
+              </a>
+              <a href="https://www.youtube.com/channel/UC2m-KyTZDGfMqss_KQ0E9Xw" class="social-icon icon-youtube" title="YouTube">
+                <i class="fa fa-youtube text-white"></i>
+              </a>
+              <a href="https://www.instagram.com/currentsfishingnetwork" class="social-icon icon-instagram" title="Instagram">
+                <i class="fa fa-instagram text-white"></i>
+              </a>
+              <a href="mailto:intel@thefishing.network" class="social-icon" title="Email">
+                <i class="fa fa-envelope text-white"></i>
+              </a>
+             <!-- End .social-icons -->
+          </div> <!-- end widget -->
         </div> <!-- end social media section -->
 
         <div class="col-md-4">
-        <div class="widget">
+          <div class="widget">
             <h3 class="title-underblock text-white mb20"><span>Tag Cloud</span></h3>
             <div class="tagcloud clearfix">
               <% tag_cloud Post.tag_counts, %w{s m l} do |tag, css_class| %>
@@ -37,15 +40,13 @@
                 <%= link_to tag.name, tag_path(tag.name), class: css_class %>
                 <% end %>
             </div><!-- End .tagcloud -->
-        </div><!-- End .widget -->
-      </div>  
-
-
-
-
+          </div><!-- End .widget -->
+        </div>  
         <!-- copyright section -->
         <div class="col-md-4">
-          <p class="copyright text-white">© All right reserved, Currents - The Fishing Network<%= mail_to 'intel@thefishing.network' %></p>
+          <div class="widget">
+            <p class="copyright text-white">© All right reserved, Currents - The Fishing Network<%= mail_to 'intel@thefishing.network' %></p>
+          </div> 
         </div> <!-- end copyright section -->
       </div> <!-- End .row -->
     </div> <!-- End .container -->

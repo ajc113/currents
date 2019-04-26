@@ -34,11 +34,13 @@
               <a href="<%= request.url %>#disqus_thread" class="entry-comments"></a>
               <span class="entry-separator">/</span>
               by <a href="#" class="entry-author">Currents Staff</a>
-              <span class="entry-separator">/</span>
                 <% if current_admin_user %>
+                <span class="entry-separator">/</span>                
                   <%= link_to 'Edit', edit_intel_path(@intel) %>
                   / <%= link_to 'Delete', intel_path(@intel), method: :delete, data: { confirm: 'Are you sure?'} %>
                 <% end %> 
+              </span> 
+              <span class="pull-right"><%= social_share_button_tag(@intel.title, :url => intel_url(@intel), desc: @intel.title) %>
               </span>
           </footer>
                  <%= link_to 'Back to Intels', intels_path, class: "btn btn-dark pull-right" %>

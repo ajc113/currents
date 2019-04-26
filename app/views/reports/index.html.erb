@@ -12,8 +12,9 @@
       <div class="col-md-10">
         <h1 class="title-border custom" style="font-size: 45px;"><%= current_user.vessel_name %> Catch Reports</h1>
         <p class="title-border" style="padding-left: 45px;">Log reports and analyze past trip data</p>
+      
+      <%= link_to 'Log New Report', new_report_path, class: "btn btn-dark btn-md", style: "text-right" %>
       </div>
-      <%= link_to 'Log New Report', new_report_path, class: "btn btn-dark btn-lg", style: "text-right" %>
     </div>
 
     <!-- Filter table -->
@@ -145,11 +146,11 @@
           <%= link_to "Excel", reports_path(format: "xls") %>
         </p>
         <!-- log new button -->
-        <%= link_to 'Log New Report', new_report_path, class: "btn btn-dark btn-lg" %>
+        <%= link_to 'Log New Report', new_report_path, class: "btn btn-dark btn-md" %>
     </div><!-- end reports table -->
 
     <!-- Call in report info -->
-    <div class="col-md-124">
+    <!-- <div class="col-md-124">
       <div class="panel-body text-right">
         <a href="tel:+18002083817" class="link-unstyled text-danger">
         <em class="fa fa-phone fa-lg"></em>
@@ -160,7 +161,7 @@
         <span class="h4">Call in your report today</span>
         </a>
       </div>
-    </div> <!-- end call in report info -->
+    </div> --> <!-- end call in report info -->
 
   <!-- filter script -->
   <script>

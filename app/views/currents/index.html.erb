@@ -12,13 +12,13 @@
         <h3 >Networking tool built by fisherman to maximize your time on the water.</h3>
         <div class="block-action">
           <% if current_user %>
-          <%= link_to "Sign In", new_user_session_path, class: "btn btn-dark btn-border radius-lger min-width" %>
+          <%= link_to "Sign In", new_user_session_path, class: "btn btn-dark btn-border btn-sm radius-lger min-width" %>
           <% else %>
-          <%= link_to "Join Now", new_user_registration_path, class: "btn btn-dark btn-border radius-lger min-width" %>
+          <%= link_to "Join Now", new_user_registration_path, class: "btn btn-dark btn-border btn-sm radius-lger min-width" %>
           <% end %>
-          <%= link_to "Go to Heatmap", maps_path, class: "btn btn-dark btn-border radius-lger min-width" %>
-          <%= link_to "Go to Intel", intels_path, class: "btn btn-dark btn-border radius-lger min-width" %>
-          <%= link_to "Go to Reports", reports_path, class: "btn btn-dark btn-border radius-lger min-width" %>
+          <%= link_to "Go to Heatmap", maps_path, class: "btn btn-dark btn-border btn-sm radius-lger min-width" %>
+          <%= link_to "Go to Intel", intels_path, class: "btn btn-dark btn-border btn-sm radius-lger min-width" %>
+          <%= link_to "Go to Reports", reports_path, class: "btn btn-dark btn-border btn-sm radius-lger min-width" %>
       
         </div>
         <!-- End .block-action -->
@@ -60,7 +60,7 @@
             <div class="service-content">
             <h3 class="service-title title-underblock dark text-uppercase">Forum</h3>
           </a>
-          <p>Connect with the currents fishing community to share intel, action, and techniques</p>
+          <p>Connect with the currents community to share catch intel, action, and techniques</p>
           </div>
           <!-- End .service-content -->
         </div>
@@ -75,7 +75,7 @@
           </span>
           <div class="service-content">
             <h3 class="service-title title-underblock dark text-uppercase">Weekly Intel</h3>
-            <p>We consolidate the community intel and post periodic updates on what is going on out on the water</p>
+            <p>Summarized community intel with periodic updates on what is going on out on the water</p>
           </div>
           <!-- End .service-content -->
         </div>
@@ -89,7 +89,7 @@
           </span>
           <div class="service-content">
             <h3 class="service-title title-underblock dark text-uppercase">Catch Activity Heatmaps</h3>
-            <p>View real time heatmaps of catch areas that are fishing well based off community catch reports</p>
+            <p>Real time heatmap of locations that are fishing well based off community catch reports</p>
           </div>
           <!-- End .service-content -->
         </div>
@@ -106,7 +106,7 @@
           </span>
           <div class="service-content">
             <h3 class="service-title title-underblock dark text-uppercase">Catch Logging Tools</h3>
-            <p>Use the catch logging tools as a trip log to keep all key information.  Your reports are private only general location is shared with the community</p>
+            <p>Use catch logging tools to log your trip data.  Your reports are private! General catch information feed into activity heatmap for benefit of community</p>
           </div>
           <!-- End .service-content -->
         </div>
@@ -120,7 +120,7 @@
           </span>
           <div class="service-content">
             <h3 class="service-title title-underblock dark text-uppercase">Blog</h3>
-            <p>Blog posts on relevant tackle, product reviews and breaking news</p>
+            <p>Blog posts on recent tackle, product reviews, and breaking news</p>
           </div>
           <!-- End .service-content -->
         </div>
@@ -134,7 +134,7 @@
           </span>
           <div class="service-content">
             <h3 class="service-title title-underblock dark text-uppercase">Spots</h3>
-            <p>Detailed information on some of the best fishign spots and locations.  Detailed information on how to fish each spot.</p>
+            <p>Detailed information on some of the best fishing spots and locations.  Detailed information on how to fish each spot.</p>
           </div>
           <!-- End .service-content -->
         </div>
@@ -152,8 +152,8 @@
         <span class="callout-icon"><i class="icon-bubbles"></i></span>
         <div class="callout-wrapper">
           <div class="callout-left">
-            <h3 class="callout-title">Do you want to participate in a growing offshore fishing community?</h3>
-            <p class="callout-desc">Our goal to maximize everyones experience on the water?  Join us now there are no fees </p>
+            <h3 class="callout-title">Join now to participate in a growing offshore fishing community.</h3>
+            <p class="callout-desc">Our goal to maximize everyones experience on the water!  Join today there are no fees </p>
           </div>
           
           <!-- End .callout-left -->
@@ -346,7 +346,7 @@
         <!-- blog title -->
         <h2 class="entry-title"><%= link_to post.title, post %></a></h2>
         <!-- blog description -->
-        <h2 class="entry-title"><a href="single.html"><%= link_to post.meta_description, post %></a></h2>
+        <p style="color: black;"><a><%= link_to post.meta_description, post, style:"color: grey;" %></a></p>
         <footer class="entry-footer clearfix">
           <!-- blog categories -->
           <span class="entry-cats">
@@ -405,7 +405,7 @@
       <div class="col-md-6">
         <p>The concept of Currents came to me in 2016 after realizing in todays day and age of social media, apps, and networking tools for just about everything, the sportfishing community is still stuck in old school tradition, misdirection, and lack of trust amongst fisherman.  After spending a few years designing working on developement its finaly ready to make an impact to this community</p>
         <p>I have grown up fishing the water of Cape Cod both recreationally and commercially.  I was raised on charter boats and started before I was even old enough to work.  That matured into commercial fishing stripers, tuna and groundfish.  Today I run my own boat mainly chasing bluefin around the gulf of Maine.</p>
-        <p>I am also willing to share intel when out on the water or share the latest intel that we have received via the network.  Please reach out to me via the contacts below with any questions or if you want to connect while on the water.  - AJ Costa (Founder Currents Fishing) </p>
+        <p>I am also willing to share intel when out on the water or share the latest intel that we have received via the network.  Please reach out to me via the contacts below with any questions or if you want to connect while on the water.  - AJ (Founder Currents Fishing) </p>
       </div>
       <!-- End .col-md-6 -->
     </div>

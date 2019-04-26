@@ -40,11 +40,13 @@
               </span><!-- End .entry-tags -->
               <span class="entry-separator">/</span>
               <a href="<%= request.url%>#disqus_thread" class="entry-comments"></a>
-              <span class="entry-separator">/</span>
                 <% if current_admin_user %>
+                <span class="entry-separator">/</span>
                   <%= link_to 'Edit', edit_spot_path(@spot) %>
                   / <%= link_to 'Delete', spot_path(@spot), method: :delete, data: { confirm: 'Are you sure?'} %>
                 <% end %> 
+              </span>
+              <span class="pull-right"><%= social_share_button_tag(@spot.title, :url => spot_url(@spot), desc: @spot.title) %>
               </span>
           </footer>
                  <%= link_to 'Back to Spots', spots_path, class: "btn btn-dark pull-right" %>
