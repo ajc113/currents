@@ -24,8 +24,9 @@
  * require card
  * require my_account
  * require invoice
-*= require social-share-button
+ *= require social-share-button
  * require posts
+ *= require maps
  */
 
 .mobile-only {

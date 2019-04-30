@@ -12,7 +12,6 @@
         <h3 >Networking tool built by fisherman to maximize your time on the water.</h3>
         <div class="block-action">
           <% if current_user %>
-          <%= link_to "Sign In", new_user_session_path, class: "btn btn-dark btn-border btn-sm radius-lger min-width" %>
           <% else %>
           <%= link_to "Join Now", new_user_registration_path, class: "btn btn-dark btn-border btn-sm radius-lger min-width" %>
           <% end %>
