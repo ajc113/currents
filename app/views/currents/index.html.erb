@@ -11,10 +11,6 @@
         <h1>Currents Fishing</h1>
         <h3 >Networking tool built by fisherman to maximize your time on the water.</h3>
         <div class="block-action">
-          <% if current_user %>
-          <% else %>
-          <%= link_to "Join Now", new_user_registration_path, class: "btn btn-dark btn-border btn-sm radius-lger min-width" %>
-          <% end %>
           <%= link_to "Go to Heatmap", maps_path, class: "btn btn-dark btn-border btn-sm radius-lger min-width" %>
           <%= link_to "Go to Intel", intels_path, class: "btn btn-dark btn-border btn-sm radius-lger min-width" %>
           <%= link_to "Go to Reports", reports_path, class: "btn btn-dark btn-border btn-sm radius-lger min-width" %>

@@ -5,13 +5,13 @@
 
 <section class="section" id="New Report">
   <div class="container-fluid  no-border">
-
+      <header class="section-header container mb30">
+        <div class="section-title shadow-title" data-title="<%= current_user.try(:vessel_name) %>  New Catch Report">  
+        </div>
+      </header>
       <!-- reports new form -->
       <div class="col-lg-6">
-          <header class="section-header container mb30">
-            <h2 class="section-title shadow-title" data-title="<%= current_user.try(:vessel_name) %>  New Catch Report">  
-            </h2>
-          </header>
+
           <div class="form-group">
             <%= render 'reports/form' %>
           </div>
