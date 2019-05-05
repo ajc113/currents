@@ -47,12 +47,8 @@
                 <%= f.label :password_confirmation %><br />
                 <%= f.password_field :password_confirmation,  class: "form-control", autocomplete: "off" %>
               </div>
-
-                <button type="submit" class="btn btn-block btn-custom">
-                  <%= "Sign up" %>
-                </button>
+              <%= invisible_recaptcha_tags text: 'Sign up', class: "btn btn-block btn-custom" %>
               <% end %>
-
           </div>
       </div>
     </div>

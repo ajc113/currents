@@ -56,6 +56,7 @@ gem 'rack-cache'
 gem "sentry-raven"
 gem 'meta-tags'
 gem 'sitemap_generator'
+gem "recaptcha"
 
 group :production do
   gem 'rails_12factor'
