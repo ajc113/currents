@@ -1,6 +1,6 @@
 class SubscriptionMailer < ActionMailer::Base
 
-  default from: 'intel@thefishing.network'
+  default from: 'info@curentsfishing.com'
 
   def customer_subscription_trial_will_end(user)
     @user = user

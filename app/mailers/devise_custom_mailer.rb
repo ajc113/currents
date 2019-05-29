@@ -3,7 +3,7 @@ class DeviseCustomMailer < Devise::Mailer
   default template_path: 'devise/mailer'
   include Devise::Controllers::UrlHelpers
   #layout 'mailer'
-  default from: 'Fishing Network <intel@thefishing.network>'
+  default from: 'Currents Fishing <info@currentsfishing.com>'
   default to: "costa.aj@gmail.com"
 
   require "mandrill"

@@ -1,5 +1,5 @@
 class AdminMailer < ApplicationMailer
-  default from: "no_reply@thefishing.network"
+  default from: "no_reply@currentsfishing.com"
   default to: AdminEmails.list
 
 
