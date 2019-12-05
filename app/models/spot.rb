@@ -1,6 +1,5 @@
-class Spot < ActiveRecord::Base
+class Spot < ApplicationRecord
 	acts_as_taggable_on :tags
-	belongs_to :admin_user
 	paginates_per 10
 
 

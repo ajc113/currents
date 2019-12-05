@@ -1,4 +1,4 @@
-class Hotspot < ActiveRecord::Base
+class Hotspot < ApplicationRecord
 
     mount_uploader :image, HotspotImageUploader
 

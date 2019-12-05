@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :reports
   has_many :buzzs   
   has_many :locations, through: :reports
-  belongs_to :state, primary_key: :name, foreign_key: :state_waters
+  belongs_to :state, primary_key: :name, foreign_key: :state_waters, optional: true
   after_create :create_stripe_customer
   after_create :send_notification if Rails.env.production?
   # after_create :send_welcome_email

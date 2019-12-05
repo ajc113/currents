@@ -1,6 +1,5 @@
-class Intel < ActiveRecord::Base
+class Intel < ApplicationRecord
 	acts_as_taggable_on :tags
-	belongs_to :admin_user
 	paginates_per 10
 
 

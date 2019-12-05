@@ -1,4 +1,4 @@
-class Report < ActiveRecord::Base
+class Report < ApplicationRecord
   include Filterable
 
   validates :date, :species_id, :state_waters, :location_id, :catch_keepers, presence: true

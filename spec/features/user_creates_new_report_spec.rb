@@ -7,7 +7,7 @@ RSpec.feature "User opens Log Catch Report page", :js => true do
     Location.create(number: 1,
                     short_name: "Stellwagen Bank - (NWC) Northwest Corner",
                     state_waters: @state.name,
-                    coordinate_file: Rails.root.join("db/seed_data/location_coordinate_files/" + "Stellwagen Bank - (NWC) Northwest Corner".underscore.parameterize("_") + ".json").open)
+                    coordinate_file: Rails.root.join("db/seed_data/location_coordinate_files/" + "Stellwagen Bank - (NWC) Northwest Corner".underscore.parameterize(separator: "_") + ".json").open)
     login_as(new_user, :scope => :user)
   end
 

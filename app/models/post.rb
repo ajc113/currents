@@ -1,4 +1,4 @@
-class Post < ActiveRecord::Base
+class Post < ApplicationRecord
   acts_as_taggable_on :tags
 
   has_many :comments, dependent: :destroy

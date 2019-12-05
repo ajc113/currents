@@ -17,7 +17,7 @@ real_users.each do |user|
       email: user[:email],
       password: 'password',
       confirmed_at: DateTime.now,
-      state_waters: State.visible.order("RANDOM()").first.name,
+      state_waters: State.visible.order(Arel.sql('random()')).first.name,
     )
     print '.'
   rescue

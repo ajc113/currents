@@ -29,7 +29,9 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = false
 
   config.before(:suite) do
-    DatabaseCleaner.clean_with(:truncation)
+    DatabaseCleaner.clean_with(:truncation,
+                                except: %w(ar_internal_metadata)
+                              )
   end
   config.before(:each) do
     DatabaseCleaner.strategy = :transaction
@@ -46,9 +48,9 @@ RSpec.configure do |config|
 
   config.infer_spec_type_from_file_location!
 
-  config.filter_rails_from_backtrace!
+  # config.filter_rails_from_backtrace!
 
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
   config.include Capybara::DSL
   Capybara.javascript_driver = :webkit
   Capybara.default_max_wait_time = 10

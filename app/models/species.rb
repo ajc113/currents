@@ -1,4 +1,4 @@
-class Species < ActiveRecord::Base
+class Species < ApplicationRecord
 
 has_many :reports
 

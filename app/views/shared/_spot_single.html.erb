@@ -22,7 +22,7 @@
           <!-- image span -->
           <div class="entry-media">
             <figure>
-              <%= link_to image_tag(@spot.image.url), spot_path(@spot) %>
+              <%= link_to image_tag(@spot.image.url), spot_path(@spot) if @spot.image.url %>
             </figure>
           </div>
 
