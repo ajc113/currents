@@ -1,4 +1,4 @@
-class AddSpecieToReports < ActiveRecord::Migration
+class AddSpecieToReports < ActiveRecord::Migration[4.2]
   def up
     add_column :reports, :specie_id, :integer
   end

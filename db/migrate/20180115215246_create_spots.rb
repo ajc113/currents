@@ -1,4 +1,4 @@
-class CreateSpots < ActiveRecord::Migration
+class CreateSpots < ActiveRecord::Migration[4.2]
   def change
     create_table :spots do |t|
       t.string :title
