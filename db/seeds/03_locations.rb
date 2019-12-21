@@ -918,7 +918,7 @@ end
 
 location_list.each do |location|
   begin
-    coordinate_file = Rails.root.join("db/seed_data/location_coordinate_files/" + location[:short_name].underscore.parameterize("_") + ".json").open
+    coordinate_file = Rails.root.join("db/seed_data/location_coordinate_files/" + location[:short_name].underscore.parameterize(separator: "_") + ".json").open
     location.merge!(coordinate_file: coordinate_file)
     new_location = Location.create!(location)
     # new_location.coordinate_file =

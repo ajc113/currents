@@ -2,10 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "intels/edit", type: :view do
   before(:each) do
-    @intel = assign(:intel, Intel.create!(
-      :title => "MyString",
-      :body => "MyText"
-    ))
+    @intel = assign(:intel, create(:intel))
   end
 
   it "renders the edit intel form" do

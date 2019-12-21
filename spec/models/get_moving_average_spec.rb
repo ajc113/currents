@@ -19,7 +19,7 @@ RSpec.describe GetMovingAverage do
     }
     report.each do |day, catch_keepers_array|
       catch_keepers_array.each do |catch_keepers|
-        FactoryGirl.create(:report, catch_keepers: catch_keepers, date: Date.today - day)
+        FactoryBot.create(:report, catch_keepers: catch_keepers, date: Date.today - day)
       end
     end
     @reports = Report.all

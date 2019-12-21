@@ -1,4 +1,4 @@
-class AddExistingUsersToSubscription < ActiveRecord::Migration
+class AddExistingUsersToSubscription < ActiveRecord::Migration[4.2]
 	def change
 		User.find_each do |user|
 			if user.stripe_customer_id == "" then

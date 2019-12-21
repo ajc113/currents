@@ -32,7 +32,7 @@ RSpec.describe Report, "Scopes" do
   end
 
   it "can not be created in the future" do
-    expect { Report.create!(:date => 2.years.from_now, :location_id => 3, :species_id => 2, :catch_keepers => 23, :state_waters => "MA") }.to raise_error(ActiveRecord::RecordInvalid, "Validation failed: Date must not be set in the future")
+    expect { create(:report, :date => 2.years.from_now) }.to raise_error(ActiveRecord::RecordInvalid, "Validation failed: Date must not be set in the future")
   end
 
   it ".selected_tide should return records with specified tide" do

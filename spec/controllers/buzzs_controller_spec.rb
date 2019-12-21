@@ -22,24 +22,29 @@ RSpec.describe BuzzsController, :type => :controller do
       expect(response).to render_template(:new)
     end
   end
+
   it "should create buzz" do
-    post :create, buzz: {attribute: "value"}
+    post :create, params: { buzz: {attribute: "value"} }
     expect(response).to render_template :new
   end
+
   it("should show buzz") do
-    get(:show, :id => (@buzz))
+    get :show, params: { id: @buzz }
     assert_response(:success)
   end
+
   it("should get edit") do
-    get(:edit, :id => (@buzz))
+    get :edit, params: { id: @buzz }
     assert_response(:success)
   end
+
   it("should update buzz") do
-    patch(:update, :id => (@buzz), :buzz => ({ :post => @buzz.post }))
+    patch :update, params: { id: @buzz, buzz: { post: @buzz.post } }
     assert_redirected_to(buzz_path(assigns(:buzz)))
   end
+
   it("should destroy buzz") do
-    expect { delete(:destroy, :id => (@buzz)) }.to(change { Buzz.count }.by(-1))
+    expect { delete(:destroy, params: { id: @buzz }) }.to(change { Buzz.count }.by(-1))
     assert_redirected_to(buzzs_path)
   end
 end

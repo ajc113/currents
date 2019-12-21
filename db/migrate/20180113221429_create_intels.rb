@@ -1,4 +1,4 @@
-class CreateIntels < ActiveRecord::Migration
+class CreateIntels < ActiveRecord::Migration[4.2]
   def change
     create_table :intels do |t|
       t.string :title

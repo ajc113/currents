@@ -1,4 +1,4 @@
-class Location < ActiveRecord::Base
+class Location < ApplicationRecord
 
 
 	mount_uploader :coordinate_file, LocationJsonUploader
@@ -7,7 +7,7 @@ class Location < ActiveRecord::Base
 
 	has_many :reports
 	has_many :users, through: :reports
-	belongs_to :state, primary_key: :name, foreign_key: :state_waters
+        belongs_to :state, primary_key: :name, foreign_key: :state_waters, optional: true
 
   #display_name is defined for activeadmin
 	def display_name

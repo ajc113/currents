@@ -10,7 +10,7 @@ RSpec.describe "spots/show", type: :view do
   end
 
   it "renders attributes in <p>" do
-    render
+    render 'shared/spot_single', post: @spot
     expect(rendered).to match(/Title/)
     expect(rendered).to match(/MyText/)
   end
