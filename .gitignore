@@ -30,3 +30,5 @@ coverage/
 
 /*theme*
 .byebug_history
+
+node_modules
