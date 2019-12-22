@@ -113,8 +113,6 @@ Rails.application.configure do
 
 config.action_mailer.default_url_options = { :host => ENV['HOST'] }
 
-config.middleware.use(PartyFoul::Middleware)
-
 config.secret_key_base = ENV["SECRET_KEY_BASE"]
 
 end

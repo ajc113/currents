@@ -9,7 +9,7 @@ class StripeController < ApplicationController
       begin
         event = Stripe::Event.retrieve(event_id)  #so that we know event is valid and from Stripe
       rescue => error
-        PartyFoul::RacklessExceptionHandler.handle(error, class: self, method: __method__, params: event_id)
+        # PartyFoul::RacklessExceptionHandler.handle(error, class: self, method: __method__, params: event_id)
       end
     else
       event = JSON.parse(request.body.read, object_class: OpenStruct)
@@ -26,7 +26,7 @@ class StripeController < ApplicationController
           error_details['user'] = user.inspect
           error_details['event_type'] = event_type
           error_details['event_id'] = event.id
-          PartyFoul::RacklessExceptionHandler.handle(error, class: self, method: __method__, params: error_details)
+          # PartyFoul::RacklessExceptionHandler.handle(error, class: self, method: __method__, params: error_details)
         ensure
           Rails.logger.flush
         end
