@@ -28,7 +28,6 @@ gem 'carrierwave'
 gem 'mandrill-api', require: "mandrill"
 gem 'active_model_serializers', '~> 0.10.2'
 # gem 'moving_average'
-gem 'party_foul'
 gem 'rails_serve_static_assets'
 gem 'bootstrap-datepicker-rails'
 gem 'pg', '1.1.4'
