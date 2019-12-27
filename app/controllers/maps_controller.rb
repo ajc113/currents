@@ -5,7 +5,7 @@ class MapsController < ApplicationController
   set_meta_tags title: "HeatMap",
             site: "Currents Fishing Network",
             reverse: true,
-            description: "Fishing action heat map charting locations, species, and trending of where the bite is.  View by target speicies or location where you want to fish", 
+            description: "Fishing action heat map charting locations, species, activity of where the bite is.  View by target speicies or location where you want to fish", 
             keywords: "New england fishing intel, boat ramps, catch reports, big game fishing, offshore fishing"
   end
 

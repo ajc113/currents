@@ -7,7 +7,7 @@ class IntelsController < InheritedResources::Base
     set_meta_tags title: "Daily Intel",
                   site: "Currents Fishing Network",
                   reverse: true,
-                  description: "New england fishing reports from our network of charter, commercial, and recreational captains", 
+                  description: "New england fishing reports from private network of commercial and recreational offshore fisherman", 
                   keywords: "New england fishing reports, boat ramps, catch reports, big game fishing, offshore fishing"
 
   end

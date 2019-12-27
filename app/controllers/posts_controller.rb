@@ -7,7 +7,7 @@ class PostsController < ApplicationController
     set_meta_tags title: "Blog",
                   site: "Currents Fishing Network",
                   reverse: true,
-                  description: "Big game fishing articles covering big game fishing tactics, catch reports, tackle reviews, and locations",
+                  description: "Big game fishing articles covering fishing tactics, catch reports, tackle reviews, and fishing locations",
                   keywords: "New england fishing intel, fishing reports, catch reports, big game fishing, offshore fishing"
     @tags = Post.tag_counts_on(:tags).limit(5)
     @tag_counts = Post.tag_counts_on(:tags).limit(10)

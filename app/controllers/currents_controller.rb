@@ -11,7 +11,7 @@ class CurrentsController < ApplicationController
 		set_meta_tags title: "Home",
                   site: "Currents Fishing Network",
                   reverse: true,
-                  description: "Sportfishing network providing catch reports, activity heatmap, fishing spots, and tackle information for offshore big game fishing",
+                  description: "Private fishing network, collaberating intel,  catch reports, activity heatmap, fishing spots, and tackle information for offshorefishing",
                   keywords: "New england fishing intel, fishing reports, catch reports, big game fishing, offshore fishing"	
         @posts = Post.all.order("created_at DESC").limit(5)
         @intels = Intel.all.order("created_at DESC").limit(3)
@@ -22,7 +22,7 @@ class CurrentsController < ApplicationController
 		set_meta_tags title: "About Us",
                   site: "Currents Network",
                   reverse: true,
-                  description: "Big game fishing articles covering catch reports, tackle reviews, and locations",
+                  description: "Offshore fishing articles covering catch reports, tackle reviews, and locations",
                   keywords: "New england fishing intel, fishing reports, catch reports, big game fishing, offshore fishing"		
 	end
 
