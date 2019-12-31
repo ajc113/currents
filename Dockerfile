@@ -67,7 +67,7 @@ RUN apt-get update && apt-get install -y ruby-dev libmagic-dev \
 RUN gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
 RUN curl -L https://get.rvm.io | bash -s stable
 RUN /bin/bash -l -c "rvm requirements"
-RUN /bin/bash -l -c "rvm install 2.3.4"
+RUN /bin/bash -l -c "rvm install 2.6.2"
 RUN /bin/bash -l -c "gem install --no-ri --no-rdoc nokogiri:1.6.7.2 bundler:2.1.2"
 ADD https://raw.githubusercontent.com/tannakartikey/currents/master/Gemfile /
 RUN /bin/bash -l -c "bundle install"
