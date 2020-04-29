@@ -2,6 +2,8 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
+
+
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
@@ -18,6 +20,8 @@ module Currents
         config.dsn = 'https://bb708a31d3cf4207b8fba0858dd0aed7:3521b84ea8364a4185c28181e73296ae@sentry.io/284690'
       end
     end
+
+    config.active_record.belongs_to_required_by_default = false
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
