@@ -1,4 +1,4 @@
-$ ->
+$(document).on 'turbolinks:load',  ->
   map = exports ? this
   infoWindow = exports ? this
   openInfoWindow = (loc, map, event)->
